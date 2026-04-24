@@ -1,0 +1,44 @@
+{
+  "site_name": "TopCryptoCards",
+  "site_domain": ".eu",
+  "site_tagline": "El mejor comparador de tarjetas criptográficas",
+  "site_description": "Compara las mejores tarjetas de criptografía: reembolso, tarifas, apuesta y disponibilidad en España y Europa.",
+
+  "nav_home": "Inicio",
+  "nav_compare": "Comparar",
+  "nav_simulator": "Simulador",
+  "nav_recommendation": "Recomendación",
+  "nav_favorites": "Favoritos",
+  "nav_blog": "Blog",
+
+  "btn_generate": "Generar",
+  "btn_regenerate": "Regenerar",
+  "btn_compare": "Comparar",
+  "btn_view": "Ver",
+  "btn_details": "Detalles",
+  "btn_select": "Seleccionar",
+  "btn_save": "Guardar",
+  "btn_cancel": "Cancelar",
+  "btn_delete": "Eliminar",
+  "btn_edit": "Editar",
+  "btn_back": "Atrás",
+  "btn_next": "Siguiente",
+
+  "filter_all": "Todas",
+  "filter_no_fees": "Sin tarifas",
+  "filter_high_cashback": "Reembolso alto",
+  "filter_no_staking": "Sin apuesta",
+  "filter_france": "Disponible en España",
+
+  "language_fr": "Français",
+  "language_de": "Deutsch",
+  "language_es": "Español",
+  "language_it": "Italiano",
+  "language_en": "English",
+
+  "empty_favorites": "Sin favoritos por el momento",
+  "empty_results": "No se encontraron resultados",
+  "loading": "Cargando...",
+  "error": "Error",
+  "success": "Éxito"
+}

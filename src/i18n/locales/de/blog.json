@@ -1,0 +1,26 @@
+{
+  "blog_title": "Blog",
+  "blog_subtitle": "Nachrichten und Leitfäden zu Kryptokarten",
+  "blog_no_posts": "Derzeit keine Artikel vorhanden",
+  "blog_read_more": "Mehr lesen",
+  "blog_published": "Veröffentlicht am",
+  "blog_by_author": "Von",
+  "blog_tags": "Tags",
+  "blog_share": "Teilen",
+  "blog_related": "Verwandte Artikel",
+  "blog_back_to_blog": "Zurück zum Blog",
+
+  "category_news": "Nachrichten",
+  "category_guide": "Leitfaden",
+  "category_comparison": "Vergleich",
+  "category_tutorial": "Anleitung",
+  "category_analysis": "Analyse",
+
+  "tag_cashback": "Cashback",
+  "tag_fees": "Gebühren",
+  "tag_staking": "Staking",
+  "tag_security": "Sicherheit",
+  "tag_travel": "Reisen",
+  "tag_beginners": "Anfänger",
+  "tag_advanced": "Fortgeschritten"
+}

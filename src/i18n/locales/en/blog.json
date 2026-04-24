@@ -1,0 +1,26 @@
+{
+  "blog_title": "Blog",
+  "blog_subtitle": "News and guides about crypto cards",
+  "blog_no_posts": "No articles at the moment",
+  "blog_read_more": "Read More",
+  "blog_published": "Published on",
+  "blog_by_author": "By",
+  "blog_tags": "Tags",
+  "blog_share": "Share",
+  "blog_related": "Related Articles",
+  "blog_back_to_blog": "Back to Blog",
+
+  "category_news": "News",
+  "category_guide": "Guide",
+  "category_comparison": "Comparison",
+  "category_tutorial": "Tutorial",
+  "category_analysis": "Analysis",
+
+  "tag_cashback": "Cashback",
+  "tag_fees": "Fees",
+  "tag_staking": "Staking",
+  "tag_security": "Security",
+  "tag_travel": "Travel",
+  "tag_beginners": "Beginners",
+  "tag_advanced": "Advanced"
+}

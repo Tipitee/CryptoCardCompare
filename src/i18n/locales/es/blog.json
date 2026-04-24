@@ -1,0 +1,26 @@
+{
+  "blog_title": "Blog",
+  "blog_subtitle": "Noticias y guías sobre tarjetas criptográficas",
+  "blog_no_posts": "No hay artículos por ahora",
+  "blog_read_more": "Leer más",
+  "blog_published": "Publicado el",
+  "blog_by_author": "Por",
+  "blog_tags": "Etiquetas",
+  "blog_share": "Compartir",
+  "blog_related": "Artículos relacionados",
+  "blog_back_to_blog": "Volver al blog",
+
+  "category_news": "Noticias",
+  "category_guide": "Guía",
+  "category_comparison": "Comparación",
+  "category_tutorial": "Tutorial",
+  "category_analysis": "Análisis",
+
+  "tag_cashback": "Reembolso",
+  "tag_fees": "Tarifas",
+  "tag_staking": "Apuesta",
+  "tag_security": "Seguridad",
+  "tag_travel": "Viaje",
+  "tag_beginners": "Principiantes",
+  "tag_advanced": "Avanzado"
+}

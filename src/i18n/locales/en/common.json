@@ -1,0 +1,44 @@
+{
+  "site_name": "TopCryptoCards",
+  "site_domain": ".eu",
+  "site_tagline": "The best crypto card comparison platform",
+  "site_description": "Compare the best crypto cards: cashback, fees, staking and availability in UK and Europe.",
+
+  "nav_home": "Home",
+  "nav_compare": "Compare",
+  "nav_simulator": "Simulator",
+  "nav_recommendation": "Recommendation",
+  "nav_favorites": "Favorites",
+  "nav_blog": "Blog",
+
+  "btn_generate": "Generate",
+  "btn_regenerate": "Regenerate",
+  "btn_compare": "Compare",
+  "btn_view": "View",
+  "btn_details": "Details",
+  "btn_select": "Select",
+  "btn_save": "Save",
+  "btn_cancel": "Cancel",
+  "btn_delete": "Delete",
+  "btn_edit": "Edit",
+  "btn_back": "Back",
+  "btn_next": "Next",
+
+  "filter_all": "All",
+  "filter_no_fees": "No Fees",
+  "filter_high_cashback": "High Cashback",
+  "filter_no_staking": "No Staking",
+  "filter_france": "Available UK",
+
+  "language_fr": "Français",
+  "language_de": "Deutsch",
+  "language_es": "Español",
+  "language_it": "Italiano",
+  "language_en": "English",
+
+  "empty_favorites": "No favorites yet",
+  "empty_results": "No results found",
+  "loading": "Loading...",
+  "error": "Error",
+  "success": "Success"
+}

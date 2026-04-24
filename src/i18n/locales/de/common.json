@@ -1,0 +1,44 @@
+{
+  "site_name": "TopCryptoCards",
+  "site_domain": ".eu",
+  "site_tagline": "Der beste Krypto-Kartenvergleich",
+  "site_description": "Vergleichen Sie die besten Kryptokarten: Cashback, Gebühren, Staking und Verfügbarkeit in Deutschland und Europa.",
+
+  "nav_home": "Startseite",
+  "nav_compare": "Vergleichen",
+  "nav_simulator": "Simulator",
+  "nav_recommendation": "Empfehlung",
+  "nav_favorites": "Favoriten",
+  "nav_blog": "Blog",
+
+  "btn_generate": "Generieren",
+  "btn_regenerate": "Neu generieren",
+  "btn_compare": "Vergleichen",
+  "btn_view": "Ansehen",
+  "btn_details": "Details",
+  "btn_select": "Auswählen",
+  "btn_save": "Speichern",
+  "btn_cancel": "Abbrechen",
+  "btn_delete": "Löschen",
+  "btn_edit": "Bearbeiten",
+  "btn_back": "Zurück",
+  "btn_next": "Weiter",
+
+  "filter_all": "Alle",
+  "filter_no_fees": "Keine Gebühren",
+  "filter_high_cashback": "Hohes Cashback",
+  "filter_no_staking": "Kein Staking",
+  "filter_france": "In Deutschland verfügbar",
+
+  "language_fr": "Français",
+  "language_de": "Deutsch",
+  "language_es": "Español",
+  "language_it": "Italiano",
+  "language_en": "English",
+
+  "empty_favorites": "Noch keine Favoriten",
+  "empty_results": "Keine Ergebnisse gefunden",
+  "loading": "Wird geladen...",
+  "error": "Fehler",
+  "success": "Erfolg"
+}

@@ -1,0 +1,26 @@
+{
+  "blog_title": "Blog",
+  "blog_subtitle": "Notizie e guide su carte crittografiche",
+  "blog_no_posts": "Nessun articolo al momento",
+  "blog_read_more": "Leggi di più",
+  "blog_published": "Pubblicato il",
+  "blog_by_author": "Da",
+  "blog_tags": "Tag",
+  "blog_share": "Condividi",
+  "blog_related": "Articoli correlati",
+  "blog_back_to_blog": "Torna al blog",
+
+  "category_news": "Notizie",
+  "category_guide": "Guida",
+  "category_comparison": "Confronto",
+  "category_tutorial": "Tutorial",
+  "category_analysis": "Analisi",
+
+  "tag_cashback": "Cashback",
+  "tag_fees": "Commissioni",
+  "tag_staking": "Staking",
+  "tag_security": "Sicurezza",
+  "tag_travel": "Viaggio",
+  "tag_beginners": "Principianti",
+  "tag_advanced": "Avanzato"
+}

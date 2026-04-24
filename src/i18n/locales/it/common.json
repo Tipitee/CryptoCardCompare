@@ -1,0 +1,44 @@
+{
+  "site_name": "TopCryptoCards",
+  "site_domain": ".eu",
+  "site_tagline": "Il miglior comparatore di carte crittografiche",
+  "site_description": "Confronta le migliori carte crittografiche: cashback, commissioni, staking e disponibilità in Italia e Europa.",
+
+  "nav_home": "Home",
+  "nav_compare": "Confronto",
+  "nav_simulator": "Simulatore",
+  "nav_recommendation": "Raccomandazione",
+  "nav_favorites": "Preferiti",
+  "nav_blog": "Blog",
+
+  "btn_generate": "Genera",
+  "btn_regenerate": "Rigenera",
+  "btn_compare": "Confronto",
+  "btn_view": "Visualizza",
+  "btn_details": "Dettagli",
+  "btn_select": "Seleziona",
+  "btn_save": "Salva",
+  "btn_cancel": "Annulla",
+  "btn_delete": "Elimina",
+  "btn_edit": "Modifica",
+  "btn_back": "Indietro",
+  "btn_next": "Prossimo",
+
+  "filter_all": "Tutte",
+  "filter_no_fees": "Senza commissioni",
+  "filter_high_cashback": "Cashback alto",
+  "filter_no_staking": "Senza staking",
+  "filter_france": "Disponibile in Italia",
+
+  "language_fr": "Français",
+  "language_de": "Deutsch",
+  "language_es": "Español",
+  "language_it": "Italiano",
+  "language_en": "English",
+
+  "empty_favorites": "Nessun preferito al momento",
+  "empty_results": "Nessun risultato trovato",
+  "loading": "Caricamento...",
+  "error": "Errore",
+  "success": "Successo"
+}

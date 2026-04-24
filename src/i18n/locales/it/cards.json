@@ -1,0 +1,35 @@
+{
+  "cards_title": "Carte Crittografiche Disponibili",
+  "cards_subtitle": "Scopri le migliori carte crittografiche con cashback e vantaggi esclusivi",
+
+  "card_cashback": "Cashback",
+  "card_fees": "Commissione annuale",
+  "card_staking": "Staking richiesto",
+  "card_daily_limit": "Limite giornaliero",
+  "card_network": "Rete",
+  "card_issuer": "Emittente",
+  "card_cryptos": "Cripto accettate",
+  "card_available_france": "Disponibile in Italia",
+  "card_available_eu": "Disponibile in UE",
+  "card_free_withdrawals": "Prelievi bancomat gratuiti",
+  "card_extras": "Vantaggi aggiuntivi",
+  "card_badge": "Badge",
+
+  "cashback_base": "Cashback base",
+  "cashback_premium": "Cashback premium",
+
+  "yes": "Sì",
+  "no": "No",
+
+  "feature_free_account": "Account gratuito",
+  "feature_instant_card": "Carta istantanea",
+  "feature_insurance": "Assicurazione viaggi",
+  "feature_lounge_access": "Accesso lounge aeroporto",
+  "feature_concierge": "Servizio concierge",
+  "feature_cashback_boost": "Boost cashback",
+  "feature_staking_rewards": "Ricompense staking",
+
+  "compare_title": "Confronta carte",
+  "compare_selected": "Carte selezionate",
+  "compare_no_selection": "Seleziona almeno 2 carte per confrontare"
+}

@@ -1,0 +1,35 @@
+{
+  "cards_title": "Tarjetas Criptográficas Disponibles",
+  "cards_subtitle": "Descubre las mejores tarjetas criptográficas con reembolso y ventajas exclusivas",
+
+  "card_cashback": "Reembolso",
+  "card_fees": "Tarifa anual",
+  "card_staking": "Apuesta requerida",
+  "card_daily_limit": "Límite diario",
+  "card_network": "Red",
+  "card_issuer": "Emisor",
+  "card_cryptos": "Criptos aceptadas",
+  "card_available_france": "Disponible en España",
+  "card_available_eu": "Disponible en la UE",
+  "card_free_withdrawals": "Retiros de cajero automático gratis",
+  "card_extras": "Ventajas adicionales",
+  "card_badge": "Insignia",
+
+  "cashback_base": "Reembolso base",
+  "cashback_premium": "Reembolso premium",
+
+  "yes": "Sí",
+  "no": "No",
+
+  "feature_free_account": "Cuenta gratuita",
+  "feature_instant_card": "Tarjeta instantánea",
+  "feature_insurance": "Seguro de viaje",
+  "feature_lounge_access": "Acceso a sala de espera",
+  "feature_concierge": "Servicio de conserjería",
+  "feature_cashback_boost": "Aumento de reembolso",
+  "feature_staking_rewards": "Recompensas de apuesta",
+
+  "compare_title": "Comparar tarjetas",
+  "compare_selected": "Tarjetas seleccionadas",
+  "compare_no_selection": "Selecciona al menos 2 tarjetas para comparar"
+}

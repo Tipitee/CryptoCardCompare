@@ -1,0 +1,35 @@
+{
+  "cards_title": "Verfügbare Kryptokarten",
+  "cards_subtitle": "Entdecken Sie die besten Kryptokarten mit Cashback und exklusiven Vorteilen",
+
+  "card_cashback": "Cashback",
+  "card_fees": "Jahresgebühr",
+  "card_staking": "Erforderliches Staking",
+  "card_daily_limit": "Tägliches Limit",
+  "card_network": "Netzwerk",
+  "card_issuer": "Aussteller",
+  "card_cryptos": "Akzeptierte Kryptowährungen",
+  "card_available_france": "In Deutschland verfügbar",
+  "card_available_eu": "In der EU verfügbar",
+  "card_free_withdrawals": "Kostenlose Geldautomaten",
+  "card_extras": "Zusätzliche Vorteile",
+  "card_badge": "Abzeichen",
+
+  "cashback_base": "Basis-Cashback",
+  "cashback_premium": "Premium-Cashback",
+
+  "yes": "Ja",
+  "no": "Nein",
+
+  "feature_free_account": "Kostenloses Konto",
+  "feature_instant_card": "Sofortkarte",
+  "feature_insurance": "Reiseversicherung",
+  "feature_lounge_access": "Flughafen-Lounge-Zugang",
+  "feature_concierge": "Concierge-Service",
+  "feature_cashback_boost": "Cashback-Boost",
+  "feature_staking_rewards": "Staking-Belohnungen",
+
+  "compare_title": "Karten vergleichen",
+  "compare_selected": "Ausgewählte Karten",
+  "compare_no_selection": "Wählen Sie mindestens 2 Karten zum Vergleich"
+}

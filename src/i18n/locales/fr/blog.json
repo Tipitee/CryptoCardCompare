@@ -1,0 +1,26 @@
+{
+  "blog_title": "Blog",
+  "blog_subtitle": "Actualités et guides sur les cartes crypto",
+  "blog_no_posts": "Aucun article pour le moment",
+  "blog_read_more": "Lire la suite",
+  "blog_published": "Publié le",
+  "blog_by_author": "Par",
+  "blog_tags": "Tags",
+  "blog_share": "Partager",
+  "blog_related": "Articles connexes",
+  "blog_back_to_blog": "Retour au blog",
+
+  "category_news": "Actualités",
+  "category_guide": "Guide",
+  "category_comparison": "Comparaison",
+  "category_tutorial": "Tutoriel",
+  "category_analysis": "Analyse",
+
+  "tag_cashback": "Cashback",
+  "tag_fees": "Frais",
+  "tag_staking": "Staking",
+  "tag_security": "Sécurité",
+  "tag_travel": "Voyage",
+  "tag_beginners": "Débutants",
+  "tag_advanced": "Avancé"
+}

@@ -1,0 +1,35 @@
+{
+  "cards_title": "Available Crypto Cards",
+  "cards_subtitle": "Discover the best crypto cards with cashback and exclusive benefits",
+
+  "card_cashback": "Cashback",
+  "card_fees": "Annual Fees",
+  "card_staking": "Required Staking",
+  "card_daily_limit": "Daily Limit",
+  "card_network": "Network",
+  "card_issuer": "Issuer",
+  "card_cryptos": "Accepted Cryptos",
+  "card_available_france": "Available in UK",
+  "card_available_eu": "Available in EU",
+  "card_free_withdrawals": "Free ATM Withdrawals",
+  "card_extras": "Extra Benefits",
+  "card_badge": "Badge",
+
+  "cashback_base": "Base Cashback",
+  "cashback_premium": "Premium Cashback",
+
+  "yes": "Yes",
+  "no": "No",
+
+  "feature_free_account": "Free Account",
+  "feature_instant_card": "Instant Card",
+  "feature_insurance": "Travel Insurance",
+  "feature_lounge_access": "Airport Lounge Access",
+  "feature_concierge": "Concierge Service",
+  "feature_cashback_boost": "Cashback Boost",
+  "feature_staking_rewards": "Staking Rewards",
+
+  "compare_title": "Compare Cards",
+  "compare_selected": "Selected Cards",
+  "compare_no_selection": "Select at least 2 cards to compare"
+}
