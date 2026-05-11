@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import { LANGUAGES, type Language } from '../i18n/types';
 import { getEquivalentRoute, getSupportedLanguages } from '../i18n/utils';
-import { useAppStore } from '../store/useAppStore';
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
@@ -14,7 +13,6 @@ export default function LanguageSwitcher() {
   const location = useLocation();
   const currentLang = useLanguage();
   const { i18n } = useTranslation();
-  const loadCards = useAppStore((s) => s.loadCards);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -30,9 +28,6 @@ export default function LanguageSwitcher() {
   const handleLanguageChange = async (newLang: Language) => {
     localStorage.setItem('preferredLang', newLang);
     await i18n.changeLanguage(newLang);
-
-    // Re-fetch cards filtered by the new market so only relevant cards are shown
-    loadCards(newLang);
 
     const newPath = getEquivalentRoute(location.pathname, newLang);
     navigate(newPath);

@@ -8,9 +8,12 @@ export default function LanguageSync() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    if (lang && isValidLanguage(lang) && i18n.language !== lang) {
-      i18n.changeLanguage(lang);
-    }
+    const syncLanguage = async () => {
+      if (lang && isValidLanguage(lang) && i18n.language !== lang) {
+        await i18n.changeLanguage(lang);
+      }
+    };
+    syncLanguage();
   }, [lang, i18n]);
 
   return null;
