@@ -5,6 +5,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSync from './LanguageSync';
 import { useEffect, useState } from 'react';
 
 export default function Layout() {
@@ -32,6 +33,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col bg-bg">
+      <LanguageSync />
       <header className="sticky top-0 z-40 border-b border-bg-border bg-bg/80 backdrop-blur-lg">
         <div className="container-app flex items-center justify-between h-16">
           <NavLink to={getRoute('')} className="flex items-center gap-2 group">
