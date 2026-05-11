@@ -60,8 +60,7 @@ i18next
       },
     },
     detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
+      order: ['navigator'],
     },
     interpolation: {
       escapeValue: false,
