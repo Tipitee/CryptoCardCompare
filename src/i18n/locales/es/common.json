@@ -40,5 +40,46 @@
   "empty_results": "No se encontraron resultados",
   "loading": "Cargando...",
   "error": "Error",
-  "success": "Éxito"
+  "success": "Éxito",
+
+  "home_hero_badge": "tarjetas analizadas continuamente",
+  "home_hero_title_1": "La",
+  "home_hero_title_2": "mejor tarjeta criptográfica",
+  "home_hero_title_3": "para su perfil",
+  "home_hero_desc": "Compara visualmente las tarjetas, simula tus ganancias anuales y obtén una recomendación personalizada en 6 preguntas.",
+  "home_hero_btn_compare": "Comparar tarjetas",
+  "home_hero_btn_quiz": "Quiz personalizado",
+
+  "home_stats_cards": "Tarjetas comparadas",
+  "home_stats_cryptos": "Criptos soportadas",
+  "home_stats_criteria": "Criterios analizados",
+  "home_stats_free": "Gratis y sin cuenta",
+
+  "home_top3_title": "Nuestro Top 3 en este momento",
+  "home_top3_desc": "Tarjetas que destacan según diferentes criterios.",
+  "home_top3_cashback": "Cashback máximo",
+  "home_top3_no_fees": "Cero tarifas y staking",
+  "home_top3_balanced": "Mejor equilibrio",
+  "home_top3_view_all": "Ver todo",
+
+  "home_all_title": "Todas las tarjetas criptográficas",
+  "home_all_desc": "Haz clic en una tarjeta para descubrir sus características detalladas.",
+
+  "home_help_title": "Cómo podemos ayudarte",
+  "home_help_compare": "Comparar",
+  "home_help_compare_desc": "Tabla interactiva con ordenamiento y filtros avanzados.",
+  "home_help_simulator": "Simular",
+  "home_help_simulator_desc": "Calcula tus ganancias anuales según tus gastos.",
+  "home_help_recommendation": "Recomendación",
+  "home_help_recommendation_desc": "Quiz personalizado para encontrar tu tarjeta ideal.",
+  "home_help_favorites": "Favoritos",
+  "home_help_favorites_desc": "Guarda las tarjetas que te interesan.",
+
+  "footer_title": "TopCryptoCards",
+  "footer_desc": "Compara las mejores tarjetas criptográficas: cashback, tarifas, staking y disponibilidad en Europa.",
+  "footer_resources": "Recursos",
+  "footer_guides": "Blog & Guías",
+  "footer_disclaimer": "La información proporcionada es solo para fines informativos. Las tasas de cashback, tarifas y condiciones de staking pueden variar según el emisor. Las inversiones en criptomonedas conllevan riesgos.",
+  "footer_copyright": "TopCryptoCards. Sin asesoramiento financiero.",
+  "footer_tagline": "Hecho con cuidado para la comunidad cripto."
 }

@@ -94,25 +94,24 @@ export default function Home() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bg-elevated border border-bg-border text-xs text-slate-300 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-green-accent animate-pulse" />
-              {cards.length} cartes analysées en continu
+              {cards.length} {t('home_hero_badge')}
             </span>
             <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight text-balance mb-6 animate-slide-up">
-              La <span className="text-cyan-accent">meilleure carte crypto</span>
+              {t('home_hero_title_1')} <span className="text-cyan-accent">{t('home_hero_title_2')}</span>
               <br />
-              pour votre profil
+              {t('home_hero_title_3')}
             </h1>
             <p className="text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 text-balance">
-              Comparez visuellement les cartes, simulez vos gains annuels et obtenez une
-              recommandation personnalisée en 6 questions.
+              {t('home_hero_desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <Link to="/compare" className="btn-primary">
-                Comparer les cartes
+              <Link to={getRoute('comparer')} className="btn-primary">
+                {t('home_hero_btn_compare')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/recommendation" className="btn-secondary">
+              <Link to={getRoute('recommandation')} className="btn-secondary">
                 <Sparkles className="w-4 h-4" />
-                Quiz personnalisé
+                {t('home_hero_btn_quiz')}
               </Link>
             </div>
           </div>
@@ -148,10 +147,10 @@ export default function Home() {
         <div className="relative container-app pb-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
-              { label: 'Cartes comparées', value: `${cards.length || 14}` },
-              { label: 'Cryptos supportées', value: '15+' },
-              { label: 'Critères analysés', value: '10' },
-              { label: 'Gratuit & sans compte', value: '100%' },
+              { label: t('home_stats_cards'), value: `${cards.length || 14}` },
+              { label: t('home_stats_cryptos'), value: '15+' },
+              { label: t('home_stats_criteria'), value: '10' },
+              { label: t('home_stats_free'), value: '100%' },
             ].map((stat) => (
               <div key={stat.label} className="card-surface p-4 text-left">
                 <div className="text-2xl font-display font-bold text-white">{stat.value}</div>
@@ -166,12 +165,12 @@ export default function Home() {
         <div className="flex items-end justify-between mb-10">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Notre Top 3 du moment
+              {t('home_top3_title')}
             </h2>
-            <p className="text-slate-400">Les cartes qui se démarquent selon différents critères.</p>
+            <p className="text-slate-400">{t('home_top3_desc')}</p>
           </div>
-          <Link to="/compare" className="btn-ghost hidden sm:inline-flex">
-            Voir tout
+          <Link to={getRoute('comparer')} className="btn-ghost hidden sm:inline-flex">
+            {t('home_top3_view_all')}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -179,9 +178,9 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           {podium.map((card, idx) => {
             const labels = [
-              { title: 'Cashback maximum', icon: TrendingUp, color: 'text-green-accent' },
-              { title: 'Zéro frais & staking', icon: ShieldCheck, color: 'text-cyan-accent' },
-              { title: 'Meilleur équilibre', icon: Wallet, color: 'text-cyan-accent' },
+              { title: t('home_top3_cashback'), icon: TrendingUp, color: 'text-green-accent' },
+              { title: t('home_top3_no_fees'), icon: ShieldCheck, color: 'text-cyan-accent' },
+              { title: t('home_top3_balanced'), icon: Wallet, color: 'text-cyan-accent' },
             ];
             const l = labels[idx];
             return (
@@ -218,7 +217,7 @@ export default function Home() {
                   </div>
                 </dl>
                 <div className="mt-5 inline-flex items-center gap-1.5 text-sm text-cyan-accent group-hover:gap-2.5 transition-all">
-                  Voir les détails
+                  {t('btn_details')}
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </button>
@@ -231,10 +230,10 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-              Toutes les cartes crypto
+              {t('home_all_title')}
             </h2>
             <p className="text-slate-400">
-              Cliquez sur une carte pour découvrir ses caractéristiques détaillées.
+              {t('home_all_desc')}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -345,33 +344,33 @@ export default function Home() {
 
       <section className="container-app py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
-          Comment nous pouvons vous aider
+          {t('home_help_title')}
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
               icon: BarChart3,
-              title: 'Comparer',
-              desc: 'Tableau interactif avec tri et filtres avancés.',
-              to: '/compare',
+              title: t('home_help_compare'),
+              desc: t('home_help_compare_desc'),
+              to: getRoute('comparer'),
             },
             {
               icon: Calculator,
-              title: 'Simuler',
-              desc: 'Calcul de vos gains annuels selon vos dépenses.',
-              to: '/simulator',
+              title: t('home_help_simulator'),
+              desc: t('home_help_simulator_desc'),
+              to: getRoute('simulateur'),
             },
             {
               icon: Sparkles,
-              title: 'Recommandation',
-              desc: 'Quiz personnalisé pour trouver votre carte idéale.',
-              to: '/recommendation',
+              title: t('home_help_recommendation'),
+              desc: t('home_help_recommendation_desc'),
+              to: getRoute('recommandation'),
             },
             {
               icon: Heart,
-              title: 'Favoris',
-              desc: 'Sauvegardez les cartes qui vous intéressent.',
-              to: '/favorites',
+              title: t('home_help_favorites'),
+              desc: t('home_help_favorites_desc'),
+              to: getRoute('favoris'),
             },
           ].map((f) => (
             <Link

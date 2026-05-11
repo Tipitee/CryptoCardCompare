@@ -40,5 +40,46 @@
   "empty_results": "Aucun résultat trouvé",
   "loading": "Chargement...",
   "error": "Erreur",
-  "success": "Succès"
+  "success": "Succès",
+
+  "home_hero_badge": "cartes analysées en continu",
+  "home_hero_title_1": "La",
+  "home_hero_title_2": "meilleure carte crypto",
+  "home_hero_title_3": "pour votre profil",
+  "home_hero_desc": "Comparez visuellement les cartes, simulez vos gains annuels et obtenez une recommandation personnalisée en 6 questions.",
+  "home_hero_btn_compare": "Comparer les cartes",
+  "home_hero_btn_quiz": "Quiz personnalisé",
+
+  "home_stats_cards": "Cartes comparées",
+  "home_stats_cryptos": "Cryptos supportées",
+  "home_stats_criteria": "Critères analysés",
+  "home_stats_free": "Gratuit & sans compte",
+
+  "home_top3_title": "Notre Top 3 du moment",
+  "home_top3_desc": "Les cartes qui se démarquent selon différents critères.",
+  "home_top3_cashback": "Cashback maximum",
+  "home_top3_no_fees": "Zéro frais & staking",
+  "home_top3_balanced": "Meilleur équilibre",
+  "home_top3_view_all": "Voir tout",
+
+  "home_all_title": "Toutes les cartes crypto",
+  "home_all_desc": "Cliquez sur une carte pour découvrir ses caractéristiques détaillées.",
+
+  "home_help_title": "Comment nous pouvons vous aider",
+  "home_help_compare": "Comparer",
+  "home_help_compare_desc": "Tableau interactif avec tri et filtres avancés.",
+  "home_help_simulator": "Simuler",
+  "home_help_simulator_desc": "Calcul de vos gains annuels selon vos dépenses.",
+  "home_help_recommendation": "Recommandation",
+  "home_help_recommendation_desc": "Quiz personnalisé pour trouver votre carte idéale.",
+  "home_help_favorites": "Favoris",
+  "home_help_favorites_desc": "Sauvegardez les cartes qui vous intéressent.",
+
+  "footer_title": "TopCryptoCards",
+  "footer_desc": "Comparez les meilleures cartes crypto : cashback, frais, staking et disponibilité en France et en Europe.",
+  "footer_resources": "Ressources",
+  "footer_guides": "Blog & Guides",
+  "footer_disclaimer": "Les informations présentées sont fournies à titre indicatif. Les taux de cashback, frais et conditions de staking peuvent varier selon l'émetteur. Les investissements en cryptomonnaies comportent des risques.",
+  "footer_copyright": "TopCryptoCards. Aucun conseil financier.",
+  "footer_tagline": "Fait avec soin pour la communauté crypto."
 }

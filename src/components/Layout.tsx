@@ -125,7 +125,7 @@ export default function Layout() {
                 </span>
               </div>
               <p className="text-sm text-slate-400 max-w-xs">
-                {t('site_description')}
+                {t('footer_desc')}
               </p>
             </div>
             <div>
@@ -141,24 +141,24 @@ export default function Layout() {
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Ressources</h4>
+              <h4 className="text-sm font-semibold text-white mb-3">{t('footer_resources')}</h4>
               <ul className="space-y-2 text-sm text-slate-400 mb-6">
                 <li>
                   <NavLink to={getRoute('blog')} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <BookOpen className="w-3.5 h-3.5" />
-                    Blog & Guides
+                    {t('footer_guides')}
                   </NavLink>
                 </li>
               </ul>
-              <h4 className="text-sm font-semibold text-white mb-3">À savoir</h4>
+              <h4 className="text-sm font-semibold text-white mb-3">{t('nav_blog')}</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Les informations présentées sont fournies à titre indicatif. Les taux de cashback, frais et conditions de staking peuvent varier selon l'émetteur. Les investissements en cryptomonnaies comportent des risques.
+                {t('footer_disclaimer')}
               </p>
             </div>
           </div>
           <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-500">
-            <span>© {new Date().getFullYear()} TopCryptoCards. Aucun conseil financier.</span>
-            <span>Fait avec soin pour la communauté crypto.</span>
+            <span>© {new Date().getFullYear()} {t('footer_copyright')}</span>
+            <span>{t('footer_tagline')}</span>
           </div>
         </div>
       </footer>

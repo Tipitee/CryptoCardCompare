@@ -40,5 +40,46 @@
   "empty_results": "No results found",
   "loading": "Loading...",
   "error": "Error",
-  "success": "Success"
+  "success": "Success",
+
+  "home_hero_badge": "cards analyzed continuously",
+  "home_hero_title_1": "The",
+  "home_hero_title_2": "best crypto card",
+  "home_hero_title_3": "for your profile",
+  "home_hero_desc": "Compare cards visually, simulate your annual earnings and get a personalized recommendation in 6 questions.",
+  "home_hero_btn_compare": "Compare cards",
+  "home_hero_btn_quiz": "Personalized Quiz",
+
+  "home_stats_cards": "Cards compared",
+  "home_stats_cryptos": "Cryptos supported",
+  "home_stats_criteria": "Criteria analyzed",
+  "home_stats_free": "Free & no account",
+
+  "home_top3_title": "Our Top 3 Right Now",
+  "home_top3_desc": "Cards that stand out according to different criteria.",
+  "home_top3_cashback": "Maximum Cashback",
+  "home_top3_no_fees": "Zero fees & staking",
+  "home_top3_balanced": "Best balance",
+  "home_top3_view_all": "View all",
+
+  "home_all_title": "All Crypto Cards",
+  "home_all_desc": "Click on a card to discover its detailed features.",
+
+  "home_help_title": "How we can help you",
+  "home_help_compare": "Compare",
+  "home_help_compare_desc": "Interactive table with advanced sorting and filters.",
+  "home_help_simulator": "Simulate",
+  "home_help_simulator_desc": "Calculate your annual earnings based on your spending.",
+  "home_help_recommendation": "Recommendation",
+  "home_help_recommendation_desc": "Personalized quiz to find your ideal card.",
+  "home_help_favorites": "Favorites",
+  "home_help_favorites_desc": "Save the cards that interest you.",
+
+  "footer_title": "TopCryptoCards",
+  "footer_desc": "Compare the best crypto cards: cashback, fees, staking and availability in Europe.",
+  "footer_resources": "Resources",
+  "footer_guides": "Blog & Guides",
+  "footer_disclaimer": "Information provided is for informational purposes only. Cashback rates, fees and staking conditions may vary by issuer. Cryptocurrency investments carry risks.",
+  "footer_copyright": "TopCryptoCards. No financial advice.",
+  "footer_tagline": "Made with care for the crypto community."
 }

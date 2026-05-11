@@ -40,5 +40,46 @@
   "empty_results": "Keine Ergebnisse gefunden",
   "loading": "Wird geladen...",
   "error": "Fehler",
-  "success": "Erfolg"
+  "success": "Erfolg",
+
+  "home_hero_badge": "Karten kontinuierlich analysiert",
+  "home_hero_title_1": "Die",
+  "home_hero_title_2": "beste Kryptokarte",
+  "home_hero_title_3": "für Ihr Profil",
+  "home_hero_desc": "Vergleichen Sie Karten visuell, simulieren Sie Ihre jährlichen Gewinne und erhalten Sie eine personalisierte Empfehlung in 6 Fragen.",
+  "home_hero_btn_compare": "Karten vergleichen",
+  "home_hero_btn_quiz": "Personalisiertes Quiz",
+
+  "home_stats_cards": "Karten verglichen",
+  "home_stats_cryptos": "Kryptos unterstützt",
+  "home_stats_criteria": "Analysen Kriterien",
+  "home_stats_free": "Kostenlos & ohne Konto",
+
+  "home_top3_title": "Unsere Top 3 derzeit",
+  "home_top3_desc": "Karten, die sich nach verschiedenen Kriterien abheben.",
+  "home_top3_cashback": "Maximales Cashback",
+  "home_top3_no_fees": "Keine Gebühren & Staking",
+  "home_top3_balanced": "Beste Balance",
+  "home_top3_view_all": "Alle anzeigen",
+
+  "home_all_title": "Alle Kryptokarten",
+  "home_all_desc": "Klicken Sie auf eine Karte, um ihre detaillierten Features zu entdecken.",
+
+  "home_help_title": "Wie wir Ihnen helfen können",
+  "home_help_compare": "Vergleichen",
+  "home_help_compare_desc": "Interaktive Tabelle mit fortgeschrittener Sortierung und Filtern.",
+  "home_help_simulator": "Simulieren",
+  "home_help_simulator_desc": "Berechnen Sie Ihre jährlichen Gewinne basierend auf Ihren Ausgaben.",
+  "home_help_recommendation": "Empfehlung",
+  "home_help_recommendation_desc": "Personalisiertes Quiz, um Ihre ideale Karte zu finden.",
+  "home_help_favorites": "Favoriten",
+  "home_help_favorites_desc": "Speichern Sie Karten, die Sie interessieren.",
+
+  "footer_title": "TopCryptoCards",
+  "footer_desc": "Vergleichen Sie die besten Kryptokarten: Cashback, Gebühren, Staking und Verfügbarkeit in Europa.",
+  "footer_resources": "Ressourcen",
+  "footer_guides": "Blog & Leitfäden",
+  "footer_disclaimer": "Die bereitgestellten Informationen dienen nur zu Informationszwecken. Cashback-Sätze, Gebühren und Staking-Bedingungen können je nach Aussteller variieren. Kryptowährungsinvestitionen sind mit Risiken verbunden.",
+  "footer_copyright": "TopCryptoCards. Keine Finanzberatung.",
+  "footer_tagline": "Mit Sorgfalt für die Krypto-Gemeinschaft gemacht."
 }
