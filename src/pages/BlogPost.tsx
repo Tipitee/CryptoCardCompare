@@ -1,12 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, BookOpen, Calendar, Clock, ExternalLink, Tag } from 'lucide-react';
 import type { BlogPost as BlogPostType } from '../types/blog';
 import { fetchPostBySlug, fetchRelatedPosts } from '../lib/supabase';
 import { renderMarkdown, estimateReadTime } from '../utils/markdown';
+import { useLanguage } from '../hooks/useLanguage';
+import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('fr-FR', {
+const DATE_LOCALES: Record<string, string> = {
+  fr: 'fr-FR',
+  de: 'de-DE',
+  es: 'es-ES',
+  it: 'it-IT',
+  en: 'en-GB',
+};
+
+function formatDate(iso: string, lang: string): string {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -15,6 +26,11 @@ function formatDate(iso: string): string {
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
+  const { t } = useTranslation('blog');
+  const { t: tCards } = useTranslation('cards');
+  const lang = useLanguage();
+  const { getRoute } = useLocalizedRoute();
+
   const [post, setPost] = useState<BlogPostType | null>(null);
   const [related, setRelated] = useState<BlogPostType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,18 +41,18 @@ export default function BlogPost() {
     setLoading(true);
     setNotFound(false);
 
-    fetchPostBySlug(slug)
+    fetchPostBySlug(slug, lang)
       .then(async p => {
         if (!p) {
           setNotFound(true);
           return;
         }
         setPost(p);
-        const rel = await fetchRelatedPosts(p.tags, p.slug);
+        const rel = await fetchRelatedPosts(p.tags, p.slug, lang);
         setRelated(rel);
       })
       .finally(() => setLoading(false));
-  }, [slug]);
+  }, [slug, lang]);
 
   if (loading) {
     return (
@@ -59,10 +75,10 @@ export default function BlogPost() {
     return (
       <div className="container-app py-24 text-center">
         <BookOpen className="w-14 h-14 text-slate-600 mx-auto mb-4" />
-        <h1 className="text-3xl font-display font-bold text-white mb-2">Article introuvable</h1>
-        <p className="text-slate-500 mb-8">Cet article n'existe pas ou n'est plus disponible.</p>
-        <Link to="/blog" className="btn-primary">
-          Retour au blog
+        <h1 className="text-3xl font-display font-bold text-white mb-2">{t('blog_not_found_title')}</h1>
+        <p className="text-slate-500 mb-8">{t('blog_not_found_desc')}</p>
+        <Link to={getRoute('blog')} className="btn-primary">
+          {t('blog_back_to_blog')}
         </Link>
       </div>
     );
@@ -93,11 +109,11 @@ export default function BlogPost() {
 
         <div className="absolute bottom-0 left-0 right-0 container-app pb-8">
           <Link
-            to="/blog"
+            to={getRoute('blog')}
             className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retour au blog
+            {t('blog_back_to_blog')}
           </Link>
 
           {post.tags.length > 0 && (
@@ -118,11 +134,11 @@ export default function BlogPost() {
           <div className="flex flex-wrap items-center gap-5 mt-4 text-sm text-slate-400">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
-              {formatDate(post.created_at)}
+              {formatDate(post.created_at, lang)}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
-              {readTime} min de lecture
+              {readTime} {t('blog_read_time')}
             </span>
           </div>
         </div>
@@ -133,24 +149,21 @@ export default function BlogPost() {
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Article content */}
           <article className="flex-1 min-w-0 max-w-3xl">
-            {/* Excerpt lead */}
             <p className="text-lg text-slate-300 leading-relaxed mb-8 pb-8 border-b border-bg-border font-medium">
               {post.excerpt}
             </p>
 
-            {/* Rendered markdown */}
             <div
               className="prose-crypto"
               dangerouslySetInnerHTML={{ __html: renderedContent }}
             />
 
-            {/* CTA */}
             <div className="mt-12 p-6 card-surface border-cyan-accent/30 text-center">
               <p className="text-slate-300 mb-4 text-lg">
-                Prêt à choisir votre carte crypto idéale ?
+                {t('blog_cta_text')}
               </p>
-              <Link to="/compare" className="btn-primary inline-flex">
-                Comparer toutes les cartes
+              <Link to={getRoute('comparer')} className="btn-primary inline-flex">
+                {t('blog_cta_btn')}
                 <ExternalLink className="w-4 h-4" />
               </Link>
             </div>
@@ -161,23 +174,28 @@ export default function BlogPost() {
             <aside className="lg:w-72 shrink-0">
               <div className="lg:sticky lg:top-24">
                 <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                  Articles similaires
+                  {t('blog_related')}
                 </h3>
                 <div className="space-y-4">
                   {related.map(rel => (
-                    <RelatedCard key={rel.id} post={rel} />
+                    <RelatedCard
+                      key={rel.id}
+                      post={rel}
+                      blogRoute={getRoute('blog')}
+                      readDuration={t('blog_read_duration')}
+                    />
                   ))}
                 </div>
 
                 <div className="mt-8 p-5 card-surface border-cyan-accent/20">
                   <h4 className="font-display font-bold text-white mb-2 text-sm">
-                    Comparer les cartes
+                    {tCards('compare_title')}
                   </h4>
                   <p className="text-slate-500 text-xs mb-3 leading-relaxed">
-                    Utilisez notre comparateur pour trouver la carte crypto qui correspond à votre profil.
+                    {t('blog_sidebar_compare_desc')}
                   </p>
-                  <Link to="/compare" className="btn-primary w-full text-sm">
-                    Accéder au comparateur
+                  <Link to={getRoute('comparer')} className="btn-primary w-full text-sm">
+                    {t('blog_sidebar_compare_btn')}
                   </Link>
                 </div>
               </div>
@@ -189,10 +207,16 @@ export default function BlogPost() {
   );
 }
 
-function RelatedCard({ post }: { post: BlogPostType }) {
+interface RelatedCardProps {
+  post: BlogPostType;
+  blogRoute: string;
+  readDuration: string;
+}
+
+function RelatedCard({ post, blogRoute, readDuration }: RelatedCardProps) {
   return (
     <Link
-      to={`/blog/${post.slug}`}
+      to={`${blogRoute}/${post.slug}`}
       className="card-surface flex gap-3 p-3 hover:border-cyan-accent/30 transition-colors group"
     >
       {post.image_hero ? (
@@ -212,7 +236,7 @@ function RelatedCard({ post }: { post: BlogPostType }) {
         </p>
         <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
           <Clock className="w-3 h-3" />
-          {estimateReadTime(post.content)} min
+          {estimateReadTime(post.content)} {readDuration}
         </p>
       </div>
     </Link>

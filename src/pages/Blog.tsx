@@ -1,14 +1,25 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { BookOpen, Calendar, Clock, Search, Tag } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
 import { fetchPublishedPosts } from '../lib/supabase';
 import { estimateReadTime } from '../utils/markdown';
+import { useLanguage } from '../hooks/useLanguage';
+import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 
 const PAGE_SIZE = 6;
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('fr-FR', {
+const DATE_LOCALES: Record<string, string> = {
+  fr: 'fr-FR',
+  de: 'de-DE',
+  es: 'es-ES',
+  it: 'it-IT',
+  en: 'en-GB',
+};
+
+function formatDate(iso: string, lang: string): string {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -16,6 +27,10 @@ function formatDate(iso: string): string {
 }
 
 export default function Blog() {
+  const { t } = useTranslation('blog');
+  const lang = useLanguage();
+  const { getRoute } = useLocalizedRoute();
+
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -23,14 +38,15 @@ export default function Blog() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetchPublishedPosts()
+    setLoading(true);
+    fetchPublishedPosts(lang)
       .then(setPosts)
       .finally(() => setLoading(false));
-  }, []);
+  }, [lang]);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
-    posts.forEach(p => p.tags.forEach(t => set.add(t)));
+    posts.forEach(p => p.tags.forEach(tag => set.add(tag)));
     return Array.from(set).sort();
   }, [posts]);
 
@@ -62,14 +78,13 @@ export default function Blog() {
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 bg-cyan-accent/10 border border-cyan-accent/20 text-cyan-accent text-sm font-medium px-4 py-1.5 rounded-full mb-4">
           <BookOpen className="w-4 h-4" />
-          Le Blog CryptoCardCompare
+          {t('blog_header_badge')}
         </div>
         <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-          Guides & Analyses Crypto
+          {t('blog_header_title')}
         </h1>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-          Tout ce que vous devez savoir sur les cartes crypto : comparatifs, guides pratiques,
-          analyses de cashback et conseils pour maximiser vos avantages.
+          {t('blog_header_desc')}
         </p>
       </div>
 
@@ -79,7 +94,7 @@ export default function Blog() {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
           <input
             type="text"
-            placeholder="Rechercher un article..."
+            placeholder={t('blog_search_placeholder')}
             value={search}
             onChange={e => handleSearch(e.target.value)}
             className="input-field w-full pl-10"
@@ -125,19 +140,17 @@ export default function Blog() {
         <div className="text-center py-24">
           <BookOpen className="w-12 h-12 text-slate-600 mx-auto mb-4" />
           <h3 className="text-xl font-display font-bold text-white mb-2">
-            {posts.length === 0 ? 'Aucun article publié' : 'Aucun résultat'}
+            {posts.length === 0 ? t('blog_no_articles') : t('blog_no_results')}
           </h3>
           <p className="text-slate-500 mb-6">
-            {posts.length === 0
-              ? 'Les articles arrivent bientôt.'
-              : 'Essayez avec d\'autres termes ou tags.'}
+            {posts.length === 0 ? t('blog_coming_soon') : t('blog_try_other')}
           </p>
           {(activeTag || search) && (
             <button
               onClick={() => { setActiveTag(null); setSearch(''); }}
               className="btn-secondary"
             >
-              Effacer les filtres
+              {t('blog_clear_filters')}
             </button>
           )}
         </div>
@@ -145,7 +158,13 @@ export default function Blog() {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginated.map(post => (
-              <ArticleCard key={post.id} post={post} />
+              <ArticleCard
+                key={post.id}
+                post={post}
+                lang={lang}
+                blogRoute={getRoute('blog')}
+                readDuration={t('blog_read_duration')}
+              />
             ))}
           </div>
 
@@ -156,7 +175,7 @@ export default function Blog() {
                 disabled={page === 1}
                 className="btn-secondary disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Précédent
+                {t('blog_previous')}
               </button>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
                 <button
@@ -176,7 +195,7 @@ export default function Blog() {
                 disabled={page === totalPages}
                 className="btn-secondary disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Suivant
+                {t('blog_next')}
               </button>
             </div>
           )}
@@ -186,12 +205,19 @@ export default function Blog() {
   );
 }
 
-function ArticleCard({ post }: { post: BlogPost }) {
+interface ArticleCardProps {
+  post: BlogPost;
+  lang: string;
+  blogRoute: string;
+  readDuration: string;
+}
+
+function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) {
   const readTime = estimateReadTime(post.content);
 
   return (
     <Link
-      to={`/blog/${post.slug}`}
+      to={`${blogRoute}/${post.slug}`}
       className="card-surface flex flex-col overflow-hidden group hover:border-cyan-accent/50 hover:shadow-lg hover:shadow-cyan-accent/10 transition-all duration-300"
     >
       {post.image_hero ? (
@@ -232,11 +258,11 @@ function ArticleCard({ post }: { post: BlogPost }) {
         <div className="flex items-center gap-4 text-xs text-slate-500 mt-auto pt-3 border-t border-bg-border/50 group-hover:border-cyan-accent/30 transition-colors">
           <span className="flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5" />
-            {formatDate(post.created_at)}
+            {formatDate(post.created_at, lang)}
           </span>
           <span className="flex items-center gap-1">
             <Clock className="w-3.5 h-3.5" />
-            {readTime} min
+            {readTime} {readDuration}
           </span>
         </div>
       </div>

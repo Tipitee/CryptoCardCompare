@@ -22,5 +22,25 @@
   "tag_security": "Sécurité",
   "tag_travel": "Voyage",
   "tag_beginners": "Débutants",
-  "tag_advanced": "Avancé"
+  "tag_advanced": "Avancé",
+
+  "blog_search_placeholder": "Rechercher un article...",
+  "blog_no_articles": "Aucun article publié",
+  "blog_no_results": "Aucun résultat",
+  "blog_clear_filters": "Effacer les filtres",
+  "blog_previous": "Précédent",
+  "blog_next": "Suivant",
+  "blog_coming_soon": "Les articles arrivent bientôt.",
+  "blog_try_other": "Essayez avec d'autres termes ou tags.",
+  "blog_read_time": "min de lecture",
+  "blog_not_found_title": "Article introuvable",
+  "blog_not_found_desc": "Cet article n'existe pas ou n'est plus disponible.",
+  "blog_cta_text": "Prêt à choisir votre carte crypto idéale ?",
+  "blog_cta_btn": "Comparer toutes les cartes",
+  "blog_sidebar_compare_desc": "Utilisez notre comparateur pour trouver la carte crypto qui correspond à votre profil.",
+  "blog_sidebar_compare_btn": "Accéder au comparateur",
+  "blog_header_badge": "Le Blog CryptoCardCompare",
+  "blog_header_title": "Guides & Analyses Crypto",
+  "blog_header_desc": "Tout ce que vous devez savoir sur les cartes crypto : comparatifs, guides pratiques, analyses de cashback et conseils pour maximiser vos avantages.",
+  "blog_read_duration": "min"
 }
