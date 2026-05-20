@@ -162,6 +162,22 @@ export async function saveQuizResult(
 
 // ── Blog ──────────────────────────────────────────────────────────────────────
 
+async function backfillHeroImages(posts: BlogPost[]): Promise<BlogPost[]> {
+  const missing = posts.filter(p => !p.image_hero).map(p => p.slug);
+  if (missing.length === 0) return posts;
+  const { data } = await supabase
+    .from('blog_posts')
+    .select('slug, image_hero')
+    .eq('lang', 'fr')
+    .in('slug', missing)
+    .not('image_hero', 'is', null);
+  if (!data || data.length === 0) return posts;
+  const heroMap = Object.fromEntries(
+    (data as { slug: string; image_hero: string }[]).map(r => [r.slug, r.image_hero])
+  );
+  return posts.map(p => (!p.image_hero && heroMap[p.slug] ? { ...p, image_hero: heroMap[p.slug] } : p));
+}
+
 export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
   const { data, error } = await supabase
     .from('blog_posts')
@@ -170,7 +186,7 @@ export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
     .eq('lang', lang)
     .order('created_at', { ascending: false });
   if (error) throw error;
-  return (data ?? []) as BlogPost[];
+  return backfillHeroImages((data ?? []) as BlogPost[]);
 }
 
 export async function fetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
@@ -191,7 +207,11 @@ export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPo
     .eq('lang', lang)
     .eq('published', true)
     .maybeSingle();
-  return data as BlogPost | null;
+  if (!data) return null;
+  const post = data as BlogPost;
+  if (post.image_hero) return post;
+  const [result] = await backfillHeroImages([post]);
+  return result;
 }
 
 export async function fetchRelatedPosts(
@@ -209,7 +229,7 @@ export async function fetchRelatedPosts(
       .neq('slug', excludeSlug)
       .order('created_at', { ascending: false })
       .limit(limit);
-    return (data ?? []) as BlogPost[];
+    return backfillHeroImages((data ?? []) as BlogPost[]);
   }
   const { data } = await supabase
     .from('blog_posts')
@@ -220,7 +240,7 @@ export async function fetchRelatedPosts(
     .overlaps('tags', tags)
     .order('created_at', { ascending: false })
     .limit(limit);
-  return (data ?? []) as BlogPost[];
+  return backfillHeroImages((data ?? []) as BlogPost[]);
 }
 
 export async function adminFetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
