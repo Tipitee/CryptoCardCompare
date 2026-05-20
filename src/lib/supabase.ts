@@ -162,11 +162,12 @@ export async function saveQuizResult(
 
 // ── Blog ──────────────────────────────────────────────────────────────────────
 
-export async function fetchPublishedPosts(): Promise<BlogPost[]> {
+export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('published', true)
+    .eq('lang', lang)
     .order('created_at', { ascending: false });
   if (error) throw error;
   return (data ?? []) as BlogPost[];
@@ -182,11 +183,12 @@ export async function fetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
   return (data ?? []) as BlogPost[];
 }
 
-export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPost | null> {
   const { data } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
+    .eq('lang', lang)
     .eq('published', true)
     .maybeSingle();
   return data as BlogPost | null;
@@ -195,6 +197,7 @@ export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
 export async function fetchRelatedPosts(
   tags: string[],
   excludeSlug: string,
+  lang = 'fr',
   limit = 3
 ): Promise<BlogPost[]> {
   if (tags.length === 0) {
@@ -202,6 +205,7 @@ export async function fetchRelatedPosts(
       .from('blog_posts')
       .select('*')
       .eq('published', true)
+      .eq('lang', lang)
       .neq('slug', excludeSlug)
       .order('created_at', { ascending: false })
       .limit(limit);
@@ -211,6 +215,7 @@ export async function fetchRelatedPosts(
     .from('blog_posts')
     .select('*')
     .eq('published', true)
+    .eq('lang', lang)
     .neq('slug', excludeSlug)
     .overlaps('tags', tags)
     .order('created_at', { ascending: false })
