@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, Check, RotateCcw, Sparkles, Star } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import type { QuizAnswers } from '../types/card';
 import { scoreCards } from '../utils/recommend';
@@ -14,82 +15,83 @@ type StepDef<K extends keyof QuizAnswers> = {
   options: { value: NonNullable<QuizAnswers[K]>; label: string; sub?: string }[];
 };
 
-const STEPS: StepDef<keyof QuizAnswers>[] = [
-  {
-    key: 'budget',
-    title: 'Quel est votre budget mensuel sur la carte ?',
-    description: 'Estimation de vos dépenses totales chaque mois.',
-    options: [
-      { value: 'lt200', label: 'Moins de 200 €', sub: 'Usage occasionnel' },
-      { value: '200-500', label: '200 € – 500 €', sub: 'Dépenses courantes' },
-      { value: '500-1500', label: '500 € – 1 500 €', sub: 'Utilisation quotidienne' },
-      { value: 'gt1500', label: 'Plus de 1 500 €', sub: 'Carte principale' },
-    ],
-  },
-  {
-    key: 'priority',
-    title: 'Votre priorité numéro un ?',
-    description: 'Ce qui compte le plus dans votre choix.',
-    options: [
-      { value: 'cashback', label: 'Cashback maximum' },
-      { value: 'zero_fees', label: 'Zéro frais annuels' },
-      { value: 'ease', label: 'Simplicité d\'utilisation' },
-      { value: 'staking_fair', label: 'Staking raisonnable' },
-      { value: 'withdrawals', label: 'Retraits gratuits' },
-    ],
-  },
-  {
-    key: 'staking',
-    title: 'Prêt à staker de la crypto ?',
-    description: 'Le staking permet généralement d\'accéder à un meilleur cashback.',
-    options: [
-      { value: 'none', label: 'Non, je préfère éviter', sub: 'Aucun blocage de fonds' },
-      { value: 'up_500', label: 'Oui, jusqu\'à 500 €' },
-      { value: 'up_2500', label: 'Oui, jusqu\'à 2 500 €' },
-      { value: 'more', label: 'Oui, plus de 2 500 €', sub: 'Investisseur confirmé' },
-    ],
-  },
-  {
-    key: 'crypto_relation',
-    title: 'Votre rapport aux cryptomonnaies ?',
-    description: 'Pour adapter la complexité de la carte à votre profil.',
-    options: [
-      { value: 'beginner', label: 'Débutant complet' },
-      { value: 'basics', label: 'Quelques notions' },
-      { value: 'regular', label: 'Utilisateur régulier' },
-      { value: 'advanced', label: 'Investisseur avancé' },
-    ],
-  },
-  {
-    key: 'travel',
-    title: 'Voyagez-vous souvent ?',
-    description: 'Certaines cartes offrent des avantages voyage.',
-    options: [
-      { value: 'never', label: 'Jamais' },
-      { value: 'few', label: 'Quelques fois par an' },
-      { value: 'regular', label: 'Régulièrement' },
-      { value: 'often', label: 'Très fréquemment' },
-    ],
-  },
-  {
-    key: 'geo',
-    title: 'Disponibilité géographique ?',
-    description: 'Où devez-vous pouvoir utiliser la carte ?',
-    options: [
-      { value: 'france', label: 'France uniquement' },
-      { value: 'eu', label: 'Europe (UE)' },
-      { value: 'international', label: 'International' },
-    ],
-  },
-];
-
 export default function Recommendation() {
+  const { t } = useTranslation('common');
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);
   const resetQuiz = useAppStore((s) => s.resetQuiz);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
+
+  const STEPS: StepDef<keyof QuizAnswers>[] = [
+    {
+      key: 'budget',
+      title: t('quiz_q1_title'),
+      description: t('quiz_q1_desc'),
+      options: [
+        { value: 'lt200', label: t('quiz_q1_opt1'), sub: t('quiz_q1_opt1_sub') },
+        { value: '200-500', label: t('quiz_q1_opt2'), sub: t('quiz_q1_opt2_sub') },
+        { value: '500-1500', label: t('quiz_q1_opt3'), sub: t('quiz_q1_opt3_sub') },
+        { value: 'gt1500', label: t('quiz_q1_opt4'), sub: t('quiz_q1_opt4_sub') },
+      ],
+    },
+    {
+      key: 'priority',
+      title: t('quiz_q2_title'),
+      description: t('quiz_q2_desc'),
+      options: [
+        { value: 'cashback', label: t('quiz_q2_opt1') },
+        { value: 'zero_fees', label: t('quiz_q2_opt2') },
+        { value: 'ease', label: t('quiz_q2_opt3') },
+        { value: 'staking_fair', label: t('quiz_q2_opt4') },
+        { value: 'withdrawals', label: t('quiz_q2_opt5') },
+      ],
+    },
+    {
+      key: 'staking',
+      title: t('quiz_q3_title'),
+      description: t('quiz_q3_desc'),
+      options: [
+        { value: 'none', label: t('quiz_q3_opt1'), sub: t('quiz_q3_opt1_sub') },
+        { value: 'up_500', label: t('quiz_q3_opt2') },
+        { value: 'up_2500', label: t('quiz_q3_opt3') },
+        { value: 'more', label: t('quiz_q3_opt4'), sub: t('quiz_q3_opt4_sub') },
+      ],
+    },
+    {
+      key: 'crypto_relation',
+      title: t('quiz_q4_title'),
+      description: t('quiz_q4_desc'),
+      options: [
+        { value: 'beginner', label: t('quiz_q4_opt1') },
+        { value: 'basics', label: t('quiz_q4_opt2') },
+        { value: 'regular', label: t('quiz_q4_opt3') },
+        { value: 'advanced', label: t('quiz_q4_opt4') },
+      ],
+    },
+    {
+      key: 'travel',
+      title: t('quiz_q5_title'),
+      description: t('quiz_q5_desc'),
+      options: [
+        { value: 'never', label: t('quiz_q5_opt1') },
+        { value: 'few', label: t('quiz_q5_opt2') },
+        { value: 'regular', label: t('quiz_q5_opt3') },
+        { value: 'often', label: t('quiz_q5_opt4') },
+      ],
+    },
+    {
+      key: 'geo',
+      title: t('quiz_q6_title'),
+      description: t('quiz_q6_desc'),
+      options: [
+        { value: 'france', label: t('quiz_q6_opt1') },
+        { value: 'eu', label: t('quiz_q6_opt2') },
+        { value: 'international', label: t('quiz_q6_opt3') },
+      ],
+    },
+  ];
 
   const [step, setStep] = useState(0);
   const [showResults, setShowResults] = useState(false);
@@ -141,19 +143,23 @@ export default function Recommendation() {
       <header className="mb-8">
         <div className="flex items-center gap-2 text-xs font-semibold text-cyan-accent mb-3">
           <Sparkles className="w-4 h-4" />
-          Quiz personnalisé
+          {t('quiz_badge')}
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-          Trouvez votre carte crypto idéale
+          {t('quiz_title')}
         </h1>
         <p className="text-slate-400">
-          6 questions rapides pour identifier les 3 cartes les mieux adaptées à votre profil.
+          {t('quiz_desc')}
         </p>
       </header>
 
       <div className="mb-8">
         <div className="flex justify-between text-xs text-slate-400 mb-2">
-          <span>{showResults ? 'Résultats' : `Étape ${step + 1} sur ${total}`}</span>
+          <span>
+            {showResults
+              ? t('quiz_results_label')
+              : `${t('quiz_step')} ${step + 1} ${t('quiz_of')} ${total}`}
+          </span>
           <span>{Math.round(progressPct)}%</span>
         </div>
         <div className="h-1.5 bg-bg-elevated rounded-full overflow-hidden">
@@ -221,14 +227,14 @@ export default function Recommendation() {
               className="btn-ghost disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <ArrowLeft className="w-4 h-4" />
-              Précédent
+              {t('quiz_prev')}
             </button>
             <button
               onClick={handleNext}
               disabled={!currentValue}
               className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {step === total - 1 ? 'Voir les résultats' : 'Suivant'}
+              {step === total - 1 ? t('quiz_see_results') : t('quiz_next')}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -237,18 +243,18 @@ export default function Recommendation() {
         <div className="animate-fade-in space-y-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-xl font-display font-semibold text-white">
-              Vos 3 meilleures correspondances
+              {t('quiz_top3_title')}
             </h2>
             <button onClick={handleReset} className="btn-ghost">
               <RotateCcw className="w-4 h-4" />
-              Refaire le quiz
+              {t('quiz_redo')}
             </button>
           </div>
 
           {results.length === 0 && (
             <div className="card-surface p-10 text-center">
               <p className="text-slate-400">
-                Aucune carte ne correspond strictement à vos critères. Essayez d'élargir le staking ou la zone géographique.
+                {t('quiz_no_results')}
               </p>
             </div>
           )}
@@ -270,7 +276,7 @@ export default function Recommendation() {
                         <span className="text-xs font-mono text-slate-500">#{i + 1}</span>
                         {i === 0 && (
                           <span className="badge-best">
-                            <Award className="w-3 h-3" /> Recommandée
+                            <Award className="w-3 h-3" /> {t('quiz_recommended_badge')}
                           </span>
                         )}
                       </div>
@@ -281,7 +287,7 @@ export default function Recommendation() {
                     </div>
                   </div>
                   <div className="sm:text-right">
-                    <div className="text-xs text-slate-500 uppercase tracking-wide">Score</div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide">{t('quiz_score_label')}</div>
                     <div className="text-3xl font-display font-bold text-cyan-accent">
                       {r.score}
                       <span className="text-base text-slate-500">/100</span>
@@ -300,19 +306,19 @@ export default function Recommendation() {
 
                 <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
                   <div>
-                    <div className="text-xs text-slate-500">Cashback max</div>
+                    <div className="text-xs text-slate-500">{t('quiz_cashback_label')}</div>
                     <div className="text-white font-semibold">{fmtPct(r.card.cashbackPremium)}</div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500">Frais</div>
+                    <div className="text-xs text-slate-500">{t('quiz_fees_label')}</div>
                     <div className="text-white font-semibold">
-                      {r.card.annualFees === 0 ? 'Gratuit' : fmtEUR(r.card.annualFees)}
+                      {r.card.annualFees === 0 ? t('quiz_free') : fmtEUR(r.card.annualFees)}
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500">Staking</div>
+                    <div className="text-xs text-slate-500">{t('quiz_staking_label')}</div>
                     <div className="text-white font-semibold">
-                      {r.card.stakingRequired === 0 ? 'Aucun' : fmtEUR(r.card.stakingRequired)}
+                      {r.card.stakingRequired === 0 ? t('quiz_none') : fmtEUR(r.card.stakingRequired)}
                     </div>
                   </div>
                 </div>
@@ -346,7 +352,7 @@ export default function Recommendation() {
                     }`}
                   >
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
-                    {isFav ? 'Dans vos favoris' : 'Ajouter aux favoris'}
+                    {isFav ? t('quiz_in_fav') : t('quiz_add_fav')}
                   </button>
                   <a
                     href={r.card.affiliateLink}
@@ -354,7 +360,7 @@ export default function Recommendation() {
                     rel="noopener noreferrer"
                     className="btn-ghost border border-bg-border"
                   >
-                    Voir l'offre
+                    {t('quiz_see_offer')}
                   </a>
                 </div>
               </div>

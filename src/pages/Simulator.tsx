@@ -10,25 +10,27 @@ import {
   YAxis,
 } from 'recharts';
 import { Info, TrendingUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR } from '../utils/format';
 
-const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string }[] = [
-  { key: 'online', label: 'Achats en ligne', hint: 'Amazon, Fnac, e-commerce' },
-  { key: 'restaurants', label: 'Restaurants', hint: 'Déjeuners, dîners, cafés' },
-  { key: 'travel', label: 'Voyages & Hôtels', hint: 'Billets, hébergements' },
-  { key: 'streaming', label: 'Abonnements streaming', hint: 'Netflix, Spotify, Disney+' },
-  { key: 'transport', label: 'Transports', hint: 'Uber, métro, essence' },
-  { key: 'supermarket', label: 'Supermarché', hint: 'Courses alimentaires' },
-  { key: 'misc', label: 'Divers', hint: 'Autres dépenses' },
-];
-
 export default function Simulator() {
+  const { t } = useTranslation('common');
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);
+
+  const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string }[] = [
+    { key: 'online', label: t('sim_cat_online'), hint: t('sim_cat_online_hint') },
+    { key: 'restaurants', label: t('sim_cat_restaurants'), hint: t('sim_cat_restaurants_hint') },
+    { key: 'travel', label: t('sim_cat_travel'), hint: t('sim_cat_travel_hint') },
+    { key: 'streaming', label: t('sim_cat_streaming'), hint: t('sim_cat_streaming_hint') },
+    { key: 'transport', label: t('sim_cat_transport'), hint: t('sim_cat_transport_hint') },
+    { key: 'supermarket', label: t('sim_cat_supermarket'), hint: t('sim_cat_supermarket_hint') },
+    { key: 'misc', label: t('sim_cat_misc'), hint: t('sim_cat_misc_hint') },
+  ];
 
   const monthlyTotal = useMemo(
     () => Object.values(spending).reduce((a, b) => a + b, 0),
@@ -58,10 +60,10 @@ export default function Simulator() {
     <div className="container-app py-10">
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
-          Simulateur de gains annuels
+          {t('sim_title')}
         </h1>
         <p className="text-slate-400 max-w-2xl">
-          Renseignez vos dépenses mensuelles par catégorie pour estimer le cashback généré et choisir la carte la plus rentable pour votre profil.
+          {t('sim_desc')}
         </p>
       </header>
 
@@ -69,7 +71,7 @@ export default function Simulator() {
         <section className="lg:col-span-2">
           <div className="card-surface p-6">
             <h2 className="text-lg font-display font-semibold text-white mb-4">
-              Vos dépenses mensuelles
+              {t('sim_spending_title')}
             </h2>
             <div className="space-y-4">
               {CATEGORIES.map((cat) => (
@@ -112,13 +114,13 @@ export default function Simulator() {
             </div>
             <div className="mt-6 pt-6 border-t border-bg-border grid grid-cols-2 gap-4">
               <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide">Mensuel</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide">{t('sim_monthly')}</div>
                 <div className="text-2xl font-display font-bold text-white">
                   {fmtEUR(monthlyTotal)}
                 </div>
               </div>
               <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide">Annuel</div>
+                <div className="text-xs text-slate-500 uppercase tracking-wide">{t('sim_yearly')}</div>
                 <div className="text-2xl font-display font-bold text-cyan-accent">
                   {fmtEUR(yearly)}
                 </div>
@@ -132,7 +134,7 @@ export default function Simulator() {
             <div className="card-surface p-6 bg-gradient-to-br from-cyan-accent/5 to-green-accent/5 border-green-accent/30">
               <div className="flex items-center gap-2 text-xs font-semibold text-green-accent mb-3">
                 <TrendingUp className="w-4 h-4" />
-                Meilleure carte pour vous
+                {t('sim_best_card')}
               </div>
               <div className="flex flex-col sm:flex-row items-start gap-5">
                 <SmartCardImage card={best.card} size="md" />
@@ -142,12 +144,12 @@ export default function Simulator() {
                   </div>
                   <div className="text-sm text-slate-400 mb-3">{best.card.issuer}</div>
                   <p className="text-sm text-slate-300 leading-relaxed">
-                    Avec vos {fmtEUR(monthlyTotal)} de dépenses mensuelles, la carte{' '}
-                    <strong className="text-white">{best.card.name}</strong> vous rapporterait environ{' '}
-                    <strong className="text-green-accent">{fmtEUR(best.net)}</strong> nets par an après déduction des frais ({fmtEUR(best.card.annualFees)}).
+                    {t('sim_best_desc_pre')} {fmtEUR(monthlyTotal)} {t('sim_best_desc_mid')}{' '}
+                    <strong className="text-white">{best.card.name}</strong> {t('sim_best_desc_post')}{' '}
+                    <strong className="text-green-accent">{fmtEUR(best.net)}</strong> {t('sim_best_desc_net')} ({fmtEUR(best.card.annualFees)}).
                     {best.card.stakingRequired > 0 && (
                       <>
-                        {' '}Un staking de {fmtEUR(best.card.stakingRequired)} est requis pour bénéficier du cashback maximal.
+                        {' '}{t('sim_best_staking')} {fmtEUR(best.card.stakingRequired)} {t('sim_best_staking_post')}
                       </>
                     )}
                   </p>
@@ -159,7 +161,7 @@ export default function Simulator() {
           {top5.length > 0 && (
             <div className="card-surface p-6">
               <h2 className="text-lg font-display font-semibold text-white mb-4">
-                Top 5 — Gains nets annuels
+                {t('sim_top5_title')}
               </h2>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
@@ -185,7 +187,7 @@ export default function Simulator() {
                         borderRadius: 8,
                         color: '#fff',
                       }}
-                      formatter={(v: any) => [fmtEUR(Number(v) || 0), 'Gain net']}
+                      formatter={(v: number) => [fmtEUR(Number(v) || 0), t('sim_tooltip_net')]}
                     />
                     <Bar dataKey="net" radius={[6, 6, 0, 0]}>
                       {top5.map((_, i) => (
@@ -201,7 +203,7 @@ export default function Simulator() {
           <div className="card-surface overflow-hidden">
             <div className="p-5 border-b border-bg-border">
               <h2 className="text-lg font-display font-semibold text-white">
-                Détails par carte
+                {t('sim_table_title')}
               </h2>
             </div>
             <div className="overflow-x-auto scrollbar-thin">
@@ -209,16 +211,16 @@ export default function Simulator() {
                 <thead className="bg-bg-elevated/50 border-b border-bg-border">
                   <tr>
                     <th className="px-4 py-2.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                      Carte
+                      {t('sim_col_card')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                      Cashback estimé
+                      {t('sim_col_cashback')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                      Frais
+                      {t('sim_col_fees')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                      Gain net
+                      {t('sim_col_net')}
                     </th>
                   </tr>
                 </thead>
@@ -234,7 +236,7 @@ export default function Simulator() {
                             #{i + 1}
                           </span>
                           <span className="font-medium text-white">{r.card.name}</span>
-                          {i === 0 && <span className="badge-best">Meilleur</span>}
+                          {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
                         </div>
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-slate-300">
@@ -255,9 +257,7 @@ export default function Simulator() {
 
           <div className="flex items-start gap-2 text-xs text-slate-500 p-4">
             <Info className="w-4 h-4 shrink-0 mt-0.5" />
-            <p>
-              Simulation indicative. Les taux de cashback varient selon le niveau de staking et les conditions de l'émetteur. Ne constitue pas un conseil financier.
-            </p>
+            <p>{t('sim_disclaimer')}</p>
           </div>
         </section>
       </div>

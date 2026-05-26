@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../hooks/useLanguage';
 import {
   AlertTriangle,
   Check,
@@ -27,7 +29,13 @@ const ALL_CRYPTOS = [
 
 type ViewMode = 'columns' | 'table';
 
+const DATE_LOCALES: Record<string, string> = {
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB',
+};
+
 export default function Compare() {
+  const { t } = useTranslation('common');
+  const lang = useLanguage();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
@@ -204,27 +212,29 @@ export default function Compare() {
             <div>
               <div className="inline-flex items-center gap-2 text-xs text-cyan-accent font-semibold uppercase tracking-wider mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
-                Comparaison personnalisée
+                {t('compare_custom_title')}
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-1">
-                {selectedCards.length} carte{selectedCards.length > 1 ? 's' : ''} face à face
+                {selectedCards.length}{' '}
+                {selectedCards.length > 1 ? t('compare_cards_count_plural') : t('compare_cards_count')}{' '}
+                {t('compare_cards_face')}
               </h1>
               <p className="text-slate-400 max-w-2xl text-sm">
-                Les meilleures valeurs pour chaque critère sont mises en avant avec un badge vert.
+                {t('compare_custom_desc')}
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Link to="/" className="btn-ghost text-sm">
                 <Plus className="w-4 h-4" />
-                Ajouter des cartes
+                {t('compare_add_cards')}
               </Link>
               <button onClick={copyShareLink} className="btn-secondary text-sm">
                 {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
-                {copied ? 'Lien copié' : 'Partager'}
+                {copied ? t('compare_link_copied') : t('compare_share')}
               </button>
               <button onClick={exitSelectionMode} className="btn-secondary text-sm">
                 <X className="w-4 h-4" />
-                Voir toutes les cartes
+                {t('compare_view_all')}
               </button>
             </div>
           </div>
@@ -233,8 +243,10 @@ export default function Compare() {
             <div className="card-surface border-amber-400/40 bg-amber-400/5 p-3 flex items-start gap-3 text-sm">
               <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
               <div className="text-slate-200">
-                {missing.length} carte{missing.length > 1 ? 's' : ''} introuvable
-                {missing.length > 1 ? 's' : ''} dans le catalogue actuel.
+                {missing.length}{' '}
+                {missing.length > 1
+                  ? `${t('compare_cards_count_plural')} ${t('compare_missing_cards_plural')}`
+                  : `${t('compare_cards_count')} ${t('compare_missing_cards')}`}
                 <span className="text-slate-400"> ({missing.join(', ')})</span>
               </div>
             </div>
@@ -242,10 +254,10 @@ export default function Compare() {
 
           {stats && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <StatCard label="Cashback max moyen" value={`${stats.avgCashbackPremium.toFixed(2)} %`} />
-              <StatCard label="Frais annuels min." value={stats.minFees === 0 ? 'Gratuit' : `${stats.minFees} €`} />
-              <StatCard label="Staking min." value={stats.minStaking === 0 ? 'Aucun' : `${stats.minStaking} €`} />
-              <StatCard label="Cryptos communes" value={`${stats.commonCryptos.length}`} />
+              <StatCard label={t('compare_stat_avg_cashback')} value={`${stats.avgCashbackPremium.toFixed(2)} %`} />
+              <StatCard label={t('compare_stat_min_fees')} value={stats.minFees === 0 ? t('compare_stat_free') : `${stats.minFees} €`} />
+              <StatCard label={t('compare_stat_min_staking')} value={stats.minStaking === 0 ? t('compare_stat_none') : `${stats.minStaking} €`} />
+              <StatCard label={t('compare_stat_common_cryptos')} value={`${stats.commonCryptos.length}`} />
             </div>
           )}
         </header>
@@ -261,7 +273,7 @@ export default function Compare() {
           <section className="mt-10">
             <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3 flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              Comparaisons récentes
+              {t('compare_recent')}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {recentSessions
@@ -278,7 +290,7 @@ export default function Compare() {
                       className="card-surface p-3 text-left hover:border-cyan-accent/40 transition-colors"
                     >
                       <div className="text-xs text-slate-500 mb-1">
-                        {new Date(s.createdAt).toLocaleDateString('fr-FR', {
+                        {new Date(s.createdAt).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {
                           day: 'numeric',
                           month: 'short',
                           hour: '2-digit',
@@ -286,11 +298,11 @@ export default function Compare() {
                         })}
                       </div>
                       <div className="text-sm text-slate-200 line-clamp-2">
-                        {names.join(' · ') || `${s.cardIds.length} cartes`}
+                        {names.join(' · ') || `${s.cardIds.length} ${t('compare_cards_count_plural')}`}
                       </div>
                       <div className="mt-2 inline-flex items-center gap-1 text-xs text-cyan-accent">
                         <LinkIcon className="w-3 h-3" />
-                        Rouvrir
+                        {t('compare_reopen')}
                       </div>
                     </button>
                   );
@@ -315,9 +327,9 @@ export default function Compare() {
     <div className="container-app py-10">
       <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Comparateur de cartes</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{t('compare_title')}</h1>
           <p className="text-slate-400 max-w-2xl">
-            Filtrez, triez et sélectionnez plusieurs cartes pour une comparaison détaillée.
+            {t('compare_desc')}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -332,7 +344,7 @@ export default function Compare() {
               aria-pressed={viewMode === 'table'}
             >
               <Rows3 className="w-3.5 h-3.5" />
-              Tableau
+              {t('compare_view_table')}
             </button>
             <button
               onClick={() => setViewMode('columns')}
@@ -343,10 +355,10 @@ export default function Compare() {
               }`}
               aria-pressed={viewMode === 'columns'}
               disabled={compareSelection.length < 2}
-              title={compareSelection.length < 2 ? 'Sélectionnez au moins 2 cartes' : undefined}
+              title={compareSelection.length < 2 ? t('compare_view_min_2') : undefined}
             >
               <LayoutGrid className="w-3.5 h-3.5" />
-              Côte-à-côte
+              {t('compare_view_side')}
             </button>
           </div>
         </div>
@@ -359,7 +371,7 @@ export default function Compare() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Rechercher une carte ou un émetteur..."
+              placeholder={t('compare_search_placeholder')}
               className="input-field"
             />
           </div>
@@ -368,23 +380,24 @@ export default function Compare() {
             className={`btn-secondary text-sm ${filtersActive ? 'border-cyan-accent/60 text-white' : ''}`}
             aria-expanded={filtersOpen}
           >
-            Filtres {filtersActive && <span className="badge-accent ml-1">Actifs</span>}
+            {t('compare_filters_btn')} {filtersActive && <span className="badge-accent ml-1">{t('compare_filters_active')}</span>}
           </button>
           {filtersActive && (
             <button onClick={resetFilters} className="btn-ghost text-sm">
               <X className="w-4 h-4" />
-              Réinitialiser
+              {t('compare_filters_reset')}
             </button>
           )}
           <div className="text-sm text-slate-400 ml-auto">
-            {sortedTable.length} carte{sortedTable.length > 1 ? 's' : ''}
+            {sortedTable.length}{' '}
+            {sortedTable.length > 1 ? t('compare_cards_count_plural') : t('compare_cards_count')}
           </div>
         </div>
 
         {filtersOpen && (
           <div className="mt-5 pt-5 border-t border-bg-border grid md:grid-cols-3 gap-5">
             <SliderControl
-              label="Cashback minimum"
+              label={t('compare_filter_cashback_min')}
               value={minCashback}
               min={0}
               max={5}
@@ -393,7 +406,7 @@ export default function Compare() {
               onChange={setMinCashback}
             />
             <SliderControl
-              label="Frais annuels max"
+              label={t('compare_filter_fees_max')}
               value={maxFees}
               min={0}
               max={600}
@@ -402,7 +415,7 @@ export default function Compare() {
               onChange={setMaxFees}
             />
             <SliderControl
-              label="Staking requis max"
+              label={t('compare_filter_staking_max')}
               value={maxStaking}
               min={0}
               max={5000}
@@ -417,7 +430,7 @@ export default function Compare() {
                 onChange={(e) => setFranceOnly(e.target.checked)}
                 className="w-4 h-4 accent-cyan-accent"
               />
-              Disponible en France uniquement
+              {t('compare_filter_france')}
             </label>
             <label className="flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
               <input
@@ -426,10 +439,10 @@ export default function Compare() {
                 onChange={(e) => setFreeWdOnly(e.target.checked)}
                 className="w-4 h-4 accent-cyan-accent"
               />
-              Retraits gratuits
+              {t('compare_filter_free_wd')}
             </label>
             <div className="md:col-span-3">
-              <div className="text-xs text-slate-400 mb-1.5">Cryptos supportées</div>
+              <div className="text-xs text-slate-400 mb-1.5">{t('compare_filter_cryptos')}</div>
               <div className="flex flex-wrap gap-1.5">
                 {ALL_CRYPTOS.map((c) => {
                   const active = selectedCryptos.includes(c);

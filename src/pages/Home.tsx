@@ -204,15 +204,15 @@ export default function Home() {
                     <dd className="text-white font-semibold">{fmtPct(card.cashbackPremium)}</dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">Frais</dt>
+                    <dt className="text-slate-500">{t('home_card_fees_label')}</dt>
                     <dd className="text-white font-semibold">
-                      {card.annualFees === 0 ? 'Gratuit' : fmtEUR(card.annualFees)}
+                      {card.annualFees === 0 ? t('home_card_free') : fmtEUR(card.annualFees)}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">Staking</dt>
+                    <dt className="text-slate-500">{t('home_card_staking')}</dt>
                     <dd className="text-white font-semibold">
-                      {card.stakingRequired === 0 ? 'Aucun' : fmtEUR(card.stakingRequired)}
+                      {card.stakingRequired === 0 ? t('compare_stat_none') : fmtEUR(card.stakingRequired)}
                     </dd>
                   </div>
                 </dl>
@@ -272,7 +272,7 @@ export default function Home() {
                       e.stopPropagation();
                       toggleCompare(card.id);
                     }}
-                    aria-label={inCompare ? 'Retirer de la comparaison' : 'Ajouter à la comparaison'}
+                    aria-label={inCompare ? t('home_compare_remove_label') : t('home_compare_add_label')}
                     aria-pressed={inCompare}
                     className={`p-2 rounded-lg transition-all ${
                       inCompare
@@ -287,7 +287,7 @@ export default function Home() {
                       e.stopPropagation();
                       toggleFavorite(card.id);
                     }}
-                    aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                    aria-label={isFav ? t('home_fav_remove_label') : t('home_fav_add_label')}
                     className={`p-2 rounded-lg transition-colors ${
                       isFav
                         ? 'text-green-accent bg-green-accent/10'
@@ -318,15 +318,15 @@ export default function Home() {
                       <dd className="text-white font-semibold">{fmtPct(card.cashbackPremium)}</dd>
                     </div>
                     <div>
-                      <dt className="text-slate-500">Frais/an</dt>
+                      <dt className="text-slate-500">{t('home_card_fees')}</dt>
                       <dd className="text-white font-semibold">
-                        {card.annualFees === 0 ? 'Gratuit' : fmtEUR(card.annualFees)}
+                        {card.annualFees === 0 ? t('home_card_free') : fmtEUR(card.annualFees)}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-slate-500">Staking</dt>
+                      <dt className="text-slate-500">{t('home_card_staking')}</dt>
                       <dd className="text-white font-semibold">
-                        {card.stakingRequired === 0 ? '—' : fmtEUR(card.stakingRequired)}
+                        {card.stakingRequired === 0 ? t('home_card_staking_none') : fmtEUR(card.stakingRequired)}
                       </dd>
                     </div>
                   </dl>
@@ -336,7 +336,7 @@ export default function Home() {
           })}
           {filtered.length === 0 && (
             <div className="col-span-full card-surface p-10 text-center text-slate-500">
-              Aucune carte ne correspond à ce filtre.
+              {t('home_no_results')}
             </div>
           )}
         </div>
@@ -405,8 +405,10 @@ export default function Home() {
             </div>
             <div className="flex-1 min-w-0 hidden sm:block">
               <div className="text-sm font-semibold text-white">
-                {compareSelection.length} carte{compareSelection.length > 1 ? 's' : ''} sélectionnée
-                {compareSelection.length > 1 ? 's' : ''}
+                {compareSelection.length}{' '}
+                {compareSelection.length > 1
+                  ? t('home_compare_bar_label_plural')
+                  : t('home_compare_bar_label')}
               </div>
               <div className="text-xs text-slate-400 truncate">
                 {selectedCards.map((c) => c.name).join(' · ')}
@@ -414,7 +416,7 @@ export default function Home() {
             </div>
             <button
               onClick={clearCompare}
-              aria-label="Vider la sélection"
+              aria-label={t('home_compare_clear_label')}
               className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
             >
               <X className="w-4 h-4" />
@@ -424,7 +426,7 @@ export default function Home() {
               disabled={compareSelection.length < 2}
               className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Comparer
+              {t('home_compare_btn')}
               {compareSelection.length >= 2 && (
                 <ArrowRight className="w-4 h-4" />
               )}
