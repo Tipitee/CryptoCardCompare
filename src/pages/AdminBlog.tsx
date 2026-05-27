@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Check, CreditCard as Edit2, Eye, EyeOff, FileText, Loader2, Plus, Save, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowLeft, BookOpen, Check, CreditCard as Edit2, Eye, EyeOff, FileText, Image as ImageIcon, Loader2, Plus, Save, Sparkles, Trash2, X } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
 import { adminUpsertPost, adminDeletePost, adminFetchAllPosts, generateArticle, bulkPreviewBlocks, bulkGenerateOne } from '../lib/supabase';
 import type { BulkPreviewBlock, BulkResult } from '../lib/supabase';
@@ -285,6 +285,10 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
               <Plus className="w-4 h-4" />
               Nouveau
             </button>
+            <Link to="/admin/generate-hero-images" className="btn-ghost text-sm text-slate-400 flex items-center gap-1.5">
+              <ImageIcon className="w-4 h-4" />
+              Images Hero
+            </Link>
             <button onClick={onLogout} className="btn-ghost text-sm text-slate-500">
               Déconnexion
             </button>
