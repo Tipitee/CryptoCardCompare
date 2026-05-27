@@ -29,7 +29,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { title, excerpt, tags, slug, forceRegenerate } = await req.json();
+    const { id, title, excerpt, tags, slug, forceRegenerate } = await req.json();
 
     const anthropicKey = Deno.env.get("ANTHROPIC_API_KEY");
     const togetherKey = Deno.env.get("TOGETHER_API_KEY");
@@ -236,7 +236,7 @@ Return ONLY the prompt.`,
     const { data: postData, error: updateError } = await sb
       .from("blog_posts")
       .update({ image_hero: publicUrl })
-      .eq("slug", slug)
+      .eq("id", id)
       .select()
       .single();
 

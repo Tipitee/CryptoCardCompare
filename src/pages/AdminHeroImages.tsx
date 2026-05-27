@@ -134,6 +134,7 @@ export default function AdminHeroImages() {
             'X-Admin-Secret': secret,
           },
           body: JSON.stringify({
+            id: post.id,
             slug: post.slug,
             title: post.title,
             excerpt: post.excerpt,
