@@ -22,7 +22,7 @@ function formatDate(iso: string): string {
 
 // ── Login screen ──────────────────────────────────────────────────────────────
 function LoginScreen({ onLogin }: { onLogin: (secret: string) => void }) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('admin');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 

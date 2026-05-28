@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Calendar, Clock, Search, Tag } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Search, Settings, Tag } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
 import { fetchPublishedPosts } from '../lib/supabase';
 import { estimateReadTime } from '../utils/markdown';
@@ -86,6 +86,22 @@ export default function Blog() {
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
           {t('blog_header_desc')}
         </p>
+        <div className="flex items-center justify-center gap-2 mt-6">
+          <Link
+            to="/admin/blog"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-400 transition-colors px-3 py-1.5 rounded-lg border border-bg-border hover:border-slate-600"
+          >
+            <Settings className="w-3.5 h-3.5" />
+            Admin articles
+          </Link>
+          <Link
+            to="/admin/generate-hero-images"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-400 transition-colors px-3 py-1.5 rounded-lg border border-bg-border hover:border-slate-600"
+          >
+            <Settings className="w-3.5 h-3.5" />
+            Admin images
+          </Link>
+        </div>
       </div>
 
       {/* Search + Filters */}
