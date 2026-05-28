@@ -246,9 +246,18 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
           />
         </div>
       ) : (
-        <div className="h-48 shrink-0 bg-gradient-to-br from-cyan-accent/10 via-bg-elevated to-slate-900 flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,transparent_25%,rgb(0,184,212)_25%,rgb(0,184,212)_50%,transparent_50%,transparent_75%,rgb(0,184,212)_75%,rgb(0,184,212))] bg-[length:40px_40px] animate-pulse" />
-          <BookOpen className="w-12 h-12 text-slate-600 relative z-10" />
+        <div className="h-48 shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-4 left-6 w-20 h-20 rounded-full bg-cyan-accent/8 blur-2xl" />
+            <div className="absolute bottom-4 right-6 w-24 h-24 rounded-full bg-cyan-accent/6 blur-3xl" />
+          </div>
+          <div className="relative z-10 flex flex-col items-center gap-3 opacity-30">
+            <BookOpen className="w-10 h-10 text-cyan-accent" />
+            <div className="flex gap-1.5">
+              <div className="w-16 h-1.5 rounded-full bg-cyan-accent" />
+              <div className="w-8 h-1.5 rounded-full bg-cyan-accent/60" />
+            </div>
+          </div>
         </div>
       )}
 
