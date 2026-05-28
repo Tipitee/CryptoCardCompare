@@ -48,7 +48,7 @@ export default function Home() {
   const selectedCards = cards.filter((c) => compareSelection.includes(c.id));
   const goCompare = () => {
     if (compareSelection.length === 0) return;
-    navigate(`${getRoute('comparer')}?selected=${compareSelection.join(',')}`);
+    navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
   };
 
   const topCashback = [...cards].sort((a, b) => b.cashbackPremium - a.cashbackPremium)[0];
@@ -105,11 +105,11 @@ export default function Home() {
               {t('home_hero_desc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <Link to={getRoute('comparer')} className="btn-primary">
+              <Link to={getRoute('compare')} className="btn-primary">
                 {t('home_hero_btn_compare')}
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to={getRoute('recommandation')} className="btn-secondary">
+              <Link to={getRoute('recommendation')} className="btn-secondary">
                 <Sparkles className="w-4 h-4" />
                 {t('home_hero_btn_quiz')}
               </Link>
@@ -169,7 +169,7 @@ export default function Home() {
             </h2>
             <p className="text-slate-400">{t('home_top3_desc')}</p>
           </div>
-          <Link to={getRoute('comparer')} className="btn-ghost hidden sm:inline-flex">
+          <Link to={getRoute('compare')} className="btn-ghost hidden sm:inline-flex">
             {t('home_top3_view_all')}
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -352,25 +352,25 @@ export default function Home() {
               icon: BarChart3,
               title: t('home_help_compare'),
               desc: t('home_help_compare_desc'),
-              to: getRoute('comparer'),
+              to: getRoute('compare'),
             },
             {
               icon: Calculator,
               title: t('home_help_simulator'),
               desc: t('home_help_simulator_desc'),
-              to: getRoute('simulateur'),
+              to: getRoute('simulator'),
             },
             {
               icon: Sparkles,
               title: t('home_help_recommendation'),
               desc: t('home_help_recommendation_desc'),
-              to: getRoute('recommandation'),
+              to: getRoute('recommendation'),
             },
             {
               icon: Heart,
               title: t('home_help_favorites'),
               desc: t('home_help_favorites_desc'),
-              to: getRoute('favoris'),
+              to: getRoute('favorites'),
             },
           ].map((f) => (
             <Link

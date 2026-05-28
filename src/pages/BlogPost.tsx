@@ -162,7 +162,7 @@ export default function BlogPost() {
               <p className="text-slate-300 mb-4 text-lg">
                 {t('blog_cta_text')}
               </p>
-              <Link to={getRoute('comparer')} className="btn-primary inline-flex">
+              <Link to={getRoute('compare')} className="btn-primary inline-flex">
                 {t('blog_cta_btn')}
                 <ExternalLink className="w-4 h-4" />
               </Link>
@@ -194,7 +194,7 @@ export default function BlogPost() {
                   <p className="text-slate-500 text-xs mb-3 leading-relaxed">
                     {t('blog_sidebar_compare_desc')}
                   </p>
-                  <Link to={getRoute('comparer')} className="btn-primary w-full text-sm">
+                  <Link to={getRoute('compare')} className="btn-primary w-full text-sm">
                     {t('blog_sidebar_compare_btn')}
                   </Link>
                 </div>

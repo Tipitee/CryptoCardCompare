@@ -18,12 +18,12 @@ export default function Layout() {
   const { getRoute } = useLocalizedRoute();
 
   const navItems = [
-    { path: '', label: t('nav_home'), icon: Home },
-    { path: 'comparer', label: t('nav_compare'), icon: BarChart3 },
-    { path: 'simulateur', label: t('nav_simulator'), icon: Calculator },
-    { path: 'recommandation', label: t('nav_recommendation'), icon: Sparkles },
-    { path: 'favoris', label: t('nav_favorites'), icon: Heart },
-    { path: 'blog', label: t('nav_blog'), icon: BookOpen },
+    { key: '', label: t('nav_home'), icon: Home },
+    { key: 'compare', label: t('nav_compare'), icon: BarChart3 },
+    { key: 'simulator', label: t('nav_simulator'), icon: Calculator },
+    { key: 'recommendation', label: t('nav_recommendation'), icon: Sparkles },
+    { key: 'favorites', label: t('nav_favorites'), icon: Heart },
+    { key: 'blog', label: t('nav_blog'), icon: BookOpen },
   ];
 
   useEffect(() => {
@@ -48,9 +48,9 @@ export default function Layout() {
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <NavLink
-                key={item.path}
-                to={getRoute(item.path)}
-                end={item.path === ''}
+                key={item.key}
+                to={getRoute(item.key)}
+                end={item.key === ''}
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
                     isActive
@@ -61,7 +61,7 @@ export default function Layout() {
               >
                 <item.icon className="w-4 h-4" />
                 {item.label}
-                {item.path === 'favoris' && favorites.length > 0 && (
+                {item.key === 'favorites' && favorites.length > 0 && (
                   <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/20 text-green-accent">
                     {favorites.length}
                   </span>
@@ -87,9 +87,9 @@ export default function Layout() {
             <div className="container-app py-2 flex flex-col">
               {navItems.map((item) => (
                 <NavLink
-                  key={item.path}
-                  to={getRoute(item.path)}
-                  end={item.path === ''}
+                  key={item.key}
+                  to={getRoute(item.key)}
+                  end={item.key === ''}
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     `px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 ${
@@ -132,8 +132,8 @@ export default function Layout() {
               <h4 className="text-sm font-semibold text-white mb-3">{t('nav_blog')}</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 {navItems.map((i) => (
-                  <li key={i.path}>
-                    <NavLink to={getRoute(i.path)} className="hover:text-cyan-accent transition-colors">
+                  <li key={i.key}>
+                    <NavLink to={getRoute(i.key)} className="hover:text-cyan-accent transition-colors">
                       {i.label}
                     </NavLink>
                   </li>
