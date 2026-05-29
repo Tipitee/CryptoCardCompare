@@ -20,6 +20,9 @@ export interface CryptoCard {
   realCardImage?: string | null;
   imageAlt?: string | null;
   markets: string[];
+  status: 'active' | 'discontinued' | 'coming_soon';
+  virtualOnly: boolean;
+  marketRestrictions: Record<string, string>;
 }
 
 export interface QuizAnswers {

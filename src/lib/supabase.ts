@@ -45,6 +45,9 @@ type CardRow = {
   real_card_image: string | null;
   image_alt: string | null;
   markets: string[];
+  status: 'active' | 'discontinued' | 'coming_soon' | null;
+  virtual_only: boolean | null;
+  market_restrictions: Record<string, string> | null;
 };
 
 function rowToCard(row: CardRow): CryptoCard {
@@ -70,6 +73,9 @@ function rowToCard(row: CardRow): CryptoCard {
     realCardImage: row.real_card_image,
     imageAlt: row.image_alt,
     markets: row.markets || [],
+    status: row.status ?? 'active',
+    virtualOnly: row.virtual_only ?? false,
+    marketRestrictions: row.market_restrictions ?? {},
   };
 }
 
@@ -77,8 +83,9 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   let query = supabase
     .from('cards')
     .select(
-      'id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets'
-    );
+      'id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions'
+    )
+    .neq('status', 'discontinued');
   if (market) {
     query = query.contains('markets', [market]);
   }

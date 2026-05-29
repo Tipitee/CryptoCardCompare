@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Check, ExternalLink, Star, X } from 'lucide-react';
+import { AlertTriangle, Check, ExternalLink, Star, X } from 'lucide-react';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
@@ -31,6 +31,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
 
   if (!card) return null;
   const isFav = favorites.includes(card.id);
+  const restrictionEntries = Object.entries(card.marketRestrictions);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end animate-fade-in">
@@ -66,7 +67,28 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
           <h2 id="drawer-title" className="text-2xl font-display font-bold text-white">
             {card.name}
           </h2>
-          <div className="text-slate-400 mb-5">{card.issuer}</div>
+          <div className="text-slate-400 mb-3">{card.issuer}</div>
+
+          {card.virtualOnly && (
+            <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm">
+              <AlertTriangle className="w-4 h-4 shrink-0" />
+              Virtuelle uniquement — pas de carte physique disponible
+            </div>
+          )}
+
+          {restrictionEntries.length > 0 && (
+            <div className="mb-4 space-y-1">
+              {restrictionEntries.map(([market, reason]) => (
+                <div
+                  key={market}
+                  className="flex items-start gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs"
+                >
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span><span className="font-semibold uppercase">{market}</span> — {reason}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-3 mb-6">
             <Stat label="Cashback de base" value={fmtPct(card.cashbackBase)} />
@@ -100,13 +122,13 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             </div>
           </section>
 
-          {card.extras.length > 0 && (
+          {card.extras.filter(e => e !== 'virtual_only').length > 0 && (
             <section className="mb-6">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
                 Avantages inclus
               </h3>
               <ul className="space-y-1.5">
-                {card.extras.map((e) => (
+                {card.extras.filter(e => e !== 'virtual_only').map((e) => (
                   <li key={e} className="flex items-start gap-2 text-sm text-slate-300">
                     <Check className="w-4 h-4 text-green-accent shrink-0 mt-0.5" />
                     <span>{e}</span>
