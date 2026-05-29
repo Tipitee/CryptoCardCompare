@@ -27,9 +27,9 @@ export default function Layout() {
   ];
 
   useEffect(() => {
-    loadCards();
+    loadCards(lang);
     loadFavorites();
-  }, [loadCards, loadFavorites]);
+  }, [loadCards, loadFavorites, lang]);
 
   return (
     <div className="min-h-screen flex flex-col bg-bg">
