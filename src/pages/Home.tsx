@@ -147,7 +147,7 @@ export default function Home() {
         <div className="relative container-app pb-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
-              { label: t('home_stats_cards'), value: `${cards.length || 14}` },
+              { label: t('home_stats_cards'), value: `${cards.length}` },
               { label: t('home_stats_cryptos'), value: '15+' },
               { label: t('home_stats_criteria'), value: '10' },
               { label: t('home_stats_free'), value: '100%' },

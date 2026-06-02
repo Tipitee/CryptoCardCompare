@@ -52,7 +52,7 @@
 
   "home_stats_cards": "Karten verglichen",
   "home_stats_cryptos": "Kryptos unterstützt",
-  "home_stats_criteria": "Analysen Kriterien",
+  "home_stats_criteria": "Analysierte Kriterien",
   "home_stats_free": "Kostenlos & ohne Konto",
 
   "home_top3_title": "Unsere Top 3 derzeit",
@@ -150,7 +150,7 @@
   "sim_col_card": "Karte",
   "sim_col_cashback": "Geschätztes Cashback",
   "sim_col_fees": "Gebühren",
-  "sim_col_net": "Nettogeninn",
+  "sim_col_net": "Nettogewinn",
   "sim_badge_best": "Beste",
   "sim_disclaimer": "Indikative Simulation. Cashback-Sätze variieren je nach Staking-Level und Ausstellerbedingungen. Keine Finanzberatung.",
   "sim_tooltip_net": "Nettogewinn",

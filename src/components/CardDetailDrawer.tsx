@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { AlertTriangle, Check, ExternalLink, Star, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
@@ -14,6 +15,7 @@ interface Props {
 export default function CardDetailDrawer({ card, onClose }: Props) {
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
+  const { t } = useTranslation(['cards', 'common']);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -48,11 +50,11 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
       >
         <div className="sticky top-0 z-10 bg-bg-card/95 backdrop-blur-md border-b border-bg-border px-5 py-3 flex items-center justify-between">
           <span className="text-xs uppercase tracking-wider text-slate-400">
-            Détails de la carte
+            {t('cards:card_extras')}
           </span>
           <button
             onClick={onClose}
-            aria-label="Fermer"
+            aria-label={t('common:btn_back')}
             className="p-1.5 rounded-lg hover:bg-bg-elevated text-slate-400 hover:text-white"
           >
             <X className="w-4 h-4" />
@@ -72,7 +74,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
           {card.virtualOnly && (
             <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm">
               <AlertTriangle className="w-4 h-4 shrink-0" />
-              Virtuelle uniquement — pas de carte physique disponible
+              {t('cards:virtual_only_warning')}
             </div>
           )}
 
@@ -91,23 +93,23 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
           )}
 
           <div className="grid grid-cols-2 gap-3 mb-6">
-            <Stat label="Cashback de base" value={fmtPct(card.cashbackBase)} />
-            <Stat label="Cashback max" value={fmtPct(card.cashbackPremium)} highlight />
+            <Stat label={t('cards:cashback_base')} value={fmtPct(card.cashbackBase)} />
+            <Stat label={t('cards:cashback_premium')} value={fmtPct(card.cashbackPremium)} highlight />
             <Stat
-              label="Frais annuels"
-              value={card.annualFees === 0 ? 'Gratuit' : fmtEUR(card.annualFees)}
+              label={t('cards:card_fees')}
+              value={card.annualFees === 0 ? t('common:home_card_free') : fmtEUR(card.annualFees)}
             />
             <Stat
-              label="Staking"
-              value={card.stakingRequired === 0 ? 'Aucun' : fmtEUR(card.stakingRequired)}
+              label={t('cards:card_staking')}
+              value={card.stakingRequired === 0 ? t('common:compare_stat_none') : fmtEUR(card.stakingRequired)}
             />
-            <Stat label="Limite quotidienne" value={fmtEUR(card.dailyLimit)} />
-            <Stat label="Réseau" value={card.cardNetwork} />
+            <Stat label={t('cards:card_daily_limit')} value={fmtEUR(card.dailyLimit)} />
+            <Stat label={t('cards:card_network')} value={card.cardNetwork} />
           </div>
 
           <section className="mb-6">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-              Cryptomonnaies supportées
+              {t('cards:card_cryptos')}
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {card.cryptos.map((c) => (
@@ -125,13 +127,13 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
           {card.extras.filter(e => e !== 'virtual_only').length > 0 && (
             <section className="mb-6">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                Avantages inclus
+                {t('cards:card_extras')}
               </h3>
               <ul className="space-y-1.5">
                 {card.extras.filter(e => e !== 'virtual_only').map((e) => (
                   <li key={e} className="flex items-start gap-2 text-sm text-slate-300">
                     <Check className="w-4 h-4 text-green-accent shrink-0 mt-0.5" />
-                    <span>{e}</span>
+                    <span>{t(`cards:${e}`, { defaultValue: e })}</span>
                   </li>
                 ))}
               </ul>
@@ -139,10 +141,10 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
           )}
 
           <section className="mb-6 grid grid-cols-2 gap-2 text-xs">
-            <Pill ok={card.availableFrance} label="France" />
-            <Pill ok={card.availableEU} label="Europe (UE)" />
-            <Pill ok={card.freeWithdrawals} label="Retraits gratuits" />
-            <Pill ok={card.stakingRequired === 0} label="Sans staking" />
+            <Pill ok={card.availableFrance} label={t('cards:card_available_france')} />
+            <Pill ok={card.availableEU} label={t('cards:card_available_eu')} />
+            <Pill ok={card.freeWithdrawals} label={t('cards:card_free_withdrawals')} />
+            <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
           </section>
 
           <div className="flex gap-2">
@@ -153,7 +155,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
               }`}
             >
               <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
-              Favoris
+              {t('common:nav_favorites')}
             </button>
             <a
               href={card.affiliateLink}
@@ -161,7 +163,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
               rel="noopener noreferrer"
               className="btn-primary flex-1"
             >
-              Voir l'offre
+              {t('common:quiz_see_offer')}
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>

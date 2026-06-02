@@ -31,5 +31,19 @@
 
   "compare_title": "Comparar tarjetas",
   "compare_selected": "Tarjetas seleccionadas",
-  "compare_no_selection": "Selecciona al menos 2 tarjetas para comparar"
+  "compare_no_selection": "Selecciona al menos 2 tarjetas para comparar",
+
+  "virtual_only_warning": "Solo virtual — no hay tarjeta física disponible",
+  "no_staking_required": "Sin staking requerido",
+  "new_2025": "Nuevo en 2025",
+  "fca_licensed": "Con licencia FCA (UK)",
+  "stablecoin_only": "Solo gastos en stablecoins",
+  "virtual_only": "Solo virtual",
+  "badge_popular": "POPULAR",
+  "badge_new": "NUEVO",
+  "badge_virtual_only": "SOLO VIRTUAL",
+  "badge_zero_fees": "CERO COMISIONES",
+  "badge_best_value": "MEJOR RELACIÓN",
+  "badge_premium": "PREMIUM",
+  "badge_discontinued": "Programa cerrado"
 }
