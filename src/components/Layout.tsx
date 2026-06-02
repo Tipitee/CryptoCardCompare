@@ -1,11 +1,12 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, Heart, Home, Sparkles, Coins, Menu } from 'lucide-react';
+import { NavLink, Outlet, Link } from 'react-router-dom';
+import { BarChart3, BookOpen, Calculator, Heart, Home, Sparkles, Coins, Menu, FileText, Shield } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import LanguageSwitcher from './LanguageSwitcher';
 import LanguageSync from './LanguageSync';
+import CookieBanner from './CookieBanner';
 import { useEffect, useState } from 'react';
 
 export default function Layout() {
@@ -149,6 +150,18 @@ export default function Layout() {
                     {t('footer_guides')}
                   </NavLink>
                 </li>
+                <li>
+                  <Link to="/affiliate-disclosure" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <FileText className="w-3.5 h-3.5" />
+                    Affiliate Disclosure
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/risk-summary" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Shield className="w-3.5 h-3.5" />
+                    Risk Summary
+                  </Link>
+                </li>
               </ul>
               <h4 className="text-sm font-semibold text-white mb-3">{t('nav_blog')}</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
@@ -158,10 +171,18 @@ export default function Layout() {
           </div>
           <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-500">
             <span>© {new Date().getFullYear()} {t('footer_copyright')}</span>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>
+              <Link to="/datenschutz" className="hover:text-slate-300 transition-colors">Datenschutz</Link>
+              <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
+              <Link to="/affiliate-disclosure" className="hover:text-slate-300 transition-colors">Affiliate</Link>
+              <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">Risk</Link>
+            </div>
             <span>{t('footer_tagline')}</span>
           </div>
         </div>
       </footer>
+      <CookieBanner lang={lang} />
     </div>
   );
 }

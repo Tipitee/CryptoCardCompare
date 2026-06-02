@@ -11,6 +11,11 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import AdminBlog from './pages/AdminBlog';
 import AdminHeroImages from './pages/AdminHeroImages';
+import Impressum from './pages/Impressum';
+import Datenschutz from './pages/Datenschutz';
+import Privacy from './pages/Privacy';
+import AffiliateDisclosurePage from './pages/AffiliateDisclosurePage';
+import RiskSummary from './pages/RiskSummary';
 import { initializeLanguage } from './i18n/utils';
 
 function RootRedirect() {
@@ -34,6 +39,12 @@ function App() {
 
         <Route path="/admin/blog" element={<AdminBlog />} />
         <Route path="/admin/generate-hero-images" element={<AdminHeroImages />} />
+
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
+        <Route path="/risk-summary" element={<RiskSummary />} />
 
         <Route path="/:lang" element={<Layout />}>
           <Route index element={<Home />} />
