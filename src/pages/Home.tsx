@@ -62,7 +62,20 @@ export default function Home() {
         b.cashbackPremium - b.annualFees / 100 - (a.cashbackPremium - a.annualFees / 100)
     )[0];
 
-  const podium = [topCashback, topNoFees, topBalanced].filter(Boolean) as CryptoCard[];
+  const usedIds = new Set<string>();
+  const podium: CryptoCard[] = [];
+  for (const candidate of [topCashback, topNoFees, topBalanced]) {
+    if (candidate && !usedIds.has(candidate.id)) {
+      usedIds.add(candidate.id);
+      podium.push(candidate);
+    } else if (candidate && usedIds.has(candidate.id)) {
+      const fallback = cards.find((c) => !usedIds.has(c.id));
+      if (fallback) {
+        usedIds.add(fallback.id);
+        podium.push(fallback);
+      }
+    }
+  }
 
   const filtered = useMemo(() => {
     switch (filter) {
@@ -176,7 +189,7 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {podium.map((card, idx) => {
+          {podium.slice(0, 3).map((card, idx) => {
             const labels = [
               { title: t('home_top3_cashback'), icon: TrendingUp, color: 'text-green-accent' },
               { title: t('home_top3_no_fees'), icon: ShieldCheck, color: 'text-cyan-accent' },
