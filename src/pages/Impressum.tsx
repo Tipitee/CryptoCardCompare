@@ -25,10 +25,11 @@ export default function Impressum() {
           <p className="text-slate-400 text-sm mb-6">Angaben gemäß § 5 TMG</p>
 
           <div className="card-surface p-6 mb-8">
-            <p className="text-white font-semibold">[VORNAME NACHNAME]</p>
-            <p className="text-slate-400">[STRASSE NR]</p>
-            <p className="text-slate-400">[PLZ] [STADT]</p>
-            <p className="text-slate-400">Nordrhein-Westfalen, Deutschland</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p className="text-slate-400">c/o flexdienst – #21201</p>
+            <p className="text-slate-400">Kurt-Schumacher-Straße 76</p>
+            <p className="text-slate-400">67663 Kaiserslautern</p>
+            <p className="text-slate-400">Deutschland</p>
             <p className="text-slate-400 mt-4">
               <span className="text-slate-300 font-medium">Kontakt:</span><br />
               E-Mail: <a href="mailto:hello@cryptocardcompare.io" className="text-cyan-accent hover:underline">hello@cryptocardcompare.io</a>
@@ -37,9 +38,10 @@ export default function Impressum() {
 
           <div className="card-surface p-6 mb-8">
             <h2 className="text-lg font-semibold text-white mb-3">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-            <p className="text-white font-semibold">[VORNAME NACHNAME]</p>
-            <p className="text-slate-400">[STRASSE NR]</p>
-            <p className="text-slate-400">[PLZ] [STADT]</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p className="text-slate-400">c/o flexdienst – #21201</p>
+            <p className="text-slate-400">Kurt-Schumacher-Straße 76</p>
+            <p className="text-slate-400">67663 Kaiserslautern</p>
           </div>
 
           <div className="space-y-6 text-slate-400 text-sm leading-relaxed">
@@ -78,10 +80,11 @@ export default function Impressum() {
           <p className="text-slate-400 text-sm mb-6">In accordance with § 5 TMG (German Telemedia Act)</p>
 
           <div className="card-surface p-6 mb-8">
-            <p className="text-white font-semibold">[FIRST NAME LAST NAME]</p>
-            <p className="text-slate-400">[STREET NO]</p>
-            <p className="text-slate-400">[POSTCODE] [CITY]</p>
-            <p className="text-slate-400">North Rhine-Westphalia, Germany</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p className="text-slate-400">c/o flexdienst – #21201</p>
+            <p className="text-slate-400">Kurt-Schumacher-Straße 76</p>
+            <p className="text-slate-400">67663 Kaiserslautern</p>
+            <p className="text-slate-400">Germany</p>
             <p className="text-slate-400 mt-4">
               <span className="text-slate-300 font-medium">Contact:</span><br />
               Email: <a href="mailto:hello@cryptocardcompare.io" className="text-cyan-accent hover:underline">hello@cryptocardcompare.io</a>
@@ -90,9 +93,10 @@ export default function Impressum() {
 
           <div className="card-surface p-6 mb-8">
             <h2 className="text-lg font-semibold text-white mb-3">Person responsible for editorial content (§ 55 para. 2 RStV)</h2>
-            <p className="text-white font-semibold">[FIRST NAME LAST NAME]</p>
-            <p className="text-slate-400">[STREET NO]</p>
-            <p className="text-slate-400">[POSTCODE] [CITY]</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p className="text-slate-400">c/o flexdienst – #21201</p>
+            <p className="text-slate-400">Kurt-Schumacher-Straße 76</p>
+            <p className="text-slate-400">67663 Kaiserslautern</p>
           </div>
 
           <div className="space-y-6 text-slate-400 text-sm leading-relaxed">

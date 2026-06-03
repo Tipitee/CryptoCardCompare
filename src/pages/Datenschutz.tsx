@@ -47,10 +47,11 @@ export default function Datenschutz() {
         <section>
           <h2 className="text-xl font-semibold text-white mb-4">1. Verantwortlicher</h2>
           <div className="card-surface p-5">
-            <p className="text-white font-semibold">[VORNAME NACHNAME]</p>
-            <p>[STRASSE NR]</p>
-            <p>[PLZ] [STADT]</p>
-            <p>Nordrhein-Westfalen, Deutschland</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p>c/o flexdienst – #21201</p>
+            <p>Kurt-Schumacher-Straße 76</p>
+            <p>67663 Kaiserslautern</p>
+            <p>Deutschland</p>
             <p className="mt-3">E-Mail: <a href="mailto:hello@cryptocardcompare.io" className="text-cyan-accent hover:underline">hello@cryptocardcompare.io</a></p>
           </div>
         </section>

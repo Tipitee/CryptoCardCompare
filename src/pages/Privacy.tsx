@@ -46,10 +46,11 @@ export default function Privacy() {
         <section>
           <h2 className="text-xl font-semibold text-white mb-4">1. Data Controller</h2>
           <div className="card-surface p-5">
-            <p className="text-white font-semibold">[FIRST NAME LAST NAME]</p>
-            <p>[STREET NO]</p>
-            <p>[POSTCODE] [CITY]</p>
-            <p>North Rhine-Westphalia, Germany</p>
+            <p className="text-white font-semibold">Thomas Petit</p>
+            <p>c/o flexdienst – #21201</p>
+            <p>Kurt-Schumacher-Straße 76</p>
+            <p>67663 Kaiserslautern</p>
+            <p>Germany</p>
             <p className="mt-3">Email: <a href="mailto:hello@cryptocardcompare.io" className="text-cyan-accent hover:underline">hello@cryptocardcompare.io</a></p>
           </div>
         </section>
