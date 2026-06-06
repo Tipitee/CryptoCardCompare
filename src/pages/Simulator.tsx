@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Info, TrendingUp } from 'lucide-react';
+import { AlertTriangle, Info, TrendingUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import type { SimulatorSpending } from '../types/card';
@@ -21,6 +21,8 @@ export default function Simulator() {
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);
+  const stakingBudget = useAppStore((s) => s.stakingBudget);
+  const setStakingBudget = useAppStore((s) => s.setStakingBudget);
 
   const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string }[] = [
     { key: 'online', label: t('sim_cat_online'), hint: t('sim_cat_online_hint') },
@@ -41,17 +43,20 @@ export default function Simulator() {
   const results = useMemo(() => {
     return cards
       .map((c) => {
-        const rewards = yearly * (c.cashbackBase / 100);
+        const stakingMet = c.stakingRequired <= stakingBudget;
+        const effectiveRate = stakingMet ? c.cashbackBase : c.cashbackBase * 0.5;
+        const rewards = yearly * (effectiveRate / 100);
         const net = rewards - c.annualFees;
-        return { card: c, rewards, net };
+        return { card: c, rewards, net, stakingMet };
       })
       .sort((a, b) => b.net - a.net);
-  }, [cards, yearly]);
+  }, [cards, yearly, stakingBudget]);
 
   const top5 = results.slice(0, 5).map((r) => ({
     name: r.card.name,
     net: Math.round(r.net),
     issuer: r.card.issuer,
+    stakingMet: r.stakingMet,
   }));
 
   const best = results[0];
@@ -112,6 +117,39 @@ export default function Simulator() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-6 pt-6 border-t border-bg-border">
+              <label className="flex justify-between text-sm text-slate-300 mb-1.5">
+                <span>
+                  {t('sim_staking_budget_label')}
+                  <span className="text-xs text-slate-500 ml-2">{t('sim_staking_budget_hint')}</span>
+                </span>
+                <span className="font-mono text-amber-400">
+                  {fmtEUR(stakingBudget)}
+                </span>
+              </label>
+              <div className="flex items-center gap-3">
+                <input
+                  type="range"
+                  min={0}
+                  max={50000}
+                  step={500}
+                  value={stakingBudget}
+                  onChange={(e) => setStakingBudget(parseInt(e.target.value))}
+                  className="flex-1 accent-amber-400"
+                />
+                <input
+                  type="number"
+                  min={0}
+                  value={stakingBudget}
+                  onChange={(e) =>
+                    setStakingBudget(Math.max(0, parseInt(e.target.value) || 0))
+                  }
+                  className="input-field w-24 text-right font-mono text-sm py-1"
+                />
+              </div>
+            </div>
+
             <div className="mt-6 pt-6 border-t border-bg-border grid grid-cols-2 gap-4">
               <div>
                 <div className="text-xs text-slate-500 uppercase tracking-wide">{t('sim_monthly')}</div>
@@ -147,12 +185,22 @@ export default function Simulator() {
                     {t('sim_best_desc_pre')} {fmtEUR(monthlyTotal)} {t('sim_best_desc_mid')}{' '}
                     <strong className="text-white">{best.card.name}</strong> {t('sim_best_desc_post')}{' '}
                     <strong className="text-green-accent">{fmtEUR(best.net)}</strong> {t('sim_best_desc_net')} ({fmtEUR(best.card.annualFees)}).
-                    {best.card.stakingRequired > 0 && (
-                      <>
-                        {' '}{t('sim_best_staking')} {fmtEUR(best.card.stakingRequired)} {t('sim_best_staking_post')}
-                      </>
-                    )}
                   </p>
+                  {best.card.stakingRequired > 0 && !best.stakingMet && (
+                    <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-amber-500/30 px-3 py-2 text-xs text-amber-300">
+                      <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
+                      <span>
+                        {t('sim_staking_warning_pre')}{' '}
+                        <strong className="text-amber-200">{fmtEUR(best.card.stakingRequired)}</strong>{' '}
+                        {t('sim_staking_warning_post')}
+                      </span>
+                    </div>
+                  )}
+                  {best.card.stakingRequired > 0 && best.stakingMet && (
+                    <div className="mt-2 text-xs text-slate-500">
+                      {t('sim_best_staking')} {fmtEUR(best.card.stakingRequired)} {t('sim_best_staking_post')}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -214,6 +262,9 @@ export default function Simulator() {
                       {t('sim_col_card')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                      {t('sim_col_staking')}
+                    </th>
+                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
                       {t('sim_col_cashback')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
@@ -238,6 +289,16 @@ export default function Simulator() {
                           <span className="font-medium text-white">{r.card.name}</span>
                           {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
                         </div>
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        {r.card.stakingRequired === 0 ? (
+                          <span className="text-slate-500">—</span>
+                        ) : (
+                          <span className={`inline-flex items-center gap-1 text-xs font-mono ${r.stakingMet ? 'text-green-accent' : 'text-amber-400'}`}>
+                            {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
+                            {fmtEUR(r.card.stakingRequired)}
+                          </span>
+                        )}
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-slate-300">
                         {fmtEUR(r.rewards)}

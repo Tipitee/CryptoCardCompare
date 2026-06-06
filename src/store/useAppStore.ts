@@ -16,6 +16,7 @@ interface AppState {
   compareSelection: string[];
   quizAnswers: QuizAnswers;
   spending: SimulatorSpending;
+  stakingBudget: number;
   loadCards: (market?: string) => Promise<void>;
   loadFavorites: () => Promise<void>;
   toggleFavorite: (id: string) => Promise<void>;
@@ -24,6 +25,7 @@ interface AppState {
   setQuizAnswer: <K extends keyof QuizAnswers>(k: K, v: QuizAnswers[K]) => void;
   resetQuiz: () => void;
   setSpending: (patch: Partial<SimulatorSpending>) => void;
+  setStakingBudget: (v: number) => void;
 }
 
 const DEFAULT_SPENDING: SimulatorSpending = {
@@ -56,6 +58,16 @@ function loadLocalSpending(): SimulatorSpending {
   return DEFAULT_SPENDING;
 }
 
+function loadLocalStakingBudget(): number {
+  try {
+    const raw = localStorage.getItem('ccc_staking_budget');
+    if (raw) return Math.max(0, parseInt(raw) || 0);
+  } catch {
+    // ignore
+  }
+  return 0;
+}
+
 export const useAppStore = create<AppState>((set, get) => ({
   cards: [],
   cardsLoading: false,
@@ -65,6 +77,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   compareSelection: [],
   quizAnswers: loadLocalQuiz(),
   spending: loadLocalSpending(),
+  stakingBudget: loadLocalStakingBudget(),
 
   loadCards: async (market?: string) => {
     const state = get();
@@ -136,5 +149,10 @@ export const useAppStore = create<AppState>((set, get) => ({
     const next = { ...get().spending, ...patch };
     set({ spending: next });
     localStorage.setItem('ccc_spending', JSON.stringify(next));
+  },
+
+  setStakingBudget: (v) => {
+    set({ stakingBudget: v });
+    localStorage.setItem('ccc_staking_budget', String(v));
   },
 }));
