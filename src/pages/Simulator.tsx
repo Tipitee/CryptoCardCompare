@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -16,6 +16,18 @@ import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR } from '../utils/format';
 
+type SimMode = 'base' | 'optimistic';
+
+function loadMode(): SimMode {
+  try {
+    const v = localStorage.getItem('ccc_sim_mode');
+    if (v === 'base' || v === 'optimistic') return v;
+  } catch {
+    // ignore
+  }
+  return 'base';
+}
+
 export default function Simulator() {
   const { t } = useTranslation('common');
   const cards = useAppStore((s) => s.cards);
@@ -23,6 +35,13 @@ export default function Simulator() {
   const setSpending = useAppStore((s) => s.setSpending);
   const stakingBudget = useAppStore((s) => s.stakingBudget);
   const setStakingBudget = useAppStore((s) => s.setStakingBudget);
+
+  const [simMode, setSimMode] = useState<SimMode>(loadMode);
+
+  const handleModeChange = (mode: SimMode) => {
+    setSimMode(mode);
+    try { localStorage.setItem('ccc_sim_mode', mode); } catch { /* ignore */ }
+  };
 
   const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string }[] = [
     { key: 'online', label: t('sim_cat_online'), hint: t('sim_cat_online_hint') },
@@ -44,9 +63,11 @@ export default function Simulator() {
     return cards
       .map((c) => {
         const stakingMet = c.stakingRequired <= stakingBudget;
-        // Use the real no-staking rate when staking requirement is not met,
-        // rather than an arbitrary 50% penalty.
-        const effectiveRate = stakingMet ? c.cashbackBase : c.cashbackNoStaking;
+        // Base mode: guaranteed flat rate on all spending.
+        // Optimistic mode: max achievable rate when staking is met.
+        const effectiveRate = stakingMet
+          ? simMode === 'optimistic' ? c.cashbackPremium : c.cashbackBase
+          : c.cashbackNoStaking;
         const rewards = yearly * (effectiveRate / 100);
         const net = rewards - c.annualFees;
         const ratePenalized = !stakingMet && c.cashbackNoStaking < c.cashbackBase;
@@ -65,7 +86,7 @@ export default function Simulator() {
         // Tiebreaker 3: lower staking requirement
         return a.card.stakingRequired - b.card.stakingRequired;
       });
-  }, [cards, yearly, stakingBudget]);
+  }, [cards, yearly, stakingBudget, simMode]);
 
   const top5 = results.slice(0, 5).map((r) => ({
     name: r.card.name,
@@ -78,7 +99,7 @@ export default function Simulator() {
 
   return (
     <div className="container-app py-10">
-      <header className="mb-8">
+      <header className="mb-6">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
           {t('sim_title')}
         </h1>
@@ -86,6 +107,36 @@ export default function Simulator() {
           {t('sim_desc')}
         </p>
       </header>
+
+      {/* Mode toggle */}
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-3">
+        <span className="text-sm font-medium text-slate-300 shrink-0">{t('sim_mode_label')}</span>
+        <div className="flex rounded-lg border border-bg-border overflow-hidden shrink-0">
+          <button
+            onClick={() => handleModeChange('base')}
+            className={`px-4 py-2 text-sm font-semibold transition-all ${
+              simMode === 'base'
+                ? 'bg-cyan-accent/15 text-cyan-accent border-r border-cyan-accent/30'
+                : 'bg-bg-elevated text-slate-400 border-r border-bg-border hover:text-white'
+            }`}
+          >
+            {t('sim_mode_base')}
+          </button>
+          <button
+            onClick={() => handleModeChange('optimistic')}
+            className={`px-4 py-2 text-sm font-semibold transition-all ${
+              simMode === 'optimistic'
+                ? 'bg-amber-500/15 text-amber-400'
+                : 'bg-bg-elevated text-slate-400 hover:text-white'
+            }`}
+          >
+            {t('sim_mode_optimistic')}
+          </button>
+        </div>
+        <p className="text-xs text-slate-500">
+          {simMode === 'base' ? t('sim_mode_info_base') : t('sim_mode_info_optimistic')}
+        </p>
+      </div>
 
       <div className="grid lg:grid-cols-5 gap-6">
         <section className="lg:col-span-2">
@@ -201,7 +252,7 @@ export default function Simulator() {
                     <strong className="text-white">{best.card.name}</strong> {t('sim_best_desc_post')}{' '}
                     <strong className="text-green-accent">{fmtEUR(best.net)}</strong> {t('sim_best_desc_net')} ({fmtEUR(best.card.annualFees)}).
                   </p>
-                  {best.card.cashbackPremium > best.effectiveRate && (
+                  {simMode === 'base' && best.card.cashbackPremium > best.effectiveRate && (
                     <div className="mt-3 flex items-start gap-2 rounded-lg bg-cyan-accent/10 border border-cyan-accent/20 px-3 py-2 text-xs text-cyan-300">
                       <Zap className="w-4 h-4 shrink-0 mt-0.5 text-cyan-accent" />
                       <span>
@@ -210,6 +261,12 @@ export default function Simulator() {
                         {t('sim_premium_hint_post')}{' '}
                         <strong className="text-amber-300">{fmtEUR(best.card.stakingRequired)}</strong>
                       </span>
+                    </div>
+                  )}
+                  {simMode === 'optimistic' && best.stakingMet && best.card.cashbackBase < best.effectiveRate && (
+                    <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-amber-500/20 px-3 py-2 text-xs text-amber-300">
+                      <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
+                      <span>{t('sim_mode_info_optimistic')}</span>
                     </div>
                   )}
                   {best.card.stakingRequired > 0 && !best.stakingMet && (
@@ -318,11 +375,17 @@ export default function Simulator() {
                           <span className="font-medium text-white">{r.card.name}</span>
                           {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
                         </div>
-                        {r.card.cashbackPremium > r.effectiveRate && (
+                        {simMode === 'base' && r.card.cashbackPremium > r.effectiveRate && (
                           <div className="ml-7 mt-0.5 text-xs text-slate-500">
                             {t('sim_potential_prefix')}{' '}
                             <span className="text-amber-400/80">{r.card.cashbackPremium}%</span>
                             {' '}{t('sim_potential_suffix')}
+                          </div>
+                        )}
+                        {simMode === 'optimistic' && r.card.cashbackBase < r.effectiveRate && r.stakingMet && (
+                          <div className="ml-7 mt-0.5 text-xs text-slate-500">
+                            {t('sim_mode_base_rate_note')}{' '}
+                            <span className="text-slate-400">{r.card.cashbackBase}%</span>
                           </div>
                         )}
                       </td>
