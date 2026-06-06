@@ -300,14 +300,19 @@ export default function Recommendation() {
                     className={`h-full ${
                       i === 0 ? 'bg-green-accent' : 'bg-cyan-accent'
                     } transition-all duration-700`}
-                    style={{ width: `${r.score}%` }}
+                    style={{ width: `${Math.min(r.score, 100)}%` }}
                   />
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
                   <div>
                     <div className="text-xs text-slate-500">{t('quiz_cashback_label')}</div>
-                    <div className="text-white font-semibold">{fmtPct(r.card.cashbackPremium)}</div>
+                    <div className="text-white font-semibold">{fmtPct(r.effectiveCashback)}</div>
+                    {r.card.cashbackPremium > r.effectiveCashback && (
+                      <div className="text-xs text-amber-400/80 mt-0.5">
+                        {t('sim_potential_prefix')} {r.card.cashbackPremium}%
+                      </div>
+                    )}
                   </div>
                   <div>
                     <div className="text-xs text-slate-500">{t('quiz_fees_label')}</div>

@@ -51,16 +51,33 @@ export default function Home() {
     navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
   };
 
-  const topCashback = [...cards].sort((a, b) => b.cashbackPremium - a.cashbackPremium)[0];
+  // Slot 1: highest cashback premium (potential), with freeWithdrawals as tiebreaker
+  const topCashback = [...cards].sort((a, b) => {
+    const diff = b.cashbackPremium - a.cashbackPremium;
+    if (Math.abs(diff) > 0.001) return diff;
+    return a.stakingRequired - b.stakingRequired;
+  })[0];
+
+  // Slot 2: best no-staking / no-fees card — sorted by real base rate, then premium
   const topNoFees = [...cards]
     .filter((c) => c.annualFees === 0 && c.stakingRequired === 0)
-    .sort((a, b) => b.cashbackBase - a.cashbackBase)[0];
+    .sort((a, b) => {
+      const diff = b.cashbackNoStaking - a.cashbackNoStaking;
+      if (Math.abs(diff) > 0.001) return diff;
+      return b.cashbackPremium - a.cashbackPremium;
+    })[0];
+
+  // Slot 3: balanced pick — real base rate (cashbackNoStaking) minus fee drag.
+  // Uses cashbackNoStaking so Plutus (0% without staking) no longer wins this slot.
   const topBalanced = [...cards]
-    .filter((c) => c.availableFrance && c.stakingRequired <= 500)
-    .sort(
-      (a, b) =>
-        b.cashbackPremium - b.annualFees / 100 - (a.cashbackPremium - a.annualFees / 100)
-    )[0];
+    .filter((c) => c.availableFrance && c.annualFees < 100)
+    .sort((a, b) => {
+      const scoreA = a.cashbackNoStaking - a.annualFees / 100;
+      const scoreB = b.cashbackNoStaking - b.annualFees / 100;
+      const diff = scoreB - scoreA;
+      if (Math.abs(diff) > 0.001) return diff;
+      return b.cashbackPremium - a.cashbackPremium;
+    })[0];
 
   const usedIds = new Set<string>();
   const podium: CryptoCard[] = [];
@@ -69,7 +86,10 @@ export default function Home() {
       usedIds.add(candidate.id);
       podium.push(candidate);
     } else if (candidate && usedIds.has(candidate.id)) {
-      const fallback = cards.find((c) => !usedIds.has(c.id));
+      // Fallback: next best card by cashbackNoStaking that isn't already in podium
+      const fallback = [...cards]
+        .filter((c) => !usedIds.has(c.id))
+        .sort((a, b) => b.cashbackNoStaking - a.cashbackNoStaking)[0];
       if (fallback) {
         usedIds.add(fallback.id);
         podium.push(fallback);
