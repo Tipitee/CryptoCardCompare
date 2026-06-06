@@ -28,6 +28,7 @@ type CardRow = {
   name: string;
   issuer: string;
   cashback_base: number;
+  cashback_no_staking: number;
   cashback_premium: number;
   annual_fees: number;
   staking_required: number;
@@ -56,6 +57,7 @@ function rowToCard(row: CardRow): CryptoCard {
     name: row.name,
     issuer: row.issuer,
     cashbackBase: Number(row.cashback_base),
+    cashbackNoStaking: Number(row.cashback_no_staking),
     cashbackPremium: Number(row.cashback_premium),
     annualFees: Number(row.annual_fees),
     stakingRequired: Number(row.staking_required),
@@ -83,7 +85,7 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   let query = supabase
     .from('cards')
     .select(
-      'id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions'
+      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions'
     )
     .neq('status', 'discontinued');
   if (market) {

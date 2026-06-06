@@ -3,6 +3,7 @@ export interface CryptoCard {
   name: string;
   issuer: string;
   cashbackBase: number;
+  cashbackNoStaking: number;
   cashbackPremium: number;
   annualFees: number;
   stakingRequired: number;

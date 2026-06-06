@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { AlertTriangle, Info, TrendingUp } from 'lucide-react';
+import { AlertTriangle, Info, TrendingUp, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import type { SimulatorSpending } from '../types/card';
@@ -44,12 +44,27 @@ export default function Simulator() {
     return cards
       .map((c) => {
         const stakingMet = c.stakingRequired <= stakingBudget;
-        const effectiveRate = stakingMet ? c.cashbackBase : c.cashbackBase * 0.5;
+        // Use the real no-staking rate when staking requirement is not met,
+        // rather than an arbitrary 50% penalty.
+        const effectiveRate = stakingMet ? c.cashbackBase : c.cashbackNoStaking;
         const rewards = yearly * (effectiveRate / 100);
         const net = rewards - c.annualFees;
-        return { card: c, rewards, net, stakingMet };
+        const ratePenalized = !stakingMet && c.cashbackNoStaking < c.cashbackBase;
+        return { card: c, rewards, net, effectiveRate, stakingMet, ratePenalized };
       })
-      .sort((a, b) => b.net - a.net);
+      .sort((a, b) => {
+        const diff = b.net - a.net;
+        if (Math.abs(diff) > 0.01) return diff;
+        // Tiebreaker 1: higher cashback premium (potential upside if staking added)
+        const premiumDiff = b.card.cashbackPremium - a.card.cashbackPremium;
+        if (Math.abs(premiumDiff) > 0.001) return premiumDiff;
+        // Tiebreaker 2: free withdrawals
+        if (a.card.freeWithdrawals !== b.card.freeWithdrawals) {
+          return a.card.freeWithdrawals ? -1 : 1;
+        }
+        // Tiebreaker 3: lower staking requirement
+        return a.card.stakingRequired - b.card.stakingRequired;
+      });
   }, [cards, yearly, stakingBudget]);
 
   const top5 = results.slice(0, 5).map((r) => ({
@@ -186,6 +201,17 @@ export default function Simulator() {
                     <strong className="text-white">{best.card.name}</strong> {t('sim_best_desc_post')}{' '}
                     <strong className="text-green-accent">{fmtEUR(best.net)}</strong> {t('sim_best_desc_net')} ({fmtEUR(best.card.annualFees)}).
                   </p>
+                  {best.card.cashbackPremium > best.effectiveRate && (
+                    <div className="mt-3 flex items-start gap-2 rounded-lg bg-cyan-accent/10 border border-cyan-accent/20 px-3 py-2 text-xs text-cyan-300">
+                      <Zap className="w-4 h-4 shrink-0 mt-0.5 text-cyan-accent" />
+                      <span>
+                        {t('sim_premium_hint_pre')}{' '}
+                        <strong className="text-white">{best.card.cashbackPremium}%</strong>{' '}
+                        {t('sim_premium_hint_post')}{' '}
+                        <strong className="text-amber-300">{fmtEUR(best.card.stakingRequired)}</strong>
+                      </span>
+                    </div>
+                  )}
                   {best.card.stakingRequired > 0 && !best.stakingMet && (
                     <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-500/10 border border-amber-500/30 px-3 py-2 text-xs text-amber-300">
                       <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
@@ -265,6 +291,9 @@ export default function Simulator() {
                       {t('sim_col_staking')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                      {t('sim_col_rate')}
+                    </th>
+                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
                       {t('sim_col_cashback')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
@@ -289,6 +318,13 @@ export default function Simulator() {
                           <span className="font-medium text-white">{r.card.name}</span>
                           {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
                         </div>
+                        {r.card.cashbackPremium > r.effectiveRate && (
+                          <div className="ml-7 mt-0.5 text-xs text-slate-500">
+                            {t('sim_potential_prefix')}{' '}
+                            <span className="text-amber-400/80">{r.card.cashbackPremium}%</span>
+                            {' '}{t('sim_potential_suffix')}
+                          </div>
+                        )}
                       </td>
                       <td className="px-4 py-3 text-right">
                         {r.card.stakingRequired === 0 ? (
@@ -298,6 +334,16 @@ export default function Simulator() {
                             {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
                             {fmtEUR(r.card.stakingRequired)}
                           </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <span className={`font-mono text-sm font-semibold ${r.ratePenalized ? 'text-amber-400' : 'text-slate-200'}`}>
+                          {r.effectiveRate}%
+                        </span>
+                        {r.ratePenalized && (
+                          <div className="text-xs text-slate-500 text-right">
+                            ({r.card.cashbackBase}% {t('sim_rate_with_staking')})
+                          </div>
                         )}
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-slate-300">
