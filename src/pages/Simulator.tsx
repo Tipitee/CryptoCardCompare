@@ -28,6 +28,35 @@ function loadMode(): SimMode {
   return 'base';
 }
 
+type ChartEntry = {
+  name: string;
+  net: number;
+  issuer: string;
+  stakingMet: boolean;
+  bestCategoryLabel: string | null;
+};
+
+function ChartTooltip({ active, payload, label }: {
+  active?: boolean;
+  payload?: Array<{ payload: ChartEntry }>;
+  label?: string;
+}) {
+  if (!active || !payload?.length) return null;
+  const item = payload[0].payload;
+  return (
+    <div style={{ background: '#111624', border: '1px solid #1F2739', borderRadius: 8, padding: '10px 14px', color: '#fff' }}>
+      <div className="font-semibold text-sm">{label}</div>
+      <div className="font-mono text-green-400 mt-1">{fmtEUR(item.net)}</div>
+      {item.bestCategoryLabel && (
+        <div className="flex items-center gap-1 text-amber-300 text-xs mt-1.5">
+          <Zap className="w-3 h-3" />
+          <span>{item.bestCategoryLabel}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Simulator() {
   const { t } = useTranslation('common');
   const cards = useAppStore((s) => s.cards);
@@ -43,14 +72,14 @@ export default function Simulator() {
     try { localStorage.setItem('ccc_sim_mode', mode); } catch { /* ignore */ }
   };
 
-  const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string }[] = [
-    { key: 'online', label: t('sim_cat_online'), hint: t('sim_cat_online_hint') },
-    { key: 'restaurants', label: t('sim_cat_restaurants'), hint: t('sim_cat_restaurants_hint') },
-    { key: 'travel', label: t('sim_cat_travel'), hint: t('sim_cat_travel_hint') },
-    { key: 'streaming', label: t('sim_cat_streaming'), hint: t('sim_cat_streaming_hint') },
-    { key: 'transport', label: t('sim_cat_transport'), hint: t('sim_cat_transport_hint') },
-    { key: 'supermarket', label: t('sim_cat_supermarket'), hint: t('sim_cat_supermarket_hint') },
-    { key: 'misc', label: t('sim_cat_misc'), hint: t('sim_cat_misc_hint') },
+  const CATEGORIES: { key: keyof SimulatorSpending; label: string; hint: string; badgeLabel: string }[] = [
+    { key: 'online', label: t('sim_cat_online'), hint: t('sim_cat_online_hint'), badgeLabel: t('sim_cat_online_badge') },
+    { key: 'restaurants', label: t('sim_cat_restaurants'), hint: t('sim_cat_restaurants_hint'), badgeLabel: t('sim_cat_restaurants_badge') },
+    { key: 'travel', label: t('sim_cat_travel'), hint: t('sim_cat_travel_hint'), badgeLabel: t('sim_cat_travel_badge') },
+    { key: 'streaming', label: t('sim_cat_streaming'), hint: t('sim_cat_streaming_hint'), badgeLabel: t('sim_cat_streaming_badge') },
+    { key: 'transport', label: t('sim_cat_transport'), hint: t('sim_cat_transport_hint'), badgeLabel: t('sim_cat_transport_badge') },
+    { key: 'supermarket', label: t('sim_cat_supermarket'), hint: t('sim_cat_supermarket_hint'), badgeLabel: t('sim_cat_supermarket_badge') },
+    { key: 'misc', label: t('sim_cat_misc'), hint: t('sim_cat_misc_hint'), badgeLabel: t('sim_cat_misc_badge') },
   ];
 
   const monthlyTotal = useMemo(
@@ -60,39 +89,81 @@ export default function Simulator() {
   const yearly = monthlyTotal * 12;
 
   const results = useMemo(() => {
+    // Annual spending per category
+    const annualByCategory = (Object.keys(spending) as (keyof SimulatorSpending)[]).reduce(
+      (acc, k) => ({ ...acc, [k]: spending[k] * 12 }),
+      {} as Record<keyof SimulatorSpending, number>
+    );
+
     return cards
       .map((c) => {
         const stakingMet = c.stakingRequired <= stakingBudget;
-        // Base mode: guaranteed flat rate on all spending.
-        // Optimistic mode: max achievable rate when staking is met.
-        const effectiveRate = stakingMet
-          ? simMode === 'optimistic' ? c.cashbackPremium : c.cashbackBase
+        const rates = c.categoryRates ?? {};
+
+        // Default flat rate when no specific category rate is set
+        const defaultRate = stakingMet
+          ? (simMode === 'optimistic' ? c.cashbackPremium : c.cashbackBase)
           : c.cashbackNoStaking;
-        const rewards = yearly * (effectiveRate / 100);
+
+        // Per-category calculation
+        const rewards = (Object.entries(annualByCategory) as [keyof SimulatorSpending, number][]).reduce(
+          (sum, [cat, amount]) => {
+            // Category rates only apply when staking is met; otherwise use default (noStaking)
+            const catRate = (stakingMet ? (rates[cat] ?? defaultRate) : defaultRate) / 100;
+            return sum + amount * catRate;
+          },
+          0
+        );
+
+        const effectiveRate = yearly > 0 ? (rewards / yearly) * 100 : defaultRate;
         const net = rewards - c.annualFees;
         const ratePenalized = !stakingMet && c.cashbackNoStaking < c.cashbackBase;
-        return { card: c, rewards, net, effectiveRate, stakingMet, ratePenalized };
+
+        // Find the category where this card provides the biggest boost over its default rate
+        let bestCategory: keyof SimulatorSpending | null = null;
+        let bestBoostValue = 0;
+        if (stakingMet && Object.keys(rates).length > 0) {
+          for (const [cat, amount] of Object.entries(annualByCategory) as [keyof SimulatorSpending, number][]) {
+            const catRate = rates[cat];
+            if (catRate !== undefined && catRate > defaultRate) {
+              const boostValue = (catRate - defaultRate) * (amount / 100);
+              if (boostValue > bestBoostValue) {
+                bestBoostValue = boostValue;
+                bestCategory = cat;
+              }
+            }
+          }
+          // Only show badge when boost is meaningful (> €1/year)
+          if (bestBoostValue < 1) bestCategory = null;
+        }
+
+        // Rate is "custom" when any category deviates from default
+        const hasCustomRates = stakingMet && Object.keys(rates).some(
+          (cat) => rates[cat as keyof typeof rates] !== undefined && rates[cat as keyof typeof rates] !== defaultRate
+        );
+
+        return { card: c, rewards, net, effectiveRate, stakingMet, ratePenalized, bestCategory, hasCustomRates };
       })
       .sort((a, b) => {
         const diff = b.net - a.net;
         if (Math.abs(diff) > 0.01) return diff;
-        // Tiebreaker 1: higher cashback premium (potential upside if staking added)
         const premiumDiff = b.card.cashbackPremium - a.card.cashbackPremium;
         if (Math.abs(premiumDiff) > 0.001) return premiumDiff;
-        // Tiebreaker 2: free withdrawals
         if (a.card.freeWithdrawals !== b.card.freeWithdrawals) {
           return a.card.freeWithdrawals ? -1 : 1;
         }
-        // Tiebreaker 3: lower staking requirement
         return a.card.stakingRequired - b.card.stakingRequired;
       });
-  }, [cards, yearly, stakingBudget, simMode]);
+  }, [cards, spending, yearly, stakingBudget, simMode]);
 
-  const top5 = results.slice(0, 5).map((r) => ({
+  const top5: ChartEntry[] = results.slice(0, 5).map((r) => ({
     name: r.card.name,
     net: Math.round(r.net),
     issuer: r.card.issuer,
     stakingMet: r.stakingMet,
+    bestCategoryLabel: r.bestCategory
+      ? (CATEGORIES.find((c) => c.key === r.bestCategory)?.badgeLabel ?? null)
+      : null,
   }));
 
   const best = results[0];
@@ -243,8 +314,16 @@ export default function Simulator() {
               <div className="flex flex-col sm:flex-row items-start gap-5">
                 <SmartCardImage card={best.card} size="md" />
                 <div className="flex-1">
-                  <div className="font-display font-bold text-xl text-white">
-                    {best.card.name}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <div className="font-display font-bold text-xl text-white">
+                      {best.card.name}
+                    </div>
+                    {best.bestCategory && (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20">
+                        <Zap className="w-3 h-3" />
+                        {CATEGORIES.find((c) => c.key === best.bestCategory)?.badgeLabel}
+                      </span>
+                    )}
                   </div>
                   <div className="text-sm text-slate-400 mb-3">{best.card.issuer}</div>
                   <p className="text-sm text-slate-300 leading-relaxed">
@@ -310,16 +389,7 @@ export default function Simulator() {
                       axisLine={{ stroke: '#1F2739' }}
                       tickFormatter={(v) => `${v}€`}
                     />
-                    <Tooltip
-                      cursor={{ fill: 'rgba(0,212,255,0.05)' }}
-                      contentStyle={{
-                        background: '#111624',
-                        border: '1px solid #1F2739',
-                        borderRadius: 8,
-                        color: '#fff',
-                      }}
-                      formatter={(v: number) => [fmtEUR(Number(v) || 0), t('sim_tooltip_net')]}
-                    />
+                    <Tooltip content={<ChartTooltip />} cursor={{ fill: 'rgba(0,212,255,0.05)' }} />
                     <Bar dataKey="net" radius={[6, 6, 0, 0]}>
                       {top5.map((_, i) => (
                         <Cell key={i} fill={i === 0 ? '#00FF85' : '#00D4FF'} opacity={1 - i * 0.12} />
@@ -368,12 +438,18 @@ export default function Simulator() {
                       className="border-b border-bg-border last:border-0 hover:bg-bg-elevated/30"
                     >
                       <td className="px-4 py-3">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-xs text-slate-500 font-mono w-5">
                             #{i + 1}
                           </span>
                           <span className="font-medium text-white">{r.card.name}</span>
                           {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
+                          {r.bestCategory && (
+                            <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20">
+                              <Zap className="w-2.5 h-2.5" />
+                              {CATEGORIES.find((c) => c.key === r.bestCategory)?.badgeLabel}
+                            </span>
+                          )}
                         </div>
                         {simMode === 'base' && r.card.cashbackPremium > r.effectiveRate && (
                           <div className="ml-7 mt-0.5 text-xs text-slate-500">
@@ -400,8 +476,11 @@ export default function Simulator() {
                         )}
                       </td>
                       <td className="px-4 py-3 text-right">
-                        <span className={`font-mono text-sm font-semibold ${r.ratePenalized ? 'text-amber-400' : 'text-slate-200'}`}>
-                          {r.effectiveRate}%
+                        <span
+                          className={`font-mono text-sm font-semibold ${r.ratePenalized ? 'text-amber-400' : 'text-slate-200'}`}
+                          title={r.hasCustomRates ? t('sim_rate_weighted_tooltip') : undefined}
+                        >
+                          {r.hasCustomRates ? '~' : ''}{r.effectiveRate.toFixed(1)}%
                         </span>
                         {r.ratePenalized && (
                           <div className="text-xs text-slate-500 text-right">

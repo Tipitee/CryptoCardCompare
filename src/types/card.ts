@@ -24,6 +24,15 @@ export interface CryptoCard {
   status: 'active' | 'discontinued' | 'coming_soon';
   virtualOnly: boolean;
   marketRestrictions: Record<string, string>;
+  categoryRates?: {
+    online?: number;
+    restaurants?: number;
+    travel?: number;
+    streaming?: number;
+    transport?: number;
+    supermarket?: number;
+    misc?: number;
+  };
 }
 
 export interface QuizAnswers {

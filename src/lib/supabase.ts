@@ -49,6 +49,7 @@ type CardRow = {
   status: 'active' | 'discontinued' | 'coming_soon' | null;
   virtual_only: boolean | null;
   market_restrictions: Record<string, string> | null;
+  category_rates: Record<string, number> | null;
 };
 
 function rowToCard(row: CardRow): CryptoCard {
@@ -78,6 +79,7 @@ function rowToCard(row: CardRow): CryptoCard {
     status: row.status ?? 'active',
     virtualOnly: row.virtual_only ?? false,
     marketRestrictions: row.market_restrictions ?? {},
+    categoryRates: (row.category_rates as CryptoCard['categoryRates']) ?? {},
   };
 }
 
@@ -85,7 +87,7 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   let query = supabase
     .from('cards')
     .select(
-      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions'
+      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates'
     )
     .neq('status', 'discontinued');
   if (market) {
