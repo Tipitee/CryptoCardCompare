@@ -20,6 +20,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct } from '../utils/format';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
+import TrustBadge from '../components/TrustBadge';
 import type { CryptoCard } from '../types/card';
 
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
@@ -32,6 +33,7 @@ export default function Home() {
   const toggleCompare = useAppStore((s) => s.toggleCompare);
   const clearCompare = useAppStore((s) => s.clearCompare);
   const [filter, setFilter] = useState<FilterKey>('all');
+  const [minTrust, setMinTrust] = useState<0 | 50 | 75>(0);
   const [detail, setDetail] = useState<CryptoCard | null>(null);
   const navigate = useNavigate();
   const { t } = useTranslation('common');
@@ -98,19 +100,26 @@ export default function Home() {
   }
 
   const filtered = useMemo(() => {
+    let result = cards;
     switch (filter) {
       case 'no_fees':
-        return cards.filter((c) => c.annualFees === 0);
+        result = result.filter((c) => c.annualFees === 0);
+        break;
       case 'high_cashback':
-        return cards.filter((c) => c.cashbackPremium >= 3);
+        result = result.filter((c) => c.cashbackPremium >= 3);
+        break;
       case 'no_staking':
-        return cards.filter((c) => c.stakingRequired === 0);
+        result = result.filter((c) => c.stakingRequired === 0);
+        break;
       case 'france':
-        return cards.filter((c) => c.availableFrance);
-      default:
-        return cards;
+        result = result.filter((c) => c.availableFrance);
+        break;
     }
-  }, [cards, filter]);
+    if (minTrust > 0) {
+      result = result.filter((c) => (c.trustScore ?? 0) >= minTrust);
+    }
+    return result;
+  }, [cards, filter, minTrust]);
 
   const heroCards = cards.slice(0, 3);
 
@@ -286,6 +295,30 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Trust score filter */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="text-xs text-slate-400 shrink-0">{t('trust_min_filter')}</span>
+          <div className="flex gap-1.5">
+            {([0, 50, 75] as const).map((v) => (
+              <button
+                key={v}
+                onClick={() => setMinTrust(v)}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold border transition-all ${
+                  minTrust === v
+                    ? v === 0
+                      ? 'bg-slate-700/60 border-slate-500 text-white'
+                      : v === 50
+                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300'
+                      : 'bg-green-accent/10 border-green-accent/40 text-green-accent'
+                    : 'bg-bg-elevated border-bg-border text-slate-400 hover:text-white hover:border-slate-600'
+                }`}
+              >
+                {v === 0 ? t('trust_filter_all') : v === 50 ? `≥50 ${t('trust_moderate')}` : `≥75 ${t('trust_very_reliable')}`}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((card) => {
             const isFav = favorites.includes(card.id);
@@ -363,6 +396,11 @@ export default function Home() {
                       </dd>
                     </div>
                   </dl>
+                  {card.trustScore !== undefined && (
+                    <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
+                      <TrustBadge card={card} />
+                    </div>
+                  )}
                 </button>
               </div>
             );

@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { AlertTriangle, Check, ExternalLink, Star, X } from 'lucide-react';
+import { AlertTriangle, Check, ExternalLink, Shield, Star, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
+import TrustBadge from './TrustBadge';
 import { useAppStore } from '../store/useAppStore';
 import { fmtEUR, fmtPct } from '../utils/format';
 
@@ -146,6 +147,16 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             <Pill ok={card.freeWithdrawals} label={t('cards:card_free_withdrawals')} />
             <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
           </section>
+
+          {card.trustScore !== undefined && (
+            <section className="mb-6 p-4 rounded-xl bg-bg-elevated border border-bg-border">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5" />
+                {t('common:trust_score')}
+              </h3>
+              <TrustBadge card={card} variant="detail" />
+            </section>
+          )}
 
           <div className="flex gap-2">
             <button

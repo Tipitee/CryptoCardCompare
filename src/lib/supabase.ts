@@ -50,6 +50,12 @@ type CardRow = {
   virtual_only: boolean | null;
   market_restrictions: Record<string, string> | null;
   category_rates: Record<string, number> | null;
+  trust_score: number | null;
+  founded_year: number | null;
+  regulation_level: string | null;
+  trustpilot_score: number | null;
+  aum_tier: string | null;
+  trust_breakdown: Record<string, unknown> | null;
 };
 
 function rowToCard(row: CardRow): CryptoCard {
@@ -80,6 +86,12 @@ function rowToCard(row: CardRow): CryptoCard {
     virtualOnly: row.virtual_only ?? false,
     marketRestrictions: row.market_restrictions ?? {},
     categoryRates: (row.category_rates as CryptoCard['categoryRates']) ?? {},
+    trustScore: row.trust_score ?? undefined,
+    foundedYear: row.founded_year ?? undefined,
+    regulationLevel: row.regulation_level ?? undefined,
+    trustpilotScore: row.trustpilot_score ?? null,
+    aumTier: row.aum_tier ?? undefined,
+    trustBreakdown: (row.trust_breakdown as CryptoCard['trustBreakdown']) ?? undefined,
   };
 }
 
@@ -87,7 +99,7 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   let query = supabase
     .from('cards')
     .select(
-      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates'
+      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates, trust_score, founded_year, regulation_level, trustpilot_score, aum_tier, trust_breakdown'
     )
     .neq('status', 'discontinued');
   if (market) {

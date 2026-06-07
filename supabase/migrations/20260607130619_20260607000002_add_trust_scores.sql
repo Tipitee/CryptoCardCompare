@@ -1,0 +1,122 @@
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS trust_score INTEGER DEFAULT NULL;
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS founded_year INTEGER DEFAULT NULL;
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS regulation_level TEXT DEFAULT NULL;
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS trustpilot_score NUMERIC(3,1) DEFAULT NULL;
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS aum_tier TEXT DEFAULT NULL;
+ALTER TABLE cards ADD COLUMN IF NOT EXISTS trust_breakdown JSONB DEFAULT NULL;
+
+-- Populate known cards with trust data
+UPDATE cards c SET
+  trust_score = v.trust_score,
+  founded_year = v.founded_year,
+  regulation_level = v.reg,
+  trustpilot_score = v.tp,
+  aum_tier = v.aum,
+  trust_breakdown = v.breakdown::jsonb
+FROM (VALUES
+  -- High trust (banking + established)
+  ('revolut-metal',          96, 2015, 'banking',  4.3, 'very_large', '{"age":11,"regulation":"banking","trustpilot":4.3,"aum":"very_large"}'),
+  ('kraken-krak-card',       90, 2011, 'mica_fca', 4.1, 'large',      '{"age":15,"regulation":"mica_fca","trustpilot":4.1,"aum":"large"}'),
+  ('bitpanda-card',          88, 2014, 'mica_fca', 3.9, 'medium',     '{"age":12,"regulation":"mica_fca","trustpilot":3.9,"aum":"medium"}'),
+  ('trade-republic-card',    88, 2015, 'banking',  4.5, 'medium',     '{"age":11,"regulation":"banking","trustpilot":4.5,"aum":"medium"}'),
+  ('nexo-card',              75, 2018, 'mica_fca', 3.5, 'medium',     '{"age":8,"regulation":"mica_fca","trustpilot":3.5,"aum":"medium"}'),
+  ('uphold-card',            70, 2013, 'mica_fca', 3.7, 'medium',     '{"age":13,"regulation":"mica_fca","trustpilot":3.7,"aum":"medium"}'),
+  ('coinbase-card',          72, 2012, 'mica_fca', 1.7, 'very_large', '{"age":14,"regulation":"mica_fca","trustpilot":1.7,"aum":"very_large"}'),
+  ('wirex-elite',            73, 2014, 'mica_fca', 3.8, 'medium',     '{"age":12,"regulation":"mica_fca","trustpilot":3.8,"aum":"medium"}'),
+  ('wirex-standard',         73, 2014, 'mica_fca', 3.8, 'medium',     '{"age":12,"regulation":"mica_fca","trustpilot":3.8,"aum":"medium"}'),
+  ('xapo-card',              65, 1998, 'mica_fca', NULL,'small',      '{"age":28,"regulation":"mica_fca","trustpilot":null,"aum":"small"}'),
+  ('fiat24-debit',           65, 2019, 'banking',  NULL,'small',      '{"age":7,"regulation":"banking","trustpilot":null,"aum":"small"}'),
+  -- Crypto.com family
+  ('crypto-com-midnight-blue', 68, 2016, 'standard', 1.3, 'large',   '{"age":10,"regulation":"standard","trustpilot":1.3,"aum":"large"}'),
+  ('crypto-com-ruby-steel',    68, 2016, 'standard', 1.3, 'large',   '{"age":10,"regulation":"standard","trustpilot":1.3,"aum":"large"}'),
+  ('crypto-com-jade-green',    68, 2016, 'standard', 1.3, 'large',   '{"age":10,"regulation":"standard","trustpilot":1.3,"aum":"large"}'),
+  ('crypto-com-royal-indigo',  68, 2016, 'standard', 1.3, 'large',   '{"age":10,"regulation":"standard","trustpilot":1.3,"aum":"large"}'),
+  ('crypto-com-frosted-rose',  68, 2016, 'standard', 1.3, 'large',   '{"age":10,"regulation":"standard","trustpilot":1.3,"aum":"large"}'),
+  -- Moderate trust
+  ('deblock-card',           60, 2021, 'standard', 3.5, 'small',     '{"age":5,"regulation":"standard","trustpilot":3.5,"aum":"small"}'),
+  ('bybit-card',             58, 2018, 'standard', 2.0, 'large',     '{"age":8,"regulation":"standard","trustpilot":2.0,"aum":"large"}'),
+  ('okx-card',               62, 2017, 'standard', 2.5, 'large',     '{"age":9,"regulation":"standard","trustpilot":2.5,"aum":"large"}'),
+  ('metamask-card',          58, 2016, 'standard', 3.0, 'medium',    '{"age":10,"regulation":"standard","trustpilot":3.0,"aum":"medium"}'),
+  ('gnosis-pay-card',        55, 2019, 'standard', NULL,'medium',    '{"age":7,"regulation":"standard","trustpilot":null,"aum":"medium"}'),
+  ('bit2me-card',            55, 2015, 'standard', 2.5, 'small',     '{"age":11,"regulation":"standard","trustpilot":2.5,"aum":"small"}'),
+  ('bitrefill-card',         52, 2014, 'standard', 3.0, 'small',     '{"age":12,"regulation":"standard","trustpilot":3.0,"aum":"small"}'),
+  ('blackcatcard',           52, 2015, 'standard', 2.8, 'small',     '{"age":11,"regulation":"standard","trustpilot":2.8,"aum":"small"}'),
+  ('holyheld-card',          52, 2020, 'standard', 3.0, 'small',     '{"age":6,"regulation":"standard","trustpilot":3.0,"aum":"small"}'),
+  ('brighty-card',           50, 2021, 'standard', 3.0, 'small',     '{"age":5,"regulation":"standard","trustpilot":3.0,"aum":"small"}'),
+  ('1inch-card',             50, 2019, 'standard', NULL,'medium',    '{"age":7,"regulation":"standard","trustpilot":null,"aum":"medium"}'),
+  ('coinzoom-card',          50, 2017, 'standard', 2.5, 'small',     '{"age":9,"regulation":"standard","trustpilot":2.5,"aum":"small"}'),
+  ('cex-io-card',            55, 2013, 'standard', 3.5, 'medium',    '{"age":13,"regulation":"standard","trustpilot":3.5,"aum":"medium"}'),
+  ('bitget-card',            52, 2018, 'standard', 2.8, 'medium',    '{"age":8,"regulation":"standard","trustpilot":2.8,"aum":"medium"}'),
+  ('whitebit-nova',          48, 2018, 'standard', 3.5, 'medium',    '{"age":8,"regulation":"standard","trustpilot":3.5,"aum":"medium"}'),
+  ('cardano-card',           52, 2017, 'standard', NULL,'medium',    '{"age":9,"regulation":"standard","trustpilot":null,"aum":"medium"}'),
+  ('young-platform-card',    52, 2019, 'standard', 3.5, 'small',     '{"age":7,"regulation":"standard","trustpilot":3.5,"aum":"small"}'),
+  ('solid-card',             42, 2020, 'standard', NULL,'small',     '{"age":6,"regulation":"standard","trustpilot":null,"aum":"small"}'),
+  ('exodus-spend-card',      50, 2015, 'basic',    3.2, 'small',     '{"age":11,"regulation":"basic","trustpilot":3.2,"aum":"small"}'),
+  ('redotpay-card',          45, 2018, 'standard', NULL,'small',     '{"age":8,"regulation":"standard","trustpilot":null,"aum":"small"}'),
+  ('trastra-crypto-card',    45, 2018, 'standard', NULL,'small',     '{"age":8,"regulation":"standard","trustpilot":null,"aum":"small"}'),
+  ('ether-fi-cash',          42, 2022, 'standard', NULL,'small',     '{"age":4,"regulation":"standard","trustpilot":null,"aum":"small"}'),
+  ('mexc-ether-fi-card',     45, 2018, 'standard', NULL,'medium',    '{"age":8,"regulation":"standard","trustpilot":null,"aum":"medium"}'),
+  ('solflare-card',          45, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('avalanche-card',         42, 2020, 'standard', NULL,'medium',    '{"age":6,"regulation":"standard","trustpilot":null,"aum":"medium"}'),
+  ('xportal-card',           35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  -- Low trust (new / minimal regulation)
+  ('bleap-crypto-card',      28, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('plutus-card',            38, 2015, 'basic',    2.0, 'small',     '{"age":11,"regulation":"basic","trustpilot":2.0,"aum":"small"}'),
+  ('kast-card',              26, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('coca-visa-card',         35, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('tap-card',               38, 2019, 'basic',    NULL,'small',     '{"age":7,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('tria-card',              35, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('rebind-card',            35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('kardpay-card',           30, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('solcard',                30, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('kucard',                 35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('ready-card',             30, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('rizon-visa-card',        30, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('kolo-card',              28, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('ugly-visa-card',         30, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('kem-infinity-card',      25, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('cryptolife-card',        35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('xplace-card',            28, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('coin98-fusion-card',     32, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('nebeus-card',            35, 2019, 'basic',    NULL,'small',     '{"age":7,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('utorg-crypto-card',      35, 2019, 'standard', NULL,'small',     '{"age":7,"regulation":"standard","trustpilot":null,"aum":"small"}'),
+  ('avici-card',             25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('wallbit-card',           25, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('quicko-digital-card',    25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('pexx-card',              25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('tuyo-card',              25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('bitnob-virtual-card',    28, 2019, 'basic',    NULL,'small',     '{"age":7,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('trustee-plus-card',      35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('swype-fun-card',         25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('tonhub-card',            30, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('exa-card',               28, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('pintopay-card',          25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('spritz-card',            30, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('plasma-one-card',        25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('moonwell-card',          28, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('fuse-card',              28, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('ur-debit-card',          25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('offramp-spend-card',     25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('thorwallet-card',        30, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('zebec-card',             28, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('banxe-card',             35, 2020, 'basic',    NULL,'small',     '{"age":6,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('based-card',             25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('onboard-flex-card',      25, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('laso-card',              25, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('stables-card',           30, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('chainscard',             28, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('pay3-card',              25, 2023, 'basic',    NULL,'small',     '{"age":3,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('senturopay-card',        25, 2022, 'basic',    NULL,'small',     '{"age":4,"regulation":"basic","trustpilot":null,"aum":"small"}'),
+  ('cypher-card',            28, 2021, 'basic',    NULL,'small',     '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}')
+) AS v(id, trust_score, founded_year, reg, tp, aum, breakdown)
+WHERE c.id = v.id::text;
+
+-- Default fallback for any remaining cards without trust data
+UPDATE cards SET
+  trust_score = 30,
+  founded_year = 2021,
+  regulation_level = 'basic',
+  trustpilot_score = NULL,
+  aum_tier = 'small',
+  trust_breakdown = '{"age":5,"regulation":"basic","trustpilot":null,"aum":"small"}'::jsonb
+WHERE trust_score IS NULL;

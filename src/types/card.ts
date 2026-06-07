@@ -33,6 +33,17 @@ export interface CryptoCard {
     supermarket?: number;
     misc?: number;
   };
+  trustScore?: number;
+  foundedYear?: number;
+  regulationLevel?: string;
+  trustpilotScore?: number | null;
+  aumTier?: string;
+  trustBreakdown?: {
+    age?: number;
+    regulation?: string;
+    trustpilot?: number | null;
+    aum?: string;
+  };
 }
 
 export interface QuizAnswers {
