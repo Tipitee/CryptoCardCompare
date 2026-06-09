@@ -19,7 +19,6 @@ import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { fmtEUR, fmtPct } from '../utils/format';
-import { renderMarkdown } from '../utils/markdown';
 
 export default function CardDetail() {
   const { id } = useParams<{ id: string }>();
@@ -32,7 +31,8 @@ export default function CardDetail() {
   const [card, setCard] = useState<CryptoCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [article, setArticle] = useState<{ title: string; content: string; meta_title: string; meta_description: string; excerpt: string } | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [article, setArticle] = useState<any>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -47,8 +47,7 @@ export default function CardDetail() {
   }, [id]);
 
   useEffect(() => {
-    if (!id || !lang) return;
-    fetchCardArticle(id, lang).then((data) => setArticle(data));
+    if (id && lang) fetchCardArticle(id, lang).then(setArticle);
   }, [id, lang]);
 
   if (loading) {
@@ -209,20 +208,10 @@ export default function CardDetail() {
 
             {/* Article content */}
             {article?.content && (
-              <section className="card-surface p-6">
-                {article.title && (
-                  <h2 className="text-xl font-display font-bold text-white mb-4">{article.title}</h2>
-                )}
-                {article.excerpt && (
-                  <p className="text-slate-300 leading-relaxed mb-6 pb-6 border-b border-bg-border font-medium">
-                    {article.excerpt}
-                  </p>
-                )}
-                <div
-                  className="prose-crypto"
-                  dangerouslySetInnerHTML={{ __html: renderMarkdown(article.content) }}
-                />
-              </section>
+              <div
+                className="card-surface p-6 mb-6 prose prose-invert prose-sm max-w-none prose-h2:text-cyan-accent prose-a:text-cyan-accent"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              />
             )}
 
             {/* Availability */}

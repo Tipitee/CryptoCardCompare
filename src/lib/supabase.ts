@@ -110,13 +110,10 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   return (data as CardRow[]).map(rowToCard);
 }
 
-export async function fetchCardArticle(
-  cardId: string,
-  lang = 'fr'
-): Promise<{ title: string; content: string; meta_title: string; meta_description: string; excerpt: string } | null> {
+export async function fetchCardArticle(cardId: string, lang: string) {
   const { data } = await supabase
     .from('card_articles')
-    .select('title, content, meta_title, meta_description, excerpt')
+    .select('title, excerpt, content, meta_title, meta_description, tags')
     .eq('card_id', cardId)
     .eq('lang', lang)
     .eq('published', true)
