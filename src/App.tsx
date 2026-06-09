@@ -9,6 +9,7 @@ import Recommendation from './pages/Recommendation';
 import Favorites from './pages/Favorites';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import CardDetail from './pages/CardDetail';
 import AdminBlog from './pages/AdminBlog';
 import AdminHeroImages from './pages/AdminHeroImages';
 import Impressum from './pages/Impressum';
@@ -73,6 +74,12 @@ function App() {
 
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:slug" element={<BlogPost />} />
+
+          <Route path="cartes/:id" element={<CardDetail />} />
+          <Route path="karten/:id" element={<CardDetail />} />
+          <Route path="tarjetas/:id" element={<CardDetail />} />
+          <Route path="carte/:id" element={<CardDetail />} />
+          <Route path="cards/:id" element={<CardDetail />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

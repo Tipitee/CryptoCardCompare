@@ -279,5 +279,12 @@
   "quiz_q6_desc": "Où devez-vous pouvoir utiliser la carte ?",
   "quiz_q6_opt1": "France uniquement",
   "quiz_q6_opt2": "Europe (UE)",
-  "quiz_q6_opt3": "International"
+  "quiz_q6_opt3": "International",
+
+  "card_detail_view_page": "Voir la fiche complète",
+  "card_detail_back": "Retour aux cartes",
+  "card_detail_availability": "Disponibilité",
+  "card_detail_cta_desc": "Consultez l'offre officielle pour connaître les conditions complètes et vous inscrire.",
+  "card_not_found_title": "Carte introuvable",
+  "card_not_found_desc": "Cette carte n'existe pas ou a été retirée du catalogue."
 }

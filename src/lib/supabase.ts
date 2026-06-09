@@ -110,6 +110,18 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   return (data as CardRow[]).map(rowToCard);
 }
 
+export async function fetchCardById(id: string): Promise<CryptoCard | null> {
+  const { data } = await supabase
+    .from('cards')
+    .select(
+      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates, trust_score, founded_year, regulation_level, trustpilot_score, aum_tier, trust_breakdown'
+    )
+    .eq('id', id)
+    .maybeSingle();
+  if (!data) return null;
+  return rowToCard(data as CardRow);
+}
+
 export async function fetchFavorites(): Promise<string[]> {
   const sid = getSessionId();
   const { data, error } = await supabase

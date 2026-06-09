@@ -279,5 +279,12 @@
   "quiz_q6_desc": "¿Dónde necesitas poder usar la tarjeta?",
   "quiz_q6_opt1": "Solo España",
   "quiz_q6_opt2": "Europa (UE)",
-  "quiz_q6_opt3": "Internacional"
+  "quiz_q6_opt3": "Internacional",
+
+  "card_detail_view_page": "Ver ficha completa",
+  "card_detail_back": "Volver a las tarjetas",
+  "card_detail_availability": "Disponibilidad",
+  "card_detail_cta_desc": "Visita la oferta oficial para ver los términos completos y registrarte.",
+  "card_not_found_title": "Tarjeta no encontrada",
+  "card_not_found_desc": "Esta tarjeta no existe o ha sido retirada del catálogo."
 }

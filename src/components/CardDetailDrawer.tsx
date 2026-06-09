@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import { AlertTriangle, Check, ExternalLink, Shield, Star, X } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Check, ExternalLink, Shield, Star, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
 import TrustBadge from './TrustBadge';
 import { useAppStore } from '../store/useAppStore';
+import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct } from '../utils/format';
 
 interface Props {
@@ -17,6 +19,8 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
   const { t } = useTranslation(['cards', 'common']);
+  const navigate = useNavigate();
+  const { getLocalizedSegment, currentLang } = useLocalizedRoute();
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -158,25 +162,38 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             </section>
           )}
 
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
             <button
-              onClick={() => toggleFavorite(card.id)}
-              className={`btn-secondary flex-1 ${
-                isFav ? 'border-green-accent/50 text-green-accent' : ''
-              }`}
+              onClick={() => {
+                const segment = getLocalizedSegment('cards');
+                onClose();
+                navigate(`/${currentLang}/${segment}/${card.id}`);
+              }}
+              className="btn-secondary w-full"
             >
-              <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
-              {t('common:nav_favorites')}
+              <ArrowRight className="w-4 h-4" />
+              {t('common:card_detail_view_page')}
             </button>
-            <a
-              href={card.affiliateLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary flex-1"
-            >
-              {t('common:quiz_see_offer')}
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            <div className="flex gap-2">
+              <button
+                onClick={() => toggleFavorite(card.id)}
+                className={`btn-secondary flex-1 ${
+                  isFav ? 'border-green-accent/50 text-green-accent' : ''
+                }`}
+              >
+                <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
+                {t('common:nav_favorites')}
+              </button>
+              <a
+                href={card.affiliateLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary flex-1"
+              >
+                {t('common:quiz_see_offer')}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
       </aside>

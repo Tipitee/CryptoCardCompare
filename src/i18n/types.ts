@@ -19,6 +19,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     recommendation: 'recommandation',
     favorites: 'favoris',
     blog: 'blog',
+    cards: 'cartes',
   },
   de: {
     compare: 'vergleich',
@@ -26,6 +27,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     recommendation: 'empfehlung',
     favorites: 'favoriten',
     blog: 'blog',
+    cards: 'karten',
   },
   es: {
     compare: 'comparar',
@@ -33,6 +35,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     recommendation: 'recomendacion',
     favorites: 'favoritos',
     blog: 'blog',
+    cards: 'tarjetas',
   },
   it: {
     compare: 'confronto',
@@ -40,6 +43,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     recommendation: 'raccomandazione',
     favorites: 'preferiti',
     blog: 'blog',
+    cards: 'carte',
   },
   en: {
     compare: 'compare',
@@ -47,5 +51,6 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     recommendation: 'recommendation',
     favorites: 'favorites',
     blog: 'blog',
+    cards: 'cards',
   },
 };

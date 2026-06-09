@@ -279,5 +279,12 @@
   "quiz_q6_desc": "Wo müssen Sie die Karte nutzen können?",
   "quiz_q6_opt1": "Nur Deutschland",
   "quiz_q6_opt2": "Europa (EU)",
-  "quiz_q6_opt3": "International"
+  "quiz_q6_opt3": "International",
+
+  "card_detail_view_page": "Vollständige Kartenseite anzeigen",
+  "card_detail_back": "Zurück zu den Karten",
+  "card_detail_availability": "Verfügbarkeit",
+  "card_detail_cta_desc": "Besuchen Sie das offizielle Angebot, um die vollständigen Bedingungen einzusehen.",
+  "card_not_found_title": "Karte nicht gefunden",
+  "card_not_found_desc": "Diese Karte existiert nicht oder wurde aus dem Katalog entfernt."
 }

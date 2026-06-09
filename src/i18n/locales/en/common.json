@@ -279,5 +279,12 @@
   "quiz_q6_desc": "Where do you need to be able to use the card?",
   "quiz_q6_opt1": "UK only",
   "quiz_q6_opt2": "Europe (EU)",
-  "quiz_q6_opt3": "International"
+  "quiz_q6_opt3": "International",
+
+  "card_detail_view_page": "View full card page",
+  "card_detail_back": "Back to cards",
+  "card_detail_availability": "Availability",
+  "card_detail_cta_desc": "Visit the official offer to see full terms and conditions and sign up.",
+  "card_not_found_title": "Card not found",
+  "card_not_found_desc": "This card does not exist or has been removed from the catalogue."
 }
