@@ -209,7 +209,7 @@ export default function CardDetail() {
             {/* Article content */}
             {article?.content && (
               <div
-                className="card-surface p-6 mb-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-cyan-accent [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:border-cyan-accent/20 [&_h2]:pb-2 [&_p]:text-slate-300 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-2 [&_li]:text-slate-300 [&_li]:leading-relaxed [&_a]:text-cyan-accent [&_a]:underline [&_a:hover]:text-white [&_a]:font-medium [&_strong]:text-white [&_strong]:font-semibold [&_p:first-child]:text-base [&_p:first-child]:text-slate-200 [&_p:first-child]:leading-relaxed"
+                className="card-surface p-6 mb-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-cyan-accent [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:border-cyan-accent/20 [&_h2]:pb-2 [&_p]:text-slate-300 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-2 [&_li]:text-slate-300 [&_li]:leading-relaxed [&_a]:text-cyan-accent [&_a]:underline [&_a:hover]:text-white [&_a]:font-medium [&_strong]:text-white [&_strong]:font-semibold [&_table]:w-full [&_table]:border-collapse [&_table]:mb-6 [&_table]:text-sm [&_th]:bg-bg-elevated [&_th]:text-slate-300 [&_th]:font-semibold [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:border [&_th]:border-bg-border [&_td]:px-3 [&_td]:py-2 [&_td]:text-slate-300 [&_td]:border [&_td]:border-bg-border [&_tr:hover]:bg-bg-elevated/30"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
             )}
