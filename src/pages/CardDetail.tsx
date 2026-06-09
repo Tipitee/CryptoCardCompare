@@ -209,7 +209,7 @@ export default function CardDetail() {
             {/* Article content */}
             {article?.content && (
               <div
-                className="card-surface p-6 mb-6 prose prose-invert prose-sm max-w-none prose-h2:text-cyan-accent prose-a:text-cyan-accent"
+                className="card-surface p-6 mb-6 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-cyan-accent [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:border-cyan-accent/20 [&_h2]:pb-2 [&_p]:text-slate-300 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ul]:space-y-2 [&_li]:text-slate-300 [&_li]:leading-relaxed [&_a]:text-cyan-accent [&_a]:underline [&_a:hover]:text-white [&_a]:font-medium [&_strong]:text-white [&_strong]:font-semibold [&_p:first-child]:text-base [&_p:first-child]:text-slate-200 [&_p:first-child]:leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
             )}
