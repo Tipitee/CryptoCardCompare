@@ -11,24 +11,28 @@ import {
   X,
 } from 'lucide-react';
 import type { CryptoCard } from '../types/card';
-import { fetchCardById } from '../lib/supabase';
+import { fetchCardById, fetchCardArticle } from '../lib/supabase';
 import SmartCardImage from '../components/SmartCardImage';
 import CryptoIcon from '../components/CryptoIcon';
 import TrustBadge from '../components/TrustBadge';
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useLanguage } from '../hooks/useLanguage';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { renderMarkdown } from '../utils/markdown';
 
 export default function CardDetail() {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation(['cards', 'common']);
   const { getRoute } = useLocalizedRoute();
+  const lang = useLanguage();
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
 
   const [card, setCard] = useState<CryptoCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [article, setArticle] = useState<{ title: string; content: string; meta_title: string; meta_description: string; excerpt: string } | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -41,6 +45,11 @@ export default function CardDetail() {
       })
       .finally(() => setLoading(false));
   }, [id]);
+
+  useEffect(() => {
+    if (!id || !lang) return;
+    fetchCardArticle(id, lang).then((data) => setArticle(data));
+  }, [id, lang]);
 
   if (loading) {
     return (
@@ -197,6 +206,24 @@ export default function CardDetail() {
                 <StatCard label={t('cards:card_network')} value={card.cardNetwork} />
               </div>
             </section>
+
+            {/* Article content */}
+            {article?.content && (
+              <section className="card-surface p-6">
+                {article.title && (
+                  <h2 className="text-xl font-display font-bold text-white mb-4">{article.title}</h2>
+                )}
+                {article.excerpt && (
+                  <p className="text-slate-300 leading-relaxed mb-6 pb-6 border-b border-bg-border font-medium">
+                    {article.excerpt}
+                  </p>
+                )}
+                <div
+                  className="prose-crypto"
+                  dangerouslySetInnerHTML={{ __html: renderMarkdown(article.content) }}
+                />
+              </section>
+            )}
 
             {/* Availability */}
             <section>
