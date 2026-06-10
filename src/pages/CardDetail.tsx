@@ -50,6 +50,78 @@ export default function CardDetail() {
     if (id && lang) fetchCardArticle(id, lang).then(setArticle);
   }, [id, lang]);
 
+  useEffect(() => {
+    if (!card) return;
+
+    const year = new Date().getFullYear();
+    const title = article?.meta_title || `${card.name} — Avis ${year} | TopCryptoCards`;
+    const desc = article?.meta_description ||
+      `Avis complet sur la carte ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%, frais ${card.annualFees === 0 ? 'gratuit' : card.annualFees + ' €/an'}.`;
+    const image = card.realCardImage || 'https://topcryptocards.eu/og-default.jpg';
+    const url = window.location.href;
+
+    const prevTitle = document.title;
+    document.title = title;
+
+    function upsertMeta(attr: string, key: string, value: string) {
+      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+      const wasNew = !el;
+      if (!el) { el = document.createElement('meta') as HTMLMetaElement; el.setAttribute(attr, key); document.head.appendChild(el); }
+      const prev = el.getAttribute('content') || '';
+      el.setAttribute('content', value);
+      return { el: el as Element, wasNew, prev };
+    }
+
+    const metas = [
+      upsertMeta('name', 'description', desc),
+      upsertMeta('property', 'og:title', title),
+      upsertMeta('property', 'og:description', desc),
+      upsertMeta('property', 'og:image', image),
+      upsertMeta('property', 'og:url', url),
+      upsertMeta('property', 'og:type', 'article'),
+      upsertMeta('name', 'twitter:title', title),
+      upsertMeta('name', 'twitter:image', image),
+    ];
+
+    // Schema.org FinancialProduct
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FinancialProduct',
+      name: card.name,
+      description: article?.excerpt || desc,
+      url: `https://topcryptocards.eu/${lang}/cartes/${card.id}`,
+      image: card.realCardImage || '',
+      provider: { '@type': 'Organization', name: card.issuer },
+      feesAndCommissionsSpecification: card.annualFees > 0 ? `${card.annualFees} €/an` : 'Gratuit',
+      offers: {
+        '@type': 'Offer',
+        price: String(card.annualFees || 0),
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+      },
+      additionalProperty: [
+        { '@type': 'PropertyValue', name: 'Cashback', value: `${card.cashbackPremium || card.cashbackBase || 0}%` },
+        { '@type': 'PropertyValue', name: 'Réseau', value: card.cardNetwork || 'Visa/Mastercard' },
+      ],
+    };
+
+    document.getElementById('schema-financial-product')?.remove();
+    const schemaEl = document.createElement('script');
+    schemaEl.id = 'schema-financial-product';
+    schemaEl.type = 'application/ld+json';
+    schemaEl.textContent = JSON.stringify(schema);
+    document.head.appendChild(schemaEl);
+
+    return () => {
+      document.title = prevTitle;
+      document.getElementById('schema-financial-product')?.remove();
+      metas.forEach(({ el, wasNew, prev }) => {
+        if (wasNew) el.remove();
+        else el.setAttribute('content', prev);
+      });
+    };
+  }, [card, article, lang]);
+
   if (loading) {
     return (
       <div className="container-app py-12 max-w-4xl">
@@ -110,7 +182,7 @@ export default function CardDetail() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg/80 pointer-events-none" />
         <div className="container-app py-10 relative">
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-            <SmartCardImage card={card} size="lg" className="shrink-0" />
+            <SmartCardImage card={card} size="lg" className="shrink-0" priority />
             <div className="flex-1 min-w-0">
               {card.badge && (
                 <span

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -123,6 +123,66 @@ export default function Home() {
 
   const heroCards = cards.slice(0, 3);
 
+  useEffect(() => {
+    if (cards.length === 0) return;
+
+    const year = new Date().getFullYear();
+    const title = `Comparatif Cartes Crypto ${year} — Cashback, Frais, Avis | TopCryptoCards`;
+    const desc = `Comparez les ${cards.length} meilleures cartes crypto disponibles en Europe. Cashback, frais, disponibilité France, avis détaillés. Trouvez la carte idéale en 2 minutes.`;
+
+    const prevTitle = document.title;
+    document.title = title;
+
+    function upsertMeta(attr: string, key: string, value: string) {
+      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
+      const wasNew = !el;
+      if (!el) { el = document.createElement('meta') as HTMLMetaElement; el.setAttribute(attr, key); document.head.appendChild(el); }
+      const prev = el.getAttribute('content') || '';
+      el.setAttribute('content', value);
+      return { el: el as Element, wasNew, prev };
+    }
+
+    const metas = [
+      upsertMeta('name', 'description', desc),
+      upsertMeta('property', 'og:title', title),
+      upsertMeta('property', 'og:description', desc),
+      upsertMeta('property', 'og:url', window.location.href),
+    ];
+
+    // Schema.org ItemList
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: `Meilleures cartes crypto ${year}`,
+      description: 'Comparatif des meilleures cartes crypto disponibles en Europe',
+      url: window.location.href,
+      numberOfItems: Math.min(cards.length, 10),
+      itemListElement: cards.slice(0, 10).map((card, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: card.name,
+        url: `https://topcryptocards.eu/fr/cartes/${card.id}`,
+        image: card.realCardImage || '',
+      })),
+    };
+
+    document.getElementById('schema-item-list')?.remove();
+    const schemaEl = document.createElement('script');
+    schemaEl.id = 'schema-item-list';
+    schemaEl.type = 'application/ld+json';
+    schemaEl.textContent = JSON.stringify(schema);
+    document.head.appendChild(schemaEl);
+
+    return () => {
+      document.title = prevTitle;
+      document.getElementById('schema-item-list')?.remove();
+      metas.forEach(({ el, wasNew, prev }) => {
+        if (wasNew) el.remove();
+        else el.setAttribute('content', prev);
+      });
+    };
+  }, [cards]);
+
   return (
     <div>
       <section className="relative overflow-hidden">
@@ -180,7 +240,7 @@ export default function Home() {
                 className="absolute top-28 right-10"
                 style={{ transform: 'rotate(5deg)' }}
               >
-                <SmartCardImage card={heroCards[0]} size="lg" />
+                <SmartCardImage card={heroCards[0]} size="lg" priority />
               </div>
             )}
           </div>

@@ -7,6 +7,7 @@ interface Props {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   tilt?: boolean;
   className?: string;
+  priority?: boolean;
 }
 
 const SIZE_CLASSES: Record<string, string> = {
@@ -16,10 +17,18 @@ const SIZE_CLASSES: Record<string, string> = {
   lg: 'w-[340px] h-[210px]',
 };
 
-export default function SmartCardImage({ card, size = 'md', tilt = false, className = '' }: Props) {
+const SIZE_DIMS: Record<string, { width: number; height: number }> = {
+  xs: { width: 144, height: 90 },
+  sm: { width: 224, height: 144 },
+  md: { width: 288, height: 176 },
+  lg: { width: 340, height: 210 },
+};
+
+export default function SmartCardImage({ card, size = 'md', tilt = false, className = '', priority = false }: Props) {
   const [errored, setErrored] = useState(false);
 
   const sizeClass = SIZE_CLASSES[size];
+  const dims = SIZE_DIMS[size];
 
   if (!card.realCardImage || errored) {
     return <CardVisual card={card} size={size} tilt={tilt} className={`flex-none shrink-0 ${className}`} />;
@@ -35,8 +44,11 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
       <img
         src={card.realCardImage}
         alt={alt}
-        loading="lazy"
-        decoding="async"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding={priority ? 'sync' : 'async'}
+        width={dims.width}
+        height={dims.height}
         onError={() => setErrored(true)}
         className="absolute inset-0 w-full h-full object-cover"
       />
