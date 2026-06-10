@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import {
   AlertTriangle,
+  ArrowRight,
   Check,
   Clock,
   LayoutGrid,
@@ -33,9 +34,22 @@ const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB',
 };
 
+const COMPARE_PREFIX: Record<string, string> = {
+  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+};
+
+const QUICK_COMPARE_LABELS: Record<string, { title: string; cardA: string; cardB: string; btn: string }> = {
+  fr: { title: 'Comparer deux cartes en détail', cardA: 'Carte A', cardB: 'Carte B', btn: 'Comparer' },
+  de: { title: 'Zwei Karten detailliert vergleichen', cardA: 'Karte A', cardB: 'Karte B', btn: 'Vergleichen' },
+  es: { title: 'Comparar dos tarjetas en detalle', cardA: 'Tarjeta A', cardB: 'Tarjeta B', btn: 'Comparar' },
+  it: { title: 'Confronta due carte in dettaglio', cardA: 'Carta A', cardB: 'Carta B', btn: 'Confronta' },
+  en: { title: 'Compare two cards in detail', cardA: 'Card A', cardB: 'Card B', btn: 'Compare' },
+};
+
 export default function Compare() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
@@ -63,6 +77,10 @@ export default function Compare() {
   const [copied, setCopied] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [recentSessions, setRecentSessions] = useState<CompareSession[]>([]);
+
+  // Quick Compare state
+  const [quickA, setQuickA] = useState('');
+  const [quickB, setQuickB] = useState('');
 
   const [search, setSearch] = useState('');
   const [minCashback, setMinCashback] = useState(0);
@@ -113,6 +131,12 @@ export default function Compare() {
     } catch {
       // ignore
     }
+  };
+
+  const handleQuickCompare = () => {
+    if (!quickA || !quickB || quickA === quickB) return;
+    const prefix = COMPARE_PREFIX[lang] ?? 'compare';
+    navigate(`/${lang}/${prefix}/${quickA}-vs-${quickB}`);
   };
 
   const filteredTable = useMemo(() => {
@@ -323,6 +347,9 @@ export default function Compare() {
     freeWdOnly ||
     selectedCryptos.length > 0;
 
+  const qcLabels = QUICK_COMPARE_LABELS[lang] ?? QUICK_COMPARE_LABELS.en;
+  const sortedForSelect = [...allCards].sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div className="container-app py-10">
       <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -363,6 +390,52 @@ export default function Compare() {
           </div>
         </div>
       </header>
+
+      {/* ── Quick Compare ── */}
+      <div className="card-surface p-5 mb-6 border-cyan-accent/20">
+        <div className="text-xs font-semibold uppercase tracking-wider text-cyan-accent mb-3 flex items-center gap-1.5">
+          <ArrowRight className="w-3.5 h-3.5" />
+          {qcLabels.title}
+        </div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <select
+            value={quickA}
+            onChange={(e) => setQuickA(e.target.value)}
+            className="flex-1 input-field"
+          >
+            <option value="">{qcLabels.cardA}</option>
+            {sortedForSelect.map((c) => (
+              <option key={c.id} value={c.id} disabled={c.id === quickB}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+
+          <span className="text-slate-500 font-semibold text-sm hidden sm:block">VS</span>
+
+          <select
+            value={quickB}
+            onChange={(e) => setQuickB(e.target.value)}
+            className="flex-1 input-field"
+          >
+            <option value="">{qcLabels.cardB}</option>
+            {sortedForSelect.map((c) => (
+              <option key={c.id} value={c.id} disabled={c.id === quickA}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+
+          <button
+            onClick={handleQuickCompare}
+            disabled={!quickA || !quickB || quickA === quickB}
+            className="btn-primary text-sm whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {qcLabels.btn}
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </button>
+        </div>
+      </div>
 
       <div className="card-surface p-4 mb-4">
         <div className="flex flex-wrap items-center gap-3">
