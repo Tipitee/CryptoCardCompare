@@ -42,11 +42,16 @@ export function getEquivalentRoute(
   const currentLang = getLanguageFromPath(pathname);
   const parts = pathname.split('/').filter(Boolean);
 
-  if (parts.length === 0 || parts[0] === currentLang) {
+  if (parts.length === 0) {
     return `/${newLang}`;
   }
 
+  // parts[0] is always the current lang prefix — skip it
   const routeParts = parts.slice(1);
+
+  if (routeParts.length === 0) {
+    return `/${newLang}`;
+  }
 
   const routeKey = Object.entries(ROUTE_TRANSLATIONS[currentLang]).find(
     ([_, value]) => value === routeParts[0]
