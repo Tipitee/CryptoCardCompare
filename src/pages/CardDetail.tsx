@@ -159,6 +159,14 @@ export default function CardDetail() {
   const isFav = favorites.includes(card.id);
   const restrictionEntries = Object.entries(card.marketRestrictions);
 
+  // Split article content: main body (+ thematic/comparison links) vs FAQ section
+  const faqSep = '<div data-faq="v1"';
+  const faqIdx = article?.content ? article.content.indexOf(faqSep) : -1;
+  const articleMainHtml = article?.content
+    ? (faqIdx > 0 ? article.content.slice(0, faqIdx) : article.content)
+    : '';
+  const articleFaqHtml = faqIdx > 0 ? (article.content as string).slice(faqIdx) : '';
+
   return (
     <div className="animate-fade-in">
       {/* Breadcrumb */}
@@ -277,25 +285,19 @@ export default function CardDetail() {
                 <StatCard label={t('cards:card_network')} value={card.cardNetwork} />
               </div>
             </section>
-<style>{`
-  .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
-  .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
-  .card-article p  { margin-bottom: 1rem; line-height: 1.7; }
-  .card-article ul, .card-article ol { margin: 0.75rem 0 1rem 1.5rem; }
-  .card-article li { margin-bottom: 0.4rem; }
-`}</style>
-{/* Article content */}
-{article?.content && (
-  <div
-    className="card-surface card-article p-6 mb-6"
-    dangerouslySetInnerHTML={{ __html: article.content }}
-  />
-)}
-            {/* Article content */}
-            {article?.content && (
+
+            {/* Article content — main body + thematic/comparison links */}
+            <style>{`
+              .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
+              .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
+              .card-article p  { margin-bottom: 1rem; line-height: 1.7; }
+              .card-article ul, .card-article ol { margin: 0.75rem 0 1rem 1.5rem; }
+              .card-article li { margin-bottom: 0.4rem; }
+            `}</style>
+            {articleMainHtml && (
               <div
                 className="card-surface card-article p-6 mb-6"
-                dangerouslySetInnerHTML={{ __html: article.content }}
+                dangerouslySetInnerHTML={{ __html: articleMainHtml }}
               />
             )}
 
@@ -349,6 +351,14 @@ export default function CardDetail() {
                   ))}
                 </div>
               </section>
+            )}
+
+            {/* FAQ — rendered last, just above footer */}
+            {articleFaqHtml && (
+              <div
+                className="card-surface card-article p-6"
+                dangerouslySetInnerHTML={{ __html: articleFaqHtml }}
+              />
             )}
           </div>
 
