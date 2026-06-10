@@ -1,11 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+import { supabase } from '../lib/supabase';
 
 const YEAR = new Date().getFullYear();
 
@@ -67,12 +62,16 @@ const THEME_CONFIG: Record<string, Record<string, { title: string; h1: string; d
 
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   best:          () => true,
-  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) >= 1,
+  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
   'no-fees':     (c) => (c.annual_fees || 0) === 0,
   'no-staking':  (c) => (c.staking_required || 0) === 0,
   france:        (c) => Array.isArray(c.markets) ? c.markets.includes('fr') : true,
   virtual:       (c) => c.virtual_only === true,
   beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
+};
+
+const THEME_LIMIT: Record<string, number> = {
+  best: 15,
 };
 
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
@@ -109,10 +108,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const filterFn = THEME_FILTERS[theme] || (() => true);
   const sortFn   = THEME_SORT[theme]   || (() => 0);
 
-  const filteredCards = useMemo(
-    () => [...cards].filter(filterFn).sort(sortFn),
-    [cards, theme]
-  );
+  const filteredCards = useMemo(() => {
+    const sorted = [...cards].filter(filterFn).sort(sortFn);
+    const limit = THEME_LIMIT[theme];
+    return limit ? sorted.slice(0, limit) : sorted;
+  }, [cards, theme]);
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
 
@@ -172,12 +172,13 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               to={`/${lang}/${segment}/${card.id}`}
               className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block"
             >
-              {(card.real_card_image || card.image_url) && (
+              {card.real_card_image && (
                 <img
-                  src={card.real_card_image || card.image_url}
+                  src={card.real_card_image}
                   alt={card.name}
                   className="w-full h-32 object-contain mb-3"
                   loading="lazy"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
               )}
               <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
