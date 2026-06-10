@@ -61,13 +61,17 @@ const THEME_CONFIG: Record<string, Record<string, { title: string; h1: string; d
 };
 
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
-  best:          (c) => (c.trust_score || 0) >= 50,
-  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) >= 2,
-  'no-fees':     (c) => (c.annual_fees || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 1,
-  'no-staking':  (c) => (c.staking_required || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 1,
+  best:          () => true,
+  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
+  'no-fees':     (c) => (c.annual_fees || 0) === 0,
+  'no-staking':  (c) => (c.staking_required || 0) === 0,
   france:        (c) => Array.isArray(c.markets) ? c.markets.includes('fr') : true,
   virtual:       (c) => c.virtual_only === true,
-  beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 0.5,
+  beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
+};
+
+const THEME_LIMIT: Record<string, number> = {
+  best: 15,
 };
 
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
@@ -104,10 +108,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const filterFn = THEME_FILTERS[theme] || (() => true);
   const sortFn   = THEME_SORT[theme]   || (() => 0);
 
-  const filteredCards = useMemo(
-    () => [...cards].filter(filterFn).sort(sortFn),
-    [cards, theme]
-  );
+  const filteredCards = useMemo(() => {
+    const sorted = [...cards].filter(filterFn).sort(sortFn);
+    const limit = THEME_LIMIT[theme];
+    return limit ? sorted.slice(0, limit) : sorted;
+  }, [cards, theme]);
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
 
