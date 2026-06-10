@@ -176,7 +176,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                 <img
                   src={card.real_card_image}
                   alt={card.name}
-                  className="w-full h-32 object-contain mb-3"
+                  className="w-full h-32 object-contain mb-3 rounded-lg"
                   loading="lazy"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
