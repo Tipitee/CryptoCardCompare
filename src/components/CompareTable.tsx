@@ -21,6 +21,10 @@ interface Props {
   onToggleFavorite: (id: string) => void;
   onToggleCompare: (id: string) => void;
   best: Record<string, string> | null;
+  // Quick-select A/B
+  onCardClick?: (id: string) => void;
+  quickSelectA?: string;
+  quickSelectB?: string;
 }
 
 export default function CompareTable({
@@ -33,6 +37,9 @@ export default function CompareTable({
   onToggleFavorite,
   onToggleCompare,
   best,
+  onCardClick,
+  quickSelectA,
+  quickSelectB,
 }: Props) {
   const ariaSort = (key: SortKey): 'ascending' | 'descending' | 'none' =>
     sortKey === key ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none';
@@ -105,6 +112,10 @@ export default function CompareTable({
               best={best}
               onToggleFav={() => onToggleFavorite(c.id)}
               onToggleCompare={() => onToggleCompare(c.id)}
+              onCardClick={onCardClick ? () => onCardClick(c.id) : undefined}
+              quickSlot={
+                quickSelectA === c.id ? 'A' : quickSelectB === c.id ? 'B' : null
+              }
             />
           ))}
           {cards.length === 0 && (
@@ -171,6 +182,8 @@ function Row({
   best,
   onToggleFav,
   onToggleCompare,
+  onCardClick,
+  quickSlot,
 }: {
   card: CryptoCard;
   isFav: boolean;
@@ -178,20 +191,61 @@ function Row({
   best: Record<string, string> | null;
   onToggleFav: () => void;
   onToggleCompare: () => void;
+  onCardClick?: () => void;
+  quickSlot: 'A' | 'B' | null;
 }) {
   const isBest = (key: string) => best && best[key] === card.id;
+
+  const slotColor =
+    quickSlot === 'A'
+      ? 'bg-cyan-accent text-bg font-bold'
+      : 'bg-green-accent text-bg font-bold';
+
   return (
-    <tr className="border-b border-bg-border hover:bg-bg-elevated/40 transition-colors">
-      <td className="sticky left-0 z-10 bg-bg-card hover:bg-bg-elevated/80 px-4 py-3 min-w-[300px]">
+    <tr
+      className={`border-b border-bg-border transition-colors ${
+        quickSlot
+          ? quickSlot === 'A'
+            ? 'bg-cyan-accent/5 hover:bg-cyan-accent/10'
+            : 'bg-green-accent/5 hover:bg-green-accent/10'
+          : 'hover:bg-bg-elevated/40'
+      }`}
+    >
+      <td className={`sticky left-0 z-10 px-4 py-3 min-w-[300px] ${
+        quickSlot
+          ? quickSlot === 'A'
+            ? 'bg-cyan-accent/5'
+            : 'bg-green-accent/5'
+          : 'bg-bg-card hover:bg-bg-elevated/80'
+      }`}>
         <div className="flex items-center gap-3">
-          <SmartCardImage card={card} size="xs" />
-          <div>
-            <div className="font-semibold text-white text-sm flex items-center gap-2">
-              {card.name}
-              {card.badge && <span className="badge-accent">{card.badge}</span>}
+          {/* Clickable image + name area */}
+          <button
+            onClick={onCardClick}
+            disabled={!onCardClick}
+            className={`flex items-center gap-3 flex-1 text-left ${onCardClick ? 'cursor-pointer group' : ''}`}
+            title={onCardClick ? (quickSlot ? `Carte ${quickSlot} sélectionnée` : 'Cliquer pour sélectionner') : undefined}
+          >
+            <div className="relative shrink-0">
+              <SmartCardImage card={card} size="xs" />
+              {quickSlot && (
+                <span
+                  className={`absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-[10px] flex items-center justify-center shadow ${slotColor}`}
+                >
+                  {quickSlot}
+                </span>
+              )}
             </div>
-            <div className="text-xs text-slate-500">{card.issuer}</div>
-          </div>
+            <div>
+              <div className={`font-semibold text-sm flex items-center gap-2 transition-colors ${
+                onCardClick ? 'group-hover:text-cyan-accent' : ''
+              } ${quickSlot === 'A' ? 'text-cyan-accent' : quickSlot === 'B' ? 'text-green-accent' : 'text-white'}`}>
+                {card.name}
+                {card.badge && <span className="badge-accent">{card.badge}</span>}
+              </div>
+              <div className="text-xs text-slate-500">{card.issuer}</div>
+            </div>
+          </button>
         </div>
       </td>
       <td className="px-4 py-3 whitespace-nowrap">
@@ -244,7 +298,7 @@ function Row({
       <td className="px-4 py-3 whitespace-nowrap">
         <div className="flex items-center gap-1.5">
           <button
-            onClick={onToggleCompare}
+            onClick={(e) => { e.stopPropagation(); onToggleCompare(); }}
             aria-label={inCompare ? 'Retirer de la comparaison' : 'Ajouter à la comparaison'}
             aria-pressed={inCompare}
             className={`p-1.5 rounded-lg transition-colors ${
@@ -256,7 +310,7 @@ function Row({
             {inCompare ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           </button>
           <button
-            onClick={onToggleFav}
+            onClick={(e) => { e.stopPropagation(); onToggleFav(); }}
             aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
             className={`p-1.5 rounded-lg transition-colors ${
               isFav
@@ -270,6 +324,7 @@ function Row({
             href={card.affiliateLink}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
             Offre
