@@ -1,275 +1,520 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowRight, Check, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import {
+  ArrowLeft,
+  Award,
+  Check,
+  ChevronRight,
+  ExternalLink,
+  Minus,
+  Star,
+  X,
+} from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
+import { useLanguage } from '../hooks/useLanguage';
+import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import type { CryptoCard } from '../types/card';
+import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 
-const CARD_SEGMENT: Record<string, string> = {
-  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
-};
+// ─── SEO copy per language ────────────────────────────────────────────────────
 
-const LABELS: Record<string, {
-  vs: string;
-  fees: string;
-  cashback: string;
-  staking: string;
-  dailyLimit: string;
-  freeWd: string;
-  availableFrance: string;
-  availableEU: string;
-  network: string;
-  cryptos: string;
-  winner: string;
-  free: string;
-  none: string;
-  yes: string;
-  no: string;
-  viewDetail: string;
-  getCard: string;
-  intro: string;
-}> = {
-  fr: { vs: 'contre', fees: 'Frais annuels', cashback: 'Cashback max', staking: 'Staking requis', dailyLimit: 'Limite journalière', freeWd: 'Retraits gratuits', availableFrance: 'Disponible en France', availableEU: 'Disponible en Europe', network: 'Réseau', cryptos: 'Cryptos acceptées', winner: 'Meilleur', free: 'Gratuit', none: 'Aucun', yes: 'Oui', no: 'Non', viewDetail: 'Voir la fiche', getCard: 'Obtenir la carte', intro: 'Comparaison détaillée de' },
-  de: { vs: 'gegen', fees: 'Jahresgebühren', cashback: 'Max. Cashback', staking: 'Staking erforderlich', dailyLimit: 'Tageslimit', freeWd: 'Kostenlose Abhebungen', availableFrance: 'In Frankreich verfügbar', availableEU: 'In der EU verfügbar', network: 'Netzwerk', cryptos: 'Akzeptierte Kryptos', winner: 'Besser', free: 'Kostenlos', none: 'Keins', yes: 'Ja', no: 'Nein', viewDetail: 'Details', getCard: 'Karte holen', intro: 'Detaillierter Vergleich von' },
-  es: { vs: 'vs', fees: 'Cuotas anuales', cashback: 'Cashback máx', staking: 'Staking requerido', dailyLimit: 'Límite diario', freeWd: 'Retiros gratuitos', availableFrance: 'Disponible en Francia', availableEU: 'Disponible en Europa', network: 'Red', cryptos: 'Criptos aceptadas', winner: 'Mejor', free: 'Gratis', none: 'Ninguno', yes: 'Sí', no: 'No', viewDetail: 'Ver ficha', getCard: 'Obtener tarjeta', intro: 'Comparativa detallada de' },
-  it: { vs: 'vs', fees: 'Costi annuali', cashback: 'Cashback max', staking: 'Staking richiesto', dailyLimit: 'Limite giornaliero', freeWd: 'Prelievi gratuiti', availableFrance: 'Disponibile in Francia', availableEU: 'Disponibile in Europa', network: 'Rete', cryptos: 'Criptovalute accettate', winner: 'Migliore', free: 'Gratuito', none: 'Nessuno', yes: 'Sì', no: 'No', viewDetail: 'Vedi scheda', getCard: 'Ottieni carta', intro: 'Confronto dettagliato di' },
-  en: { vs: 'vs', fees: 'Annual fees', cashback: 'Max cashback', staking: 'Staking required', dailyLimit: 'Daily limit', freeWd: 'Free withdrawals', availableFrance: 'Available in France', availableEU: 'Available in EU', network: 'Network', cryptos: 'Accepted cryptos', winner: 'Better', free: 'Free', none: 'None', yes: 'Yes', no: 'No', viewDetail: 'View details', getCard: 'Get card', intro: 'Detailed comparison of' },
-};
+type SeoBlock = { heading: string; body: string };
 
-function Winner({ label }: { label: string }) {
+function getSeoText(
+  lang: string,
+  card1: CryptoCard | null,
+  card2: CryptoCard | null
+): SeoBlock[] {
+  const n1 = card1?.name ?? '…';
+  const n2 = card2?.name ?? '…';
+
+  const blocks: Record<string, SeoBlock[]> = {
+    fr: [
+      {
+        heading: `${n1} vs ${n2} : quelle carte crypto choisir ?`,
+        body: `Comparer ${n1} et ${n2} est une démarche essentielle avant de s'engager avec l'une ou l'autre de ces cartes crypto. Ces deux produits s'adressent à des profils différents d'investisseurs : là où l'une mise sur un cashback élevé pour les détenteurs de tokens natifs, l'autre peut séduire par des frais annuels réduits ou une plus grande accessibilité géographique. Notre comparatif met en regard leurs principales caractéristiques pour vous aider à prendre une décision éclairée.`,
+      },
+      {
+        heading: `Cashback et récompenses : avantage ${n1} ou ${n2} ?`,
+        body: `Le cashback est souvent le premier critère de sélection d'une carte crypto. ${n1} et ${n2} proposent toutes deux des niveaux de récompenses variables selon le montant de tokens stakés. En règle générale, plus le staking est élevé, plus le taux de cashback est intéressant — parfois jusqu'à 5 % ou plus. Il convient de calculer si le rendement supplémentaire justifie l'immobilisation d'un capital important, en tenant compte de la volatilité des cryptoactifs.`,
+      },
+      {
+        heading: `Frais, staking et conditions d'utilisation`,
+        body: `Au-delà du cashback, les frais annuels et les exigences de staking jouent un rôle déterminant dans la rentabilité réelle d'une carte. ${n1} et ${n2} se distinguent sur ces points : l'une peut être gratuite sous conditions, tandis que l'autre nécessite un engagement en tokens. Les retraits ATM, les devises étrangères et les éventuelles commissions mensuelles doivent également entrer dans votre analyse.`,
+      },
+      {
+        heading: `Notre verdict : ${n1} vs ${n2}`,
+        body: `En définitive, le choix entre ${n1} et ${n2} dépend de votre profil d'utilisation. Si vous voyagez fréquemment et recherchez des retraits gratuits à l'étranger, certaines cartes se démarquent clairement. Si, en revanche, vous souhaitez maximiser vos récompenses crypto au quotidien et êtes prêt à staker des tokens, d'autres critères priment. Utilisez notre simulateur pour estimer votre gain annuel réel avec chacune de ces cartes selon vos habitudes de dépenses.`,
+      },
+    ],
+    de: [
+      {
+        heading: `${n1} vs ${n2}: Welche Krypto-Karte ist die richtige?`,
+        body: `Der Vergleich von ${n1} und ${n2} ist unerlässlich, bevor man sich für eine der beiden Krypto-Karten entscheidet. Diese Produkte richten sich an unterschiedliche Anlegerprofile: Während die eine auf hohen Cashback für Native-Token-Inhaber setzt, punktet die andere möglicherweise mit niedrigeren Jahresgebühren oder besserer geografischer Verfügbarkeit. Unser Vergleich stellt die wichtigsten Merkmale gegenüber, damit Sie eine fundierte Entscheidung treffen können.`,
+      },
+      {
+        heading: `Cashback und Prämien: Vorteil ${n1} oder ${n2}?`,
+        body: `Cashback ist oft das wichtigste Auswahlkriterium für eine Krypto-Karte. Sowohl ${n1} als auch ${n2} bieten variable Prämien je nach gestakten Token-Beträgen. Als Faustregel gilt: Je höher das Staking, desto besser die Cashback-Rate — manchmal bis zu 5 % oder mehr. Sie sollten berechnen, ob die zusätzliche Rendite die Kapitalimmobilisierung rechtfertigt, unter Berücksichtigung der Volatilität von Krypto-Assets.`,
+      },
+      {
+        heading: `Gebühren, Staking und Nutzungsbedingungen`,
+        body: `Neben dem Cashback spielen Jahresgebühren und Staking-Anforderungen eine entscheidende Rolle für die tatsächliche Rentabilität einer Karte. ${n1} und ${n2} unterscheiden sich in diesen Punkten: Eine kann unter bestimmten Bedingungen kostenlos sein, während die andere ein Token-Engagement erfordert. Auch Geldautomaten-Abhebungen, Fremdwährungsgebühren und eventuelle Monatsprovisionen sollten in Ihre Analyse einfließen.`,
+      },
+      {
+        heading: `Unser Urteil: ${n1} vs ${n2}`,
+        body: `Letztendlich hängt die Wahl zwischen ${n1} und ${n2} von Ihrem Nutzungsprofil ab. Wenn Sie häufig reisen und kostenlose Auslandsabhebungen suchen, stechen bestimmte Karten klar hervor. Wenn Sie hingegen Ihre täglichen Krypto-Prämien maximieren möchten und bereit sind, Token zu staken, haben andere Kriterien Vorrang. Nutzen Sie unseren Simulator, um Ihre tatsächliche Jahresrendite mit jeder Karte gemäß Ihren Ausgabengewohnheiten zu berechnen.`,
+      },
+    ],
+    es: [
+      {
+        heading: `${n1} vs ${n2}: ¿qué tarjeta crypto elegir?`,
+        body: `Comparar ${n1} y ${n2} es un paso esencial antes de comprometerse con cualquiera de estas tarjetas crypto. Estos productos están dirigidos a perfiles de inversores diferentes: mientras una apuesta por un alto cashback para los poseedores de tokens nativos, la otra puede resultar atractiva por sus bajas comisiones anuales o mayor accesibilidad geográfica. Nuestra comparativa pone frente a frente sus principales características para ayudarle a tomar una decisión informada.`,
+      },
+      {
+        heading: `Cashback y recompensas: ¿ventaja ${n1} o ${n2}?`,
+        body: `El cashback suele ser el primer criterio de selección de una tarjeta crypto. Tanto ${n1} como ${n2} ofrecen niveles de recompensas variables según los tokens en staking. Como regla general, cuanto mayor es el staking, más interesante es la tasa de cashback, a veces hasta el 5% o más. Conviene calcular si el rendimiento adicional justifica la inmovilización de capital, teniendo en cuenta la volatilidad de los criptoactivos.`,
+      },
+      {
+        heading: `Comisiones, staking y condiciones de uso`,
+        body: `Más allá del cashback, las comisiones anuales y los requisitos de staking son determinantes para la rentabilidad real de una tarjeta. ${n1} y ${n2} se distinguen en estos aspectos: una puede ser gratuita bajo ciertas condiciones, mientras la otra requiere un compromiso en tokens. Los retiros en cajero, las divisas extranjeras y las posibles comisiones mensuales también deben tenerse en cuenta en su análisis.`,
+      },
+      {
+        heading: `Nuestro veredicto: ${n1} vs ${n2}`,
+        body: `En definitiva, la elección entre ${n1} y ${n2} depende de su perfil de uso. Si viaja con frecuencia y busca retiros gratuitos en el extranjero, algunas tarjetas destacan claramente. Si, por el contrario, desea maximizar sus recompensas crypto diarias y está dispuesto a hacer staking de tokens, otros criterios prevalecen. Utilice nuestro simulador para estimar su rendimiento anual real con cada una de estas tarjetas según sus hábitos de gasto.`,
+      },
+    ],
+    it: [
+      {
+        heading: `${n1} vs ${n2}: quale carta crypto scegliere?`,
+        body: `Confrontare ${n1} e ${n2} è un passo fondamentale prima di scegliere una delle due carte crypto. Questi prodotti si rivolgono a profili di investitori diversi: mentre l'una punta su un cashback elevato per i detentori di token nativi, l'altra può risultare attraente per le commissioni annuali ridotte o per una maggiore accessibilità geografica. Il nostro confronto mette a confronto le loro principali caratteristiche per aiutarvi a prendere una decisione informata.`,
+      },
+      {
+        heading: `Cashback e premi: vantaggio ${n1} o ${n2}?`,
+        body: `Il cashback è spesso il primo criterio di selezione di una carta crypto. Sia ${n1} che ${n2} offrono livelli di ricompensa variabili in base ai token in staking. In genere, più alto è lo staking, più interessante è il tasso di cashback, a volte fino al 5% o più. È opportuno calcolare se il rendimento aggiuntivo giustifica l'immobilizzazione del capitale, tenendo conto della volatilità dei cripto-asset.`,
+      },
+      {
+        heading: `Commissioni, staking e condizioni d'uso`,
+        body: `Oltre al cashback, le commissioni annuali e i requisiti di staking svolgono un ruolo determinante nella redditività reale di una carta. ${n1} e ${n2} si differenziano su questi punti: una può essere gratuita a determinate condizioni, mentre l'altra richiede un impegno in token. Anche i prelievi ATM, le valute estere e le eventuali commissioni mensili devono rientrare nella vostra analisi.`,
+      },
+      {
+        heading: `Il nostro verdetto: ${n1} vs ${n2}`,
+        body: `In definitiva, la scelta tra ${n1} e ${n2} dipende dal vostro profilo d'uso. Se viaggiate spesso e cercate prelievi gratuiti all'estero, alcune carte si distinguono chiaramente. Se invece desiderate massimizzare le vostre ricompense crypto quotidiane e siete disposti a fare staking di token, altri criteri prevalgono. Utilizzate il nostro simulatore per stimare il vostro rendimento annuo reale con ciascuna di queste carte in base alle vostre abitudini di spesa.`,
+      },
+    ],
+    en: [
+      {
+        heading: `${n1} vs ${n2}: which crypto card should you choose?`,
+        body: `Comparing ${n1} and ${n2} is an essential step before committing to either of these crypto cards. These products target different investor profiles: while one focuses on high cashback for native token holders, the other may appeal through lower annual fees or broader geographic availability. Our comparison puts their key features side by side to help you make an informed decision.`,
+      },
+      {
+        heading: `Cashback and rewards: advantage ${n1} or ${n2}?`,
+        body: `Cashback is often the primary selection criterion for a crypto card. Both ${n1} and ${n2} offer variable reward levels depending on staked token amounts. As a general rule, the higher the staking, the better the cashback rate — sometimes up to 5% or more. It's worth calculating whether the extra return justifies locking up capital, taking into account the volatility of crypto assets.`,
+      },
+      {
+        heading: `Fees, staking requirements and conditions`,
+        body: `Beyond cashback, annual fees and staking requirements play a decisive role in a card's real profitability. ${n1} and ${n2} differ on these points: one may be free under certain conditions, while the other requires a token commitment. ATM withdrawals, foreign-currency charges and any monthly commissions should also factor into your analysis.`,
+      },
+      {
+        heading: `Our verdict: ${n1} vs ${n2}`,
+        body: `Ultimately, the choice between ${n1} and ${n2} comes down to your usage profile. If you travel frequently and want free international withdrawals, certain cards stand out clearly. If you want to maximise daily crypto rewards and are willing to stake tokens, other criteria take precedence. Use our simulator to estimate your real annual gain with each card based on your spending habits.`,
+      },
+    ],
+  };
+
+  return blocks[lang] ?? blocks.en;
+}
+
+// ─── Row definition ───────────────────────────────────────────────────────────
+
+interface CompareRow {
+  label: string;
+  key: keyof CryptoCard;
+  format: (val: unknown) => string;
+  lowerIsBetter?: boolean;
+}
+
+function getRows(t: (k: string) => string): CompareRow[] {
+  return [
+    { label: t('detail_cashback_base'), key: 'cashbackBase', format: (v) => fmtPct(v as number) },
+    { label: t('detail_cashback_premium'), key: 'cashbackPremium', format: (v) => fmtPct(v as number) },
+    { label: t('detail_annual_fees'), key: 'annualFees', format: (v) => (v as number) === 0 ? t('detail_free') : fmtEUR(v as number), lowerIsBetter: true },
+    { label: t('detail_staking_required'), key: 'stakingRequired', format: (v) => (v as number) === 0 ? t('detail_none') : fmtEUR(v as number), lowerIsBetter: true },
+    { label: t('detail_daily_limit'), key: 'dailyLimit', format: (v) => fmtEUR(v as number) },
+    { label: t('detail_network'), key: 'cardNetwork', format: (v) => String(v) },
+  ];
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function winner(row: CompareRow, c1: CryptoCard, c2: CryptoCard): 'c1' | 'c2' | 'tie' {
+  const v1 = c1[row.key] as number;
+  const v2 = c2[row.key] as number;
+  if (typeof v1 !== 'number' || typeof v2 !== 'number') return 'tie';
+  if (v1 === v2) return 'tie';
+  if (row.lowerIsBetter) return v1 < v2 ? 'c1' : 'c2';
+  return v1 > v2 ? 'c1' : 'c2';
+}
+
+// ─── Score bar ────────────────────────────────────────────────────────────────
+
+function ScoreBar({ score, max = 100 }: { score: number; max?: number }) {
+  const pct = Math.min(100, (score / max) * 100);
   return (
-    <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/15 text-green-accent border border-green-accent/30">
-      <Check className="w-2.5 h-2.5" />
-      {label}
-    </span>
+    <div className="flex items-center gap-3">
+      <div className="flex-1 h-2 bg-bg-elevated rounded-full overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-cyan-accent to-green-accent rounded-full transition-all duration-700"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+      <span className="text-sm font-mono font-semibold text-white w-10 text-right">
+        {score}
+      </span>
+    </div>
   );
 }
 
+// ─── Main component ───────────────────────────────────────────────────────────
+
 export default function ComparisonPage() {
-  const { lang = 'fr', slug = '' } = useParams<{ lang: string; slug: string }>();
+  const { slug } = useParams<{ slug: string }>();
+  const { t } = useTranslation('common');
+  const lang = useLanguage();
+  const { getRoute } = useLocalizedRoute();
   const allCards = useAppStore((s) => s.cards);
+  const favorites = useAppStore((s) => s.favorites);
+  const toggleFavorite = useAppStore((s) => s.toggleFavorite);
+
   const [detail, setDetail] = useState<CryptoCard | null>(null);
 
-  const L = LABELS[lang] || LABELS.en;
-  const segment = CARD_SEGMENT[lang] || 'cards';
-
-  // Parse slug: "card1-id-vs-card2-id" — split on "-vs-"
-  const vsIndex = slug.indexOf('-vs-');
-  const id1 = vsIndex > -1 ? slug.slice(0, vsIndex) : '';
-  const id2 = vsIndex > -1 ? slug.slice(vsIndex + 4) : '';
+  // Parse slug
+  const vsIndex = (slug ?? '').indexOf('-vs-');
+  const id1 = vsIndex > -1 ? (slug ?? '').slice(0, vsIndex) : '';
+  const id2 = vsIndex > -1 ? (slug ?? '').slice(vsIndex + 4) : '';
 
   const card1 = allCards.find((c) => c.id === id1) ?? null;
   const card2 = allCards.find((c) => c.id === id2) ?? null;
 
-  // SEO
-  useEffect(() => {
-    if (!card1 || !card2) return;
-    document.title = `${card1.name} ${L.vs} ${card2.name} ${new Date().getFullYear()} — TopCryptoCards`;
-    let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'description';
-      document.head.appendChild(meta);
-    }
-    meta.content = `${L.intro} ${card1.name} et ${card2.name} : cashback, frais, staking, disponibilité. Quelle carte est la meilleure ?`;
-  }, [card1, card2, lang]);
+  const rows = getRows(t);
+  const seoBlocks = getSeoText(lang, card1, card2);
 
-  if (!card1 || !card2) {
+  // Not found state
+  if (allCards.length > 0 && (!card1 || !card2)) {
     return (
       <div className="container-app py-20 text-center">
-        <p className="text-slate-400">Chargement…</p>
+        <p className="text-slate-400 text-lg mb-6">{t('comparison_not_found')}</p>
+        <Link to={getRoute('compare')} className="btn-primary">
+          <ArrowLeft className="w-4 h-4" />
+          {t('comparison_back')}
+        </Link>
       </div>
     );
   }
 
-  type Row = {
-    label: string;
-    v1: string | number;
-    v2: string | number;
-    winner: 1 | 2 | null;
-    bool?: boolean;
-  };
+  // Loading state
+  if (!card1 || !card2) {
+    return (
+      <div className="container-app py-20 text-center">
+        <div className="animate-pulse text-slate-500">{t('comparison_loading')}</div>
+      </div>
+    );
+  }
 
-  const rows: Row[] = [
-    {
-      label: L.cashback,
-      v1: fmtPct(card1.cashbackPremium),
-      v2: fmtPct(card2.cashbackPremium),
-      winner: card1.cashbackPremium > card2.cashbackPremium ? 1 : card2.cashbackPremium > card1.cashbackPremium ? 2 : null,
-    },
-    {
-      label: L.fees,
-      v1: card1.annualFees === 0 ? L.free : fmtEUR(card1.annualFees),
-      v2: card2.annualFees === 0 ? L.free : fmtEUR(card2.annualFees),
-      winner: card1.annualFees < card2.annualFees ? 1 : card2.annualFees < card1.annualFees ? 2 : null,
-    },
-    {
-      label: L.staking,
-      v1: card1.stakingRequired === 0 ? L.none : fmtEUR(card1.stakingRequired),
-      v2: card2.stakingRequired === 0 ? L.none : fmtEUR(card2.stakingRequired),
-      winner: card1.stakingRequired < card2.stakingRequired ? 1 : card2.stakingRequired < card1.stakingRequired ? 2 : null,
-    },
-    {
-      label: L.dailyLimit,
-      v1: fmtEUR(card1.dailyLimit),
-      v2: fmtEUR(card2.dailyLimit),
-      winner: card1.dailyLimit > card2.dailyLimit ? 1 : card2.dailyLimit > card1.dailyLimit ? 2 : null,
-    },
-    {
-      label: L.network,
-      v1: card1.cardNetwork,
-      v2: card2.cardNetwork,
-      winner: null,
-    },
-    {
-      label: L.freeWd,
-      v1: card1.freeWithdrawals ? L.yes : L.no,
-      v2: card2.freeWithdrawals ? L.yes : L.no,
-      winner: card1.freeWithdrawals && !card2.freeWithdrawals ? 1 : card2.freeWithdrawals && !card1.freeWithdrawals ? 2 : null,
-      bool: true,
-    },
-    {
-      label: L.availableFrance,
-      v1: card1.availableFrance ? L.yes : L.no,
-      v2: card2.availableFrance ? L.yes : L.no,
-      winner: null,
-      bool: true,
-    },
-    {
-      label: L.availableEU,
-      v1: card1.availableEU ? L.yes : L.no,
-      v2: card2.availableEU ? L.yes : L.no,
-      winner: null,
-      bool: true,
-    },
-  ];
+  const isFav1 = favorites.includes(card1.id);
+  const isFav2 = favorites.includes(card2.id);
 
-  const score1 = rows.filter((r) => r.winner === 1).length;
-  const score2 = rows.filter((r) => r.winner === 2).length;
+  // Scores (simple sum-based proxy)
+  const score1 = Math.round(
+    card1.cashbackPremium * 10 +
+    (card1.annualFees === 0 ? 15 : Math.max(0, 15 - card1.annualFees / 20)) +
+    (card1.stakingRequired === 0 ? 20 : Math.max(0, 20 - card1.stakingRequired / 500)) +
+    (card1.availableFrance ? 5 : 0) +
+    (card1.freeWithdrawals ? 10 : 0)
+  );
+  const score2 = Math.round(
+    card2.cashbackPremium * 10 +
+    (card2.annualFees === 0 ? 15 : Math.max(0, 15 - card2.annualFees / 20)) +
+    (card2.stakingRequired === 0 ? 20 : Math.max(0, 20 - card2.stakingRequired / 500)) +
+    (card2.availableFrance ? 5 : 0) +
+    (card2.freeWithdrawals ? 10 : 0)
+  );
+  const maxScore = Math.max(score1, score2, 1);
 
   return (
-    <div className="container-app py-10 max-w-4xl">
-      <h1 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-        {card1.name} <span className="text-slate-500 font-normal text-xl">vs</span> {card2.name}
-      </h1>
+    <div className="container-app py-10 max-w-5xl">
+      {/* Back link */}
+      <Link
+        to={getRoute('compare')}
+        className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mb-8 transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        {t('comparison_back')}
+      </Link>
 
-      {/* Card headers — clickable */}
+      {/* Page title */}
+      <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
+        {card1.name}{' '}
+        <span className="text-slate-500 font-normal">vs</span>{' '}
+        {card2.name}
+      </h1>
+      <p className="text-slate-400 text-sm mb-10">
+        {t('comparison_subtitle') || 'Comparaison détaillée • Mis à jour régulièrement'}
+      </p>
+
+      {/* ── Card headers ─────────────────────────────────────────── */}
       <div className="grid grid-cols-2 gap-4 mb-8">
-        {[card1, card2].map((card, idx) => (
-          <div key={card.id} className={`card-surface p-5 text-center ${idx === 0 ? 'border-cyan-accent/30' : 'border-green-accent/30'}`}>
+        {[{ card: card1, isFav: isFav1 }, { card: card2, isFav: isFav2 }].map(({ card, isFav }) => (
+          <div key={card.id} className="card-surface p-5 flex flex-col items-center text-center gap-4">
+            {/* Clickable image */}
             <button
               onClick={() => setDetail(card)}
-              className="w-full focus:outline-none group"
+              className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-accent rounded-xl"
+              title={card.name}
             >
-              <div style={{ borderRadius: '12px', overflow: 'hidden', width: '100%', aspectRatio: '1.586', marginBottom: '12px' }}>
-                <img
-                  src={card.realCardImage}
-                  alt={card.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  loading="lazy"
-                />
-              </div>
-              <div className="font-display font-bold text-white text-lg group-hover:text-cyan-accent transition-colors">
-                {card.name}
-              </div>
+              <SmartCardImage card={card} size="lg" />
             </button>
-            <div className="text-sm text-slate-400 mt-1 mb-4">{card.issuer}</div>
-            <div className={`text-2xl font-display font-bold mb-1 ${idx === 0 ? 'text-cyan-accent' : 'text-green-accent'}`}>
-              {score1 > score2 && idx === 0 ? '🏆 ' : score2 > score1 && idx === 1 ? '🏆 ' : ''}
-              {idx === 0 ? score1 : score2} / {rows.filter((r) => r.winner !== null).length}
-            </div>
-            <p className="text-xs text-slate-500 mb-4">{L.winner}</p>
-            <div className="flex flex-col gap-2">
+
+            {/* Name */}
+            <div>
               <button
                 onClick={() => setDetail(card)}
-                className="btn-secondary text-sm w-full"
+                className="font-display font-bold text-lg text-white hover:text-cyan-accent transition-colors"
               >
-                {L.viewDetail}
-                <ArrowRight className="w-3.5 h-3.5" />
+                {card.name}
+              </button>
+              <div className="text-sm text-slate-400">{card.issuer}</div>
+              {card.badge && (
+                <span className="badge-accent mt-1 inline-block">{card.badge}</span>
+              )}
+            </div>
+
+            {/* Score */}
+            <div className="w-full">
+              <div className="text-xs text-slate-500 mb-1.5 uppercase tracking-wider">
+                {t('comparison_score') || 'Score'}
+              </div>
+              <ScoreBar score={card === card1 ? score1 : score2} max={maxScore} />
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-2 w-full justify-center">
+              <button
+                onClick={() => toggleFavorite(card.id)}
+                className={`btn-secondary text-xs ${isFav ? 'border-green-accent/50 text-green-accent' : ''}`}
+              >
+                <Star className="w-3.5 h-3.5" fill={isFav ? 'currentColor' : 'none'} />
+                {isFav ? t('comparison_in_fav') || 'Favori' : t('comparison_add_fav') || 'Ajouter'}
+              </button>
+              <button
+                onClick={() => setDetail(card)}
+                className="btn-ghost border border-bg-border text-xs"
+              >
+                {t('comparison_details') || 'Détails'}
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
               <a
                 href={card.affiliateLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-sm w-full"
+                className="btn-ghost border border-bg-border text-xs"
               >
-                {L.getCard}
+                {t('comparison_offer') || "Voir l'offre"}
+                <ExternalLink className="w-3 h-3" />
               </a>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Comparison table */}
-      <div className="card-surface overflow-hidden mb-8">
+      {/* ── Comparison table ────────────────────────────────────── */}
+      <div className="card-surface overflow-x-auto mb-8">
         <table className="w-full text-sm">
-          <thead className="bg-bg-elevated/50 border-b border-bg-border">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide w-1/3">
-                Critère
+          <thead>
+            <tr className="border-b border-bg-border bg-bg-elevated/50">
+              <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400 w-1/3">
+                {t('comparison_criteria') || 'Critère'}
               </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-cyan-accent uppercase tracking-wide w-1/3">
+              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-cyan-accent">
                 {card1.name}
               </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-green-accent uppercase tracking-wide w-1/3">
+              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-green-accent">
                 {card2.name}
               </th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, i) => (
-              <tr key={i} className="border-b border-bg-border last:border-0">
-                <td className="px-4 py-3 text-slate-400 text-xs">{row.label}</td>
-                <td className={`px-4 py-3 text-center font-medium ${row.winner === 1 ? 'text-white' : 'text-slate-400'}`}>
-                  <span className={row.bool ? (row.v1 === L.yes ? 'text-green-accent' : 'text-slate-500') : ''}>
-                    {row.v1}
-                  </span>
-                  {row.winner === 1 && (
-                    <div className="mt-1"><Winner label={L.winner} /></div>
-                  )}
-                </td>
-                <td className={`px-4 py-3 text-center font-medium ${row.winner === 2 ? 'text-white' : 'text-slate-400'}`}>
-                  <span className={row.bool ? (row.v2 === L.yes ? 'text-green-accent' : 'text-slate-500') : ''}>
-                    {row.v2}
-                  </span>
-                  {row.winner === 2 && (
-                    <div className="mt-1"><Winner label={L.winner} /></div>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {rows.map((row) => {
+              const w = winner(row, card1, card2);
+              const val1 = row.format(card1[row.key]);
+              const val2 = row.format(card2[row.key]);
+              return (
+                <tr
+                  key={row.key as string}
+                  className="border-b border-bg-border/50 hover:bg-bg-elevated/20 transition-colors"
+                >
+                  <td className="px-5 py-3 text-slate-400 font-medium">{row.label}</td>
+                  <td className="px-5 py-3 text-center">
+                    <span
+                      className={`inline-flex items-center gap-1.5 font-semibold ${
+                        w === 'c1' ? 'text-white' : 'text-slate-400'
+                      }`}
+                    >
+                      {w === 'c1' && (
+                        <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      )}
+                      {val1}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 text-center">
+                    <span
+                      className={`inline-flex items-center gap-1.5 font-semibold ${
+                        w === 'c2' ? 'text-white' : 'text-slate-400'
+                      }`}
+                    >
+                      {w === 'c2' && (
+                        <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      )}
+                      {val2}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+
+            {/* Boolean rows */}
+            {(
+              [
+                { label: t('detail_available_france') || 'Disponible en France', key: 'availableFrance' },
+                { label: t('detail_free_withdrawals') || 'Retraits gratuits', key: 'freeWithdrawals' },
+              ] as { label: string; key: keyof CryptoCard }[]
+            ).map((row) => {
+              const v1 = !!card1[row.key];
+              const v2 = !!card2[row.key];
+              const w = v1 === v2 ? 'tie' : v1 ? 'c1' : 'c2';
+              return (
+                <tr
+                  key={row.key as string}
+                  className="border-b border-bg-border/50 hover:bg-bg-elevated/20 transition-colors"
+                >
+                  <td className="px-5 py-3 text-slate-400 font-medium">{row.label}</td>
+                  <td className="px-5 py-3 text-center">
+                    <span className={`inline-flex items-center gap-1 ${w === 'c1' ? 'text-white' : 'text-slate-500'}`}>
+                      {w === 'c1' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      {v1 ? (
+                        <Check className="w-4 h-4 text-green-accent" />
+                      ) : (
+                        <X className="w-4 h-4 text-slate-600" />
+                      )}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3 text-center">
+                    <span className={`inline-flex items-center gap-1 ${w === 'c2' ? 'text-white' : 'text-slate-500'}`}>
+                      {w === 'c2' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      {v2 ? (
+                        <Check className="w-4 h-4 text-green-accent" />
+                      ) : (
+                        <X className="w-4 h-4 text-slate-600" />
+                      )}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
 
-      {/* Cryptos */}
-      <div className="card-surface p-5 mb-8">
-        <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">{L.cryptos}</h3>
-        <div className="grid grid-cols-2 gap-6">
-          {[card1, card2].map((card) => (
-            <div key={card.id}>
-              <div className="text-xs text-slate-500 mb-2">{card.name}</div>
-              <div className="flex flex-wrap gap-1.5">
-                {card.cryptos.map((c) => (
-                  <span key={c} className="px-2 py-0.5 rounded text-xs font-mono bg-bg-elevated border border-bg-border text-slate-300">
-                    {c}
-                  </span>
-                ))}
-              </div>
+      {/* ── Cryptos section ──────────────────────────────────────── */}
+      <div className="grid grid-cols-2 gap-4 mb-10">
+        {[card1, card2].map((card) => (
+          <div key={card.id} className="card-surface p-5">
+            <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+              <span className="text-slate-400">{t('detail_cryptos') || 'Cryptos supportées'}</span>
+              <span className="badge-accent">{card.cryptos.length}</span>
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {card.cryptos.map((cr) => (
+                <span key={cr} className="chip text-xs px-2 py-0.5">
+                  {cr}
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-      {/* Back links */}
-      <div className="flex gap-3 justify-center">
-        <Link to={`/${lang}/${segment}/${card1.id}`} className="btn-ghost text-sm">
-          Fiche {card1.name}
-        </Link>
-        <Link to={`/${lang}/${segment}/${card2.id}`} className="btn-ghost text-sm">
-          Fiche {card2.name}
+      {/* Common / unique cryptos */}
+      {(() => {
+        const set1 = new Set(card1.cryptos);
+        const set2 = new Set(card2.cryptos);
+        const common = card1.cryptos.filter((c) => set2.has(c));
+        const only1 = card1.cryptos.filter((c) => !set2.has(c));
+        const only2 = card2.cryptos.filter((c) => !set1.has(c));
+        if (common.length === 0 && only1.length === 0 && only2.length === 0) return null;
+        return (
+          <div className="card-surface p-5 mb-10 grid md:grid-cols-3 gap-5">
+            {common.length > 0 && (
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5 text-green-accent" />
+                  {t('comparison_common_cryptos') || 'En commun'}
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {common.map((cr) => <span key={cr} className="chip text-xs">{cr}</span>)}
+                </div>
+              </div>
+            )}
+            {only1.length > 0 && (
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-cyan-accent/70 mb-2 flex items-center gap-1.5">
+                  <Minus className="w-3.5 h-3.5" />
+                  {t('comparison_only_in') || 'Uniquement dans'} {card1.name}
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {only1.map((cr) => <span key={cr} className="chip text-xs bg-cyan-accent/5 border-cyan-accent/20">{cr}</span>)}
+                </div>
+              </div>
+            )}
+            {only2.length > 0 && (
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-green-accent/70 mb-2 flex items-center gap-1.5">
+                  <Minus className="w-3.5 h-3.5" />
+                  {t('comparison_only_in') || 'Uniquement dans'} {card2.name}
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {only2.map((cr) => <span key={cr} className="chip text-xs bg-green-accent/5 border-green-accent/20">{cr}</span>)}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* ── SEO text section ────────────────────────────────────── */}
+      <section className="mt-6 space-y-8">
+        {seoBlocks.map((block, i) => (
+          <div key={i}>
+            <h2 className="text-lg font-display font-semibold text-white mb-3">
+              {block.heading}
+            </h2>
+            <p className="text-slate-400 leading-relaxed text-sm">
+              {block.body}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* CTA strip */}
+      <div className="mt-12 card-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-sm text-slate-300">
+          {t('comparison_cta_text') || 'Vous hésitez encore ? Essayez notre simulateur pour estimer vos gains réels.'}
+        </p>
+        <Link to={getRoute('simulator')} className="btn-primary text-sm whitespace-nowrap">
+          {t('comparison_cta_btn') || 'Simuler mes gains'}
+          <ChevronRight className="w-4 h-4" />
         </Link>
       </div>
 
