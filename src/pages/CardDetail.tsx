@@ -83,7 +83,6 @@ export default function CardDetail() {
       upsertMeta('name', 'twitter:image', image),
     ];
 
-    // Schema.org FinancialProduct
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FinancialProduct',
@@ -159,10 +158,10 @@ export default function CardDetail() {
   const isFav = favorites.includes(card.id);
   const restrictionEntries = Object.entries(card.marketRestrictions);
 
-  // Split article content into 3 parts for correct render order:
+  // Split article content into 3 parts:
   // 1. Pure article body (before thematic links)
-  // 2. Thematic + comparison links (between thematic and FAQ)
-  // 3. FAQ (rendered last, just above footer)
+  // 2. Thematic + comparison injected links
+  // 3. FAQ (rendered last)
   const content = article?.content || '';
   const thematicSep = '<div class="see-also-thematic"';
   const faqSep = '<div data-faq="v1"';
@@ -267,6 +266,7 @@ export default function CardDetail() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main column */}
           <div className="lg:col-span-2 space-y-8">
+
             {/* Key stats */}
             <section>
               <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
@@ -303,7 +303,7 @@ export default function CardDetail() {
             `}</style>
             {articleBodyHtml && (
               <div
-                className="card-surface card-article p-6 mb-6"
+                className="card-surface card-article p-6"
                 dangerouslySetInnerHTML={{ __html: articleBodyHtml }}
               />
             )}
@@ -363,7 +363,7 @@ export default function CardDetail() {
             {/* Thematic + comparison links — after card detail sections */}
             {injectedLinksHtml && (
               <div
-                className="card-surface card-article p-6 mb-6"
+                className="card-surface card-article p-6"
                 dangerouslySetInnerHTML={{ __html: injectedLinksHtml }}
               />
             )}
@@ -375,6 +375,7 @@ export default function CardDetail() {
                 dangerouslySetInnerHTML={{ __html: articleFaqHtml }}
               />
             )}
+
           </div>
 
           {/* Sidebar */}
