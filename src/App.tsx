@@ -1,4 +1,3 @@
-import ComparisonPage from './pages/ComparisonPage';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -121,11 +120,6 @@ function App() {
         <Route path="/risk-summary" element={<RiskSummary />} />
 
         <Route path="/:lang" element={<Layout />}>
-          <Route path="comparer/:slug" element={<ComparisonPage />} />
-          <Route path="vergleichen/:slug" element={<ComparisonPage />} />
-          <Route path="comparar/:slug" element={<ComparisonPage />} />
-          <Route path="confrontare/:slug" element={<ComparisonPage />} />
-          <Route path="compare/:slug" element={<ComparisonPage />} />
           <Route index element={<Home />} />
           <Route path="comparer" element={<Compare />} />
           <Route path="comparar" element={<Compare />} />
