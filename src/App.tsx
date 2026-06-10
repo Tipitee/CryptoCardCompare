@@ -12,6 +12,7 @@ import BlogPost from './pages/BlogPost';
 import CardDetail from './pages/CardDetail';
 import AdminBlog from './pages/AdminBlog';
 import AdminHeroImages from './pages/AdminHeroImages';
+import ThematicPage from './pages/ThematicPage';
 import Impressum from './pages/Impressum';
 import Datenschutz from './pages/Datenschutz';
 import Privacy from './pages/Privacy';
@@ -151,6 +152,34 @@ function App() {
           <Route path="tarjetas/:id" element={<CardDetail />} />
           <Route path="carte/:id" element={<CardDetail />} />
           <Route path="cards/:id" element={<CardDetail />} />
+          {/* ── Pages thématiques ── */}
+{/* FR */}
+<Route path="meilleure-carte-crypto" element={<ThematicPage theme="best" />} />
+<Route path="carte-crypto-cashback" element={<ThematicPage theme="cashback" />} />
+<Route path="carte-crypto-sans-frais" element={<ThematicPage theme="no-fees" />} />
+<Route path="carte-crypto-sans-staking" element={<ThematicPage theme="no-staking" />} />
+<Route path="carte-crypto-france" element={<ThematicPage theme="france" />} />
+<Route path="carte-crypto-virtuelle" element={<ThematicPage theme="virtual" />} />
+<Route path="carte-crypto-debutant" element={<ThematicPage theme="beginner" />} />
+{/* DE */}
+<Route path="beste-krypto-karte" element={<ThematicPage theme="best" />} />
+<Route path="krypto-karte-cashback" element={<ThematicPage theme="cashback" />} />
+<Route path="krypto-karte-kostenlos" element={<ThematicPage theme="no-fees" />} />
+<Route path="krypto-karte-ohne-staking" element={<ThematicPage theme="no-staking" />} />
+{/* ES */}
+<Route path="mejor-tarjeta-crypto" element={<ThematicPage theme="best" />} />
+<Route path="tarjeta-crypto-cashback" element={<ThematicPage theme="cashback" />} />
+<Route path="tarjeta-crypto-sin-comisiones" element={<ThematicPage theme="no-fees" />} />
+<Route path="tarjeta-crypto-sin-staking" element={<ThematicPage theme="no-staking" />} />
+{/* IT */}
+<Route path="migliore-carta-crypto" element={<ThematicPage theme="best" />} />
+<Route path="carta-crypto-cashback" element={<ThematicPage theme="cashback" />} />
+<Route path="carta-crypto-senza-costi" element={<ThematicPage theme="no-fees" />} />
+{/* EN */}
+<Route path="best-crypto-card" element={<ThematicPage theme="best" />} />
+<Route path="crypto-card-cashback" element={<ThematicPage theme="cashback" />} />
+<Route path="crypto-card-no-fees" element={<ThematicPage theme="no-fees" />} />
+<Route path="crypto-card-no-staking" element={<ThematicPage theme="no-staking" />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
