@@ -4,8 +4,4 @@ Disallow: /*?sort=
 Disallow: /*?filter=
 Disallow: /*?page=
 Disallow: /api/
-User-agent: Twitterbot
-Allow: /
-User-agent: facebookexternalhit
-Allow: /
 Sitemap: https://topcryptocards.eu/sitemap.xml
