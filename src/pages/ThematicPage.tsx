@@ -173,11 +173,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block"
             >
               {card.real_card_image && (
-  <div className="rounded-lg overflow-hidden mb-3 h-32 flex items-center justify-center">
+  <div style={{ borderRadius: '12px', overflow: 'hidden', height: '128px', marginBottom: '12px' }}>
     <img
       src={card.real_card_image}
       alt={card.name}
-      className="w-full h-full object-contain"
+      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       loading="lazy"
       onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
     />
