@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { useAppStore } from '../store/useAppStore';
+import type { CryptoCard } from '../types/card';
+import CardDetailDrawer from '../components/CardDetailDrawer';
 
 const YEAR = new Date().getFullYear();
 
@@ -45,17 +48,17 @@ const THEME_CONFIG: Record<string, Record<string, { title: string; h1: string; d
     en: { title: `Crypto Card Europe ${YEAR} — Available in UK & Europe | TopCryptoCards`, h1: `Crypto Cards Available in Europe`, description: `The best crypto cards available in Europe in ${YEAR}. FCA/MiCA regulated options included.`, intro: `Not all crypto cards are available across Europe. This comparison lists only cards accessible to European residents in ${YEAR}, with regulatory status verified.` },
   },
   virtual: {
-    fr: { title: `Carte Crypto Virtuelle ${YEAR} — Paiements en Ligne | TopCryptoCards`, h1: `Cartes Crypto Virtuelles en ${YEAR}`, description: `Les meilleures cartes crypto virtuelles pour payer en ligne en ${YEAR}. Compatible Apple Pay, Google Pay.`, intro: `Les cartes crypto virtuelles sont idéales pour les achats en ligne et les paiements contactless via smartphone. Elles sont souvent disponibles immédiatement après inscription, sans attendre une carte physique.` },
-    de: { title: `Virtuelle Krypto Karte ${YEAR} — Online-Zahlungen | TopCryptoCards`, h1: `Virtuelle Krypto-Karten ${YEAR}`, description: `Die besten virtuellen Krypto-Karten für Online-Zahlungen ${YEAR}. Apple Pay, Google Pay kompatibel.`, intro: `Virtuelle Krypto-Karten sind ideal für Online-Einkäufe und kontaktlose Zahlungen per Smartphone. Sie sind oft sofort nach der Registrierung verfügbar.` },
-    es: { title: `Tarjeta Crypto Virtual ${YEAR} — Pagos Online | TopCryptoCards`, h1: `Tarjetas Crypto Virtuales en ${YEAR}`, description: `Las mejores tarjetas crypto virtuales para pagos online en ${YEAR}. Compatible con Apple Pay, Google Pay.`, intro: `Las tarjetas crypto virtuales son ideales para compras online y pagos contactless. Suelen estar disponibles inmediatamente después del registro.` },
-    it: { title: `Carta Crypto Virtuale ${YEAR} — Pagamenti Online | TopCryptoCards`, h1: `Carte Crypto Virtuali nel ${YEAR}`, description: `Le migliori carte crypto virtuali per pagamenti online nel ${YEAR}. Compatibili con Apple Pay, Google Pay.`, intro: `Le carte crypto virtuali sono ideali per gli acquisti online e i pagamenti contactless. Spesso sono disponibili immediatamente dopo la registrazione.` },
-    en: { title: `Virtual Crypto Card ${YEAR} — Online Payments | TopCryptoCards`, h1: `Virtual Crypto Cards in ${YEAR}`, description: `The best virtual crypto cards for online payments in ${YEAR}. Apple Pay, Google Pay compatible.`, intro: `Virtual crypto cards are ideal for online shopping and contactless payments via smartphone. They are usually available immediately after registration, no waiting for a physical card.` },
+    fr: { title: `Carte Crypto Virtuelle ${YEAR} — Paiements en Ligne | TopCryptoCards`, h1: `Cartes Crypto Virtuelles en ${YEAR}`, description: `Les meilleures cartes crypto virtuelles pour payer en ligne en ${YEAR}. Compatible Apple Pay, Google Pay.`, intro: `Les cartes crypto virtuelles sont idéales pour les achats en ligne et les paiements contactless via smartphone.` },
+    de: { title: `Virtuelle Krypto Karte ${YEAR} — Online-Zahlungen | TopCryptoCards`, h1: `Virtuelle Krypto-Karten ${YEAR}`, description: `Die besten virtuellen Krypto-Karten für Online-Zahlungen ${YEAR}.`, intro: `Virtuelle Krypto-Karten sind ideal für Online-Einkäufe und kontaktlose Zahlungen per Smartphone.` },
+    es: { title: `Tarjeta Crypto Virtual ${YEAR} — Pagos Online | TopCryptoCards`, h1: `Tarjetas Crypto Virtuales en ${YEAR}`, description: `Las mejores tarjetas crypto virtuales para pagos online en ${YEAR}.`, intro: `Las tarjetas crypto virtuales son ideales para compras online y pagos contactless.` },
+    it: { title: `Carta Crypto Virtuale ${YEAR} — Pagamenti Online | TopCryptoCards`, h1: `Carte Crypto Virtuali nel ${YEAR}`, description: `Le migliori carte crypto virtuali per pagamenti online nel ${YEAR}.`, intro: `Le carte crypto virtuali sono ideali per gli acquisti online e i pagamenti contactless.` },
+    en: { title: `Virtual Crypto Card ${YEAR} — Online Payments | TopCryptoCards`, h1: `Virtual Crypto Cards in ${YEAR}`, description: `The best virtual crypto cards for online payments in ${YEAR}.`, intro: `Virtual crypto cards are ideal for online shopping and contactless payments via smartphone.` },
   },
   beginner: {
     fr: { title: `Carte Crypto Débutant ${YEAR} — Simple, Sans Risque | TopCryptoCards`, h1: `Meilleures Cartes Crypto pour Débutants`, description: `Les cartes crypto les plus simples pour commencer en ${YEAR}. Sans staking, sans frais, sans complexité.`, intro: `Vous découvrez les cartes crypto et vous ne savez pas par où commencer ? Ces cartes ont été sélectionnées pour leur simplicité : aucun staking requis, aucun frais annuel, une interface accessible et un cashback immédiat dès le premier achat.` },
-    de: { title: `Krypto Karte Einsteiger ${YEAR} — Einfach, Ohne Risiko | TopCryptoCards`, h1: `Beste Krypto-Karten für Einsteiger`, description: `Die einfachsten Krypto-Karten für den Einstieg ${YEAR}. Kein Staking, keine Gebühren.`, intro: `Diese Karten wurden für ihre Einfachheit ausgewählt: kein Staking erforderlich, keine Jahresgebühr, sofortiges Cashback ab dem ersten Kauf.` },
-    es: { title: `Tarjeta Crypto Principiante ${YEAR} — Simple y Sin Riesgo | TopCryptoCards`, h1: `Mejores Tarjetas Crypto para Principiantes`, description: `Las tarjetas crypto más sencillas para empezar en ${YEAR}. Sin staking, sin comisiones.`, intro: `Estas tarjetas han sido seleccionadas por su simplicidad: sin staking requerido, sin cuota anual, cashback inmediato desde la primera compra.` },
-    it: { title: `Carta Crypto Principiante ${YEAR} — Semplice, Senza Rischi | TopCryptoCards`, h1: `Migliori Carte Crypto per Principianti`, description: `Le carte crypto più semplici per iniziare nel ${YEAR}. Senza staking, senza costi.`, intro: `Queste carte sono state selezionate per la loro semplicità: nessuno staking richiesto, nessun costo annuale, cashback immediato dal primo acquisto.` },
+    de: { title: `Krypto Karte Einsteiger ${YEAR} — Einfach, Ohne Risiko | TopCryptoCards`, h1: `Beste Krypto-Karten für Einsteiger`, description: `Die einfachsten Krypto-Karten für den Einstieg ${YEAR}.`, intro: `Diese Karten wurden für ihre Einfachheit ausgewählt: kein Staking, keine Jahresgebühr, sofortiges Cashback.` },
+    es: { title: `Tarjeta Crypto Principiante ${YEAR} — Simple y Sin Riesgo | TopCryptoCards`, h1: `Mejores Tarjetas Crypto para Principiantes`, description: `Las tarjetas crypto más sencillas para empezar en ${YEAR}.`, intro: `Estas tarjetas han sido seleccionadas por su simplicidad: sin staking, sin cuota anual, cashback inmediato.` },
+    it: { title: `Carta Crypto Principiante ${YEAR} — Semplice, Senza Rischi | TopCryptoCards`, h1: `Migliori Carte Crypto per Principianti`, description: `Le carte crypto più semplici per iniziare nel ${YEAR}.`, intro: `Queste carte sono state selezionate per la loro semplicità: nessuno staking, nessun costo annuale, cashback immediato.` },
     en: { title: `Best Beginner Crypto Card ${YEAR} — Simple & Risk-Free | TopCryptoCards`, h1: `Best Crypto Cards for Beginners`, description: `The simplest crypto cards to get started in ${YEAR}. No staking, no fees, no complexity.`, intro: `New to crypto cards? These cards were selected for their simplicity: no staking required, no annual fee, and instant cashback from your very first purchase.` },
   },
 };
@@ -92,6 +95,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const { lang = 'fr' } = useParams<{ lang: string }>();
   const [cards, setCards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [detail, setDetail] = useState<CryptoCard | null>(null);
+
+  // Store cards used for drawer (full CryptoCard objects with all fields)
+  const storeCards = useAppStore((s) => s.cards);
 
   useEffect(() => {
     supabase
@@ -114,7 +121,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     return limit ? sorted.slice(0, limit) : sorted;
   }, [cards, theme]);
 
-  const segment = LANG_TO_SEGMENT[lang] || 'cards';
+  const handleCardClick = (cardId: string) => {
+    const fullCard = storeCards.find((c) => c.id === cardId);
+    if (fullCard) setDetail(fullCard);
+  };
 
   useEffect(() => {
     if (!config) return;
@@ -142,6 +152,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const freeLabel: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
   const updatedLabel: Record<string, string> = { fr: 'Mis à jour', de: 'Aktualisiert', es: 'Actualizado', it: 'Aggiornato', en: 'Updated' };
   const cardsLabel: Record<string, string> = { fr: 'cartes', de: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards' };
+  const detailsLabel: Record<string, string> = { fr: 'Voir les détails', de: 'Details', es: 'Ver detalles', it: 'Dettagli', en: 'View details' };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -167,40 +178,47 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {filteredCards.map((card: any) => (
-            <Link
+            <button
               key={card.id}
-              to={`/${lang}/${segment}/${card.id}`}
-              className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block"
+              onClick={() => handleCardClick(card.id)}
+              className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all text-left w-full focus:outline-none focus:border-cyan-500/50"
             >
               {card.real_card_image && (
-  <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '12px', width: '100%', aspectRatio: '1.586' }}>
-    <img
-      src={card.real_card_image}
-      alt={card.name}
-      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      loading="lazy"
-      onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
-    />
-  </div>
-)}
+                <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '12px', width: '100%', aspectRatio: '1.586' }}>
+                  <img
+                    src={card.real_card_image}
+                    alt={card.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+                  />
+                </div>
+              )}
               <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
               <p className="text-slate-400 text-sm">{card.issuer}</p>
-              <div className="mt-3 flex gap-3 text-xs">
-                {(card.cashback_premium || card.cashback_base) ? (
-                  <span className="text-cyan-400 font-medium">
-                    {card.cashback_premium || card.cashback_base}% cashback
+              <div className="mt-3 flex items-center justify-between">
+                <div className="flex gap-3 text-xs">
+                  {(card.cashback_premium || card.cashback_base) ? (
+                    <span className="text-cyan-400 font-medium">
+                      {card.cashback_premium || card.cashback_base}% cashback
+                    </span>
+                  ) : null}
+                  <span className="text-slate-500">
+                    {(card.annual_fees || 0) > 0
+                      ? `${card.annual_fees} €/an`
+                      : freeLabel[lang] || 'Free'}
                   </span>
-                ) : null}
-                <span className="text-slate-500">
-                  {(card.annual_fees || 0) > 0
-                    ? `${card.annual_fees} €/an`
-                    : freeLabel[lang] || 'Free'}
+                </div>
+                <span className="text-xs text-cyan-400/60 group-hover:text-cyan-400 transition-colors">
+                  {detailsLabel[lang]} →
                 </span>
               </div>
-            </Link>
+            </button>
           ))}
         </div>
       )}
+
+      <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
     </div>
   );
 }
