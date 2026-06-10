@@ -93,8 +93,8 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     supabase
       .from('cards')
       .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image, image_url')
-      .neq('status', 'discontinued')
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (error) console.error('ThematicPage error:', error);
         setCards(data || []);
         setLoading(false);
       });
