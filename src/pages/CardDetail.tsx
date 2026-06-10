@@ -269,8 +269,8 @@ export default function CardDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Trust score */}
-            {card.trustScore !== undefined && (
+            {/* Trust score — hidden */}
+            {false && card.trustScore !== undefined && (
               <div className="p-5 rounded-2xl bg-bg-elevated border border-bg-border">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
                   <Shield className="w-3.5 h-3.5" />

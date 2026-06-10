@@ -295,8 +295,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Trust score filter */}
-        <div className="flex items-center gap-3 mb-8">
+        {/* Trust score filter — hidden */}
+        {false && <div className="flex items-center gap-3 mb-8">
           <span className="text-xs text-slate-400 shrink-0">{t('trust_min_filter')}</span>
           <div className="flex gap-1.5">
             {([0, 50, 75] as const).map((v) => (
@@ -317,7 +317,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-        </div>
+        </div>}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((card) => {
@@ -396,7 +396,7 @@ export default function Home() {
                       </dd>
                     </div>
                   </dl>
-                  {card.trustScore !== undefined && (
+                  {false && card.trustScore !== undefined && (
                     <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
                       <TrustBadge card={card} />
                     </div>

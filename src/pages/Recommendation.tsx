@@ -286,23 +286,23 @@ export default function Recommendation() {
                       <div className="text-sm text-slate-400">{r.card.issuer}</div>
                     </div>
                   </div>
-                  <div className="sm:text-right">
+                  {false && <div className="sm:text-right">
                     <div className="text-xs text-slate-500 uppercase tracking-wide">{t('quiz_score_label')}</div>
                     <div className="text-3xl font-display font-bold text-cyan-accent">
                       {r.score}
                       <span className="text-base text-slate-500">/100</span>
                     </div>
-                  </div>
+                  </div>}
                 </div>
 
-                <div className="h-1.5 bg-bg-elevated rounded-full overflow-hidden mt-4">
+                {false && <div className="h-1.5 bg-bg-elevated rounded-full overflow-hidden mt-4">
                   <div
                     className={`h-full ${
                       i === 0 ? 'bg-green-accent' : 'bg-cyan-accent'
                     } transition-all duration-700`}
                     style={{ width: `${Math.min(r.score, 100)}%` }}
                   />
-                </div>
+                </div>}
 
                 <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
                   <div>

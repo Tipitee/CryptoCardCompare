@@ -152,7 +152,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
           </section>
 
-          {card.trustScore !== undefined && (
+          {false && card.trustScore !== undefined && (
             <section className="mb-6 p-4 rounded-xl bg-bg-elevated border border-bg-border">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
                 <Shield className="w-3.5 h-3.5" />
