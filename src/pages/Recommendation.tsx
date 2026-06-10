@@ -2,9 +2,10 @@ import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, Check, RotateCcw, Sparkles, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
-import type { QuizAnswers } from '../types/card';
+import type { CryptoCard, QuizAnswers } from '../types/card';
 import { scoreCards } from '../utils/recommend';
 import SmartCardImage from '../components/SmartCardImage';
+import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { saveQuizResult } from '../lib/supabase';
 
@@ -23,6 +24,8 @@ export default function Recommendation() {
   const resetQuiz = useAppStore((s) => s.resetQuiz);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
+
+  const [detail, setDetail] = useState<CryptoCard | null>(null);
 
   const STEPS: StepDef<keyof QuizAnswers>[] = [
     {
@@ -270,7 +273,14 @@ export default function Recommendation() {
               >
                 <div className="flex flex-col sm:flex-row gap-5">
                   <div className="flex items-start gap-5 flex-1">
-                    <SmartCardImage card={r.card} size={i === 0 ? 'md' : 'sm'} />
+                    {/* Clickable card image */}
+                    <button
+                      onClick={() => setDetail(r.card)}
+                      className="shrink-0 hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-accent rounded-xl"
+                      title={r.card.name}
+                    >
+                      <SmartCardImage card={r.card} size={i === 0 ? 'md' : 'sm'} />
+                    </button>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
                         <span className="text-xs font-mono text-slate-500">#{i + 1}</span>
@@ -280,29 +290,16 @@ export default function Recommendation() {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-display font-bold text-lg text-white">
+                      <button
+                        onClick={() => setDetail(r.card)}
+                        className="font-display font-bold text-lg text-white hover:text-cyan-accent transition-colors text-left"
+                      >
                         {r.card.name}
-                      </h3>
+                      </button>
                       <div className="text-sm text-slate-400">{r.card.issuer}</div>
                     </div>
                   </div>
-                  {false && <div className="sm:text-right">
-                    <div className="text-xs text-slate-500 uppercase tracking-wide">{t('quiz_score_label')}</div>
-                    <div className="text-3xl font-display font-bold text-cyan-accent">
-                      {r.score}
-                      <span className="text-base text-slate-500">/100</span>
-                    </div>
-                  </div>}
                 </div>
-
-                {false && <div className="h-1.5 bg-bg-elevated rounded-full overflow-hidden mt-4">
-                  <div
-                    className={`h-full ${
-                      i === 0 ? 'bg-green-accent' : 'bg-cyan-accent'
-                    } transition-all duration-700`}
-                    style={{ width: `${Math.min(r.score, 100)}%` }}
-                  />
-                </div>}
 
                 <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
                   <div>
@@ -359,6 +356,13 @@ export default function Recommendation() {
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                     {isFav ? t('quiz_in_fav') : t('quiz_add_fav')}
                   </button>
+                  <button
+                    onClick={() => setDetail(r.card)}
+                    className="btn-ghost border border-bg-border text-sm"
+                  >
+                    {t('common:card_detail_view_page') || 'Voir les détails'}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                   <a
                     href={r.card.affiliateLink}
                     target="_blank"
@@ -373,6 +377,8 @@ export default function Recommendation() {
           })}
         </div>
       )}
+
+      <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
     </div>
   );
 }
