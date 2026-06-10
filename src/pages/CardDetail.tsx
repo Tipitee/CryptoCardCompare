@@ -159,13 +159,20 @@ export default function CardDetail() {
   const isFav = favorites.includes(card.id);
   const restrictionEntries = Object.entries(card.marketRestrictions);
 
-  // Split article content: main body (+ thematic/comparison links) vs FAQ section
+  // Split article content into 3 parts for correct render order:
+  // 1. Pure article body (before thematic links)
+  // 2. Thematic + comparison links (between thematic and FAQ)
+  // 3. FAQ (rendered last, just above footer)
+  const content = article?.content || '';
+  const thematicSep = '<div class="see-also-thematic"';
   const faqSep = '<div data-faq="v1"';
-  const faqIdx = article?.content ? article.content.indexOf(faqSep) : -1;
-  const articleMainHtml = article?.content
-    ? (faqIdx > 0 ? article.content.slice(0, faqIdx) : article.content)
+  const thematicIdx = content.indexOf(thematicSep);
+  const faqIdx = content.indexOf(faqSep);
+  const articleBodyHtml = thematicIdx > 0 ? content.slice(0, thematicIdx) : content;
+  const injectedLinksHtml = thematicIdx > 0
+    ? (faqIdx > 0 ? content.slice(thematicIdx, faqIdx) : content.slice(thematicIdx))
     : '';
-  const articleFaqHtml = faqIdx > 0 ? (article.content as string).slice(faqIdx) : '';
+  const articleFaqHtml = faqIdx > 0 ? content.slice(faqIdx) : '';
 
   return (
     <div className="animate-fade-in">
@@ -286,7 +293,7 @@ export default function CardDetail() {
               </div>
             </section>
 
-            {/* Article content — main body + thematic/comparison links */}
+            {/* Article body (pure content, no links, no FAQ) */}
             <style>{`
               .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
               .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
@@ -294,10 +301,10 @@ export default function CardDetail() {
               .card-article ul, .card-article ol { margin: 0.75rem 0 1rem 1.5rem; }
               .card-article li { margin-bottom: 0.4rem; }
             `}</style>
-            {articleMainHtml && (
+            {articleBodyHtml && (
               <div
                 className="card-surface card-article p-6 mb-6"
-                dangerouslySetInnerHTML={{ __html: articleMainHtml }}
+                dangerouslySetInnerHTML={{ __html: articleBodyHtml }}
               />
             )}
 
@@ -353,7 +360,15 @@ export default function CardDetail() {
               </section>
             )}
 
-            {/* FAQ — rendered last, just above footer */}
+            {/* Thematic + comparison links — after card detail sections */}
+            {injectedLinksHtml && (
+              <div
+                className="card-surface card-article p-6 mb-6"
+                dangerouslySetInnerHTML={{ __html: injectedLinksHtml }}
+              />
+            )}
+
+            {/* FAQ — very last, just above footer */}
             {articleFaqHtml && (
               <div
                 className="card-surface card-article p-6"
