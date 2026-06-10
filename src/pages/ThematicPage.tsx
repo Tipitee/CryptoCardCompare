@@ -70,10 +70,6 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
 };
 
-const THEME_LIMIT: Record<string, number> = {
-  best: 15,
-};
-
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   best:          (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   cashback:      (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
@@ -82,6 +78,10 @@ const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   france:        (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   virtual:       (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   beginner:      (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
+};
+
+const THEME_LIMIT: Record<string, number> = {
+  best: 15,
 };
 
 interface ThematicPageProps {
@@ -96,9 +96,9 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   useEffect(() => {
     supabase
       .from('cards')
-      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image, image_url')
-      .neq('status', 'discontinued')
-      .then(({ data }) => {
+      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image')
+      .then(({ data, error }) => {
+        if (error) console.error('ThematicPage error:', error);
         setCards(data || []);
         setLoading(false);
       });
@@ -106,7 +106,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
   const config = THEME_CONFIG[theme]?.[lang] || THEME_CONFIG[theme]?.['en'];
   const filterFn = THEME_FILTERS[theme] || (() => true);
-  const sortFn   = THEME_SORT[theme]   || (() => 0);
+  const sortFn = THEME_SORT[theme] || (() => 0);
 
   const filteredCards = useMemo(() => {
     const sorted = [...cards].filter(filterFn).sort(sortFn);
