@@ -92,7 +92,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   useEffect(() => {
     supabase
       .from('cards')
-      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image, image_url')
+      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image')
       .then(({ data, error }) => {
         if (error) console.error('ThematicPage error:', error);
         setCards(data || []);
@@ -167,9 +167,9 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               to={`/${lang}/${segment}/${card.id}`}
               className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block"
             >
-              {(card.real_card_image || card.image_url) && (
+              {card.real_card_image && (
                 <img
-                  src={card.real_card_image || card.image_url}
+                  ssrc={card.real_card_image}
                   alt={card.name}
                   className="w-full h-32 object-contain mb-3"
                   loading="lazy"
