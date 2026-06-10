@@ -1,330 +1,279 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
+import { ArrowRight, Check, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useAppStore } from '../store/useAppStore';
+import type { CryptoCard } from '../types/card';
+import CardDetailDrawer from '../components/CardDetailDrawer';
+import { fmtEUR, fmtPct } from '../utils/format';
 
-const YEAR = new Date().getFullYear();
-
-const LANG_TO_SEGMENT: Record<string, string> = {
+const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 
-const COMPARE_SEGMENT: Record<string, string> = {
-  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+const LABELS: Record<string, {
+  vs: string;
+  fees: string;
+  cashback: string;
+  staking: string;
+  dailyLimit: string;
+  freeWd: string;
+  availableFrance: string;
+  availableEU: string;
+  network: string;
+  cryptos: string;
+  winner: string;
+  free: string;
+  none: string;
+  yes: string;
+  no: string;
+  viewDetail: string;
+  getCard: string;
+  intro: string;
+}> = {
+  fr: { vs: 'contre', fees: 'Frais annuels', cashback: 'Cashback max', staking: 'Staking requis', dailyLimit: 'Limite journalière', freeWd: 'Retraits gratuits', availableFrance: 'Disponible en France', availableEU: 'Disponible en Europe', network: 'Réseau', cryptos: 'Cryptos acceptées', winner: 'Meilleur', free: 'Gratuit', none: 'Aucun', yes: 'Oui', no: 'Non', viewDetail: 'Voir la fiche', getCard: 'Obtenir la carte', intro: 'Comparaison détaillée de' },
+  de: { vs: 'gegen', fees: 'Jahresgebühren', cashback: 'Max. Cashback', staking: 'Staking erforderlich', dailyLimit: 'Tageslimit', freeWd: 'Kostenlose Abhebungen', availableFrance: 'In Frankreich verfügbar', availableEU: 'In der EU verfügbar', network: 'Netzwerk', cryptos: 'Akzeptierte Kryptos', winner: 'Besser', free: 'Kostenlos', none: 'Keins', yes: 'Ja', no: 'Nein', viewDetail: 'Details', getCard: 'Karte holen', intro: 'Detaillierter Vergleich von' },
+  es: { vs: 'vs', fees: 'Cuotas anuales', cashback: 'Cashback máx', staking: 'Staking requerido', dailyLimit: 'Límite diario', freeWd: 'Retiros gratuitos', availableFrance: 'Disponible en Francia', availableEU: 'Disponible en Europa', network: 'Red', cryptos: 'Criptos aceptadas', winner: 'Mejor', free: 'Gratis', none: 'Ninguno', yes: 'Sí', no: 'No', viewDetail: 'Ver ficha', getCard: 'Obtener tarjeta', intro: 'Comparativa detallada de' },
+  it: { vs: 'vs', fees: 'Costi annuali', cashback: 'Cashback max', staking: 'Staking richiesto', dailyLimit: 'Limite giornaliero', freeWd: 'Prelievi gratuiti', availableFrance: 'Disponibile in Francia', availableEU: 'Disponibile in Europa', network: 'Rete', cryptos: 'Criptovalute accettate', winner: 'Migliore', free: 'Gratuito', none: 'Nessuno', yes: 'Sì', no: 'No', viewDetail: 'Vedi scheda', getCard: 'Ottieni carta', intro: 'Confronto dettagliato di' },
+  en: { vs: 'vs', fees: 'Annual fees', cashback: 'Max cashback', staking: 'Staking required', dailyLimit: 'Daily limit', freeWd: 'Free withdrawals', availableFrance: 'Available in France', availableEU: 'Available in EU', network: 'Network', cryptos: 'Accepted cryptos', winner: 'Better', free: 'Free', none: 'None', yes: 'Yes', no: 'No', viewDetail: 'View details', getCard: 'Get card', intro: 'Detailed comparison of' },
 };
 
-const UI: Record<string, Record<string, string>> = {
-  title:       { fr: 'vs', de: 'vs', es: 'vs', it: 'vs', en: 'vs' },
-  updated:     { fr: 'Mis à jour', de: 'Aktualisiert', es: 'Actualizado', it: 'Aggiornato', en: 'Updated' },
-  cashback:    { fr: 'Cashback', de: 'Cashback', es: 'Cashback', it: 'Cashback', en: 'Cashback' },
-  annual_fees: { fr: 'Frais annuels', de: 'Jahresgebühr', es: 'Cuota anual', it: 'Costo annuale', en: 'Annual fees' },
-  staking:     { fr: 'Staking requis', de: 'Staking erforderlich', es: 'Staking requerido', it: 'Staking richiesto', en: 'Staking required' },
-  network:     { fr: 'Réseau', de: 'Netzwerk', es: 'Red', it: 'Rete', en: 'Network' },
-  virtual:     { fr: 'Carte virtuelle', de: 'Virtuelle Karte', es: 'Tarjeta virtual', it: 'Carta virtuale', en: 'Virtual card' },
-  trust:       { fr: 'Score de confiance', de: 'Vertrauensscore', es: 'Puntuación confianza', it: 'Punteggio fiducia', en: 'Trust score' },
-  free:        { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' },
-  yes:         { fr: 'Oui', de: 'Ja', es: 'Sí', it: 'Sì', en: 'Yes' },
-  no:          { fr: 'Non', de: 'Nein', es: 'No', it: 'No', en: 'No' },
-  see_card:    { fr: 'Voir la carte', de: 'Karte ansehen', es: 'Ver tarjeta', it: 'Vedi carta', en: 'See card' },
-  see_article: { fr: 'Lire l\'avis', de: 'Bewertung lesen', es: 'Leer opinión', it: 'Leggi recensione', en: 'Read review' },
-  winner:      { fr: 'Notre choix', de: 'Unsere Wahl', es: 'Nuestra elección', it: 'La nostra scelta', en: 'Our pick' },
-  no_staking:  { fr: 'Non requis', de: 'Nicht erforderlich', es: 'No requerido', it: 'Non richiesto', en: 'Not required' },
-  not_found:   { fr: 'Carte introuvable', de: 'Karte nicht gefunden', es: 'Tarjeta no encontrada', it: 'Carta non trovata', en: 'Card not found' },
-  loading:     { fr: 'Chargement…', de: 'Laden…', es: 'Cargando…', it: 'Caricamento…', en: 'Loading…' },
-};
-
-const t = (key: string, lang: string) => UI[key]?.[lang] || UI[key]?.['en'] || key;
-
-interface Card {
-  id: string;
-  name: string;
-  issuer: string;
-  cashback_base: number;
-  cashback_premium: number;
-  annual_fees: number;
-  staking_required: number;
-  virtual_only: boolean;
-  card_network: string;
-  trust_score: number | null;
-  real_card_image: string | null;
-}
-
-const INTRO: Record<string, (a: string, b: string, year: number) => string> = {
-  fr: (a, b, y) => `Vous hésitez entre la ${a} et la ${b} ? Ce comparatif ${y} vous aide à choisir selon votre profil : cashback, frais annuels, staking requis et score de confiance sont analysés côte à côte.`,
-  de: (a, b, y) => `Sie sind unschlüssig zwischen der ${a} und der ${b}? Dieser Vergleich ${y} hilft Ihnen bei der Wahl: Cashback, Jahresgebühren, Staking-Anforderungen und Vertrauensscore werden nebeneinandergestellt.`,
-  es: (a, b, y) => `¿Dudas entre la ${a} y la ${b}? Esta comparativa ${y} te ayuda a elegir: cashback, comisiones anuales, staking requerido y puntuación de confianza se analizan en paralelo.`,
-  it: (a, b, y) => `Indeciso tra la ${a} e la ${b}? Questo confronto ${y} ti aiuta a scegliere: cashback, costi annuali, staking richiesto e punteggio di fiducia analizzati fianco a fianco.`,
-  en: (a, b, y) => `Can't decide between the ${a} and the ${b}? This ${y} comparison helps you choose: cashback rates, annual fees, staking requirements and trust scores are analysed side by side.`,
-};
-
-const CASHBACK_TEXT: Record<string, (winner: string, val: number, loser: string) => string> = {
-  fr: (w, v, l) => `Sur le cashback, la ${w} prend l'avantage avec ${v}% contre la ${l}. C'est souvent le critère décisif pour les utilisateurs qui paient régulièrement par carte.`,
-  de: (w, v, l) => `Beim Cashback hat die ${w} mit ${v}% gegenüber der ${l} die Nase vorn. Das ist oft das entscheidende Kriterium für regelmäßige Kartennutzer.`,
-  es: (w, v, l) => `En cashback, la ${w} tiene ventaja con ${v}% frente a la ${l}. Suele ser el criterio decisivo para quienes pagan habitualmente con tarjeta.`,
-  it: (w, v, l) => `Sul cashback, la ${w} è avvantaggiata con ${v}% rispetto alla ${l}. È spesso il criterio decisivo per chi paga regolarmente con carta.`,
-  en: (w, v, l) => `On cashback, the ${w} takes the lead with ${v}% against the ${l}. This is often the deciding factor for regular card users.`,
-};
-
-const FEES_TEXT: Record<string, (name: string) => string> = {
-  fr: (n) => `La ${n} est gratuite, ce qui la rend accessible sans engagement financier initial.`,
-  de: (n) => `Die ${n} ist kostenlos und daher ohne finanzielle Vorverpflichtung zugänglich.`,
-  es: (n) => `La ${n} es gratuita, lo que la hace accesible sin compromiso financiero inicial.`,
-  it: (n) => `La ${n} è gratuita, il che la rende accessibile senza impegno finanziario iniziale.`,
-  en: (n) => `The ${n} is free, making it accessible with no upfront financial commitment.`,
-};
-
-const VERDICT_TEXT: Record<string, (winner: string, loser: string) => string> = {
-  fr: (w, l) => `Au global, la ${w} ressort en tête de ce comparatif. Elle offre un meilleur rapport qualité/conditions que la ${l} sur la majorité des critères analysés. Cela dit, le choix final dépend de votre usage : si un critère spécifique est prioritaire pour vous, la ${l} peut rester pertinente.`,
-  de: (w, l) => `Insgesamt liegt die ${w} in diesem Vergleich vorne. Sie bietet ein besseres Preis-Leistungs-Verhältnis als die ${l} bei den meisten analysierten Kriterien. Die endgültige Wahl hängt jedoch von Ihrem Nutzungsverhalten ab.`,
-  es: (w, l) => `En general, la ${w} sale adelante en esta comparativa. Ofrece mejor relación calidad/condiciones que la ${l} en la mayoría de criterios analizados. Aun así, la elección final depende de tu uso.`,
-  it: (w, l) => `Nel complesso, la ${w} si distingue in questo confronto. Offre un miglior rapporto qualità/condizioni rispetto alla ${l} sulla maggior parte dei criteri analizzati. Tuttavia, la scelta finale dipende dal vostro utilizzo.`,
-  en: (w, l) => `Overall, the ${w} comes out ahead in this comparison. It offers a better value-to-conditions ratio than the ${l} across most of the criteria analysed. That said, the final choice depends on your usage.`,
-};
-
-function ComparisonText({ cardA, cardB, lang, cashbackA, cashbackB, winner }: {
-  cardA: Card; cardB: Card; lang: string;
-  cashbackA: number; cashbackB: number; winner: Card | null;
-}) {
-  const intro = (INTRO[lang] || INTRO.en)(cardA.name, cardB.name, YEAR);
-
-  let cashbackSentence = '';
-  if (cashbackA !== cashbackB) {
-    const [winCard, winVal, loseCard] = cashbackA > cashbackB
-      ? [cardA.name, cashbackA, cardB.name]
-      : [cardB.name, cashbackB, cardA.name];
-    cashbackSentence = (CASHBACK_TEXT[lang] || CASHBACK_TEXT.en)(winCard, winVal, loseCard);
-  }
-
-  const freeCards = [cardA, cardB].filter(c => c.annual_fees === 0);
-  const freesSentence = freeCards.length === 1
-    ? (FEES_TEXT[lang] || FEES_TEXT.en)(freeCards[0].name)
-    : freeCards.length === 2
-      ? (FEES_TEXT[lang] || FEES_TEXT.en)(`${cardA.name} et ${cardB.name}`)
-      : '';
-
-  const verdictSentence = winner
-    ? (VERDICT_TEXT[lang] || VERDICT_TEXT.en)(winner.name, winner.id === cardA.id ? cardB.name : cardA.name)
-    : '';
-
+function Winner({ label }: { label: string }) {
   return (
-    <>
-      <p>{intro}</p>
-      {cashbackSentence && <p>{cashbackSentence}</p>}
-      {freesSentence && <p>{freesSentence}</p>}
-      {verdictSentence && <p>{verdictSentence}</p>}
-    </>
+    <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/15 text-green-accent border border-green-accent/30">
+      <Check className="w-2.5 h-2.5" />
+      {label}
+    </span>
   );
-}
-
-function better(a: number | null, b: number | null, higherIsBetter = true): [boolean, boolean] {
-  if (a === null || b === null) return [false, false];
-  if (a === b) return [false, false];
-  return higherIsBetter ? [a > b, a < b] : [a < b, a > b];
 }
 
 export default function ComparisonPage() {
   const { lang = 'fr', slug = '' } = useParams<{ lang: string; slug: string }>();
-  const [cardA, setCardA] = useState<Card | null>(null);
-  const [cardB, setCardB] = useState<Card | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const allCards = useAppStore((s) => s.cards);
+  const [detail, setDetail] = useState<CryptoCard | null>(null);
 
-  const parts = slug.split('-vs-');
-  const idA = parts[0] || '';
-  const idB = parts.slice(1).join('-vs-') || '';
+  const L = LABELS[lang] || LABELS.en;
+  const segment = CARD_SEGMENT[lang] || 'cards';
 
-  useEffect(() => {
-    if (!idA || !idB) { setLoading(false); setError('invalid'); return; }
+  // Parse slug: "card1-id-vs-card2-id" — split on "-vs-"
+  const vsIndex = slug.indexOf('-vs-');
+  const id1 = vsIndex > -1 ? slug.slice(0, vsIndex) : '';
+  const id2 = vsIndex > -1 ? slug.slice(vsIndex + 4) : '';
 
-    const COLS = 'id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, trust_score, real_card_image';
-
-    Promise.all([
-      supabase.from('cards').select(COLS).eq('id', idA).single(),
-      supabase.from('cards').select(COLS).eq('id', idB).single(),
-    ]).then(([resA, resB]) => {
-      if (resA.error || !resA.data) setError('notfoundA');
-      else setCardA(resA.data as Card);
-      if (resB.error || !resB.data) setError('notfoundB');
-      else setCardB(resB.data as Card);
-      setLoading(false);
-    });
-  }, [idA, idB]);
-
-  const segment = LANG_TO_SEGMENT[lang] || 'cards';
+  const card1 = allCards.find((c) => c.id === id1) ?? null;
+  const card2 = allCards.find((c) => c.id === id2) ?? null;
 
   // SEO
   useEffect(() => {
-    if (!cardA || !cardB) return;
-    const title = `${cardA.name} vs ${cardB.name} ${YEAR} — Comparatif | TopCryptoCards`;
-    document.title = title;
+    if (!card1 || !card2) return;
+    document.title = `${card1.name} ${L.vs} ${card2.name} ${new Date().getFullYear()} — TopCryptoCards`;
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-    if (!meta) { meta = document.createElement('meta'); meta.name = 'description'; document.head.appendChild(meta); }
-    meta.content = `Comparatif ${cardA.name} vs ${cardB.name} en ${YEAR} : cashback, frais, staking, réseau. Quelle carte crypto choisir ?`;
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = window.location.origin + window.location.pathname;
-  }, [cardA, cardB]);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'description';
+      document.head.appendChild(meta);
+    }
+    meta.content = `${L.intro} ${card1.name} et ${card2.name} : cashback, frais, staking, disponibilité. Quelle carte est la meilleure ?`;
+  }, [card1, card2, lang]);
 
-  if (loading) {
+  if (!card1 || !card2) {
     return (
-      <div className="container mx-auto px-4 py-16 max-w-4xl text-center text-slate-400">
-        {t('loading', lang)}
+      <div className="container-app py-20 text-center">
+        <p className="text-slate-400">Chargement…</p>
       </div>
     );
   }
 
-  if (error || !cardA || !cardB) {
-    return (
-      <div className="container mx-auto px-4 py-16 max-w-4xl text-center text-slate-400">
-        {t('not_found', lang)}
-      </div>
-    );
-  }
+  type Row = {
+    label: string;
+    v1: string | number;
+    v2: string | number;
+    winner: 1 | 2 | null;
+    bool?: boolean;
+  };
 
-  const cashbackA = cardA.cashback_premium || cardA.cashback_base || 0;
-  const cashbackB = cardB.cashback_premium || cardB.cashback_base || 0;
-  const [cbAwin, cbBwin] = better(cashbackA, cashbackB, true);
-  const [feesAwin, feesBwin] = better(cardA.annual_fees, cardB.annual_fees, false);
-  const [stakingAwin, stakingBwin] = better(cardA.staking_required, cardB.staking_required, false);
-  const [trustAwin, trustBwin] = better(cardA.trust_score ?? 0, cardB.trust_score ?? 0, true);
+  const rows: Row[] = [
+    {
+      label: L.cashback,
+      v1: fmtPct(card1.cashbackPremium),
+      v2: fmtPct(card2.cashbackPremium),
+      winner: card1.cashbackPremium > card2.cashbackPremium ? 1 : card2.cashbackPremium > card1.cashbackPremium ? 2 : null,
+    },
+    {
+      label: L.fees,
+      v1: card1.annualFees === 0 ? L.free : fmtEUR(card1.annualFees),
+      v2: card2.annualFees === 0 ? L.free : fmtEUR(card2.annualFees),
+      winner: card1.annualFees < card2.annualFees ? 1 : card2.annualFees < card1.annualFees ? 2 : null,
+    },
+    {
+      label: L.staking,
+      v1: card1.stakingRequired === 0 ? L.none : fmtEUR(card1.stakingRequired),
+      v2: card2.stakingRequired === 0 ? L.none : fmtEUR(card2.stakingRequired),
+      winner: card1.stakingRequired < card2.stakingRequired ? 1 : card2.stakingRequired < card1.stakingRequired ? 2 : null,
+    },
+    {
+      label: L.dailyLimit,
+      v1: fmtEUR(card1.dailyLimit),
+      v2: fmtEUR(card2.dailyLimit),
+      winner: card1.dailyLimit > card2.dailyLimit ? 1 : card2.dailyLimit > card1.dailyLimit ? 2 : null,
+    },
+    {
+      label: L.network,
+      v1: card1.cardNetwork,
+      v2: card2.cardNetwork,
+      winner: null,
+    },
+    {
+      label: L.freeWd,
+      v1: card1.freeWithdrawals ? L.yes : L.no,
+      v2: card2.freeWithdrawals ? L.yes : L.no,
+      winner: card1.freeWithdrawals && !card2.freeWithdrawals ? 1 : card2.freeWithdrawals && !card1.freeWithdrawals ? 2 : null,
+      bool: true,
+    },
+    {
+      label: L.availableFrance,
+      v1: card1.availableFrance ? L.yes : L.no,
+      v2: card2.availableFrance ? L.yes : L.no,
+      winner: null,
+      bool: true,
+    },
+    {
+      label: L.availableEU,
+      v1: card1.availableEU ? L.yes : L.no,
+      v2: card2.availableEU ? L.yes : L.no,
+      winner: null,
+      bool: true,
+    },
+  ];
 
-  const scoreA = [cbAwin, feesAwin, stakingAwin, trustAwin].filter(Boolean).length;
-  const scoreB = [cbBwin, feesBwin, stakingBwin, trustBwin].filter(Boolean).length;
-  const winner = scoreA > scoreB ? cardA : scoreB > scoreA ? cardB : null;
-
-  const Row = ({
-    label, valA, valB, winA, winB,
-  }: { label: string; valA: string; valB: string; winA: boolean; winB: boolean }) => (
-    <tr className="border-b border-slate-800">
-      <td className="py-3 px-4 text-slate-400 text-sm">{label}</td>
-      <td className={`py-3 px-4 text-center text-sm font-medium ${winA ? 'text-cyan-400' : 'text-white'}`}>
-        {winA && <span className="mr-1">✓</span>}{valA}
-      </td>
-      <td className={`py-3 px-4 text-center text-sm font-medium ${winB ? 'text-cyan-400' : 'text-white'}`}>
-        {winB && <span className="mr-1">✓</span>}{valB}
-      </td>
-    </tr>
-  );
+  const score1 = rows.filter((r) => r.winner === 1).length;
+  const score2 = rows.filter((r) => r.winner === 2).length;
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
-      {/* Header */}
-      <p className="text-slate-400 text-xs mb-4">
-        {t('updated', lang)} {new Date().toLocaleDateString(lang, { year: 'numeric', month: 'long' })}
-      </p>
-      <h1 className="text-3xl font-bold text-white mb-8">
-        {cardA.name} <span className="text-cyan-400">vs</span> {cardB.name} {YEAR}
+    <div className="container-app py-10 max-w-4xl">
+      <h1 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+        {card1.name} <span className="text-slate-500 font-normal text-xl">vs</span> {card2.name}
       </h1>
 
-      {/* Card headers */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        {[cardA, cardB].map((card) => (
-          <div key={card.id} className="card-surface p-5 rounded-xl text-center">
-            {card.real_card_image && (
+      {/* Card headers — clickable */}
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        {[card1, card2].map((card, idx) => (
+          <div key={card.id} className={`card-surface p-5 text-center ${idx === 0 ? 'border-cyan-accent/30' : 'border-green-accent/30'}`}>
+            <button
+              onClick={() => setDetail(card)}
+              className="w-full focus:outline-none group"
+            >
               <div style={{ borderRadius: '12px', overflow: 'hidden', width: '100%', aspectRatio: '1.586', marginBottom: '12px' }}>
-  <img src={card.real_card_image} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
-</div>
-            )}
-            <h2 className="text-white font-semibold text-lg">{card.name}</h2>
-            <p className="text-slate-400 text-sm mb-4">{card.issuer}</p>
-            <div className="flex gap-2 justify-center flex-wrap">
-              <Link
-                to={`/${lang}/${segment}/${card.id}`}
-                className="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full hover:bg-cyan-500/30 transition-colors"
+                <img
+                  src={card.realCardImage}
+                  alt={card.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  loading="lazy"
+                />
+              </div>
+              <div className="font-display font-bold text-white text-lg group-hover:text-cyan-accent transition-colors">
+                {card.name}
+              </div>
+            </button>
+            <div className="text-sm text-slate-400 mt-1 mb-4">{card.issuer}</div>
+            <div className={`text-2xl font-display font-bold mb-1 ${idx === 0 ? 'text-cyan-accent' : 'text-green-accent'}`}>
+              {score1 > score2 && idx === 0 ? '🏆 ' : score2 > score1 && idx === 1 ? '🏆 ' : ''}
+              {idx === 0 ? score1 : score2} / {rows.filter((r) => r.winner !== null).length}
+            </div>
+            <p className="text-xs text-slate-500 mb-4">{L.winner}</p>
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => setDetail(card)}
+                className="btn-secondary text-sm w-full"
               >
-                {t('see_card', lang)}
-              </Link>
-              <Link
-                to={`/${lang}/${segment}/${card.id}`}
-                className="text-xs bg-slate-700 text-slate-300 px-3 py-1 rounded-full hover:bg-slate-600 transition-colors"
+                {L.viewDetail}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <a
+                href={card.affiliateLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-sm w-full"
               >
-                {t('see_article', lang)}
-              </Link>
+                {L.getCard}
+              </a>
             </div>
           </div>
         ))}
       </div>
 
       {/* Comparison table */}
-      <div className="card-surface rounded-xl overflow-hidden mb-8">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-slate-700">
-              <th className="py-3 px-4 text-left text-slate-500 text-xs uppercase tracking-wider w-1/3"></th>
-              <th className="py-3 px-4 text-center text-white font-semibold">{cardA.name}</th>
-              <th className="py-3 px-4 text-center text-white font-semibold">{cardB.name}</th>
+      <div className="card-surface overflow-hidden mb-8">
+        <table className="w-full text-sm">
+          <thead className="bg-bg-elevated/50 border-b border-bg-border">
+            <tr>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide w-1/3">
+                Critère
+              </th>
+              <th className="px-4 py-3 text-center text-xs font-semibold text-cyan-accent uppercase tracking-wide w-1/3">
+                {card1.name}
+              </th>
+              <th className="px-4 py-3 text-center text-xs font-semibold text-green-accent uppercase tracking-wide w-1/3">
+                {card2.name}
+              </th>
             </tr>
           </thead>
           <tbody>
-            <Row
-              label={t('cashback', lang)}
-              valA={cashbackA > 0 ? `${cashbackA}%` : '—'}
-              valB={cashbackB > 0 ? `${cashbackB}%` : '—'}
-              winA={cbAwin}
-              winB={cbBwin}
-            />
-            <Row
-              label={t('annual_fees', lang)}
-              valA={cardA.annual_fees > 0 ? `${cardA.annual_fees} €/an` : t('free', lang)}
-              valB={cardB.annual_fees > 0 ? `${cardB.annual_fees} €/an` : t('free', lang)}
-              winA={feesAwin}
-              winB={feesBwin}
-            />
-            <Row
-              label={t('staking', lang)}
-              valA={cardA.staking_required > 0 ? `${cardA.staking_required} €` : t('no_staking', lang)}
-              valB={cardB.staking_required > 0 ? `${cardB.staking_required} €` : t('no_staking', lang)}
-              winA={stakingAwin}
-              winB={stakingBwin}
-            />
-            <Row
-              label={t('network', lang)}
-              valA={cardA.card_network}
-              valB={cardB.card_network}
-              winA={false}
-              winB={false}
-            />
-            <Row
-              label={t('virtual', lang)}
-              valA={cardA.virtual_only ? t('yes', lang) : t('no', lang)}
-              valB={cardB.virtual_only ? t('yes', lang) : t('no', lang)}
-              winA={false}
-              winB={false}
-            />
-            {(cardA.trust_score !== null || cardB.trust_score !== null) && (
-              <Row
-                label={t('trust', lang)}
-                valA={cardA.trust_score !== null ? `${cardA.trust_score}/100` : '—'}
-                valB={cardB.trust_score !== null ? `${cardB.trust_score}/100` : '—'}
-                winA={trustAwin}
-                winB={trustBwin}
-              />
-            )}
+            {rows.map((row, i) => (
+              <tr key={i} className="border-b border-bg-border last:border-0">
+                <td className="px-4 py-3 text-slate-400 text-xs">{row.label}</td>
+                <td className={`px-4 py-3 text-center font-medium ${row.winner === 1 ? 'text-white' : 'text-slate-400'}`}>
+                  <span className={row.bool ? (row.v1 === L.yes ? 'text-green-accent' : 'text-slate-500') : ''}>
+                    {row.v1}
+                  </span>
+                  {row.winner === 1 && (
+                    <div className="mt-1"><Winner label={L.winner} /></div>
+                  )}
+                </td>
+                <td className={`px-4 py-3 text-center font-medium ${row.winner === 2 ? 'text-white' : 'text-slate-400'}`}>
+                  <span className={row.bool ? (row.v2 === L.yes ? 'text-green-accent' : 'text-slate-500') : ''}>
+                    {row.v2}
+                  </span>
+                  {row.winner === 2 && (
+                    <div className="mt-1"><Winner label={L.winner} /></div>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* Winner banner */}
-      {winner && (
-        <div className="card-surface border border-cyan-500/30 rounded-xl p-5 mb-8 text-center">
-          <p className="text-slate-400 text-sm mb-1">{t('winner', lang)}</p>
-          <p className="text-white font-bold text-xl text-cyan-400">{winner.name}</p>
+      {/* Cryptos */}
+      <div className="card-surface p-5 mb-8">
+        <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">{L.cryptos}</h3>
+        <div className="grid grid-cols-2 gap-6">
+          {[card1, card2].map((card) => (
+            <div key={card.id}>
+              <div className="text-xs text-slate-500 mb-2">{card.name}</div>
+              <div className="flex flex-wrap gap-1.5">
+                {card.cryptos.map((c) => (
+                  <span key={c} className="px-2 py-0.5 rounded text-xs font-mono bg-bg-elevated border border-bg-border text-slate-300">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      )}
-
-      {/* SEO text */}
-      <div className="prose prose-invert max-w-none text-slate-300 space-y-4 mb-10 text-sm leading-relaxed">
-        <ComparisonText cardA={cardA} cardB={cardB} lang={lang}
-          cashbackA={cashbackA} cashbackB={cashbackB} winner={winner} />
       </div>
 
-      {/* Schema.org */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        name: `${cardA.name} vs ${cardB.name} ${YEAR}`,
-        description: `Comparatif ${cardA.name} vs ${cardB.name} : cashback, frais, staking.`,
-        url: window.location.href,
-      }) }} />
+      {/* Back links */}
+      <div className="flex gap-3 justify-center">
+        <Link to={`/${lang}/${segment}/${card1.id}`} className="btn-ghost text-sm">
+          Fiche {card1.name}
+        </Link>
+        <Link to={`/${lang}/${segment}/${card2.id}`} className="btn-ghost text-sm">
+          Fiche {card2.name}
+        </Link>
+      </div>
+
+      <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
     </div>
   );
 }
