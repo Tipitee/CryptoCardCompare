@@ -1,5 +1,5 @@
-import { NavLink, Outlet, Link } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, Heart, Home, Sparkles, Coins, Menu, FileText, Shield } from 'lucide-react';
+import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
+import { BarChart3, BookOpen, Calculator, ChevronDown, Heart, Home, Sparkles, Coins, Menu, FileText, Shield, TrendingUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -7,16 +7,38 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import LanguageSwitcher from './LanguageSwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+// Thematic page slugs per language
+const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
+  de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
+  es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
+  it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
+  en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+};
+
+const THEMATIC_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string; title: string }> = {
+  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking' },
+  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking' },
+  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking' },
+  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking' },
+  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards' },
+};
 
 export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
   const loadFavorites = useAppStore((s) => s.loadFavorites);
   const favorites = useAppStore((s) => s.favorites);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [guidesOpen, setGuidesOpen] = useState(false);
+  const guidesRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation('common');
   const lang = useLanguage();
   const { getRoute } = useLocalizedRoute();
+
+  const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
+  const labels = THEMATIC_LABELS[lang] || THEMATIC_LABELS.en;
 
   const navItems = [
     { key: '', label: t('nav_home'), icon: Home },
@@ -27,10 +49,28 @@ export default function Layout() {
     { key: 'blog', label: t('nav_blog'), icon: BookOpen },
   ];
 
+  const thematicLinks = [
+    { slug: slugs.best, label: labels.best, icon: '⭐' },
+    { slug: slugs.cashback, label: labels.cashback, icon: '💰' },
+    { slug: slugs.noFees, label: labels.noFees, icon: '🆓' },
+    { slug: slugs.noStaking, label: labels.noStaking, icon: '🔓' },
+  ];
+
   useEffect(() => {
     loadCards(lang);
     loadFavorites();
   }, [loadCards, loadFavorites, lang]);
+
+  // Close guides dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (guidesRef.current && !guidesRef.current.contains(e.target as Node)) {
+        setGuidesOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-bg">
@@ -69,6 +109,38 @@ export default function Layout() {
                 )}
               </NavLink>
             ))}
+
+            {/* Guides dropdown */}
+            <div ref={guidesRef} className="relative">
+              <button
+                onClick={() => setGuidesOpen((v) => !v)}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+                  guidesOpen
+                    ? 'text-cyan-accent bg-cyan-accent/10'
+                    : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
+                }`}
+              >
+                <TrendingUp className="w-4 h-4" />
+                {labels.title}
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${guidesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {guidesOpen && (
+                <div className="absolute top-full right-0 mt-1 w-56 rounded-xl border border-bg-border bg-bg-elevated shadow-xl py-1 z-50">
+                  {thematicLinks.map((item) => (
+                    <Link
+                      key={item.slug}
+                      to={`/${lang}/${item.slug}`}
+                      onClick={() => setGuidesOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-bg-card transition-colors"
+                    >
+                      <span className="text-base leading-none">{item.icon}</span>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -104,6 +176,22 @@ export default function Layout() {
                   {item.label}
                 </NavLink>
               ))}
+
+              {/* Thematic links in mobile menu */}
+              <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                {labels.title}
+              </div>
+              {thematicLinks.map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/${lang}/${item.slug}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="px-3 py-3 rounded-lg text-sm text-slate-300 flex items-center gap-3"
+                >
+                  <TrendingUp className="w-4 h-4" />
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </nav>
         )}
@@ -115,7 +203,7 @@ export default function Layout() {
 
       <footer className="border-t border-bg-border bg-bg-elevated/40 mt-20">
         <div className="container-app py-10">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-7 h-7 rounded bg-gradient-to-br from-cyan-accent to-green-accent flex items-center justify-center">
@@ -129,8 +217,9 @@ export default function Layout() {
                 {t('footer_desc')}
               </p>
             </div>
+
             <div>
-              <h4 className="text-sm font-semibold text-white mb-3">{t('nav_blog')}</h4>
+              <h4 className="text-sm font-semibold text-white mb-3">{t('nav_compare')}</h4>
               <ul className="space-y-2 text-sm text-slate-400">
                 {navItems.map((i) => (
                   <li key={i.key}>
@@ -141,6 +230,20 @@ export default function Layout() {
                 ))}
               </ul>
             </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">{labels.title}</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                {thematicLinks.map((item) => (
+                  <li key={item.slug}>
+                    <Link to={`/${lang}/${item.slug}`} className="hover:text-cyan-accent transition-colors">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div>
               <h4 className="text-sm font-semibold text-white mb-3">{t('footer_resources')}</h4>
               <ul className="space-y-2 text-sm text-slate-400 mb-6">
@@ -163,7 +266,6 @@ export default function Layout() {
                   </Link>
                 </li>
               </ul>
-              <h4 className="text-sm font-semibold text-white mb-3">{t('nav_blog')}</h4>
               <p className="text-xs text-slate-500 leading-relaxed">
                 {t('footer_disclaimer')}
               </p>
