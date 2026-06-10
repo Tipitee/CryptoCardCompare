@@ -61,13 +61,13 @@ const THEME_CONFIG: Record<string, Record<string, { title: string; h1: string; d
 };
 
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
-  best:          () => true,
-  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) >= 1,
-  'no-fees':     (c) => (c.annual_fees || 0) === 0,
-  'no-staking':  (c) => (c.staking_required || 0) === 0,
+  best:          (c) => (c.trust_score || 0) >= 50,
+  cashback:      (c) => (c.cashback_premium || c.cashback_base || 0) >= 2,
+  'no-fees':     (c) => (c.annual_fees || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 1,
+  'no-staking':  (c) => (c.staking_required || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 1,
   france:        (c) => Array.isArray(c.markets) ? c.markets.includes('fr') : true,
   virtual:       (c) => c.virtual_only === true,
-  beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
+  beginner:      (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0 && (c.cashback_premium || c.cashback_base || 0) >= 0.5,
 };
 
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
@@ -92,9 +92,9 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   useEffect(() => {
     supabase
       .from('cards')
-      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image')
-      .then(({ data, error }) => {
-        if (error) console.error('ThematicPage error:', error);
+      .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image, image_url')
+      .neq('status', 'discontinued')
+      .then(({ data }) => {
         setCards(data || []);
         setLoading(false);
       });
@@ -169,10 +169,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
             >
               {card.real_card_image && (
                 <img
-                  ssrc={card.real_card_image}
+                  src={card.real_card_image}
                   alt={card.name}
                   className="w-full h-32 object-contain mb-3"
                   loading="lazy"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
               )}
               <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
