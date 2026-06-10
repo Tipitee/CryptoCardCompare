@@ -277,7 +277,20 @@ export default function CardDetail() {
                 <StatCard label={t('cards:card_network')} value={card.cardNetwork} />
               </div>
             </section>
-
+<style>{`
+  .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
+  .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
+  .card-article p  { margin-bottom: 1rem; line-height: 1.7; }
+  .card-article ul, .card-article ol { margin: 0.75rem 0 1rem 1.5rem; }
+  .card-article li { margin-bottom: 0.4rem; }
+`}</style>
+{/* Article content */}
+{article?.content && (
+  <div
+    className="card-surface card-article p-6 mb-6"
+    dangerouslySetInnerHTML={{ __html: article.content }}
+  />
+)}
             {/* Article content */}
             {article?.content && (
               <div
