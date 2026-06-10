@@ -220,7 +220,9 @@ export default function ComparisonPage() {
         {[cardA, cardB].map((card) => (
           <div key={card.id} className="card-surface p-5 rounded-xl text-center">
             {card.real_card_image && (
-              <img src={card.real_card_image} alt={card.name} className="h-24 object-contain mx-auto mb-3" loading="lazy" />
+              <div style={{ borderRadius: '12px', overflow: 'hidden', width: '100%', aspectRatio: '1.586', marginBottom: '12px' }}>
+  <img src={card.real_card_image} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+</div>
             )}
             <h2 className="text-white font-semibold text-lg">{card.name}</h2>
             <p className="text-slate-400 text-sm mb-4">{card.issuer}</p>
