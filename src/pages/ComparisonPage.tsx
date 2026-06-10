@@ -48,6 +48,73 @@ interface Card {
   real_card_image: string | null;
 }
 
+const INTRO: Record<string, (a: string, b: string, year: number) => string> = {
+  fr: (a, b, y) => `Vous hésitez entre la ${a} et la ${b} ? Ce comparatif ${y} vous aide à choisir selon votre profil : cashback, frais annuels, staking requis et score de confiance sont analysés côte à côte.`,
+  de: (a, b, y) => `Sie sind unschlüssig zwischen der ${a} und der ${b}? Dieser Vergleich ${y} hilft Ihnen bei der Wahl: Cashback, Jahresgebühren, Staking-Anforderungen und Vertrauensscore werden nebeneinandergestellt.`,
+  es: (a, b, y) => `¿Dudas entre la ${a} y la ${b}? Esta comparativa ${y} te ayuda a elegir: cashback, comisiones anuales, staking requerido y puntuación de confianza se analizan en paralelo.`,
+  it: (a, b, y) => `Indeciso tra la ${a} e la ${b}? Questo confronto ${y} ti aiuta a scegliere: cashback, costi annuali, staking richiesto e punteggio di fiducia analizzati fianco a fianco.`,
+  en: (a, b, y) => `Can't decide between the ${a} and the ${b}? This ${y} comparison helps you choose: cashback rates, annual fees, staking requirements and trust scores are analysed side by side.`,
+};
+
+const CASHBACK_TEXT: Record<string, (winner: string, val: number, loser: string) => string> = {
+  fr: (w, v, l) => `Sur le cashback, la ${w} prend l'avantage avec ${v}% contre la ${l}. C'est souvent le critère décisif pour les utilisateurs qui paient régulièrement par carte.`,
+  de: (w, v, l) => `Beim Cashback hat die ${w} mit ${v}% gegenüber der ${l} die Nase vorn. Das ist oft das entscheidende Kriterium für regelmäßige Kartennutzer.`,
+  es: (w, v, l) => `En cashback, la ${w} tiene ventaja con ${v}% frente a la ${l}. Suele ser el criterio decisivo para quienes pagan habitualmente con tarjeta.`,
+  it: (w, v, l) => `Sul cashback, la ${w} è avvantaggiata con ${v}% rispetto alla ${l}. È spesso il criterio decisivo per chi paga regolarmente con carta.`,
+  en: (w, v, l) => `On cashback, the ${w} takes the lead with ${v}% against the ${l}. This is often the deciding factor for regular card users.`,
+};
+
+const FEES_TEXT: Record<string, (name: string) => string> = {
+  fr: (n) => `La ${n} est gratuite, ce qui la rend accessible sans engagement financier initial.`,
+  de: (n) => `Die ${n} ist kostenlos und daher ohne finanzielle Vorverpflichtung zugänglich.`,
+  es: (n) => `La ${n} es gratuita, lo que la hace accesible sin compromiso financiero inicial.`,
+  it: (n) => `La ${n} è gratuita, il che la rende accessibile senza impegno finanziario iniziale.`,
+  en: (n) => `The ${n} is free, making it accessible with no upfront financial commitment.`,
+};
+
+const VERDICT_TEXT: Record<string, (winner: string, loser: string) => string> = {
+  fr: (w, l) => `Au global, la ${w} ressort en tête de ce comparatif. Elle offre un meilleur rapport qualité/conditions que la ${l} sur la majorité des critères analysés. Cela dit, le choix final dépend de votre usage : si un critère spécifique est prioritaire pour vous, la ${l} peut rester pertinente.`,
+  de: (w, l) => `Insgesamt liegt die ${w} in diesem Vergleich vorne. Sie bietet ein besseres Preis-Leistungs-Verhältnis als die ${l} bei den meisten analysierten Kriterien. Die endgültige Wahl hängt jedoch von Ihrem Nutzungsverhalten ab.`,
+  es: (w, l) => `En general, la ${w} sale adelante en esta comparativa. Ofrece mejor relación calidad/condiciones que la ${l} en la mayoría de criterios analizados. Aun así, la elección final depende de tu uso.`,
+  it: (w, l) => `Nel complesso, la ${w} si distingue in questo confronto. Offre un miglior rapporto qualità/condizioni rispetto alla ${l} sulla maggior parte dei criteri analizzati. Tuttavia, la scelta finale dipende dal vostro utilizzo.`,
+  en: (w, l) => `Overall, the ${w} comes out ahead in this comparison. It offers a better value-to-conditions ratio than the ${l} across most of the criteria analysed. That said, the final choice depends on your usage.`,
+};
+
+function ComparisonText({ cardA, cardB, lang, cashbackA, cashbackB, winner }: {
+  cardA: Card; cardB: Card; lang: string;
+  cashbackA: number; cashbackB: number; winner: Card | null;
+}) {
+  const intro = (INTRO[lang] || INTRO.en)(cardA.name, cardB.name, YEAR);
+
+  let cashbackSentence = '';
+  if (cashbackA !== cashbackB) {
+    const [winCard, winVal, loseCard] = cashbackA > cashbackB
+      ? [cardA.name, cashbackA, cardB.name]
+      : [cardB.name, cashbackB, cardA.name];
+    cashbackSentence = (CASHBACK_TEXT[lang] || CASHBACK_TEXT.en)(winCard, winVal, loseCard);
+  }
+
+  const freeCards = [cardA, cardB].filter(c => c.annual_fees === 0);
+  const freesSentence = freeCards.length === 1
+    ? (FEES_TEXT[lang] || FEES_TEXT.en)(freeCards[0].name)
+    : freeCards.length === 2
+      ? (FEES_TEXT[lang] || FEES_TEXT.en)(`${cardA.name} et ${cardB.name}`)
+      : '';
+
+  const verdictSentence = winner
+    ? (VERDICT_TEXT[lang] || VERDICT_TEXT.en)(winner.name, winner.id === cardA.id ? cardB.name : cardA.name)
+    : '';
+
+  return (
+    <>
+      <p>{intro}</p>
+      {cashbackSentence && <p>{cashbackSentence}</p>}
+      {freesSentence && <p>{freesSentence}</p>}
+      {verdictSentence && <p>{verdictSentence}</p>}
+    </>
+  );
+}
+
 function better(a: number | null, b: number | null, higherIsBetter = true): [boolean, boolean] {
   if (a === null || b === null) return [false, false];
   if (a === b) return [false, false];
@@ -165,7 +232,7 @@ export default function ComparisonPage() {
                 {t('see_card', lang)}
               </Link>
               <Link
-                to={`/${lang}/${segment}/${card.id}/avis`}
+                to={`/${lang}/${segment}/${card.id}`}
                 className="text-xs bg-slate-700 text-slate-300 px-3 py-1 rounded-full hover:bg-slate-600 transition-colors"
               >
                 {t('see_article', lang)}
@@ -241,6 +308,12 @@ export default function ComparisonPage() {
           <p className="text-white font-bold text-xl text-cyan-400">{winner.name}</p>
         </div>
       )}
+
+      {/* SEO text */}
+      <div className="prose prose-invert max-w-none text-slate-300 space-y-4 mb-10 text-sm leading-relaxed">
+        <ComparisonText cardA={cardA} cardB={cardB} lang={lang}
+          cashbackA={cashbackA} cashbackB={cashbackB} winner={winner} />
+      </div>
 
       {/* Schema.org */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
