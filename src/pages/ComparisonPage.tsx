@@ -227,12 +227,6 @@ export default function ComparisonPage() {
             <div className="flex gap-2 justify-center flex-wrap">
               <Link
                 to={`/${lang}/${segment}/${card.id}`}
-                className="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full hover:bg-cyan-500/30 transition-colors"
-              >
-                {t('see_card', lang)}
-              </Link>
-              <Link
-                to={`/${lang}/${segment}/${card.id}`}
                 className="text-xs bg-slate-700 text-slate-300 px-3 py-1 rounded-full hover:bg-slate-600 transition-colors"
               >
                 {t('see_article', lang)}
