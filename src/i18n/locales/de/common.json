@@ -3,14 +3,12 @@
   "site_domain": ".eu",
   "site_tagline": "Der beste Krypto-Kartenvergleich",
   "site_description": "Vergleichen Sie die besten Kryptokarten: Cashback, Gebühren, Staking und Verfügbarkeit in Deutschland und Europa.",
-
   "nav_home": "Startseite",
   "nav_compare": "Vergleichen",
   "nav_simulator": "Simulator",
   "nav_recommendation": "Empfehlung",
   "nav_favorites": "Favoriten",
   "nav_blog": "Blog",
-
   "btn_generate": "Generieren",
   "btn_regenerate": "Neu generieren",
   "btn_compare": "Vergleichen",
@@ -23,13 +21,11 @@
   "btn_edit": "Bearbeiten",
   "btn_back": "Zurück",
   "btn_next": "Weiter",
-
   "filter_all": "Alle",
   "filter_no_fees": "Keine Gebühren",
   "filter_high_cashback": "Hohes Cashback",
   "filter_no_staking": "Kein Staking",
   "filter_france": "In Deutschland verfügbar",
-
   "trust_score": "Vertrauenspunkte",
   "trust_very_reliable": "Sehr zuverlässig",
   "trust_moderate": "Moderat",
@@ -51,19 +47,16 @@
   "trust_aum_large": "Groß ($10-100B)",
   "trust_aum_medium": "Mittel ($1-10B)",
   "trust_aum_small": "Klein (<$1B)",
-
   "language_fr": "Français",
   "language_de": "Deutsch",
   "language_es": "Español",
   "language_it": "Italiano",
   "language_en": "English",
-
   "empty_favorites": "Noch keine Favoriten",
   "empty_results": "Keine Ergebnisse gefunden",
   "loading": "Wird geladen...",
   "error": "Fehler",
   "success": "Erfolg",
-
   "home_hero_badge": "Karten kontinuierlich analysiert",
   "home_hero_title_1": "Die",
   "home_hero_title_2": "beste Kryptokarte",
@@ -71,22 +64,18 @@
   "home_hero_desc": "Vergleichen Sie Karten visuell, simulieren Sie Ihre jährlichen Gewinne und erhalten Sie eine personalisierte Empfehlung in 6 Fragen.",
   "home_hero_btn_compare": "Karten vergleichen",
   "home_hero_btn_quiz": "Personalisiertes Quiz",
-
   "home_stats_cards": "Karten verglichen",
   "home_stats_cryptos": "Kryptos unterstützt",
   "home_stats_criteria": "Analysierte Kriterien",
   "home_stats_free": "Kostenlos & ohne Konto",
-
   "home_top3_title": "Unsere Top 3 derzeit",
   "home_top3_desc": "Karten, die sich nach verschiedenen Kriterien abheben.",
   "home_top3_cashback": "Maximales Cashback",
   "home_top3_no_fees": "Keine Gebühren & Staking",
   "home_top3_balanced": "Beste Balance",
   "home_top3_view_all": "Alle anzeigen",
-
   "home_all_title": "Alle Kryptokarten",
   "home_all_desc": "Klicken Sie auf eine Karte, um ihre detaillierten Features zu entdecken.",
-
   "home_help_title": "Wie wir Ihnen helfen können",
   "home_help_compare": "Vergleichen",
   "home_help_compare_desc": "Interaktive Tabelle mit fortgeschrittener Sortierung und Filtern.",
@@ -96,7 +85,6 @@
   "home_help_recommendation_desc": "Personalisiertes Quiz, um Ihre ideale Karte zu finden.",
   "home_help_favorites": "Favoriten",
   "home_help_favorites_desc": "Speichern Sie Karten, die Sie interessieren.",
-
   "footer_title": "TopCryptoCards",
   "footer_desc": "Vergleichen Sie die besten Kryptokarten: Cashback, Gebühren, Staking und Verfügbarkeit in Europa.",
   "footer_resources": "Ressourcen",
@@ -104,7 +92,6 @@
   "footer_disclaimer": "Die bereitgestellten Informationen dienen nur zu Informationszwecken. Cashback-Sätze, Gebühren und Staking-Bedingungen können je nach Aussteller variieren. Kryptowährungsinvestitionen sind mit Risiken verbunden.",
   "footer_copyright": "TopCryptoCards. Keine Finanzberatung.",
   "footer_tagline": "Mit Sorgfalt für die Krypto-Gemeinschaft gemacht.",
-
   "home_card_fees": "Geb./Jahr",
   "home_card_fees_label": "Gebühren",
   "home_card_free": "Kostenlos",
@@ -119,7 +106,6 @@
   "home_compare_remove_label": "Aus Vergleich entfernen",
   "home_fav_add_label": "Zu Favoriten hinzufügen",
   "home_fav_remove_label": "Aus Favoriten entfernen",
-
   "compare_title": "Kartenvergleich",
   "compare_desc": "Filtern, sortieren und mehrere Karten für einen detaillierten Vergleich auswählen.",
   "compare_view_table": "Tabelle",
@@ -154,7 +140,6 @@
   "compare_stat_none": "Kein",
   "compare_cards_count": "Karte",
   "compare_cards_count_plural": "Karten",
-
   "sim_title": "Jahresgewinn-Simulator",
   "sim_desc": "Geben Sie Ihre monatlichen Ausgaben nach Kategorie ein, um das generierte Cashback zu schätzen.",
   "sim_spending_title": "Ihre monatlichen Ausgaben",
@@ -215,7 +200,6 @@
   "sim_cat_supermarket_hint": "Lebensmitteleinkäufe",
   "sim_cat_misc": "Sonstiges",
   "sim_cat_misc_hint": "Andere Ausgaben",
-
   "quiz_badge": "Personalisiertes Quiz",
   "quiz_title": "Finden Sie Ihre ideale Kryptokarte",
   "quiz_desc": "6 schnelle Fragen zur Identifikation der 3 besten Karten für Ihr Profil.",
@@ -280,11 +264,39 @@
   "quiz_q6_opt1": "Nur Deutschland",
   "quiz_q6_opt2": "Europa (EU)",
   "quiz_q6_opt3": "International",
-
   "card_detail_view_page": "Vollständige Kartenseite anzeigen",
   "card_detail_back": "Zurück zu den Karten",
   "card_detail_availability": "Verfügbarkeit",
   "card_detail_cta_desc": "Besuchen Sie das offizielle Angebot, um die vollständigen Bedingungen einzusehen.",
   "card_not_found_title": "Karte nicht gefunden",
-  "card_not_found_desc": "Diese Karte existiert nicht oder wurde aus dem Katalog entfernt."
+  "card_not_found_desc": "Diese Karte existiert nicht oder wurde aus dem Katalog entfernt.",
+  "detail_cashback_base": "Basis-Cashback",
+  "detail_cashback_premium": "Premium-Cashback",
+  "detail_annual_fees": "Jahresgebühr",
+  "detail_staking_required": "Staking erforderlich",
+  "detail_daily_limit": "Tageslimit",
+  "detail_network": "Netzwerk",
+  "detail_cryptos": "Akzeptierte Kryptos",
+  "detail_free": "Kostenlos",
+  "detail_none": "Keines",
+  "detail_free_withdrawals": "Kostenlose Geldautomaten",
+  "COMPARISON_SCORE": "Bewertung",
+  "COMPARISON_CRITERIA": "Kriterien",
+  "COMPARISON_COMMON_CRYPTOS": "Gemeinsame Kryptos",
+  "COMPARISON_ONLY_IN": "Nur bei",
+  "comparison_add_fav": "Zu Favoriten",
+  "comparison_in_fav": "Favorit ✓",
+  "comparison_details": "Details",
+  "comparison_offer": "Angebot ansehen",
+  "comparison_back": "← Zurück",
+  "comparison_subtitle": "Detaillierter Vergleich",
+  "comparison_loading": "Lädt…",
+  "comparison_not_found": "Karte nicht gefunden",
+  "comparison_score": "Bewertung",
+  "comparison_criteria": "Kriterien",
+  "comparison_common_cryptos": "Gemeinsame Kryptos",
+  "comparison_only_in": "Nur bei",
+  "comparison_cta_btn": "Angebot ansehen",
+  "comparison_cta_text": "Alle Bedingungen auf der offiziellen Website prüfen.",
+  "detail_available_france": "In Deutschland verfügbar"
 }

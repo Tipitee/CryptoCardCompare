@@ -45,5 +45,23 @@
   "badge_zero_fees": "CERO COMISIONES",
   "badge_best_value": "MEJOR RELACIÓN",
   "badge_premium": "PREMIUM",
-  "badge_discontinued": "Programa cerrado"
+  "badge_discontinued": "Programa cerrado",
+
+  "detail_cashback_base": "Cashback base",
+  "detail_cashback_premium": "Cashback premium",
+  "detail_annual_fees": "Cuota anual",
+  "detail_staking_required": "Staking requerido",
+  "detail_daily_limit": "Límite diario",
+  "detail_network": "Red",
+  "detail_cryptos": "Criptos aceptadas",
+  "detail_free": "Gratis",
+  "detail_none": "Ninguno",
+
+  "COMPARISON_SCORE": "Puntuación",
+  "COMPARISON_CRITERIA": "Criterios",
+  "COMPARISON_COMMON_CRYPTOS": "Criptos en común",
+  "COMPARISON_ONLY_IN": "Solo en",
+  "comparison_add_fav": "Añadir a favoritos",
+  "comparison_details": "Ver detalles",
+  "comparison_offer": "Ver oferta"
 }

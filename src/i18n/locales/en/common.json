@@ -3,14 +3,12 @@
   "site_domain": ".eu",
   "site_tagline": "The best crypto card comparison platform",
   "site_description": "Compare the best crypto cards: cashback, fees, staking and availability in UK and Europe.",
-
   "nav_home": "Home",
   "nav_compare": "Compare",
   "nav_simulator": "Simulator",
   "nav_recommendation": "Recommendation",
   "nav_favorites": "Favorites",
   "nav_blog": "Blog",
-
   "btn_generate": "Generate",
   "btn_regenerate": "Regenerate",
   "btn_compare": "Compare",
@@ -23,13 +21,11 @@
   "btn_edit": "Edit",
   "btn_back": "Back",
   "btn_next": "Next",
-
   "filter_all": "All",
   "filter_no_fees": "No Fees",
   "filter_high_cashback": "High Cashback",
   "filter_no_staking": "No Staking",
   "filter_france": "Available UK",
-
   "trust_score": "Trust Score",
   "trust_very_reliable": "Very reliable",
   "trust_moderate": "Moderate",
@@ -51,19 +47,16 @@
   "trust_aum_large": "Large ($10-100B)",
   "trust_aum_medium": "Medium ($1-10B)",
   "trust_aum_small": "Small (<$1B)",
-
   "language_fr": "Français",
   "language_de": "Deutsch",
   "language_es": "Español",
   "language_it": "Italiano",
   "language_en": "English",
-
   "empty_favorites": "No favorites yet",
   "empty_results": "No results found",
   "loading": "Loading...",
   "error": "Error",
   "success": "Success",
-
   "home_hero_badge": "cards analyzed continuously",
   "home_hero_title_1": "The",
   "home_hero_title_2": "best crypto card",
@@ -71,22 +64,18 @@
   "home_hero_desc": "Compare cards visually, simulate your annual earnings and get a personalized recommendation in 6 questions.",
   "home_hero_btn_compare": "Compare cards",
   "home_hero_btn_quiz": "Personalized Quiz",
-
   "home_stats_cards": "Cards compared",
   "home_stats_cryptos": "Cryptos supported",
   "home_stats_criteria": "Criteria analyzed",
   "home_stats_free": "Free & no account",
-
   "home_top3_title": "Our Top 3 Right Now",
   "home_top3_desc": "Cards that stand out according to different criteria.",
   "home_top3_cashback": "Maximum Cashback",
   "home_top3_no_fees": "Zero fees & no staking",
   "home_top3_balanced": "Best balance",
   "home_top3_view_all": "View all",
-
   "home_all_title": "All Crypto Cards",
   "home_all_desc": "Click on a card to discover its detailed features.",
-
   "home_help_title": "How we can help you",
   "home_help_compare": "Compare",
   "home_help_compare_desc": "Interactive table with advanced sorting and filters.",
@@ -96,7 +85,6 @@
   "home_help_recommendation_desc": "Personalized quiz to find your ideal card.",
   "home_help_favorites": "Favorites",
   "home_help_favorites_desc": "Save the cards that interest you.",
-
   "footer_title": "TopCryptoCards",
   "footer_desc": "Compare the best crypto cards: cashback, fees, staking and availability in UK and Europe.",
   "footer_resources": "Resources",
@@ -104,7 +92,6 @@
   "footer_disclaimer": "Information provided is for informational purposes only. Cashback rates, fees and staking conditions may vary by issuer. Cryptocurrency investments carry risks.",
   "footer_copyright": "TopCryptoCards. No financial advice.",
   "footer_tagline": "Made with care for the crypto community.",
-
   "home_card_fees": "Fees/yr",
   "home_card_fees_label": "Fees",
   "home_card_free": "Free",
@@ -119,7 +106,6 @@
   "home_compare_remove_label": "Remove from comparison",
   "home_fav_add_label": "Add to favorites",
   "home_fav_remove_label": "Remove from favorites",
-
   "compare_title": "Card Comparator",
   "compare_desc": "Filter, sort and select multiple cards for a detailed comparison.",
   "compare_view_table": "Table",
@@ -154,7 +140,6 @@
   "compare_stat_none": "None",
   "compare_cards_count": "card",
   "compare_cards_count_plural": "cards",
-
   "sim_title": "Annual Earnings Simulator",
   "sim_desc": "Enter your monthly spending by category to estimate the cashback generated and choose the most profitable card for your profile.",
   "sim_spending_title": "Your monthly spending",
@@ -215,7 +200,6 @@
   "sim_cat_supermarket_hint": "Grocery shopping",
   "sim_cat_misc": "Miscellaneous",
   "sim_cat_misc_hint": "Other expenses",
-
   "quiz_badge": "Personalised Quiz",
   "quiz_title": "Find your ideal crypto card",
   "quiz_desc": "6 quick questions to identify the 3 best cards for your profile.",
@@ -280,11 +264,39 @@
   "quiz_q6_opt1": "UK only",
   "quiz_q6_opt2": "Europe (EU)",
   "quiz_q6_opt3": "International",
-
   "card_detail_view_page": "View full card page",
   "card_detail_back": "Back to cards",
   "card_detail_availability": "Availability",
   "card_detail_cta_desc": "Visit the official offer to see full terms and conditions and sign up.",
   "card_not_found_title": "Card not found",
-  "card_not_found_desc": "This card does not exist or has been removed from the catalogue."
+  "card_not_found_desc": "This card does not exist or has been removed from the catalogue.",
+  "detail_cashback_base": "Base cashback",
+  "detail_cashback_premium": "Premium cashback",
+  "detail_annual_fees": "Annual fees",
+  "detail_staking_required": "Staking required",
+  "detail_daily_limit": "Daily limit",
+  "detail_network": "Network",
+  "detail_cryptos": "Accepted cryptos",
+  "detail_free": "Free",
+  "detail_none": "None",
+  "detail_free_withdrawals": "Free ATM withdrawals",
+  "COMPARISON_SCORE": "Score",
+  "COMPARISON_CRITERIA": "Criteria",
+  "COMPARISON_COMMON_CRYPTOS": "Common cryptos",
+  "COMPARISON_ONLY_IN": "Only in",
+  "comparison_add_fav": "Add to favorites",
+  "comparison_in_fav": "Favorite ✓",
+  "comparison_details": "View details",
+  "comparison_offer": "View offer",
+  "comparison_back": "← Back",
+  "comparison_subtitle": "Detailed comparison",
+  "comparison_loading": "Loading…",
+  "comparison_not_found": "Card not found",
+  "comparison_score": "Score",
+  "comparison_criteria": "Criteria",
+  "comparison_common_cryptos": "Common cryptos",
+  "comparison_only_in": "Only in",
+  "comparison_cta_btn": "View offer",
+  "comparison_cta_text": "Check the full conditions on the official website.",
+  "detail_available_france": "Available in UK"
 }

@@ -45,5 +45,23 @@
   "badge_zero_fees": "ZÉRO FRAIS",
   "badge_best_value": "MEILLEUR RAPPORT",
   "badge_premium": "PREMIUM",
-  "badge_discontinued": "Programme arrêté"
+  "badge_discontinued": "Programme arrêté",
+
+  "detail_cashback_base": "Cashback de base",
+  "detail_cashback_premium": "Cashback premium",
+  "detail_annual_fees": "Frais annuels",
+  "detail_staking_required": "Staking requis",
+  "detail_daily_limit": "Limite quotidienne",
+  "detail_network": "Réseau",
+  "detail_cryptos": "Cryptos acceptées",
+  "detail_free": "Gratuit",
+  "detail_none": "Aucun",
+
+  "COMPARISON_SCORE": "Score",
+  "COMPARISON_CRITERIA": "Critères",
+  "COMPARISON_COMMON_CRYPTOS": "Cryptos en commun",
+  "COMPARISON_ONLY_IN": "Uniquement dans",
+  "comparison_add_fav": "Ajouter aux favoris",
+  "comparison_details": "Voir détails",
+  "comparison_offer": "Voir l'offre"
 }

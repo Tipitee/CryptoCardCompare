@@ -3,14 +3,12 @@
   "site_domain": ".eu",
   "site_tagline": "El mejor comparador de tarjetas criptográficas",
   "site_description": "Compara las mejores tarjetas de criptografía: reembolso, tarifas, apuesta y disponibilidad en España y Europa.",
-
   "nav_home": "Inicio",
   "nav_compare": "Comparar",
   "nav_simulator": "Simulador",
   "nav_recommendation": "Recomendación",
   "nav_favorites": "Favoritos",
   "nav_blog": "Blog",
-
   "btn_generate": "Generar",
   "btn_regenerate": "Regenerar",
   "btn_compare": "Comparar",
@@ -23,13 +21,11 @@
   "btn_edit": "Editar",
   "btn_back": "Atrás",
   "btn_next": "Siguiente",
-
   "filter_all": "Todas",
   "filter_no_fees": "Sin tarifas",
   "filter_high_cashback": "Reembolso alto",
   "filter_no_staking": "Sin apuesta",
   "filter_france": "Disponible en España",
-
   "trust_score": "Puntuación de confianza",
   "trust_very_reliable": "Muy fiable",
   "trust_moderate": "Moderado",
@@ -51,19 +47,16 @@
   "trust_aum_large": "Grande ($10-100B)",
   "trust_aum_medium": "Mediano ($1-10B)",
   "trust_aum_small": "Pequeño (<$1B)",
-
   "language_fr": "Français",
   "language_de": "Deutsch",
   "language_es": "Español",
   "language_it": "Italiano",
   "language_en": "English",
-
   "empty_favorites": "Sin favoritos por el momento",
   "empty_results": "No se encontraron resultados",
   "loading": "Cargando...",
   "error": "Error",
   "success": "Éxito",
-
   "home_hero_badge": "tarjetas analizadas continuamente",
   "home_hero_title_1": "La",
   "home_hero_title_2": "mejor tarjeta criptográfica",
@@ -71,22 +64,18 @@
   "home_hero_desc": "Compara visualmente las tarjetas, simula tus ganancias anuales y obtén una recomendación personalizada en 6 preguntas.",
   "home_hero_btn_compare": "Comparar tarjetas",
   "home_hero_btn_quiz": "Quiz personalizado",
-
   "home_stats_cards": "Tarjetas comparadas",
   "home_stats_cryptos": "Criptos soportadas",
   "home_stats_criteria": "Criterios analizados",
   "home_stats_free": "Gratis y sin cuenta",
-
   "home_top3_title": "Nuestro Top 3 en este momento",
   "home_top3_desc": "Tarjetas que destacan según diferentes criterios.",
   "home_top3_cashback": "Cashback máximo",
   "home_top3_no_fees": "Cero tarifas y staking",
   "home_top3_balanced": "Mejor equilibrio",
   "home_top3_view_all": "Ver todo",
-
   "home_all_title": "Todas las tarjetas criptográficas",
   "home_all_desc": "Haz clic en una tarjeta para descubrir sus características detalladas.",
-
   "home_help_title": "Cómo podemos ayudarte",
   "home_help_compare": "Comparar",
   "home_help_compare_desc": "Tabla interactiva con ordenamiento y filtros avanzados.",
@@ -96,7 +85,6 @@
   "home_help_recommendation_desc": "Quiz personalizado para encontrar tu tarjeta ideal.",
   "home_help_favorites": "Favoritos",
   "home_help_favorites_desc": "Guarda las tarjetas que te interesan.",
-
   "footer_title": "TopCryptoCards",
   "footer_desc": "Compara las mejores tarjetas criptográficas: cashback, tarifas, staking y disponibilidad en Europa.",
   "footer_resources": "Recursos",
@@ -104,7 +92,6 @@
   "footer_disclaimer": "La información proporcionada es solo para fines informativos. Las tasas de cashback, tarifas y condiciones de staking pueden variar según el emisor. Las inversiones en criptomonedas conllevan riesgos.",
   "footer_copyright": "TopCryptoCards. Sin asesoramiento financiero.",
   "footer_tagline": "Hecho con cuidado para la comunidad cripto.",
-
   "home_card_fees": "Comis./año",
   "home_card_fees_label": "Comisiones",
   "home_card_free": "Gratis",
@@ -119,7 +106,6 @@
   "home_compare_remove_label": "Quitar de comparación",
   "home_fav_add_label": "Añadir a favoritos",
   "home_fav_remove_label": "Quitar de favoritos",
-
   "compare_title": "Comparador de tarjetas",
   "compare_desc": "Filtra, ordena y selecciona varias tarjetas para una comparación detallada.",
   "compare_view_table": "Tabla",
@@ -154,7 +140,6 @@
   "compare_stat_none": "Ninguno",
   "compare_cards_count": "tarjeta",
   "compare_cards_count_plural": "tarjetas",
-
   "sim_title": "Simulador de ganancias anuales",
   "sim_desc": "Introduce tus gastos mensuales por categoría para estimar el cashback generado.",
   "sim_spending_title": "Tus gastos mensuales",
@@ -215,7 +200,6 @@
   "sim_cat_supermarket_hint": "Compras de alimentación",
   "sim_cat_misc": "Varios",
   "sim_cat_misc_hint": "Otros gastos",
-
   "quiz_badge": "Quiz personalizado",
   "quiz_title": "Encuentra tu tarjeta crypto ideal",
   "quiz_desc": "6 preguntas rápidas para identificar las 3 mejores tarjetas para tu perfil.",
@@ -280,11 +264,39 @@
   "quiz_q6_opt1": "Solo España",
   "quiz_q6_opt2": "Europa (UE)",
   "quiz_q6_opt3": "Internacional",
-
   "card_detail_view_page": "Ver ficha completa",
   "card_detail_back": "Volver a las tarjetas",
   "card_detail_availability": "Disponibilidad",
   "card_detail_cta_desc": "Visita la oferta oficial para ver los términos completos y registrarte.",
   "card_not_found_title": "Tarjeta no encontrada",
-  "card_not_found_desc": "Esta tarjeta no existe o ha sido retirada del catálogo."
+  "card_not_found_desc": "Esta tarjeta no existe o ha sido retirada del catálogo.",
+  "detail_cashback_base": "Cashback base",
+  "detail_cashback_premium": "Cashback premium",
+  "detail_annual_fees": "Cuota anual",
+  "detail_staking_required": "Staking requerido",
+  "detail_daily_limit": "Límite diario",
+  "detail_network": "Red",
+  "detail_cryptos": "Criptos aceptadas",
+  "detail_free": "Gratis",
+  "detail_none": "Ninguno",
+  "detail_free_withdrawals": "Retiradas de cajero gratuitas",
+  "COMPARISON_SCORE": "Puntuación",
+  "COMPARISON_CRITERIA": "Criterios",
+  "COMPARISON_COMMON_CRYPTOS": "Criptos en común",
+  "COMPARISON_ONLY_IN": "Solo en",
+  "comparison_add_fav": "Añadir a favoritos",
+  "comparison_in_fav": "Favorito ✓",
+  "comparison_details": "Ver detalles",
+  "comparison_offer": "Ver oferta",
+  "comparison_back": "← Volver",
+  "comparison_subtitle": "Comparación detallada",
+  "comparison_loading": "Cargando…",
+  "comparison_not_found": "Tarjeta no encontrada",
+  "comparison_score": "Puntuación",
+  "comparison_criteria": "Criterios",
+  "comparison_common_cryptos": "Criptos en común",
+  "comparison_only_in": "Solo en",
+  "comparison_cta_btn": "Ver oferta",
+  "comparison_cta_text": "Consulta las condiciones completas en el sitio oficial.",
+  "detail_available_france": "Disponible en España"
 }
