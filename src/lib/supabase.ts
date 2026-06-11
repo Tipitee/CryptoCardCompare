@@ -419,3 +419,4 @@ export async function generateArticle(
   const json = await res.json();
   return json.article as BlogPostDraft;
 }
+
