@@ -1,9 +1,7 @@
 export function renderMarkdown(md: string): string {
-  let html = md
-    // Escape HTML entities first
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  // NOTE: We intentionally do NOT escape HTML — article content is admin-generated
+  // and may contain <a>, <div>, etc. injected by our own scripts.
+  let html = md;
 
   // Tables
   html = html.replace(/\n(\|.+\|)\n(\|[-| :]+\|)\n((?:\|.+\|\n?)+)/g, (_m, header, _sep, body) => {
@@ -27,7 +25,7 @@ export function renderMarkdown(md: string): string {
     .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-display font-bold text-white mt-8 mb-4">$1</h1>');
 
   // Blockquotes
-  html = html.replace(/^&gt; (.+)$/gm, '<blockquote class="border-l-4 border-cyan-accent bg-bg-elevated rounded-r-xl px-5 py-3 my-4 text-slate-300 italic">$1</blockquote>');
+  html = html.replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-cyan-accent bg-bg-elevated rounded-r-xl px-5 py-3 my-4 text-slate-300 italic">$1</blockquote>');
 
   // Horizontal rule
   html = html.replace(/^---$/gm, '<hr class="border-bg-border my-8" />');
