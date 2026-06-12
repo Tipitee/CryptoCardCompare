@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
@@ -20,10 +20,28 @@ const CRYPTO_META: Record<string, { name: string; ticker: string; color: string;
   usdc: { name: 'USD Coin',  ticker: 'USDC', color: '#2775CA', emoji: '$'  },
 };
 
-const HOME_LABEL:   Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-const CRYPTO_LABEL: Record<string, string> = { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies' };
-const FAQ_LABEL:    Record<string, string> = { fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes', it: 'Domande frequenti', en: 'FAQ' };
-const CARDS_LABEL:  Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting' };
+const HOME_LABEL:    Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+const CRYPTO_LABEL:  Record<string, string> = { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies' };
+const FAQ_LABEL:     Record<string, string> = { fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes', it: 'Domande frequenti', en: 'FAQ' };
+const CARDS_LABEL:   Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting' };
+const SEE_ALSO:      Record<string, string> = { fr: 'Autres cryptomonnaies', de: 'Andere Kryptowährungen', es: 'Otras criptomonedas', it: 'Altre criptovalute', en: 'Other cryptocurrencies' };
+const COMPARE_CARDS: Record<string, string> = { fr: 'Comparer les cartes crypto', de: 'Krypto-Karten vergleichen', es: 'Comparar tarjetas crypto', it: 'Confronta le carte crypto', en: 'Compare crypto cards' };
+
+/* Thematic page slugs per language (mirrors Layout.tsx) */
+const THEMATIC_SLUGS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string }> = {
+  fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
+  de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
+  es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
+  it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
+  en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+};
+const THEMATIC_LINK_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string }> = {
+  fr: { best: 'Meilleures cartes', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Sans staking' },
+  de: { best: 'Beste Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Ohne Staking' },
+  es: { best: 'Mejores tarjetas', cashback: 'Con cashback', noFees: 'Sin comisiones', noStaking: 'Sin staking' },
+  it: { best: 'Migliori carte', cashback: 'Con cashback', noFees: 'Senza costi', noStaking: 'Senza staking' },
+  en: { best: 'Best cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking' },
+};
 
 export default function CryptoPage() {
   const { lang = 'fr', symbol = 'btc' } = useParams<{ lang: string; symbol: string }>();
@@ -142,6 +160,63 @@ export default function CryptoPage() {
           </div>
         </section>
       )}
+
+      {/* ── Internal linking: thematic guides ────────────────────────── */}
+      {(() => {
+        const slugs = THEMATIC_SLUGS[lang] ?? THEMATIC_SLUGS.en;
+        const tLabels = THEMATIC_LINK_LABELS[lang] ?? THEMATIC_LINK_LABELS.en;
+        const guides = [
+          { slug: slugs.best, label: tLabels.best, icon: '⭐' },
+          { slug: slugs.cashback, label: tLabels.cashback, icon: '💰' },
+          { slug: slugs.noFees, label: tLabels.noFees, icon: '🆓' },
+          { slug: slugs.noStaking, label: tLabels.noStaking, icon: '🔓' },
+        ];
+        return (
+          <section className="mb-10">
+            <h2 className="text-lg font-semibold text-white mb-3">
+              {COMPARE_CARDS[lang] ?? COMPARE_CARDS.en}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {guides.map((g) => (
+                <Link
+                  key={g.slug}
+                  to={`/${lang}/${g.slug}`}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+                >
+                  <span className="text-base leading-none">{g.icon}</span>
+                  {g.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ── Internal linking: other cryptos ─────────────────────────── */}
+      {(() => {
+        const others = Object.entries(CRYPTO_META)
+          .filter(([k]) => k !== sym)
+          .slice(0, 6);
+        return (
+          <section className="mb-10">
+            <h2 className="text-lg font-semibold text-white mb-3">
+              {SEE_ALSO[lang] ?? SEE_ALSO.en}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {others.map(([symbol, m]) => (
+                <Link
+                  key={symbol}
+                  to={`/${lang}/cryptos/${symbol}`}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-white hover:border-cyan-accent/40 transition-all"
+                >
+                  <span style={{ color: m.color }} className="font-bold text-sm">{m.emoji}</span>
+                  {m.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* FAQ */}
       {copy.faq.length > 0 && (
