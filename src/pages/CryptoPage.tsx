@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { CRYPTO_CONTENT } from '../data/cryptoContent';
@@ -20,12 +23,31 @@ const CRYPTO_META: Record<string, { name: string; ticker: string; color: string;
 const HOME_LABEL:   Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
 const CRYPTO_LABEL: Record<string, string> = { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies' };
 const FAQ_LABEL:    Record<string, string> = { fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes', it: 'Domande frequenti', en: 'FAQ' };
+const CARDS_LABEL:  Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting' };
 
 export default function CryptoPage() {
   const { lang = 'fr', symbol = 'btc' } = useParams<{ lang: string; symbol: string }>();
   const sym  = symbol.toLowerCase();
   const meta = CRYPTO_META[sym];
   const copy = CRYPTO_CONTENT[sym]?.[lang] ?? CRYPTO_CONTENT[sym]?.['fr'];
+
+  const [cards, setCards] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!meta?.ticker) return;
+    supabase
+      .from('cards')
+      .select('id, name, issuer, cashback_base, cashback_premium, affiliate_link, markets')
+      .contains('cryptos', [meta.ticker])
+      .then(({ data, error }) => {
+        if (error || !data) return;
+        const filtered = data.filter(
+          (c: any) => !Array.isArray(c.markets) || c.markets.includes(lang)
+        );
+        setCards(filtered);
+      })
+      .catch(() => { /* column may not exist yet — silent fail */ });
+  }, [sym, lang]); // eslint-disable-line
 
   useSeoMeta({
     title:       copy?.meta_title       ?? `${meta?.name ?? sym} | TopCryptoCards`,
@@ -83,6 +105,43 @@ export default function CryptoPage() {
           </section>
         ))}
       </div>
+
+      {/* Cards supporting this crypto */}
+      {cards.length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-5">
+            {CARDS_LABEL[lang] ?? CARDS_LABEL.en} {meta.ticker}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {cards.map((card) => (
+              <div
+                key={card.id}
+                className="flex items-center justify-between gap-3 p-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/30 transition-all"
+              >
+                <div className="min-w-0">
+                  <div className="font-semibold text-white text-sm truncate">{card.name}</div>
+                  <div className="text-xs text-slate-500">{card.issuer}</div>
+                  {(card.cashback_premium || card.cashback_base) > 0 && (
+                    <div className="text-xs text-cyan-accent mt-0.5">
+                      {((card.cashback_premium || card.cashback_base) * 100).toFixed(1)}% cashback
+                    </div>
+                  )}
+                </div>
+                {card.affiliate_link && (
+                  <a
+                    href={card.affiliate_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 p-2 rounded-lg bg-cyan-accent/10 text-cyan-accent hover:bg-cyan-accent/20 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       {copy.faq.length > 0 && (
