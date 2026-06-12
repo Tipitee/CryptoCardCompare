@@ -19,6 +19,9 @@ import RiskSummary from './pages/RiskSummary';
 import CardDetail from './pages/CardDetail';
 import ThematicPage from './pages/ThematicPage';
 import ComparisonPage from './pages/ComparisonPage';
+import CryptoList from './pages/CryptoList';
+import CryptoPage from './pages/CryptoPage';
+import NotFound from './pages/NotFound';
 import { initializeLanguage } from './i18n/utils';
 
 function RootRedirect() {
@@ -32,6 +35,32 @@ function RootRedirect() {
   }, [location.pathname]);
 
   return null;
+}
+
+// Redirects bare paths like /compare → /{lang}/compare
+// (without this, /:lang catches them and renders Home)
+const BARE_PATH_MAP: Record<string, Record<string, string>> = {
+  compare:       { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  comparer:      { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  vergleich:     { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  comparar:      { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  confronto:     { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  blog:          { fr: 'blog',          de: 'blog',       es: 'blog',          it: 'blog',         en: 'blog' },
+  simulateur:    { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulator:     { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulador:     { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulatore:    { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  recommandation:{ fr: 'recommandation',de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' },
+  recommendation:{ fr: 'recommandation',de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' },
+  favoris:       { fr: 'favoris',       de: 'favoriten',  es: 'favoritos',     it: 'preferiti',    en: 'favorites' },
+  favorites:     { fr: 'favoris',       de: 'favoriten',  es: 'favoritos',     it: 'preferiti',    en: 'favorites' },
+};
+
+function BarePathRedirect({ slug }: { slug: string }) {
+  const lang = initializeLanguage();
+  const map = BARE_PATH_MAP[slug];
+  const target = map ? (map[lang] ?? slug) : slug;
+  return <Navigate to={`/${lang}/${target}`} replace />;
 }
 
 function App() {
@@ -48,6 +77,11 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
+
+        {/* ── Bare-path redirects (e.g. /compare → /en/compare) ── */}
+        {Object.keys(BARE_PATH_MAP).map(slug => (
+          <Route key={slug} path={`/${slug}`} element={<BarePathRedirect slug={slug} />} />
+        ))}
 
         <Route path="/:lang" element={<Layout />}>
           <Route index element={<Home />} />
@@ -98,6 +132,8 @@ function App() {
           <Route path="cartes-crypto-france"        element={<ThematicPage theme="france" />} />
           <Route path="carte-crypto-virtuelle"      element={<ThematicPage theme="virtual" />} />
           <Route path="cartes-crypto-debutant"      element={<ThematicPage theme="beginner" />} />
+          <Route path="carte-crypto-sans-kyc"       element={<ThematicPage theme="no-kyc" />} />
+          <Route path="carte-crypto-2026"           element={<ThematicPage theme="2026" />} />
 
           {/* ── Pages thématiques — DE ── */}
           <Route path="beste-krypto-karte"           element={<ThematicPage theme="best" />} />
@@ -107,6 +143,8 @@ function App() {
           <Route path="krypto-karten-deutschland"    element={<ThematicPage theme="france" />} />
           <Route path="virtuelle-krypto-karte"       element={<ThematicPage theme="virtual" />} />
           <Route path="krypto-karten-einsteiger"     element={<ThematicPage theme="beginner" />} />
+          <Route path="krypto-karte-ohne-kyc"        element={<ThematicPage theme="no-kyc" />} />
+          <Route path="krypto-karte-2026"            element={<ThematicPage theme="2026" />} />
 
           {/* ── Pages thématiques — ES ── */}
           <Route path="mejor-tarjeta-cripto"              element={<ThematicPage theme="best" />} />
@@ -116,6 +154,8 @@ function App() {
           <Route path="tarjetas-crypto-espana"            element={<ThematicPage theme="france" />} />
           <Route path="tarjeta-crypto-virtual"            element={<ThematicPage theme="virtual" />} />
           <Route path="tarjetas-crypto-principiante"      element={<ThematicPage theme="beginner" />} />
+          <Route path="tarjeta-crypto-sin-kyc"            element={<ThematicPage theme="no-kyc" />} />
+          <Route path="tarjeta-cripto-2026"               element={<ThematicPage theme="2026" />} />
 
           {/* ── Pages thématiques — IT ── */}
           <Route path="migliore-carta-cripto"         element={<ThematicPage theme="best" />} />
@@ -125,6 +165,8 @@ function App() {
           <Route path="carte-crypto-italia"           element={<ThematicPage theme="france" />} />
           <Route path="carta-crypto-virtuale"         element={<ThematicPage theme="virtual" />} />
           <Route path="carte-crypto-principiante"     element={<ThematicPage theme="beginner" />} />
+          <Route path="carta-cripto-senza-kyc"        element={<ThematicPage theme="no-kyc" />} />
+          <Route path="carta-cripto-2026"             element={<ThematicPage theme="2026" />} />
 
           {/* ── Pages thématiques — EN ── */}
           <Route path="best-crypto-card"        element={<ThematicPage theme="best" />} />
@@ -134,6 +176,12 @@ function App() {
           <Route path="crypto-cards-europe"     element={<ThematicPage theme="france" />} />
           <Route path="virtual-crypto-card"     element={<ThematicPage theme="virtual" />} />
           <Route path="beginner-crypto-cards"   element={<ThematicPage theme="beginner" />} />
+          <Route path="crypto-card-no-kyc"      element={<ThematicPage theme="no-kyc" />} />
+          <Route path="best-crypto-card-2026"   element={<ThematicPage theme="2026" />} />
+
+          {/* ── Section Cryptos ── */}
+          <Route path="cryptos" element={<CryptoList />} />
+          <Route path="cryptos/:symbol" element={<CryptoPage />} />
 
           {/* ── Pages A vs B (comparaisons) ── */}
           <Route path="comparer/:slug" element={<ComparisonPage />} />
@@ -143,7 +191,7 @@ function App() {
           <Route path="compare/:slug" element={<ComparisonPage />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
