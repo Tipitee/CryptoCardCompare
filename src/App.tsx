@@ -34,6 +34,32 @@ function RootRedirect() {
   return null;
 }
 
+// Redirects bare paths like /compare → /{lang}/compare
+// (without this, /:lang catches them and renders Home)
+const BARE_PATH_MAP: Record<string, Record<string, string>> = {
+  compare:       { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  comparer:      { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  vergleich:     { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  comparar:      { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  confronto:     { fr: 'comparer',      de: 'vergleich',  es: 'comparar',      it: 'confronto',    en: 'compare' },
+  blog:          { fr: 'blog',          de: 'blog',       es: 'blog',          it: 'blog',         en: 'blog' },
+  simulateur:    { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulator:     { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulador:     { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  simulatore:    { fr: 'simulateur',    de: 'simulator',  es: 'simulador',     it: 'simulatore',   en: 'simulator' },
+  recommandation:{ fr: 'recommandation',de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' },
+  recommendation:{ fr: 'recommandation',de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' },
+  favoris:       { fr: 'favoris',       de: 'favoriten',  es: 'favoritos',     it: 'preferiti',    en: 'favorites' },
+  favorites:     { fr: 'favoris',       de: 'favoriten',  es: 'favoritos',     it: 'preferiti',    en: 'favorites' },
+};
+
+function BarePathRedirect({ slug }: { slug: string }) {
+  const lang = initializeLanguage();
+  const map = BARE_PATH_MAP[slug];
+  const target = map ? (map[lang] ?? slug) : slug;
+  return <Navigate to={`/${lang}/${target}`} replace />;
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -48,6 +74,11 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
+
+        {/* ── Bare-path redirects (e.g. /compare → /en/compare) ── */}
+        {Object.keys(BARE_PATH_MAP).map(slug => (
+          <Route key={slug} path={`/${slug}`} element={<BarePathRedirect slug={slug} />} />
+        ))}
 
         <Route path="/:lang" element={<Layout />}>
           <Route index element={<Home />} />
