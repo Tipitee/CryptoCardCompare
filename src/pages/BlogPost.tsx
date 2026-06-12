@@ -7,6 +7,8 @@ import { fetchPostBySlug, fetchRelatedPosts } from '../lib/supabase';
 import { renderMarkdown, estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
 
 const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR',
@@ -87,6 +89,15 @@ export default function BlogPost() {
   const readTime = estimateReadTime(post.content);
   const renderedContent = renderMarkdown(post.content);
 
+  // SEO
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useSeoMeta({
+    title: post.meta_title || `${post.title} | TopCryptoCards`,
+    description: post.meta_description || post.excerpt,
+    image: post.image_hero || undefined,
+    type: 'article',
+  });
+
   return (
     <div className="animate-fade-in">
       {/* Hero */}
@@ -108,6 +119,11 @@ export default function BlogPost() {
         )}
 
         <div className="absolute bottom-0 left-0 right-0 container-app pb-8">
+          <Breadcrumb items={[
+            { label: 'Home', href: `/${lang}` },
+            { label: 'Blog', href: getRoute('blog') },
+            { label: post.title },
+          ]} />
           <Link
             to={getRoute('blog')}
             className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-4"
