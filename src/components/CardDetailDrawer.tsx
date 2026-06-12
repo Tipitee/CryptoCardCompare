@@ -3,6 +3,7 @@ import { AlertTriangle, ArrowRight, Check, ExternalLink, Shield, Star, X } from 
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
+import { getExtraLabel } from '../i18n/extrasLabels';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
 import TrustBadge from './TrustBadge';
@@ -138,7 +139,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                 {card.extras.filter(e => e !== 'virtual_only').map((e) => (
                   <li key={e} className="flex items-start gap-2 text-sm text-slate-300">
                     <Check className="w-4 h-4 text-green-accent shrink-0 mt-0.5" />
-                    <span>{t(`cards:${e}`, { defaultValue: e })}</span>
+                    <span>{getExtraLabel(e, currentLang)}</span>
                   </li>
                 ))}
               </ul>
