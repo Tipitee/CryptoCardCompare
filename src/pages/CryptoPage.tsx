@@ -72,6 +72,30 @@ export default function CryptoPage() {
     description: copy?.meta_description ?? '',
   });
 
+  // ── Schema.org FAQPage ────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!copy?.faq?.length) return;
+
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: copy.faq.map(({ q, a }: { q: string; a: string }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    };
+
+    document.getElementById('schema-faq-crypto')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-faq-crypto';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(el);
+
+    return () => { document.getElementById('schema-faq-crypto')?.remove(); };
+  }, [copy, sym, lang]);
+
   if (!meta || !copy) {
     return (
       <div className="container-app py-20 text-center text-slate-400">
