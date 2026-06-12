@@ -232,6 +232,16 @@ export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
     .eq('lang', lang)
     .order('created_at', { ascending: false });
   if (error) throw error;
+  // Fallback to French if no articles exist in the requested language
+  if ((data ?? []).length === 0 && lang !== 'fr') {
+    const { data: frData } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('published', true)
+      .eq('lang', 'fr')
+      .order('created_at', { ascending: false });
+    return backfillHeroImages((frData ?? []) as BlogPost[]);
+  }
   return backfillHeroImages((data ?? []) as BlogPost[]);
 }
 
@@ -253,8 +263,12 @@ export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPo
     .eq('lang', lang)
     .eq('published', true)
     .maybeSingle();
-  if (!data) return null;
-  const post = data as BlogPost;
+  // Fallback to French if not found in requested language
+  const { data: finalData } = !data && lang !== 'fr'
+    ? await supabase.from('blog_posts').select('*').eq('slug', slug).eq('lang', 'fr').eq('published', true).maybeSingle()
+    : { data };
+  if (!finalData) return null;
+  const post = finalData as BlogPost;
   if (post.image_hero) return post;
   const [result] = await backfillHeroImages([post]);
   return result;
@@ -266,27 +280,23 @@ export async function fetchRelatedPosts(
   lang = 'fr',
   limit = 3
 ): Promise<BlogPost[]> {
-  if (tags.length === 0) {
+  // Helper: fetch with lang, fallback to 'fr' if empty
+  async function queryRelated(l: string) {
+    if (tags.length === 0) {
+      const { data } = await supabase
+        .from('blog_posts').select('*').eq('published', true).eq('lang', l)
+        .neq('slug', excludeSlug).order('created_at', { ascending: false }).limit(limit);
+      return (data ?? []) as BlogPost[];
+    }
     const { data } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('published', true)
-      .eq('lang', lang)
-      .neq('slug', excludeSlug)
-      .order('created_at', { ascending: false })
-      .limit(limit);
-    return backfillHeroImages((data ?? []) as BlogPost[]);
+      .from('blog_posts').select('*').eq('published', true).eq('lang', l)
+      .neq('slug', excludeSlug).overlaps('tags', tags)
+      .order('created_at', { ascending: false }).limit(limit);
+    return (data ?? []) as BlogPost[];
   }
-  const { data } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('published', true)
-    .eq('lang', lang)
-    .neq('slug', excludeSlug)
-    .overlaps('tags', tags)
-    .order('created_at', { ascending: false })
-    .limit(limit);
-  return backfillHeroImages((data ?? []) as BlogPost[]);
+  let results = await queryRelated(lang);
+  if (results.length === 0 && lang !== 'fr') results = await queryRelated('fr');
+  return backfillHeroImages(results);
 }
 
 export async function adminFetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
