@@ -18,12 +18,12 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
 };
 
-const THEMATIC_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string; title: string }> = {
-  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking' },
-  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking' },
-  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking' },
-  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking' },
-  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards' },
+const THEMATIC_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string; title: string; cryptos: string }> = {
+  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies' },
+  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide' },
+  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas' },
+  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute' },
+  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide' },
 };
 
 export default function Layout() {
@@ -54,6 +54,7 @@ export default function Layout() {
     { slug: slugs.cashback, label: labels.cashback, icon: '💰' },
     { slug: slugs.noFees, label: labels.noFees, icon: '🆓' },
     { slug: slugs.noStaking, label: labels.noStaking, icon: '🔓' },
+    { slug: 'cryptos', label: labels.cryptos, icon: '₿' },
   ];
 
   useEffect(() => {
