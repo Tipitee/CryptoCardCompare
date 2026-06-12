@@ -68,8 +68,8 @@ export function renderMarkdown(md: string): string {
     .map(block => {
       const trimmed = block.trim();
       if (!trimmed) return '';
-      // Don't wrap block-level elements
-      if (/^<(h[1-6]|ul|ol|blockquote|div|hr|table)/.test(trimmed)) return trimmed;
+      // Don't wrap block-level elements or already-wrapped paragraphs
+      if (/^<(h[1-6]|ul|ol|blockquote|div|hr|table|p|figure|section|article)/.test(trimmed)) return trimmed;
       return `<p class="text-slate-300 leading-relaxed mb-4">${trimmed.replace(/\n/g, ' ')}</p>`;
     })
     .join('\n');
