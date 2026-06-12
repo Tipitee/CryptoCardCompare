@@ -1,0 +1,80 @@
+import { useParams, Link } from 'react-router-dom';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
+
+const YEAR = new Date().getFullYear();
+
+const CRYPTOS = [
+  { symbol: 'btc',  name: 'Bitcoin',  ticker: 'BTC',  color: '#F7931A', emoji: '₿',  desc: { fr: 'La première cryptomonnaie, réserve de valeur numérique', de: 'Die erste Kryptowährung, digitaler Wertspeicher', es: 'La primera criptomoneda, reserva de valor digital', it: 'La prima criptovaluta, riserva di valore digitale', en: 'The first cryptocurrency, digital store of value' } },
+  { symbol: 'eth',  name: 'Ethereum', ticker: 'ETH',  color: '#627EEA', emoji: 'Ξ',  desc: { fr: 'La blockchain des smart contracts et de la DeFi', de: 'Die Blockchain für Smart Contracts und DeFi', es: 'La blockchain de los contratos inteligentes y DeFi', it: 'La blockchain degli smart contract e della DeFi', en: 'The blockchain for smart contracts and DeFi' } },
+  { symbol: 'xrp',  name: 'XRP',      ticker: 'XRP',  color: '#00AAE4', emoji: '◈',  desc: { fr: 'Solution de paiement transfrontalier ultra-rapide', de: 'Ultraschnelle grenzüberschreitende Zahlungslösung', es: 'Solución de pagos transfronterizos ultrarrápidos', it: 'Soluzione di pagamento transfrontaliero ultraveloce', en: 'Ultra-fast cross-border payment solution' } },
+  { symbol: 'bnb',  name: 'BNB',      ticker: 'BNB',  color: '#F3BA2F', emoji: '⬡',  desc: { fr: "Token natif de l'écosystème Binance", de: 'Nativer Token des Binance-Ökosystems', es: 'Token nativo del ecosistema Binance', it: "Token nativo dell'ecosistema Binance", en: 'Native token of the Binance ecosystem' } },
+  { symbol: 'sol',  name: 'Solana',   ticker: 'SOL',  color: '#9945FF', emoji: '◎',  desc: { fr: 'Blockchain haute performance, transactions quasi-gratuites', de: 'Hochleistungs-Blockchain, nahezu kostenlose Transaktionen', es: 'Blockchain de alto rendimiento, transacciones casi gratuitas', it: 'Blockchain ad alte prestazioni, transazioni quasi gratuite', en: 'High-performance blockchain with near-zero transaction fees' } },
+  { symbol: 'ada',  name: 'Cardano',  ticker: 'ADA',  color: '#0D1E2D', emoji: '₳',  desc: { fr: 'Blockchain académique et durable, preuve d\'enjeu', de: 'Akademische und nachhaltige Blockchain, Proof-of-Stake', es: 'Blockchain académica y sostenible, prueba de participación', it: 'Blockchain accademica e sostenibile, proof-of-stake', en: 'Academic, sustainable blockchain using proof-of-stake' } },
+  { symbol: 'avax', name: 'Avalanche',ticker: 'AVAX', color: '#E84142', emoji: '🔺', desc: { fr: 'Plateforme de contrats intelligents haute vitesse', de: 'Hochgeschwindigkeits-Smart-Contract-Plattform', es: 'Plataforma de contratos inteligentes de alta velocidad', it: 'Piattaforma di smart contract ad alta velocità', en: 'High-speed smart contracts platform with fast finality' } },
+  { symbol: 'doge', name: 'Dogecoin', ticker: 'DOGE', color: '#C2A633', emoji: 'Ð',  desc: { fr: 'La crypto des paiements du quotidien, community-driven', de: 'Die Kryptowährung für alltägliche Zahlungen, community-driven', es: 'La cripto para pagos cotidianos, impulsada por la comunidad', it: 'La cripto per i pagamenti quotidiani, community-driven', en: 'The everyday payments crypto, community-driven' } },
+  { symbol: 'usdt', name: 'Tether',   ticker: 'USDT', color: '#26A17B', emoji: '₮',  desc: { fr: 'Stablecoin indexé sur le dollar, liquidité maximale', de: 'Dollar-gekoppelter Stablecoin, maximale Liquidität', es: 'Stablecoin indexado al dólar, máxima liquidez', it: 'Stablecoin ancorato al dollaro, massima liquidità', en: 'Dollar-pegged stablecoin with maximum liquidity' } },
+  { symbol: 'usdc', name: 'USD Coin', ticker: 'USDC', color: '#2775CA', emoji: '$',  desc: { fr: 'Stablecoin réglementé, audité par Circle', de: 'Regulierter Stablecoin, von Circle geprüft', es: 'Stablecoin regulado, auditado por Circle', it: 'Stablecoin regolamentato, verificato da Circle', en: 'Regulated stablecoin audited by Circle' } },
+];
+
+const SEO: Record<string, { title: string; desc: string; h1: string; intro: string }> = {
+  fr: { title: `Guide Cryptomonnaies ${YEAR} — Bitcoin, Ethereum et les meilleures cartes | TopCryptoCards`, desc: `Tout savoir sur les 10 principales cryptomonnaies : Bitcoin, Ethereum, XRP, Solana… et quelles cartes crypto les supportent en ${YEAR}.`, h1: `Guide des Principales Cryptomonnaies`, intro: `Bitcoin, Ethereum, XRP, Solana… Chaque cryptomonnaie a ses spécificités : cas d'usage, vitesse de transaction, niveau de décentralisation. Retrouvez notre guide complet pour chaque crypto et découvrez quelles cartes crypto les supportent.` },
+  de: { title: `Kryptowährungs-Guide ${YEAR} — Bitcoin, Ethereum und die besten Karten | TopCryptoCards`, desc: `Alles über die 10 wichtigsten Kryptowährungen: Bitcoin, Ethereum, XRP, Solana… und welche Krypto-Karten sie unterstützen in ${YEAR}.`, h1: `Guide zu den wichtigsten Kryptowährungen`, intro: `Bitcoin, Ethereum, XRP, Solana… Jede Kryptowährung hat ihre Besonderheiten: Anwendungsfälle, Transaktionsgeschwindigkeit, Dezentralisierungsgrad. Finden Sie unseren vollständigen Leitfaden und entdecken Sie, welche Krypto-Karten sie unterstützen.` },
+  es: { title: `Guía de Criptomonedas ${YEAR} — Bitcoin, Ethereum y las mejores tarjetas | TopCryptoCards`, desc: `Todo sobre las 10 principales criptomonedas: Bitcoin, Ethereum, XRP, Solana… y qué tarjetas crypto las soportan en ${YEAR}.`, h1: `Guía de las Principales Criptomonedas`, intro: `Bitcoin, Ethereum, XRP, Solana… Cada criptomoneda tiene sus características: casos de uso, velocidad de transacción, nivel de descentralización. Encuentra nuestra guía completa y descubre qué tarjetas crypto las soportan.` },
+  it: { title: `Guida alle Criptovalute ${YEAR} — Bitcoin, Ethereum e le migliori carte | TopCryptoCards`, desc: `Tutto sulle 10 principali criptovalute: Bitcoin, Ethereum, XRP, Solana… e quali carte crypto le supportano nel ${YEAR}.`, h1: `Guida alle Principali Criptovalute`, intro: `Bitcoin, Ethereum, XRP, Solana… Ogni criptovaluta ha le sue caratteristiche: casi d'uso, velocità di transazione, livello di decentralizzazione. Trova la nostra guida completa e scopri quali carte crypto le supportano.` },
+  en: { title: `Cryptocurrency Guide ${YEAR} — Bitcoin, Ethereum and the Best Cards | TopCryptoCards`, desc: `Everything about the top 10 cryptocurrencies: Bitcoin, Ethereum, XRP, Solana… and which crypto cards support them in ${YEAR}.`, h1: `Guide to the Top Cryptocurrencies`, intro: `Bitcoin, Ethereum, XRP, Solana… each cryptocurrency has its own characteristics: use cases, transaction speed, decentralization level. Find our complete guide for each crypto and discover which crypto cards support them.` },
+};
+
+const HOME_LABEL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+const CRYPTO_SEGMENT: Record<string, string> = { fr: 'cryptos', de: 'cryptos', es: 'cryptos', it: 'cryptos', en: 'cryptos' };
+
+export default function CryptoList() {
+  const { lang = 'fr' } = useParams<{ lang: string }>();
+  const seo = SEO[lang] || SEO.en;
+  const segment = CRYPTO_SEGMENT[lang] || 'cryptos';
+
+  useSeoMeta({ title: seo.title, description: seo.desc });
+
+  return (
+    <div className="container-app py-10">
+      <Breadcrumb items={[
+        { label: HOME_LABEL[lang] || 'Home', href: `/${lang}` },
+        { label: seo.h1 },
+      ]} />
+
+      <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-3 mt-4">
+        {seo.h1}
+      </h1>
+      <p className="text-slate-400 text-lg mb-10 max-w-2xl">{seo.intro}</p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {CRYPTOS.map((crypto) => (
+          <Link
+            key={crypto.symbol}
+            to={`/${lang}/${segment}/${crypto.symbol}`}
+            className="group block p-5 rounded-2xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 transition-all hover:shadow-lg hover:shadow-cyan-accent/5"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold text-white shrink-0"
+                style={{ backgroundColor: crypto.color + '33', border: `2px solid ${crypto.color}66` }}
+              >
+                <span style={{ color: crypto.color }}>{crypto.emoji}</span>
+              </div>
+              <div>
+                <div className="font-bold text-white text-base group-hover:text-cyan-accent transition-colors">{crypto.name}</div>
+                <div className="text-xs text-slate-500 font-mono">{crypto.ticker}</div>
+              </div>
+            </div>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              {crypto.desc[lang as keyof typeof crypto.desc] || crypto.desc.en}
+            </p>
+            <div className="mt-3 text-xs text-cyan-accent/70 group-hover:text-cyan-accent transition-colors">
+              {lang === 'fr' ? 'Lire le guide →' : lang === 'de' ? 'Guide lesen →' : lang === 'es' ? 'Leer guía →' : lang === 'it' ? 'Leggi la guida →' : 'Read guide →'}
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
