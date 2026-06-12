@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
+
+const HOME_LABEL: Record<string, string> = {
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+};
 
 const YEAR = new Date().getFullYear();
 
@@ -338,7 +344,7 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   cashback:     (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
   'no-fees':    (c) => (c.annual_fees || 0) === 0,
   'no-staking': (c) => (c.staking_required || 0) === 0,
-  france:       (c) => Array.isArray(c.markets) ? c.markets.includes('fr') : true,
+  france:       () => true,  // market filter applied universally based on lang
   virtual:      (c) => c.virtual_only === true,
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
 };
@@ -378,31 +384,23 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const sortFn    = THEME_SORT[theme]   || (() => 0);
 
   const filteredCards = useMemo(() => {
-    const sorted = [...cards].filter(filterFn).sort(sortFn);
+    const marketFilter = (c: any) => !Array.isArray(c.markets) || c.markets.includes(lang);
+    const sorted = [...cards].filter(c => filterFn(c) && marketFilter(c)).sort(sortFn);
     const limit = THEME_LIMIT[theme];
     return limit ? sorted.slice(0, limit) : sorted;
-  }, [cards, theme]);
+  }, [cards, theme, lang]);
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
 
-  /* Meta + Schema.org */
+  // ── SEO ───────────────────────────────────────────────────────────────────────
+  useSeoMeta({
+    title: config?.title || 'TopCryptoCards',
+    description: config?.description || '',
+  });
+
+  /* Schema.org */
   useEffect(() => {
     if (!config) return;
-    document.title = config.title;
-
-    const upsert = (attr: string, key: string, val: string) => {
-      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
-      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
-      el.setAttribute('content', val);
-    };
-    upsert('name', 'description', config.description);
-    upsert('property', 'og:title', config.title);
-    upsert('property', 'og:description', config.description);
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = window.location.origin + window.location.pathname;
-
     document.getElementById('schema-itemlist')?.remove();
     document.getElementById('schema-faqpage')?.remove();
 
@@ -452,7 +450,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-3xl font-bold text-white mb-3">{config.h1}</h1>
+      <Breadcrumb items={[
+        { label: HOME_LABEL[lang] || 'Home', href: `/${lang}` },
+        { label: config.h1 },
+      ]} />
+      <h1 className="text-3xl font-bold text-white mb-3 mt-4">{config.h1}</h1>
       <p className="text-slate-400 text-sm mb-4">
         {t('updated')}{' '}
         {new Date().toLocaleDateString(
