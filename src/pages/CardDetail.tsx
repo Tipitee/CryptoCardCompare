@@ -21,6 +21,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getExtraLabel } from '../i18n/extrasLabels';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -347,7 +348,7 @@ export default function CardDetail() {
                     .map((e) => (
                       <li key={e} className="flex items-start gap-2 text-slate-300">
                         <Check className="w-4 h-4 text-green-accent shrink-0 mt-0.5" />
-                        <span>{t(`cards:${e}`, { defaultValue: formatExtra(e) })}</span>
+                        <span>{getExtraLabel(e, lang)}</span>
                       </li>
                     ))}
                 </ul>
