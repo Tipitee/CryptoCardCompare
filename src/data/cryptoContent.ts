@@ -2,8 +2,9 @@
 // cryptoContent.ts
 // Static page content for the 10 crypto pages — French first.
 // Structure: CRYPTO_CONTENT[symbol][lang]
-// Add other languages later by duplicating the 'fr' key.
+// DE/ES/IT/EN translations are merged in from cryptoContentTranslations.ts
 // ─────────────────────────────────────────────────────────────────────────────
+import { CRYPTO_TRANSLATIONS } from './cryptoContentTranslations';
 
 export interface CryptoSection {
   title: string;
@@ -895,3 +896,10 @@ export const CRYPTO_CONTENT: Record<string, Partial<Record<string, CryptoCopy>>>
     },
   },
 };
+
+// Merge DE/ES/IT/EN translations into CRYPTO_CONTENT
+for (const [sym, langs] of Object.entries(CRYPTO_TRANSLATIONS)) {
+  if (CRYPTO_CONTENT[sym]) {
+    Object.assign(CRYPTO_CONTENT[sym], langs);
+  }
+}
