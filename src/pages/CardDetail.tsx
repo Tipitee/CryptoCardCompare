@@ -95,11 +95,11 @@ export default function CardDetail() {
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
 
-  // ── Schema.org FinancialProduct ───────────────────────────────────────────────
+  // ── Schema.org FinancialProduct + AggregateRating ────────────────────────────
   useEffect(() => {
     if (!card) return;
 
-    const schema = {
+    const schema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'FinancialProduct',
       name: card.name,
@@ -120,6 +120,17 @@ export default function CardDetail() {
       ],
     };
 
+    // AggregateRating — from trustScore (0–100 → 0–10)
+    if (card.trustScore != null && card.trustScore > 0) {
+      schema.aggregateRating = {
+        '@type': 'AggregateRating',
+        ratingValue: Math.round(card.trustScore / 10 * 10) / 10,
+        bestRating: 10,
+        worstRating: 1,
+        ratingCount: 1,
+      };
+    }
+
     document.getElementById('schema-financial-product')?.remove();
     const schemaEl = document.createElement('script');
     schemaEl.id = 'schema-financial-product';
@@ -131,6 +142,151 @@ export default function CardDetail() {
       document.getElementById('schema-financial-product')?.remove();
     };
   }, [card, article, lang, seoDesc]);
+
+  // ── Schema.org FAQPage ────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!card) return;
+
+    const name = card.name;
+    const cashback = card.cashbackPremium || card.cashbackBase || 0;
+    const fees = card.annualFees;
+    const network = card.cardNetwork || 'Visa/Mastercard';
+    const staking = card.stakingRequired;
+
+    type FaqItem = { q: string; a: string };
+    const faqsByLang: Record<string, FaqItem[]> = {
+      fr: [
+        {
+          q: `La ${name} est-elle gratuite ?`,
+          a: fees === 0 ? `Oui, la ${name} ne nécessite aucun frais annuel.` : `La ${name} coûte ${fees} €/an.`,
+        },
+        {
+          q: `Quel est le cashback de la ${name} ?`,
+          a: cashback > 0
+            ? `La ${name} offre jusqu'à ${cashback}% de cashback en cryptomonnaies.`
+            : `La ${name} n'offre pas de cashback standard.`,
+        },
+        {
+          q: `La ${name} nécessite-t-elle du staking ?`,
+          a: staking
+            ? `Oui, la ${name} nécessite un staking minimum pour bénéficier de tous les avantages.`
+            : `Non, la ${name} ne nécessite aucun staking.`,
+        },
+        {
+          q: `Sur quel réseau fonctionne la ${name} ?`,
+          a: `La ${name} fonctionne sur le réseau ${network}.`,
+        },
+      ],
+      de: [
+        {
+          q: `Ist die ${name} kostenlos ?`,
+          a: fees === 0 ? `Ja, die ${name} hat keine Jahresgebühren.` : `Die ${name} kostet ${fees} €/Jahr.`,
+        },
+        {
+          q: `Welches Cashback bietet die ${name} ?`,
+          a: cashback > 0
+            ? `Die ${name} bietet bis zu ${cashback}% Cashback in Kryptowährungen.`
+            : `Die ${name} bietet kein Standard-Cashback.`,
+        },
+        {
+          q: `Erfordert die ${name} Staking ?`,
+          a: staking
+            ? `Ja, die ${name} erfordert ein Mindest-Staking für die vollen Vorteile.`
+            : `Nein, die ${name} erfordert kein Staking.`,
+        },
+        {
+          q: `In welchem Netzwerk funktioniert die ${name} ?`,
+          a: `Die ${name} läuft im ${network}-Netzwerk.`,
+        },
+      ],
+      es: [
+        {
+          q: `¿Es gratuita la ${name} ?`,
+          a: fees === 0 ? `Sí, la ${name} no tiene tarifas anuales.` : `La ${name} cuesta ${fees} €/año.`,
+        },
+        {
+          q: `¿Qué cashback ofrece la ${name} ?`,
+          a: cashback > 0
+            ? `La ${name} ofrece hasta un ${cashback}% de cashback en criptomonedas.`
+            : `La ${name} no ofrece cashback estándar.`,
+        },
+        {
+          q: `¿La ${name} requiere staking ?`,
+          a: staking
+            ? `Sí, la ${name} requiere un staking mínimo para acceder a todos los beneficios.`
+            : `No, la ${name} no requiere staking.`,
+        },
+        {
+          q: `¿En qué red funciona la ${name} ?`,
+          a: `La ${name} funciona en la red ${network}.`,
+        },
+      ],
+      it: [
+        {
+          q: `La ${name} è gratuita ?`,
+          a: fees === 0 ? `Sì, la ${name} non ha costi annuali.` : `La ${name} costa ${fees} €/anno.`,
+        },
+        {
+          q: `Quale cashback offre la ${name} ?`,
+          a: cashback > 0
+            ? `La ${name} offre fino al ${cashback}% di cashback in criptovalute.`
+            : `La ${name} non offre cashback standard.`,
+        },
+        {
+          q: `La ${name} richiede staking ?`,
+          a: staking
+            ? `Sì, la ${name} richiede uno staking minimo per ottenere tutti i vantaggi.`
+            : `No, la ${name} non richiede staking.`,
+        },
+        {
+          q: `Su quale rete funziona la ${name} ?`,
+          a: `La ${name} funziona sulla rete ${network}.`,
+        },
+      ],
+      en: [
+        {
+          q: `Is the ${name} free ?`,
+          a: fees === 0 ? `Yes, the ${name} has no annual fees.` : `The ${name} costs €${fees}/year.`,
+        },
+        {
+          q: `What cashback does the ${name} offer ?`,
+          a: cashback > 0
+            ? `The ${name} offers up to ${cashback}% cashback in cryptocurrencies.`
+            : `The ${name} does not offer standard cashback.`,
+        },
+        {
+          q: `Does the ${name} require staking ?`,
+          a: staking
+            ? `Yes, the ${name} requires a minimum staking to unlock the full benefits.`
+            : `No, the ${name} does not require any staking.`,
+        },
+        {
+          q: `What network does the ${name} use ?`,
+          a: `The ${name} runs on the ${network} network.`,
+        },
+      ],
+    };
+
+    const faqs = faqsByLang[lang] ?? faqsByLang.en;
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    };
+
+    document.getElementById('schema-faq-card')?.remove();
+    const faqEl = document.createElement('script');
+    faqEl.id = 'schema-faq-card';
+    faqEl.type = 'application/ld+json';
+    faqEl.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(faqEl);
+
+    return () => { document.getElementById('schema-faq-card')?.remove(); };
+  }, [card, lang]);
 
   if (loading) {
     return (
