@@ -48,13 +48,37 @@ export default function CryptoPage() {
       .from('cards')
       .select('id, name, issuer, cashback_base, cashback_premium, annual_fees, real_card_image, affiliate_link, markets')
       .contains('cryptos', [meta.ticker])
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (error) { setLoadingCards(false); return; }
         const marketFilter = (c: any) => !Array.isArray(c.markets) || c.markets.includes(lang);
-        setCards((data || []).filter(marketFilter));
+        setCards((data ?? []).filter(marketFilter));
         setLoadingCards(false);
       })
       .catch(() => setLoadingCards(false));
-  }, [sym, lang, meta]);
+  }, [sym, lang]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* Inject FAQ Schema.org JSON-LD into <head> */
+  useEffect(() => {
+    if (!copy?.faq?.length) return;
+    const id = 'faq-jsonld-crypto';
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement('script');
+      el.id = id;
+      el.type = 'application/ld+json';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: copy.faq.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    });
+    return () => { document.getElementById(id)?.remove(); };
+  }, [sym, lang]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useSeoMeta({
     title:       copy?.meta_title       ?? (meta ? `${meta.name} (${meta.ticker}) | TopCryptoCards` : 'TopCryptoCards'),
@@ -171,17 +195,6 @@ export default function CryptoPage() {
           <h2 className="text-2xl font-bold text-white mb-5">
             {FAQ_LABEL[lang] ?? FAQ_LABEL.en}
           </h2>
-          {/* Schema.org FAQPage */}
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: copy.faq.map(({ q, a }) => ({
-              '@type': 'Question',
-              name: q,
-              acceptedAnswer: { '@type': 'Answer', text: a },
-            })),
-          }) }} />
-
           <div className="space-y-4">
             {copy.faq.map(({ q, a }, i) => (
               <details
