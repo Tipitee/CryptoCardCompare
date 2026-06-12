@@ -2,6 +2,49 @@ import { useParams, Link } from 'react-router-dom';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 
+const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
+  de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
+  es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
+  it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
+  en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+};
+const GUIDES_TITLE: Record<string, string> = {
+  fr: 'Guides thématiques', de: 'Thematische Ratgeber', es: 'Guías temáticas', it: 'Guide tematiche', en: 'Thematic Guides',
+};
+const GUIDES_LINKS: Record<string, { label: string; icon: string; key: string }[]> = {
+  fr: [
+    { key: 'best', label: 'Meilleures cartes crypto', icon: '⭐' },
+    { key: 'cashback', label: 'Cartes avec cashback', icon: '💰' },
+    { key: 'noFees', label: 'Cartes sans frais', icon: '🆓' },
+    { key: 'noStaking', label: 'Cartes sans staking', icon: '🔓' },
+  ],
+  de: [
+    { key: 'best', label: 'Beste Krypto-Karten', icon: '⭐' },
+    { key: 'cashback', label: 'Karten mit Cashback', icon: '💰' },
+    { key: 'noFees', label: 'Kostenlose Karten', icon: '🆓' },
+    { key: 'noStaking', label: 'Karten ohne Staking', icon: '🔓' },
+  ],
+  es: [
+    { key: 'best', label: 'Mejores tarjetas crypto', icon: '⭐' },
+    { key: 'cashback', label: 'Tarjetas con cashback', icon: '💰' },
+    { key: 'noFees', label: 'Tarjetas sin comisiones', icon: '🆓' },
+    { key: 'noStaking', label: 'Tarjetas sin staking', icon: '🔓' },
+  ],
+  it: [
+    { key: 'best', label: 'Migliori carte crypto', icon: '⭐' },
+    { key: 'cashback', label: 'Carte con cashback', icon: '💰' },
+    { key: 'noFees', label: 'Carte senza costi', icon: '🆓' },
+    { key: 'noStaking', label: 'Carte senza staking', icon: '🔓' },
+  ],
+  en: [
+    { key: 'best', label: 'Best crypto cards', icon: '⭐' },
+    { key: 'cashback', label: 'Cards with cashback', icon: '💰' },
+    { key: 'noFees', label: 'No-fee cards', icon: '🆓' },
+    { key: 'noStaking', label: 'No-staking cards', icon: '🔓' },
+  ],
+};
+
 const YEAR = new Date().getFullYear();
 
 const CRYPTOS = [
@@ -32,6 +75,8 @@ export default function CryptoList() {
   const { lang = 'fr' } = useParams<{ lang: string }>();
   const seo = SEO[lang] || SEO.en;
   const segment = CRYPTO_SEGMENT[lang] || 'cryptos';
+  const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
+  const guideLinks = GUIDES_LINKS[lang] || GUIDES_LINKS.en;
 
   useSeoMeta({ title: seo.title, description: seo.desc });
 
@@ -46,6 +91,25 @@ export default function CryptoList() {
         {seo.h1}
       </h1>
       <p className="text-slate-400 text-lg mb-10 max-w-2xl">{seo.intro}</p>
+
+      {/* Thematic guide links */}
+      <div className="mb-10">
+        <h2 className="text-base font-semibold text-slate-400 mb-3">
+          {GUIDES_TITLE[lang] || GUIDES_TITLE.en}
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {guideLinks.map((g) => (
+            <Link
+              key={g.key}
+              to={`/${lang}/${slugs[g.key as keyof typeof slugs]}`}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+            >
+              <span className="text-base leading-none">{g.icon}</span>
+              {g.label}
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {CRYPTOS.map((crypto) => (
