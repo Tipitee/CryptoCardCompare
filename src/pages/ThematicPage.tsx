@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
+
+const HOME_LABEL: Record<string, string> = {
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+};
 
 const YEAR = new Date().getFullYear();
 
@@ -62,6 +68,20 @@ const THEME_CONFIG: Record<string, Record<string, {
     es: { title:`Tarjeta Crypto Principiante ${YEAR} — Simple y Sin Riesgo | TopCryptoCards`, h1:`Mejores Tarjetas Crypto para Principiantes`, description:`Las tarjetas crypto más sencillas para empezar en ${YEAR}. Sin staking, sin comisiones.`, intro:`Estas tarjetas han sido seleccionadas por su simplicidad: sin staking requerido, sin cuota anual, cashback inmediato desde la primera compra.`, outro:`Para un principiante, el criterio más importante es la facilidad de uso. Empieza con una tarjeta sin staking y sin comisiones.` },
     it: { title:`Carta Crypto Principiante ${YEAR} — Semplice, Senza Rischi | TopCryptoCards`, h1:`Migliori Carte Crypto per Principianti`, description:`Le carte crypto più semplici per iniziare nel ${YEAR}. Senza staking, senza costi.`, intro:`Queste carte sono state selezionate per la loro semplicità: nessuno staking richiesto, nessun costo annuale, cashback immediato dal primo acquisto.`, outro:`Per un principiante, il criterio più importante è la facilità d'uso. Inizia con una carta senza staking e senza costi.` },
     en: { title:`Best Beginner Crypto Card ${YEAR} — Simple & Risk-Free | TopCryptoCards`, h1:`Best Crypto Cards for Beginners`, description:`The simplest crypto cards to get started in ${YEAR}. No staking, no fees, no complexity.`, intro:`New to crypto cards? These cards were selected for their simplicity: no staking required, no annual fee, and instant cashback from your very first purchase.`, outro:`For a beginner, ease of use is the most important criterion. Start with a card that has no staking and no fees. Once you're comfortable, you can explore premium cards with higher cashback rates.` },
+  },
+  'no-kyc': {
+    fr: { title:`Carte Crypto Sans KYC ${YEAR} — Inscription Simplifiée | TopCryptoCards`, h1:`Cartes Crypto Sans KYC ou KYC Simplifié`, description:`Cartes crypto avec inscription simplifiée en ${YEAR}. Découvrez les solutions sans vérification d'identité complète pour payer en crypto facilement.`, intro:`La plupart des cartes crypto exigent un KYC complet : pièce d'identité, justificatif de domicile, selfie. Mais certaines solutions proposent une inscription simplifiée, notamment les cartes basées sur le self-custody et les wallets Web3 comme MetaMask Card ou Gnosis Pay. Ces cartes fonctionnent directement depuis votre wallet, réduisant les étapes de vérification.`, outro:`Important : aucune carte crypto réglementée en Europe ne permet une utilisation 100% anonyme. Les réglementations MiCA et AML imposent un niveau minimal de vérification. Pour une utilisation légale et sécurisée, choisissez des cartes conformes aux réglementations de votre pays.` },
+    de: { title:`Krypto Karte Ohne KYC ${YEAR} — Einfache Anmeldung | TopCryptoCards`, h1:`Krypto-Karten ohne vollständiges KYC`, description:`Krypto-Karten mit vereinfachter Registrierung ${YEAR}. Lösungen ohne vollständige Identitätsprüfung für einfache Krypto-Zahlungen.`, intro:`Die meisten Krypto-Karten erfordern ein vollständiges KYC: Ausweis, Adressnachweis, Selfie. Einige Lösungen bieten jedoch eine vereinfachte Anmeldung an, insbesondere Self-Custody- und Web3-Wallet-basierte Karten wie MetaMask Card oder Gnosis Pay, die direkt von Ihrem Wallet aus funktionieren.`, outro:`Wichtig: Keine regulierte Krypto-Karte in Europa erlaubt eine vollständig anonyme Nutzung. MiCA- und AML-Vorschriften erfordern ein Mindestmaß an Verifizierung. Wählen Sie stets Karten, die den lokalen Vorschriften entsprechen.` },
+    es: { title:`Tarjeta Crypto Sin KYC ${YEAR} — Registro Simplificado | TopCryptoCards`, h1:`Tarjetas Crypto Sin KYC Completo`, description:`Tarjetas crypto con registro simplificado en ${YEAR}. Soluciones sin verificación de identidad completa para pagar en crypto fácilmente.`, intro:`La mayoría de las tarjetas crypto exigen un KYC completo: DNI, justificante de domicilio, selfie. Pero algunas soluciones ofrecen un registro simplificado, especialmente las tarjetas basadas en self-custody y wallets Web3 como MetaMask Card o Gnosis Pay, que funcionan directamente desde tu wallet.`, outro:`Importante: ninguna tarjeta crypto regulada en Europa permite un uso 100% anónimo. Las regulaciones MiCA y AML exigen un nivel mínimo de verificación. Elige tarjetas conformes con las regulaciones locales para un uso legal y seguro.` },
+    it: { title:`Carta Crypto Senza KYC ${YEAR} — Registrazione Semplificata | TopCryptoCards`, h1:`Carte Crypto Senza KYC Completo`, description:`Carte crypto con registrazione semplificata nel ${YEAR}. Soluzioni senza verifica d'identità completa per pagare in crypto facilmente.`, intro:`La maggior parte delle carte crypto richiede un KYC completo: documento d'identità, prova di residenza, selfie. Ma alcune soluzioni offrono una registrazione semplificata, in particolare le carte basate su self-custody e wallet Web3 come MetaMask Card o Gnosis Pay, che operano direttamente dal tuo wallet.`, outro:`Importante: nessuna carta crypto regolamentata in Europa consente un utilizzo al 100% anonimo. Le normative MiCA e AML richiedono un livello minimo di verifica. Scegli sempre carte conformi alle normative locali per un utilizzo legale e sicuro.` },
+    en: { title:`Crypto Card No KYC ${YEAR} — Simplified Registration | TopCryptoCards`, h1:`Crypto Cards Without Full KYC`, description:`Crypto cards with simplified registration in ${YEAR}. Solutions with reduced identity verification for easy crypto payments.`, intro:`Most crypto cards require full KYC: ID document, proof of address, selfie. But some solutions offer simplified registration, especially self-custody and Web3 wallet-based cards like MetaMask Card or Gnosis Pay, which operate directly from your wallet and reduce verification steps significantly.`, outro:`Important: no regulated crypto card in Europe allows fully anonymous use. MiCA and AML regulations require a minimum level of verification from all card users. Always choose cards compliant with your local regulations for safe and legal use.` },
+  },
+  '2026': {
+    fr: { title:`Meilleure Carte Crypto 2026 — Comparatif Complet et Mis à Jour | TopCryptoCards`, h1:`Les Meilleures Cartes Crypto en 2026`, description:`Quelle est la meilleure carte crypto en 2026 ? Comparatif complet des cartes avec le meilleur cashback, les frais les plus bas et la plus grande fiabilité.`, intro:`En 2026, le marché des cartes crypto a profondément évolué. L'entrée en vigueur du règlement MiCA en Europe a renforcé les standards de protection des utilisateurs. De nouvelles cartes sont apparues, des offres ont été améliorées. Ce comparatif recense les meilleures options disponibles en 2026, classées par note de confiance et rapport qualité/prix.`, outro:`En 2026, privilégiez les cartes émises par des entités conformes MiCA. La réglementation européenne offre désormais une protection solide : vos fonds sont mieux encadrés, les recours en cas de litige plus clairs. Comparez les taux de cashback mais ne négligez pas la fiabilité de l'émetteur.` },
+    de: { title:`Beste Krypto Karte 2026 — Vollständiger Aktueller Vergleich | TopCryptoCards`, h1:`Die Besten Krypto-Karten 2026`, description:`Was ist die beste Krypto-Karte 2026? Vollständiger Vergleich mit bestem Cashback, niedrigsten Gebühren und höchster Zuverlässigkeit.`, intro:`2026 hat sich der Krypto-Karten-Markt erheblich weiterentwickelt. Die MiCA-Verordnung in Europa hat die Nutzerstandards gestärkt. Neue Karten sind erschienen, Angebote wurden verbessert. Dieser Vergleich listet die besten verfügbaren Optionen 2026 nach Vertrauenswürdigkeit und Preis-Leistungs-Verhältnis.`, outro:`2026 bevorzugen Sie MiCA-konforme Karten von regulierten Emittenten. Die europäische Regulierung bietet nun soliden Schutz für Ihre Gelder. Vergleichen Sie Cashback-Raten, vernachlässigen Sie aber nicht die Zuverlässigkeit des Emittenten.` },
+    es: { title:`Mejor Tarjeta Crypto 2026 — Comparativa Completa Actualizada | TopCryptoCards`, h1:`Las Mejores Tarjetas Crypto en 2026`, description:`¿Cuál es la mejor tarjeta crypto en 2026? Comparativa completa con el mejor cashback, menores comisiones y mayor fiabilidad.`, intro:`En 2026, el mercado de tarjetas crypto ha evolucionado profundamente. La regulación MiCA en Europa ha reforzado los estándares de protección. Nuevas tarjetas han aparecido y las ofertas han mejorado. Esta comparativa recoge las mejores opciones de 2026, clasificadas por puntuación de confianza y relación calidad/precio.`, outro:`En 2026, prioriza tarjetas emitidas por entidades conformes con MiCA. La regulación europea ofrece ahora una protección sólida para tus fondos. Compara las tasas de cashback pero no descuides la fiabilidad del emisor.` },
+    it: { title:`Migliore Carta Crypto 2026 — Confronto Completo Aggiornato | TopCryptoCards`, h1:`Le Migliori Carte Crypto nel 2026`, description:`Qual è la migliore carta crypto nel 2026? Confronto completo con il miglior cashback, costi più bassi e massima affidabilità.`, intro:`Nel 2026, il mercato delle carte crypto si è profondamente evoluto. L'entrata in vigore di MiCA in Europa ha rafforzato gli standard di protezione degli utenti. Nuove carte sono apparse e le offerte sono migliorate. Questo confronto raccoglie le migliori opzioni del 2026, classificate per punteggio di fiducia e rapporto qualità/prezzo.`, outro:`Nel 2026, privilegia carte emesse da entità conformi a MiCA. La regolamentazione europea offre ora una protezione solida per i tuoi fondi. Confronta i tassi di cashback ma non trascurare l'affidabilità dell'emittente.` },
+    en: { title:`Best Crypto Card 2026 — Complete Updated Comparison | TopCryptoCards`, h1:`The Best Crypto Cards in 2026`, description:`What is the best crypto card in 2026? Complete comparison of cards with the best cashback, lowest fees, and highest reliability for this year.`, intro:`In 2026, the crypto card market has evolved significantly. The MiCA regulation across Europe has strengthened user protection standards. New cards have emerged and existing offers have improved. This comparison covers the best options available in 2026, ranked by trust score and overall value for money.`, outro:`In 2026, prioritize MiCA-compliant cards issued by regulated entities. European regulation now provides solid protection for your funds. Compare cashback rates but don't overlook the issuer's reliability and regulatory track record.` },
   },
 };
 
@@ -328,6 +348,80 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
       { q:'How do you top up a crypto card?', a:"From the app, transfer from your exchange. The conversion to euros is automatic." },
     ],
   },
+  'no-kyc': {
+    fr: [
+      { q:"Existe-t-il vraiment des cartes crypto sans KYC ?", a:"Pas au sens strict : aucune carte crypto réglementée en Europe ne permet un usage totalement anonyme. Mais des cartes comme MetaMask Card ou Gnosis Pay proposent un KYC minimal via votre wallet Web3." },
+      { q:"Qu'est-ce que le KYC pour une carte crypto ?", a:"Know Your Customer : la vérification obligatoire de l'identité (pièce d'identité, adresse). Requis par les réglementations AML en Europe pour lutter contre le blanchiment." },
+      { q:"Pourquoi certaines cartes ont-elles moins de KYC ?", a:"Les cartes basées sur des wallets self-custody (MetaMask, Gnosis) décentralisent la garde des fonds, ce qui permet un processus KYC simplifié tout en restant conforme aux lois." },
+      { q:"Peut-on payer anonymement avec une carte crypto ?", a:"Non en Europe. MiCA et les directives AML imposent une identification minimale. En revanche, vos données crypto ne sont pas exposées aux commerçants lors du paiement." },
+      { q:"Quelle est la carte crypto avec le moins de KYC en 2026 ?", a:"MetaMask Card et Gnosis Pay sont les plus légères en termes de processus d'inscription grâce à leur architecture décentralisée et leur modèle self-custody." },
+    ],
+    de: [
+      { q:'Gibt es wirklich Krypto-Karten ohne KYC?', a:'Im strengen Sinne nicht: Keine regulierte Krypto-Karte in Europa erlaubt völlig anonyme Nutzung. Karten wie MetaMask Card oder Gnosis Pay bieten jedoch ein minimales KYC über Ihr Web3-Wallet.' },
+      { q:'Was ist KYC bei Krypto-Karten?', a:'Know Your Customer: die obligatorische Identitätsprüfung (Ausweis, Adresse). In Europa durch AML-Vorschriften zur Geldwäschebekämpfung vorgeschrieben.' },
+      { q:'Warum haben manche Karten weniger KYC?', a:'Self-Custody-Wallet-basierte Karten (MetaMask, Gnosis) dezentralisieren die Fondsverwaltung, was einen vereinfachten KYC-Prozess bei gleichzeitiger Regelkonformität ermöglicht.' },
+      { q:'Kann man anonym mit einer Krypto-Karte zahlen?', a:'Nein in Europa. MiCA und AML-Richtlinien erfordern eine Mindestidentifikation. Ihre Krypto-Daten werden jedoch beim Bezahlen nicht an Händler weitergegeben.' },
+      { q:'Welche Krypto-Karte hat 2026 das wenigste KYC?', a:'MetaMask Card und Gnosis Pay sind am einfachsten in der Registrierung dank ihrer dezentralen Architektur und dem Self-Custody-Modell.' },
+    ],
+    es: [
+      { q:'¿Existen realmente tarjetas crypto sin KYC?', a:'No en sentido estricto: ninguna tarjeta crypto regulada en Europa permite un uso totalmente anónimo. Pero tarjetas como MetaMask Card o Gnosis Pay ofrecen un KYC mínimo vía wallet Web3.' },
+      { q:'¿Qué es el KYC para una tarjeta crypto?', a:'Know Your Customer: la verificación obligatoria de identidad (DNI, dirección). Requerido por las normativas AML en Europa para combatir el blanqueo de capitales.' },
+      { q:'¿Por qué algunas tarjetas tienen menos KYC?', a:'Las tarjetas basadas en wallets self-custody (MetaMask, Gnosis) descentralizan la custodia de fondos, permitiendo un proceso KYC simplificado mientras se mantiene la conformidad legal.' },
+      { q:'¿Se puede pagar de forma anónima con una tarjeta crypto?', a:'No en Europa. MiCA y las directivas AML imponen una identificación mínima. Sin embargo, tus datos crypto no se exponen a los comerciantes al pagar.' },
+      { q:'¿Qué tarjeta crypto tiene menos KYC en 2026?', a:'MetaMask Card y Gnosis Pay son las más ligeras en proceso de registro gracias a su arquitectura descentralizada y modelo self-custody.' },
+    ],
+    it: [
+      { q:'Esistono davvero carte crypto senza KYC?', a:'Non nel senso stretto: nessuna carta crypto regolamentata in Europa consente un utilizzo completamente anonimo. Ma carte come MetaMask Card o Gnosis Pay offrono un KYC minimo tramite wallet Web3.' },
+      { q:"Cos'è il KYC per una carta crypto?", a:"Know Your Customer: la verifica obbligatoria dell'identità (documento, indirizzo). Richiesto dalle normative AML in Europa per combattere il riciclaggio di denaro." },
+      { q:'Perché alcune carte hanno meno KYC?', a:'Le carte basate su wallet self-custody (MetaMask, Gnosis) decentralizzano la custodia dei fondi, consentendo un processo KYC semplificato pur rimanendo conformi.' },
+      { q:'Si può pagare in modo anonimo con una carta crypto?', a:'No in Europa. MiCA e le direttive AML impongono un\'identificazione minima. I tuoi dati crypto non vengono però esposti ai commercianti durante i pagamenti.' },
+      { q:'Quale carta crypto ha meno KYC nel 2026?', a:'MetaMask Card e Gnosis Pay hanno il processo di registrazione più leggero grazie alla loro architettura decentralizzata e al modello self-custody.' },
+    ],
+    en: [
+      { q:'Do no-KYC crypto cards really exist?', a:'Not strictly: no regulated crypto card in Europe allows fully anonymous use. But cards like MetaMask Card or Gnosis Pay offer minimal KYC through your Web3 wallet.' },
+      { q:'What is KYC for crypto cards?', a:'Know Your Customer: mandatory identity verification (ID document, address). Required by AML regulations across Europe to combat money laundering.' },
+      { q:'Why do some cards require less KYC?', a:'Self-custody wallet-based cards (MetaMask, Gnosis) decentralize fund custody, enabling a simplified KYC process while remaining fully compliant with regulations.' },
+      { q:'Can you pay anonymously with a crypto card?', a:'Not in Europe. MiCA and AML directives require minimum identification. However, your crypto data is not exposed to merchants when you pay.' },
+      { q:'Which crypto card has the least KYC in 2026?', a:'MetaMask Card and Gnosis Pay have the lightest registration process thanks to their decentralized architecture and self-custody model.' },
+    ],
+  },
+  '2026': {
+    fr: [
+      { q:`Quelle est la meilleure carte crypto en 2026 ?`, a:`En 2026, Gnosis Pay et MetaMask Card se distinguent pour le quotidien (zéro staking, zéro frais). Pour le cashback maximum, Crypto.com Obsidian reste la référence malgré un staking élevé.` },
+      { q:`Les cartes crypto sont-elles sûres en 2026 ?`, a:`Oui, grâce à MiCA en vigueur dans toute l'UE depuis 2025. Les émetteurs sont régulés, vos fonds mieux protégés qu'auparavant.` },
+      { q:`Y a-t-il de nouvelles cartes crypto en 2026 ?`, a:`Oui, plusieurs nouveaux acteurs sont entrés sur le marché suite à l'adoption de MiCA. Notre comparatif est mis à jour régulièrement pour refléter les dernières offres.` },
+      { q:`Le cashback des cartes crypto est-il imposable en 2026 ?`, a:`En France, les gains crypto sont soumis à la flat tax de 30% (PFU). Consultez un expert-comptable pour votre situation personnelle.` },
+      { q:`Quelle carte crypto choisir pour la France en 2026 ?`, a:`Gnosis Pay et Crypto.com sont confirmées disponibles en France. Privilégiez une carte émise par un PSAN enregistré auprès de l'AMF pour une protection maximale.` },
+    ],
+    de: [
+      { q:`Was ist die beste Krypto-Karte 2026?`, a:`2026 zeichnen sich Gnosis Pay und MetaMask Card für den Alltag aus (kein Staking, keine Gebühren). Für maximales Cashback bleibt Crypto.com Obsidian die Referenz.` },
+      { q:`Sind Krypto-Karten 2026 sicher?`, a:`Ja, dank MiCA, das seit 2025 EU-weit gilt. Emittenten sind reguliert, Ihre Gelder besser geschützt als je zuvor.` },
+      { q:`Gibt es 2026 neue Krypto-Karten?`, a:`Ja, mehrere neue Akteure sind nach der MiCA-Einführung in den Markt eingetreten. Unser Vergleich wird regelmäßig mit den neuesten Angeboten aktualisiert.` },
+      { q:`Ist Krypto-Cashback 2026 steuerpflichtig?`, a:`In Deutschland unterliegen Krypto-Gewinne der Einkommensteuer. Konsultieren Sie einen Steuerberater für Ihre persönliche Situation.` },
+      { q:`Welche Krypto-Karte für Deutschland 2026?`, a:`Gnosis Pay und Crypto.com sind in Deutschland verfügbar. Wählen Sie eine BaFin-regulierte Option für maximalen Schutz.` },
+    ],
+    es: [
+      { q:`¿Cuál es la mejor tarjeta crypto en 2026?`, a:`En 2026, Gnosis Pay y MetaMask Card destacan para el uso diario (sin staking, sin comisiones). Para el máximo cashback, Crypto.com Obsidian sigue siendo la referencia.` },
+      { q:`¿Son seguras las tarjetas crypto en 2026?`, a:`Sí, gracias a MiCA vigente en toda la UE desde 2025. Los emisores están regulados y tus fondos mejor protegidos que nunca.` },
+      { q:`¿Hay nuevas tarjetas crypto en 2026?`, a:`Sí, varios nuevos actores han entrado al mercado tras la adopción de MiCA. Nuestra comparativa se actualiza regularmente con las últimas ofertas.` },
+      { q:`¿El cashback crypto es imponible en 2026?`, a:`En España, las ganancias crypto tributan en el IRPF. Consulta un asesor fiscal para tu situación personal.` },
+      { q:`¿Qué tarjeta crypto elegir para España en 2026?`, a:`Gnosis Pay y Crypto.com están disponibles en España. Elige una opción regulada por el Banco de España o la CNMV para máxima protección.` },
+    ],
+    it: [
+      { q:`Qual è la migliore carta crypto nel 2026?`, a:`Nel 2026, Gnosis Pay e MetaMask Card si distinguono per l'uso quotidiano (zero staking, zero costi). Per il massimo cashback, Crypto.com Obsidian rimane il riferimento.` },
+      { q:`Le carte crypto sono sicure nel 2026?`, a:`Sì, grazie a MiCA in vigore in tutta l'UE dal 2025. Gli emittenti sono regolamentati e i tuoi fondi meglio protetti che mai.` },
+      { q:`Ci sono nuove carte crypto nel 2026?`, a:`Sì, diversi nuovi attori sono entrati nel mercato dopo l'adozione di MiCA. Il nostro confronto viene aggiornato regolarmente con le ultime offerte.` },
+      { q:`Il cashback crypto è tassabile nel 2026?`, a:`In Italia, i guadagni crypto sono soggetti a imposta sostitutiva del 26%. Consulta un commercialista per la tua situazione personale.` },
+      { q:`Quale carta crypto scegliere per l'Italia nel 2026?`, a:`Gnosis Pay e Crypto.com sono disponibili in Italia. Scegli un'opzione registrata presso l'OAM per la massima protezione.` },
+    ],
+    en: [
+      { q:`What is the best crypto card in 2026?`, a:`In 2026, Gnosis Pay and MetaMask Card stand out for everyday use (zero staking, zero fees). For maximum cashback, Crypto.com Obsidian remains the benchmark despite high staking requirements.` },
+      { q:`Are crypto cards safe in 2026?`, a:`Yes, thanks to MiCA regulation across the EU since 2025. Issuers are regulated and your funds are better protected than ever before.` },
+      { q:`Are there new crypto cards in 2026?`, a:`Yes, several new players have entered the market following MiCA adoption. Our comparison is updated regularly to reflect the latest offers.` },
+      { q:`Is crypto cashback taxable in 2026?`, a:`In most EU countries, crypto gains are taxable. Rates vary by country — consult a tax advisor for your specific situation.` },
+      { q:`Which crypto card to choose in Europe for 2026?`, a:`Gnosis Pay and Crypto.com are confirmed available across the EU. Prioritize MiCA-compliant options from regulated entities for maximum fund protection.` },
+    ],
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -338,9 +432,11 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   cashback:     (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
   'no-fees':    (c) => (c.annual_fees || 0) === 0,
   'no-staking': (c) => (c.staking_required || 0) === 0,
-  france:       (c) => Array.isArray(c.markets) ? c.markets.includes('fr') : true,
+  france:       () => true,
   virtual:      (c) => c.virtual_only === true,
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
+  'no-kyc':     (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet'].includes(e)),
+  '2026':       () => true,
 };
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   best:         (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
@@ -350,6 +446,8 @@ const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   france:       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   virtual:      (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   beginner:     (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
+  'no-kyc':     (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
+  '2026':       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
 };
 const THEME_LIMIT: Record<string, number> = { best: 15 };
 
@@ -378,31 +476,23 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const sortFn    = THEME_SORT[theme]   || (() => 0);
 
   const filteredCards = useMemo(() => {
-    const sorted = [...cards].filter(filterFn).sort(sortFn);
+    const marketFilter = (c: any) => !Array.isArray(c.markets) || c.markets.includes(lang);
+    const sorted = [...cards].filter(c => filterFn(c) && marketFilter(c)).sort(sortFn);
     const limit = THEME_LIMIT[theme];
     return limit ? sorted.slice(0, limit) : sorted;
-  }, [cards, theme]);
+  }, [cards, theme, lang]);
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
 
-  /* Meta + Schema.org */
+  // ── SEO ───────────────────────────────────────────────────────────────────────
+  useSeoMeta({
+    title: config?.title || 'TopCryptoCards',
+    description: config?.description || '',
+  });
+
+  /* Schema.org */
   useEffect(() => {
     if (!config) return;
-    document.title = config.title;
-
-    const upsert = (attr: string, key: string, val: string) => {
-      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
-      if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
-      el.setAttribute('content', val);
-    };
-    upsert('name', 'description', config.description);
-    upsert('property', 'og:title', config.title);
-    upsert('property', 'og:description', config.description);
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = window.location.origin + window.location.pathname;
-
     document.getElementById('schema-itemlist')?.remove();
     document.getElementById('schema-faqpage')?.remove();
 
@@ -452,7 +542,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <h1 className="text-3xl font-bold text-white mb-3">{config.h1}</h1>
+      <Breadcrumb items={[
+        { label: HOME_LABEL[lang] || 'Home', href: `/${lang}` },
+        { label: config.h1 },
+      ]} />
+      <h1 className="text-3xl font-bold text-white mb-3 mt-4">{config.h1}</h1>
       <p className="text-slate-400 text-sm mb-4">
         {t('updated')}{' '}
         {new Date().toLocaleDateString(
@@ -511,9 +605,28 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       )}
 
       {/* Outro */}
-      <p className="text-slate-300 mb-12 max-w-3xl leading-relaxed border-l-2 border-cyan-500/30 pl-4 italic">
+      <p className="text-slate-300 mb-10 max-w-3xl leading-relaxed border-l-2 border-cyan-500/30 pl-4 italic">
         {config.outro}
       </p>
+
+      {/* Internal link: crypto guide hub */}
+      <div className="mb-12">
+        <Link
+          to={`/${lang}/cryptos`}
+          className="inline-flex items-center gap-3 px-5 py-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 transition-all group max-w-md"
+        >
+          <span className="text-2xl">₿</span>
+          <div>
+            <div className="font-semibold text-white group-hover:text-cyan-accent transition-colors text-sm">
+              {lang === 'fr' ? 'Guide des Cryptomonnaies' : lang === 'de' ? 'Kryptowährungs-Guide' : lang === 'es' ? 'Guía de Criptomonedas' : lang === 'it' ? 'Guida alle Criptovalute' : 'Cryptocurrency Guide'}
+            </div>
+            <div className="text-xs text-slate-500 mt-0.5">
+              {lang === 'fr' ? 'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches' : lang === 'de' ? 'Bitcoin, Ethereum, XRP… 10 Krypto-Guides' : lang === 'es' ? 'Bitcoin, Ethereum, XRP… 10 guías completas' : lang === 'it' ? 'Bitcoin, Ethereum, XRP… 10 guide complete' : 'Bitcoin, Ethereum, XRP… 10 in-depth guides'}
+            </div>
+          </div>
+          <span className="ml-auto text-cyan-accent/50 group-hover:text-cyan-accent transition-colors text-lg">→</span>
+        </Link>
+      </div>
 
       {/* FAQ */}
       {faqs.length > 0 && (

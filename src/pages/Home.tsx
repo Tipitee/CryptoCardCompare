@@ -17,7 +17,18 @@ import {
 } from 'lucide-react';
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useLanguage } from '../hooks/useLanguage';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import { fmtEUR, fmtPct } from '../utils/format';
+
+const YEAR = new Date().getFullYear();
+const HOME_SEO: Record<string, { title: string; desc: string }> = {
+  fr: { title: `Comparatif Cartes Crypto ${YEAR} — Cashback, Frais, Avis | TopCryptoCards`, desc: `Comparez les meilleures cartes crypto en France. Cashback, frais, disponibilité : notre sélection complète ${YEAR}.` },
+  de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback, Gebühren | TopCryptoCards`, desc: `Vergleichen Sie die besten Krypto-Karten in Deutschland. Cashback, Gebühren, Verfügbarkeit: unsere vollständige Auswahl ${YEAR}.` },
+  es: { title: `Comparativa Tarjetas Crypto ${YEAR} — Cashback, Comisiones | TopCryptoCards`, desc: `Compara las mejores tarjetas crypto en España. Cashback, comisiones, disponibilidad: nuestra selección completa ${YEAR}.` },
+  it: { title: `Confronto Carte Crypto ${YEAR} — Cashback, Commissioni | TopCryptoCards`, desc: `Confronta le migliori carte crypto in Italia. Cashback, commissioni, disponibilità: la nostra selezione completa ${YEAR}.` },
+  en: { title: `Best Crypto Cards ${YEAR} — Cashback, Fees Compared | TopCryptoCards`, desc: `Compare the best crypto cards in Europe. Cashback, fees, availability: our complete selection for ${YEAR}.` },
+};
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
@@ -38,6 +49,9 @@ export default function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation('common');
   const { getRoute } = useLocalizedRoute();
+  const lang = useLanguage();
+  const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
+  useSeoMeta({ title: homeSeo.title, description: homeSeo.desc });
 
   const FILTERS: { key: FilterKey; label: string }[] = [
     { key: 'all', label: t('filter_all') },
@@ -123,65 +137,33 @@ export default function Home() {
 
   const heroCards = cards.slice(0, 3);
 
+  // Schema.org ItemList
   useEffect(() => {
     if (cards.length === 0) return;
-
-    const year = new Date().getFullYear();
-    const title = `Comparatif Cartes Crypto ${year} — Cashback, Frais, Avis | TopCryptoCards`;
-    const desc = `Comparez les ${cards.length} meilleures cartes crypto disponibles en Europe. Cashback, frais, disponibilité France, avis détaillés. Trouvez la carte idéale en 2 minutes.`;
-
-    const prevTitle = document.title;
-    document.title = title;
-
-    function upsertMeta(attr: string, key: string, value: string) {
-      let el = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null;
-      const wasNew = !el;
-      if (!el) { el = document.createElement('meta') as HTMLMetaElement; el.setAttribute(attr, key); document.head.appendChild(el); }
-      const prev = el.getAttribute('content') || '';
-      el.setAttribute('content', value);
-      return { el: el as Element, wasNew, prev };
-    }
-
-    const metas = [
-      upsertMeta('name', 'description', desc),
-      upsertMeta('property', 'og:title', title),
-      upsertMeta('property', 'og:description', desc),
-      upsertMeta('property', 'og:url', window.location.href),
-    ];
-
-    // Schema.org ItemList
+    const segment = { fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards' }[lang] || 'cards';
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name: `Meilleures cartes crypto ${year}`,
-      description: 'Comparatif des meilleures cartes crypto disponibles en Europe',
+      name: homeSeo.title,
+      description: homeSeo.desc,
       url: window.location.href,
       numberOfItems: Math.min(cards.length, 10),
       itemListElement: cards.slice(0, 10).map((card, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         name: card.name,
-        url: `https://topcryptocards.eu/fr/cartes/${card.id}`,
+        url: `https://topcryptocards.eu/${lang}/${segment}/${card.id}`,
         image: card.realCardImage || '',
       })),
     };
-
     document.getElementById('schema-item-list')?.remove();
     const schemaEl = document.createElement('script');
     schemaEl.id = 'schema-item-list';
     schemaEl.type = 'application/ld+json';
     schemaEl.textContent = JSON.stringify(schema);
     document.head.appendChild(schemaEl);
-
-    return () => {
-      document.title = prevTitle;
-      document.getElementById('schema-item-list')?.remove();
-      metas.forEach(({ el, wasNew, prev }) => {
-        if (wasNew) el.remove();
-        else el.setAttribute('content', prev);
-      });
-    };
-  }, [cards]);
+    return () => { document.getElementById('schema-item-list')?.remove(); };
+  }, [cards, lang, homeSeo]);
 
   return (
     <div>
