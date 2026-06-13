@@ -7,6 +7,8 @@ import { fetchPostBySlug, fetchRelatedPosts } from '../lib/supabase';
 import { renderMarkdown, estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
 
 const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR',
@@ -84,8 +86,19 @@ export default function BlogPost() {
     );
   }
 
-  const readTime = estimateReadTime(post.content);
-  const renderedContent = renderMarkdown(post.content);
+  const tags = post.tags ?? [];
+  const excerpt = post.excerpt ?? '';
+  const readTime = estimateReadTime(post.content ?? '');
+  const renderedContent = renderMarkdown(post.content ?? '');
+
+  // SEO
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useSeoMeta({
+    title: post.meta_title || `${post.title} | TopCryptoCards`,
+    description: post.meta_description || post.excerpt,
+    image: post.image_hero || undefined,
+    type: 'article',
+  });
 
   return (
     <div className="animate-fade-in">
@@ -108,6 +121,11 @@ export default function BlogPost() {
         )}
 
         <div className="absolute bottom-0 left-0 right-0 container-app pb-8">
+          <Breadcrumb items={[
+            { label: 'Home', href: `/${lang}` },
+            { label: 'Blog', href: getRoute('blog') },
+            { label: post.title },
+          ]} />
           <Link
             to={getRoute('blog')}
             className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-4"
@@ -115,17 +133,6 @@ export default function BlogPost() {
             <ArrowLeft className="w-4 h-4" />
             {t('blog_back_to_blog')}
           </Link>
-
-          {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-3">
-              {post.tags.map(tag => (
-                <span key={tag} className="flex items-center gap-1 text-xs font-medium text-cyan-accent bg-cyan-accent/10 border border-cyan-accent/20 px-2.5 py-1 rounded-full">
-                  <Tag className="w-3 h-3" />
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-tight max-w-4xl">
             {post.title}
@@ -149,14 +156,27 @@ export default function BlogPost() {
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Article content */}
           <article className="flex-1 min-w-0 max-w-3xl">
-            <p className="text-lg text-slate-300 leading-relaxed mb-8 pb-8 border-b border-bg-border font-medium">
-              {post.excerpt}
-            </p>
+            {excerpt && (
+              <p className="text-lg text-slate-300 leading-relaxed mb-8 pb-8 border-b border-bg-border font-medium">
+                {excerpt}
+              </p>
+            )}
 
             <div
               className="prose-crypto"
               dangerouslySetInnerHTML={{ __html: renderedContent }}
             />
+
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-bg-border">
+                {tags.map(tag => (
+                  <span key={tag} className="flex items-center gap-1 text-xs font-medium text-cyan-accent bg-cyan-accent/10 border border-cyan-accent/20 px-2.5 py-1 rounded-full">
+                    <Tag className="w-3 h-3" />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
 
             <div className="mt-12 p-6 card-surface border-cyan-accent/30 text-center">
               <p className="text-slate-300 mb-4 text-lg">

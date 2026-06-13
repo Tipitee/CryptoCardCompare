@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Calendar, Clock, Search, Settings, Tag } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Search, Tag } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
 import { fetchPublishedPosts } from '../lib/supabase';
 import { estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
 
 const PAGE_SIZE = 6;
 
@@ -37,6 +39,11 @@ export default function Blog() {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [page, setPage] = useState(1);
 
+  useSeoMeta({
+    title: `${t('blog_header_title')} | TopCryptoCards`,
+    description: t('blog_header_desc'),
+  });
+
   useEffect(() => {
     setLoading(true);
     fetchPublishedPosts(lang)
@@ -46,15 +53,15 @@ export default function Blog() {
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
-    posts.forEach(p => p.tags.forEach(tag => set.add(tag)));
+    posts.forEach(p => (p.tags ?? []).forEach(tag => set.add(tag)));
     return Array.from(set).sort();
   }, [posts]);
 
   const filtered = useMemo(() => {
     return posts.filter(p => {
-      const matchTag = !activeTag || p.tags.includes(activeTag);
+      const matchTag = !activeTag || (p.tags ?? []).includes(activeTag);
       const q = search.toLowerCase();
-      const matchSearch = !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q);
+      const matchSearch = !q || p.title.toLowerCase().includes(q) || (p.excerpt ?? '').toLowerCase().includes(q);
       return matchTag && matchSearch;
     });
   }, [posts, activeTag, search]);
@@ -74,6 +81,10 @@ export default function Blog() {
 
   return (
     <div className="container-app py-12 animate-fade-in">
+      <Breadcrumb items={[
+        { label: { fr:'Accueil',de:'Startseite',es:'Inicio',it:'Home',en:'Home' }[lang] || 'Home', href: `/${lang}` },
+        { label: t('blog_header_badge') },
+      ]} />
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 bg-cyan-accent/10 border border-cyan-accent/20 text-cyan-accent text-sm font-medium px-4 py-1.5 rounded-full mb-4">
@@ -86,22 +97,6 @@ export default function Blog() {
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
           {t('blog_header_desc')}
         </p>
-        <div className="flex items-center justify-center gap-2 mt-6">
-          <Link
-            to="/admin/blog"
-            className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-400 transition-colors px-3 py-1.5 rounded-lg border border-bg-border hover:border-slate-600"
-          >
-            <Settings className="w-3.5 h-3.5" />
-            Admin articles
-          </Link>
-          <Link
-            to="/admin/generate-hero-images"
-            className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-slate-400 transition-colors px-3 py-1.5 rounded-lg border border-bg-border hover:border-slate-600"
-          >
-            <Settings className="w-3.5 h-3.5" />
-            Admin images
-          </Link>
-        </div>
       </div>
 
       {/* Search + Filters */}
@@ -262,9 +257,9 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
       )}
 
       <div className="p-5 flex flex-col flex-1">
-        {post.tags.length > 0 && (
+        {(post.tags ?? []).length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
-            {post.tags.slice(0, 3).map(tag => (
+            {(post.tags ?? []).slice(0, 3).map(tag => (
               <span key={tag} className="text-xs font-semibold text-cyan-accent bg-cyan-accent/15 px-2.5 py-1 rounded-full border border-cyan-accent/30 group-hover:border-cyan-accent/60 group-hover:bg-cyan-accent/25 transition-all">
                 {tag}
               </span>

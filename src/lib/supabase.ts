@@ -282,7 +282,7 @@ export async function fetchRelatedPosts(
 ): Promise<BlogPost[]> {
   // Helper: fetch with lang, fallback to 'fr' if empty
   async function queryRelated(l: string) {
-    if (tags.length === 0) {
+    if (!tags || tags.length === 0) {
       const { data } = await supabase
         .from('blog_posts').select('*').eq('published', true).eq('lang', l)
         .neq('slug', excludeSlug).order('created_at', { ascending: false }).limit(limit);
