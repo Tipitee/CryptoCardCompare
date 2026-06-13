@@ -100,15 +100,6 @@ export default function BlogPost() {
     type: 'article',
   });
 
-  // SEO
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useSeoMeta({
-    title: post.meta_title || `${post.title} | TopCryptoCards`,
-    description: post.meta_description || post.excerpt,
-    image: post.image_hero || undefined,
-    type: 'article',
-  });
-
   return (
     <div className="animate-fade-in">
       {/* Hero */}
