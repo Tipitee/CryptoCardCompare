@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Calendar, Clock, Search, Tag } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Search } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
 import { fetchPublishedPosts } from '../lib/supabase';
 import { estimateReadTime } from '../utils/markdown';
@@ -36,7 +36,6 @@ export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [activeTag, setActiveTag] = useState<string | null>(null);
   const [page, setPage] = useState(1);
 
   useSeoMeta({
@@ -51,28 +50,15 @@ export default function Blog() {
       .finally(() => setLoading(false));
   }, [lang]);
 
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    posts.forEach(p => (p.tags ?? []).forEach(tag => set.add(tag)));
-    return Array.from(set).sort();
-  }, [posts]);
-
   const filtered = useMemo(() => {
     return posts.filter(p => {
-      const matchTag = !activeTag || (p.tags ?? []).includes(activeTag);
       const q = search.toLowerCase();
-      const matchSearch = !q || p.title.toLowerCase().includes(q) || (p.excerpt ?? '').toLowerCase().includes(q);
-      return matchTag && matchSearch;
+      return !q || p.title.toLowerCase().includes(q) || (p.excerpt ?? '').toLowerCase().includes(q);
     });
-  }, [posts, activeTag, search]);
+  }, [posts, search]);
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-
-  function handleTag(tag: string) {
-    setActiveTag(prev => (prev === tag ? null : tag));
-    setPage(1);
-  }
 
   function handleSearch(v: string) {
     setSearch(v);
@@ -112,24 +98,6 @@ export default function Blog() {
           />
         </div>
 
-        {allTags.length > 0 && (
-          <div className="flex flex-wrap gap-2 justify-center">
-            {allTags.map(tag => (
-              <button
-                key={tag}
-                onClick={() => handleTag(tag)}
-                className={`chip transition-all ${
-                  activeTag === tag
-                    ? 'bg-cyan-accent/20 border-cyan-accent text-cyan-accent'
-                    : 'hover:border-slate-500 hover:text-slate-200'
-                }`}
-              >
-                <Tag className="w-3 h-3" />
-                {tag}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Content */}
@@ -156,9 +124,9 @@ export default function Blog() {
           <p className="text-slate-500 mb-6">
             {posts.length === 0 ? t('blog_coming_soon') : t('blog_try_other')}
           </p>
-          {(activeTag || search) && (
+          {search && (
             <button
-              onClick={() => { setActiveTag(null); setSearch(''); }}
+              onClick={() => setSearch('')}
               className="btn-secondary"
             >
               {t('blog_clear_filters')}
