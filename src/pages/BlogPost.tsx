@@ -50,11 +50,24 @@ export default function BlogPost() {
           return;
         }
         setPost(p);
-        const rel = await fetchRelatedPosts(p.tags, p.slug, lang);
+        const rel = await fetchRelatedPosts(p.tags ?? [], p.slug, lang);
         setRelated(rel);
       })
       .finally(() => setLoading(false));
   }, [slug, lang]);
+
+  // Hooks must always be called — before any early returns
+  const tags = post?.tags ?? [];
+  const excerpt = post?.excerpt ?? '';
+  const readTime = estimateReadTime(post?.content ?? '');
+  const renderedContent = renderMarkdown(post?.content ?? '');
+
+  useSeoMeta({
+    title: post?.meta_title || (post ? `${post.title} | TopCryptoCards` : 'TopCryptoCards'),
+    description: post?.meta_description || post?.excerpt || '',
+    image: post?.image_hero || undefined,
+    type: 'article',
+  });
 
   if (loading) {
     return (
@@ -85,20 +98,6 @@ export default function BlogPost() {
       </div>
     );
   }
-
-  const tags = post.tags ?? [];
-  const excerpt = post.excerpt ?? '';
-  const readTime = estimateReadTime(post.content ?? '');
-  const renderedContent = renderMarkdown(post.content ?? '');
-
-  // SEO
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useSeoMeta({
-    title: post.meta_title || `${post.title} | TopCryptoCards`,
-    description: post.meta_description || post.excerpt,
-    image: post.image_hero || undefined,
-    type: 'article',
-  });
 
   return (
     <div className="animate-fade-in">
