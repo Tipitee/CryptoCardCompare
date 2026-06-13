@@ -902,4 +902,8 @@ for (const [sym, langs] of Object.entries(CRYPTO_TRANSLATIONS)) {
   if (CRYPTO_CONTENT[sym]) {
     Object.assign(CRYPTO_CONTENT[sym], langs);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

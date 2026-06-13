@@ -84,4 +84,8 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
       });
     };
   }, [title, description, image, type, canonical]);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

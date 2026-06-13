@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<<<<<<< HEAD:public/sitemap.xml
   <sitemap>
     <loc>https://topcryptocards.eu/sitemap-pages.xml</loc>
     <lastmod>2026-06-12</lastmod>
@@ -41,3 +42,46 @@
     <lastmod>2026-06-12</lastmod>
   </sitemap>
 </sitemapindex>
+=======
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-pages.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-thematic.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-blog.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cards-fr.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cards-de.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cards-es.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cards-it.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cards-en.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-compare.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+<sitemap>
+<loc>https://topcryptocards.eu/sitemap-cryptos.xml</loc>
+<lastmod>2026-06-13</lastmod>
+</sitemap>
+</sitemapindex>
+>>>>>>> origin/main:public/sitemap-index.xml
