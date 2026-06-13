@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, Heart, Home, Sparkles, Coins, Menu, FileText, Shield, TrendingUp, X } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, Heart, Home, Sparkles, Coins, Menu, Star, TrendingUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -8,6 +8,15 @@ import LanguageSwitcher from './LanguageSwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
+
+// Review page slugs per language
+const REVIEW_SLUGS: Record<string, string> = {
+  fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
+};
+
+const REVIEW_LABELS: Record<string, string> = {
+  fr: 'Avis', de: 'Bewertungen', es: 'Opiniones', it: 'Recensioni', en: 'Reviews',
+};
 
 // Thematic page slugs per language
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
@@ -39,6 +48,9 @@ export default function Layout() {
 
   const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
   const labels = THEMATIC_LABELS[lang] || THEMATIC_LABELS.en;
+
+  const reviewSlug = REVIEW_SLUGS[lang] || 'avis';
+  const reviewLabel = REVIEW_LABELS[lang] || 'Avis';
 
   const navItems = [
     { key: '', label: t('nav_home'), icon: Home },
@@ -111,6 +123,21 @@ export default function Layout() {
               </NavLink>
             ))}
 
+            {/* Avis */}
+            <NavLink
+              to={`/${lang}/${reviewSlug}`}
+              className={({ isActive }) =>
+                `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+                  isActive
+                    ? 'text-cyan-accent bg-cyan-accent/10'
+                    : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
+                }`
+              }
+            >
+              <Star className="w-4 h-4" />
+              {reviewLabel}
+            </NavLink>
+
             {/* Guides dropdown */}
             <div ref={guidesRef} className="relative">
               <button
@@ -177,6 +204,22 @@ export default function Layout() {
                   {item.label}
                 </NavLink>
               ))}
+
+              {/* Avis */}
+              <NavLink
+                to={`/${lang}/${reviewSlug}`}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 ${
+                    isActive
+                      ? 'text-cyan-accent bg-cyan-accent/10'
+                      : 'text-slate-300'
+                  }`
+                }
+              >
+                <Star className="w-4 h-4" />
+                {reviewLabel}
+              </NavLink>
 
               {/* Thematic links in mobile menu */}
               <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-500">

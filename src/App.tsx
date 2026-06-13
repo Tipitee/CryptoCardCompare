@@ -22,6 +22,8 @@ import ThematicPage from './pages/ThematicPage';
 import ComparisonPage from './pages/ComparisonPage';
 import CryptoList from './pages/CryptoList';
 import CryptoPage from './pages/CryptoPage';
+import ReviewList from './pages/ReviewList';
+import ReviewPage from './pages/ReviewPage';
 import NotFound from './pages/NotFound';
 import { initializeLanguage } from './i18n/utils';
 
@@ -191,6 +193,18 @@ function App() {
           <Route path="comparar/:slug" element={<ComparisonPage />} />
           <Route path="confrontare/:slug" element={<ComparisonPage />} />
           <Route path="compare/:slug" element={<ComparisonPage />} />
+
+          {/* ── Avis cartes crypto ── */}
+          <Route path="avis" element={<ReviewList />} />
+          <Route path="avis/:slug" element={<ReviewPage />} />
+          <Route path="reviews" element={<ReviewList />} />
+          <Route path="reviews/:slug" element={<ReviewPage />} />
+          <Route path="bewertungen" element={<ReviewList />} />
+          <Route path="bewertungen/:slug" element={<ReviewPage />} />
+          <Route path="opiniones" element={<ReviewList />} />
+          <Route path="opiniones/:slug" element={<ReviewPage />} />
+          <Route path="recensioni" element={<ReviewList />} />
+          <Route path="recensioni/:slug" element={<ReviewPage />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
