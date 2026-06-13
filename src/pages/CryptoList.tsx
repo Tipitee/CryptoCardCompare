@@ -141,8 +141,4 @@ export default function CryptoList() {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

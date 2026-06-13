@@ -265,8 +265,4 @@ export default function CryptoPage() {
 
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

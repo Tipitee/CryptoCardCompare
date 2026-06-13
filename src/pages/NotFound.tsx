@@ -79,8 +79,4 @@ export default function NotFound() {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

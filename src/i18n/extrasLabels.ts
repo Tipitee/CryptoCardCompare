@@ -54,8 +54,4 @@ export function getExtraLabel(key: string, lang: string): string {
   const entry = EXTRAS[key];
   if (!entry) return formatExtra(key);
   return entry[lang as Lang] ?? entry.en ?? formatExtra(key);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

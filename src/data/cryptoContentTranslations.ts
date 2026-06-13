@@ -2205,8 +2205,4 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
     },
   },
 
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> origin/main
