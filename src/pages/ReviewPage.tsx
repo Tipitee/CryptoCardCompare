@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
 import { getReviewBySlug, getRelatedReviews } from '../data/cardReviews';
 import { getReviewI18n } from '../data/cardReviewsI18n';
+import { getReviewSections } from '../data/cardReviewsSectionsI18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
@@ -323,16 +324,20 @@ export default function ReviewPage() {
 
   // Merge i18n content on top of base review (fr fallback)
   const i18n = baseReview ? getReviewI18n(baseReview.slug, lang) : null;
-  const review = baseReview && i18n
+  const i18nSections = baseReview ? getReviewSections(baseReview.slug, lang) : null;
+  const review = baseReview
     ? {
         ...baseReview,
-        badge: i18n.badge ?? baseReview.badge,
-        pros: i18n.pros,
-        cons: i18n.cons,
-        verdict: i18n.verdict,
-        keyStats: i18n.keyStats,
-        metaTitle: i18n.metaTitle,
-        metaDescription: i18n.metaDescription,
+        ...(i18n && {
+          badge: i18n.badge ?? baseReview.badge,
+          pros: i18n.pros,
+          cons: i18n.cons,
+          verdict: i18n.verdict,
+          keyStats: i18n.keyStats,
+          metaTitle: i18n.metaTitle,
+          metaDescription: i18n.metaDescription,
+        }),
+        sections: i18nSections ?? baseReview.sections,
       }
     : baseReview;
 
