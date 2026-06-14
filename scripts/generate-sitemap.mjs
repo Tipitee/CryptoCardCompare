@@ -30,7 +30,8 @@ async function generate() {
     .neq('status', 'discontinued');
 
   if (cardsError) {
-    console.warn('⚠️  Supabase unavailable — generating sitemap without dynamic cards:', cardsError.message);
+    console.error('Error fetching cards:', cardsError.message);
+    process.exit(1);
   }
 
   const { data: posts } = await supabase
@@ -86,14 +87,6 @@ ${urls
 }
 
 generate().catch((err) => {
-  console.warn('⚠️  Sitemap generation failed (non-fatal):', err.message);
-  // Write a minimal fallback sitemap so the build doesn't fail
-  mkdirSync('public', { recursive: true });
-  const fallback = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${'https://topcryptocards.eu'}/fr</loc><priority>1.0</priority></url>
-</urlset>`;
-  writeFileSync('public/sitemap.xml', fallback);
-  console.log('Fallback sitemap written. Build will continue.');
-  // exit 0 so Netlify/Vite build continues
+  console.error(err);
+  process.exit(1);
 });
