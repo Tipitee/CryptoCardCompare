@@ -1,4 +1,3 @@
-import Anthropic from "npm:@anthropic-ai/sdk";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -31,11 +30,10 @@ Deno.serve(async (req) => {
 
     const { id, title, excerpt, tags, slug, forceRegenerate } = await req.json();
 
-    const anthropicKey = Deno.env.get("ANTHROPIC_API_KEY");
     const togetherKey = Deno.env.get("TOGETHER_API_KEY");
 
-    if (!anthropicKey || !togetherKey) {
-      throw new Error("Missing ANTHROPIC_API_KEY or TOGETHER_API_KEY");
+    if (!togetherKey) {
+      throw new Error("Missing TOGETHER_API_KEY");
     }
 
     // Step 0: Fetch cards and detect matches
@@ -82,10 +80,7 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Step 1: Generate image prompt via Claude
-    console.log("Generating image prompt with Claude...");
-    const anthropic = new Anthropic({ apiKey: anthropicKey });
-
+    // Step 1: Build image prompt locally (no external API needed)
     const styleVariations = [
       "dark background, neon cyan and green accents, abstract crypto/blockchain aesthetic, cinematic lighting",
       "dark background with subtle gradient, glowing cyan and purple geometric shapes, modern tech aesthetic, dramatic shadows",
@@ -94,48 +89,50 @@ Deno.serve(async (req) => {
       "charcoal background with neon cyan lines, minimalist geometric composition, intense dramatic lighting, tech noir style",
     ];
 
+    const themes: Record<string, string> = {
+      cashback:  "cryptocurrency rewards flying coins cashback concept",
+      carte:     "premium crypto debit card floating holographic surface",
+      card:      "premium crypto debit card floating holographic surface",
+      bitcoin:   "Bitcoin BTC symbol golden digital glow",
+      ethereum:  "Ethereum ETH diamond shape purple ethereal glow",
+      solana:    "Solana SOL abstract gradient purple teal",
+      bnb:       "Binance BNB coin golden network nodes",
+      staking:   "blockchain staking nodes interconnected network glowing",
+      frais:     "financial fees comparison chart minimalist digital",
+      fees:      "financial fees comparison chart minimalist digital",
+      securite:  "cybersecurity shield lock digital encryption neon",
+      security:  "cybersecurity shield lock digital encryption neon",
+      defi:      "decentralized finance DeFi protocol nodes abstract web",
+      impots:    "tax financial document crypto declaration abstract",
+      tax:       "tax financial document crypto declaration abstract",
+      kyc:       "identity verification digital passport biometric scan",
+      retrait:   "ATM cash withdrawal crypto conversion machine",
+      atm:       "ATM cash withdrawal crypto conversion machine",
+      europe:    "European Union map crypto payment network constellation",
+      visa:      "payment network card contactless NFC terminal glow",
+      virtuelle: "virtual digital card holographic floating interface",
+      virtual:   "virtual digital card holographic floating interface",
+    };
+
     const randomStyle = styleVariations[Math.floor(Math.random() * styleVariations.length)];
+    const haystack = `${title} ${slug} ${(tags ?? []).join(" ")}`.toLowerCase();
 
-    let cardContext = "";
-    if (detectedCard) {
-      const features = [];
-      if (detectedCard.cashback_premium > 0) {
-        features.push(`up to ${detectedCard.cashback_premium}% cashback`);
-      }
-      if (detectedCard.annual_fees === 0) {
-        features.push("no annual fees");
-      }
-      if (detectedCard.extras && detectedCard.extras.length > 0) {
-        features.push(`includes ${detectedCard.extras.slice(0, 2).join(", ")}`);
-      }
-
-      cardContext = `\n\nCard Context - The article mentions: ${detectedCard.name} by ${detectedCard.issuer}
-Key features: ${features.join(", ")}
-Brand colors to incorporate: Primary ${detectedCard.color_primary || "#00D4FF"}, Secondary ${detectedCard.color_secondary || "#0A0E1A"}
-IMPORTANT: Subtly integrate visual elements that represent this card (card shape, issuer aesthetic, color palette) without showing text or logos.`;
+    let theme = "cryptocurrency payment card digital finance abstract futuristic";
+    for (const [key, val] of Object.entries(themes)) {
+      if (haystack.includes(key)) { theme = val; break; }
     }
 
-    const promptResponse = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 150,
-      messages: [{
-        role: "user",
-        content: `Write a detailed image generation prompt (max 75 words) for a blog hero image.
-Article Title: "${title}"
-Article Summary: ${excerpt}
-Tags: ${tags?.join(", ") ?? ""}
+    // If a card brand was detected, bias the theme
+    let cardStyleHint = "";
+    if (detectedCard) {
+      const primaryColor = detectedCard.color_primary || "#00D4FF";
+      cardStyleHint = `, dominant color palette ${primaryColor}, subtle card shape silhouette floating`;
+      console.log(`Using card brand hint for: ${detectedCard.name}`);
+    }
 
-Style Requirements: ${randomStyle}, no text, no logos, 16:9 aspect ratio.
+    const imagePrompt = `Cinematic hero image, ${theme}${cardStyleHint}, ${randomStyle}, no text, no letters, no logos, no watermarks, 16:9 ratio, ultra high quality`;
 
-The image should visually represent the article's topic and feel modern, premium, and relevant to cryptocurrency/blockchain industry.${cardContext}
-Return ONLY the prompt.`,
-      }],
-    });
-
-    const imagePrompt =
-      (promptResponse.content[0] as { type: string; text: string }).text.trim();
-
-    console.log("Generated image prompt:", imagePrompt);
+    console.log("Built image prompt:", imagePrompt);
 
     // Step 2: Generate image with Together AI (with retries)
     console.log("Calling Together AI API directly...");
