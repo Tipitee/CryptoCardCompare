@@ -83,6 +83,8 @@ interface ArticleWithStatus extends BlogPost {
   errorMessage?: string;
   hasImage: boolean;
   detectedCard?: DetectedCard | null;
+  promptUsed?: string;
+  functionVersion?: string;
 }
 
 export default function AdminHeroImages() {
@@ -167,6 +169,8 @@ export default function AdminHeroImages() {
           updated_at: new Date().toISOString(),
           hasImage: true,
           detectedCard: data.detectedCard || null,
+          promptUsed: data.promptUsed || null,
+          functionVersion: data.version || null,
         };
         return next;
       });
@@ -431,30 +435,57 @@ export default function AdminHeroImages() {
                         </div>
                       )}
                       {post.generationStatus === 'success' && (
-                        <div className="flex items-center gap-2 text-green-accent text-xs whitespace-nowrap">
-                          <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                          <span>Succès</span>
+                        <div className="flex items-center gap-2 flex-wrap justify-end">
+                          <div className="flex items-center gap-1.5 text-green-accent text-xs whitespace-nowrap">
+                            <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                            <span>Succès</span>
+                          </div>
+                          <button
+                            onClick={() => generateHeroImage(idx, true)}
+                            className="btn-ghost text-xs text-slate-400 hover:text-slate-200 whitespace-nowrap py-1 px-2"
+                          >
+                            <RefreshCw className="w-3.5 h-3.5" />
+                            Regénérer
+                          </button>
                         </div>
                       )}
                       {post.generationStatus === 'error' && (
-                        <button
-                          onClick={() => generateHeroImage(idx, false)}
-                          className="flex items-center gap-2 text-red-400 text-xs whitespace-nowrap hover:text-red-300 transition-colors"
-                        >
-                          <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                          <span>Réessayer</span>
-                        </button>
+                        <div className="flex items-center gap-2 flex-wrap justify-end">
+                          <button
+                            onClick={() => generateHeroImage(idx, post.hasImage)}
+                            className="flex items-center gap-1.5 text-red-400 text-xs whitespace-nowrap hover:text-red-300 transition-colors"
+                          >
+                            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                            <span>Réessayer</span>
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
 
                   {post.image_hero && (
-                    <div className="w-full h-32 rounded-lg overflow-hidden bg-bg-elevated">
-                      <img
-                        src={post.image_hero}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-full rounded-lg overflow-hidden bg-bg-elevated">
+                      <div className="h-32 relative">
+                        <img
+                          src={post.image_hero}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      {post.promptUsed && (
+                        <div className="px-3 py-2 bg-bg-elevated border-t border-bg-border space-y-1">
+                          {post.functionVersion && (
+                            <p className="text-xs">
+                              <span className="text-slate-600 font-medium mr-1">Version :</span>
+                              <span className="text-cyan-accent/70 font-mono">{post.functionVersion}</span>
+                            </p>
+                          )}
+                          <p className="text-xs text-slate-500 font-mono leading-relaxed">
+                            <span className="text-slate-600 font-sans font-medium mr-1">Prompt :</span>
+                            {post.promptUsed}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

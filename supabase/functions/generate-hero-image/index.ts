@@ -2,6 +2,8 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 // @deno-types="https://deno.land/x/imagescript@1.3.0/mod.d.ts"
 import { Image } from "https://deno.land/x/imagescript@1.3.0/mod.ts";
 
+const FUNCTION_VERSION = "v4-crypto-priority"; // bump this on each deploy to verify
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -38,39 +40,104 @@ const STYLE_VARIATIONS = [
   "charcoal background with neon cyan lines, minimalist geometric composition, intense dramatic lighting, tech noir style",
 ];
 
-const THEMES: Record<string, string> = {
-  cashback:  "cryptocurrency rewards flying coins cashback concept",
-  carte:     "premium crypto debit card floating holographic surface",
-  card:      "premium crypto debit card floating holographic surface",
-  bitcoin:   "Bitcoin BTC symbol golden digital glow",
-  ethereum:  "Ethereum ETH diamond shape purple ethereal glow",
-  solana:    "Solana SOL abstract gradient purple teal",
-  bnb:       "Binance BNB coin golden network nodes",
-  staking:   "blockchain staking nodes interconnected network glowing",
-  frais:     "financial fees comparison chart minimalist digital",
-  fees:      "financial fees comparison chart minimalist digital",
-  securite:  "cybersecurity shield lock digital encryption neon",
-  security:  "cybersecurity shield lock digital encryption neon",
-  defi:      "decentralized finance DeFi protocol nodes abstract web",
-  impots:    "tax financial document crypto declaration abstract",
-  tax:       "tax financial document crypto declaration abstract",
-  kyc:       "identity verification digital passport biometric scan",
-  retrait:   "ATM cash withdrawal crypto conversion machine",
-  atm:       "ATM cash withdrawal crypto conversion machine",
-  europe:    "European Union map crypto payment network constellation",
-  visa:      "payment network card contactless NFC terminal glow",
-  virtuelle: "virtual digital card holographic floating interface",
-  virtual:   "virtual digital card holographic floating interface",
+// Priority 1 — specific cryptocurrencies (checked first)
+const CRYPTO_THEMES: Record<string, string> = {
+  ethereum:  "Ethereum ETH diamond crystal symbol, purple violet holographic glow, ethereal light rays",
+  ether:     "Ethereum ETH diamond crystal symbol, purple violet holographic glow, ethereal light rays",
+  " eth ":   "Ethereum ETH diamond crystal symbol, purple violet holographic glow, ethereal light rays",
+  bitcoin:   "Bitcoin BTC golden coin radiant glow, warm orange gold tones, digital gold aura",
+  " btc ":   "Bitcoin BTC golden coin radiant glow, warm orange gold tones, digital gold aura",
+  solana:    "Solana SOL speed lines purple teal gradient, high-speed blockchain aesthetic",
+  " sol ":   "Solana SOL speed lines purple teal gradient, high-speed blockchain aesthetic",
+  binance:   "Binance BNB golden hexagonal coin network, warm yellow gold tones",
+  " bnb ":   "Binance BNB golden hexagonal coin network, warm yellow gold tones",
+  ripple:    "Ripple XRP infinite dark blue network nodes constellation",
+  " xrp ":   "Ripple XRP infinite dark blue network nodes constellation",
+  cardano:   "Cardano ADA blue geometric layered architecture, academic precision aesthetic",
+  " ada ":   "Cardano ADA blue geometric layered architecture, academic precision aesthetic",
+  avalanche: "Avalanche AVAX red peak mountain abstract, sharp red geometric shapes",
+  " avax ":  "Avalanche AVAX red peak mountain abstract, sharp red geometric shapes",
+  polygon:   "Polygon MATIC purple geometric web3 shapes interconnected",
+  " matic ": "Polygon MATIC purple geometric web3 shapes interconnected",
+  dogecoin:  "Dogecoin DOGE golden shiba inu playful cryptocurrency, fun digital art",
+  " doge ":  "Dogecoin DOGE golden shiba inu playful cryptocurrency, fun digital art",
+  litecoin:  "Litecoin LTC silver coin fast digital payment network",
+  " ltc ":   "Litecoin LTC silver coin fast digital payment network",
+  tether:    "Tether USDT stablecoin green dollar crypto bridge abstract",
+  usdt:      "Tether USDT stablecoin green dollar crypto bridge abstract",
+  usdc:      "USD Coin USDC stablecoin blue dollar crypto circle abstract",
 };
+
+// Priority 2 — specific topics
+const TOPIC_THEMES: Record<string, string> = {
+  staking:   "blockchain staking nodes interconnected glowing rewards crystal formation",
+  defi:      "decentralized finance DeFi protocol nodes abstract web glowing",
+  kyc:       "identity verification digital biometric scan abstract face recognition",
+  impots:    "tax declaration crypto document abstract financial forms digital",
+  impôts:    "tax declaration crypto document abstract financial forms digital",
+  tax:       "tax declaration crypto document abstract financial forms digital",
+  securite:  "cybersecurity shield encryption neon lock blockchain protection",
+  sécurité:  "cybersecurity shield encryption neon lock blockchain protection",
+  security:  "cybersecurity shield encryption neon lock blockchain protection",
+  retrait:   "ATM cash withdrawal crypto machine neon city night",
+  atm:       "ATM cash withdrawal crypto machine neon city night",
+  europe:    "European Union map crypto payment network constellation stars",
+  virtuelle: "virtual digital card holographic interface floating UI elements",
+  virtual:   "virtual digital card holographic interface floating UI elements",
+  faillite:  "financial risk warning shield broken chain cryptocurrency vault",
+  regulation:"legal compliance document blockchain governance abstract scales",
+};
+
+// Priority 3 — generic card/cashback topics
+const GENERIC_THEMES: Record<string, string> = {
+  cashback:  "crypto cashback rewards coins raining abstract digital",
+  carte:     "premium crypto debit card floating holographic surface reflective",
+  card:      "premium crypto debit card floating holographic surface reflective",
+  frais:     "financial comparison chart fees minimalist dark digital",
+  fees:      "financial comparison chart fees minimalist dark digital",
+  visa:      "payment network contactless NFC terminal neon card tap",
+  guide:     "cryptocurrency guide knowledge blockchain network glow",
+};
+
+function detectTheme(title: string, slug: string, tags: string[]): string {
+  const titleLower = ` ${title} `.toLowerCase();
+  const fullHaystack = ` ${title} ${slug} ${tags.join(" ")} `.toLowerCase();
+
+  // ── Pass 1: Title-only scan for specific crypto names (absolute priority) ──
+  // If the article title explicitly names a cryptocurrency, that wins — always.
+  for (const [key, val] of Object.entries(CRYPTO_THEMES)) {
+    if (titleLower.includes(key)) return val;
+  }
+
+  // ── Pass 2: Full haystack scan for specific crypto names ──
+  // Catches mentions in slug/tags that didn't appear in the title
+  for (const [key, val] of Object.entries(CRYPTO_THEMES)) {
+    if (fullHaystack.includes(key)) return val;
+  }
+
+  // ── Pass 3: Title-only scan for topic keywords ──
+  for (const [key, val] of Object.entries(TOPIC_THEMES)) {
+    if (titleLower.includes(key)) return val;
+  }
+
+  // ── Pass 4: Full haystack scan for topic keywords ──
+  for (const [key, val] of Object.entries(TOPIC_THEMES)) {
+    if (fullHaystack.includes(key)) return val;
+  }
+
+  // ── Pass 5: Full haystack scan for generic terms ──
+  for (const [key, val] of Object.entries(GENERIC_THEMES)) {
+    if (fullHaystack.includes(key)) return val;
+  }
+
+  return "cryptocurrency payment card digital finance abstract futuristic neon dark";
+}
 
 function buildPrompt(title: string, slug: string, tags: string[], detectedCard: CardRow | null): string {
   const randomStyle = STYLE_VARIATIONS[Math.floor(Math.random() * STYLE_VARIATIONS.length)];
-  const haystack = `${title} ${slug} ${tags.join(" ")}`.toLowerCase();
 
-  let theme = "cryptocurrency payment card digital finance abstract futuristic";
-  for (const [key, val] of Object.entries(THEMES)) {
-    if (haystack.includes(key)) { theme = val; break; }
-  }
+  const theme = detectTheme(title, slug, tags);
+  console.log(`Theme detected for "${title}": ${theme.substring(0, 60)}...`);
 
   // If a card was detected, hint the color palette but leave space on the right
   // (card image will be composited there in post-processing)
@@ -268,6 +335,7 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
+        version: FUNCTION_VERSION,
         imageUrl: publicUrl,
         post: postData,
         promptUsed: imagePrompt,
