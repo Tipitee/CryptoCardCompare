@@ -217,14 +217,14 @@ export default function CompareSideBySide({
               <button
                 onClick={() => onRemove(card.id)}
                 aria-label="Retirer de la comparaison"
-                className="absolute top-3 right-3 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
+                className="absolute top-3 right-3 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
               >
                 <X className="w-4 h-4" />
               </button>
               <button
                 onClick={() => onToggleFavorite(card.id)}
                 aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
-                className={`absolute top-3 left-3 p-1.5 rounded-lg transition-colors ${
+                className={`absolute top-3 left-3 p-2 rounded-lg transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center ${
                   isFav
                     ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
                     : 'text-slate-500 hover:text-slate-300 hover:bg-bg-elevated'
@@ -266,7 +266,7 @@ export default function CompareSideBySide({
             <div
               key={metric.key}
               role="row"
-              className={`grid grid-cols-[minmax(130px,180px)_1fr] md:grid-cols-[200px_1fr] ${
+              className={`grid grid-cols-[90px_1fr] sm:grid-cols-[minmax(130px,180px)_1fr] md:grid-cols-[200px_1fr] ${
                 rowIdx % 2 === 0 ? 'bg-bg-card' : 'bg-bg-elevated/30'
               }`}
             >

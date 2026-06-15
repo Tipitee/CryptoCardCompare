@@ -285,7 +285,7 @@ export default function ComparisonPage() {
       </p>
 
       {/* ── Card headers ─────────────────────────────────────────── */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {[{ card: card1, isFav: isFav1 }, { card: card2, isFav: isFav2 }].map(({ card, isFav }) => (
           <div key={card.id} className="card-surface p-5 flex flex-col items-center text-center gap-4">
             {/* Clickable image */}
@@ -350,7 +350,8 @@ export default function ComparisonPage() {
       </div>
 
       {/* ── Comparison table ────────────────────────────────────── */}
-      <div className="card-surface overflow-x-auto mb-8">
+      <div className="card-surface overflow-x-auto -mx-4 sm:mx-0 mb-8">
+        <div className="min-w-[480px]">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-bg-border bg-bg-elevated/50">
@@ -445,10 +446,11 @@ export default function ComparisonPage() {
             })}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* ── Cryptos section ──────────────────────────────────────── */}
-      <div className="grid grid-cols-2 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
         {[card1, card2].map((card) => (
           <div key={card.id} className="card-surface p-5">
             <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
@@ -475,7 +477,7 @@ export default function ComparisonPage() {
         const only2 = card2.cryptos.filter((c) => !set1.has(c));
         if (common.length === 0 && only1.length === 0 && only2.length === 0) return null;
         return (
-          <div className="card-surface p-5 mb-10 grid md:grid-cols-3 gap-5">
+          <div className="card-surface p-5 mb-10 grid grid-cols-1 md:grid-cols-3 gap-5">
             {common.length > 0 && (
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">

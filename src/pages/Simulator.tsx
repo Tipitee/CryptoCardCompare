@@ -199,7 +199,7 @@ export default function Simulator() {
         <div className="flex rounded-lg border border-bg-border overflow-hidden shrink-0">
           <button
             onClick={() => handleModeChange('base')}
-            className={`px-4 py-2 text-sm font-semibold transition-all ${
+            className={`px-4 py-2.5 text-sm font-semibold transition-all min-h-[44px] ${
               simMode === 'base'
                 ? 'bg-cyan-accent/15 text-cyan-accent border-r border-cyan-accent/30'
                 : 'bg-bg-elevated text-slate-400 border-r border-bg-border hover:text-white'
@@ -209,7 +209,7 @@ export default function Simulator() {
           </button>
           <button
             onClick={() => handleModeChange('optimistic')}
-            className={`px-4 py-2 text-sm font-semibold transition-all ${
+            className={`px-4 py-2.5 text-sm font-semibold transition-all min-h-[44px] ${
               simMode === 'optimistic'
                 ? 'bg-amber-500/15 text-amber-400'
                 : 'bg-bg-elevated text-slate-400 hover:text-white'
@@ -262,7 +262,7 @@ export default function Simulator() {
                           [cat.key]: Math.max(0, parseInt(e.target.value) || 0),
                         } as Partial<SimulatorSpending>)
                       }
-                      className="input-field w-24 text-right font-mono text-sm py-1"
+                      className="input-field w-20 sm:w-24 text-right font-mono text-sm py-1 min-w-0"
                     />
                   </div>
                 </div>

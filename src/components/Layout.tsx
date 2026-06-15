@@ -193,7 +193,7 @@ export default function Layout() {
                   end={item.key === ''}
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
-                    `px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 ${
+                    `px-3 py-3.5 rounded-lg text-sm font-medium flex items-center gap-3 min-h-[48px] active:bg-bg-card ${
                       isActive
                         ? 'text-cyan-accent bg-cyan-accent/10'
                         : 'text-slate-300'
@@ -210,7 +210,7 @@ export default function Layout() {
                 to={`/${lang}/${reviewSlug}`}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-3 ${
+                  `px-3 py-3.5 rounded-lg text-sm font-medium flex items-center gap-3 min-h-[48px] active:bg-bg-card ${
                     isActive
                       ? 'text-cyan-accent bg-cyan-accent/10'
                       : 'text-slate-300'
@@ -230,7 +230,7 @@ export default function Layout() {
                   key={item.slug}
                   to={`/${lang}/${item.slug}`}
                   onClick={() => setMenuOpen(false)}
-                  className="px-3 py-3 rounded-lg text-sm text-slate-300 flex items-center gap-3"
+                  className="px-3 py-3.5 rounded-lg text-sm text-slate-300 flex items-center gap-3 min-h-[48px] active:bg-bg-card"
                 >
                   <TrendingUp className="w-4 h-4" />
                   {item.label}
@@ -247,7 +247,7 @@ export default function Layout() {
 
       <footer className="border-t border-bg-border bg-bg-elevated/40 mt-20">
         <div className="container-app py-10">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-7 h-7 rounded bg-gradient-to-br from-cyan-accent to-green-accent flex items-center justify-center">

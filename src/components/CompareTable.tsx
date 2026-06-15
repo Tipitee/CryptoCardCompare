@@ -50,7 +50,7 @@ export default function CompareTable({
         <thead>
           <tr className="border-b border-bg-border bg-bg-elevated/50">
             <ThCell
-              className="sticky left-0 z-10 bg-bg-elevated text-left min-w-[300px]"
+              className="sticky left-0 z-10 bg-bg-elevated text-left min-w-[200px] sm:min-w-[300px]"
               ariaSort={ariaSort('name')}
               sortKey={sortKey}
               dir={sortDir}
@@ -211,7 +211,7 @@ function Row({
           : 'hover:bg-bg-elevated/40'
       }`}
     >
-      <td className={`sticky left-0 z-10 px-4 py-3 min-w-[300px] ${
+      <td className={`sticky left-0 z-10 px-4 py-3 min-w-[200px] sm:min-w-[300px] ${
         quickSlot
           ? quickSlot === 'A'
             ? 'bg-cyan-accent/5'
@@ -301,7 +301,7 @@ function Row({
             onClick={(e) => { e.stopPropagation(); onToggleCompare(); }}
             aria-label={inCompare ? 'Retirer de la comparaison' : 'Ajouter à la comparaison'}
             aria-pressed={inCompare}
-            className={`p-1.5 rounded-lg transition-colors ${
+            className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               inCompare
                 ? 'bg-cyan-accent text-bg-base'
                 : 'text-slate-500 hover:text-white hover:bg-bg-elevated'
@@ -312,7 +312,7 @@ function Row({
           <button
             onClick={(e) => { e.stopPropagation(); onToggleFav(); }}
             aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
-            className={`p-1.5 rounded-lg transition-colors ${
+            className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               isFav
                 ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
                 : 'text-slate-500 hover:text-slate-300 hover:bg-bg-elevated'

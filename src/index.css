@@ -7,17 +7,23 @@
 @layer base {
   html {
     @apply bg-bg text-slate-200;
+    /* Prevent iOS auto-zoom on input focus */
+    -webkit-text-size-adjust: 100%;
   }
   body {
     @apply bg-bg text-slate-200 font-sans antialiased;
+    font-size: 16px;
     font-feature-settings: 'cv11', 'ss01';
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
     @apply font-display text-white;
     line-height: 1.2;
+    overflow-wrap: break-word;
   }
   p {
     line-height: 1.6;
+    overflow-wrap: break-word;
   }
   img {
     max-width: 100%;
@@ -70,15 +76,18 @@
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  overflow-wrap: break-word;
 }
-.card-article p { color: #94a3b8; line-height: 1.7; margin-bottom: 1rem; }
+.card-article p { color: #94a3b8; line-height: 1.7; margin-bottom: 1rem; overflow-wrap: break-word; }
 .card-article ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
 .card-article li { color: #94a3b8; line-height: 1.6; margin-bottom: 0.4rem; }
-.card-article a { color: #00D4FF; text-decoration: underline; font-weight: 500; }
+.card-article a { color: #00D4FF; text-decoration: underline; font-weight: 500; overflow-wrap: break-word; word-break: break-word; }
 .card-article a:hover { color: white; }
 .card-article strong { color: white; font-weight: 600; }
+/* Table: always scroll horizontally on mobile */
 .card-article table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; }
-.card-article th { background: #1a2035; color: #94a3b8; font-weight: 600; padding: 0.5rem 0.75rem; text-align: left; border: 1px solid #1F2739; }
+.card-article .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.card-article th { background: #1a2035; color: #94a3b8; font-weight: 600; padding: 0.5rem 0.75rem; text-align: left; border: 1px solid #1F2739; white-space: nowrap; }
 .card-article td { padding: 0.5rem 0.75rem; color: #94a3b8; border: 1px solid #1F2739; }
 .card-article tr:hover td { background: rgba(26, 32, 53, 0.4); }
 

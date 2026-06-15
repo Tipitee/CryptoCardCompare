@@ -14,7 +14,7 @@ const SIZE_CLASSES: Record<string, string> = {
   xs: 'w-36 h-[90px]',
   sm: 'w-56 h-36',
   md: 'w-72 h-44',
-  lg: 'w-[340px] h-[210px]',
+  lg: 'w-full max-w-[340px] h-auto aspect-[1.619]',
 };
 
 const SIZE_DIMS: Record<string, { width: number; height: number }> = {
