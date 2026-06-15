@@ -14,12 +14,22 @@ import {
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
+
+const YEAR = new Date().getFullYear();
+const COMPARISON_SEO: Record<string, { suffix: string; desc: (n1: string, n2: string) => string }> = {
+  fr: { suffix: `Comparatif ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Comparaison détaillée ${n1} vs ${n2} : cashback, frais annuels, staking requis. Quelle carte crypto choisir en ${YEAR} ?` },
+  de: { suffix: `Vergleich ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Detaillierter Vergleich ${n1} vs ${n2}: Cashback, Jahresgebühren, Staking. Welche Krypto-Karte in ${YEAR} wählen?` },
+  es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Comparación detallada ${n1} vs ${n2}: cashback, comisiones, staking. ¿Qué tarjeta crypto elegir en ${YEAR}?` },
+  it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Confronto dettagliato ${n1} vs ${n2}: cashback, commissioni, staking. Quale carta crypto scegliere nel ${YEAR}?` },
+  en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Detailed comparison of ${n1} vs ${n2}: cashback rates, annual fees, staking requirements. Which crypto card to choose in ${YEAR}?` },
+};
 
 type SeoBlock = { heading: string; body: string };
 
@@ -200,6 +210,16 @@ export default function ComparisonPage() {
 
   const rows = getRows(t);
   const seoBlocks = getSeoText(lang, card1, card2);
+
+  const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
+  useSeoMeta({
+    title: card1 && card2
+      ? `${card1.name} vs ${card2.name} — ${comparisonSeo.suffix}`
+      : `TopCryptoCards`,
+    description: card1 && card2
+      ? comparisonSeo.desc(card1.name, card2.name)
+      : '',
+  });
 
   // Not found state
   if (allCards.length > 0 && (!card1 || !card2)) {
