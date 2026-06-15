@@ -12,9 +12,20 @@ import {
 import { AlertTriangle, Info, TrendingUp, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
+import { useLanguage } from '../hooks/useLanguage';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR } from '../utils/format';
+
+const YEAR = new Date().getFullYear();
+const SIM_SEO: Record<string, { title: string; desc: string }> = {
+  fr: { title: `Simulateur de Gains Cartes Crypto ${YEAR} | TopCryptoCards`, desc: `Simulez vos gains annuels avec une carte crypto selon vos dépenses mensuelles. Trouvez la carte la plus rentable pour vous.` },
+  de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Simulieren Sie Ihre jährlichen Gewinne mit einer Krypto-Karte basierend auf Ihren monatlichen Ausgaben.` },
+  es: { title: `Simulador de Ganancias Tarjetas Crypto ${YEAR} | TopCryptoCards`, desc: `Simula tus ganancias anuales con una tarjeta crypto según tus gastos mensuales.` },
+  it: { title: `Simulatore di Guadagni Carte Crypto ${YEAR} | TopCryptoCards`, desc: `Simula i tuoi guadagni annuali con una carta crypto in base alle tue spese mensili.` },
+  en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Simulate your annual earnings with a crypto card based on your monthly spending. Find the most profitable card for you.` },
+};
 
 type SimMode = 'base' | 'optimistic';
 
@@ -59,6 +70,9 @@ function ChartTooltip({ active, payload, label }: {
 
 export default function Simulator() {
   const { t } = useTranslation('common');
+  const lang = useLanguage();
+  const simSeo = SIM_SEO[lang] || SIM_SEO.en;
+  useSeoMeta({ title: simSeo.title, description: simSeo.desc });
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);

@@ -19,6 +19,10 @@
   p {
     line-height: 1.6;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
   ::selection {
     background: rgba(0, 212, 255, 0.3);
     color: #fff;
@@ -34,12 +38,15 @@
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medium text-bg bg-cyan-accent hover:bg-cyan-accent/90 transition-all shadow-glow;
+    min-height: 44px;
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medium text-slate-200 bg-bg-elevated border border-bg-border hover:border-cyan-accent/50 hover:text-white transition-all;
+    min-height: 44px;
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors;
+    min-height: 44px;
   }
   .chip {
     @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-bg-elevated border border-bg-border text-slate-300;

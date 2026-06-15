@@ -4,10 +4,5 @@ Disallow: /*?sort=
 Disallow: /*?filter=
 Disallow: /*?page=
 Disallow: /api/
-<<<<<<< HEAD
-Sitemap: https://topcryptocards.eu/sitemap.xml
-Sitemap: https://topcryptocards.eu/sitemap-cryptos.xml
-=======
 Sitemap: https://topcryptocards.eu/sitemap-index.xml
 Sitemap: https://topcryptocards.eu/sitemap-cryptos.xml
->>>>>>> origin/main

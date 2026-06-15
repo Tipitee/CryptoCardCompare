@@ -53,6 +53,25 @@ export default function Home() {
   const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc });
 
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'TopCryptoCards',
+      url: 'https://topcryptocards.eu',
+      description: homeSeo.desc,
+      inLanguage: lang,
+      sameAs: [],
+    };
+    document.getElementById('schema-org-home')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-org-home';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-org-home')?.remove(); };
+  }, [lang, homeSeo.desc]);
+
   const FILTERS: { key: FilterKey; label: string }[] = [
     { key: 'all', label: t('filter_all') },
     { key: 'no_fees', label: t('filter_no_fees') },

@@ -2,12 +2,23 @@ import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, Check, RotateCcw, Sparkles, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
+import { useLanguage } from '../hooks/useLanguage';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import type { CryptoCard, QuizAnswers } from '../types/card';
 import { scoreCards } from '../utils/recommend';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { saveQuizResult } from '../lib/supabase';
+
+const YEAR = new Date().getFullYear();
+const REC_SEO: Record<string, { title: string; desc: string }> = {
+  fr: { title: `Quiz — Quelle Carte Crypto pour Vous ? ${YEAR} | TopCryptoCards`, desc: `Répondez à 6 questions et obtenez une recommandation personnalisée de carte crypto adaptée à votre profil et vos habitudes.` },
+  de: { title: `Quiz — Welche Krypto-Karte passt zu Ihnen? ${YEAR} | TopCryptoCards`, desc: `Beantworten Sie 6 Fragen und erhalten Sie eine personalisierte Krypto-Karten-Empfehlung.` },
+  es: { title: `Quiz — ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén una recomendación personalizada de tarjeta crypto.` },
+  it: { title: `Quiz — Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni una raccomandazione personalizzata di carta crypto.` },
+  en: { title: `Quiz — Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and get a personalized crypto card recommendation tailored to your profile and spending habits.` },
+};
 
 type StepDef<K extends keyof QuizAnswers> = {
   key: K;
@@ -18,6 +29,9 @@ type StepDef<K extends keyof QuizAnswers> = {
 
 export default function Recommendation() {
   const { t } = useTranslation('common');
+  const lang = useLanguage();
+  const recSeo = REC_SEO[lang] || REC_SEO.en;
+  useSeoMeta({ title: recSeo.title, description: recSeo.desc });
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);

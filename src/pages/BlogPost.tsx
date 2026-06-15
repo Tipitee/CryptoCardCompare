@@ -69,6 +69,28 @@ export default function BlogPost() {
     type: 'article',
   });
 
+  useEffect(() => {
+    if (!post) return;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: post.excerpt || post.meta_description || '',
+      image: post.image_hero || 'https://topcryptocards.eu/og-default.jpg',
+      datePublished: post.created_at,
+      dateModified: post.updated_at || post.created_at,
+      author: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
+    };
+    document.getElementById('schema-article')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-article';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-article')?.remove(); };
+  }, [post]);
+
   if (loading) {
     return (
       <div className="container-app py-12 max-w-4xl">
@@ -108,6 +130,11 @@ export default function BlogPost() {
             <img
               src={post.image_hero}
               alt={post.title}
+              width={1200}
+              height={630}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/20" />
@@ -242,6 +269,9 @@ function RelatedCard({ post, blogRoute, readDuration }: RelatedCardProps) {
         <img
           src={post.image_hero}
           alt={post.title}
+          width={64}
+          height={64}
+          loading="lazy"
           className="w-16 h-16 rounded-lg object-cover shrink-0"
         />
       ) : (

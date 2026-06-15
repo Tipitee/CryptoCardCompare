@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import {
   AlertTriangle,
   ArrowRight,
@@ -23,6 +24,15 @@ import {
   saveCompareSession,
   type CompareSession,
 } from '../lib/supabase';
+
+const YEAR = new Date().getFullYear();
+const COMPARE_SEO: Record<string, { title: string; desc: string }> = {
+  fr: { title: `Comparateur Cartes Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez et filtrez toutes les cartes crypto : cashback, frais annuels, staking requis. Trouvez la meilleure carte pour votre profil.` },
+  de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback & Gebühren | TopCryptoCards`, desc: `Vergleichen Sie alle Krypto-Karten nach Cashback, Jahresgebühren und Staking-Anforderungen.` },
+  es: { title: `Comparador Tarjetas Crypto ${YEAR} — Cashback & Comisiones | TopCryptoCards`, desc: `Compara y filtra todas las tarjetas crypto: cashback, comisiones anuales, staking requerido.` },
+  it: { title: `Comparatore Carte Crypto ${YEAR} — Cashback & Commissioni | TopCryptoCards`, desc: `Confronta e filtra tutte le carte crypto: cashback, commissioni annuali, staking richiesto.` },
+  en: { title: `Crypto Card Comparison ${YEAR} — Cashback & Fees | TopCryptoCards`, desc: `Compare and filter all crypto cards: cashback rates, annual fees, staking requirements. Find the best card for your profile.` },
+};
 
 const ALL_CRYPTOS = [
   'BTC', 'ETH', 'BNB', 'CRO', 'SOL', 'XRP', 'ADA', 'USDC', 'USDT', 'DOT', 'MATIC', 'AVAX', 'LINK',
@@ -49,6 +59,8 @@ const QUICK_COMPARE_LABELS: Record<string, { title: string; hint: string; cardA:
 export default function Compare() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  const compareSeo = COMPARE_SEO[lang] || COMPARE_SEO.en;
+  useSeoMeta({ title: compareSeo.title, description: compareSeo.desc });
   const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
