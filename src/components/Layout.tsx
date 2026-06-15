@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, Heart, Home, Sparkles, Coins, Menu, Star, TrendingUp, X } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Home, Sparkles, Coins, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
