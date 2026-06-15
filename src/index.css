@@ -85,7 +85,16 @@
 .card-article a:hover { color: white; }
 .card-article strong { color: white; font-weight: 600; }
 /* Table: always scroll horizontally on mobile */
-.card-article table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; }
+.card-article table,
+.prose-crypto table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+}
 .card-article .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .card-article th { background: #1a2035; color: #94a3b8; font-weight: 600; padding: 0.5rem 0.75rem; text-align: left; border: 1px solid #1F2739; white-space: nowrap; }
 .card-article td { padding: 0.5rem 0.75rem; color: #94a3b8; border: 1px solid #1F2739; }
