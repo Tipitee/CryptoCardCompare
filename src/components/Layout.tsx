@@ -323,6 +323,9 @@ export default function Layout() {
               <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
               <Link to="/affiliate-disclosure" className="hover:text-slate-300 transition-colors">Affiliate</Link>
               <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">Risk</Link>
+              <Link to="/about" className="hover:text-slate-300 transition-colors">
+                {lang === 'de' ? 'Über uns' : lang === 'es' ? 'Sobre' : lang === 'it' ? 'Chi siamo' : lang === 'en' ? 'About' : 'À propos'}
+              </Link>
             </div>
             <span>{t('footer_tagline')}</span>
           </div>

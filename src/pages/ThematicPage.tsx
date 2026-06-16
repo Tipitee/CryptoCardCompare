@@ -430,6 +430,75 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
+   FEATURED SNIPPET — réponse directe courte pour la position zéro
+   ──────────────────────────────────────────────────────────────────────────── */
+const THEME_SNIPPET: Record<string, Record<string, string>> = {
+  best: {
+    fr: `La <strong>meilleure carte crypto</strong> en ${YEAR} dépend de votre profil. Pour un usage quotidien sans contrainte : <strong>Gnosis Pay</strong> (2% cashback, zéro staking). Pour maximiser les récompenses : <strong>Crypto.com Obsidian</strong> (jusqu'à 8%). Comparez ci-dessous toutes les cartes classées par score de confiance.`,
+    de: `Die <strong>beste Krypto-Karte</strong> ${YEAR} hängt von Ihrem Profil ab. Für den täglichen Gebrauch: <strong>Gnosis Pay</strong> (2% Cashback, kein Staking). Für maximale Belohnungen: <strong>Crypto.com Obsidian</strong> (bis zu 8%). Vergleichen Sie alle Karten unten, sortiert nach Vertrauens-Score.`,
+    es: `La <strong>mejor tarjeta crypto</strong> en ${YEAR} depende de tu perfil. Para uso cotidiano sin restricciones: <strong>Gnosis Pay</strong> (2% cashback, sin staking). Para maximizar recompensas: <strong>Crypto.com Obsidian</strong> (hasta 8%). Compara todas las tarjetas abajo, ordenadas por puntuación de confianza.`,
+    it: `La <strong>migliore carta crypto</strong> nel ${YEAR} dipende dal tuo profilo. Per uso quotidiano senza vincoli: <strong>Gnosis Pay</strong> (2% cashback, zero staking). Per massimizzare le ricompense: <strong>Crypto.com Obsidian</strong> (fino all'8%). Confronta tutte le carte qui sotto, ordinate per punteggio di fiducia.`,
+    en: `The <strong>best crypto card</strong> in ${YEAR} depends on your profile. For everyday use with no strings attached: <strong>Gnosis Pay</strong> (2% cashback, no staking). For maximum rewards: <strong>Crypto.com Obsidian</strong> (up to 8%). Compare all cards below, ranked by trust score.`,
+  },
+  cashback: {
+    fr: `Les <strong>cartes crypto avec le meilleur cashback</strong> offrent entre 1% et 8% de récompenses sur chaque achat. Le cashback est versé en cryptomonnaie. Attention aux conditions : un taux élevé implique souvent du staking. Comparez les offres ci-dessous.`,
+    de: `<strong>Krypto-Karten mit dem besten Cashback</strong> bieten zwischen 1% und 8% Belohnungen auf jeden Einkauf. Das Cashback wird in Kryptowährung ausgezahlt. Beachten Sie: hohe Sätze erfordern oft Staking. Vergleichen Sie alle Angebote unten.`,
+    es: `Las <strong>tarjetas crypto con mejor cashback</strong> ofrecen entre el 1% y el 8% de recompensas por cada compra, pagadas en criptomonedas. Atención: una tasa alta suele implicar staking. Compara todas las ofertas a continuación.`,
+    it: `Le <strong>carte crypto con il miglior cashback</strong> offrono tra l'1% e l'8% di ricompense su ogni acquisto, pagate in criptovalute. Attenzione: un tasso elevato implica spesso staking. Confronta tutte le offerte qui sotto.`,
+    en: `<strong>Crypto cards with the best cashback</strong> offer between 1% and 8% rewards on every purchase, paid in cryptocurrency. Note: high rates often require staking. Compare all offers below.`,
+  },
+  'no-fees': {
+    fr: `Une <strong>carte crypto sans frais annuels</strong> vous permet de bénéficier du cashback en crypto sans payer d'abonnement. MetaMask Card, Gnosis Pay et Brighty proposent 0€ de frais. Comparez-les ci-dessous.`,
+    de: `Eine <strong>kostenlose Krypto-Karte</strong> bietet Krypto-Cashback ohne Jahresgebühr. MetaMask Card, Gnosis Pay und Brighty verlangen 0€. Alle kostenlosen Optionen im Vergleich unten.`,
+    es: `Una <strong>tarjeta crypto sin comisiones anuales</strong> te permite obtener cashback en cripto sin pagar suscripción. MetaMask Card, Gnosis Pay y Brighty cobran 0€. Compáralas todas abajo.`,
+    it: `Una <strong>carta crypto senza costi annuali</strong> ti permette di ottenere cashback in crypto senza pagare abbonamenti. MetaMask Card, Gnosis Pay e Brighty costano 0€. Confrontale tutte qui sotto.`,
+    en: `A <strong>free crypto card</strong> lets you earn crypto cashback with no annual subscription. MetaMask Card, Gnosis Pay, and Brighty all charge €0. Compare all no-fee options below.`,
+  },
+  'no-staking': {
+    fr: `Une <strong>carte crypto sans staking</strong> offre du cashback sans bloquer de cryptomonnaies. Votre capital reste libre et disponible à tout moment. Gnosis Pay (2%), MetaMask Card (1%) et Brighty (jusqu'à 4%) sont les leaders de cette catégorie.`,
+    de: `Eine <strong>Krypto-Karte ohne Staking</strong> bietet Cashback ohne gesperrte Kryptowährungen — Ihr Kapital bleibt frei. Gnosis Pay (2%), MetaMask Card (1%) und Brighty (bis 4%) führen diese Kategorie an.`,
+    es: `Una <strong>tarjeta crypto sin staking</strong> ofrece cashback sin bloquear criptomonedas. Tu capital permanece libre en todo momento. Gnosis Pay (2%), MetaMask Card (1%) y Brighty (hasta 4%) lideran esta categoría.`,
+    it: `Una <strong>carta crypto senza staking</strong> offre cashback senza bloccare criptovalute. Il tuo capitale rimane libero in qualsiasi momento. Gnosis Pay (2%), MetaMask Card (1%) e Brighty (fino al 4%) guidano questa categoria.`,
+    en: `A <strong>crypto card without staking</strong> earns cashback without locking up any cryptocurrency — your capital stays free at all times. Gnosis Pay (2%), MetaMask Card (1%), and Brighty (up to 4%) lead this category.`,
+  },
+  france: {
+    fr: `Les <strong>cartes crypto disponibles en France</strong> doivent être émises par des entités régulées (PSAN enregistrés AMF ou conformes MiCA). Toutes les cartes listées ci-dessous sont accessibles aux résidents français en ${YEAR}.`,
+    de: `Die in Deutschland verfügbaren <strong>Krypto-Karten</strong> müssen von BaFin-regulierten oder MiCA-konformen Unternehmen ausgegeben werden. Alle unten aufgeführten Karten sind für deutsche Einwohner in ${YEAR} zugänglich.`,
+    es: `Las <strong>tarjetas crypto disponibles en España</strong> deben ser emitidas por entidades reguladas (CNMV o conformes con MiCA). Todas las tarjetas listadas a continuación son accesibles para residentes españoles en ${YEAR}.`,
+    it: `Le <strong>carte crypto disponibili in Italia</strong> devono essere emesse da entità regolamentate (OAM o conformi a MiCA). Tutte le carte elencate di seguito sono accessibili ai residenti italiani nel ${YEAR}.`,
+    en: `<strong>Crypto cards available in Europe</strong> must be issued by regulated entities (MiCA-compliant or FCA/BaFin-regulated). All cards listed below are accessible to European residents in ${YEAR}.`,
+  },
+  virtual: {
+    fr: `Une <strong>carte crypto virtuelle</strong> est une carte Visa ou Mastercard numérique, disponible immédiatement après inscription. Elle fonctionne pour les achats en ligne et via Apple Pay / Google Pay sans attendre une carte physique.`,
+    de: `Eine <strong>virtuelle Krypto-Karte</strong> ist eine digitale Visa- oder Mastercard, die nach der Registrierung sofort verfügbar ist. Sie funktioniert für Online-Käufe und über Apple Pay / Google Pay.`,
+    es: `Una <strong>tarjeta crypto virtual</strong> es una Visa o Mastercard digital, disponible inmediatamente tras el registro. Funciona para compras online y via Apple Pay / Google Pay sin esperar una tarjeta física.`,
+    it: `Una <strong>carta crypto virtuale</strong> è una Visa o Mastercard digitale, disponibile immediatamente dopo la registrazione. Funziona per acquisti online e tramite Apple Pay / Google Pay senza attendere la carta fisica.`,
+    en: `A <strong>virtual crypto card</strong> is a digital Visa or Mastercard available immediately after registration. It works for online purchases and via Apple Pay / Google Pay — no need to wait for a physical card.`,
+  },
+  beginner: {
+    fr: `Les <strong>meilleures cartes crypto pour débutants</strong> sont sans staking, sans frais annuels et avec cashback immédiat. Elles fonctionnent comme une carte bancaire normale et s'utilisent partout. Idéales pour découvrir les cryptomonnaies sans risque.`,
+    de: `Die <strong>besten Krypto-Karten für Einsteiger</strong> sind ohne Staking, ohne Jahresgebühr und mit sofortigem Cashback. Sie funktionieren wie normale Bankkarten und sind überall akzeptiert.`,
+    es: `Las <strong>mejores tarjetas crypto para principiantes</strong> son sin staking, sin cuota anual y con cashback inmediato. Funcionan como una tarjeta bancaria normal y son aceptadas en todas partes.`,
+    it: `Le <strong>migliori carte crypto per principianti</strong> sono senza staking, senza costi annuali e con cashback immediato. Funzionano come una normale carta bancaria e sono accettate ovunque.`,
+    en: `The <strong>best crypto cards for beginners</strong> have no staking, no annual fee, and instant cashback from the first purchase. They work just like a regular bank card and are accepted everywhere.`,
+  },
+  'no-kyc': {
+    fr: `Les <strong>cartes crypto avec KYC simplifié</strong> comme MetaMask Card et Gnosis Pay permettent une inscription plus légère grâce au self-custody. Aucune carte crypto réglementée en Europe n'est 100% anonyme, mais ces options minimisent les démarches d'identification.`,
+    de: `<strong>Krypto-Karten mit vereinfachtem KYC</strong> wie MetaMask Card und Gnosis Pay ermöglichen eine leichtere Anmeldung durch Self-Custody. Keine regulierte Krypto-Karte in Europa ist 100% anonym, aber diese Optionen minimieren den Identifikationsaufwand.`,
+    es: `Las <strong>tarjetas crypto con KYC simplificado</strong> como MetaMask Card y Gnosis Pay permiten un registro más ligero gracias al self-custody. Ninguna tarjeta crypto regulada en Europa es 100% anónima, pero estas opciones minimizan los trámites de identificación.`,
+    it: `Le <strong>carte crypto con KYC semplificato</strong> come MetaMask Card e Gnosis Pay consentono una registrazione più leggera grazie al self-custody. Nessuna carta crypto regolamentata in Europa è al 100% anonima, ma queste opzioni minimizzano le procedure di identificazione.`,
+    en: `<strong>Crypto cards with simplified KYC</strong> like MetaMask Card and Gnosis Pay enable faster registration through self-custody. No regulated crypto card in Europe is 100% anonymous, but these options minimize the identification steps required.`,
+  },
+  '2026': {
+    fr: `Quelle est la <strong>meilleure carte crypto en 2026</strong> ? Grâce à MiCA, le marché européen des cartes crypto est désormais réglementé et plus sûr. Les meilleures options combinent cashback compétitif, zéro frais et conformité réglementaire. Comparez ci-dessous.`,
+    de: `Was ist die <strong>beste Krypto-Karte 2026</strong>? Dank MiCA ist der europäische Krypto-Karten-Markt nun reguliert und sicherer. Die besten Optionen kombinieren wettbewerbsfähiges Cashback, null Gebühren und regulatorische Konformität. Vergleichen Sie unten.`,
+    es: `¿Cuál es la <strong>mejor tarjeta crypto en 2026</strong>? Gracias a MiCA, el mercado europeo de tarjetas crypto está ahora regulado y es más seguro. Las mejores opciones combinan cashback competitivo, cero comisiones y conformidad regulatoria. Compara abajo.`,
+    it: `Qual è la <strong>migliore carta crypto nel 2026</strong>? Grazie a MiCA, il mercato europeo delle carte crypto è ora regolamentato e più sicuro. Le migliori opzioni combinano cashback competitivo, zero costi e conformità normativa. Confronta qui sotto.`,
+    en: `What is the <strong>best crypto card in 2026</strong>? Thanks to MiCA, the European crypto card market is now regulated and safer than ever. The best options combine competitive cashback, zero fees, and full regulatory compliance. Compare below.`,
+  },
+};
+
+/* ────────────────────────────────────────────────────────────────────────────
    FILTERS / SORT / LIMIT
    ──────────────────────────────────────────────────────────────────────────── */
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
@@ -561,6 +630,14 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         {' · '}
         <span className="text-cyan-400">{loading ? '…' : filteredCards.length}</span>{' '}{t('cards')}
       </p>
+      {/* ── Featured snippet block — position zéro ── */}
+      {THEME_SNIPPET[theme]?.[lang] && (
+        <div
+          className="max-w-3xl mb-6 p-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 text-slate-300 text-sm leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: THEME_SNIPPET[theme][lang] || THEME_SNIPPET[theme]['en'] || '' }}
+        />
+      )}
+
       <p className="text-slate-300 mb-8 max-w-3xl leading-relaxed">{config.intro}</p>
 
       {/* Card grid */}

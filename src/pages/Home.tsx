@@ -65,6 +65,25 @@ export default function Home() {
       url: 'https://topcryptocards.eu',
       description: homeSeo.desc,
       inLanguage: lang,
+      foundingDate: '2024',
+      email: 'hello@topcryptocards.eu',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://topcryptocards.eu/og-default.jpg',
+        width: 1200,
+        height: 630,
+      },
+      areaServed: ['FR', 'DE', 'ES', 'IT', 'EU'],
+      knowsAbout: [
+        'cryptocurrency debit cards',
+        'crypto cashback',
+        'Visa crypto cards',
+        'Mastercard crypto cards',
+        'DeFi',
+        'MiCA regulation',
+        'Bitcoin payments',
+        'staking',
+      ],
       sameAs: [],
     };
     document.getElementById('schema-org-home')?.remove();

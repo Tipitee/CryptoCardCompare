@@ -17,6 +17,7 @@ import Datenschutz from './pages/Datenschutz';
 import Privacy from './pages/Privacy';
 import AffiliateDisclosurePage from './pages/AffiliateDisclosurePage';
 import RiskSummary from './pages/RiskSummary';
+import AboutPage from './pages/AboutPage';
 import CardDetail from './pages/CardDetail';
 import ThematicPage from './pages/ThematicPage';
 import ComparisonPage from './pages/ComparisonPage';
@@ -81,6 +82,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
+        <Route path="/about" element={<AboutPage />} />
 
         {/* ── Bare-path redirects (e.g. /compare → /en/compare) ── */}
         {Object.keys(BARE_PATH_MAP).map(slug => (
