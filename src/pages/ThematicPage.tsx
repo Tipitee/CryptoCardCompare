@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import { THEMATIC_GUIDES } from '../data/thematicGuides';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -603,6 +604,24 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           ))}
         </div>
       )}
+
+      {/* ── Extended guide content ───────────────────────────────── */}
+      {(() => {
+        const guide = THEMATIC_GUIDES[theme]?.[lang] ?? THEMATIC_GUIDES[theme]?.['fr'];
+        if (!guide) return null;
+        return (
+          <div
+            className="mt-4 mb-10 max-w-3xl prose-thematic"
+            style={{ color: '#94a3b8', lineHeight: '1.75' }}
+            dangerouslySetInnerHTML={{ __html: guide
+              .replace(/<h2>/g, '<h2 style="font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:1.5rem 0 0.75rem">')
+              .replace(/<h3>/g, '<h3 style="font-size:1rem;font-weight:600;color:#cbd5e1;margin:1.25rem 0 0.5rem">')
+              .replace(/<p>/g, '<p style="margin-bottom:0.85rem;font-size:0.9rem">')
+              .replace(/<strong>/g, '<strong style="color:#e2e8f0">')
+            }}
+          />
+        );
+      })()}
 
       {/* Outro */}
       <p className="text-slate-300 mb-10 max-w-3xl leading-relaxed border-l-2 border-cyan-500/30 pl-4 italic">

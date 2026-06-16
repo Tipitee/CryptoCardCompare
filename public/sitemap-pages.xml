@@ -1,519 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://topcryptocards.eu/fr</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/comparer</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/simulateur</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/recommandation</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/favoris</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/blog</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/cryptos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/vergleich</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/simulator</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/empfehlung</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/favoriten</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/blog</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/cryptos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/comparar</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/simulador</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/recomendacion</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/favoritos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/blog</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/cryptos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/confronto</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/simulatore</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/raccomandazione</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/preferiti</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/blog</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/cryptos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/compare</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/simulator</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/recommendation</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/favorites</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/blog</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/cryptos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/nexo-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/crypto-com-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/binance-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/bybit-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/okx-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/coinbase-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/bitpanda-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/wirex-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/fr/avis/ledger-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/nexo-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/crypto-com-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/binance-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/bybit-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/okx-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/coinbase-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/bitpanda-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/wirex-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/bewertungen/ledger-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/nexo-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/crypto-com-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/binance-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/bybit-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/okx-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/coinbase-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/bitpanda-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/wirex-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/es/opiniones/ledger-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/nexo-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/crypto-com-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/binance-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/bybit-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/okx-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/coinbase-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/bitpanda-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/wirex-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/it/recensioni/ledger-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/nexo-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/crypto-com-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/binance-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/bybit-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/okx-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/coinbase-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/bitpanda-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/wirex-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/reviews/ledger-card</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+<url>
+<loc>https://topcryptocards.eu/fr</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/fr/comparer</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/de</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/de/vergleich</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/es</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/es/comparar</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/it</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/it/confronto</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/en</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/en/compare</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://topcryptocards.eu/</loc>
+<lastmod>2026-06-11</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
 </urlset>

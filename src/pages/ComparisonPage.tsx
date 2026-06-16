@@ -19,7 +19,6 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
-import { getSpecificComparison } from '../data/comparisonContent';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -210,23 +209,7 @@ export default function ComparisonPage() {
   const card2 = allCards.find((c) => c.id === id2) ?? null;
 
   const rows = getRows(t);
-  const genericBlocks = getSeoText(lang, card1, card2);
-  const specificContent = card1 && card2 ? getSpecificComparison(card1.id, card2.id) : null;
-
-  // Merge: replace intro (block 0) and verdict (block 3) with specific content when available
-  const seoBlocks = genericBlocks.map((block, i) => {
-    if (!specificContent) return block;
-    const langKey = lang as string;
-    if (i === 0) {
-      const intro = (specificContent as Record<string, string>)[`${langKey}_intro`] ?? specificContent.fr_intro;
-      return intro ? { ...block, body: intro } : block;
-    }
-    if (i === genericBlocks.length - 1) {
-      const verdict = (specificContent as Record<string, string>)[`${langKey}_verdict`] ?? specificContent.fr_verdict;
-      return verdict ? { ...block, body: verdict } : block;
-    }
-    return block;
-  });
+  const seoBlocks = getSeoText(lang, card1, card2);
 
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
@@ -545,23 +528,6 @@ export default function ComparisonPage() {
           </div>
         ))}
       </section>
-
-      {/* ── FAQ section (specific pairs only) ───────────────────── */}
-      {specificContent?.faq && specificContent.faq.length > 0 && (
-        <section className="mt-10">
-          <h2 className="text-lg font-display font-semibold text-white mb-5">
-            {lang === 'fr' ? 'Questions fréquentes' : lang === 'de' ? 'Häufige Fragen' : lang === 'es' ? 'Preguntas frecuentes' : lang === 'it' ? 'Domande frequenti' : 'Frequently Asked Questions'}
-          </h2>
-          <div className="space-y-4">
-            {specificContent.faq.map((item, i) => (
-              <div key={i} className="card-surface p-5">
-                <h3 className="text-sm font-semibold text-white mb-2">{item.q}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* CTA strip */}
       <div className="mt-12 card-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
