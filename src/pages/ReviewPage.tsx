@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CheckCircle, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
@@ -87,35 +88,68 @@ export default function ReviewPage() {
 
   const avgBreakdown = Object.values(review.ratingBreakdown).reduce((a, b) => a + b, 0) / Object.values(review.ratingBreakdown).length;
 
-  // Review JSON-LD schema
-  const reviewSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Review',
-    name: review.metaTitle,
-    reviewBody: review.verdict,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: review.globalRating,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    author: {
-      '@type': 'Organization',
-      name: 'TopCryptoCards',
-    },
-    itemReviewed: {
-      '@type': 'Product',
-      name: review.cardName,
-      brand: { '@type': 'Brand', name: review.issuer },
-      category: 'Carte bancaire crypto',
-    },
-    datePublished: review.updatedAt,
-    publisher: {
-      '@type': 'Organization',
-      name: 'TopCryptoCards',
-      url: 'https://topcryptocards.eu',
-    },
-  };
+  // ── Schema.org: Review + Product/AggregateRating (rich snippets) ───────────
+  useEffect(() => {
+    const pageUrl = `https://topcryptocards.eu/${lang}/avis/${slug}`;
+
+    const graph = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Review',
+          '@id': `${pageUrl}#review`,
+          name: review.metaTitle,
+          reviewBody: review.verdict,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.globalRating,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          author: {
+            '@type': 'Organization',
+            name: 'TopCryptoCards',
+            url: 'https://topcryptocards.eu',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'TopCryptoCards',
+            url: 'https://topcryptocards.eu',
+          },
+          datePublished: review.updatedAt,
+          dateModified: review.updatedAt,
+          url: pageUrl,
+          itemReviewed: { '@id': `${pageUrl}#product` },
+        },
+        {
+          '@type': 'Product',
+          '@id': `${pageUrl}#product`,
+          name: review.cardName,
+          brand: { '@type': 'Brand', name: review.issuer },
+          category: 'Crypto debit card',
+          description: review.metaDescription,
+          review: { '@id': `${pageUrl}#review` },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: review.globalRating.toFixed(1),
+            bestRating: '5',
+            worstRating: '1',
+            ratingCount: 1,
+            reviewCount: 1,
+          },
+        },
+      ],
+    };
+
+    document.getElementById('schema-review-page')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-review-page';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(graph);
+    document.head.appendChild(el);
+
+    return () => { document.getElementById('schema-review-page')?.remove(); };
+  }, [review, lang, slug]);
 
   const breakdownItems = [
     { key: 'cashback', label: 'Cashback', icon: DollarSign },
@@ -127,8 +161,6 @@ export default function ReviewPage() {
 
   return (
     <div className="animate-fade-in">
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       {/* Hero */}
       <div className="bg-gradient-to-br from-bg-elevated via-bg-card to-bg border-b border-bg-border">
