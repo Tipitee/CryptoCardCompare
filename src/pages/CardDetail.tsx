@@ -88,10 +88,10 @@ export default function CardDetail() {
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
   const seoTitle = card
-    ? (article?.meta_title || `${card.name} — Avis ${year} | TopCryptoCards`)
+    ? (article?.meta_title || `${card.name} ${year} : ${card.cashbackPremium > 0 ? `jusqu'à ${card.cashbackPremium}% cashback — ` : ''}Avis et test complet | TopCryptoCards`)
     : 'TopCryptoCards';
   const seoDesc = card
-    ? (article?.meta_description || `Avis complet sur la carte ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%, frais ${card.annualFees === 0 ? 'gratuit' : card.annualFees + ' €/an'}.`)
+    ? (article?.meta_description || `Avis complet ${year} sur la ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%${card.annualFees === 0 ? ', sans frais annuels' : `, frais ${card.annualFees} €/an`}${card.stakingRequired ? `, staking requis` : ''}. Notre verdict.`)
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
 

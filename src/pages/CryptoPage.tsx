@@ -67,9 +67,10 @@ export default function CryptoPage() {
       .catch(() => { /* column may not exist yet — silent fail */ });
   }, [sym, lang]); // eslint-disable-line
 
+  const cryptoYear = new Date().getFullYear();
   useSeoMeta({
-    title:       copy?.meta_title       ?? `${meta?.name ?? sym} | TopCryptoCards`,
-    description: copy?.meta_description ?? '',
+    title:       copy?.meta_title       ?? `${meta?.name ?? sym} ${cryptoYear} — Cartes Crypto & Cashback | TopCryptoCards`,
+    description: copy?.meta_description ?? `Meilleures cartes crypto compatibles ${meta?.name ?? sym} en ${cryptoYear}. Cashback en ${meta?.ticker ?? sym}, comparatif complet sur TopCryptoCards.`,
   });
 
   // ── Schema.org FAQPage ────────────────────────────────────────────────────────
