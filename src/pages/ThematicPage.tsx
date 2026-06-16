@@ -4,6 +4,10 @@ import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_GUIDES } from '../data/thematicGuides';
+import {
+  THEME_COMPARISONS, CARD_NAMES, COMPARE_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
+  comparisonSlug, COMPARE_SECTION_LABEL,
+} from '../data/internalLinks';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -646,6 +650,62 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           <span className="ml-auto text-cyan-accent/50 group-hover:text-cyan-accent transition-colors text-lg">→</span>
         </Link>
       </div>
+
+      {/* ── Comparaisons directes entre les top cartes du thème ── */}
+      {THEME_COMPARISONS[theme] && THEME_COMPARISONS[theme].length > 0 && (
+        <section className="mb-12">
+          <h2 className="text-xl font-bold text-white mb-4">{COMPARE_SECTION_LABEL[lang] || COMPARE_SECTION_LABEL.fr}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl">
+            {THEME_COMPARISONS[theme].map(([a, b]) => (
+              <Link
+                key={`${a}-${b}`}
+                to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(a, b)}`}
+                className="flex items-center justify-between gap-3 p-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all group text-sm"
+              >
+                <div>
+                  <span className="font-semibold text-white group-hover:text-cyan-accent transition-colors">
+                    {CARD_NAMES[a] || a}
+                  </span>
+                  <span className="text-slate-500 mx-2">vs</span>
+                  <span className="font-semibold text-white group-hover:text-cyan-accent transition-colors">
+                    {CARD_NAMES[b] || b}
+                  </span>
+                </div>
+                <span className="text-cyan-accent/50 group-hover:text-cyan-accent transition-colors shrink-0">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── Autres thèmes liés ── */}
+      {(() => {
+        const related = (['best','cashback','no-fees','no-staking','no-kyc'] as const)
+          .filter(t => t !== theme && THEMATIC_SLUGS[t]?.[lang]);
+        if (related.length === 0) return null;
+        return (
+          <section className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-4">
+              {lang === 'de' ? 'Weitere Kategorien' :
+               lang === 'es' ? 'Otras categorías' :
+               lang === 'it' ? 'Altre categorie' :
+               lang === 'en' ? 'Related categories' :
+               'Autres catégories'}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {related.map(t => (
+                <Link
+                  key={t}
+                  to={`/${lang}/${THEMATIC_SLUGS[t][lang] || THEMATIC_SLUGS[t].fr}`}
+                  className="px-4 py-2 rounded-full bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300"
+                >
+                  {THEMATIC_LABELS[t]?.[lang] || THEMATIC_LABELS[t]?.fr}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* FAQ */}
       {faqs.length > 0 && (

@@ -9,6 +9,11 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import {
+  TAG_TO_CARD_ID, TAG_TO_THEME, CARD_NAMES, CARD_REVIEW_SLUGS,
+  COMPARE_SEG, REVIEW_SEG, CARD_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
+  COMPARISON_PAIRS, comparisonSlug,
+} from '../data/internalLinks';
 
 const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR',
@@ -244,6 +249,108 @@ export default function BlogPost() {
                     {t('blog_sidebar_compare_btn')}
                   </Link>
                 </div>
+
+                {/* ── Voir aussi: cartes et thématiques liées ── */}
+                {(() => {
+                  // Detect card IDs mentioned in tags
+                  const detectedCardIds = [...new Set(
+                    tags.flatMap(tag => {
+                      const key = tag.toLowerCase().trim();
+                      return TAG_TO_CARD_ID[key] ? [TAG_TO_CARD_ID[key]] : [];
+                    })
+                  )].slice(0, 3);
+
+                  // Detect themes from tags
+                  const detectedThemes = [...new Set(
+                    tags.flatMap(tag => {
+                      const key = tag.toLowerCase().trim();
+                      return TAG_TO_THEME[key] ? [TAG_TO_THEME[key]] : [];
+                    })
+                  )].slice(0, 2);
+
+                  // Fallback themes if none detected
+                  const themes = detectedThemes.length > 0 ? detectedThemes : ['best', 'cashback'];
+
+                  return (
+                    <div className="mt-6 p-5 card-surface">
+                      <h4 className="font-display font-bold text-white mb-3 text-sm uppercase tracking-wider">
+                        {lang === 'de' ? 'Siehe auch' :
+                         lang === 'es' ? 'Ver también' :
+                         lang === 'it' ? 'Vedi anche' :
+                         lang === 'en' ? 'See also' :
+                         'Voir aussi'}
+                      </h4>
+                      <div className="space-y-2">
+                        {/* Card review links */}
+                        {detectedCardIds.filter(id => CARD_REVIEW_SLUGS[id]).map(cardId => (
+                          <Link
+                            key={`review-${cardId}`}
+                            to={`/${lang}/${REVIEW_SEG[lang] || 'avis'}/${CARD_REVIEW_SLUGS[cardId]}`}
+                            className="flex items-center justify-between gap-2 p-2 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                          >
+                            <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                              {lang === 'en' ? `${CARD_NAMES[cardId]} review` : `Avis ${CARD_NAMES[cardId]}`}
+                            </span>
+                            <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                          </Link>
+                        ))}
+                        {/* Card detail links */}
+                        {detectedCardIds.map(cardId => {
+                          const seg = CARD_SEG[lang] || 'cartes';
+                          return (
+                            <Link
+                              key={`card-${cardId}`}
+                              to={`/${lang}/${seg}/${cardId}`}
+                              className="flex items-center justify-between gap-2 p-2 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                            >
+                              <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                                {CARD_NAMES[cardId] || cardId}
+                              </span>
+                              <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                            </Link>
+                          );
+                        })}
+                        {/* Comparison links between detected cards */}
+                        {detectedCardIds.length >= 2 && (
+                          <Link
+                            to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(detectedCardIds[0], detectedCardIds[1])}`}
+                            className="flex items-center justify-between gap-2 p-2 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                          >
+                            <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                              {CARD_NAMES[detectedCardIds[0]]} vs {CARD_NAMES[detectedCardIds[1]]}
+                            </span>
+                            <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                          </Link>
+                        )}
+                        {/* Thematic page links */}
+                        {themes.map(theme => THEMATIC_SLUGS[theme]?.[lang] && (
+                          <Link
+                            key={`theme-${theme}`}
+                            to={`/${lang}/${THEMATIC_SLUGS[theme][lang]}`}
+                            className="flex items-center justify-between gap-2 p-2 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                          >
+                            <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                              {THEMATIC_LABELS[theme]?.[lang] || THEMATIC_LABELS[theme]?.fr}
+                            </span>
+                            <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                          </Link>
+                        ))}
+                        {/* Fallback: always show one popular comparison */}
+                        {detectedCardIds.length === 0 && (
+                          <Link
+                            to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(COMPARISON_PAIRS[0][0], COMPARISON_PAIRS[0][1])}`}
+                            className="flex items-center justify-between gap-2 p-2 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                          >
+                            <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                              {CARD_NAMES[COMPARISON_PAIRS[0][0]]} vs {CARD_NAMES[COMPARISON_PAIRS[0][1]]}
+                            </span>
+                            <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </aside>
           )}

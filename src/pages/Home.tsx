@@ -20,6 +20,10 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { fmtEUR, fmtPct } from '../utils/format';
+import {
+  COMPARISON_PAIRS, CARD_NAMES, COMPARE_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
+  comparisonSlug,
+} from '../data/internalLinks';
 
 const YEAR = new Date().getFullYear();
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
@@ -264,6 +268,85 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Featured Snippet — réponse courte pour la position zéro ── */}
+      <section className="container-app pb-10">
+        <div className="max-w-3xl">
+          {lang === 'fr' && (
+            <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6">
+              <h2 className="text-lg font-bold text-white mb-3">Qu'est-ce qu'une carte crypto ?</h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                Une <strong className="text-white">carte crypto</strong> est une carte de paiement (Visa ou Mastercard) liée à un portefeuille de cryptomonnaies. Elle vous permet de payer chez tous les commerçants acceptant la carte tout en recevant du <strong className="text-white">cashback en crypto</strong> sur chaque achat. Les meilleures cartes offrent jusqu'à <strong className="text-white">8% de cashback</strong> sans frais annuels.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {(['cashback','no-fees','no-staking'] as const).map(theme => (
+                  <Link key={theme} to={`/${lang}/${THEMATIC_SLUGS[theme]?.fr}`}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300 group">
+                    <span className="text-cyan-accent/70 group-hover:text-cyan-accent">→</span>
+                    {THEMATIC_LABELS[theme]?.fr}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          {lang === 'de' && (
+            <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6">
+              <h2 className="text-lg font-bold text-white mb-3">Was ist eine Krypto-Karte?</h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                Eine <strong className="text-white">Krypto-Karte</strong> ist eine Visa- oder Mastercard-Zahlungskarte, die mit einem Krypto-Wallet verknüpft ist. Sie können damit bei allen Händlern bezahlen und erhalten <strong className="text-white">Cashback in Kryptowährung</strong> für jeden Einkauf. Die besten Karten bieten bis zu <strong className="text-white">8% Cashback</strong> ohne Jahresgebühren.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {(['cashback','no-fees','no-staking'] as const).map(theme => (
+                  <Link key={theme} to={`/${lang}/${THEMATIC_SLUGS[theme]?.de}`}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300 group">
+                    <span className="text-cyan-accent/70 group-hover:text-cyan-accent">→</span>
+                    {THEMATIC_LABELS[theme]?.de}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          {lang === 'es' && (
+            <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6">
+              <h2 className="text-lg font-bold text-white mb-3">¿Qué es una tarjeta crypto?</h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                Una <strong className="text-white">tarjeta crypto</strong> es una tarjeta de pago Visa o Mastercard vinculada a un monedero de criptomonedas. Puedes pagar en cualquier comercio y recibir <strong className="text-white">cashback en cripto</strong> por cada compra. Las mejores tarjetas ofrecen hasta <strong className="text-white">8% de cashback</strong> sin cuotas anuales.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {(['cashback','no-fees','no-staking'] as const).map(theme => (
+                  <Link key={theme} to={`/${lang}/${THEMATIC_SLUGS[theme]?.es}`}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300 group">
+                    <span className="text-cyan-accent/70 group-hover:text-cyan-accent">→</span>
+                    {THEMATIC_LABELS[theme]?.es}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          {(lang === 'it' || lang === 'en') && (
+            <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6">
+              <h2 className="text-lg font-bold text-white mb-3">
+                {lang === 'it' ? 'Cos\'è una carta crypto?' : 'What is a crypto card?'}
+              </h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                {lang === 'it'
+                  ? <>Una <strong className="text-white">carta crypto</strong> è una carta di pagamento Visa o Mastercard collegata a un portafoglio di criptovalute. Puoi pagare da qualsiasi commerciante e ricevere <strong className="text-white">cashback in criptovaluta</strong> su ogni acquisto. Le migliori carte offrono fino all'<strong className="text-white">8% di cashback</strong> senza costi annuali.</>
+                  : <>A <strong className="text-white">crypto card</strong> is a Visa or Mastercard payment card linked to a cryptocurrency wallet. You can pay anywhere cards are accepted and earn <strong className="text-white">crypto cashback</strong> on every purchase. The best cards offer up to <strong className="text-white">8% cashback</strong> with no annual fees.</>
+                }
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {(['cashback','no-fees','no-staking'] as const).map(theme => (
+                  <Link key={theme} to={`/${lang}/${THEMATIC_SLUGS[theme]?.[lang]}`}
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300 group">
+                    <span className="text-cyan-accent/70 group-hover:text-cyan-accent">→</span>
+                    {THEMATIC_LABELS[theme]?.[lang]}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
       <section className="container-app py-16">
         <div className="flex items-end justify-between mb-10">
           <div>
@@ -472,6 +555,37 @@ export default function Home() {
             </div>
           )}
         </div>
+      </section>
+
+      {/* ── Comparatifs populaires ── */}
+      <section className="container-app pb-12">
+        <h2 className="text-2xl font-bold text-white mb-6">
+          {lang === 'de' ? 'Beliebte Vergleiche' :
+           lang === 'es' ? 'Comparativas populares' :
+           lang === 'it' ? 'Confronti popolari' :
+           lang === 'en' ? 'Popular comparisons' :
+           'Comparatifs populaires'}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {COMPARISON_PAIRS.slice(0, 6).map(([a, b]) => (
+            <Link
+              key={`${a}-${b}`}
+              to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(a, b)}`}
+              className="flex items-center justify-between gap-3 p-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:shadow-glow transition-all group text-sm"
+            >
+              <span className="text-slate-300 group-hover:text-cyan-accent transition-colors font-medium">
+                {CARD_NAMES[a] || a} <span className="text-slate-500 font-normal">vs</span> {CARD_NAMES[b] || b}
+              </span>
+              <span className="text-cyan-accent/50 group-hover:text-cyan-accent transition-colors shrink-0">→</span>
+            </Link>
+          ))}
+        </div>
+        <Link
+          to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}`}
+          className="mt-4 inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-accent transition-colors"
+        >
+          {lang === 'de' ? 'Alle Vergleiche →' : lang === 'es' ? 'Todas las comparativas →' : lang === 'it' ? 'Tutti i confronti →' : lang === 'en' ? 'All comparisons →' : 'Tous les comparatifs →'}
+        </Link>
       </section>
 
       <section className="container-app py-16">

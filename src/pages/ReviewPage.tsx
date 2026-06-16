@@ -6,6 +6,11 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import {
+  REVIEW_SLUG_TO_CARD_ID, CARD_COMPARISONS, CARD_NAMES,
+  COMPARE_SEG, CARD_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
+  comparisonSlug,
+} from '../data/internalLinks';
 
 function StarRating({ value, max = 5 }: { value: number; max?: number }) {
   return (
@@ -379,6 +384,79 @@ export default function ReviewPage() {
                   Comparer maintenant
                 </Link>
               </div>
+
+              {/* ── Comparaisons directes pour cette carte ── */}
+              {(() => {
+                const cardId = REVIEW_SLUG_TO_CARD_ID[slug || ''];
+                const partners = cardId ? CARD_COMPARISONS[cardId] : [];
+                if (!partners || partners.length === 0) return null;
+                return (
+                  <div className="card-surface p-5">
+                    <h3 className="font-display font-bold text-white mb-3 text-sm uppercase tracking-wider">
+                      {lang === 'de' ? 'Direktvergleiche' :
+                       lang === 'es' ? 'Comparativas directas' :
+                       lang === 'it' ? 'Confronti diretti' :
+                       lang === 'en' ? 'Head-to-head comparisons' :
+                       'Comparatifs directs'}
+                    </h3>
+                    <div className="space-y-2">
+                      {partners.slice(0, 5).map(partnerId => (
+                        <Link
+                          key={partnerId}
+                          to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(cardId, partnerId)}`}
+                          className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-xs"
+                        >
+                          <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                            {review?.cardName || cardId} <span className="text-slate-500">vs</span> {CARD_NAMES[partnerId] || partnerId}
+                          </span>
+                          <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* ── Fiche carte complète ── */}
+              {(() => {
+                const cardId = REVIEW_SLUG_TO_CARD_ID[slug || ''];
+                if (!cardId) return null;
+                const cardSeg = lang === 'de' ? 'karten' : lang === 'es' ? 'tarjetas' : lang === 'it' ? 'carte' : lang === 'en' ? 'cards' : 'cartes';
+                return (
+                  <div className="card-surface p-5">
+                    <h3 className="font-display font-bold text-white mb-3 text-sm uppercase tracking-wider">
+                      {lang === 'de' ? 'Vollständige Karte' :
+                       lang === 'es' ? 'Ficha completa' :
+                       lang === 'it' ? 'Scheda completa' :
+                       lang === 'en' ? 'Full card details' :
+                       'Fiche complète'}
+                    </h3>
+                    <div className="space-y-2">
+                      <Link
+                        to={`/${lang}/${cardSeg}/${cardId}`}
+                        className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 transition-colors group text-xs"
+                      >
+                        <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                          {review?.cardName} — {lang === 'de' ? 'Alle Details' : lang === 'es' ? 'Todos los detalles' : lang === 'it' ? 'Tutti i dettagli' : lang === 'en' ? 'All details' : 'Tous les détails'}
+                        </span>
+                        <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                      </Link>
+                      {(['cashback', 'no-fees', 'no-staking', 'best'] as const).map(theme => (
+                        <Link
+                          key={theme}
+                          to={`/${lang}/${THEMATIC_SLUGS[theme]?.[lang] || THEMATIC_SLUGS[theme]?.fr}`}
+                          className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 transition-colors group text-xs"
+                        >
+                          <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
+                            {THEMATIC_LABELS[theme]?.[lang] || THEMATIC_LABELS[theme]?.fr}
+                          </span>
+                          <span className="text-slate-600 group-hover:text-cyan-accent">→</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </aside>
         </div>
