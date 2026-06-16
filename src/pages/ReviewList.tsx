@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ExternalLink, CheckCircle, TrendingUp } from 'lucide-react';
 import { CARD_REVIEWS } from '../data/cardReviews';
@@ -35,6 +36,35 @@ export default function ReviewList() {
     title: 'Avis Cartes Crypto 2026 — Comparatif & Tests Complets | TopCryptoCards',
     description: 'Avis détaillés et objectifs sur les meilleures cartes crypto : Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase et plus. Notes, cashback, frais et verdicts.',
   });
+
+  // ── Hreflang alternate tags ───────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const REVIEW_SEGS: Record<string, string> = {
+      fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
+    };
+    document.querySelectorAll('link[data-hreflang-reviewlist]').forEach((el) => el.remove());
+
+    Object.entries(REVIEW_SEGS).forEach(([l, seg]) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/${seg}`;
+      link.setAttribute('data-hreflang-reviewlist', 'true');
+      document.head.appendChild(link);
+    });
+
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.hreflang = 'x-default';
+    xd.href = `${BASE}/fr/avis`;
+    xd.setAttribute('data-hreflang-reviewlist', 'true');
+    document.head.appendChild(xd);
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-reviewlist]').forEach((el) => el.remove());
+    };
+  }, []);
 
   // JSON-LD ItemList
   const listSchema = {

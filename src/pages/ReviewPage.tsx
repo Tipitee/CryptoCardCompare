@@ -73,6 +73,36 @@ export default function ReviewPage() {
     type: 'article',
   });
 
+  // ── Hreflang alternate tags ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!slug) return;
+    const BASE = 'https://topcryptocards.eu';
+    const REVIEW_SEGS: Record<string, string> = {
+      fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
+    };
+    document.querySelectorAll('link[data-hreflang-review]').forEach((el) => el.remove());
+
+    Object.entries(REVIEW_SEGS).forEach(([l, seg]) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/${seg}/${slug}`;
+      link.setAttribute('data-hreflang-review', 'true');
+      document.head.appendChild(link);
+    });
+
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.hreflang = 'x-default';
+    xd.href = `${BASE}/fr/avis/${slug}`;
+    xd.setAttribute('data-hreflang-review', 'true');
+    document.head.appendChild(xd);
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-review]').forEach((el) => el.remove());
+    };
+  }, [slug]);
+
   if (!review) {
     return (
       <div className="container-app py-24 text-center">

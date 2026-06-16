@@ -100,6 +100,33 @@ export default function CardDetail() {
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
 
+  // ── Hreflang alternate tags ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!id) return;
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-card]').forEach((el) => el.remove());
+
+    Object.entries(CARD_SEGMENT).forEach(([l, seg]) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/${seg}/${id}`;
+      link.setAttribute('data-hreflang-card', 'true');
+      document.head.appendChild(link);
+    });
+
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.hreflang = 'x-default';
+    xd.href = `${BASE}/fr/cartes/${id}`;
+    xd.setAttribute('data-hreflang-card', 'true');
+    document.head.appendChild(xd);
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-card]').forEach((el) => el.remove());
+    };
+  }, [id]);
+
   // ── Schema.org FinancialProduct + AggregateRating ────────────────────────────
   useEffect(() => {
     if (!card) return;
