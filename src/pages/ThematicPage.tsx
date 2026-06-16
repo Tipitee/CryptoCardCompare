@@ -564,6 +564,37 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     description: config?.description || '',
   });
 
+  /* Hreflang alternate tags */
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-thematic]').forEach((el) => el.remove());
+
+    (['fr', 'de', 'es', 'it', 'en'] as const).forEach((l) => {
+      const slug = THEMATIC_SLUGS[theme]?.[l];
+      if (!slug) return;
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/${slug}`;
+      link.setAttribute('data-hreflang-thematic', 'true');
+      document.head.appendChild(link);
+    });
+
+    const frSlug = THEMATIC_SLUGS[theme]?.['fr'];
+    if (frSlug) {
+      const xd = document.createElement('link');
+      xd.rel = 'alternate';
+      xd.hreflang = 'x-default';
+      xd.href = `${BASE}/fr/${frSlug}`;
+      xd.setAttribute('data-hreflang-thematic', 'true');
+      document.head.appendChild(xd);
+    }
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-thematic]').forEach((el) => el.remove());
+    };
+  }, [theme]);
+
   /* Schema.org */
   useEffect(() => {
     if (!config) return;

@@ -147,6 +147,32 @@ export default function CryptoPage() {
     description: copy?.meta_description ?? `Meilleures cartes crypto compatibles ${meta?.name ?? sym} en ${cryptoYear}. Cashback en ${meta?.ticker ?? sym}, comparatif complet sur TopCryptoCards.`,
   });
 
+  // ── Hreflang alternate tags ───────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-crypto]').forEach((el) => el.remove());
+
+    (['fr', 'de', 'es', 'it', 'en'] as const).forEach((l) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/cryptos/${sym}`;
+      link.setAttribute('data-hreflang-crypto', 'true');
+      document.head.appendChild(link);
+    });
+
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.hreflang = 'x-default';
+    xd.href = `${BASE}/fr/cryptos/${sym}`;
+    xd.setAttribute('data-hreflang-crypto', 'true');
+    document.head.appendChild(xd);
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-crypto]').forEach((el) => el.remove());
+    };
+  }, [sym]);
+
   // ── Schema.org FAQPage ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!copy?.faq?.length) return;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -220,6 +220,44 @@ export default function ComparisonPage() {
       ? comparisonSeo.desc(card1.name, card2.name)
       : '',
   });
+
+  // ── Hreflang alternate tags ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!slug) return;
+
+    const COMPARE_SEGS: Record<string, string> = {
+      fr: 'comparer',
+      de: 'vergleichen',
+      es: 'comparar',
+      it: 'confrontare',
+      en: 'compare',
+    };
+    const BASE = 'https://topcryptocards.eu';
+
+    // Remove previously injected hreflang links
+    document.querySelectorAll('link[data-hreflang-compare]').forEach((el) => el.remove());
+
+    Object.entries(COMPARE_SEGS).forEach(([l, seg]) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l;
+      link.href = `${BASE}/${l}/${seg}/${slug}`;
+      link.setAttribute('data-hreflang-compare', 'true');
+      document.head.appendChild(link);
+    });
+
+    // x-default → French version
+    const xDefault = document.createElement('link');
+    xDefault.rel = 'alternate';
+    xDefault.hreflang = 'x-default';
+    xDefault.href = `${BASE}/fr/comparer/${slug}`;
+    xDefault.setAttribute('data-hreflang-compare', 'true');
+    document.head.appendChild(xDefault);
+
+    return () => {
+      document.querySelectorAll('link[data-hreflang-compare]').forEach((el) => el.remove());
+    };
+  }, [slug]);
 
   // Not found state
   if (allCards.length > 0 && (!card1 || !card2)) {
