@@ -57,11 +57,95 @@ function renderMarkdownLite(text: string): string {
     .replace(/\n/g, '</p><p class="mt-3">');
 }
 
+const REVIEW_SEG: Record<string, string> = {
+  fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
+};
+
+const COPY: Record<string, {
+  breadcrumb: string; backLink: string; reviewWord: string; updatedOn: string;
+  network: string; globalRating: string; outOf5: string; issuer: string;
+  getCard: string; getCardNamed: (name: string) => string; compareCards: string;
+  keyStatLabels: Record<string, string>; ratingDetail: string;
+  breakdownLabels: { cashback: string; frais: string; facilite: string; securite: string; support: string };
+  avgRating: string; pros: string; cons: string;
+  sectionTitles: { presentation: string; cashback: string; frais: string; securite: string; experience: string };
+  ourVerdict: string; recap: string; otherReviews: string; seeAllReviews: string;
+  compareNow: string; dateLocale: string;
+}> = {
+  fr: {
+    breadcrumb: 'Avis cartes crypto', backLink: 'Tous les avis', reviewWord: 'Avis',
+    updatedOn: 'Mis à jour le', network: 'Réseau', globalRating: 'Note globale', outOf5: 'sur 5',
+    issuer: 'Émetteur', getCard: 'Obtenir la carte', getCardNamed: (n) => `Obtenir la ${n}`,
+    compareCards: 'Comparer les cartes',
+    keyStatLabels: { cashbackMax: '💰 Cashback max', stakingRequis: '🔒 Staking requis', fraisAnnuels: '💳 Frais annuels', disponibilite: '🌍 Disponibilité' },
+    ratingDetail: 'Détail de la note',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Frais', facilite: "Facilité d'usage", securite: 'Sécurité', support: 'Support' },
+    avgRating: 'Note moyenne', pros: 'Points forts', cons: 'Points faibles',
+    sectionTitles: { presentation: '📋 Présentation', cashback: '💰 Cashback & Récompenses', frais: '💳 Frais & Conditions', securite: '🔒 Sécurité & Régulation', experience: '📱 Expérience utilisateur' },
+    ourVerdict: 'Notre verdict', recap: 'Récapitulatif', otherReviews: 'Autres avis',
+    seeAllReviews: 'Voir tous les avis →', compareNow: 'Comparer maintenant', dateLocale: 'fr-FR',
+  },
+  de: {
+    breadcrumb: 'Krypto-Karten Bewertungen', backLink: 'Alle Bewertungen', reviewWord: 'Bewertung',
+    updatedOn: 'Aktualisiert am', network: 'Netzwerk', globalRating: 'Gesamtnote', outOf5: 'von 5',
+    issuer: 'Anbieter', getCard: 'Karte erhalten', getCardNamed: (n) => `${n} erhalten`,
+    compareCards: 'Karten vergleichen',
+    keyStatLabels: { cashbackMax: '💰 Max. Cashback', stakingRequis: '🔒 Staking erforderlich', fraisAnnuels: '💳 Jahresgebühr', disponibilite: '🌍 Verfügbarkeit' },
+    ratingDetail: 'Bewertungsdetails',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Gebühren', facilite: 'Benutzerfreundlichkeit', securite: 'Sicherheit', support: 'Support' },
+    avgRating: 'Durchschnittsnote', pros: 'Stärken', cons: 'Schwächen',
+    sectionTitles: { presentation: '📋 Vorstellung', cashback: '💰 Cashback & Belohnungen', frais: '💳 Gebühren & Bedingungen', securite: '🔒 Sicherheit & Regulierung', experience: '📱 Nutzererfahrung' },
+    ourVerdict: 'Unser Urteil', recap: 'Zusammenfassung', otherReviews: 'Andere Bewertungen',
+    seeAllReviews: 'Alle Bewertungen anzeigen →', compareNow: 'Jetzt vergleichen', dateLocale: 'de-DE',
+  },
+  es: {
+    breadcrumb: 'Opiniones tarjetas crypto', backLink: 'Todas las opiniones', reviewWord: 'Opinión',
+    updatedOn: 'Actualizado el', network: 'Red', globalRating: 'Nota global', outOf5: 'sobre 5',
+    issuer: 'Emisor', getCard: 'Obtener la tarjeta', getCardNamed: (n) => `Obtener la ${n}`,
+    compareCards: 'Comparar tarjetas',
+    keyStatLabels: { cashbackMax: '💰 Cashback máx.', stakingRequis: '🔒 Staking requerido', fraisAnnuels: '💳 Cuota anual', disponibilite: '🌍 Disponibilidad' },
+    ratingDetail: 'Detalle de la nota',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Comisiones', facilite: 'Facilidad de uso', securite: 'Seguridad', support: 'Soporte' },
+    avgRating: 'Nota media', pros: 'Puntos fuertes', cons: 'Puntos débiles',
+    sectionTitles: { presentation: '📋 Presentación', cashback: '💰 Cashback & Recompensas', frais: '💳 Comisiones & Condiciones', securite: '🔒 Seguridad & Regulación', experience: '📱 Experiencia de usuario' },
+    ourVerdict: 'Nuestro veredicto', recap: 'Resumen', otherReviews: 'Otras opiniones',
+    seeAllReviews: 'Ver todas las opiniones →', compareNow: 'Comparar ahora', dateLocale: 'es-ES',
+  },
+  it: {
+    breadcrumb: 'Recensioni carte crypto', backLink: 'Tutte le recensioni', reviewWord: 'Recensione',
+    updatedOn: 'Aggiornato il', network: 'Rete', globalRating: 'Voto globale', outOf5: 'su 5',
+    issuer: 'Emittente', getCard: 'Ottieni la carta', getCardNamed: (n) => `Ottieni la ${n}`,
+    compareCards: 'Confronta le carte',
+    keyStatLabels: { cashbackMax: '💰 Cashback max', stakingRequis: '🔒 Staking richiesto', fraisAnnuels: '💳 Costi annuali', disponibilite: '🌍 Disponibilità' },
+    ratingDetail: 'Dettaglio del voto',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Commissioni', facilite: 'Facilità d\'uso', securite: 'Sicurezza', support: 'Supporto' },
+    avgRating: 'Voto medio', pros: 'Punti di forza', cons: 'Punti deboli',
+    sectionTitles: { presentation: '📋 Presentazione', cashback: '💰 Cashback & Premi', frais: '💳 Commissioni & Condizioni', securite: '🔒 Sicurezza & Regolamentazione', experience: '📱 Esperienza utente' },
+    ourVerdict: 'Il nostro verdetto', recap: 'Riepilogo', otherReviews: 'Altre recensioni',
+    seeAllReviews: 'Vedi tutte le recensioni →', compareNow: 'Confronta ora', dateLocale: 'it-IT',
+  },
+  en: {
+    breadcrumb: 'Crypto card reviews', backLink: 'All reviews', reviewWord: 'Review',
+    updatedOn: 'Updated on', network: 'Network', globalRating: 'Overall rating', outOf5: 'out of 5',
+    issuer: 'Issuer', getCard: 'Get the card', getCardNamed: (n) => `Get the ${n}`,
+    compareCards: 'Compare cards',
+    keyStatLabels: { cashbackMax: '💰 Max cashback', stakingRequis: '🔒 Staking required', fraisAnnuels: '💳 Annual fees', disponibilite: '🌍 Availability' },
+    ratingDetail: 'Rating breakdown',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Fees', facilite: 'Ease of use', securite: 'Security', support: 'Support' },
+    avgRating: 'Average rating', pros: 'Strengths', cons: 'Weaknesses',
+    sectionTitles: { presentation: '📋 Overview', cashback: '💰 Cashback & Rewards', frais: '💳 Fees & Conditions', securite: '🔒 Security & Regulation', experience: '📱 User experience' },
+    ourVerdict: 'Our verdict', recap: 'Summary', otherReviews: 'Other reviews',
+    seeAllReviews: 'See all reviews →', compareNow: 'Compare now', dateLocale: 'en-GB',
+  },
+};
+
 export default function ReviewPage() {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation('blog');
   const lang = useLanguage();
   const { getRoute } = useLocalizedRoute();
+  const c = COPY[lang as keyof typeof COPY] ?? COPY.fr;
+  const seg = REVIEW_SEG[lang] ?? 'avis';
 
   const review = slug ? getReviewBySlug(slug) : undefined;
   const related = slug ? getRelatedReviews(slug, 3) : [];
@@ -107,10 +191,10 @@ export default function ReviewPage() {
     return (
       <div className="container-app py-24 text-center">
         <CreditCard className="w-14 h-14 text-slate-600 mx-auto mb-4" />
-        <h1 className="text-3xl font-display font-bold text-white mb-2">Avis introuvable</h1>
-        <p className="text-slate-500 mb-8">Cet avis n'existe pas ou a été déplacé.</p>
-        <Link to={`/${lang}/avis`} className="btn-primary">
-          Voir tous les avis
+        <h1 className="text-3xl font-display font-bold text-white mb-2">{c.reviewWord} introuvable</h1>
+        <p className="text-slate-500 mb-8">{c.backLink}</p>
+        <Link to={`/${lang}/${seg}`} className="btn-primary">
+          {c.seeAllReviews}
         </Link>
       </div>
     );
@@ -182,11 +266,11 @@ export default function ReviewPage() {
   }, [review, lang, slug]);
 
   const breakdownItems = [
-    { key: 'cashback', label: 'Cashback', icon: DollarSign },
-    { key: 'frais', label: 'Frais', icon: CreditCard },
-    { key: 'facilite', label: 'Facilité d\'usage', icon: Zap },
-    { key: 'securite', label: 'Sécurité', icon: Shield },
-    { key: 'support', label: 'Support', icon: HeadphonesIcon },
+    { key: 'cashback', label: c.breakdownLabels.cashback, icon: DollarSign },
+    { key: 'frais', label: c.breakdownLabels.frais, icon: CreditCard },
+    { key: 'facilite', label: c.breakdownLabels.facilite, icon: Zap },
+    { key: 'securite', label: c.breakdownLabels.securite, icon: Shield },
+    { key: 'support', label: c.breakdownLabels.support, icon: HeadphonesIcon },
   ] as const;
 
   return (
@@ -197,13 +281,13 @@ export default function ReviewPage() {
         <div className="container-app py-10">
           <Breadcrumb items={[
             { label: { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' }[lang] || 'Accueil', href: `/${lang}` },
-            { label: 'Avis cartes crypto', href: `/${lang}/avis` },
+            { label: c.breadcrumb, href: `/${lang}/${seg}` },
             { label: review.cardName },
           ]} />
 
-          <Link to={`/${lang}/avis`} className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
+          <Link to={`/${lang}/${seg}`} className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
             <ArrowLeft className="w-4 h-4" />
-            Tous les avis
+            {c.backLink}
           </Link>
 
           <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -214,10 +298,10 @@ export default function ReviewPage() {
                 </span>
               )}
               <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
-                {review.cardName} — Avis {new Date(review.updatedAt).getFullYear()}
+                {review.cardName} — {c.reviewWord} {new Date(review.updatedAt).getFullYear()}
               </h1>
               <p className="text-slate-400 text-sm mb-4">
-                Mis à jour le {new Date(review.updatedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })} · Réseau {review.network}
+                {c.updatedOn} {new Date(review.updatedAt).toLocaleDateString(c.dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })} · {c.network} {review.network}
               </p>
 
               {/* Global rating */}
@@ -227,7 +311,7 @@ export default function ReviewPage() {
                 </div>
                 <div>
                   <StarRating value={review.globalRating} />
-                  <p className="text-slate-500 text-xs mt-1">Note globale / 5</p>
+                  <p className="text-slate-500 text-xs mt-1">{c.globalRating} / 5</p>
                 </div>
               </div>
             </div>
@@ -235,18 +319,18 @@ export default function ReviewPage() {
             {/* CTA */}
             <div className="card-surface p-6 w-full md:w-72 shrink-0">
               <p className="text-white font-semibold mb-1">{review.cardName}</p>
-              <p className="text-slate-400 text-sm mb-4">Émetteur : {review.issuer}</p>
+              <p className="text-slate-400 text-sm mb-4">{c.issuer} : {review.issuer}</p>
               <a
                 href={review.affiliateLink}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="btn-primary w-full justify-center flex items-center gap-2 mb-3"
               >
-                Obtenir la carte
+                {c.getCard}
                 <ExternalLink className="w-4 h-4" />
               </a>
               <Link to={getRoute('compare')} className="btn-secondary w-full justify-center flex text-sm">
-                Comparer les cartes
+                {c.compareCards}
               </Link>
             </div>
           </div>
@@ -261,15 +345,9 @@ export default function ReviewPage() {
             {/* Key stats */}
             <div className="grid grid-cols-2 gap-3">
               {Object.entries(review.keyStats).map(([key, val]) => {
-                const labels: Record<string, string> = {
-                  cashbackMax: '💰 Cashback max',
-                  stakingRequis: '🔒 Staking requis',
-                  fraisAnnuels: '💳 Frais annuels',
-                  disponibilite: '🌍 Disponibilité',
-                };
                 return (
                   <div key={key} className="card-surface p-4">
-                    <p className="text-xs text-slate-500 mb-1">{labels[key]}</p>
+                    <p className="text-xs text-slate-500 mb-1">{c.keyStatLabels[key as keyof typeof c.keyStatLabels] ?? key}</p>
                     <p className="text-sm font-semibold text-white">{val}</p>
                   </div>
                 );
@@ -278,7 +356,7 @@ export default function ReviewPage() {
 
             {/* Rating breakdown */}
             <div className="card-surface p-6">
-              <h2 className="text-lg font-display font-bold text-white mb-5">Détail de la note</h2>
+              <h2 className="text-lg font-display font-bold text-white mb-5">{c.ratingDetail}</h2>
               <div className="space-y-4">
                 {breakdownItems.map(({ key, label, icon }) => (
                   <RatingBar
@@ -290,7 +368,7 @@ export default function ReviewPage() {
                 ))}
               </div>
               <div className="mt-5 pt-5 border-t border-bg-border flex items-center justify-between">
-                <span className="text-slate-400 font-medium">Note moyenne</span>
+                <span className="text-slate-400 font-medium">{c.avgRating}</span>
                 <div className="flex items-center gap-2">
                   <StarRating value={avgBreakdown} />
                   <span className="font-bold text-white">{avgBreakdown.toFixed(1)}/5</span>
@@ -302,7 +380,7 @@ export default function ReviewPage() {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="card-surface p-5 border-emerald-500/20">
                 <h3 className="font-display font-bold text-emerald-400 mb-4 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5" /> Points forts
+                  <CheckCircle className="w-5 h-5" /> {c.pros}
                 </h3>
                 <ul className="space-y-2">
                   {review.pros.map((pro, i) => (
@@ -315,7 +393,7 @@ export default function ReviewPage() {
               </div>
               <div className="card-surface p-5 border-red-500/20">
                 <h3 className="font-display font-bold text-red-400 mb-4 flex items-center gap-2">
-                  <XCircle className="w-5 h-5" /> Points faibles
+                  <XCircle className="w-5 h-5" /> {c.cons}
                 </h3>
                 <ul className="space-y-2">
                   {review.cons.map((con, i) => (
@@ -329,15 +407,9 @@ export default function ReviewPage() {
             </div>
 
             {/* Sections */}
-            {([
-              { key: 'presentation', title: '📋 Présentation' },
-              { key: 'cashback', title: '💰 Cashback & Récompenses' },
-              { key: 'frais', title: '💳 Frais & Conditions' },
-              { key: 'securite', title: '🔒 Sécurité & Régulation' },
-              { key: 'experience', title: '📱 Expérience utilisateur' },
-            ] as const).map(({ key, title }) => (
+            {(['presentation', 'cashback', 'frais', 'securite', 'experience'] as const).map((key) => (
               <div key={key}>
-                <h2 className="text-xl font-display font-bold text-white mb-4">{title}</h2>
+                <h2 className="text-xl font-display font-bold text-white mb-4">{c.sectionTitles[key]}</h2>
                 <div
                   className="prose-crypto text-slate-300 leading-relaxed"
                   dangerouslySetInnerHTML={{
@@ -351,13 +423,13 @@ export default function ReviewPage() {
             <div className="card-surface p-6 border-cyan-accent/30 bg-cyan-accent/5">
               <h2 className="text-xl font-display font-bold text-white mb-3 flex items-center gap-2">
                 <Star className="w-5 h-5 text-cyan-accent" fill="currentColor" />
-                Notre verdict
+                {c.ourVerdict}
               </h2>
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-4xl font-display font-bold text-cyan-accent">{review.globalRating.toFixed(1)}</div>
                 <div>
                   <StarRating value={review.globalRating} />
-                  <p className="text-slate-500 text-xs mt-0.5">sur 5</p>
+                  <p className="text-slate-500 text-xs mt-0.5">{c.outOf5}</p>
                 </div>
               </div>
               <p className="text-slate-300 leading-relaxed">{review.verdict}</p>
@@ -367,7 +439,7 @@ export default function ReviewPage() {
                 rel="noopener noreferrer sponsored"
                 className="btn-primary inline-flex items-center gap-2 mt-5"
               >
-                Obtenir la {review.cardName}
+                {c.getCardNamed(review.cardName)}
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>
@@ -379,22 +451,22 @@ export default function ReviewPage() {
             <div className="lg:sticky lg:top-24 space-y-6">
               {/* Quick recap */}
               <div className="card-surface p-5">
-                <h3 className="font-display font-bold text-white mb-4 text-sm uppercase tracking-wider">Récapitulatif</h3>
+                <h3 className="font-display font-bold text-white mb-4 text-sm uppercase tracking-wider">{c.recap}</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Note globale</span>
+                    <span className="text-slate-400">{c.globalRating}</span>
                     <span className="font-bold text-white">{review.globalRating}/5</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Réseau</span>
+                    <span className="text-slate-400">{c.network}</span>
                     <span className="font-semibold text-white">{review.network}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Cashback max</span>
+                    <span className="text-slate-400">{c.keyStatLabels.cashbackMax}</span>
                     <span className="font-semibold text-white">{review.keyStats.cashbackMax.split(' ').slice(0, 3).join(' ')}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-slate-400">Frais annuels</span>
+                    <span className="text-slate-400">{c.keyStatLabels.fraisAnnuels}</span>
                     <span className="font-semibold text-white">{review.keyStats.fraisAnnuels}</span>
                   </div>
                 </div>
@@ -404,7 +476,7 @@ export default function ReviewPage() {
                   rel="noopener noreferrer sponsored"
                   className="btn-primary w-full justify-center flex items-center gap-2 mt-5 text-sm"
                 >
-                  Obtenir la carte
+                  {c.getCard}
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -412,12 +484,12 @@ export default function ReviewPage() {
               {/* Related reviews */}
               {related.length > 0 && (
                 <div className="card-surface p-5">
-                  <h3 className="font-display font-bold text-white mb-4 text-sm uppercase tracking-wider">Autres avis</h3>
+                  <h3 className="font-display font-bold text-white mb-4 text-sm uppercase tracking-wider">{c.otherReviews}</h3>
                   <div className="space-y-3">
                     {related.map(rel => (
                       <Link
                         key={rel.slug}
-                        to={`/${lang}/avis/${rel.slug}`}
+                        to={`/${lang}/${seg}/${rel.slug}`}
                         className="flex items-center justify-between gap-2 group hover:text-cyan-accent transition-colors"
                       >
                         <span className="text-sm text-slate-300 group-hover:text-cyan-accent transition-colors line-clamp-1">
@@ -430,20 +502,17 @@ export default function ReviewPage() {
                       </Link>
                     ))}
                   </div>
-                  <Link to={`/${lang}/avis`} className="text-cyan-accent text-xs font-medium mt-4 block hover:underline">
-                    Voir tous les avis →
+                  <Link to={`/${lang}/${seg}`} className="text-cyan-accent text-xs font-medium mt-4 block hover:underline">
+                    {c.seeAllReviews}
                   </Link>
                 </div>
               )}
 
               {/* Compare CTA */}
               <div className="card-surface p-5 border-cyan-accent/20">
-                <h4 className="font-display font-bold text-white mb-2 text-sm">Comparer les cartes</h4>
-                <p className="text-slate-500 text-xs mb-3 leading-relaxed">
-                  Trouvez la carte qui correspond vraiment à votre profil avec notre comparateur.
-                </p>
+                <h4 className="font-display font-bold text-white mb-2 text-sm">{c.compareCards}</h4>
                 <Link to={getRoute('compare')} className="btn-primary w-full text-sm flex justify-center">
-                  Comparer maintenant
+                  {c.compareNow}
                 </Link>
               </div>
 
