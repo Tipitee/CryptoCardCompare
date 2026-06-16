@@ -24,7 +24,7 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import {
   CARD_COMPARISONS, CARD_NAMES, CARD_REVIEW_SLUGS,
-  COMPARE_SEG, REVIEW_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
+  COMPARE_SEG, REVIEW_SEG, THEMATIC_SLUGS as IL_THEMATIC_SLUGS, THEMATIC_LABELS,
   comparisonSlug,
 } from '../data/internalLinks';
 
@@ -599,7 +599,7 @@ export default function CardDetail() {
                     {themes.filter(t => t !== '__review__').map(theme => (
                       <li key={theme}>
                         <Link
-                          to={`/${lang}/${THEMATIC_SLUGS[theme]?.[lang] || THEMATIC_SLUGS[theme]?.fr || ''}`}
+                          to={`/${lang}/${IL_THEMATIC_SLUGS[theme]?.[lang] || IL_THEMATIC_SLUGS[theme]?.fr || ''}`}
                           className="flex items-center gap-2 text-sm text-slate-300 hover:text-cyan-accent transition-colors group"
                         >
                           <ArrowLeft className="w-3 h-3 rotate-180 text-slate-600 group-hover:text-cyan-accent shrink-0" />
