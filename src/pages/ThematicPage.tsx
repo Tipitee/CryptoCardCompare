@@ -598,6 +598,27 @@ const RELATED_TITLE: Record<string, string> = {
   fr: 'Voir aussi', de: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also',
 };
 
+const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: string }[]>> = {
+  travel: {
+    fr: [{ slug: 'carte-crypto-voyage-guide-complet',     title: 'Guide complet : payer en crypto à l\'étranger' }],
+    de: [{ slug: 'krypto-karte-reise-kompletter-guide',   title: 'Krypto-Karte auf Reisen: der komplette Guide' }],
+    es: [{ slug: 'tarjeta-crypto-viaje-guia-completa',    title: 'Guía completa: pagar con crypto en el extranjero' }],
+    it: [{ slug: 'carta-crypto-viaggio-guida-completa',   title: 'Guida completa: pagare in crypto all\'estero' }],
+    en: [{ slug: 'crypto-card-travel-complete-guide',     title: 'Complete guide: paying with crypto abroad' }],
+  },
+  rewards: {
+    fr: [{ slug: 'carte-crypto-recompenses-avantages-guide', title: 'Cartes crypto : cashback, lounges, Netflix et Spotify' }],
+    de: [{ slug: 'krypto-karte-praemien-vorteile-guide',     title: 'Krypto-Karten: Cashback, Lounges, Netflix & Spotify' }],
+    es: [{ slug: 'tarjeta-crypto-recompensas-ventajas-guia', title: 'Tarjetas crypto: cashback, lounges, Netflix y Spotify' }],
+    it: [{ slug: 'carta-crypto-premi-vantaggi-guida',        title: 'Carte crypto: cashback, lounge, Netflix e Spotify' }],
+    en: [{ slug: 'crypto-card-rewards-benefits-guide',       title: 'Crypto cards: cashback, lounges, Netflix & Spotify' }],
+  },
+};
+
+const READ_MORE_TITLE: Record<string, string> = {
+  fr: 'Lire aussi', de: 'Mehr lesen', es: 'Leer también', it: 'Leggi anche', en: 'Read more',
+};
+
 interface ThematicPageProps { theme: string; }
 
 export default function ThematicPage({ theme }: ThematicPageProps) {
@@ -823,6 +844,28 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      )}
+
+      {/* Blog articles (Lire aussi) */}
+      {(THEME_BLOG_LINKS[theme]?.[lang] || THEME_BLOG_LINKS[theme]?.['en'] || []).length > 0 && (
+        <div className="mb-12">
+          <h2 className="text-base font-semibold text-slate-400 mb-3">
+            {READ_MORE_TITLE[lang] || READ_MORE_TITLE['en']}
+          </h2>
+          <div className="flex flex-col gap-2">
+            {(THEME_BLOG_LINKS[theme]?.[lang] || THEME_BLOG_LINKS[theme]?.['en'] || []).map((article) => (
+              <Link
+                key={article.slug}
+                to={`/${lang}/blog/${article.slug}`}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+              >
+                <span className="text-cyan-accent/60">📄</span>
+                {article.title}
+                <span className="ml-auto text-cyan-accent/40 hover:text-cyan-accent transition-colors">→</span>
+              </Link>
+            ))}
           </div>
         </div>
       )}
