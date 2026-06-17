@@ -248,7 +248,7 @@ export default function Home() {
                 className="absolute top-6 right-20 opacity-60 blur-[0.5px]"
                 style={{ transform: 'rotate(-10deg) scale(0.85)' }}
               >
-                <SmartCardImage card={heroCards[2]} size="lg" tilt={false} />
+                <SmartCardImage card={heroCards[2]} size="lg" tilt={false} priority />
               </div>
             )}
             {heroCards[1] && (
@@ -256,7 +256,7 @@ export default function Home() {
                 className="absolute top-16 right-32 opacity-85"
                 style={{ transform: 'rotate(-4deg)' }}
               >
-                <SmartCardImage card={heroCards[1]} size="lg" tilt={false} />
+                <SmartCardImage card={heroCards[1]} size="lg" tilt={false} priority />
               </div>
             )}
             {heroCards[0] && (
