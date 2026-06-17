@@ -320,8 +320,6 @@ export const TAG_TO_CARD_ID: Record<string, string> = {
 // ── Tags → thematic themes (for BlogPost "Voir aussi") ───────────────────────
 export const TAG_TO_THEME: Record<string, string> = {
   'cashback': 'cashback',
-  'récompenses': 'cashback',
-  'rewards': 'cashback',
   'gratuit': 'no-fees',
   'sans frais': 'no-fees',
   'no fees': 'no-fees',
@@ -337,13 +335,17 @@ export const TAG_TO_THEME: Record<string, string> = {
   'meilleure': 'best',
   'best': 'best',
   'comparatif': 'best',
+  // Travel
   'voyage': 'travel',
   'travel': 'travel',
   'reisen': 'travel',
   'viaje': 'travel',
+  'viaggio': 'travel',
   'retrait atm': 'travel',
+  // Rewards
   'récompenses': 'rewards',
   'rewards': 'rewards',
   'prämien': 'rewards',
   'recompensas': 'rewards',
+  'premi': 'rewards',
 };

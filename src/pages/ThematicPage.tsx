@@ -917,7 +917,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
       {/* ── Autres thèmes liés ── */}
       {(() => {
-        const related = (['best','cashback','no-fees','no-staking','no-kyc'] as const)
+        const related = (['best','cashback','no-fees','no-staking','no-kyc','travel','rewards','2026'] as const)
           .filter(t => t !== theme && THEMATIC_SLUGS[t]?.[lang]);
         if (related.length === 0) return null;
         return (
