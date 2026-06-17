@@ -71,6 +71,26 @@ export const COMPARISON_PAIRS: [string, string][] = [
   ['gnosis-pay-card', 'ledger-card'],
   ['gnosis-pay-card', 'metamask-card'],
   ['ledger-card', 'metamask-card'],
+  // ── Completing all 78 pairs ────────────────────────────────────────────────
+  ['binance-card', 'bitpanda-card'],
+  ['binance-card', 'coinbase-card'],
+  ['binance-card', 'crypto-com-ruby-steel'],
+  ['binance-card', 'wirex-elite'],
+  ['bitpanda-card', 'bybit-card'],
+  ['bitpanda-card', 'coinbase-card'],
+  ['bitpanda-card', 'crypto-com-midnight-blue'],
+  ['bitpanda-card', 'crypto-com-ruby-steel'],
+  ['bitpanda-card', 'okx-card'],
+  ['bitpanda-card', 'wirex-elite'],
+  ['bybit-card', 'crypto-com-ruby-steel'],
+  ['coinbase-card', 'crypto-com-midnight-blue'],
+  ['coinbase-card', 'crypto-com-ruby-steel'],
+  ['coinbase-card', 'okx-card'],
+  ['crypto-com-midnight-blue', 'crypto-com-ruby-steel'],
+  ['crypto-com-midnight-blue', 'okx-card'],
+  ['crypto-com-ruby-steel', 'okx-card'],
+  ['crypto-com-ruby-steel', 'wirex-elite'],
+  ['okx-card', 'wirex-elite'],
 ];
 
 // ── Per-card: which other cards have comparison pages ───────────────────────
