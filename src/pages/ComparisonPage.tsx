@@ -299,6 +299,35 @@ export default function ComparisonPage() {
     return () => { document.getElementById('schema-faq-compare')?.remove(); };
   }, [specific]);
 
+  // ── BreadcrumbList schema ─────────────────────────────────────────────────
+  useEffect(() => {
+    if (!card1 || !card2 || !slug) return;
+    const COMPARE_LABELS: Record<string, string> = {
+      fr: 'Comparer', de: 'Vergleichen', es: 'Comparar', it: 'Confrontare', en: 'Compare',
+    };
+    const COMPARE_SEGS: Record<string, string> = {
+      fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+    };
+    const BASE = 'https://topcryptocards.eu';
+    const seg = COMPARE_SEGS[lang] ?? 'compare';
+    const label = COMPARE_LABELS[lang] ?? 'Compare';
+    document.getElementById('schema-breadcrumb-compare')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-breadcrumb-compare';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'TopCryptoCards', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: label, item: `${BASE}/${lang}/${seg}` },
+        { '@type': 'ListItem', position: 3, name: `${card1.name} vs ${card2.name}`, item: `${BASE}/${lang}/${seg}/${slug}` },
+      ],
+    });
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-breadcrumb-compare')?.remove(); };
+  }, [card1, card2, slug, lang]);
+
   // Not found state
   if (allCards.length > 0 && (!card1 || !card2)) {
     return (
