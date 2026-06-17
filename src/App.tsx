@@ -1,34 +1,30 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
-// Home is eager — it IS the LCP page
 import Home from './pages/Home';
+import Compare from './pages/Compare';
+import Simulator from './pages/Simulator';
+import Recommendation from './pages/Recommendation';
+import Favorites from './pages/Favorites';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import AdminBlog from './pages/AdminBlog';
+import AdminHeroImages from './pages/AdminHeroImages';
+import BlogAdminHub from './pages/BlogAdminHub';
+import Impressum from './pages/Impressum';
+import Datenschutz from './pages/Datenschutz';
+import Privacy from './pages/Privacy';
+import AffiliateDisclosurePage from './pages/AffiliateDisclosurePage';
+import RiskSummary from './pages/RiskSummary';
+import CardDetail from './pages/CardDetail';
+import ThematicPage from './pages/ThematicPage';
+import ComparisonPage from './pages/ComparisonPage';
+import CryptoList from './pages/CryptoList';
+import CryptoPage from './pages/CryptoPage';
+import ReviewList from './pages/ReviewList';
+import ReviewPage from './pages/ReviewPage';
 import NotFound from './pages/NotFound';
-
-// All other pages lazy-loaded → split into separate chunks
-const Compare            = lazy(() => import('./pages/Compare'));
-const Simulator          = lazy(() => import('./pages/Simulator'));
-const Recommendation     = lazy(() => import('./pages/Recommendation'));
-const Favorites          = lazy(() => import('./pages/Favorites'));
-const Blog               = lazy(() => import('./pages/Blog'));
-const BlogPost           = lazy(() => import('./pages/BlogPost'));
-const AdminBlog          = lazy(() => import('./pages/AdminBlog'));
-const AdminHeroImages    = lazy(() => import('./pages/AdminHeroImages'));
-const BlogAdminHub       = lazy(() => import('./pages/BlogAdminHub'));
-const Impressum          = lazy(() => import('./pages/Impressum'));
-const Datenschutz        = lazy(() => import('./pages/Datenschutz'));
-const Privacy            = lazy(() => import('./pages/Privacy'));
-const AffiliateDisclosurePage = lazy(() => import('./pages/AffiliateDisclosurePage'));
-const RiskSummary        = lazy(() => import('./pages/RiskSummary'));
-const AboutPage          = lazy(() => import('./pages/AboutPage'));
-const CardDetail         = lazy(() => import('./pages/CardDetail'));
-const ThematicPage       = lazy(() => import('./pages/ThematicPage'));
-const ComparisonPage     = lazy(() => import('./pages/ComparisonPage'));
-const CryptoList         = lazy(() => import('./pages/CryptoList'));
-const CryptoPage         = lazy(() => import('./pages/CryptoPage'));
-const ReviewList         = lazy(() => import('./pages/ReviewList'));
-const ReviewPage         = lazy(() => import('./pages/ReviewPage'));
 import { initializeLanguage } from './i18n/utils';
 
 function RootRedirect() {
@@ -73,7 +69,6 @@ function BarePathRedirect({ slug }: { slug: string }) {
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div className="min-h-screen bg-bg" />}>
       <Routes>
         <Route path="/" element={<RootRedirect />} />
 
@@ -86,7 +81,6 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
-        <Route path="/about" element={<AboutPage />} />
 
         {/* ── Bare-path redirects (e.g. /compare → /en/compare) ── */}
         {Object.keys(BARE_PATH_MAP).map(slug => (
@@ -144,8 +138,6 @@ function App() {
           <Route path="cartes-crypto-debutant"      element={<ThematicPage theme="beginner" />} />
           <Route path="carte-crypto-sans-kyc"       element={<ThematicPage theme="no-kyc" />} />
           <Route path="carte-crypto-2026"           element={<ThematicPage theme="2026" />} />
-          <Route path="carte-crypto-voyage"         element={<ThematicPage theme="travel" />} />
-          <Route path="carte-crypto-recompenses"    element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — DE ── */}
           <Route path="beste-krypto-karte"           element={<ThematicPage theme="best" />} />
@@ -157,8 +149,6 @@ function App() {
           <Route path="krypto-karten-einsteiger"     element={<ThematicPage theme="beginner" />} />
           <Route path="krypto-karte-ohne-kyc"        element={<ThematicPage theme="no-kyc" />} />
           <Route path="krypto-karte-2026"            element={<ThematicPage theme="2026" />} />
-          <Route path="krypto-karte-reise"           element={<ThematicPage theme="travel" />} />
-          <Route path="krypto-karte-praemien"        element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — ES ── */}
           <Route path="mejor-tarjeta-cripto"              element={<ThematicPage theme="best" />} />
@@ -170,8 +160,6 @@ function App() {
           <Route path="tarjetas-crypto-principiante"      element={<ThematicPage theme="beginner" />} />
           <Route path="tarjeta-crypto-sin-kyc"            element={<ThematicPage theme="no-kyc" />} />
           <Route path="tarjeta-cripto-2026"               element={<ThematicPage theme="2026" />} />
-          <Route path="tarjeta-cripto-viaje"              element={<ThematicPage theme="travel" />} />
-          <Route path="tarjeta-cripto-recompensas"        element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — IT ── */}
           <Route path="migliore-carta-cripto"         element={<ThematicPage theme="best" />} />
@@ -183,8 +171,6 @@ function App() {
           <Route path="carte-crypto-principiante"     element={<ThematicPage theme="beginner" />} />
           <Route path="carta-cripto-senza-kyc"        element={<ThematicPage theme="no-kyc" />} />
           <Route path="carta-cripto-2026"             element={<ThematicPage theme="2026" />} />
-          <Route path="carta-cripto-viaggio"          element={<ThematicPage theme="travel" />} />
-          <Route path="carta-cripto-premi"            element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — EN ── */}
           <Route path="best-crypto-card"        element={<ThematicPage theme="best" />} />
@@ -196,8 +182,6 @@ function App() {
           <Route path="beginner-crypto-cards"   element={<ThematicPage theme="beginner" />} />
           <Route path="crypto-card-no-kyc"      element={<ThematicPage theme="no-kyc" />} />
           <Route path="best-crypto-card-2026"   element={<ThematicPage theme="2026" />} />
-          <Route path="crypto-card-travel"      element={<ThematicPage theme="travel" />} />
-          <Route path="crypto-card-rewards"     element={<ThematicPage theme="rewards" />} />
 
           {/* ── Section Cryptos ── */}
           <Route path="cryptos" element={<CryptoList />} />
@@ -225,7 +209,6 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-      </Suspense>
     </BrowserRouter>
   );
 }

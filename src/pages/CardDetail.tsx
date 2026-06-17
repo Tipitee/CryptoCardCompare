@@ -22,11 +22,6 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getExtraLabel } from '../i18n/extrasLabels';
-import {
-  CARD_COMPARISONS, CARD_NAMES, CARD_REVIEW_SLUGS,
-  COMPARE_SEG, REVIEW_SEG, THEMATIC_SLUGS as IL_THEMATIC_SLUGS, THEMATIC_LABELS,
-  comparisonSlug,
-} from '../data/internalLinks';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -93,39 +88,12 @@ export default function CardDetail() {
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
   const seoTitle = card
-    ? (article?.meta_title || `${card.name} ${year} : ${card.cashbackPremium > 0 ? `jusqu'à ${card.cashbackPremium}% cashback — ` : ''}Avis et test complet | TopCryptoCards`)
+    ? (article?.meta_title || `${card.name} — Avis ${year} | TopCryptoCards`)
     : 'TopCryptoCards';
   const seoDesc = card
-    ? (article?.meta_description || `Avis complet ${year} sur la ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%${card.annualFees === 0 ? ', sans frais annuels' : `, frais ${card.annualFees} €/an`}${card.stakingRequired ? `, staking requis` : ''}. Notre verdict.`)
+    ? (article?.meta_description || `Avis complet sur la carte ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%, frais ${card.annualFees === 0 ? 'gratuit' : card.annualFees + ' €/an'}.`)
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
-
-  // ── Hreflang alternate tags ───────────────────────────────────────────────
-  useEffect(() => {
-    if (!id) return;
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-card]').forEach((el) => el.remove());
-
-    Object.entries(CARD_SEGMENT).forEach(([l, seg]) => {
-      const link = document.createElement('link');
-      link.rel = 'alternate';
-      link.hreflang = l;
-      link.href = `${BASE}/${l}/${seg}/${id}`;
-      link.setAttribute('data-hreflang-card', 'true');
-      document.head.appendChild(link);
-    });
-
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.hreflang = 'x-default';
-    xd.href = `${BASE}/fr/cartes/${id}`;
-    xd.setAttribute('data-hreflang-card', 'true');
-    document.head.appendChild(xd);
-
-    return () => {
-      document.querySelectorAll('link[data-hreflang-card]').forEach((el) => el.remove());
-    };
-  }, [id]);
 
   // ── Schema.org FinancialProduct + AggregateRating ────────────────────────────
   useEffect(() => {
@@ -138,10 +106,7 @@ export default function CardDetail() {
       description: article?.excerpt || seoDesc,
       url: `https://topcryptocards.eu/${lang}/${CARD_SEGMENT[lang] || 'cards'}/${card.id}`,
       image: card.realCardImage || '',
-      dateModified: article?.updated_at || '2026-06-16',
       provider: { '@type': 'Organization', name: card.issuer },
-      author: { '@id': 'https://topcryptocards.eu/#organization' },
-      publisher: { '@id': 'https://topcryptocards.eu/#organization' },
       feesAndCommissionsSpecification: card.annualFees > 0 ? `${card.annualFees} €/an` : 'Gratuit',
       offers: {
         '@type': 'Offer',
@@ -581,81 +546,6 @@ export default function CardDetail() {
                 dangerouslySetInnerHTML={{ __html: articleFaqHtml }}
               />
             )}
-
-            {/* ── Comparaisons disponibles pour cette carte ── */}
-            {CARD_COMPARISONS[card.id] && CARD_COMPARISONS[card.id].length > 0 && (
-              <section className="card-surface p-6">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
-                  {lang === 'de' ? `${card.name} vergleichen` :
-                   lang === 'es' ? `Comparar ${card.name}` :
-                   lang === 'it' ? `Confronta ${card.name}` :
-                   lang === 'en' ? `Compare ${card.name}` :
-                   `Comparer ${card.name}`}
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {CARD_COMPARISONS[card.id].slice(0, 6).map(partnerId => (
-                    <Link
-                      key={partnerId}
-                      to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(card.id, partnerId)}`}
-                      className="flex items-center justify-between gap-2 p-3 rounded-xl bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-colors group text-sm"
-                    >
-                      <span className="text-slate-300 group-hover:text-cyan-accent transition-colors">
-                        {card.name} <span className="text-slate-500">vs</span> {CARD_NAMES[partnerId] || partnerId}
-                      </span>
-                      <ArrowLeft className="w-3.5 h-3.5 rotate-180 shrink-0 text-slate-600 group-hover:text-cyan-accent transition-colors" />
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* ── Guides thématiques liés ── */}
-            {(() => {
-              const themes: string[] = ['best'];
-              if (card.cashbackPremium > 0) themes.push('cashback');
-              if (card.annualFees === 0) themes.push('no-fees');
-              if (card.stakingRequired === 0) themes.push('no-staking');
-              if (CARD_REVIEW_SLUGS[card.id]) themes.push('__review__');
-              return (
-                <section className="card-surface p-6">
-                  <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
-                    {lang === 'de' ? 'Thematische Guides' :
-                     lang === 'es' ? 'Guías temáticas' :
-                     lang === 'it' ? 'Guide tematiche' :
-                     lang === 'en' ? 'Thematic guides' :
-                     'Guides thématiques'}
-                  </h2>
-                  <ul className="space-y-2">
-                    {themes.filter(t => t !== '__review__').map(theme => (
-                      <li key={theme}>
-                        <Link
-                          to={`/${lang}/${IL_THEMATIC_SLUGS[theme]?.[lang] || IL_THEMATIC_SLUGS[theme]?.fr || ''}`}
-                          className="flex items-center gap-2 text-sm text-slate-300 hover:text-cyan-accent transition-colors group"
-                        >
-                          <ArrowLeft className="w-3 h-3 rotate-180 text-slate-600 group-hover:text-cyan-accent shrink-0" />
-                          {THEMATIC_LABELS[theme]?.[lang] || THEMATIC_LABELS[theme]?.fr}
-                        </Link>
-                      </li>
-                    ))}
-                    {CARD_REVIEW_SLUGS[card.id] && (
-                      <li>
-                        <Link
-                          to={`/${lang}/${REVIEW_SEG[lang] || 'avis'}/${CARD_REVIEW_SLUGS[card.id]}`}
-                          className="flex items-center gap-2 text-sm text-slate-300 hover:text-cyan-accent transition-colors group"
-                        >
-                          <ArrowLeft className="w-3 h-3 rotate-180 text-slate-600 group-hover:text-cyan-accent shrink-0" />
-                          {lang === 'de' ? `${card.name} Testbericht` :
-                           lang === 'es' ? `Opinión sobre ${card.name}` :
-                           lang === 'it' ? `Recensione ${card.name}` :
-                           lang === 'en' ? `${card.name} review` :
-                           `Avis ${card.name}`}
-                        </Link>
-                      </li>
-                    )}
-                  </ul>
-                </section>
-              );
-            })()}
 
           </div>
 

@@ -22,6 +22,19 @@ const ROUTE_TRANSLATIONS = {
   it: { compare: 'confronto', simulator: 'simulatore', recommendation: 'raccomandazione', favorites: 'preferiti', blog: 'blog' },
   en: { compare: 'compare', simulator: 'simulator', recommendation: 'recommendation', favorites: 'favorites', blog: 'blog' },
 };
+const REVIEW_SLUGS = {
+  fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
+};
+// Review pages available in the site
+const CARD_REVIEW_SLUGS = [
+  'nexo-card', 'crypto-com-card', 'binance-card', 'bybit-card', 'okx-card',
+  'coinbase-card', 'bitpanda-card', 'wirex-card', 'ledger-card',
+];
+
+const fallbackXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${BASE}/fr</loc><lastmod>${new Date().toISOString().slice(0,10)}</lastmod><priority>1.0</priority></url>
+</urlset>`;
 
 async function generate() {
   const { data: cards, error: cardsError } = await supabase
@@ -30,8 +43,7 @@ async function generate() {
     .neq('status', 'discontinued');
 
   if (cardsError) {
-    console.error('Error fetching cards:', cardsError.message);
-    process.exit(1);
+    console.warn('⚠️ Supabase unavailable — generating sitemap without dynamic cards:', cardsError.message);
   }
 
   const { data: posts } = await supabase
@@ -51,6 +63,15 @@ async function generate() {
   for (const [lang, routes] of Object.entries(ROUTE_TRANSLATIONS)) {
     for (const [, seg] of Object.entries(routes)) {
       urls.push({ loc: `${BASE}/${lang}/${seg}`, priority: '0.7', freq: 'weekly' });
+    }
+  }
+
+  // Review list pages
+  for (const [lang, seg] of Object.entries(REVIEW_SLUGS)) {
+    urls.push({ loc: `${BASE}/${lang}/${seg}`, priority: '0.7', freq: 'weekly' });
+    // Review detail pages
+    for (const slug of CARD_REVIEW_SLUGS) {
+      urls.push({ loc: `${BASE}/${lang}/${seg}/${slug}`, priority: '0.8', freq: 'monthly' });
     }
   }
 
@@ -87,6 +108,8 @@ ${urls
 }
 
 generate().catch((err) => {
-  console.error(err);
-  process.exit(1);
+  console.warn('⚠️ Sitemap generation failed (non-fatal):', err.message);
+  mkdirSync('public', { recursive: true });
+  writeFileSync('public/sitemap.xml', fallbackXml);
+  console.log('Fallback sitemap written. Build will continue.');
 });

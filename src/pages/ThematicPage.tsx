@@ -3,11 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
-import { THEMATIC_GUIDES } from '../data/thematicGuides';
-import {
-  THEME_COMPARISONS, CARD_NAMES, COMPARE_SEG, THEMATIC_SLUGS, THEMATIC_LABELS,
-  comparisonSlug, COMPARE_SECTION_LABEL,
-} from '../data/internalLinks';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -80,20 +75,6 @@ const THEME_CONFIG: Record<string, Record<string, {
     es: { title:`Tarjeta Crypto Sin KYC ${YEAR} — Registro Simplificado | TopCryptoCards`, h1:`Tarjetas Crypto Sin KYC Completo`, description:`Tarjetas crypto con registro simplificado en ${YEAR}. Soluciones sin verificación de identidad completa para pagar en crypto fácilmente.`, intro:`La mayoría de las tarjetas crypto exigen un KYC completo: DNI, justificante de domicilio, selfie. Pero algunas soluciones ofrecen un registro simplificado, especialmente las tarjetas basadas en self-custody y wallets Web3 como MetaMask Card o Gnosis Pay, que funcionan directamente desde tu wallet.`, outro:`Importante: ninguna tarjeta crypto regulada en Europa permite un uso 100% anónimo. Las regulaciones MiCA y AML exigen un nivel mínimo de verificación. Elige tarjetas conformes con las regulaciones locales para un uso legal y seguro.` },
     it: { title:`Carta Crypto Senza KYC ${YEAR} — Registrazione Semplificata | TopCryptoCards`, h1:`Carte Crypto Senza KYC Completo`, description:`Carte crypto con registrazione semplificata nel ${YEAR}. Soluzioni senza verifica d'identità completa per pagare in crypto facilmente.`, intro:`La maggior parte delle carte crypto richiede un KYC completo: documento d'identità, prova di residenza, selfie. Ma alcune soluzioni offrono una registrazione semplificata, in particolare le carte basate su self-custody e wallet Web3 come MetaMask Card o Gnosis Pay, che operano direttamente dal tuo wallet.`, outro:`Importante: nessuna carta crypto regolamentata in Europa consente un utilizzo al 100% anonimo. Le normative MiCA e AML richiedono un livello minimo di verifica. Scegli sempre carte conformi alle normative locali per un utilizzo legale e sicuro.` },
     en: { title:`Crypto Card No KYC ${YEAR} — Simplified Registration | TopCryptoCards`, h1:`Crypto Cards Without Full KYC`, description:`Crypto cards with simplified registration in ${YEAR}. Solutions with reduced identity verification for easy crypto payments.`, intro:`Most crypto cards require full KYC: ID document, proof of address, selfie. But some solutions offer simplified registration, especially self-custody and Web3 wallet-based cards like MetaMask Card or Gnosis Pay, which operate directly from your wallet and reduce verification steps significantly.`, outro:`Important: no regulated crypto card in Europe allows fully anonymous use. MiCA and AML regulations require a minimum level of verification from all card users. Always choose cards compliant with your local regulations for safe and legal use.` },
-  },
-  travel: {
-    fr: { title:`Carte Crypto Voyage \${YEAR} — 0% Frais de Change, ATM Gratuits | TopCryptoCards`, h1:`Meilleures Cartes Crypto pour Voyager en \${YEAR}`, description:`Comparez les meilleures cartes crypto pour voyager en \${YEAR} : 0% de frais de change, retraits ATM gratuits, accès lounges. Idéales en Europe et à l'international.`, intro:`Voyager avec une carte crypto offre un avantage majeur : zéro frais de change. Là où une banque classique prélève 1,5 à 3 % par transaction en devise étrangère, les cartes crypto convertissent au taux interbancaire en temps réel. En \${YEAR}, certaines cartes vont encore plus loin avec des retraits ATM gratuits, des lounges d'aéroport et des assurances voyage. Ce comparatif sélectionne les meilleures options pour les voyageurs fréquents.`, outro:`Pour un voyageur régulier, la carte crypto peut générer des centaines d'euros d'économies annuelles en frais de change évités. Calculez votre gain réel selon votre destination et volume de dépenses à l'international.` },
-    de: { title:`Krypto-Karte Reise \${YEAR} — 0% Wechselgebühren, Kostenlose ATMs | TopCryptoCards`, h1:`Beste Krypto-Karten für Reisen \${YEAR}`, description:`Vergleichen Sie die besten Krypto-Karten für Reisen \${YEAR}: 0% Wechselgebühren, kostenlose Geldautomaten, Lounge-Zugang.`, intro:`Mit einer Krypto-Karte reisen bietet null Wechselgebühren. Klassische Banken verlangen 1,5 bis 3 % pro Auslandstransaktion. Krypto-Karten rechnen zum Interbanken-Echtzeit-Kurs ab. In \${YEAR} gehen einige Karten noch weiter: kostenlose Geldautomaten, Flughafen-Lounges und Reiseversicherungen.`, outro:`Für einen Vielreisenden kann die Krypto-Karte durch vermiedene Wechselgebühren hunderte Euro im Jahr einsparen.` },
-    es: { title:`Tarjeta Cripto Viaje \${YEAR} — 0% Comisiones de Cambio, ATM Gratis | TopCryptoCards`, h1:`Mejores Tarjetas Cripto para Viajar en \${YEAR}`, description:`Compara las mejores tarjetas cripto para viajar en \${YEAR}: 0% comisiones de cambio, cajeros gratuitos, acceso a salas VIP.`, intro:`Viajar con una tarjeta cripto ofrece cero comisiones de cambio. Los bancos tradicionales cobran entre 1,5 y 3% por transacción en moneda extranjera. Las tarjetas cripto convierten al tipo interbancario en tiempo real. En \${YEAR}, algunas tarjetas van más allá con cajeros gratuitos, acceso a salas VIP y seguros de viaje.`, outro:`Para un viajero frecuente, la tarjeta cripto puede generar cientos de euros de ahorro anuales en comisiones de cambio evitadas.` },
-    it: { title:`Carta Cripto Viaggio \${YEAR} — 0% Commissioni Cambio, ATM Gratuiti | TopCryptoCards`, h1:`Migliori Carte Cripto per Viaggiare nel \${YEAR}`, description:`Confronta le migliori carte cripto per viaggiare nel \${YEAR}: 0% commissioni di cambio, prelievi ATM gratuiti, accesso lounge.`, intro:`Viaggiare con una carta cripto offre zero commissioni di cambio. Le banche tradizionali applicano tra l'1,5 e il 3% per transazione. Le carte cripto convertono al tasso interbancario in tempo reale. Nel \${YEAR}, alcune carte vanno oltre con ATM gratuiti, accesso lounge e assicurazioni viaggio.`, outro:`Per un viaggiatore frequente, la carta cripto può generare centinaia di euro di risparmio annuo in commissioni di cambio evitate.` },
-    en: { title:`Crypto Card Travel \${YEAR} — 0% FX Fees, Free ATMs | TopCryptoCards`, h1:`Best Crypto Cards for Travel in \${YEAR}`, description:`Compare the best crypto cards for travel in \${YEAR}: 0% foreign transaction fees, free ATM withdrawals, lounge access.`, intro:`Travelling with a crypto card offers zero foreign transaction fees. Traditional banks charge 1.5–3% per foreign currency transaction. Crypto cards convert at the real-time interbank rate. In \${YEAR}, some cards go even further with free ATMs, airport lounge access, and travel insurance.`, outro:`For a frequent traveller, a crypto card can save hundreds of euros per year by eliminating foreign transaction fees entirely.` },
-  },
-  rewards: {
-    fr: { title:`Carte Crypto Récompenses \${YEAR} — Cashback, Lounges, Avantages | TopCryptoCards`, h1:`Cartes Crypto avec les Meilleures Récompenses en \${YEAR}`, description:`Les cartes crypto avec le plus d'avantages en \${YEAR} : cashback jusqu'à 8%, accès lounges, remboursement abonnements, retraits ATM gratuits.`, intro:`Au-delà du simple cashback, les meilleures cartes crypto de \${YEAR} proposent un écosystème complet de récompenses : cashback en crypto sur chaque achat, remboursement de Netflix et Spotify, accès aux lounges d'aéroport, retraits ATM gratuits. Ce comparatif classe les cartes par valeur totale des avantages, pas seulement par taux de cashback.`, outro:`Pour maximiser vos récompenses, considérez l'ensemble des avantages et non seulement le taux de cashback affiché. Un accès lounge et des abonnements remboursés peuvent valoir plus que quelques points de cashback supplémentaires.` },
-    de: { title:`Krypto-Karte Prämien \${YEAR} — Cashback, Lounges, Vorteile | TopCryptoCards`, h1:`Krypto-Karten mit den besten Prämien \${YEAR}`, description:`Die Krypto-Karten mit den meisten Vorteilen \${YEAR}: Cashback bis 8%, Lounge-Zugang, Abo-Erstattungen, kostenlose ATMs.`, intro:`Über einfaches Cashback hinaus bieten die besten Krypto-Karten \${YEAR} ein vollständiges Prämienökosystem: Krypto-Cashback auf jeden Kauf, Netflix- und Spotify-Erstattungen, Flughafen-Lounge-Zugang und kostenlose ATMs. Dieser Vergleich bewertet Karten nach dem Gesamtwert der Vorteile.`, outro:`Um Ihre Prämien zu maximieren, berücksichtigen Sie alle Vorteile, nicht nur den Cashback-Satz.` },
-    es: { title:`Tarjeta Cripto Recompensas \${YEAR} — Cashback, Salas VIP, Ventajas | TopCryptoCards`, h1:`Tarjetas Cripto con las Mejores Recompensas en \${YEAR}`, description:`Las tarjetas cripto con más ventajas en \${YEAR}: cashback hasta 8%, acceso a salas VIP, reembolso de suscripciones, cajeros gratuitos.`, intro:`Más allá del simple cashback, las mejores tarjetas cripto de \${YEAR} ofrecen un ecosistema completo de recompensas: cashback en cripto, reembolso de Netflix y Spotify, acceso a salas VIP y cajeros gratuitos. Esta comparativa clasifica las tarjetas por valor total de ventajas.`, outro:`Para maximizar tus recompensas, considera el conjunto de ventajas y no solo la tasa de cashback.` },
-    it: { title:`Carta Cripto Premi \${YEAR} — Cashback, Lounge, Vantaggi | TopCryptoCards`, h1:`Carte Cripto con i Migliori Premi nel \${YEAR}`, description:`Le carte cripto con più vantaggi nel \${YEAR}: cashback fino all'8%, accesso lounge, rimborso abbonamenti, ATM gratuiti.`, intro:`Oltre al semplice cashback, le migliori carte cripto del \${YEAR} offrono un ecosistema completo di premi: cashback in cripto, rimborso Netflix e Spotify, accesso alle lounge e ATM gratuiti. Questo confronto classifica le carte per valore totale dei vantaggi.`, outro:`Per massimizzare i tuoi premi, considera l'insieme dei vantaggi e non solo il tasso di cashback.` },
-    en: { title:`Crypto Card Rewards \${YEAR} — Cashback, Lounges, Perks | TopCryptoCards`, h1:`Crypto Cards with the Best Rewards in \${YEAR}`, description:`The crypto cards with the most perks in \${YEAR}: up to 8% cashback, lounge access, subscription rebates, free ATMs. Compare all offers.`, intro:`Beyond simple cashback, the best crypto cards of \${YEAR} offer a complete rewards ecosystem: crypto cashback on every purchase, Netflix and Spotify rebates, airport lounge access, and free ATM withdrawals. This comparison ranks cards by total rewards value.`, outro:`To maximise your rewards, consider the full package of benefits. Lounge access and subscription rebates can be worth more than a few extra cashback points depending on your lifestyle.` },
   },
   '2026': {
     fr: { title:`Meilleure Carte Crypto 2026 — Comparatif Complet et Mis à Jour | TopCryptoCards`, h1:`Les Meilleures Cartes Crypto en 2026`, description:`Quelle est la meilleure carte crypto en 2026 ? Comparatif complet des cartes avec le meilleur cashback, les frais les plus bas et la plus grande fiabilité.`, intro:`En 2026, le marché des cartes crypto a profondément évolué. L'entrée en vigueur du règlement MiCA en Europe a renforcé les standards de protection des utilisateurs. De nouvelles cartes sont apparues, des offres ont été améliorées. Ce comparatif recense les meilleures options disponibles en 2026, classées par note de confiance et rapport qualité/prix.`, outro:`En 2026, privilégiez les cartes émises par des entités conformes MiCA. La réglementation européenne offre désormais une protection solide : vos fonds sont mieux encadrés, les recours en cas de litige plus clairs. Comparez les taux de cashback mais ne négligez pas la fiabilité de l'émetteur.` },
@@ -404,80 +385,6 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
       { q:'Which crypto card has the least KYC in 2026?', a:'MetaMask Card and Gnosis Pay have the lightest registration process thanks to their decentralized architecture and self-custody model.' },
     ],
   },
-  travel: {
-    fr: [
-      { q: 'Quelle carte crypto est la meilleure pour voyager ?', a: "La Crypto.com Ruby Steel est idéale pour les voyageurs fréquents : 0% de frais de change dans 180+ devises, 400€/mois de retraits ATM gratuits et accès aux lounges via Priority Pass. La Wirex Elite offre jusqu'à 8% de cashback sur les dépenses à l'étranger." },
-      { q: 'Peut-on utiliser une carte crypto partout dans le monde ?', a: "Oui — les cartes Visa et Mastercard crypto sont acceptées dans plus de 200 pays. Certaines restrictions s'appliquent (USA, Iran, Corée du Nord). Vérifiez toujours la couverture géographique avant de partir." },
-      { q: 'Y a-t-il des frais de change avec une carte crypto ?', a: "0% de frais de change sur la plupart des cartes crypto (Crypto.com, Wirex, Binance). La conversion se fait au taux interbancaire en temps réel, sans marge cachée." },
-      { q: "Peut-on retirer des espèces à l'étranger avec une carte crypto ?", a: "Oui. Crypto.com Ruby Steel offre 400€/mois de retraits ATM gratuits. Wirex Elite propose également 400€/mois. Évitez les ATM d'aéroport (frais opérateur plus élevés)." },
-      { q: "Quelle carte crypto offre l'accès aux lounges d'aéroport ?", a: "La Crypto.com Ruby Steel inclut l'accès Priority Pass (6 visites/an). Les niveaux supérieurs offrent un accès illimité. Un accès lounge vaut généralement 25-40€ par visite." },
-    ],
-    de: [
-      { q: 'Welche Krypto-Karte ist am besten für Reisen?', a: 'Die Crypto.com Ruby Steel ist ideal für Vielreisende: 0% Wechselgebühren in 180+ Währungen, 400€/Monat kostenlose ATMs und Priority Pass Lounge-Zugang. Die Wirex Elite bietet bis zu 8% Cashback auf Auslandsausgaben.' },
-      { q: 'Kann man eine Krypto-Karte weltweit verwenden?', a: 'Ja — Visa und Mastercard Krypto-Karten werden in über 200 Ländern akzeptiert. Einige Einschränkungen gelten. Überprüfen Sie immer die Abdeckung vor der Reise.' },
-      { q: 'Gibt es Wechselgebühren bei Krypto-Karten?', a: '0% Wechselgebühren bei den meisten Krypto-Karten (Crypto.com, Wirex, Binance). Die Konvertierung erfolgt zum Interbanken-Echtzeit-Kurs ohne versteckte Margen.' },
-      { q: 'Kann man im Ausland Bargeld abheben?', a: 'Ja. Crypto.com Ruby Steel bietet 400€/Monat kostenlose ATM-Abhebungen. Wirex Elite ebenfalls. Danach 2% Gebühren. Flughafen-ATMs meiden.' },
-      { q: 'Welche Krypto-Karte bietet Lounge-Zugang?', a: 'Die Crypto.com Ruby Steel beinhaltet Priority Pass (6 Besuche/Jahr). Höhere Stufen bieten unbegrenzten Zugang. Ein Lounge-Besuch ist ca. 25-40€ wert.' },
-    ],
-    es: [
-      { q: '¿Qué tarjeta cripto es mejor para viajar?', a: 'La Crypto.com Ruby Steel es ideal para viajeros frecuentes: 0% comisiones de cambio en 180+ divisas, 400€/mes de cajeros gratuitos y acceso Priority Pass. La Wirex Elite ofrece hasta 8% cashback en el extranjero.' },
-      { q: '¿Se puede usar una tarjeta cripto en todo el mundo?', a: 'Sí — las tarjetas Visa y Mastercard cripto son aceptadas en más de 200 países. Algunas restricciones aplican. Verifica siempre la cobertura antes de viajar.' },
-      { q: '¿Hay comisiones de cambio?', a: '0% de comisiones de cambio en la mayoría de tarjetas cripto (Crypto.com, Wirex, Binance). La conversión se realiza al tipo interbancario en tiempo real.' },
-      { q: '¿Se puede retirar efectivo en el extranjero?', a: 'Sí. Crypto.com Ruby Steel ofrece 400€/mes de cajeros gratuitos. Wirex Elite también. Más allá se aplica el 2% de comisión. Evita los cajeros de aeropuerto.' },
-      { q: '¿Qué tarjeta cripto ofrece acceso a salas VIP?', a: 'La Crypto.com Ruby Steel incluye Priority Pass (6 visitas/año). Los niveles superiores ofrecen acceso ilimitado. Una visita vale normalmente entre 25 y 40€.' },
-    ],
-    it: [
-      { q: 'Quale carta cripto è migliore per viaggiare?', a: "La Crypto.com Ruby Steel è ideale per i viaggiatori frequenti: 0% commissioni di cambio in 180+ valute, 400€/mese di ATM gratuiti e accesso Priority Pass. La Wirex Elite offre fino all'8% di cashback all'estero." },
-      { q: 'Si può usare una carta cripto in tutto il mondo?', a: 'Sì — le carte Visa e Mastercard cripto sono accettate in oltre 200 paesi. Alcune restrizioni si applicano. Verifica sempre la copertura prima di partire.' },
-      { q: 'Ci sono commissioni di cambio?', a: '0% di commissioni di cambio sulla maggior parte delle carte cripto (Crypto.com, Wirex, Binance). La conversione avviene al tasso interbancario in tempo reale.' },
-      { q: 'Si può prelevare contanti all'estero?', a: 'Sì. Crypto.com Ruby Steel offre 400€/mese di prelievi ATM gratuiti. Wirex Elite anche. Oltre si applica il 2%. Evita gli ATM in aeroporto.' },
-      { q: 'Quale carta cripto offre accesso alle lounge?', a: "La Crypto.com Ruby Steel include Priority Pass (6 visite/anno). I livelli superiori offrono accesso illimitato. Una visita in lounge vale circa 25-40€." },
-    ],
-    en: [
-      { q: 'Which crypto card is best for travel?', a: 'The Crypto.com Ruby Steel is ideal for frequent travellers: 0% FX fees in 180+ currencies, €400/month free ATMs, and Priority Pass lounge access. The Wirex Elite offers up to 8% cashback on overseas spending.' },
-      { q: 'Can you use a crypto card worldwide?', a: 'Yes — Visa and Mastercard crypto cards are accepted in over 200 countries. Some restrictions apply. Always verify geographic coverage before travelling.' },
-      { q: 'Are there foreign transaction fees?', a: '0% foreign transaction fees on most crypto cards (Crypto.com, Wirex, Binance). Conversion happens at the real-time interbank rate with no hidden margin.' },
-      { q: 'Can you withdraw cash abroad?', a: 'Yes. Crypto.com Ruby Steel offers €400/month free ATM withdrawals. Wirex Elite as well. Beyond that, 2% fee applies. Avoid airport ATMs due to higher charges.' },
-      { q: 'Which crypto card offers airport lounge access?', a: 'The Crypto.com Ruby Steel includes Priority Pass (6 visits/year). Higher tiers offer unlimited access. A lounge visit is typically worth €25–40.' },
-    ],
-  },
-  rewards: {
-    fr: [
-      { q: 'Quelle carte crypto offre le plus de récompenses au total ?', a: "En termes de valeur totale, la Crypto.com Ruby Steel combine cashback 2% CRO + accès lounges + remboursement Netflix + retraits ATM gratuits. La Wirex Elite domine sur le cashback pur (8% WXT)." },
-      { q: 'Quelle est la différence entre cashback et récompenses ?', a: "Le cashback désigne un pourcentage retourné sur chaque achat. Les récompenses englobent un périmètre plus large : cashback, accès lounges, remboursement d'abonnements, assurances, réductions trading." },
-      { q: 'Les récompenses crypto sont-elles imposables ?', a: "En France, les récompenses en crypto peuvent être soumises à l'impôt. Consultez un expert fiscal — la réglementation évolue avec MiCA en 2026." },
-      { q: 'Quel niveau de staking pour les meilleures récompenses ?', a: "Crypto.com Ruby Steel : 400 CRO (~20€) pour 2% + lounges. Obsidian : 400 000 CRO pour 8%. Wirex Elite : abonnement ~10€/mois pour 8% WXT." },
-      { q: "Les cartes crypto offrent-elles des remboursements d'abonnements ?", a: "Oui, à partir du niveau Ruby Steel, Crypto.com rembourse Netflix (jusqu'à 13,99€/mois) et Spotify (jusqu'à 9,99€/mois) si vous avez assez de CRO en staking." },
-    ],
-    de: [
-      { q: 'Welche Krypto-Karte bietet insgesamt die meisten Prämien?', a: 'Die Crypto.com Ruby Steel kombiniert 2% CRO Cashback, Lounge-Zugang, Netflix-Erstattung und kostenlose ATMs. Die Wirex Elite dominiert beim reinen Cashback (8% WXT).' },
-      { q: 'Was ist der Unterschied zwischen Cashback und Prämien?', a: 'Cashback ist ein Prozentsatz pro Kauf. Prämien umfassen: Cashback, Lounge-Zugang, Abo-Erstattungen (Netflix, Spotify), Versicherungen und Trading-Rabatte.' },
-      { q: 'Sind Krypto-Prämien steuerpflichtig?', a: 'In Deutschland können Krypto-Prämien als geldwerter Vorteil steuerpflichtig sein. Konsultieren Sie einen Steuerberater.' },
-      { q: 'Welches Staking-Level für die besten Prämien?', a: 'Crypto.com Ruby Steel: 400 CRO (~20€) für 2% + Lounges. Obsidian: 400.000 CRO für 8%. Wirex Elite: ~10€/Monat für 8% WXT.' },
-      { q: 'Bieten Krypto-Karten Abo-Erstattungen an?', a: 'Ja, ab Ruby Steel erstattet Crypto.com Netflix (bis 13,99€/Monat) und Spotify (bis 9,99€/Monat) bei ausreichendem CRO-Staking.' },
-    ],
-    es: [
-      { q: '¿Qué tarjeta cripto ofrece más recompensas en total?', a: 'La Crypto.com Ruby Steel combina 2% cashback CRO + acceso a salas VIP + reembolso Netflix + cajeros gratuitos. La Wirex Elite domina en cashback puro (8% WXT).' },
-      { q: '¿Cuál es la diferencia entre cashback y recompensas?', a: 'El cashback es un porcentaje devuelto por compra. Las recompensas incluyen: cashback, acceso a salas VIP, reembolsos de suscripciones, seguros y descuentos en trading.' },
-      { q: '¿Las recompensas cripto están sujetas a impuestos?', a: 'En España pueden considerarse rendimiento del capital mobiliario. Consulta a un experto fiscal.' },
-      { q: '¿Qué nivel de staking para las mejores recompensas?', a: 'Crypto.com Ruby Steel: 400 CRO (~20€) para 2% + salas VIP. Obsidian: 400.000 CRO para 8%. Wirex Elite: ~10€/mes para 8% WXT.' },
-      { q: '¿Las tarjetas cripto ofrecen reembolsos de suscripciones?', a: 'Sí, desde el nivel Ruby Steel, Crypto.com reembolsa Netflix (hasta 13,99€/mes) y Spotify (hasta 9,99€/mes) con suficiente CRO en staking.' },
-    ],
-    it: [
-      { q: 'Quale carta cripto offre più premi in totale?', a: "La Crypto.com Ruby Steel combina 2% cashback CRO + accesso lounge + rimborso Netflix + ATM gratuiti. La Wirex Elite domina sul cashback puro (8% WXT)." },
-      { q: 'Qual è la differenza tra cashback e premi?', a: 'Il cashback è una percentuale per acquisto. I premi coprono: cashback, accesso lounge, rimborso abbonamenti (Netflix, Spotify), assicurazioni e sconti trading.' },
-      { q: 'I premi cripto sono tassabili?', a: 'In Italia possono essere considerati reddito imponibile. Consulta un esperto fiscale.' },
-      { q: 'Quale livello di staking per i migliori premi?', a: 'Crypto.com Ruby Steel: 400 CRO (~20€) per 2% + lounge. Obsidian: 400.000 CRO per 8%. Wirex Elite: ~10€/mese per 8% WXT.' },
-      { q: 'Le carte cripto offrono rimborsi di abbonamenti?', a: 'Sì, dal livello Ruby Steel, Crypto.com rimborsa Netflix (fino a 13,99€/mese) e Spotify (fino a 9,99€/mese) con sufficiente CRO in staking.' },
-    ],
-    en: [
-      { q: 'Which crypto card offers the most total rewards?', a: 'The Crypto.com Ruby Steel combines 2% CRO cashback + lounge access + Netflix rebate + free ATMs. The Wirex Elite dominates on pure cashback (8% WXT).' },
-      { q: 'What is the difference between cashback and rewards?', a: 'Cashback is a percentage returned on each purchase. Rewards cover a broader scope: cashback, lounge access, subscription rebates (Netflix, Spotify), insurance, and trading discounts.' },
-      { q: 'Are crypto rewards taxable?', a: 'In most EU countries, crypto rewards may be considered taxable income. Consult a tax advisor for your specific situation.' },
-      { q: 'What staking level for the best rewards?', a: 'Crypto.com Ruby Steel: 400 CRO (~€20) for 2% + lounges. Obsidian: 400,000 CRO for 8%. Wirex Elite: ~€10/month for 8% WXT.' },
-      { q: 'Do crypto cards offer subscription rebates?', a: 'Yes, from Ruby Steel level, Crypto.com rebates Netflix (up to €13.99/month) and Spotify (up to €9.99/month) with sufficient CRO staking.' },
-    ],
-  },
   '2026': {
     fr: [
       { q:`Quelle est la meilleure carte crypto en 2026 ?`, a:`En 2026, Gnosis Pay et MetaMask Card se distinguent pour le quotidien (zéro staking, zéro frais). Pour le cashback maximum, Crypto.com Obsidian reste la référence malgré un staking élevé.` },
@@ -518,89 +425,6 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
-   FEATURED SNIPPET — réponse directe courte pour la position zéro
-   ──────────────────────────────────────────────────────────────────────────── */
-const THEME_SNIPPET: Record<string, Record<string, string>> = {
-  best: {
-    fr: `La <strong>meilleure carte crypto</strong> en ${YEAR} dépend de votre profil. Pour un usage quotidien sans contrainte : <strong>Gnosis Pay</strong> (2% cashback, zéro staking). Pour maximiser les récompenses : <strong>Crypto.com Obsidian</strong> (jusqu'à 8%). Comparez ci-dessous toutes les cartes classées par score de confiance.`,
-    de: `Die <strong>beste Krypto-Karte</strong> ${YEAR} hängt von Ihrem Profil ab. Für den täglichen Gebrauch: <strong>Gnosis Pay</strong> (2% Cashback, kein Staking). Für maximale Belohnungen: <strong>Crypto.com Obsidian</strong> (bis zu 8%). Vergleichen Sie alle Karten unten, sortiert nach Vertrauens-Score.`,
-    es: `La <strong>mejor tarjeta crypto</strong> en ${YEAR} depende de tu perfil. Para uso cotidiano sin restricciones: <strong>Gnosis Pay</strong> (2% cashback, sin staking). Para maximizar recompensas: <strong>Crypto.com Obsidian</strong> (hasta 8%). Compara todas las tarjetas abajo, ordenadas por puntuación de confianza.`,
-    it: `La <strong>migliore carta crypto</strong> nel ${YEAR} dipende dal tuo profilo. Per uso quotidiano senza vincoli: <strong>Gnosis Pay</strong> (2% cashback, zero staking). Per massimizzare le ricompense: <strong>Crypto.com Obsidian</strong> (fino all'8%). Confronta tutte le carte qui sotto, ordinate per punteggio di fiducia.`,
-    en: `The <strong>best crypto card</strong> in ${YEAR} depends on your profile. For everyday use with no strings attached: <strong>Gnosis Pay</strong> (2% cashback, no staking). For maximum rewards: <strong>Crypto.com Obsidian</strong> (up to 8%). Compare all cards below, ranked by trust score.`,
-  },
-  cashback: {
-    fr: `Les <strong>cartes crypto avec le meilleur cashback</strong> offrent entre 1% et 8% de récompenses sur chaque achat. Sans staking, <strong>Brighty</strong> mène avec jusqu'à 4%, devant <strong>Gnosis Pay</strong> (2% en EURE) et <strong>Nexo</strong> (2% en BTC). Avec staking, Crypto.com Obsidian monte à 8%. Comparez les offres ci-dessous.`,
-    de: `<strong>Krypto-Karten mit dem besten Cashback</strong> bieten 1% bis 8% Belohnungen pro Einkauf. Ohne Staking führt <strong>Brighty</strong> mit bis zu 4%, vor <strong>Gnosis Pay</strong> (2% in EURE) und <strong>Nexo</strong> (2% in BTC). Mit Staking erreicht Crypto.com Obsidian 8%. Vergleichen Sie alle Angebote unten.`,
-    es: `Las <strong>tarjetas crypto con mejor cashback</strong> ofrecen entre el 1% y el 8% de recompensas por compra. Sin staking, <strong>Brighty</strong> lidera con hasta el 4%, seguida de <strong>Gnosis Pay</strong> (2% en EURE) y <strong>Nexo</strong> (2% en BTC). Con staking, Crypto.com Obsidian llega al 8%. Compara todas las ofertas abajo.`,
-    it: `Le <strong>carte crypto con il miglior cashback</strong> offrono tra l'1% e l'8% di ricompense per acquisto. Senza staking, <strong>Brighty</strong> guida con fino al 4%, seguita da <strong>Gnosis Pay</strong> (2% in EURE) e <strong>Nexo</strong> (2% in BTC). Con staking, Crypto.com Obsidian arriva all'8%. Confronta tutte le offerte qui sotto.`,
-    en: `<strong>Crypto cards with the best cashback</strong> offer between 1% and 8% rewards per purchase. Without staking, <strong>Brighty</strong> leads with up to 4%, ahead of <strong>Gnosis Pay</strong> (2% in EURE) and <strong>Nexo</strong> (2% in BTC). With staking, Crypto.com Obsidian reaches 8%. Compare all offers below.`,
-  },
-  'no-fees': {
-    fr: `Une <strong>carte crypto sans frais annuels</strong> vous permet de bénéficier du cashback en crypto sans payer d'abonnement. MetaMask Card, Gnosis Pay et Brighty proposent 0€ de frais. Comparez-les ci-dessous.`,
-    de: `Eine <strong>kostenlose Krypto-Karte</strong> bietet Krypto-Cashback ohne Jahresgebühr. MetaMask Card, Gnosis Pay und Brighty verlangen 0€. Alle kostenlosen Optionen im Vergleich unten.`,
-    es: `Una <strong>tarjeta crypto sin comisiones anuales</strong> te permite obtener cashback en cripto sin pagar suscripción. MetaMask Card, Gnosis Pay y Brighty cobran 0€. Compáralas todas abajo.`,
-    it: `Una <strong>carta crypto senza costi annuali</strong> ti permette di ottenere cashback in crypto senza pagare abbonamenti. MetaMask Card, Gnosis Pay e Brighty costano 0€. Confrontale tutte qui sotto.`,
-    en: `A <strong>free crypto card</strong> lets you earn crypto cashback with no annual subscription. MetaMask Card, Gnosis Pay, and Brighty all charge €0. Compare all no-fee options below.`,
-  },
-  'no-staking': {
-    fr: `Une <strong>carte crypto sans staking</strong> offre du cashback sans bloquer de cryptomonnaies. Votre capital reste libre et disponible à tout moment. Gnosis Pay (2%), MetaMask Card (1%) et Brighty (jusqu'à 4%) sont les leaders de cette catégorie.`,
-    de: `Eine <strong>Krypto-Karte ohne Staking</strong> bietet Cashback ohne gesperrte Kryptowährungen — Ihr Kapital bleibt frei. Gnosis Pay (2%), MetaMask Card (1%) und Brighty (bis 4%) führen diese Kategorie an.`,
-    es: `Una <strong>tarjeta crypto sin staking</strong> ofrece cashback sin bloquear criptomonedas. Tu capital permanece libre en todo momento. Gnosis Pay (2%), MetaMask Card (1%) y Brighty (hasta 4%) lideran esta categoría.`,
-    it: `Una <strong>carta crypto senza staking</strong> offre cashback senza bloccare criptovalute. Il tuo capitale rimane libero in qualsiasi momento. Gnosis Pay (2%), MetaMask Card (1%) e Brighty (fino al 4%) guidano questa categoria.`,
-    en: `A <strong>crypto card without staking</strong> earns cashback without locking up any cryptocurrency — your capital stays free at all times. Gnosis Pay (2%), MetaMask Card (1%), and Brighty (up to 4%) lead this category.`,
-  },
-  france: {
-    fr: `Les <strong>cartes crypto disponibles en France</strong> doivent être émises par des entités régulées (PSAN enregistrés AMF ou conformes MiCA). Toutes les cartes listées ci-dessous sont accessibles aux résidents français en ${YEAR}.`,
-    de: `Die in Deutschland verfügbaren <strong>Krypto-Karten</strong> müssen von BaFin-regulierten oder MiCA-konformen Unternehmen ausgegeben werden. Alle unten aufgeführten Karten sind für deutsche Einwohner in ${YEAR} zugänglich.`,
-    es: `Las <strong>tarjetas crypto disponibles en España</strong> deben ser emitidas por entidades reguladas (CNMV o conformes con MiCA). Todas las tarjetas listadas a continuación son accesibles para residentes españoles en ${YEAR}.`,
-    it: `Le <strong>carte crypto disponibili in Italia</strong> devono essere emesse da entità regolamentate (OAM o conformi a MiCA). Tutte le carte elencate di seguito sono accessibili ai residenti italiani nel ${YEAR}.`,
-    en: `<strong>Crypto cards available in Europe</strong> must be issued by regulated entities (MiCA-compliant or FCA/BaFin-regulated). All cards listed below are accessible to European residents in ${YEAR}.`,
-  },
-  virtual: {
-    fr: `Une <strong>carte crypto virtuelle</strong> est une carte Visa ou Mastercard numérique, disponible immédiatement après inscription. Elle fonctionne pour les achats en ligne et via Apple Pay / Google Pay sans attendre une carte physique.`,
-    de: `Eine <strong>virtuelle Krypto-Karte</strong> ist eine digitale Visa- oder Mastercard, die nach der Registrierung sofort verfügbar ist. Sie funktioniert für Online-Käufe und über Apple Pay / Google Pay.`,
-    es: `Una <strong>tarjeta crypto virtual</strong> es una Visa o Mastercard digital, disponible inmediatamente tras el registro. Funciona para compras online y via Apple Pay / Google Pay sin esperar una tarjeta física.`,
-    it: `Una <strong>carta crypto virtuale</strong> è una Visa o Mastercard digitale, disponibile immediatamente dopo la registrazione. Funziona per acquisti online e tramite Apple Pay / Google Pay senza attendere la carta fisica.`,
-    en: `A <strong>virtual crypto card</strong> is a digital Visa or Mastercard available immediately after registration. It works for online purchases and via Apple Pay / Google Pay — no need to wait for a physical card.`,
-  },
-  beginner: {
-    fr: `Les <strong>meilleures cartes crypto pour débutants</strong> sont sans staking, sans frais annuels et avec cashback immédiat. Elles fonctionnent comme une carte bancaire normale et s'utilisent partout. Idéales pour découvrir les cryptomonnaies sans risque.`,
-    de: `Die <strong>besten Krypto-Karten für Einsteiger</strong> sind ohne Staking, ohne Jahresgebühr und mit sofortigem Cashback. Sie funktionieren wie normale Bankkarten und sind überall akzeptiert.`,
-    es: `Las <strong>mejores tarjetas crypto para principiantes</strong> son sin staking, sin cuota anual y con cashback inmediato. Funcionan como una tarjeta bancaria normal y son aceptadas en todas partes.`,
-    it: `Le <strong>migliori carte crypto per principianti</strong> sono senza staking, senza costi annuali e con cashback immediato. Funzionano come una normale carta bancaria e sono accettate ovunque.`,
-    en: `The <strong>best crypto cards for beginners</strong> have no staking, no annual fee, and instant cashback from the first purchase. They work just like a regular bank card and are accepted everywhere.`,
-  },
-  'no-kyc': {
-    fr: `Les <strong>cartes crypto avec KYC simplifié</strong> comme MetaMask Card et Gnosis Pay permettent une inscription plus légère grâce au self-custody. Aucune carte crypto réglementée en Europe n'est 100% anonyme, mais ces options minimisent les démarches d'identification.`,
-    de: `<strong>Krypto-Karten mit vereinfachtem KYC</strong> wie MetaMask Card und Gnosis Pay ermöglichen eine leichtere Anmeldung durch Self-Custody. Keine regulierte Krypto-Karte in Europa ist 100% anonym, aber diese Optionen minimieren den Identifikationsaufwand.`,
-    es: `Las <strong>tarjetas crypto con KYC simplificado</strong> como MetaMask Card y Gnosis Pay permiten un registro más ligero gracias al self-custody. Ninguna tarjeta crypto regulada en Europa es 100% anónima, pero estas opciones minimizan los trámites de identificación.`,
-    it: `Le <strong>carte crypto con KYC semplificato</strong> come MetaMask Card e Gnosis Pay consentono una registrazione più leggera grazie al self-custody. Nessuna carta crypto regolamentata in Europa è al 100% anonima, ma queste opzioni minimizzano le procedure di identificazione.`,
-    en: `<strong>Crypto cards with simplified KYC</strong> like MetaMask Card and Gnosis Pay enable faster registration through self-custody. No regulated crypto card in Europe is 100% anonymous, but these options minimize the identification steps required.`,
-  },
-  travel: {
-    fr: `Les <strong>meilleures cartes crypto pour voyager</strong> en \${YEAR} offrent 0% de frais de change et des retraits ATM gratuits. La <strong>Crypto.com Ruby Steel</strong> inclut également l'accès aux lounges Priority Pass. La <strong>Wirex Elite</strong> offre jusqu'à 8% de cashback sur les dépenses à l'étranger.`,
-    de: `Die <strong>besten Krypto-Reisekarten</strong> \${YEAR} bieten 0% Wechselgebühren und kostenlose Geldautomaten. Die <strong>Crypto.com Ruby Steel</strong> beinhaltet zudem Priority Pass Lounge-Zugang. Die <strong>Wirex Elite</strong> bietet bis zu 8% Cashback auf Auslandsausgaben.`,
-    es: `Las <strong>mejores tarjetas cripto para viajar</strong> en \${YEAR} ofrecen 0% de comisiones de cambio y cajeros automáticos gratuitos. La <strong>Crypto.com Ruby Steel</strong> incluye además acceso a salas VIP Priority Pass. La <strong>Wirex Elite</strong> ofrece hasta 8% de cashback en gastos en el extranjero.`,
-    it: `Le <strong>migliori carte cripto per viaggiare</strong> nel \${YEAR} offrono 0% di commissioni di cambio e ATM gratuiti. La <strong>Crypto.com Ruby Steel</strong> include anche l'accesso alle lounge Priority Pass. La <strong>Wirex Elite</strong> offre fino all'8% di cashback sulle spese all'estero.`,
-    en: `The <strong>best crypto cards for travel</strong> in \${YEAR} offer 0% foreign transaction fees and free ATM withdrawals. The <strong>Crypto.com Ruby Steel</strong> also includes Priority Pass lounge access. The <strong>Wirex Elite</strong> offers up to 8% cashback on overseas spending.`,
-  },
-  rewards: {
-    fr: `Les <strong>cartes crypto avec les meilleures récompenses</strong> en \${YEAR} cumulent cashback, lounges et remboursements d'abonnements. <strong>Crypto.com Ruby Steel</strong> (2% + lounges + Netflix) et <strong>Wirex Elite</strong> (8% WXT) dominent cette catégorie. Comparez la valeur totale ci-dessous.`,
-    de: `Die <strong>Krypto-Karten mit den besten Prämien</strong> \${YEAR} kombinieren Cashback, Lounges und Abo-Erstattungen. <strong>Crypto.com Ruby Steel</strong> (2% + Lounges + Netflix) und <strong>Wirex Elite</strong> (8% WXT) dominieren diese Kategorie.`,
-    es: `Las <strong>tarjetas cripto con las mejores recompensas</strong> en \${YEAR} acumulan cashback, salas VIP y reembolsos de suscripciones. <strong>Crypto.com Ruby Steel</strong> (2% + salas + Netflix) y <strong>Wirex Elite</strong> (8% WXT) dominan esta categoría.`,
-    it: `Le <strong>carte cripto con i migliori premi</strong> nel \${YEAR} combinano cashback, lounge e rimborsi di abbonamenti. <strong>Crypto.com Ruby Steel</strong> (2% + lounge + Netflix) e <strong>Wirex Elite</strong> (8% WXT) dominano questa categoria.`,
-    en: `The <strong>crypto cards with the best rewards</strong> in \${YEAR} stack cashback, lounges, and subscription rebates. <strong>Crypto.com Ruby Steel</strong> (2% + lounges + Netflix) and <strong>Wirex Elite</strong> (8% WXT) lead this category.`,
-  },
-  '2026': {
-    fr: `Quelle est la <strong>meilleure carte crypto en 2026</strong> ? Grâce à MiCA, le marché européen des cartes crypto est désormais réglementé et plus sûr. Les meilleures options combinent cashback compétitif, zéro frais et conformité réglementaire. Comparez ci-dessous.`,
-    de: `Was ist die <strong>beste Krypto-Karte 2026</strong>? Dank MiCA ist der europäische Krypto-Karten-Markt nun reguliert und sicherer. Die besten Optionen kombinieren wettbewerbsfähiges Cashback, null Gebühren und regulatorische Konformität. Vergleichen Sie unten.`,
-    es: `¿Cuál es la <strong>mejor tarjeta crypto en 2026</strong>? Gracias a MiCA, el mercado europeo de tarjetas crypto está ahora regulado y es más seguro. Las mejores opciones combinan cashback competitivo, cero comisiones y conformidad regulatoria. Compara abajo.`,
-    it: `Qual è la <strong>migliore carta crypto nel 2026</strong>? Grazie a MiCA, il mercato europeo delle carte crypto è ora regolamentato e più sicuro. Le migliori opzioni combinano cashback competitivo, zero costi e conformità normativa. Confronta qui sotto.`,
-    en: `What is the <strong>best crypto card in 2026</strong>? Thanks to MiCA, the European crypto card market is now regulated and safer than ever. The best options combine competitive cashback, zero fees, and full regulatory compliance. Compare below.`,
-  },
-};
-
-/* ────────────────────────────────────────────────────────────────────────────
    FILTERS / SORT / LIMIT
    ──────────────────────────────────────────────────────────────────────────── */
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
@@ -613,8 +437,6 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
   'no-kyc':     (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet'].includes(e)),
   '2026':       () => true,
-  'travel':      () => true,
-  'rewards':     (c: any) => (c.cashback_premium || c.cashback_base || 0) > 0,
 };
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   best:         (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
@@ -626,8 +448,6 @@ const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   beginner:     (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   'no-kyc':     (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   '2026':       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
-  'travel':      (a: any, b: any) => (b.trust_score || 0) - (a.trust_score || 0),
-  'rewards':     (a: any, b: any) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
 };
 const THEME_LIMIT: Record<string, number> = { best: 15 };
 
@@ -670,37 +490,6 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     description: config?.description || '',
   });
 
-  /* Hreflang alternate tags */
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-thematic]').forEach((el) => el.remove());
-
-    (['fr', 'de', 'es', 'it', 'en'] as const).forEach((l) => {
-      const slug = THEMATIC_SLUGS[theme]?.[l];
-      if (!slug) return;
-      const link = document.createElement('link');
-      link.rel = 'alternate';
-      link.hreflang = l;
-      link.href = `${BASE}/${l}/${slug}`;
-      link.setAttribute('data-hreflang-thematic', 'true');
-      document.head.appendChild(link);
-    });
-
-    const frSlug = THEMATIC_SLUGS[theme]?.['fr'];
-    if (frSlug) {
-      const xd = document.createElement('link');
-      xd.rel = 'alternate';
-      xd.hreflang = 'x-default';
-      xd.href = `${BASE}/fr/${frSlug}`;
-      xd.setAttribute('data-hreflang-thematic', 'true');
-      document.head.appendChild(xd);
-    }
-
-    return () => {
-      document.querySelectorAll('link[data-hreflang-thematic]').forEach((el) => el.remove());
-    };
-  }, [theme]);
-
   /* Schema.org */
   useEffect(() => {
     if (!config) return;
@@ -741,29 +530,6 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     };
   }, [config, filteredCards, faqs, lang, segment]);
 
-  /* BreadcrumbList Schema.org */
-  useEffect(() => {
-    if (!config) return;
-    const BASE = 'https://topcryptocards.eu';
-    const HOME_LABELS: Record<string, string> = {
-      fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
-    };
-    document.getElementById('schema-breadcrumb-thematic')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-breadcrumb-thematic';
-    el.type = 'application/ld+json';
-    el.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: HOME_LABELS[lang] ?? 'Home', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: config.h1, item: window.location.href.split('?')[0] },
-      ],
-    });
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-breadcrumb-thematic')?.remove(); };
-  }, [config, lang]);
-
   if (!config) return null;
 
   const L = {
@@ -790,14 +556,6 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         {' · '}
         <span className="text-cyan-400">{loading ? '…' : filteredCards.length}</span>{' '}{t('cards')}
       </p>
-      {/* ── Featured snippet block — position zéro ── */}
-      {THEME_SNIPPET[theme]?.[lang] && (
-        <div
-          className="max-w-3xl mb-6 p-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 text-slate-300 text-sm leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: THEME_SNIPPET[theme][lang] || THEME_SNIPPET[theme]['en'] || '' }}
-        />
-      )}
-
       <p className="text-slate-300 mb-8 max-w-3xl leading-relaxed">{config.intro}</p>
 
       {/* Card grid */}
@@ -846,24 +604,6 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         </div>
       )}
 
-      {/* ── Extended guide content ───────────────────────────────── */}
-      {(() => {
-        const guide = THEMATIC_GUIDES[theme]?.[lang] ?? THEMATIC_GUIDES[theme]?.['fr'];
-        if (!guide) return null;
-        return (
-          <div
-            className="mt-4 mb-10 max-w-3xl prose-thematic"
-            style={{ color: '#94a3b8', lineHeight: '1.75' }}
-            dangerouslySetInnerHTML={{ __html: guide
-              .replace(/<h2>/g, '<h2 style="font-size:1.15rem;font-weight:700;color:#f1f5f9;margin:1.5rem 0 0.75rem">')
-              .replace(/<h3>/g, '<h3 style="font-size:1rem;font-weight:600;color:#cbd5e1;margin:1.25rem 0 0.5rem">')
-              .replace(/<p>/g, '<p style="margin-bottom:0.85rem;font-size:0.9rem">')
-              .replace(/<strong>/g, '<strong style="color:#e2e8f0">')
-            }}
-          />
-        );
-      })()}
-
       {/* Outro */}
       <p className="text-slate-300 mb-10 max-w-3xl leading-relaxed border-l-2 border-cyan-500/30 pl-4 italic">
         {config.outro}
@@ -887,62 +627,6 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           <span className="ml-auto text-cyan-accent/50 group-hover:text-cyan-accent transition-colors text-lg">→</span>
         </Link>
       </div>
-
-      {/* ── Comparaisons directes entre les top cartes du thème ── */}
-      {THEME_COMPARISONS[theme] && THEME_COMPARISONS[theme].length > 0 && (
-        <section className="mb-12">
-          <h2 className="text-xl font-bold text-white mb-4">{COMPARE_SECTION_LABEL[lang] || COMPARE_SECTION_LABEL.fr}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl">
-            {THEME_COMPARISONS[theme].map(([a, b]) => (
-              <Link
-                key={`${a}-${b}`}
-                to={`/${lang}/${COMPARE_SEG[lang] || 'comparer'}/${comparisonSlug(a, b)}`}
-                className="flex items-center justify-between gap-3 p-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all group text-sm"
-              >
-                <div>
-                  <span className="font-semibold text-white group-hover:text-cyan-accent transition-colors">
-                    {CARD_NAMES[a] || a}
-                  </span>
-                  <span className="text-slate-500 mx-2">vs</span>
-                  <span className="font-semibold text-white group-hover:text-cyan-accent transition-colors">
-                    {CARD_NAMES[b] || b}
-                  </span>
-                </div>
-                <span className="text-cyan-accent/50 group-hover:text-cyan-accent transition-colors shrink-0">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* ── Autres thèmes liés ── */}
-      {(() => {
-        const related = (['best','cashback','no-fees','no-staking','no-kyc','travel','rewards','2026'] as const)
-          .filter(t => t !== theme && THEMATIC_SLUGS[t]?.[lang]);
-        if (related.length === 0) return null;
-        return (
-          <section className="mb-12">
-            <h2 className="text-xl font-bold text-white mb-4">
-              {lang === 'de' ? 'Weitere Kategorien' :
-               lang === 'es' ? 'Otras categorías' :
-               lang === 'it' ? 'Altre categorie' :
-               lang === 'en' ? 'Related categories' :
-               'Autres catégories'}
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {related.map(t => (
-                <Link
-                  key={t}
-                  to={`/${lang}/${THEMATIC_SLUGS[t][lang] || THEMATIC_SLUGS[t].fr}`}
-                  className="px-4 py-2 rounded-full bg-bg-card border border-bg-border hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300"
-                >
-                  {THEMATIC_LABELS[t]?.[lang] || THEMATIC_LABELS[t]?.fr}
-                </Link>
-              ))}
-            </div>
-          </section>
-        );
-      })()}
 
       {/* FAQ */}
       {faqs.length > 0 && (

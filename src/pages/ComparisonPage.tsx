@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -19,7 +19,7 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
-import { getSpecificComparison, type ComparisonSpecific } from '../data/comparisonContent';
+import { getSpecificComparison } from '../data/comparisonContent';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -37,15 +37,10 @@ type SeoBlock = { heading: string; body: string };
 function getSeoText(
   lang: string,
   card1: CryptoCard | null,
-  card2: CryptoCard | null,
-  specific?: ComparisonSpecific | null,
+  card2: CryptoCard | null
 ): SeoBlock[] {
   const n1 = card1?.name ?? '…';
   const n2 = card2?.name ?? '…';
-
-  // Per-lang intro/verdict overrides from comparisonContent.ts
-  const introKey = `${lang}_intro` as keyof ComparisonSpecific;
-  const verdictKey = `${lang}_verdict` as keyof ComparisonSpecific;
 
   const blocks: Record<string, SeoBlock[]> = {
     fr: [
@@ -140,20 +135,7 @@ function getSeoText(
     ],
   };
 
-  const base = blocks[lang] ?? blocks.en;
-
-  // Apply specific overrides for intro (block[0]) and verdict (block[3])
-  if (specific) {
-    const specificIntro = specific[introKey] as string | undefined;
-    const specificVerdict = specific[verdictKey] as string | undefined;
-    return base.map((block, i) => {
-      if (i === 0 && specificIntro) return { ...block, body: specificIntro };
-      if (i === base.length - 1 && specificVerdict) return { ...block, body: specificVerdict };
-      return block;
-    });
-  }
-
-  return base;
+  return blocks[lang] ?? blocks.en;
 }
 
 // ─── Row definition ───────────────────────────────────────────────────────────
@@ -228,8 +210,23 @@ export default function ComparisonPage() {
   const card2 = allCards.find((c) => c.id === id2) ?? null;
 
   const rows = getRows(t);
-  const specific = id1 && id2 ? getSpecificComparison(id1, id2) : null;
-  const seoBlocks = getSeoText(lang, card1, card2, specific);
+  const genericBlocks = getSeoText(lang, card1, card2);
+  const specificContent = card1 && card2 ? getSpecificComparison(card1.id, card2.id) : null;
+
+  // Merge: replace intro (block 0) and verdict (block 3) with specific content when available
+  const seoBlocks = genericBlocks.map((block, i) => {
+    if (!specificContent) return block;
+    const langKey = lang as string;
+    if (i === 0) {
+      const intro = (specificContent as Record<string, string>)[`${langKey}_intro`] ?? specificContent.fr_intro;
+      return intro ? { ...block, body: intro } : block;
+    }
+    if (i === genericBlocks.length - 1) {
+      const verdict = (specificContent as Record<string, string>)[`${langKey}_verdict`] ?? specificContent.fr_verdict;
+      return verdict ? { ...block, body: verdict } : block;
+    }
+    return block;
+  });
 
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
@@ -240,93 +237,6 @@ export default function ComparisonPage() {
       ? comparisonSeo.desc(card1.name, card2.name)
       : '',
   });
-
-  // ── Hreflang alternate tags ───────────────────────────────────────────────
-  useEffect(() => {
-    if (!slug) return;
-
-    const COMPARE_SEGS: Record<string, string> = {
-      fr: 'comparer',
-      de: 'vergleichen',
-      es: 'comparar',
-      it: 'confrontare',
-      en: 'compare',
-    };
-    const BASE = 'https://topcryptocards.eu';
-
-    // Remove previously injected hreflang links
-    document.querySelectorAll('link[data-hreflang-compare]').forEach((el) => el.remove());
-
-    Object.entries(COMPARE_SEGS).forEach(([l, seg]) => {
-      const link = document.createElement('link');
-      link.rel = 'alternate';
-      link.hreflang = l;
-      link.href = `${BASE}/${l}/${seg}/${slug}`;
-      link.setAttribute('data-hreflang-compare', 'true');
-      document.head.appendChild(link);
-    });
-
-    // x-default → French version
-    const xDefault = document.createElement('link');
-    xDefault.rel = 'alternate';
-    xDefault.hreflang = 'x-default';
-    xDefault.href = `${BASE}/fr/comparer/${slug}`;
-    xDefault.setAttribute('data-hreflang-compare', 'true');
-    document.head.appendChild(xDefault);
-
-    return () => {
-      document.querySelectorAll('link[data-hreflang-compare]').forEach((el) => el.remove());
-    };
-  }, [slug]);
-
-  // ── FAQPage schema for specific pairs ────────────────────────────────────
-  useEffect(() => {
-    if (!specific?.faq || specific.faq.length === 0) return;
-    document.getElementById('schema-faq-compare')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-faq-compare';
-    el.type = 'application/ld+json';
-    el.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: specific.faq.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    });
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-faq-compare')?.remove(); };
-  }, [specific]);
-
-  // ── BreadcrumbList schema ─────────────────────────────────────────────────
-  useEffect(() => {
-    if (!card1 || !card2 || !slug) return;
-    const COMPARE_LABELS: Record<string, string> = {
-      fr: 'Comparer', de: 'Vergleichen', es: 'Comparar', it: 'Confrontare', en: 'Compare',
-    };
-    const COMPARE_SEGS: Record<string, string> = {
-      fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
-    };
-    const BASE = 'https://topcryptocards.eu';
-    const seg = COMPARE_SEGS[lang] ?? 'compare';
-    const label = COMPARE_LABELS[lang] ?? 'Compare';
-    document.getElementById('schema-breadcrumb-compare')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-breadcrumb-compare';
-    el.type = 'application/ld+json';
-    el.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'TopCryptoCards', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: label, item: `${BASE}/${lang}/${seg}` },
-        { '@type': 'ListItem', position: 3, name: `${card1.name} vs ${card2.name}`, item: `${BASE}/${lang}/${seg}/${slug}` },
-      ],
-    });
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-breadcrumb-compare')?.remove(); };
-  }, [card1, card2, slug, lang]);
 
   // Not found state
   if (allCards.length > 0 && (!card1 || !card2)) {
@@ -636,21 +546,17 @@ export default function ComparisonPage() {
         ))}
       </section>
 
-      {/* ── FAQ (pair-specific, FR) ──────────────────────────────── */}
-      {specific?.faq && specific.faq.length > 0 && (
+      {/* ── FAQ section (specific pairs only) ───────────────────── */}
+      {specificContent?.faq && specificContent.faq.length > 0 && (
         <section className="mt-10">
           <h2 className="text-lg font-display font-semibold text-white mb-5">
-            {lang === 'de' ? 'Häufig gestellte Fragen' :
-             lang === 'es' ? 'Preguntas frecuentes' :
-             lang === 'it' ? 'Domande frequenti' :
-             lang === 'en' ? 'Frequently asked questions' :
-             'Questions fréquentes'}
+            {lang === 'fr' ? 'Questions fréquentes' : lang === 'de' ? 'Häufige Fragen' : lang === 'es' ? 'Preguntas frecuentes' : lang === 'it' ? 'Domande frequenti' : 'Frequently Asked Questions'}
           </h2>
           <div className="space-y-4">
-            {specific.faq.map((item, i) => (
+            {specificContent.faq.map((item, i) => (
               <div key={i} className="card-surface p-5">
-                <h3 className="font-semibold text-white mb-2 text-sm">{item.q}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+                <h3 className="text-sm font-semibold text-white mb-2">{item.q}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>

@@ -1,5 +1,6 @@
-# Redirect old sitemap.xml to new index
-/sitemap.xml    /sitemap-index.xml    301
-
 # SPA fallback — must be last
+<<<<<<< HEAD
 /*  /index.html  200
+=======
+/*  /index.html  200
+>>>>>>> origin/main
