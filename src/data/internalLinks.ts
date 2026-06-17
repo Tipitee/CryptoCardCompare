@@ -190,17 +190,24 @@ export const THEME_COMPARISONS: Record<string, [string, string][]> = {
     ['binance-card', 'nexo-card'],
     ['binance-card', 'bybit-card'],
     ['binance-card', 'crypto-com-midnight-blue'],
+    ['brighty-card', 'nexo-card'],
+    ['brighty-card', 'bybit-card'],
   ],
   'no-fees': [
     ['coinbase-card', 'nexo-card'],
     ['coinbase-card', 'wirex-elite'],
     ['bybit-card', 'nexo-card'],
+    ['brighty-card', 'nexo-card'],
+    ['gnosis-pay-card', 'nexo-card'],
   ],
   'no-staking': [
     ['bybit-card', 'coinbase-card'],
     ['coinbase-card', 'nexo-card'],
     ['bybit-card', 'nexo-card'],
     ['coinbase-card', 'wirex-elite'],
+    ['brighty-card', 'nexo-card'],
+    ['gnosis-pay-card', 'nexo-card'],
+    ['metamask-card', 'nexo-card'],
   ],
   'france': [
     ['bybit-card', 'nexo-card'],
@@ -220,12 +227,16 @@ export const THEME_COMPARISONS: Record<string, [string, string][]> = {
     ['bybit-card', 'okx-card'],
     ['binance-card', 'okx-card'],
     ['bybit-card', 'nexo-card'],
+    ['gnosis-pay-card', 'nexo-card'],
+    ['metamask-card', 'nexo-card'],
   ],
   '2026': [
     ['bybit-card', 'nexo-card'],
     ['binance-card', 'nexo-card'],
     ['binance-card', 'bybit-card'],
     ['bybit-card', 'crypto-com-midnight-blue'],
+    ['brighty-card', 'nexo-card'],
+    ['gnosis-pay-card', 'nexo-card'],
   ],
 };
 
@@ -259,6 +270,15 @@ export const TAG_TO_CARD_ID: Record<string, string> = {
   'okx card': 'okx-card',
   'wirex': 'wirex-elite',
   'bitpanda': 'bitpanda-card',
+  'ledger': 'ledger-card',
+  'ledger card': 'ledger-card',
+  'gnosis': 'gnosis-pay-card',
+  'gnosis pay': 'gnosis-pay-card',
+  'gnosis pay card': 'gnosis-pay-card',
+  'metamask': 'metamask-card',
+  'metamask card': 'metamask-card',
+  'brighty': 'brighty-card',
+  'brighty card': 'brighty-card',
 };
 
 // ── Tags → thematic themes (for BlogPost "Voir aussi") ───────────────────────
