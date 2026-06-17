@@ -74,6 +74,49 @@ export default function Layout() {
     loadFavorites();
   }, [loadCards, loadFavorites, lang]);
 
+  // ── Global Organization + WebSite schema (E-E-A-T) ────────────────────────
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://topcryptocards.eu/#organization',
+          name: 'TopCryptoCards',
+          url: 'https://topcryptocards.eu',
+          logo: {
+            '@type': 'ImageObject',
+            '@id': 'https://topcryptocards.eu/#logo',
+            url: 'https://topcryptocards.eu/og-default.jpg',
+            width: 1200,
+            height: 630,
+          },
+          foundingDate: '2024',
+          email: 'hello@topcryptocards.eu',
+          areaServed: ['FR', 'DE', 'ES', 'IT', 'EU'],
+          knowsAbout: ['cryptocurrency cards', 'crypto cashback', 'MiCA regulation', 'crypto payments'],
+          description: 'Independent crypto card comparison platform covering France, Germany, Spain, Italy and the UK.',
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://topcryptocards.eu/#website',
+          url: 'https://topcryptocards.eu',
+          name: 'TopCryptoCards',
+          description: 'Compare the best crypto debit cards — cashback, fees, staking requirements and availability.',
+          publisher: { '@id': 'https://topcryptocards.eu/#organization' },
+        },
+      ],
+    };
+    const existing = document.getElementById('schema-global-org');
+    if (!existing) {
+      const el = document.createElement('script');
+      el.id = 'schema-global-org';
+      el.type = 'application/ld+json';
+      el.textContent = JSON.stringify(schema);
+      document.head.appendChild(el);
+    }
+  }, []);
+
   // Close guides dropdown on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {

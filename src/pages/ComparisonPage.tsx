@@ -19,6 +19,7 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getSpecificComparison, type ComparisonSpecific } from '../data/comparisonContent';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -36,10 +37,15 @@ type SeoBlock = { heading: string; body: string };
 function getSeoText(
   lang: string,
   card1: CryptoCard | null,
-  card2: CryptoCard | null
+  card2: CryptoCard | null,
+  specific?: ComparisonSpecific | null,
 ): SeoBlock[] {
   const n1 = card1?.name ?? '…';
   const n2 = card2?.name ?? '…';
+
+  // Per-lang intro/verdict overrides from comparisonContent.ts
+  const introKey = `${lang}_intro` as keyof ComparisonSpecific;
+  const verdictKey = `${lang}_verdict` as keyof ComparisonSpecific;
 
   const blocks: Record<string, SeoBlock[]> = {
     fr: [
@@ -134,7 +140,20 @@ function getSeoText(
     ],
   };
 
-  return blocks[lang] ?? blocks.en;
+  const base = blocks[lang] ?? blocks.en;
+
+  // Apply specific overrides for intro (block[0]) and verdict (block[3])
+  if (specific) {
+    const specificIntro = specific[introKey] as string | undefined;
+    const specificVerdict = specific[verdictKey] as string | undefined;
+    return base.map((block, i) => {
+      if (i === 0 && specificIntro) return { ...block, body: specificIntro };
+      if (i === base.length - 1 && specificVerdict) return { ...block, body: specificVerdict };
+      return block;
+    });
+  }
+
+  return base;
 }
 
 // ─── Row definition ───────────────────────────────────────────────────────────
@@ -209,7 +228,8 @@ export default function ComparisonPage() {
   const card2 = allCards.find((c) => c.id === id2) ?? null;
 
   const rows = getRows(t);
-  const seoBlocks = getSeoText(lang, card1, card2);
+  const specific = id1 && id2 ? getSpecificComparison(id1, id2) : null;
+  const seoBlocks = getSeoText(lang, card1, card2, specific);
 
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
@@ -258,6 +278,26 @@ export default function ComparisonPage() {
       document.querySelectorAll('link[data-hreflang-compare]').forEach((el) => el.remove());
     };
   }, [slug]);
+
+  // ── FAQPage schema for specific pairs ────────────────────────────────────
+  useEffect(() => {
+    if (!specific?.faq || specific.faq.length === 0) return;
+    document.getElementById('schema-faq-compare')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-faq-compare';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: specific.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    });
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-faq-compare')?.remove(); };
+  }, [specific]);
 
   // Not found state
   if (allCards.length > 0 && (!card1 || !card2)) {
@@ -566,6 +606,27 @@ export default function ComparisonPage() {
           </div>
         ))}
       </section>
+
+      {/* ── FAQ (pair-specific, FR) ──────────────────────────────── */}
+      {specific?.faq && specific.faq.length > 0 && (
+        <section className="mt-10">
+          <h2 className="text-lg font-display font-semibold text-white mb-5">
+            {lang === 'de' ? 'Häufig gestellte Fragen' :
+             lang === 'es' ? 'Preguntas frecuentes' :
+             lang === 'it' ? 'Domande frequenti' :
+             lang === 'en' ? 'Frequently asked questions' :
+             'Questions fréquentes'}
+          </h2>
+          <div className="space-y-4">
+            {specific.faq.map((item, i) => (
+              <div key={i} className="card-surface p-5">
+                <h3 className="font-semibold text-white mb-2 text-sm">{item.q}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA strip */}
       <div className="mt-12 card-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">

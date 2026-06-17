@@ -138,7 +138,10 @@ export default function CardDetail() {
       description: article?.excerpt || seoDesc,
       url: `https://topcryptocards.eu/${lang}/${CARD_SEGMENT[lang] || 'cards'}/${card.id}`,
       image: card.realCardImage || '',
+      dateModified: article?.updated_at || '2026-06-16',
       provider: { '@type': 'Organization', name: card.issuer },
+      author: { '@id': 'https://topcryptocards.eu/#organization' },
+      publisher: { '@id': 'https://topcryptocards.eu/#organization' },
       feesAndCommissionsSpecification: card.annualFees > 0 ? `${card.annualFees} €/an` : 'Gratuit',
       offers: {
         '@type': 'Offer',
