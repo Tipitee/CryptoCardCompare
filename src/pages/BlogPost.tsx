@@ -96,6 +96,28 @@ export default function BlogPost() {
     return () => { document.getElementById('schema-article')?.remove(); };
   }, [post]);
 
+  // BreadcrumbList schema
+  useEffect(() => {
+    if (!post || !slug) return;
+    const BASE = 'https://topcryptocards.eu';
+    const blogSeg = 'blog'; // same in all langs
+    document.getElementById('schema-breadcrumb-blog')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-breadcrumb-blog';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'TopCryptoCards', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/${lang}/${blogSeg}` },
+        { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE}/${lang}/${blogSeg}/${slug}` },
+      ],
+    });
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-breadcrumb-blog')?.remove(); };
+  }, [post, slug, lang]);
+
   if (loading) {
     return (
       <div className="container-app py-12 max-w-4xl">

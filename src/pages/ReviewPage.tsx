@@ -265,6 +265,31 @@ export default function ReviewPage() {
     return () => { document.getElementById('schema-review-page')?.remove(); };
   }, [review, lang, slug]);
 
+  // BreadcrumbList schema
+  useEffect(() => {
+    if (!review || !slug) return;
+    const BASE = 'https://topcryptocards.eu';
+    const REVIEW_LABELS: Record<string, string> = {
+      fr: 'Avis cartes crypto', de: 'Krypto-Karten Bewertungen',
+      es: 'Opiniones tarjetas crypto', it: 'Recensioni carte crypto', en: 'Crypto card reviews',
+    };
+    document.getElementById('schema-breadcrumb-review')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-breadcrumb-review';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'TopCryptoCards', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: REVIEW_LABELS[lang] ?? 'Reviews', item: `${BASE}/${lang}/${REVIEW_SEG[lang] ?? 'avis'}` },
+        { '@type': 'ListItem', position: 3, name: review.cardName, item: `${BASE}/${lang}/${REVIEW_SEG[lang] ?? 'avis'}/${slug}` },
+      ],
+    });
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-breadcrumb-review')?.remove(); };
+  }, [review, slug, lang]);
+
   const breakdownItems = [
     { key: 'cashback', label: c.breakdownLabels.cashback, icon: DollarSign },
     { key: 'frais', label: c.breakdownLabels.frais, icon: CreditCard },

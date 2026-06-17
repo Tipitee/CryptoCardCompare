@@ -173,6 +173,135 @@ export const THEMATIC_GUIDES: Record<string, Partial<Record<string, string>>> = 
 <p>Si la vie privée financière est votre priorité principale, les cartes crypto ne sont pas l'outil le plus adapté : chaque transaction est enregistrée sur la blockchain. Les solutions de paiement en espèces ou les protocoles de confidentialité (Monero, Zcash) offrent un niveau de confidentialité plus élevé, mais sans les avantages de la carte Visa/Mastercard.</p>`,
   },
 
+
+  'travel': {
+    fr: `<h2>Meilleures cartes crypto pour voyager en ${YEAR}</h2>
+<p>Voyager avec une carte crypto permet d'éviter les frais de change traditionnels, de dépenser directement en devises locales et de profiter de cashbacks en crypto. Tour d'horizon des meilleures options en ${YEAR}.</p>
+<h3>Frais de change à l'étranger : crypto vs banque classique</h3>
+<p>La plupart des banques traditionnelles facturent 1,5 % à 3 % de frais sur les transactions en devises étrangères. Les meilleures cartes crypto (Wirex Elite, Crypto.com Ruby Steel, Binance Card) proposent 0 % de frais de change jusqu'à un certain plafond mensuel. Au-delà, des frais réduits s'appliquent.</p>
+<h3>Distributeurs automatiques (ATM) à l'étranger</h3>
+<p>Les retraits ATM sont souvent gratuits sur les cartes premium. La Crypto.com Ruby Steel offre 200 €/mois de retrait gratuit, la Wirex Elite jusqu'à 400 €. Au-delà de ces plafonds, des frais de 2 % s'appliquent généralement. Vérifiez toujours si le distributeur local applique ses propres frais (souvent contournables en refusant la conversion proposée par l'ATM).</p>
+<h3>Cashback en voyage</h3>
+<p>Certaines cartes offrent un cashback bonusé sur les achats de voyage (billets d'avion, hôtels, transport). La Crypto.com Jade Green (tier supérieur) rembourse jusqu'à 100 % du coût Spotify ou Netflix, ce qui peut compenser les frais de staking. Pour les voyageurs fréquents, le rapport staking/avantages doit être soigneusement calculé.</p>
+<h3>Cartes recommandées pour voyager en ${YEAR}</h3>
+<p><strong>Wirex Elite</strong> : 400 €/mois de retrait ATM gratuit, 0 % de frais de change jusqu'à 10 000 €/mois, cashback WXT. Idéale pour les grands voyageurs.<br/>
+<strong>Crypto.com Ruby Steel</strong> : 200 €/mois ATM gratuit, 0 % frais change, 1 % cashback CRO, accès lounges aéroports (tier supérieur). Bon rapport qualité/prix.<br/>
+<strong>Binance Card</strong> : 0 % frais de change, cashback BNB ou USDT, pas de minimum de staking. Parfaite pour les débutants.<br/>
+<strong>Coinbase Card</strong> : Disponible en Europe, cashback en crypto au choix, pas de frais de change sur Visa. Simple et efficace.</p>
+<h3>Précautions avant de partir</h3>
+<p>Prévenez toujours votre émetteur de carte avant un voyage (via l'app). Assurez-vous d'avoir suffisamment de crypto converti en stablecoin pour éviter de vendre au mauvais moment. Gardez toujours une carte de backup classique en cas de problème réseau crypto.</p>`,
+    de: `<h2>Beste Krypto-Karten für Reisen ${YEAR}</h2>
+<p>Mit einer Krypto-Karte im Urlaub sparen Sie Wechselgebühren und profitieren von Crypto-Cashback. Ein Überblick über die besten Optionen in ${YEAR}.</p>
+<h3>Wechselgebühren: Krypto vs. Hausbank</h3>
+<p>Traditionelle Banken berechnen 1,5–3 % Fremdwährungsgebühren. Die besten Krypto-Karten (Wirex Elite, Binance Card) bieten bis zu einem monatlichen Limit 0 % Wechselgebühren. Danach fallen reduzierte Gebühren an.</p>
+<h3>Geldautomaten im Ausland</h3>
+<p>Kostenlose ATM-Abhebungen sind bei Premium-Karten bis zu einem Monatslimit möglich: Wirex Elite bis 400 €, Crypto.com Ruby Steel bis 200 €. Lehnen Sie am Geldautomaten immer die angebotene Währungsumrechnung ab – das spart zusätzliche Gebühren.</p>
+<h3>Empfohlene Karten für Reisende ${YEAR}</h3>
+<p><strong>Wirex Elite</strong>: 400 €/Monat kostenlose ATM-Abhebungen, 0 % Wechselgebühren bis 10.000 €/Monat, WXT-Cashback.<br/>
+<strong>Binance Card</strong>: 0 % Wechselgebühren, Cashback in BNB oder USDT, kein Mindest-Staking. Ideal für Einsteiger.<br/>
+<strong>Crypto.com Ruby Steel</strong>: 200 €/Monat ATM, 1 % CRO-Cashback, Flughafen-Lounge-Zugang (höhere Tiers).</p>
+<h3>Reisevorbereitung</h3>
+<p>Informieren Sie Ihren Kartenanbieter vor Reiseantritt über die App. Halten Sie genug Stablecoins bereit und führen Sie immer eine klassische Backup-Karte mit.</p>`,
+    es: `<h2>Mejores tarjetas crypto para viajar en ${YEAR}</h2>
+<p>Viajar con una tarjeta crypto permite evitar comisiones de cambio y ganar cashback en criptomonedas. Repaso de las mejores opciones en ${YEAR}.</p>
+<h3>Comisiones de cambio: crypto vs. banco tradicional</h3>
+<p>Los bancos tradicionales cobran entre 1,5 % y 3 % en transacciones en moneda extranjera. Las mejores tarjetas crypto ofrecen 0 % de comisión hasta un límite mensual. La Wirex Elite cubre hasta 10.000 €/mes sin comisión de cambio.</p>
+<h3>Cajeros automáticos en el extranjero</h3>
+<p>Retiros gratuitos en cajeros hasta ciertos límites: Wirex Elite hasta 400 €/mes, Crypto.com Ruby Steel hasta 200 €. Rechace siempre la conversión propuesta por el cajero para evitar cargos adicionales.</p>
+<h3>Tarjetas recomendadas para viajar en ${YEAR}</h3>
+<p><strong>Wirex Elite</strong>: 400 €/mes de retiro en cajero gratis, 0 % comisión de cambio hasta 10.000 €/mes, cashback WXT.<br/>
+<strong>Binance Card</strong>: 0 % comisión de cambio, cashback en BNB o USDT, sin staking mínimo.<br/>
+<strong>Crypto.com Ruby Steel</strong>: 200 €/mes cajero gratuito, 1 % cashback CRO, acceso a salas VIP en aeropuertos.</p>
+<h3>Consejos antes de partir</h3>
+<p>Avise a su proveedor antes del viaje. Mantenga suficientes stablecoins cargados y lleve siempre una tarjeta de respaldo clásica.</p>`,
+    it: `<h2>Migliori carte crypto per viaggiare nel ${YEAR}</h2>
+<p>Viaggiare con una carta crypto permette di evitare le commissioni di cambio tradizionali e guadagnare cashback in criptovalute. Panoramica delle migliori opzioni nel ${YEAR}.</p>
+<h3>Commissioni di cambio: crypto vs. banca tradizionale</h3>
+<p>Le banche tradizionali addebitano dall'1,5 % al 3 % sulle transazioni in valuta estera. Le migliori carte crypto offrono 0 % di commissioni fino a un limite mensile. Wirex Elite copre fino a 10.000 €/mese senza commissioni di cambio.</p>
+<h3>Prelievi ATM all'estero</h3>
+<p>Prelievi gratuiti fino a certi limiti mensili: Wirex Elite fino a 400 €, Crypto.com Ruby Steel fino a 200 €. Rifiutate sempre la conversione proposta dall'ATM per evitare costi aggiuntivi.</p>
+<h3>Carte consigliate per i viaggiatori nel ${YEAR}</h3>
+<p><strong>Wirex Elite</strong>: 400 €/mese di prelievo ATM gratuito, 0 % commissioni di cambio fino a 10.000 €/mese, cashback WXT.<br/>
+<strong>Binance Card</strong>: 0 % commissioni di cambio, cashback in BNB o USDT, nessuno staking minimo.<br/>
+<strong>Crypto.com Ruby Steel</strong>: 200 €/mese ATM gratuito, 1 % cashback CRO, accesso lounge aeroportuali.</p>
+<h3>Consigli prima di partire</h3>
+<p>Avvisate il vostro fornitore prima del viaggio tramite l'app. Tenete stablecoin sufficienti caricate e portate sempre una carta di riserva classica.</p>`,
+    en: `<h2>Best Crypto Cards for Travel in ${YEAR}</h2>
+<p>Traveling with a crypto card lets you avoid traditional currency exchange fees, spend directly in local currencies, and earn crypto cashback. Here's the best lineup for ${YEAR}.</p>
+<h3>Foreign Exchange Fees: Crypto vs. Traditional Bank</h3>
+<p>Traditional banks charge 1.5–3 % on foreign currency transactions. The best crypto cards — Wirex Elite, Binance Card, Crypto.com Ruby Steel — offer 0 % forex fees up to a monthly cap. Beyond that, reduced fees apply.</p>
+<h3>ATM Withdrawals Abroad</h3>
+<p>Free ATM withdrawals are available up to a monthly limit: Wirex Elite covers up to €400/month, Crypto.com Ruby Steel up to €200. Always decline the currency conversion offered by ATMs — this avoids dynamic currency conversion fees.</p>
+<h3>Recommended Travel Cards for ${YEAR}</h3>
+<p><strong>Wirex Elite</strong>: €400/month free ATM, 0 % forex up to €10,000/month, WXT cashback.<br/>
+<strong>Binance Card</strong>: 0 % forex fees, BNB or USDT cashback, no minimum staking. Great for beginners.<br/>
+<strong>Crypto.com Ruby Steel</strong>: €200/month free ATM, 1 % CRO cashback, airport lounge access (higher tiers).</p>
+<h3>Before You Travel</h3>
+<p>Notify your card provider before departure via the app. Keep enough stablecoins loaded to avoid selling at the wrong time, and always carry a backup traditional card just in case.</p>`,
+  },
+
+  'rewards': {
+    fr: `<h2>Meilleures cartes crypto avec cashback et récompenses en ${YEAR}</h2>
+<p>Le cashback crypto est l'un des avantages les plus attractifs des cartes crypto. Mais tous les programmes de récompenses ne se valent pas. Guide complet des meilleurs systèmes en ${YEAR}.</p>
+<h3>Les différents types de cashback crypto</h3>
+<p>Il existe trois grandes catégories : (1) le cashback en tokens propriétaires (CRO pour Crypto.com, BNB pour Binance, WXT pour Wirex), (2) le cashback en crypto majeur (BTC, ETH, USDC) et (3) le cashback en stablecoin (USDT, USDC, EURE). Le cashback en tokens propriétaires offre souvent les taux les plus élevés, mais expose à la volatilité du token. Le cashback en BTC ou stablecoin est plus stable.</p>
+<h3>Comment comparer les taux de cashback réellement</h3>
+<p>Ne comparez pas seulement les pourcentages affichés. Vérifiez : (1) y a-t-il un staking requis ? (2) Y a-t-il un plafond mensuel ? (3) La valeur du token de cashback est-elle stable ? Un cashback de 3 % en CRO qui perd 50 % de sa valeur vaut effectivement 1,5 %. Un cashback de 1 % en USDC vaut toujours 1 %.</p>
+<h3>Les meilleurs programmes de récompenses en ${YEAR}</h3>
+<p><strong>Binance Card</strong> : jusqu'à 8 % de cashback en BNB (selon votre solde BNB), pas de staking requis. Le taux réel dépend du montant de BNB détenu.<br/>
+<strong>Wirex Elite</strong> : 2 % de cashback en WXT + bonus multiplier selon le niveau. Bon ratio si WXT maintient sa valeur.<br/>
+<strong>Bybit Card</strong> : jusqu'à 10 % de cashback sur certaines catégories (fuel, dining) pour les utilisateurs Bybit actifs. Limité à l'écosystème Bybit.<br/>
+<strong>Nexo Card</strong> : 2 % de cashback en NEXO ou BTC, directement depuis votre portefeuille Nexo. Sans staking séparé.</p>
+<h3>Maximiser ses récompenses : stratégies avancées</h3>
+<p>Pour maximiser vos récompenses, combinez une carte à fort cashback (Binance) pour les achats quotidiens avec une carte sans frais de change (Wirex) pour les voyages. Convertissez régulièrement votre cashback en stablecoin pour sécuriser les gains. Certaines plateformes (Bybit, Nexo) permettent de faire fructifier votre cashback via leur programme de staking/épargne.</p>
+<h3>Les pièges à éviter</h3>
+<p>Méfiez-vous des programmes à token propriétaire dont la valeur a fortement chuté (CRO, WXT en 2022-2023). Les programmes qui nécessitent un staking important immobilisent votre capital. Calculez toujours le coût d'opportunité du staking avant de vous engager sur un tier premium.</p>`,
+    de: `<h2>Beste Krypto-Karten mit Cashback und Prämien in ${YEAR}</h2>
+<p>Crypto-Cashback ist einer der attraktivsten Vorteile von Krypto-Karten – aber nicht alle Programme sind gleich gut. Der vollständige Leitfaden für ${YEAR}.</p>
+<h3>Arten von Krypto-Cashback</h3>
+<p>Es gibt drei Hauptkategorien: (1) Cashback in eigenen Tokens (CRO, BNB, WXT), (2) Cashback in Bitcoin oder ETH, (3) Cashback in Stablecoins (USDT, USDC). Token-Cashback bietet oft die höchsten Raten, unterliegt aber der Token-Volatilität. Stablecoin-Cashback ist stabiler.</p>
+<h3>Beste Prämienprogramme in ${YEAR}</h3>
+<p><strong>Binance Card</strong>: Bis zu 8 % Cashback in BNB (abhängig vom BNB-Guthaben), kein Staking erforderlich.<br/>
+<strong>Bybit Card</strong>: Bis zu 10 % auf bestimmte Kategorien (Kraftstoff, Gastronomie) für aktive Bybit-Nutzer.<br/>
+<strong>Nexo Card</strong>: 2 % Cashback in NEXO oder BTC direkt aus Ihrer Nexo-Wallet, ohne separates Staking.<br/>
+<strong>Wirex Elite</strong>: 2 % WXT-Cashback plus Multiplikator je nach Nutzerebene.</p>
+<h3>Prämien maximieren</h3>
+<p>Kombinieren Sie eine Karte mit hohem Cashback (Binance) für den Alltag mit einer gebührenfreien Reisekarte (Wirex). Konvertieren Sie Cashback regelmäßig in Stablecoins, um Gewinne zu sichern.</p>`,
+    es: `<h2>Mejores tarjetas crypto con cashback y recompensas en ${YEAR}</h2>
+<p>El cashback en crypto es uno de los mayores atractivos de las tarjetas crypto. Pero no todos los programas de recompensas son iguales. Guía completa para ${YEAR}.</p>
+<h3>Tipos de cashback crypto</h3>
+<p>Existen tres categorías: (1) cashback en tokens propios (CRO, BNB, WXT), (2) cashback en Bitcoin o ETH, (3) cashback en stablecoins. El cashback en tokens propios ofrece los tipos más altos, pero está expuesto a la volatilidad. El cashback en stablecoins es más predecible.</p>
+<h3>Mejores programas de recompensas en ${YEAR}</h3>
+<p><strong>Binance Card</strong>: Hasta 8 % de cashback en BNB según su saldo BNB, sin staking mínimo.<br/>
+<strong>Bybit Card</strong>: Hasta 10 % en categorías seleccionadas (gasolina, restaurantes) para usuarios Bybit activos.<br/>
+<strong>Nexo Card</strong>: 2 % de cashback en NEXO o BTC desde su cartera Nexo, sin staking separado.<br/>
+<strong>Wirex Elite</strong>: 2 % de cashback WXT más multiplicador según nivel de usuario.</p>
+<h3>Maximizar recompensas</h3>
+<p>Combine una tarjeta con alto cashback (Binance) para compras diarias con una tarjeta sin comisiones de cambio (Wirex) para viajes. Convierta el cashback regularmente a stablecoins para asegurar las ganancias.</p>`,
+    it: `<h2>Migliori carte crypto con cashback e premi nel ${YEAR}</h2>
+<p>Il cashback crypto è uno dei vantaggi più attrattivi delle carte crypto. Ma non tutti i programmi di ricompense sono uguali. Guida completa per il ${YEAR}.</p>
+<h3>Tipi di cashback crypto</h3>
+<p>Esistono tre categorie principali: (1) cashback in token proprietari (CRO, BNB, WXT), (2) cashback in Bitcoin o ETH, (3) cashback in stablecoin. Il cashback in token proprietari offre spesso le percentuali più alte, ma espone alla volatilità del token. Il cashback in stablecoin è più stabile e prevedibile.</p>
+<h3>Migliori programmi di premi nel ${YEAR}</h3>
+<p><strong>Binance Card</strong>: Fino all'8 % di cashback in BNB in base al saldo BNB, senza staking minimo.<br/>
+<strong>Bybit Card</strong>: Fino al 10 % su categorie selezionate (carburante, ristoranti) per utenti Bybit attivi.<br/>
+<strong>Nexo Card</strong>: 2 % di cashback in NEXO o BTC direttamente dal portafoglio Nexo, senza staking separato.<br/>
+<strong>Wirex Elite</strong>: 2 % di cashback WXT più moltiplicatore in base al livello utente.</p>
+<h3>Massimizzare i premi</h3>
+<p>Combinate una carta ad alto cashback (Binance) per gli acquisti quotidiani con una carta senza commissioni di cambio (Wirex) per i viaggi. Convertite regolarmente il cashback in stablecoin per consolidare i guadagni.</p>`,
+    en: `<h2>Best Crypto Cards for Cashback and Rewards in ${YEAR}</h2>
+<p>Crypto cashback is one of the most compelling features of crypto cards — but not all rewards programs are created equal. Complete guide for ${YEAR}.</p>
+<h3>Types of Crypto Cashback</h3>
+<p>There are three main categories: (1) cashback in proprietary tokens (CRO, BNB, WXT), (2) cashback in major crypto (BTC, ETH), and (3) cashback in stablecoins (USDT, USDC). Token cashback often has the highest headline rates but exposes you to token volatility. A 3 % CRO cashback that loses 50 % of its value is effectively 1.5 %. A 1 % USDC cashback is always 1 %.</p>
+<h3>Best Rewards Programs in ${YEAR}</h3>
+<p><strong>Binance Card</strong>: Up to 8 % cashback in BNB based on your BNB holdings, no mandatory staking lock-up.<br/>
+<strong>Bybit Card</strong>: Up to 10 % on selected categories (fuel, dining) for active Bybit users.<br/>
+<strong>Nexo Card</strong>: 2 % cashback in NEXO or BTC directly from your Nexo portfolio, no separate staking.<br/>
+<strong>Wirex Elite</strong>: 2 % WXT cashback plus a tier-based multiplier.</p>
+<h3>Maximizing Your Rewards</h3>
+<p>Combine a high-cashback card (Binance) for daily spending with a zero-forex card (Wirex) for travel. Regularly convert your cashback to stablecoins to lock in gains. Platforms like Bybit and Nexo let you compound cashback earnings through their savings/staking programs.</p>`,
+  },
+
   '2026': {
     fr: `<h2>Bilan du marché des cartes crypto en 2026</h2>
 <p>2026 marque un tournant pour les cartes crypto en Europe. Entre l'entrée en vigueur complète de MiCA, l'émergence de nouvelles cartes DeFi-native, et la consolidation des grands acteurs, voici les grandes tendances de l'année.</p>

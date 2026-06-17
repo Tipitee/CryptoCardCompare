@@ -95,6 +95,32 @@ export default function Home() {
     return () => { document.getElementById('schema-org-home')?.remove(); };
   }, [lang, homeSeo.desc]);
 
+  // WebSite schema with SearchAction (enables Google Sitelinks Searchbox)
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'TopCryptoCards',
+      url: 'https://topcryptocards.eu',
+      inLanguage: lang,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `https://topcryptocards.eu/${lang}/blog?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    };
+    document.getElementById('schema-website-home')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-website-home';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-website-home')?.remove(); };
+  }, [lang]);
+
   const FILTERS: { key: FilterKey; label: string }[] = [
     { key: 'all', label: t('filter_all') },
     { key: 'no_fees', label: t('filter_no_fees') },

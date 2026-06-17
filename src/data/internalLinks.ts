@@ -182,6 +182,8 @@ export const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   'beginner':   { fr:'cartes-crypto-debutant',        de:'krypto-karten-einsteiger',        es:'tarjetas-crypto-principiante',     it:'carte-crypto-principiante',       en:'beginner-crypto-cards' },
   'no-kyc':     { fr:'carte-crypto-sans-kyc',         de:'krypto-karte-ohne-kyc',           es:'tarjeta-cripto-sin-kyc',           it:'carta-cripto-senza-kyc',          en:'crypto-card-no-kyc' },
   '2026':       { fr:'meilleures-cartes-crypto-2026', de:'beste-krypto-karten-2026',        es:'mejores-tarjetas-crypto-2026',     it:'migliori-carte-crypto-2026',      en:'best-crypto-cards-2026' },
+  'travel':     { fr:'carte-crypto-voyage',           de:'krypto-karte-reise',              es:'tarjeta-cripto-viaje',             it:'carta-cripto-viaggio',           en:'crypto-card-travel' },
+  'rewards':    { fr:'carte-crypto-recompenses',      de:'krypto-karte-praemien',           es:'tarjeta-cripto-recompensas',       it:'carta-cripto-premi',             en:'crypto-card-rewards' },
 };
 
 // ── Thematic labels per lang ─────────────────────────────────────────────────
@@ -195,6 +197,8 @@ export const THEMATIC_LABELS: Record<string, Record<string, string>> = {
   'beginner':   { fr:'Pour débutants',                de:'Für Einsteiger',             es:'Para principiantes',         it:'Per principianti',             en:'For beginners' },
   'no-kyc':     { fr:'Sans KYC',                      de:'Ohne KYC',                   es:'Sin KYC',                    it:'Senza KYC',                    en:'No KYC' },
   '2026':       { fr:'Top cartes 2026',               de:'Top Karten 2026',            es:'Mejores tarjetas 2026',      it:'Migliori carte 2026',          en:'Top cards 2026' },
+  'travel':     { fr:'Cartes pour voyager',           de:'Karten fürs Reisen',         es:'Tarjetas para viajar',       it:'Carte per viaggiare',          en:'Cards for travel' },
+  'rewards':    { fr:'Meilleures récompenses',        de:'Beste Prämien',              es:'Mejores recompensas',        it:'Migliori premi',               en:'Best rewards' },
 };
 
 // ── Comparison pairs relevant to each theme ──────────────────────────────────
@@ -257,6 +261,18 @@ export const THEME_COMPARISONS: Record<string, [string, string][]> = {
     ['bybit-card', 'crypto-com-midnight-blue'],
     ['brighty-card', 'nexo-card'],
     ['gnosis-pay-card', 'nexo-card'],
+  ],
+  'travel': [
+    ['crypto-com-ruby-steel', 'wirex-elite'],
+    ['binance-card', 'wirex-elite'],
+    ['crypto-com-ruby-steel', 'binance-card'],
+    ['coinbase-card', 'wirex-elite'],
+  ],
+  'rewards': [
+    ['bybit-card', 'nexo-card'],
+    ['binance-card', 'wirex-elite'],
+    ['crypto-com-ruby-steel', 'wirex-elite'],
+    ['brighty-card', 'nexo-card'],
   ],
 };
 
@@ -321,4 +337,13 @@ export const TAG_TO_THEME: Record<string, string> = {
   'meilleure': 'best',
   'best': 'best',
   'comparatif': 'best',
+  'voyage': 'travel',
+  'travel': 'travel',
+  'reisen': 'travel',
+  'viaje': 'travel',
+  'retrait atm': 'travel',
+  'récompenses': 'rewards',
+  'rewards': 'rewards',
+  'prämien': 'rewards',
+  'recompensas': 'rewards',
 };
