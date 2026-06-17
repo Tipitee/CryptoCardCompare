@@ -83,6 +83,20 @@ const THEME_CONFIG: Record<string, Record<string, {
     it: { title:`Migliore Carta Crypto 2026 — Confronto Completo Aggiornato | TopCryptoCards`, h1:`Le Migliori Carte Crypto nel 2026`, description:`Qual è la migliore carta crypto nel 2026? Confronto completo con il miglior cashback, costi più bassi e massima affidabilità.`, intro:`Nel 2026, il mercato delle carte crypto si è profondamente evoluto. L'entrata in vigore di MiCA in Europa ha rafforzato gli standard di protezione degli utenti. Nuove carte sono apparse e le offerte sono migliorate. Questo confronto raccoglie le migliori opzioni del 2026, classificate per punteggio di fiducia e rapporto qualità/prezzo.`, outro:`Nel 2026, privilegia carte emesse da entità conformi a MiCA. La regolamentazione europea offre ora una protezione solida per i tuoi fondi. Confronta i tassi di cashback ma non trascurare l'affidabilità dell'emittente.` },
     en: { title:`Best Crypto Card 2026 — Complete Updated Comparison | TopCryptoCards`, h1:`The Best Crypto Cards in 2026`, description:`What is the best crypto card in 2026? Complete comparison of cards with the best cashback, lowest fees, and highest reliability for this year.`, intro:`In 2026, the crypto card market has evolved significantly. The MiCA regulation across Europe has strengthened user protection standards. New cards have emerged and existing offers have improved. This comparison covers the best options available in 2026, ranked by trust score and overall value for money.`, outro:`In 2026, prioritize MiCA-compliant cards issued by regulated entities. European regulation now provides solid protection for your funds. Compare cashback rates but don't overlook the issuer's reliability and regulatory track record.` },
   },
+  travel: {
+    fr: { title:`Carte Crypto Voyage ${YEAR} — Meilleure Carte pour Voyager | TopCryptoCards`, h1:`Meilleures Cartes Crypto pour Voyager en ${YEAR}`, description:`Quelle carte crypto choisir pour voyager en ${YEAR} ? Sans frais de change, cashback à l'étranger, acceptée dans 200 pays.`, intro:`Voyager avec une carte crypto offre de nombreux avantages : pas de frais de change excessifs, cashback en crypto sur chaque achat à l'étranger, et acceptation dans plus de 50 millions de points de vente Visa/Mastercard. Ces cartes sont idéales pour les digital nomads et les voyageurs fréquents qui souhaitent maximiser leurs dépenses à l'international.`, outro:`Pour voyager, privilégiez une carte sans frais de change et avec des plafonds de retrait généreux. La Crypto.com Obsidian offre même les lounges d'aéroport gratuitement. Pour les voyageurs occasionnels, Gnosis Pay ou MetaMask Card suffisent sans aucun frais annuel.` },
+    de: { title:`Krypto Karte Reise ${YEAR} — Beste Karte für Reisende | TopCryptoCards`, h1:`Beste Krypto-Karten für Reisende ${YEAR}`, description:`Welche Krypto-Karte für Reisen ${YEAR}? Keine Wechselgebühren, Cashback im Ausland, in 200 Ländern akzeptiert.`, intro:`Mit einer Krypto-Karte zu reisen bietet viele Vorteile: keine übermäßigen Wechselgebühren, Cashback in Krypto bei jedem Auslandskauf und Akzeptanz bei über 50 Millionen Händlern weltweit. Diese Karten sind ideal für digitale Nomaden und Vielreisende, die ihre internationalen Ausgaben maximieren möchten.`, outro:`Für Reisen wählen Sie eine Karte ohne Wechselgebühren und mit großzügigen Abhebungslimits. Die Crypto.com Obsidian bietet sogar kostenlose Flughafen-Lounges. Für Gelegenheitsreisende reichen Gnosis Pay oder MetaMask Card ohne Jahresgebühr vollkommen aus.` },
+    es: { title:`Tarjeta Crypto Viaje ${YEAR} — Mejor Tarjeta para Viajar | TopCryptoCards`, h1:`Mejores Tarjetas Crypto para Viajeros en ${YEAR}`, description:`¿Qué tarjeta crypto elegir para viajar en ${YEAR}? Sin comisiones de cambio, cashback en el extranjero, aceptada en 200 países.`, intro:`Viajar con una tarjeta crypto ofrece muchas ventajas: sin comisiones de cambio excesivas, cashback en crypto en cada compra en el extranjero y aceptación en más de 50 millones de comercios Visa/Mastercard. Estas tarjetas son ideales para nómadas digitales y viajeros frecuentes que desean maximizar sus gastos internacionales.`, outro:`Para viajar, elige una tarjeta sin comisiones de cambio y con límites de retirada generosos. Crypto.com Obsidian ofrece incluso acceso gratuito a lounges de aeropuerto. Para viajeros ocasionales, Gnosis Pay o MetaMask Card son más que suficientes sin cuota anual.` },
+    it: { title:`Carta Crypto Viaggio ${YEAR} — Migliore Carta per Viaggiare | TopCryptoCards`, h1:`Migliori Carte Crypto per Viaggiatori nel ${YEAR}`, description:`Quale carta crypto scegliere per viaggiare nel ${YEAR}? Senza commissioni di cambio, cashback all'estero, accettata in 200 paesi.`, intro:`Viaggiare con una carta crypto offre molti vantaggi: nessuna commissione di cambio eccessiva, cashback in crypto per ogni acquisto all'estero e accettazione in oltre 50 milioni di punti vendita Visa/Mastercard. Queste carte sono ideali per i nomadi digitali e i viaggiatori frequenti che desiderano massimizzare le spese internazionali.`, outro:`Per viaggiare, scegli una carta senza commissioni di cambio e con limiti di prelievo generosi. Crypto.com Obsidian offre persino l'accesso gratuito alle lounge aeroportuali. Per i viaggiatori occasionali, Gnosis Pay o MetaMask Card sono più che sufficienti senza costi annuali.` },
+    en: { title:`Crypto Card for Travel ${YEAR} — Best Cards for Travelers | TopCryptoCards`, h1:`Best Crypto Cards for Travel in ${YEAR}`, description:`Which crypto card for travel in ${YEAR}? No currency exchange fees, cashback abroad, accepted in 200+ countries.`, intro:`Traveling with a crypto card offers many advantages: no excessive currency exchange fees, crypto cashback on every purchase abroad, and acceptance at over 50 million Visa/Mastercard merchants worldwide. These cards are ideal for digital nomads and frequent travelers who want to maximize their international spending.`, outro:`For travel, choose a card with no exchange fees and generous ATM withdrawal limits. Crypto.com Obsidian even includes free airport lounge access. For occasional travelers, Gnosis Pay or MetaMask Card are more than sufficient with no annual fee.` },
+  },
+  rewards: {
+    fr: { title:`Carte Crypto Récompenses ${YEAR} — Gagnez des Rewards à Chaque Achat | TopCryptoCards`, h1:`Cartes Crypto avec les Meilleures Récompenses en ${YEAR}`, description:`Les cartes crypto avec les meilleures récompenses en ${YEAR} : cashback, lounge VIP, Netflix offert, Spotify remboursé. Comparez les avantages.`, intro:`Les cartes crypto premium offrent bien plus qu'un simple cashback : accès aux lounges d'aéroport, abonnements offerts (Netflix, Spotify), assurance voyage, cashback en crypto sur tous vos achats. Ces récompenses peuvent valoir plusieurs centaines d'euros par an selon votre usage et niveau de staking.`, outro:`Pour maximiser vos récompenses, évaluez les avantages en valeur monétaire réelle. Calculez si la dépréciation potentielle du token staké ne dépasse pas la valeur des avantages annuels. Pour la plupart des utilisateurs, Gnosis Pay et MetaMask Card offrent un excellent rapport récompenses/risque sans staking.` },
+    de: { title:`Krypto Karte Prämien ${YEAR} — Belohnungen bei jedem Einkauf | TopCryptoCards`, h1:`Krypto-Karten mit den besten Prämien ${YEAR}`, description:`Die besten Krypto-Karten mit Prämien ${YEAR}: Cashback, VIP-Lounges, Netflix inklusive, Spotify erstattet.`, intro:`Premium-Krypto-Karten bieten weit mehr als nur Cashback: Flughafen-Lounge-Zugang, inklusive Abonnements (Netflix, Spotify), Reiseversicherung und Krypto-Cashback auf alle Einkäufe. Diese Prämien können je nach Nutzung und Staking-Niveau mehrere hundert Euro pro Jahr wert sein.`, outro:`Bewerten Sie die Vorteile in echtem Geldwert, bevor Sie sich für ein Staking-Niveau entscheiden. Für die meisten Nutzer bieten Gnosis Pay und MetaMask Card ein hervorragendes Prämien-/Risikoprofil ohne jedes Staking.` },
+    es: { title:`Tarjeta Crypto Recompensas ${YEAR} — Gana Rewards en Cada Compra | TopCryptoCards`, h1:`Tarjetas Crypto con las Mejores Recompensas en ${YEAR}`, description:`Las mejores tarjetas crypto con recompensas en ${YEAR}: cashback, lounges VIP, Netflix incluido, Spotify reembolsado.`, intro:`Las tarjetas crypto premium ofrecen mucho más que un simple cashback: acceso a lounges de aeropuerto, suscripciones incluidas (Netflix, Spotify), seguro de viaje y cashback en crypto en todas tus compras. Estas recompensas pueden valer varios cientos de euros al año según tu uso y nivel de staking.`, outro:`Evalúa las ventajas en valor monetario real antes de comprometerte con un nivel de staking. Para la mayoría de usuarios, Gnosis Pay y MetaMask Card ofrecen una excelente relación recompensas/riesgo sin staking alguno.` },
+    it: { title:`Carta Crypto Premi ${YEAR} — Guadagna Ricompense ad Ogni Acquisto | TopCryptoCards`, h1:`Carte Crypto con i Migliori Premi nel ${YEAR}`, description:`Le migliori carte crypto con premi nel ${YEAR}: cashback, lounge VIP, Netflix incluso, Spotify rimborsato.`, intro:`Le carte crypto premium offrono molto più di un semplice cashback: accesso alle lounge aeroportuali, abbonamenti inclusi (Netflix, Spotify), assicurazione viaggio e cashback in crypto su tutti gli acquisti. Questi premi possono valere diverse centinaia di euro all'anno in base all'utilizzo e al livello di staking.`, outro:`Valuta i vantaggi in termini di valore monetario reale prima di impegnarti in uno staking. Per la maggior parte degli utenti, Gnosis Pay e MetaMask Card offrono un ottimo rapporto premi/rischio senza alcuno staking.` },
+    en: { title:`Crypto Card Rewards ${YEAR} — Earn Rewards on Every Purchase | TopCryptoCards`, h1:`Crypto Cards with the Best Rewards in ${YEAR}`, description:`The best crypto cards with rewards in ${YEAR}: cashback, VIP lounges, Netflix included, Spotify reimbursed.`, intro:`Premium crypto cards offer much more than simple cashback: airport lounge access, included subscriptions (Netflix, Spotify), travel insurance, and crypto cashback on all your purchases. These rewards can be worth several hundred euros per year depending on your usage and staking tier.`, outro:`Evaluate the benefits in real monetary value before committing to a staking tier. For most users, Gnosis Pay and MetaMask Card offer an excellent rewards-to-risk profile with no staking required at all.` },
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -422,6 +436,80 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
       { q:`Which crypto card to choose in Europe for 2026?`, a:`Gnosis Pay and Crypto.com are confirmed available across the EU. Prioritize MiCA-compliant options from regulated entities for maximum fund protection.` },
     ],
   },
+  travel: {
+    fr: [
+      { q:'Les cartes crypto ont-elles des frais de change à l\'étranger ?', a:'La plupart des cartes crypto n\'appliquent pas de frais de change sur les dépenses en devises étrangères, contrairement aux cartes bancaires classiques (1-3% de frais).' },
+      { q:'Peut-on retirer des espèces à l\'étranger avec une carte crypto ?', a:'Oui, la plupart offrent des retraits ATM gratuits dans une limite mensuelle (200-400€). Au-delà, des frais de 1-2% s\'appliquent.' },
+      { q:'Une carte crypto est-elle acceptée partout dans le monde ?', a:'Oui, les cartes Visa et Mastercard sont acceptées dans plus de 200 pays et territoires, soit plus de 50 millions de points de vente.' },
+      { q:'Faut-il prévenir sa banque crypto avant de voyager ?', a:'Non, contrairement aux banques traditionnelles, les cartes crypto n\'ont généralement pas besoin d\'être notifiées avant un voyage à l\'étranger.' },
+      { q:'Quelle carte crypto est la meilleure pour voyager ?', a:'Crypto.com offre les meilleurs avantages voyage (lounges, assurance). Pour un budget réduit, MetaMask Card ou Gnosis Pay sont idéales sans frais annuels.' },
+    ],
+    de: [
+      { q:'Haben Krypto-Karten Wechselgebühren im Ausland?', a:'Die meisten Krypto-Karten erheben keine Wechselgebühren auf Fremdwährungsausgaben, im Gegensatz zu klassischen Bankkarten (1-3% Gebühren).' },
+      { q:'Kann man im Ausland Bargeld mit einer Krypto-Karte abheben?', a:'Ja, die meisten bieten kostenlose Geldautomaten-Abhebungen bis zu einem monatlichen Limit (200-400€). Danach fallen 1-2% Gebühren an.' },
+      { q:'Wird eine Krypto-Karte weltweit akzeptiert?', a:'Ja, Visa- und Mastercard-Karten werden in über 200 Ländern und Territorien bei über 50 Millionen Händlern akzeptiert.' },
+      { q:'Muss man seine Krypto-Bank vor Reisen informieren?', a:'Nein, im Gegensatz zu traditionellen Banken müssen Krypto-Karten in der Regel nicht vor einer Reise benachrichtigt werden.' },
+      { q:'Welche Krypto-Karte ist die beste für Reisende?', a:'Crypto.com bietet die besten Reisevorteile (Lounges, Versicherung). Für ein kleineres Budget: MetaMask Card oder Gnosis Pay ohne Jahresgebühr.' },
+    ],
+    es: [
+      { q:'¿Las tarjetas crypto tienen comisiones de cambio en el extranjero?', a:'La mayoría de las tarjetas crypto no aplican comisiones de cambio en gastos en divisas extranjeras, a diferencia de las tarjetas bancarias clásicas (1-3% de comisión).' },
+      { q:'¿Se puede retirar efectivo en el extranjero con una tarjeta crypto?', a:'Sí, la mayoría ofrecen retiros en cajeros gratuitos hasta un límite mensual (200-400€). Después se aplica un 1-2% de comisión.' },
+      { q:'¿Una tarjeta crypto está aceptada en todo el mundo?', a:'Sí, las tarjetas Visa y Mastercard están aceptadas en más de 200 países y territorios y más de 50 millones de comercios.' },
+      { q:'¿Hay que avisar antes de viajar al extranjero?', a:'No, a diferencia de los bancos tradicionales, las tarjetas crypto generalmente no necesitan ser notificadas antes de un viaje.' },
+      { q:'¿Cuál es la mejor tarjeta crypto para viajar?', a:'Crypto.com ofrece las mejores ventajas de viaje (lounges, seguro). Para un presupuesto reducido, MetaMask Card o Gnosis Pay sin cuota anual.' },
+    ],
+    it: [
+      { q:'Le carte crypto hanno commissioni di cambio all\'estero?', a:'La maggior parte delle carte crypto non applica commissioni di cambio sulle spese in valuta estera, al contrario delle carte bancarie classiche (1-3% di commissione).' },
+      { q:'Si può prelevare contante all\'estero con una carta crypto?', a:'Sì, la maggior parte offre prelievi ATM gratuiti fino a un limite mensile (200-400€). Oltre, si applica l\'1-2% di commissione.' },
+      { q:'Una carta crypto è accettata in tutto il mondo?', a:'Sì, le carte Visa e Mastercard sono accettate in oltre 200 paesi e territori e più di 50 milioni di punti vendita.' },
+      { q:'Bisogna avvisare prima di viaggiare all\'estero?', a:'No, a differenza delle banche tradizionali, le carte crypto generalmente non necessitano di notifica prima di un viaggio.' },
+      { q:'Quale carta crypto è la migliore per i viaggiatori?', a:'Crypto.com offre i migliori vantaggi di viaggio (lounge, assicurazione). Per un budget ridotto, MetaMask Card o Gnosis Pay senza costi annuali.' },
+    ],
+    en: [
+      { q:'Do crypto cards charge currency exchange fees abroad?', a:'Most crypto cards don\'t charge currency conversion fees on foreign currency spending, unlike traditional bank cards (1-3% fees).' },
+      { q:'Can you withdraw cash abroad with a crypto card?', a:'Yes, most offer free ATM withdrawals up to a monthly limit (€200-€400). Beyond that, 1-2% fees apply.' },
+      { q:'Is a crypto card accepted worldwide?', a:'Yes, Visa and Mastercard cards are accepted in over 200 countries and territories at more than 50 million merchants.' },
+      { q:'Do you need to notify your issuer before traveling?', a:'No, unlike traditional banks, crypto cards generally don\'t need to be notified before international travel.' },
+      { q:'Which crypto card is best for travelers?', a:'Crypto.com offers the best travel perks (lounges, insurance). For a tighter budget, MetaMask Card or Gnosis Pay with no annual fee.' },
+    ],
+  },
+  rewards: {
+    fr: [
+      { q:'Quels sont les avantages rewards des cartes crypto premium ?', a:'Les principales récompenses : cashback en crypto (1-8%), accès lounges aéroport, remboursement Netflix/Spotify, assurance voyage, et cashback supplémentaire sur certaines plateformes.' },
+      { q:'Les avantages rewards en valent-ils vraiment la peine ?', a:'Cela dépend : pour un utilisateur actif dépensant 2 000€/mois, un cashback de 2% = 480€/an. Comparez avec le coût du staking requis.' },
+      { q:'Peut-on cumuler plusieurs récompenses sur une carte crypto ?', a:'Oui, certaines cartes cumulent cashback + lounge + remboursements d\'abonnements. Crypto.com Obsidian est le champion de cette catégorie.' },
+      { q:'Les récompenses crypto sont-elles imposables ?', a:'En France, les récompenses en crypto sont des revenus imposables. La revente est soumise à la flat tax de 30%.' },
+      { q:'Comment maximiser ses récompenses avec une carte crypto ?', a:'Utilisez la carte pour toutes vos dépenses courantes, profitez des remboursements d\'abonnements et choisissez un niveau de staking adapté à votre profil.' },
+    ],
+    de: [
+      { q:'Welche Prämienvorteile bieten Premium-Krypto-Karten?', a:'Die wichtigsten Prämien: Cashback in Krypto (1-8%), Flughafen-Lounge-Zugang, Netflix/Spotify-Erstattung, Reiseversicherung und Plattform-Cashback.' },
+      { q:'Lohnen sich Prämienvorteile wirklich?', a:'Das hängt ab: Für einen aktiven Nutzer mit 2.000€/Monat Ausgaben bedeutet 2% Cashback = 480€/Jahr. Vergleichen Sie mit den Staking-Kosten.' },
+      { q:'Kann man mehrere Prämien auf einer Krypto-Karte kumulieren?', a:'Ja, einige Karten kombinieren Cashback + Lounge + Abonnement-Erstattungen. Crypto.com Obsidian ist der Champion in dieser Kategorie.' },
+      { q:'Sind Krypto-Prämien steuerpflichtig?', a:'In Deutschland unterliegen Krypto-Prämien der Einkommensteuer. Gewinne aus dem Verkauf sind ebenfalls steuerpflichtig.' },
+      { q:'Wie maximiert man Prämien mit einer Krypto-Karte?', a:'Nutzen Sie die Karte für alle laufenden Ausgaben, nutzen Sie Abonnement-Erstattungen und wählen Sie ein für Ihr Profil geeignetes Staking-Niveau.' },
+    ],
+    es: [
+      { q:'¿Qué ventajas de recompensas ofrecen las tarjetas crypto premium?', a:'Las principales recompensas: cashback en crypto (1-8%), acceso a lounges de aeropuerto, reembolso de Netflix/Spotify, seguro de viaje.' },
+      { q:'¿Realmente merecen la pena las recompensas?', a:'Depende: para un usuario activo que gasta 2.000€/mes, un 2% de cashback = 480€/año. Compara con el coste del staking requerido.' },
+      { q:'¿Se pueden acumular varias recompensas en una tarjeta crypto?', a:'Sí, algunas tarjetas combinan cashback + lounge + reembolsos de suscripciones. Crypto.com Obsidian lidera esta categoría.' },
+      { q:'¿Son imponibles las recompensas crypto?', a:'En España, las recompensas en crypto son ingresos imponibles sujetos al IRPF según el tipo marginal correspondiente.' },
+      { q:'¿Cómo maximizar las recompensas con una tarjeta crypto?', a:'Usa la tarjeta para todos tus gastos habituales, aprovecha los reembolsos de suscripciones y elige el nivel de staking adecuado a tu perfil.' },
+    ],
+    it: [
+      { q:'Quali vantaggi di premi offrono le carte crypto premium?', a:'I principali premi: cashback in crypto (1-8%), accesso alle lounge aeroportuali, rimborso Netflix/Spotify, assicurazione viaggio.' },
+      { q:'I vantaggi dei premi valgono davvero la pena?', a:'Dipende: per un utente attivo che spende 2.000€/mese, il 2% di cashback = 480€/anno. Confronta con il costo dello staking richiesto.' },
+      { q:'Si possono cumulare più premi su una carta crypto?', a:'Sì, alcune carte combinano cashback + lounge + rimborsi abbonamenti. Crypto.com Obsidian è il campione in questa categoria.' },
+      { q:'I premi crypto sono soggetti a tassazione?', a:'In Italia, i premi in crypto sono redditi imponibili soggetti all\'imposta sostitutiva del 26%.' },
+      { q:'Come massimizzare i premi con una carta crypto?', a:'Usa la carta per tutte le spese correnti, approfitta dei rimborsi degli abbonamenti e scegli un livello di staking adatto al tuo profilo.' },
+    ],
+    en: [
+      { q:'What rewards benefits do premium crypto cards offer?', a:'Main rewards: crypto cashback (1-8%), airport lounge access, Netflix/Spotify reimbursement, travel insurance, and platform-specific cashback bonuses.' },
+      { q:'Are rewards benefits really worth it?', a:'It depends: for an active user spending €2,000/month, 2% cashback = €480/year. Compare this with the cost of required staking.' },
+      { q:'Can you stack multiple rewards on a crypto card?', a:'Yes, some cards combine cashback + lounge access + subscription reimbursements. Crypto.com Obsidian leads this category.' },
+      { q:'Are crypto rewards taxable?', a:'In most EU countries, crypto rewards are taxable income. Gains from selling are subject to capital gains tax — rates vary by country.' },
+      { q:'How do you maximize rewards with a crypto card?', a:'Use the card for all everyday spending, take advantage of subscription reimbursements, and choose a staking tier suited to your spending profile.' },
+    ],
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -437,6 +525,8 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
   'no-kyc':     (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet'].includes(e)),
   '2026':       () => true,
+  travel:       () => true,
+  rewards:      (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
 };
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   best:         (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
@@ -448,8 +538,27 @@ const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   beginner:     (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   'no-kyc':     (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   '2026':       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
+  travel:       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
+  rewards:      (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
 };
 const THEME_LIMIT: Record<string, number> = { best: 15 };
+
+/* ────────────────────────────────────────────────────────────────────────────
+   THEMATIC SLUGS (for hreflang)
+   ──────────────────────────────────────────────────────────────────────────── */
+const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  best:         { fr: 'meilleure-carte-crypto', de: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
+  cashback:     { fr: 'carte-crypto-cashback', de: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
+  'no-fees':    { fr: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
+  'no-staking': { fr: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
+  france:       { fr: 'cartes-crypto-france', de: 'krypto-karten-deutschland', es: 'tarjetas-crypto-espana', it: 'carte-crypto-italia', en: 'crypto-cards-europe' },
+  virtual:      { fr: 'carte-crypto-virtuelle', de: 'virtuelle-krypto-karte', es: 'tarjeta-crypto-virtual', it: 'carta-crypto-virtuale', en: 'virtual-crypto-card' },
+  beginner:     { fr: 'cartes-crypto-debutant', de: 'krypto-karten-einsteiger', es: 'tarjetas-crypto-principiante', it: 'carte-crypto-principiante', en: 'beginner-crypto-cards' },
+  'no-kyc':     { fr: 'carte-crypto-sans-kyc', de: 'krypto-karte-ohne-kyc', es: 'tarjeta-crypto-sin-kyc', it: 'carta-cripto-senza-kyc', en: 'crypto-card-no-kyc' },
+  '2026':       { fr: 'carte-crypto-2026', de: 'krypto-karte-2026', es: 'tarjeta-cripto-2026', it: 'carta-cripto-2026', en: 'best-crypto-card-2026' },
+  travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
+  rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
+};
 
 interface ThematicPageProps { theme: string; }
 
@@ -489,6 +598,32 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     title: config?.title || 'TopCryptoCards',
     description: config?.description || '',
   });
+
+  /* Hreflang */
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const langs = ['fr', 'de', 'es', 'it', 'en'];
+    const slugs = THEMATIC_SLUGS[theme];
+    if (!slugs) return;
+    document.querySelectorAll('link[data-hreflang-thematic]').forEach(el => el.remove());
+    langs.forEach(l => {
+      const slug = slugs[l];
+      if (!slug) return;
+      const el = document.createElement('link');
+      el.setAttribute('rel', 'alternate');
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${slug}`);
+      el.setAttribute('data-hreflang-thematic', 'true');
+      document.head.appendChild(el);
+    });
+    const xDefault = document.createElement('link');
+    xDefault.setAttribute('rel', 'alternate');
+    xDefault.setAttribute('hreflang', 'x-default');
+    xDefault.setAttribute('href', `${BASE}/fr/${slugs['fr']}`);
+    xDefault.setAttribute('data-hreflang-thematic', 'true');
+    document.head.appendChild(xDefault);
+    return () => { document.querySelectorAll('link[data-hreflang-thematic]').forEach(el => el.remove()); };
+  }, [theme, lang]);
 
   /* Schema.org */
   useEffect(() => {

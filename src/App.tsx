@@ -138,6 +138,8 @@ function App() {
           <Route path="cartes-crypto-debutant"      element={<ThematicPage theme="beginner" />} />
           <Route path="carte-crypto-sans-kyc"       element={<ThematicPage theme="no-kyc" />} />
           <Route path="carte-crypto-2026"           element={<ThematicPage theme="2026" />} />
+          <Route path="carte-crypto-voyage"         element={<ThematicPage theme="travel" />} />
+          <Route path="carte-crypto-recompenses"    element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — DE ── */}
           <Route path="beste-krypto-karte"           element={<ThematicPage theme="best" />} />
@@ -149,6 +151,8 @@ function App() {
           <Route path="krypto-karten-einsteiger"     element={<ThematicPage theme="beginner" />} />
           <Route path="krypto-karte-ohne-kyc"        element={<ThematicPage theme="no-kyc" />} />
           <Route path="krypto-karte-2026"            element={<ThematicPage theme="2026" />} />
+          <Route path="krypto-karte-reise"           element={<ThematicPage theme="travel" />} />
+          <Route path="krypto-karte-praemien"        element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — ES ── */}
           <Route path="mejor-tarjeta-cripto"              element={<ThematicPage theme="best" />} />
@@ -160,6 +164,8 @@ function App() {
           <Route path="tarjetas-crypto-principiante"      element={<ThematicPage theme="beginner" />} />
           <Route path="tarjeta-crypto-sin-kyc"            element={<ThematicPage theme="no-kyc" />} />
           <Route path="tarjeta-cripto-2026"               element={<ThematicPage theme="2026" />} />
+          <Route path="tarjeta-cripto-viaje"              element={<ThematicPage theme="travel" />} />
+          <Route path="tarjeta-cripto-recompensas"        element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — IT ── */}
           <Route path="migliore-carta-cripto"         element={<ThematicPage theme="best" />} />
@@ -171,6 +177,8 @@ function App() {
           <Route path="carte-crypto-principiante"     element={<ThematicPage theme="beginner" />} />
           <Route path="carta-cripto-senza-kyc"        element={<ThematicPage theme="no-kyc" />} />
           <Route path="carta-cripto-2026"             element={<ThematicPage theme="2026" />} />
+          <Route path="carta-cripto-viaggio"          element={<ThematicPage theme="travel" />} />
+          <Route path="carta-cripto-premi"            element={<ThematicPage theme="rewards" />} />
 
           {/* ── Pages thématiques — EN ── */}
           <Route path="best-crypto-card"        element={<ThematicPage theme="best" />} />
@@ -182,6 +190,8 @@ function App() {
           <Route path="beginner-crypto-cards"   element={<ThematicPage theme="beginner" />} />
           <Route path="crypto-card-no-kyc"      element={<ThematicPage theme="no-kyc" />} />
           <Route path="best-crypto-card-2026"   element={<ThematicPage theme="2026" />} />
+          <Route path="crypto-card-travel"      element={<ThematicPage theme="travel" />} />
+          <Route path="crypto-card-rewards"     element={<ThematicPage theme="rewards" />} />
 
           {/* ── Section Cryptos ── */}
           <Route path="cryptos" element={<CryptoList />} />

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Coins } from 'lucide-react';
 
@@ -39,6 +40,14 @@ function LegalLayout({ title, children }: { title: string; children: React.React
 }
 
 export default function Datenschutz() {
+  React.useEffect(() => {
+    const el = document.createElement('meta');
+    el.name = 'robots';
+    el.content = 'noindex, nofollow';
+    el.setAttribute('data-legal-noindex', 'true');
+    document.head.appendChild(el);
+    return () => { document.querySelector('meta[data-legal-noindex]')?.remove(); };
+  }, []);
   return (
     <LegalLayout title="Datenschutzerklärung">
       <p className="text-slate-500 text-sm mb-10">Stand: Mai 2026</p>

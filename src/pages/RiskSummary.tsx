@@ -1,7 +1,16 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Coins, AlertTriangle } from 'lucide-react';
 
 export default function RiskSummary() {
+  React.useEffect(() => {
+    const el = document.createElement('meta');
+    el.name = 'robots';
+    el.content = 'noindex, nofollow';
+    el.setAttribute('data-legal-noindex', 'true');
+    document.head.appendChild(el);
+    return () => { document.querySelector('meta[data-legal-noindex]')?.remove(); };
+  }, []);
   return (
     <div className="min-h-screen bg-bg flex flex-col">
       <header className="border-b border-bg-border bg-bg/80 backdrop-blur-lg">

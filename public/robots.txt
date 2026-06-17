@@ -4,5 +4,11 @@ Disallow: /*?sort=
 Disallow: /*?filter=
 Disallow: /*?page=
 Disallow: /api/
+Disallow: /admin/
+Disallow: /*/blog-admin
+Disallow: /impressum
+Disallow: /datenschutz
+Disallow: /privacy
+Disallow: /risk-summary
 Sitemap: https://topcryptocards.eu/sitemap-index.xml
 Sitemap: https://topcryptocards.eu/sitemap-cryptos.xml

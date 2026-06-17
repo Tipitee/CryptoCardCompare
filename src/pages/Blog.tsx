@@ -50,6 +50,37 @@ export default function Blog() {
       .finally(() => setLoading(false));
   }, [lang]);
 
+  // Schema.org CollectionPage for blog listing
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const BLOG_LABELS: Record<string, string> = {
+      fr: 'Blog — Guides et Actualités Cartes Crypto',
+      de: 'Blog — Guides und Neuigkeiten Krypto-Karten',
+      es: 'Blog — Guías y Noticias Tarjetas Crypto',
+      it: 'Blog — Guide e Notizie Carte Crypto',
+      en: 'Blog — Crypto Card Guides and News',
+    };
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: BLOG_LABELS[lang] ?? BLOG_LABELS['en'],
+      url: `${BASE}/${lang}/blog`,
+      inLanguage: lang,
+      publisher: {
+        '@type': 'Organization',
+        name: 'TopCryptoCards',
+        url: BASE,
+      },
+    };
+    document.getElementById('schema-blog-collection')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-blog-collection';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-blog-collection')?.remove(); };
+  }, [lang]);
+
   const filtered = useMemo(() => {
     return posts.filter(p => {
       const q = search.toLowerCase();

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Coins } from 'lucide-react';
 
@@ -40,6 +41,14 @@ function LegalLayout({ title, subtitle, children }: { title: string; subtitle?: 
 }
 
 export default function Privacy() {
+  React.useEffect(() => {
+    const el = document.createElement('meta');
+    el.name = 'robots';
+    el.content = 'noindex, nofollow';
+    el.setAttribute('data-legal-noindex', 'true');
+    document.head.appendChild(el);
+    return () => { document.querySelector('meta[data-legal-noindex]')?.remove(); };
+  }, []);
   return (
     <LegalLayout title="Privacy Policy" subtitle="Last updated: May 2026">
       <div className="space-y-10 text-slate-400 text-sm leading-relaxed">
