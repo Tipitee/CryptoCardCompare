@@ -635,6 +635,29 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     };
   }, [config, filteredCards, faqs, lang, segment]);
 
+  /* BreadcrumbList Schema.org */
+  useEffect(() => {
+    if (!config) return;
+    const BASE = 'https://topcryptocards.eu';
+    const HOME_LABELS: Record<string, string> = {
+      fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+    };
+    document.getElementById('schema-breadcrumb-thematic')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-breadcrumb-thematic';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: HOME_LABELS[lang] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: config.h1, item: window.location.href.split('?')[0] },
+      ],
+    });
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-breadcrumb-thematic')?.remove(); };
+  }, [config, lang]);
+
   if (!config) return null;
 
   const L = {
