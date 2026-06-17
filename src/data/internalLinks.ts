@@ -110,18 +110,26 @@ export const CARD_REVIEW_SLUGS: Record<string, string> = {
   'okx-card':                'okx-card',
   'bitpanda-card':           'bitpanda-card',
   'wirex-elite':             'wirex-card',
+  'ledger-card':             'ledger-card',
+  'gnosis-pay-card':         'gnosis-pay-card',
+  'metamask-card':           'metamask-card',
+  'brighty-card':            'brighty-card',
 };
 
 // ── Review slug → card ID (reverse lookup) ──────────────────────────────────
 export const REVIEW_SLUG_TO_CARD_ID: Record<string, string> = {
-  'nexo-card':    'nexo-card',
-  'bybit-card':   'bybit-card',
-  'binance-card': 'binance-card',
-  'crypto-com-card': 'crypto-com-midnight-blue',
-  'coinbase-card': 'coinbase-card',
-  'okx-card':     'okx-card',
-  'bitpanda-card':'bitpanda-card',
-  'wirex-card':   'wirex-elite',
+  'nexo-card':      'nexo-card',
+  'bybit-card':     'bybit-card',
+  'binance-card':   'binance-card',
+  'crypto-com-card':'crypto-com-midnight-blue',
+  'coinbase-card':  'coinbase-card',
+  'okx-card':       'okx-card',
+  'bitpanda-card':  'bitpanda-card',
+  'wirex-card':     'wirex-elite',
+  'ledger-card':    'ledger-card',
+  'gnosis-pay-card':'gnosis-pay-card',
+  'metamask-card':  'metamask-card',
+  'brighty-card':   'brighty-card',
 };
 
 // ── URL segments per language ────────────────────────────────────────────────
