@@ -6,6 +6,7 @@
 // ── Comparison pairs (17 pairs from comparisonContent.ts) ────────────────────
 // Each pair is [id1, id2] where ids match Supabase card IDs
 export const COMPARISON_PAIRS: [string, string][] = [
+  // ── Original 17 pairs ────────────────────────────────────────────────────────
   ['bybit-card', 'nexo-card'],
   ['crypto-com-midnight-blue', 'nexo-card'],
   ['crypto-com-ruby-steel', 'nexo-card'],
@@ -23,6 +24,53 @@ export const COMPARISON_PAIRS: [string, string][] = [
   ['bitpanda-card', 'nexo-card'],
   ['binance-card', 'okx-card'],
   ['coinbase-card', 'wirex-elite'],
+  // ── Gnosis Pay (9 pairs) ─────────────────────────────────────────────────────
+  ['binance-card', 'gnosis-pay-card'],
+  ['bitpanda-card', 'gnosis-pay-card'],
+  ['bybit-card', 'gnosis-pay-card'],
+  ['coinbase-card', 'gnosis-pay-card'],
+  ['crypto-com-midnight-blue', 'gnosis-pay-card'],
+  ['crypto-com-ruby-steel', 'gnosis-pay-card'],
+  ['gnosis-pay-card', 'nexo-card'],
+  ['gnosis-pay-card', 'okx-card'],
+  ['gnosis-pay-card', 'wirex-elite'],
+  // ── MetaMask Card (9 pairs) ──────────────────────────────────────────────────
+  ['binance-card', 'metamask-card'],
+  ['bitpanda-card', 'metamask-card'],
+  ['bybit-card', 'metamask-card'],
+  ['coinbase-card', 'metamask-card'],
+  ['crypto-com-midnight-blue', 'metamask-card'],
+  ['crypto-com-ruby-steel', 'metamask-card'],
+  ['metamask-card', 'nexo-card'],
+  ['metamask-card', 'okx-card'],
+  ['metamask-card', 'wirex-elite'],
+  // ── Brighty (9 pairs) ────────────────────────────────────────────────────────
+  ['binance-card', 'brighty-card'],
+  ['bitpanda-card', 'brighty-card'],
+  ['brighty-card', 'bybit-card'],
+  ['brighty-card', 'coinbase-card'],
+  ['brighty-card', 'crypto-com-midnight-blue'],
+  ['brighty-card', 'crypto-com-ruby-steel'],
+  ['brighty-card', 'nexo-card'],
+  ['brighty-card', 'okx-card'],
+  ['brighty-card', 'wirex-elite'],
+  // ── Ledger Card (9 pairs) ────────────────────────────────────────────────────
+  ['binance-card', 'ledger-card'],
+  ['bitpanda-card', 'ledger-card'],
+  ['bybit-card', 'ledger-card'],
+  ['coinbase-card', 'ledger-card'],
+  ['crypto-com-midnight-blue', 'ledger-card'],
+  ['crypto-com-ruby-steel', 'ledger-card'],
+  ['ledger-card', 'nexo-card'],
+  ['ledger-card', 'okx-card'],
+  ['ledger-card', 'wirex-elite'],
+  // ── New × New (6 pairs) ──────────────────────────────────────────────────────
+  ['brighty-card', 'gnosis-pay-card'],
+  ['brighty-card', 'ledger-card'],
+  ['brighty-card', 'metamask-card'],
+  ['gnosis-pay-card', 'ledger-card'],
+  ['gnosis-pay-card', 'metamask-card'],
+  ['ledger-card', 'metamask-card'],
 ];
 
 // ── Per-card: which other cards have comparison pages ───────────────────────
@@ -45,6 +93,10 @@ export const CARD_NAMES: Record<string, string> = {
   'coinbase-card':           'Coinbase Card',
   'okx-card':                'OKX Card',
   'bitpanda-card':           'Bitpanda Card',
+  'gnosis-pay-card':         'Gnosis Pay',
+  'metamask-card':           'MetaMask Card',
+  'brighty-card':            'Brighty',
+  'ledger-card':             'Ledger Card',
 };
 
 // ── Card ID → review page slug ───────────────────────────────────────────────
