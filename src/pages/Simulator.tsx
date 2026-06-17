@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -73,6 +73,28 @@ export default function Simulator() {
   const lang = useLanguage();
   const simSeo = SIM_SEO[lang] || SIM_SEO.en;
   useSeoMeta({ title: simSeo.title, description: simSeo.desc });
+
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
+    document.querySelectorAll('link[data-hreflang-simulator]').forEach(el => el.remove());
+    Object.entries(SIM_SLUGS).forEach(([l, slug]) => {
+      const el = document.createElement('link');
+      el.setAttribute('rel', 'alternate');
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${slug}`);
+      el.setAttribute('data-hreflang-simulator', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.setAttribute('rel', 'alternate');
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/simulateur`);
+    xd.setAttribute('data-hreflang-simulator', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-simulator]').forEach(el => el.remove()); };
+  }, [lang]);
+
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);

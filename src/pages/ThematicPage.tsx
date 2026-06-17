@@ -560,6 +560,44 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
 };
 
+/* ────────────────────────────────────────────────────────────────────────────
+   RELATED THEMES (maillage cross-thématique)
+   ──────────────────────────────────────────────────────────────────────────── */
+const RELATED_THEMES: Record<string, string[]> = {
+  best:         ['cashback', 'no-fees', 'no-staking', 'rewards'],
+  cashback:     ['rewards', 'travel', 'no-staking', 'best'],
+  'no-fees':    ['cashback', 'beginner', 'no-staking', 'best'],
+  'no-staking': ['no-fees', 'cashback', 'beginner', 'rewards'],
+  france:       ['best', 'cashback', 'no-fees', 'virtual'],
+  virtual:      ['no-fees', 'best', 'cashback', 'beginner'],
+  beginner:     ['no-fees', 'no-staking', 'best', 'no-kyc'],
+  'no-kyc':     ['no-staking', 'beginner', 'no-fees', 'virtual'],
+  '2026':       ['best', 'cashback', 'rewards', 'travel'],
+  travel:       ['cashback', 'rewards', 'no-fees', '2026'],
+  rewards:      ['cashback', 'travel', '2026', 'best'],
+};
+const THEME_EMOJI: Record<string, string> = {
+  best: '⭐', cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓',
+  france: '🇪🇺', virtual: '📱', beginner: '🎯', 'no-kyc': '🔐',
+  '2026': '🚀', travel: '✈️', rewards: '🎁',
+};
+const THEME_LABEL: Record<string, Record<string, string>> = {
+  best:         { fr:'Meilleure carte', de:'Beste Karte', es:'Mejor tarjeta', it:'Migliore carta', en:'Best card' },
+  cashback:     { fr:'Cashback', de:'Cashback', es:'Cashback', it:'Cashback', en:'Cashback' },
+  'no-fees':    { fr:'Sans frais', de:'Ohne Gebühren', es:'Sin comisiones', it:'Senza costi', en:'No fees' },
+  'no-staking': { fr:'Sans staking', de:'Ohne Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
+  france:       { fr:'Disponible en France', de:'In Deutschland', es:'En España', it:'In Italia', en:'Available in EU' },
+  virtual:      { fr:'Carte virtuelle', de:'Virtuelle Karte', es:'Tarjeta virtual', it:'Carta virtuale', en:'Virtual card' },
+  beginner:     { fr:'Pour débutants', de:'Für Einsteiger', es:'Para principiantes', it:'Per principianti', en:'For beginners' },
+  'no-kyc':     { fr:'Sans KYC', de:'Ohne KYC', es:'Sin KYC', it:'Senza KYC', en:'No KYC' },
+  '2026':       { fr:'Meilleures 2026', de:'Beste 2026', es:'Mejores 2026', it:'Migliori 2026', en:'Best 2026' },
+  travel:       { fr:'Voyage', de:'Reisen', es:'Viaje', it:'Viaggio', en:'Travel' },
+  rewards:      { fr:'Récompenses', de:'Prämien', es:'Recompensas', it:'Premi', en:'Rewards' },
+};
+const RELATED_TITLE: Record<string, string> = {
+  fr: 'Voir aussi', de: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also',
+};
+
 interface ThematicPageProps { theme: string; }
 
 export default function ThematicPage({ theme }: ThematicPageProps) {
@@ -762,6 +800,32 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           <span className="ml-auto text-cyan-accent/50 group-hover:text-cyan-accent transition-colors text-lg">→</span>
         </Link>
       </div>
+
+      {/* Related themes */}
+      {(RELATED_THEMES[theme] || []).length > 0 && (
+        <div className="mb-12">
+          <h2 className="text-base font-semibold text-slate-400 mb-3">
+            {RELATED_TITLE[lang] || RELATED_TITLE['en']}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {(RELATED_THEMES[theme] || []).map((t2) => {
+              const slug = THEMATIC_SLUGS[t2]?.[lang];
+              const label = THEME_LABEL[t2]?.[lang] || THEME_LABEL[t2]?.['en'];
+              if (!slug || !label) return null;
+              return (
+                <Link
+                  key={t2}
+                  to={`/${lang}/${slug}`}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+                >
+                  <span>{THEME_EMOJI[t2]}</span>
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* FAQ */}
       {faqs.length > 0 && (

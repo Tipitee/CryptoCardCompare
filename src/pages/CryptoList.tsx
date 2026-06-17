@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
@@ -79,6 +80,26 @@ export default function CryptoList() {
   const guideLinks = GUIDES_LINKS[lang] || GUIDES_LINKS.en;
 
   useSeoMeta({ title: seo.title, description: seo.desc });
+
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-cryptolist]').forEach(el => el.remove());
+    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
+      const el = document.createElement('link');
+      el.setAttribute('rel', 'alternate');
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/cryptos`);
+      el.setAttribute('data-hreflang-cryptolist', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.setAttribute('rel', 'alternate');
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/cryptos`);
+    xd.setAttribute('data-hreflang-cryptolist', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-cryptolist]').forEach(el => el.remove()); };
+  }, [lang]);
 
   return (
     <div className="container-app py-10">
