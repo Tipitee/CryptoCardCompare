@@ -269,4 +269,4 @@ Les deux cartes valent la peine d''être comparées via notre simulateur selon v
   true,
   'fr'
 )
-;
+ON CONFLICT (slug, lang) DO NOTHING;

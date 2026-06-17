@@ -183,4 +183,4 @@ La Ledger Card est le choix optimal pour les **holders Bitcoin** qui privilégie
   true,
   'fr'
 )
-;
+ON CONFLICT (slug, lang) DO NOTHING;

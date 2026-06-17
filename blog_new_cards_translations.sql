@@ -489,4 +489,4 @@ The Ledger Card is the optimal choice for **Bitcoin holders** who prioritise sec
   true,
   'en'
 )
-;
+ON CONFLICT (slug, lang) DO NOTHING;
