@@ -101,7 +101,9 @@ const LANG_ORDER = ['fr', 'de', 'es', 'it', 'en'];
 function buildGroups(posts: ArticleWithStatus[]): ArticleGroup[] {
   const map = new Map<string, { indices: number[]; articles: ArticleWithStatus[] }>();
   posts.forEach((p, i) => {
-    const key = p.topic_key || `__solo__${p.id}`;
+    // Articles without topic_key: only show FR (hide DE/ES/IT/EN solo duplicates)
+    const key = p.topic_key || (p.lang === 'fr' ? `__solo__${p.id}` : null);
+    if (!key) return;
     if (!map.has(key)) map.set(key, { indices: [], articles: [] });
     map.get(key)!.indices.push(i);
     map.get(key)!.articles.push(p);
