@@ -244,6 +244,24 @@ Return ONLY the prompt.`,
       throw new Error(`Failed to update post: ${updateError.message}`);
     }
 
+    // Step 5: Propagate image to all language variants sharing the same topic_key
+    const topicKey = (postData as { topic_key?: string | null })?.topic_key;
+    if (topicKey) {
+      console.log(`Propagating image to all posts with topic_key: ${topicKey}`);
+      const { error: propagateError } = await sb
+        .from("blog_posts")
+        .update({ image_hero: publicUrl })
+        .eq("topic_key", topicKey)
+        .neq("id", id);
+
+      if (propagateError) {
+        // Non-fatal: the main post is already updated
+        console.error("Failed to propagate image to language variants:", propagateError);
+      } else {
+        console.log(`Image propagated successfully to all ${topicKey} variants`);
+      }
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
