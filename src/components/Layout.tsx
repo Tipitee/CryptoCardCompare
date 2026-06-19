@@ -1,5 +1,5 @@
-import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Home, Sparkles, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
+import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Sparkles, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -9,7 +9,6 @@ import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
 
-// Review page slugs per language
 const REVIEW_SLUGS: Record<string, string> = {
   fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
 };
@@ -18,7 +17,6 @@ const REVIEW_LABELS: Record<string, string> = {
   fr: 'Avis', de: 'Bewertungen', es: 'Opiniones', it: 'Recensioni', en: 'Reviews',
 };
 
-// Thematic page slugs per language
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
   de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
@@ -45,15 +43,15 @@ export default function Layout() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
   const { getRoute } = useLocalizedRoute();
+  const location = useLocation();
 
   const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
   const labels = THEMATIC_LABELS[lang] || THEMATIC_LABELS.en;
-
   const reviewSlug = REVIEW_SLUGS[lang] || 'avis';
   const reviewLabel = REVIEW_LABELS[lang] || 'Avis';
 
+  // Nav items — Home removed, logo acts as home link
   const navItems = [
-    { key: '', label: t('nav_home'), icon: Home },
     { key: 'compare', label: t('nav_compare'), icon: BarChart3 },
     { key: 'simulator', label: t('nav_simulator'), icon: Calculator },
     { key: 'recommendation', label: t('nav_recommendation'), icon: Sparkles },
@@ -62,17 +60,23 @@ export default function Layout() {
   ];
 
   const thematicLinks = [
-    { slug: slugs.best, label: labels.best, icon: '⭐' },
-    { slug: slugs.cashback, label: labels.cashback, icon: '💰' },
-    { slug: slugs.noFees, label: labels.noFees, icon: '🆓' },
-    { slug: slugs.noStaking, label: labels.noStaking, icon: '🔓' },
-    { slug: 'cryptos', label: labels.cryptos, icon: '₿' },
+    { slug: slugs.best, label: labels.best },
+    { slug: slugs.cashback, label: labels.cashback },
+    { slug: slugs.noFees, label: labels.noFees },
+    { slug: slugs.noStaking, label: labels.noStaking },
+    { slug: 'cryptos', label: labels.cryptos },
   ];
 
   useEffect(() => {
     loadCards(lang);
     loadFavorites();
   }, [loadCards, loadFavorites, lang]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+    setGuidesOpen(false);
+  }, [location.pathname]);
 
   // Close guides dropdown on outside click
   useEffect(() => {
@@ -85,57 +89,57 @@ export default function Layout() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+      isActive
+        ? 'text-cyan-accent bg-cyan-accent/10'
+        : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
+    }`;
+
+  const mobileNavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `flex items-center gap-3 px-4 py-3.5 rounded-xl text-sm font-medium min-h-[52px] transition-colors ${
+      isActive
+        ? 'text-cyan-accent bg-cyan-accent/10'
+        : 'text-slate-300 hover:text-white hover:bg-bg-card active:bg-bg-card'
+    }`;
+
   return (
     <div className="min-h-screen flex flex-col bg-bg">
       <LanguageSync />
+
+      {/* ── Header ── */}
       <header className="sticky top-0 z-40 border-b border-bg-border bg-bg/80 backdrop-blur-lg">
         <div className="container-app flex items-center justify-between h-16">
-          <NavLink to={getRoute('')} className="flex items-center gap-2 group">
-            <img
-              src="/logo.png"
-              alt="TopCryptoCards"
-              className="h-9 w-auto"
-            />
-            <span className="font-display font-bold text-white text-lg tracking-tight">
+
+          {/* Brand — logo + text, links to home */}
+          <NavLink to={getRoute('')} className="flex items-center gap-2.5 shrink-0">
+            <img src="/logo.png" alt="TopCryptoCards" className="h-10 w-auto" />
+            <span className="font-display font-bold text-white text-lg tracking-tight leading-none">
               TopCrypto<span className="text-cyan-accent">Cards</span>
             </span>
           </NavLink>
 
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => (
-              <NavLink
-                key={item.key}
-                to={getRoute(item.key)}
-                end={item.key === ''}
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
-                    isActive
-                      ? 'text-cyan-accent bg-cyan-accent/10'
-                      : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
-                  }`
-                }
-              >
+              <NavLink key={item.key} to={getRoute(item.key)} className={navLinkClass}>
                 <item.icon className="w-4 h-4" />
                 {item.label}
                 {item.key === 'favorites' && favorites.length > 0 && (
-                  <span className="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/20 text-green-accent">
+                  <span className="ml-0.5 text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/20 text-green-accent">
                     {favorites.length}
                   </span>
                 )}
               </NavLink>
             ))}
 
-            {/* Avis */}
-            <NavLink
-              to={`/${lang}/${reviewSlug}`}
-              className={({ isActive }) =>
-                `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isActive
-                    ? 'text-cyan-accent bg-cyan-accent/10'
-                    : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
-                }`
-              }
-            >
+            <NavLink to={`/${lang}/${reviewSlug}`} className={navLinkClass}>
               <Star className="w-4 h-4" />
               {reviewLabel}
             </NavLink>
@@ -145,14 +149,12 @@ export default function Layout() {
               <button
                 onClick={() => setGuidesOpen((v) => !v)}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
-                  guidesOpen
-                    ? 'text-cyan-accent bg-cyan-accent/10'
-                    : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
+                  guidesOpen ? 'text-cyan-accent bg-cyan-accent/10' : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
                 {labels.title}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${guidesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${guidesOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {guidesOpen && (
@@ -164,7 +166,6 @@ export default function Layout() {
                       onClick={() => setGuidesOpen(false)}
                       className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-bg-card transition-colors"
                     >
-                      <span className="text-base leading-none">{item.icon}</span>
                       {item.label}
                     </Link>
                   ))}
@@ -173,58 +174,78 @@ export default function Layout() {
             </div>
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* Right controls */}
+          <div className="flex items-center gap-2 shrink-0">
             <LanguageSwitcher />
             <button
-              className="md:hidden btn-ghost"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Ouvrir le menu"
             >
               <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
+      </header>
 
-        {menuOpen && (
-          <nav className="md:hidden border-t border-bg-border bg-bg-elevated">
-            <div className="container-app py-2 flex flex-col">
+      {/* ── Mobile menu overlay ── */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden" aria-modal="true">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMenuOpen(false)}
+          />
+
+          {/* Slide-in panel */}
+          <nav className="absolute right-0 top-0 h-full w-[280px] bg-bg-elevated border-l border-bg-border flex flex-col shadow-2xl">
+            {/* Panel header */}
+            <div className="flex items-center justify-between px-4 py-4 border-b border-bg-border shrink-0">
+              <NavLink to={getRoute('')} className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+                <img src="/logo.png" alt="TopCryptoCards" className="h-8 w-auto" />
+                <span className="font-display font-bold text-white text-base">
+                  TopCrypto<span className="text-cyan-accent">Cards</span>
+                </span>
+              </NavLink>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-bg-card transition-colors"
+                aria-label="Fermer le menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable links */}
+            <div className="flex-1 overflow-y-auto py-3 px-3">
               {navItems.map((item) => (
                 <NavLink
                   key={item.key}
                   to={getRoute(item.key)}
-                  end={item.key === ''}
                   onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) =>
-                    `px-3 py-3.5 rounded-lg text-sm font-medium flex items-center gap-3 min-h-[48px] active:bg-bg-card ${
-                      isActive
-                        ? 'text-cyan-accent bg-cyan-accent/10'
-                        : 'text-slate-300'
-                    }`
-                  }
+                  className={mobileNavLinkClass}
                 >
-                  <item.icon className="w-4 h-4" />
-                  {item.label}
+                  <item.icon className="w-5 h-5 shrink-0" />
+                  <span className="flex-1">{item.label}</span>
+                  {item.key === 'favorites' && favorites.length > 0 && (
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-green-accent/20 text-green-accent">
+                      {favorites.length}
+                    </span>
+                  )}
                 </NavLink>
               ))}
 
-              {/* Avis */}
               <NavLink
                 to={`/${lang}/${reviewSlug}`}
                 onClick={() => setMenuOpen(false)}
-                className={({ isActive }) =>
-                  `px-3 py-3.5 rounded-lg text-sm font-medium flex items-center gap-3 min-h-[48px] active:bg-bg-card ${
-                    isActive
-                      ? 'text-cyan-accent bg-cyan-accent/10'
-                      : 'text-slate-300'
-                  }`
-                }
+                className={mobileNavLinkClass}
               >
-                <Star className="w-4 h-4" />
+                <Star className="w-5 h-5 shrink-0" />
                 {reviewLabel}
               </NavLink>
 
-              {/* Thematic links in mobile menu */}
-              <div className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              {/* Guides section */}
+              <div className="mt-4 mb-2 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
                 {labels.title}
               </div>
               {thematicLinks.map((item) => (
@@ -232,27 +253,33 @@ export default function Layout() {
                   key={item.slug}
                   to={`/${lang}/${item.slug}`}
                   onClick={() => setMenuOpen(false)}
-                  className="px-3 py-3.5 rounded-lg text-sm text-slate-300 flex items-center gap-3 min-h-[48px] active:bg-bg-card"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-bg-card active:bg-bg-card transition-colors min-h-[48px]"
                 >
-                  <TrendingUp className="w-4 h-4" />
+                  <TrendingUp className="w-4 h-4 shrink-0 text-slate-500" />
                   {item.label}
                 </Link>
               ))}
             </div>
+
+            {/* Panel footer */}
+            <div className="shrink-0 px-4 py-4 border-t border-bg-border">
+              <LanguageSwitcher />
+            </div>
           </nav>
-        )}
-      </header>
+        </div>
+      )}
 
       <main className="flex-1">
         <Outlet />
       </main>
 
+      {/* ── Footer ── */}
       <footer className="border-t border-bg-border bg-bg-elevated/40 mt-20">
         <div className="container-app py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
+            <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-3">
-                <img src="/logo.png" alt="TopCryptoCards" className="h-7 w-auto" />
+                <img src="/logo.png" alt="TopCryptoCards" className="h-8 w-auto" />
                 <span className="font-display font-semibold text-white">
                   TopCryptoCards
                 </span>
@@ -315,6 +342,7 @@ export default function Layout() {
               </p>
             </div>
           </div>
+
           <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-500">
             <span>© {new Date().getFullYear()} {t('footer_copyright')}</span>
             <div className="flex flex-wrap gap-3">
@@ -328,6 +356,7 @@ export default function Layout() {
           </div>
         </div>
       </footer>
+
       <CookieBanner lang={lang} />
     </div>
   );
