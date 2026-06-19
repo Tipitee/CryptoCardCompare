@@ -5,26 +5,39 @@ import type { CryptoCard } from '../types/card';
 const REGULATION_SCORES: Record<string, number> = {
   banking: 100,
   mica_fca: 80,
-  standard: 55,
-  basic: 20,
+  standard: 60,
+  basic: 38,
 };
 
 const AUM_SCORES: Record<string, number> = {
   very_large: 100,
   large: 75,
   medium: 50,
-  small: 25,
+  small: 40,
 };
 
+function computeScore(bd: CryptoCard['trustBreakdown']): number | undefined {
+  if (!bd) return undefined;
+  const ageScore = bd.age != null
+    ? Math.min(Math.round((bd.age / 10) * 100), 100)
+    : 25;
+  const regScore = REGULATION_SCORES[bd.regulation ?? ''] ?? 38;
+  const tpScore = bd.trustpilot != null
+    ? Math.round((bd.trustpilot / 5) * 100)
+    : 35;
+  const aumScore = AUM_SCORES[bd.aum ?? ''] ?? 40;
+  return Math.round(regScore * 0.35 + tpScore * 0.25 + ageScore * 0.20 + aumScore * 0.20);
+}
+
 function scoreColor(score: number): string {
-  if (score >= 75) return '#00FF85';
-  if (score >= 50) return '#FFA500';
+  if (score >= 65) return '#00FF85';
+  if (score >= 42) return '#FFA500';
   return '#FF4444';
 }
 
 function scoreBgClass(score: number): string {
-  if (score >= 75) return 'bg-green-accent/10 border-green-accent/30';
-  if (score >= 50) return 'bg-amber-500/10 border-amber-500/30';
+  if (score >= 65) return 'bg-green-accent/10 border-green-accent/30';
+  if (score >= 42) return 'bg-amber-500/10 border-amber-500/30';
   return 'bg-red-500/10 border-red-500/20';
 }
 
@@ -46,13 +59,13 @@ interface Props {
 
 export default function TrustBadge({ card, variant = 'badge' }: Props) {
   const { t } = useTranslation('common');
-  const score = card.trustScore ?? 0;
+  const score = computeScore(card.trustBreakdown) ?? card.trustScore ?? 0;
   const color = scoreColor(score);
   const bd = card.trustBreakdown ?? {};
 
   const label =
-    score >= 75 ? t('trust_very_reliable') :
-    score >= 50 ? t('trust_moderate') :
+    score >= 65 ? t('trust_very_reliable') :
+    score >= 42 ? t('trust_moderate') :
     t('trust_caution');
 
   const regulationLabel: Record<string, string> = {
@@ -70,10 +83,10 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
   };
 
   // Component scores for progress bars
-  const ageScore = bd.age ? Math.min(Math.round((bd.age / 15) * 100), 100) : 10;
-  const regScore = bd.regulation ? (REGULATION_SCORES[bd.regulation] ?? 30) : 30;
-  const tpScore = bd.trustpilot != null ? Math.round((bd.trustpilot / 5) * 100) : 0;
-  const aumScore = bd.aum ? (AUM_SCORES[bd.aum] ?? 25) : 25;
+  const ageScore = bd.age != null ? Math.min(Math.round((bd.age / 10) * 100), 100) : 25;
+  const regScore = bd.regulation ? (REGULATION_SCORES[bd.regulation] ?? 38) : 38;
+  const tpScore = bd.trustpilot != null ? Math.round((bd.trustpilot / 5) * 100) : 35;
+  const aumScore = bd.aum ? (AUM_SCORES[bd.aum] ?? 40) : 40;
 
   if (variant === 'detail') {
     return (
