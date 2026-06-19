@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Home, Sparkles, Coins, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Home, Sparkles, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -91,9 +91,11 @@ export default function Layout() {
       <header className="sticky top-0 z-40 border-b border-bg-border bg-bg/80 backdrop-blur-lg">
         <div className="container-app flex items-center justify-between h-16">
           <NavLink to={getRoute('')} className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-accent to-green-accent flex items-center justify-center shadow-glow">
-              <Coins className="w-5 h-5 text-bg" strokeWidth={2.5} />
-            </div>
+            <img
+              src="/logo.png"
+              alt="TopCryptoCards"
+              className="h-9 w-auto"
+            />
             <span className="font-display font-bold text-white text-lg tracking-tight">
               TopCrypto<span className="text-cyan-accent">Cards</span>
             </span>
@@ -250,9 +252,7 @@ export default function Layout() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-7 h-7 rounded bg-gradient-to-br from-cyan-accent to-green-accent flex items-center justify-center">
-                  <Coins className="w-4 h-4 text-bg" />
-                </div>
+                <img src="/logo.png" alt="TopCryptoCards" className="h-7 w-auto" />
                 <span className="font-display font-semibold text-white">
                   TopCryptoCards
                 </span>
