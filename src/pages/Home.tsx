@@ -21,6 +21,9 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { fmtEUR, fmtPct } from '../utils/format';
 const YEAR = new Date().getFullYear();
+const COMPARE_PREFIX: Record<string, string> = {
+  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+};
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Comparatif Cartes Crypto ${YEAR} — Cashback, Frais, Avis | TopCryptoCards`, desc: `Comparez les meilleures cartes crypto en France. Cashback, frais, disponibilité : notre sélection complète ${YEAR}.` },
   de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback, Gebühren | TopCryptoCards`, desc: `Vergleichen Sie die besten Krypto-Karten in Deutschland. Cashback, Gebühren, Verfügbarkeit: unsere vollständige Auswahl ${YEAR}.` },
@@ -79,7 +82,13 @@ export default function Home() {
   const selectedCards = cards.filter((c) => compareSelection.includes(c.id));
   const goCompare = () => {
     if (compareSelection.length === 0) return;
-    navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
+    if (compareSelection.length === 2) {
+      const prefix = COMPARE_PREFIX[lang] ?? 'compare';
+      const [a, b] = compareSelection;
+      navigate(`/${lang}/${prefix}/${a}-vs-${b}`);
+    } else {
+      navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
+    }
   };
   // Slot 1: highest cashback premium among trusted cards (trustScore >= 50)
   const topCashback = [...cards]
