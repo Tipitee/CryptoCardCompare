@@ -79,12 +79,14 @@ export default function Home() {
     if (compareSelection.length === 0) return;
     navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
   };
-  // Slot 1: highest cashback premium (potential), with freeWithdrawals as tiebreaker
-  const topCashback = [...cards].sort((a, b) => {
-    const diff = b.cashbackPremium - a.cashbackPremium;
-    if (Math.abs(diff) > 0.001) return diff;
-    return a.stakingRequired - b.stakingRequired;
-  })[0];
+  // Slot 1: highest cashback premium among trusted cards (trustScore >= 50)
+  const topCashback = [...cards]
+    .filter((c) => (c.trustScore ?? 0) >= 50)
+    .sort((a, b) => {
+      const diff = b.cashbackPremium - a.cashbackPremium;
+      if (Math.abs(diff) > 0.001) return diff;
+      return a.stakingRequired - b.stakingRequired;
+    })[0];
   // Slot 2: best no-staking / no-fees card — sorted by real base rate, then premium
   const topNoFees = [...cards]
     .filter((c) => c.annualFees === 0 && c.stakingRequired === 0)
@@ -138,7 +140,8 @@ export default function Home() {
     if (minTrust > 0) {
       result = result.filter((c) => (c.trustScore ?? 0) >= minTrust);
     }
-    return result;
+    // Default sort: highest trust score first
+    return [...result].sort((a, b) => (b.trustScore ?? 0) - (a.trustScore ?? 0));
   }, [cards, filter, minTrust]);
   const heroCards = cards.slice(0, 3);
   useEffect(() => {
