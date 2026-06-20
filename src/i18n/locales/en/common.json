@@ -298,5 +298,11 @@
   "comparison_only_in": "Only in",
   "comparison_cta_btn": "View offer",
   "comparison_cta_text": "Check the full conditions on the official website.",
-  "detail_available_france": "Available in UK"
+  "detail_available_france": "Available in UK",
+  "badge_popular": "Popular",
+  "badge_populaire": "Popular",
+  "badge_nouveau": "New",
+  "badge_new": "New",
+  "badge_premium": "Premium",
+  "badge_best_cashback_de": "Best Cashback"
 }
