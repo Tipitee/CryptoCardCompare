@@ -387,7 +387,7 @@ export default function Compare() {
     selectedCryptos.length > 0;
 
   const qcLabels = QUICK_COMPARE_LABELS[lang] ?? QUICK_COMPARE_LABELS.en;
-  const sortedForSelect = [...allCards].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedForSelect = [...allCards].sort((a, b) => (b.trustScore ?? 0) - (a.trustScore ?? 0));
   const cardAName = allCards.find((c) => c.id === quickA)?.name;
   const cardBName = allCards.find((c) => c.id === quickB)?.name;
 

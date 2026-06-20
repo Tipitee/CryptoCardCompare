@@ -42,6 +42,8 @@ export default function Home() {
   const clearCompare = useAppStore((s) => s.clearCompare);
   const [filter, setFilter] = useState<FilterKey>('all');
   const [minTrust, setMinTrust] = useState<0 | 50 | 75>(0);
+  const [sortBy, setSortBy] = useState<'trust' | 'cashback' | 'fees'>('trust');
+  const [visibleCount, setVisibleCount] = useState(24);
   const [detail, setDetail] = useState<CryptoCard | null>(null);
   const navigate = useNavigate();
   const { t } = useTranslation('common');
@@ -140,9 +142,12 @@ export default function Home() {
     if (minTrust > 0) {
       result = result.filter((c) => (c.trustScore ?? 0) >= minTrust);
     }
-    // Default sort: highest trust score first
-    return [...result].sort((a, b) => (b.trustScore ?? 0) - (a.trustScore ?? 0));
-  }, [cards, filter, minTrust]);
+    return [...result].sort((a, b) => {
+      if (sortBy === 'cashback') return b.cashbackPremium - a.cashbackPremium;
+      if (sortBy === 'fees') return a.annualFees - b.annualFees;
+      return (b.trustScore ?? 0) - (a.trustScore ?? 0); // default: trust
+    });
+  }, [cards, filter, minTrust, sortBy]);
   const heroCards = cards.slice(0, 3);
   useEffect(() => {
     if (cards.length === 0) return;
@@ -323,7 +328,7 @@ export default function Home() {
             {FILTERS.map((f) => (
               <button
                 key={f.key}
-                onClick={() => setFilter(f.key)}
+                onClick={() => { setFilter(f.key); setVisibleCount(24); }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
                   filter === f.key
                     ? 'bg-cyan-accent/15 border-cyan-accent text-cyan-accent'
@@ -331,6 +336,28 @@ export default function Home() {
                 }`}
               >
                 {f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs text-slate-400 shrink-0">{t('sort_by') || 'Trier par'} :</span>
+          <div className="flex gap-1.5">
+            {([
+              { key: 'trust', label: t('sort_trust') || 'Confiance' },
+              { key: 'cashback', label: t('sort_cashback') || 'Cashback' },
+              { key: 'fees', label: t('sort_fees') || 'Frais' },
+            ] as const).map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => { setSortBy(key); setVisibleCount(24); }}
+                className={`px-3 py-1 rounded-lg text-xs font-semibold border transition-all ${
+                  sortBy === key
+                    ? 'bg-cyan-accent/15 border-cyan-accent text-cyan-accent'
+                    : 'bg-bg-elevated border-bg-border text-slate-400 hover:text-white hover:border-slate-600'
+                }`}
+              >
+                {label}
               </button>
             ))}
           </div>
@@ -358,7 +385,7 @@ export default function Home() {
           </div>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((card) => {
+          {filtered.slice(0, visibleCount).map((card) => {
             const isFav = favorites.includes(card.id);
             const inCompare = compareSelection.includes(card.id);
             return (
@@ -446,6 +473,17 @@ export default function Home() {
             </div>
           )}
         </div>
+        {visibleCount < filtered.length && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setVisibleCount((n) => n + 24)}
+              className="btn-secondary"
+            >
+              {t('home_show_more') || `Afficher ${Math.min(24, filtered.length - visibleCount)} de plus`}
+              <span className="ml-1 text-slate-400 text-xs">({filtered.length - visibleCount} {t('home_remaining') || 'restantes'})</span>
+            </button>
+          </div>
+        )}
       </section>
       <section className="container-app py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
