@@ -20,7 +20,6 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { fmtEUR, fmtPct } from '../utils/format';
-
 const YEAR = new Date().getFullYear();
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Comparatif Cartes Crypto ${YEAR} — Cashback, Frais, Avis | TopCryptoCards`, desc: `Comparez les meilleures cartes crypto en France. Cashback, frais, disponibilité : notre sélection complète ${YEAR}.` },
@@ -33,9 +32,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
 import type { CryptoCard } from '../types/card';
-
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
-
 export default function Home() {
   const cards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
@@ -52,7 +49,6 @@ export default function Home() {
   const lang = useLanguage();
   const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc });
-
   useEffect(() => {
     const schema = {
       '@context': 'https://schema.org',
@@ -71,7 +67,6 @@ export default function Home() {
     document.head.appendChild(el);
     return () => { document.getElementById('schema-org-home')?.remove(); };
   }, [lang, homeSeo.desc]);
-
   const FILTERS: { key: FilterKey; label: string }[] = [
     { key: 'all', label: t('filter_all') },
     { key: 'no_fees', label: t('filter_no_fees') },
@@ -79,20 +74,17 @@ export default function Home() {
     { key: 'no_staking', label: t('filter_no_staking') },
     { key: 'france', label: t('filter_france') },
   ];
-
   const selectedCards = cards.filter((c) => compareSelection.includes(c.id));
   const goCompare = () => {
     if (compareSelection.length === 0) return;
     navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
   };
-
   // Slot 1: highest cashback premium (potential), with freeWithdrawals as tiebreaker
   const topCashback = [...cards].sort((a, b) => {
     const diff = b.cashbackPremium - a.cashbackPremium;
     if (Math.abs(diff) > 0.001) return diff;
     return a.stakingRequired - b.stakingRequired;
   })[0];
-
   // Slot 2: best no-staking / no-fees card — sorted by real base rate, then premium
   const topNoFees = [...cards]
     .filter((c) => c.annualFees === 0 && c.stakingRequired === 0)
@@ -101,9 +93,7 @@ export default function Home() {
       if (Math.abs(diff) > 0.001) return diff;
       return b.cashbackPremium - a.cashbackPremium;
     })[0];
-
   // Slot 3: balanced pick — real base rate (cashbackNoStaking) minus fee drag.
-  // Uses cashbackNoStaking so Plutus (0% without staking) no longer wins this slot.
   const topBalanced = [...cards]
     .filter((c) => c.availableFrance && c.annualFees < 100)
     .sort((a, b) => {
@@ -113,7 +103,6 @@ export default function Home() {
       if (Math.abs(diff) > 0.001) return diff;
       return b.cashbackPremium - a.cashbackPremium;
     })[0];
-
   const usedIds = new Set<string>();
   const podium: CryptoCard[] = [];
   for (const candidate of [topCashback, topNoFees, topBalanced]) {
@@ -121,7 +110,6 @@ export default function Home() {
       usedIds.add(candidate.id);
       podium.push(candidate);
     } else if (candidate && usedIds.has(candidate.id)) {
-      // Fallback: next best card by cashbackNoStaking that isn't already in podium
       const fallback = [...cards]
         .filter((c) => !usedIds.has(c.id))
         .sort((a, b) => b.cashbackNoStaking - a.cashbackNoStaking)[0];
@@ -131,7 +119,6 @@ export default function Home() {
       }
     }
   }
-
   const filtered = useMemo(() => {
     let result = cards;
     switch (filter) {
@@ -153,10 +140,7 @@ export default function Home() {
     }
     return result;
   }, [cards, filter, minTrust]);
-
   const heroCards = cards.slice(0, 3);
-
-  // Schema.org ItemList
   useEffect(() => {
     if (cards.length === 0) return;
     const segment = { fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards' }[lang] || 'cards';
@@ -183,7 +167,6 @@ export default function Home() {
     document.head.appendChild(schemaEl);
     return () => { document.getElementById('schema-item-list')?.remove(); };
   }, [cards, lang, homeSeo]);
-
   return (
     <div>
       <section className="relative overflow-hidden">
@@ -192,7 +175,6 @@ export default function Home() {
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full blur-3xl opacity-20"
           style={{ background: 'radial-gradient(closest-side, #00D4FF, transparent)' }}
         />
-
         <div className="relative container-app pt-16 md:pt-24 pb-10 grid lg:grid-cols-2 gap-10 items-center">
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-bg-elevated border border-bg-border text-xs text-slate-300 mb-6">
@@ -218,7 +200,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
           <div className="relative h-[340px] sm:h-[400px] hidden lg:block">
             {heroCards[2] && (
               <div
@@ -246,7 +227,6 @@ export default function Home() {
             )}
           </div>
         </div>
-
         <div className="relative container-app pb-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
@@ -263,7 +243,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="container-app py-16">
         <div className="flex items-end justify-between mb-10">
           <div>
@@ -277,7 +256,6 @@ export default function Home() {
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-
         <div className="grid md:grid-cols-3 gap-6">
           {podium.slice(0, 3).map((card, idx) => {
             const labels = [
@@ -328,7 +306,6 @@ export default function Home() {
           })}
         </div>
       </section>
-
       <section className="container-app py-16">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
           <div>
@@ -355,9 +332,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        {/* Trust score filter — hidden */}
-        {<div className="flex items-center gap-3 mb-8">
+        <div className="flex items-center gap-3 mb-8">
           <span className="text-xs text-slate-400 shrink-0">{t('trust_min_filter')}</span>
           <div className="flex gap-1.5">
             {([0, 50, 75] as const).map((v) => (
@@ -378,8 +353,7 @@ export default function Home() {
               </button>
             ))}
           </div>
-        </div>}
-
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((card) => {
             const isFav = favorites.includes(card.id);
@@ -424,7 +398,6 @@ export default function Home() {
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                   </button>
                 </div>
-
                 <button
                   onClick={() => setDetail(card)}
                   className="w-full text-left"
@@ -432,13 +405,11 @@ export default function Home() {
                   <div className="flex justify-center py-2 mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
-
                   <div className="flex items-start justify-between gap-2 mb-1">
                     <div className="font-display font-semibold text-white">{card.name}</div>
-                    {card.badge && <span className="badge-accent">{card.badge}</span>}
+                    {card.badge && <span className="badge-accent">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>}
                   </div>
                   <div className="text-xs text-slate-500 mb-4">{card.issuer}</div>
-
                   <dl className="grid grid-cols-3 gap-2 text-xs border-t border-bg-border pt-3">
                     <div>
                       <dt className="text-slate-500">Cashback</dt>
@@ -473,7 +444,6 @@ export default function Home() {
           )}
         </div>
       </section>
-
       <section className="container-app py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
           {t('home_help_title')}
@@ -519,7 +489,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {compareSelection.length > 0 && (
         <div className="fixed bottom-4 left-0 right-0 z-40 flex justify-center px-4 animate-slide-up">
           <div className="card-surface shadow-2xl border-cyan-accent/40 px-4 py-3 flex items-center gap-3 max-w-3xl w-full">
@@ -566,7 +535,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
       <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
     </div>
   );
