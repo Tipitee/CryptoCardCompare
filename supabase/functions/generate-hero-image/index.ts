@@ -1,4 +1,3 @@
-import Anthropic from "npm:@anthropic-ai/sdk";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -31,11 +30,10 @@ Deno.serve(async (req) => {
 
     const { id, title, excerpt, tags, slug, forceRegenerate } = await req.json();
 
-    const anthropicKey = Deno.env.get("ANTHROPIC_API_KEY");
     const togetherKey = Deno.env.get("TOGETHER_API_KEY");
 
-    if (!anthropicKey || !togetherKey) {
-      throw new Error("Missing ANTHROPIC_API_KEY or TOGETHER_API_KEY");
+    if (!togetherKey) {
+      throw new Error("Missing TOGETHER_API_KEY");
     }
 
     // Step 0: Fetch cards and detect matches
@@ -82,9 +80,8 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Step 1: Generate image prompt via Claude
-    console.log("Generating image prompt with Claude...");
-    const anthropic = new Anthropic({ apiKey: anthropicKey });
+    // Step 1: Build image prompt from article metadata (no external API needed)
+    console.log("Building image prompt from article metadata...");
 
     const styleVariations = [
       "dark background, neon cyan and green accents, abstract crypto/blockchain aesthetic, cinematic lighting",
@@ -96,46 +93,20 @@ Deno.serve(async (req) => {
 
     const randomStyle = styleVariations[Math.floor(Math.random() * styleVariations.length)];
 
+    // Extract key topic words from title and tags
+    const topicWords = [
+      ...(tags ?? []).slice(0, 3),
+      title.split(" ").slice(0, 5).join(" "),
+    ].filter(Boolean).join(", ");
+
     let cardContext = "";
     if (detectedCard) {
-      const features = [];
-      if (detectedCard.cashback_premium > 0) {
-        features.push(`up to ${detectedCard.cashback_premium}% cashback`);
-      }
-      if (detectedCard.annual_fees === 0) {
-        features.push("no annual fees");
-      }
-      if (detectedCard.extras && detectedCard.extras.length > 0) {
-        features.push(`includes ${detectedCard.extras.slice(0, 2).join(", ")}`);
-      }
-
-      cardContext = `\n\nCard Context - The article mentions: ${detectedCard.name} by ${detectedCard.issuer}
-Key features: ${features.join(", ")}
-Brand colors to incorporate: Primary ${detectedCard.color_primary || "#00D4FF"}, Secondary ${detectedCard.color_secondary || "#0A0E1A"}
-IMPORTANT: Subtly integrate visual elements that represent this card (card shape, issuer aesthetic, color palette) without showing text or logos.`;
+      cardContext = `, ${detectedCard.color_primary || "#00D4FF"} and ${detectedCard.color_secondary || "#0A0E1A"} color palette inspired by ${detectedCard.issuer}`;
     }
 
-    const promptResponse = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 150,
-      messages: [{
-        role: "user",
-        content: `Write a detailed image generation prompt (max 75 words) for a blog hero image.
-Article Title: "${title}"
-Article Summary: ${excerpt}
-Tags: ${tags?.join(", ") ?? ""}
+    const imagePrompt = `${randomStyle}${cardContext}, visual representation of ${topicWords}, premium cryptocurrency card concept, no text, no logos, no people, 16:9 aspect ratio, ultra detailed, professional financial technology illustration`;
 
-Style Requirements: ${randomStyle}, no text, no logos, 16:9 aspect ratio.
-
-The image should visually represent the article's topic and feel modern, premium, and relevant to cryptocurrency/blockchain industry.${cardContext}
-Return ONLY the prompt.`,
-      }],
-    });
-
-    const imagePrompt =
-      (promptResponse.content[0] as { type: string; text: string }).text.trim();
-
-    console.log("Generated image prompt:", imagePrompt);
+    console.log("Built image prompt:", imagePrompt);
 
     // Step 2: Generate image with Together AI (with retries)
     console.log("Calling Together AI API directly...");
