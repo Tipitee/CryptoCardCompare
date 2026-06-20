@@ -1,4 +1,3 @@
-
 {
   "site_name": "TopCryptoCards",
   "site_domain": ".eu",
@@ -303,5 +302,11 @@
   "badge_popular": "Popolare",
   "badge_new": "Nuovo",
   "badge_premium": "Premium",
-  "badge_best_cashback": "Miglior cashback"
+  "badge_best_cashback": "Miglior cashback",
+  "sort_by": "Ordina per",
+  "sort_trust": "Fiducia",
+  "sort_cashback": "Cashback",
+  "sort_fees": "Commissioni",
+  "home_show_more": "Mostra altri",
+  "home_remaining": "rimanenti"
 }

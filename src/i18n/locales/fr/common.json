@@ -302,5 +302,11 @@
   "badge_popular": "Populaire",
   "badge_new": "Nouveau",
   "badge_premium": "Premium",
-  "badge_best_cashback": "Meilleur cashback"
+  "badge_best_cashback": "Meilleur cashback",
+  "sort_by": "Trier par",
+  "sort_trust": "Confiance",
+  "sort_cashback": "Cashback",
+  "sort_fees": "Frais",
+  "home_show_more": "Afficher plus",
+  "home_remaining": "restantes"
 }

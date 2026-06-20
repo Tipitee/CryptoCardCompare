@@ -25,7 +25,7 @@
   "filter_no_fees": "No fees",
   "filter_high_cashback": "High cashback",
   "filter_no_staking": "No staking",
-  "filter_france": "Available in Europe",
+  "filter_france": "Available in France",
   "trust_score": "Trust score",
   "trust_very_reliable": "Very reliable",
   "trust_moderate": "Moderate",
@@ -302,5 +302,11 @@
   "badge_popular": "Popular",
   "badge_new": "New",
   "badge_premium": "Premium",
-  "badge_best_cashback": "Best cashback"
+  "badge_best_cashback": "Best cashback",
+  "sort_by": "Sort by",
+  "sort_trust": "Trust",
+  "sort_cashback": "Cashback",
+  "sort_fees": "Fees",
+  "home_show_more": "Show more",
+  "home_remaining": "remaining"
 }
