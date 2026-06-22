@@ -367,7 +367,7 @@ export default function CardDetail() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg/80 pointer-events-none" />
         <div className="container-app py-10 relative">
           <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-            <SmartCardImage card={card} size="lg" className="shrink-0 w-full max-w-[280px] mx-auto md:mx-0" priority />
+            <SmartCardImage card={card} size="lg" className="mx-auto md:mx-0 shrink-0" priority />
             <div className="flex-1 min-w-0">
               {card.badge && (
                 <span

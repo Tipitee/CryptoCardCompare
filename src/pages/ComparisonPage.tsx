@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
@@ -20,6 +20,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getSpecificComparison } from '../data/comparisonContent';
+import { fetchCardById } from '../lib/supabase';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -195,19 +196,31 @@ export default function ComparisonPage() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
   const { getRoute } = useLocalizedRoute();
-  const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
 
   const [detail, setDetail] = useState<CryptoCard | null>(null);
+  const [card1, setCard1] = useState<CryptoCard | null>(null);
+  const [card2, setCard2] = useState<CryptoCard | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   // Parse slug
   const vsIndex = (slug ?? '').indexOf('-vs-');
   const id1 = vsIndex > -1 ? (slug ?? '').slice(0, vsIndex) : '';
   const id2 = vsIndex > -1 ? (slug ?? '').slice(vsIndex + 4) : '';
 
-  const card1 = allCards.find((c) => c.id === id1) ?? null;
-  const card2 = allCards.find((c) => c.id === id2) ?? null;
+  // Fetch both cards directly — avoids depending on the market-filtered store
+  useEffect(() => {
+    if (!id1 || !id2) { setNotFound(true); setLoading(false); return; }
+    setLoading(true);
+    setNotFound(false);
+    Promise.all([fetchCardById(id1), fetchCardById(id2)]).then(([c1, c2]) => {
+      if (!c1 || !c2) setNotFound(true);
+      else { setCard1(c1); setCard2(c2); }
+      setLoading(false);
+    });
+  }, [id1, id2]);
 
   const rows = getRows(t);
   const genericBlocks = getSeoText(lang, card1, card2);
@@ -239,7 +252,7 @@ export default function ComparisonPage() {
   });
 
   // Not found state
-  if (allCards.length > 0 && (!card1 || !card2)) {
+  if (notFound) {
     return (
       <div className="container-app py-20 text-center">
         <p className="text-slate-400 text-lg mb-6">{t('comparison_not_found')}</p>
@@ -252,7 +265,7 @@ export default function ComparisonPage() {
   }
 
   // Loading state
-  if (!card1 || !card2) {
+  if (loading || !card1 || !card2) {
     return (
       <div className="container-app py-20 text-center">
         <div className="animate-pulse text-slate-500">{t('comparison_loading')}</div>
@@ -306,13 +319,13 @@ export default function ComparisonPage() {
         {[{ card: card1, isFav: isFav1 }, { card: card2, isFav: isFav2 }].map(({ card, isFav }) => (
           <div key={card.id} className="card-surface p-5 flex flex-col items-center text-center gap-4">
             {/* Clickable image */}
-            <button
+            <div
               onClick={() => setDetail(card)}
-              className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-accent rounded-xl"
+              className="cursor-pointer hover:opacity-80 transition-opacity rounded-xl w-fit"
               title={card.name}
             >
               <SmartCardImage card={card} size="lg" />
-            </button>
+            </div>
 
             {/* Name */}
             <div>
