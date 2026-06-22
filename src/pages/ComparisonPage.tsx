@@ -450,9 +450,8 @@ export default function ComparisonPage() {
                   key={row.key as string}
                   className="border-b border-bg-border/50 hover:bg-bg-elevated/20 transition-colors"
                 >
-                  <td className="px-5 py-3 text-slate-400 font-medium">{row.label}</td>
                   <td className="px-5 py-3 text-center">
-                    <span className={`inline-flex items-center gap-1 ${w === 'c1' ? 'text-white' : 'text-slate-500'}`}>
+                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c1' ? 'text-white' : 'text-slate-500'}`}>
                       {w === 'c1' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
                       {v1 ? (
                         <Check className="w-4 h-4 text-green-accent" />
@@ -461,8 +460,9 @@ export default function ComparisonPage() {
                       )}
                     </span>
                   </td>
+                  <td className="px-5 py-3 text-center text-slate-500 font-medium text-xs">{row.label}</td>
                   <td className="px-5 py-3 text-center">
-                    <span className={`inline-flex items-center gap-1 ${w === 'c2' ? 'text-white' : 'text-slate-500'}`}>
+                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c2' ? 'text-white' : 'text-slate-500'}`}>
                       {w === 'c2' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
                       {v2 ? (
                         <Check className="w-4 h-4 text-green-accent" />
