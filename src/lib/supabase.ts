@@ -23,6 +23,16 @@ export function getSessionId(): string {
   return sid;
 }
 
+// All columns selected when fetching card rows — kept as a constant to avoid
+// duplication between fetchCards and fetchCardById.
+const CARD_COLUMNS =
+  'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, ' +
+  'annual_fees, staking_required, cryptos, available_france, available_eu, ' +
+  'card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, ' +
+  'color_primary, color_secondary, real_card_image, image_alt, markets, status, ' +
+  'virtual_only, market_restrictions, category_rates, trust_score, founded_year, ' +
+  'regulation_level, trustpilot_score, aum_tier, trust_breakdown';
+
 type CardRow = {
   id: string;
   name: string;
@@ -98,9 +108,7 @@ function rowToCard(row: CardRow): CryptoCard {
 export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   let query = supabase
     .from('cards')
-    .select(
-      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates, trust_score, founded_year, regulation_level, trustpilot_score, aum_tier, trust_breakdown'
-    )
+    .select(CARD_COLUMNS)
     .neq('status', 'discontinued');
   if (market) {
     query = query.contains('markets', [market]);
@@ -124,9 +132,7 @@ export async function fetchCardArticle(cardId: string, lang: string) {
 export async function fetchCardById(id: string): Promise<CryptoCard | null> {
   const { data } = await supabase
     .from('cards')
-    .select(
-      'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, cryptos, available_france, available_eu, card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, color_primary, color_secondary, real_card_image, image_alt, markets, status, virtual_only, market_restrictions, category_rates, trust_score, founded_year, regulation_level, trustpilot_score, aum_tier, trust_breakdown'
-    )
+    .select(CARD_COLUMNS)
     .eq('id', id)
     .maybeSingle();
   if (!data) return null;
@@ -251,7 +257,6 @@ export async function fetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
     .select('*')
     .order('created_at', { ascending: false });
   if (error) throw error;
-  void adminSecret; // validated server-side; RLS allows anon read of published only
   return (data ?? []) as BlogPost[];
 }
 

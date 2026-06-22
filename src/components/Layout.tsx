@@ -8,30 +8,8 @@ import LanguageSwitcher from './LanguageSwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
-
-const REVIEW_SLUGS: Record<string, string> = {
-  fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews',
-};
-
-const REVIEW_LABELS: Record<string, string> = {
-  fr: 'Avis', de: 'Bewertungen', es: 'Opiniones', it: 'Recensioni', en: 'Reviews',
-};
-
-const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
-  fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
-  de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
-  es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
-  it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
-  en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
-};
-
-const THEMATIC_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string; title: string; cryptos: string }> = {
-  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies' },
-  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide' },
-  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas' },
-  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute' },
-  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide' },
-};
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS } from '../config/routes';
 
 export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
@@ -45,26 +23,25 @@ export default function Layout() {
   const { getRoute } = useLocalizedRoute();
   const location = useLocation();
 
-  const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
-  const labels = THEMATIC_LABELS[lang] || THEMATIC_LABELS.en;
-  const reviewSlug = REVIEW_SLUGS[lang] || 'avis';
-  const reviewLabel = REVIEW_LABELS[lang] || 'Avis';
+  const labels = THEMATIC_NAV_LABELS[lang] ?? THEMATIC_NAV_LABELS.en;
+  const reviewSlug = ROUTE_TRANSLATIONS[lang]?.reviews ?? 'reviews';
+  const reviewLabel = REVIEW_NAV_LABELS[lang] ?? REVIEW_NAV_LABELS.en;
 
   // Nav items — Home removed, logo acts as home link
   const navItems = [
-    { key: 'compare', label: t('nav_compare'), icon: BarChart3 },
-    { key: 'simulator', label: t('nav_simulator'), icon: Calculator },
+    { key: 'compare',        label: t('nav_compare'),        icon: BarChart3 },
+    { key: 'simulator',      label: t('nav_simulator'),      icon: Calculator },
     { key: 'recommendation', label: t('nav_recommendation'), icon: Sparkles },
-    { key: 'favorites', label: t('nav_favorites'), icon: Heart },
-    { key: 'blog', label: t('nav_blog'), icon: BookOpen },
+    { key: 'favorites',      label: t('nav_favorites'),      icon: Heart },
+    { key: 'blog',           label: t('nav_blog'),           icon: BookOpen },
   ];
 
   const thematicLinks = [
-    { slug: slugs.best, label: labels.best },
-    { slug: slugs.cashback, label: labels.cashback },
-    { slug: slugs.noFees, label: labels.noFees },
-    { slug: slugs.noStaking, label: labels.noStaking },
-    { slug: 'cryptos', label: labels.cryptos },
+    { slug: THEMATIC_ROUTES.best[lang],         label: labels.best },
+    { slug: THEMATIC_ROUTES.cashback[lang],      label: labels.cashback },
+    { slug: THEMATIC_ROUTES['no-fees'][lang],    label: labels.noFees },
+    { slug: THEMATIC_ROUTES['no-staking'][lang], label: labels.noStaking },
+    { slug: 'cryptos',                           label: labels.cryptos },
   ];
 
   useEffect(() => {

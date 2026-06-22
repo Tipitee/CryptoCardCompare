@@ -16,6 +16,22 @@ const AUM_SCORES: Record<string, number> = {
   small: 40,
 };
 
+// Maps DB values to their i18n keys. Calling t() at the usage site keeps
+// these as plain module-level constants (no rebuild on every render).
+const REGULATION_I18N_KEY: Record<string, string> = {
+  banking:  'trust_reg_banking',
+  mica_fca: 'trust_reg_mica',
+  standard: 'trust_reg_standard',
+  basic:    'trust_reg_basic',
+};
+
+const AUM_I18N_KEY: Record<string, string> = {
+  very_large: 'trust_aum_very_large',
+  large:      'trust_aum_large',
+  medium:     'trust_aum_medium',
+  small:      'trust_aum_small',
+};
+
 function computeScore(bd: CryptoCard['trustBreakdown']): number | undefined {
   if (!bd) return undefined;
   const ageScore = bd.age != null
@@ -68,19 +84,8 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
     score >= 42 ? t('trust_moderate') :
     t('trust_caution');
 
-  const regulationLabel: Record<string, string> = {
-    banking: t('trust_reg_banking'),
-    mica_fca: t('trust_reg_mica'),
-    standard: t('trust_reg_standard'),
-    basic: t('trust_reg_basic'),
-  };
-
-  const aumLabel: Record<string, string> = {
-    very_large: t('trust_aum_very_large'),
-    large: t('trust_aum_large'),
-    medium: t('trust_aum_medium'),
-    small: t('trust_aum_small'),
-  };
+  const regLabel  = bd.regulation ? t(REGULATION_I18N_KEY[bd.regulation] ?? bd.regulation) : '—';
+  const aumLabel2 = bd.aum        ? t(AUM_I18N_KEY[bd.aum] ?? bd.aum)                      : '—';
 
   // Component scores for progress bars
   const ageScore = bd.age != null ? Math.min(Math.round((bd.age / 10) * 100), 100) : 25;
@@ -118,7 +123,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="text-slate-400">{t('trust_regulation')}</span>
-              <span className="text-slate-300">{bd.regulation ? (regulationLabel[bd.regulation] ?? bd.regulation) : '—'}</span>
+              <span className="text-slate-300">{regLabel}</span>
             </div>
             <ProgressBar value={regScore} color={scoreColor(regScore)} />
           </div>
@@ -134,7 +139,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="text-slate-400">{t('trust_aum')}</span>
-              <span className="text-slate-300">{bd.aum ? (aumLabel[bd.aum] ?? bd.aum) : '—'}</span>
+              <span className="text-slate-300">{aumLabel2}</span>
             </div>
             <ProgressBar value={aumScore} color={scoreColor(aumScore)} />
           </div>
@@ -172,7 +177,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           />
           <TooltipRow
             label={t('trust_regulation')}
-            value={bd.regulation ? (regulationLabel[bd.regulation] ?? bd.regulation) : '—'}
+            value={regLabel}
             score={regScore}
           />
           <TooltipRow
@@ -182,7 +187,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           />
           <TooltipRow
             label={t('trust_aum')}
-            value={bd.aum ? (aumLabel[bd.aum] ?? bd.aum) : '—'}
+            value={aumLabel2}
             score={aumScore}
           />
         </div>
