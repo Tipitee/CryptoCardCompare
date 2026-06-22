@@ -39,7 +39,7 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
 
   return (
     <div
-      className={`${sizeClass} flex-none shrink-0 relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 ${className}`}
+      className={`${sizeClass} flex-none shrink-0 relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-bg-card ${className}`}
     >
       <img
         src={card.realCardImage}
