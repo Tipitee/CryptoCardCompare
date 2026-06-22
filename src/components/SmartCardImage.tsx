@@ -50,7 +50,7 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
         width={dims.width}
         height={dims.height}
         onError={() => setErrored(true)}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-contain"
       />
     </div>
   );

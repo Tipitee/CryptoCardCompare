@@ -385,13 +385,13 @@ export default function ComparisonPage() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-bg-border bg-bg-elevated/50">
-              <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400 w-1/3">
-                {t('comparison_criteria') || 'Critère'}
-              </th>
-              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-cyan-accent">
+              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-cyan-accent w-[42%]">
                 {card1.name}
               </th>
-              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-green-accent">
+              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-400 w-[16%]">
+                {t('comparison_criteria') || 'Critère'}
+              </th>
+              <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-green-accent w-[42%]">
                 {card2.name}
               </th>
             </tr>
@@ -406,10 +406,9 @@ export default function ComparisonPage() {
                   key={row.key as string}
                   className="border-b border-bg-border/50 hover:bg-bg-elevated/20 transition-colors"
                 >
-                  <td className="px-5 py-3 text-slate-400 font-medium">{row.label}</td>
                   <td className="px-5 py-3 text-center">
                     <span
-                      className={`inline-flex items-center gap-1.5 font-semibold ${
+                      className={`inline-flex items-center justify-center gap-1.5 font-semibold ${
                         w === 'c1' ? 'text-white' : 'text-slate-400'
                       }`}
                     >
@@ -419,9 +418,10 @@ export default function ComparisonPage() {
                       {val1}
                     </span>
                   </td>
+                  <td className="px-5 py-3 text-center text-slate-500 font-medium text-xs">{row.label}</td>
                   <td className="px-5 py-3 text-center">
                     <span
-                      className={`inline-flex items-center gap-1.5 font-semibold ${
+                      className={`inline-flex items-center justify-center gap-1.5 font-semibold ${
                         w === 'c2' ? 'text-white' : 'text-slate-400'
                       }`}
                     >
