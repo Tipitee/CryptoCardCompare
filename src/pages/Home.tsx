@@ -503,15 +503,15 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Card body — flex column for consistent alignment across all cards */}
-                <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col">
-                  {/* Image area — fixed height so all card images align */}
+                {/* Card body */}
+                <button onClick={() => setDetail(card)} className="w-full text-left">
+                  {/* Image — fixed height so all card images sit at the same level */}
                   <div className="h-36 flex items-center justify-center mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
 
-                  {/* Name + badge — fixed min-height, no separate issuer line */}
-                  <div className="flex items-start justify-between gap-2 mb-3 min-h-[2.5rem]">
+                  {/* Name + badge — no issuer subtitle; issuer appended in parens when not already in name */}
+                  <div className="flex items-start justify-between gap-2 mb-3">
                     <div className="font-display font-semibold text-white leading-snug">
                       {card.name.toLowerCase().includes(card.issuer.toLowerCase())
                         ? card.name
@@ -548,31 +548,29 @@ export default function Home() {
                     </div>
                   </dl>
 
-                  {/* Trust badge — always renders fixed-height area to keep stats aligned */}
-                  <div className="mt-3 pt-3 border-t border-bg-border flex justify-end min-h-[2.25rem] items-center">
-                    {card.trustScore !== undefined && <TrustBadge card={card} />}
-                  </div>
+                  {card.trustScore !== undefined && (
+                    <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
+                      <TrustBadge card={card} />
+                    </div>
+                  )}
                 </button>
 
-                {/* Brand CTA — always renders fixed-height area to keep card bottoms aligned */}
-                <div className="mt-2 h-8 flex items-stretch">
-                  {brandId && (
-                    <Link
-                      to={`/${lang}/${brandsSlug}/${brandId}`}
-                      className={`flex items-center justify-center gap-1.5 w-full text-xs rounded-lg transition-colors ${
-                        isMultiTier
-                          ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
-                          : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
-                      }`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {isMultiTier
-                        ? SEE_TIERS[lang] ?? 'See all tiers'
-                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  )}
-                </div>
+                {brandId && (
+                  <Link
+                    to={`/${lang}/${brandsSlug}/${brandId}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`mt-3 flex items-center justify-center gap-1.5 w-full text-xs rounded-lg py-1.5 transition-colors ${
+                      isMultiTier
+                        ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
+                        : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
+                    }`}
+                  >
+                    {isMultiTier
+                      ? SEE_TIERS[lang] ?? 'See all tiers'
+                      : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
               </div>
             );
           })}
