@@ -508,9 +508,10 @@ export default function Home() {
                 </div>
 
                 {/* ── Clickable card body — flex-1 so it fills the card ── */}
-                <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col flex-1">
-                  {/* Image — fixed height, same for every card */}
-                  <div className="h-36 flex items-center justify-center mb-4">
+                {/* pt-8 reserves space for the absolute-positioned badges above the image, same for every card */}
+                <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col flex-1 pt-8">
+                  {/* Image — natural size (size="md" = w-72 h-44), centered */}
+                  <div className="flex justify-center mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
 
