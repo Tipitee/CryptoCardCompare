@@ -455,29 +455,33 @@ export default function Home() {
             const inCompare = compareSelection.includes(card.id);
             const isMultiTier = tierCount > 1;
             const tiersLbl = TIERS_LABEL[lang] ?? 'tiers';
+            const displayName = card.name.toLowerCase().includes(card.issuer.toLowerCase())
+              ? card.name
+              : `${card.name} (${card.issuer})`;
+
             return (
               <div
                 key={card.id}
-                className={`card-surface p-5 relative group transition-all ${
+                className={`card-surface p-5 relative group transition-all flex flex-col ${
                   inCompare
                     ? 'border-cyan-accent shadow-glow'
                     : 'hover:border-cyan-accent/40 hover:shadow-glow'
                 }`}
               >
-                {/* Tier count badge — top left */}
+                {/* Tier badge — top left, absolute so it doesn't affect layout */}
                 {isMultiTier && (
                   <Link
                     to={`/${lang}/${brandsSlug}/${brandId}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute top-4 left-4 z-10 flex items-center gap-1 bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] font-bold px-2 py-0.5 rounded-full hover:bg-brand-accent/20 transition-colors"
+                    className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] font-bold px-2 py-0.5 rounded-full hover:bg-brand-accent/20 transition-colors"
                   >
                     <span>{tierCount}</span>
                     <span>{tiersLbl}</span>
                   </Link>
                 )}
 
-                {/* Fav + Compare buttons — top right */}
-                <div className="absolute top-4 right-4 z-10 flex gap-1.5">
+                {/* Fav + Compare — top right, absolute */}
+                <div className="absolute top-3 right-3 z-10 flex gap-1.5">
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleCompare(card.id); }}
                     aria-label={inCompare ? t('home_compare_remove_label') : t('home_compare_add_label')}
@@ -503,20 +507,16 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Card body */}
-                <button onClick={() => setDetail(card)} className="w-full text-left">
-                  {/* Image — fixed height so all card images sit at the same level */}
+                {/* ── Clickable card body — flex-1 so it fills the card ── */}
+                <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col flex-1">
+                  {/* Image — fixed height, same for every card */}
                   <div className="h-36 flex items-center justify-center mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
 
-                  {/* Name + badge — no issuer subtitle; issuer appended in parens when not already in name */}
+                  {/* Name + badge */}
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className="font-display font-semibold text-white leading-snug">
-                      {card.name.toLowerCase().includes(card.issuer.toLowerCase())
-                        ? card.name
-                        : `${card.name} (${card.issuer})`}
-                    </div>
+                    <div className="font-display font-semibold text-white leading-snug">{displayName}</div>
                     {card.badge && (
                       <span className="badge-accent shrink-0">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>
                     )}
@@ -548,29 +548,34 @@ export default function Home() {
                     </div>
                   </dl>
 
-                  {card.trustScore !== undefined && (
-                    <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
-                      <TrustBadge card={card} />
-                    </div>
-                  )}
+                  {/* Spacer — pushes trust badge to the bottom of the button area */}
+                  <div className="flex-1" />
+
+                  {/* Trust badge — pinned to bottom, always same position across cards */}
+                  <div className="mt-3 pt-3 border-t border-bg-border flex justify-end min-h-[2rem] items-center">
+                    {card.trustScore !== undefined && <TrustBadge card={card} />}
+                  </div>
                 </button>
 
-                {brandId && (
-                  <Link
-                    to={`/${lang}/${brandsSlug}/${brandId}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className={`mt-3 flex items-center justify-center gap-1.5 w-full text-xs rounded-lg py-1.5 transition-colors ${
-                      isMultiTier
-                        ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
-                        : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
-                    }`}
-                  >
-                    {isMultiTier
-                      ? SEE_TIERS[lang] ?? 'See all tiers'
-                      : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                )}
+                {/* CTA — pinned at card bottom, same height whether present or not */}
+                <div className="mt-2 h-8 flex items-center">
+                  {brandId && (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${brandId}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className={`flex items-center justify-center gap-1.5 w-full h-full text-xs rounded-lg transition-colors ${
+                        isMultiTier
+                          ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
+                          : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
+                      }`}
+                    >
+                      {isMultiTier
+                        ? SEE_TIERS[lang] ?? 'See all tiers'
+                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  )}
+                </div>
               </div>
             );
           })}
