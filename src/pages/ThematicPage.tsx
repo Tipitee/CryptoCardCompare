@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -651,6 +652,8 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   }, [cards, theme, lang]);
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
+  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+  const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir tous les niveaux', de: 'Alle Stufen', es: 'Ver niveles', it: 'Vedi livelli', en: 'See all tiers' };
 
   // ── SEO ───────────────────────────────────────────────────────────────────────
   useSeoMeta({
@@ -764,36 +767,45 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {filteredCards.map((card: any, idx: number) => (
-            <Link
-              key={card.id}
-              to={`/${lang}/${segment}/${card.id}`}
-              className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block relative"
-            >
-              {idx < 3 && (
-                <span className="absolute top-3 right-3 bg-cyan-500/20 text-cyan-400 text-xs font-bold px-2 py-0.5 rounded-full">
-                  #{idx + 1}
-                </span>
-              )}
-              {card.real_card_image && (
-                <div style={{ borderRadius:'12px', overflow:'hidden', marginBottom:'12px', width:'100%', aspectRatio:'1.586' }}>
-                  <img src={card.real_card_image} alt={card.name}
-                    style={{ width:'100%', height:'100%', objectFit:'cover' }}
-                    loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
-                  />
+            <div key={card.id} className="flex flex-col">
+              <Link
+                to={`/${lang}/${segment}/${card.id}`}
+                className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block relative flex-1"
+              >
+                {idx < 3 && (
+                  <span className="absolute top-3 right-3 bg-cyan-500/20 text-cyan-400 text-xs font-bold px-2 py-0.5 rounded-full">
+                    #{idx + 1}
+                  </span>
+                )}
+                {card.real_card_image && (
+                  <div style={{ borderRadius:'12px', overflow:'hidden', marginBottom:'12px', width:'100%', aspectRatio:'1.586' }}>
+                    <img src={card.real_card_image} alt={card.name}
+                      style={{ width:'100%', height:'100%', objectFit:'cover' }}
+                      loading="lazy"
+                      onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none'; }}
+                    />
+                  </div>
+                )}
+                <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
+                <p className="text-slate-400 text-sm">{card.issuer}</p>
+                <div className="mt-3 flex gap-3 text-xs">
+                  {(card.cashback_premium || card.cashback_base) ? (
+                    <span className="text-cyan-400 font-medium">{card.cashback_premium || card.cashback_base}% cashback</span>
+                  ) : null}
+                  <span className="text-slate-500">
+                    {(card.annual_fees || 0) > 0 ? `${card.annual_fees} €/an` : t('free')}
+                  </span>
                 </div>
+              </Link>
+              {card.brand_id && (
+                <Link
+                  to={`/${lang}/${brandsSlug}/${card.brand_id}`}
+                  className="mt-1.5 text-center text-xs text-slate-500 hover:text-cyan-accent transition-colors py-1"
+                >
+                  {SEE_TIERS_LABEL[lang] || 'See all tiers'} →
+                </Link>
               )}
-              <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
-              <p className="text-slate-400 text-sm">{card.issuer}</p>
-              <div className="mt-3 flex gap-3 text-xs">
-                {(card.cashback_premium || card.cashback_base) ? (
-                  <span className="text-cyan-400 font-medium">{card.cashback_premium || card.cashback_base}% cashback</span>
-                ) : null}
-                <span className="text-slate-500">
-                  {(card.annual_fees || 0) > 0 ? `${card.annual_fees} €/an` : t('free')}
-                </span>
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

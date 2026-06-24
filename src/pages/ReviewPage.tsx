@@ -1,12 +1,35 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, CheckCircle, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
+import { ArrowLeft, CheckCircle, ChevronRight, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
 import { getReviewBySlug, getRelatedReviews } from '../data/cardReviews';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
+
+// Map issuer name → brand_id for "See all tiers" links
+const ISSUER_TO_BRAND: Record<string, string> = {
+  'Crypto.com': 'crypto-com',
+  'Binance': 'binance',
+  'Bybit': 'bybit',
+  'OKX': 'okx',
+  'Coinbase': 'coinbase',
+  'Nexo': 'nexo',
+  'Bitpanda': 'bitpanda',
+  'Wirex': 'wirex',
+  'Ledger (Baanx)': 'ledger',
+  'Revolut': 'revolut',
+  'Bleap': 'bleap',
+  'Plutus': 'plutus',
+  'Gnosis': 'gnosis',
+  'Trade Republic': 'trade-republic',
+};
+const SEE_ALL_TIERS: Record<string, string> = {
+  fr: 'Voir tous les niveaux', de: 'Alle Stufen ansehen',
+  es: 'Ver todos los niveles', it: 'Vedi tutti i livelli', en: 'See all tiers',
+};
 
 function StarRating({ value, max = 5 }: { value: number; max?: number }) {
   return (
@@ -179,9 +202,21 @@ export default function ReviewPage() {
                 Obtenir la carte
                 <ExternalLink className="w-4 h-4" />
               </a>
-              <Link to={getRoute('compare')} className="btn-secondary w-full justify-center flex text-sm">
+              <Link to={getRoute('compare')} className="btn-secondary w-full justify-center flex text-sm mb-3">
                 Comparer les cartes
               </Link>
+              {ISSUER_TO_BRAND[review.issuer] && (() => {
+                const bSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+                return (
+                  <Link
+                    to={`/${lang}/${bSlug}/${ISSUER_TO_BRAND[review.issuer]}`}
+                    className="btn-ghost w-full justify-center flex text-sm border border-bg-border"
+                  >
+                    {SEE_ALL_TIERS[lang] || 'See all tiers'}
+                    <ChevronRight className="w-3.5 h-3.5 ml-1" />
+                  </Link>
+                );
+              })()}
             </div>
           </div>
         </div>

@@ -7,15 +7,21 @@ export interface BrandMeta {
   brandId: string;
   displayName: string;
   website: string;
+  /** Affiliate URL — overrides website link when set (e.g. Crypto.com tracked link) */
+  affiliateLink?: string;
   twitter?: string;
   founded: number;
   hq: string;         // country of headquarters
+  /** Regulatory bodies, e.g. "FCA (UK), MAS (SG)" */
+  regulation?: string;
   // SEO per language
   seo: Record<string, {
     title: string;
     description: string;
     intro: string;
     outro: string;
+    /** Brand-level FAQ shown on the brand page */
+    faq?: Array<{ q: string; a: string }>;
   }>;
 }
 
@@ -24,39 +30,70 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     brandId: 'crypto-com',
     displayName: 'Crypto.com',
     website: 'https://crypto.com',
+    affiliateLink: 'https://cryptocom.sjv.io/c/7394525/2051372/25666',
     twitter: 'https://twitter.com/cryptocom',
     founded: 2016,
     hq: 'Singapour',
+    regulation: 'MAS (Singapour), FCA (UK)',
     seo: {
       fr: {
         title: `Cartes Crypto.com ${YEAR} — Comparatif Midnight Blue vs Obsidian | TopCryptoCards`,
         description: `Comparez tous les niveaux de la carte Crypto.com en ${YEAR} : Midnight Blue, Ruby Steel, Jade Green, Frosted Rose, Obsidian. Cashback CRO, avantages et conditions.`,
         intro: `Crypto.com propose 5 niveaux de carte Visa, du plan gratuit Midnight Blue à la carte Obsidian réservée aux détenteurs de 400 000 CRO (~200 000€). Le cashback varie de 0% (sans CRO) à 8% en CRO selon le tier. Ce comparatif vous aide à trouver le niveau le plus adapté à votre profil.`,
         outro: `Pour la majorité des utilisateurs, la carte Ruby Steel (400 CRO stakés, ~200€) offre le meilleur rapport qualité-cashback avec ses 2% + avantages Spotify. Au-delà, le staking requis croît exponentiellement pour des bénéfices additionnels limités.`,
+        faq: [
+          { q: 'Quel staking faut-il pour la carte Crypto.com Ruby Steel ?', a: 'La Ruby Steel nécessite un staking de 400 CRO (~200€) pendant 180 jours. C\'est le tier d\'entrée offrant 2% de cashback en CRO + avantages Spotify.' },
+          { q: 'La carte Crypto.com Midnight Blue est-elle vraiment gratuite ?', a: 'Oui, la Midnight Blue ne nécessite aucun staking et aucun frais annuel. Le cashback est limité à 1% en CRO, sans avantages comme le Netflix ou le Spotify.' },
+          { q: 'Le cashback Crypto.com est-il versé en CRO ou en euros ?', a: 'Le cashback est exclusivement versé en CRO, le token natif de Crypto.com. Sa valeur varie selon le cours du CRO — ce qui représente un risque supplémentaire.' },
+          { q: 'Peut-on utiliser la carte Crypto.com en France et en Europe en 2026 ?', a: 'Oui, toutes les cartes Crypto.com Visa sont disponibles en France, Allemagne, Espagne, Italie et dans toute l\'UE. La carte fonctionne partout où Visa est accepté.' },
+          { q: 'Quelle est la différence entre les 5 tiers Crypto.com ?', a: 'Midnight Blue (gratuit, 1% CRO), Ruby Steel (400 CRO, 2% + Spotify), Jade/Indigo (4 000 CRO, 3% + Netflix), Frosted Rose (40 000 CRO, 5% + Spotify+Netflix+Amazon), Obsidian (400 000 CRO, 8% + avantages premium). Le staking est bloqué 180 jours.' },
+        ],
       },
       de: {
         title: `Crypto.com Karten ${YEAR} — Vergleich Midnight Blue vs Obsidian | TopCryptoCards`,
         description: `Vergleichen Sie alle Crypto.com Karten-Tiers ${YEAR}: Midnight Blue, Ruby Steel, Jade Green, Frosted Rose, Obsidian. CRO Cashback, Vorteile und Bedingungen.`,
         intro: `Crypto.com bietet 5 Visa-Karten-Stufen an, von der kostenlosen Midnight Blue bis zur Obsidian-Karte, die 400.000 CRO Staking erfordert. Das Cashback reicht von 0% bis 8% in CRO, je nach Tier.`,
         outro: `Für die meisten Nutzer bietet die Ruby Steel Karte (400 CRO gestaked, ~200€) das beste Preis-Leistungs-Verhältnis mit 2% Cashback und Spotify-Vorteil. Darüber hinaus wächst das erforderliche Staking exponentiell.`,
+        faq: [
+          { q: 'Wie viel Staking braucht man für die Crypto.com Ruby Steel?', a: 'Die Ruby Steel erfordert 400 CRO (~200€) Staking für 180 Tage. Sie bietet 2% Cashback in CRO und Spotify-Vorteil.' },
+          { q: 'Ist die Crypto.com Midnight Blue wirklich kostenlos?', a: 'Ja, die Midnight Blue erfordert kein Staking und hat keine Jahresgebühr. Das Cashback beträgt 1% in CRO.' },
+          { q: 'Ist die Crypto.com Karte in Deutschland verfügbar?', a: 'Ja, alle Crypto.com Visa-Karten sind in Deutschland und der gesamten EU verfügbar.' },
+        ],
       },
       es: {
         title: `Tarjetas Crypto.com ${YEAR} — Comparativa Midnight Blue vs Obsidian | TopCryptoCards`,
         description: `Compara todos los niveles de la tarjeta Crypto.com en ${YEAR}: Midnight Blue, Ruby Steel, Jade Green, Frosted Rose, Obsidian. Cashback CRO, ventajas y condiciones.`,
         intro: `Crypto.com ofrece 5 niveles de tarjeta Visa, desde el plan gratuito Midnight Blue hasta la tarjeta Obsidian que requiere 400.000 CRO en staking. El cashback varía del 0% al 8% en CRO según el tier.`,
         outro: `Para la mayoría de usuarios, la tarjeta Ruby Steel (400 CRO, ~200€) ofrece la mejor relación calidad-precio con 2% de cashback y ventaja de Spotify.`,
+        faq: [
+          { q: '¿Cuánto staking necesita la tarjeta Crypto.com Ruby Steel?', a: 'La Ruby Steel requiere 400 CRO (~200€) en staking durante 180 días y ofrece 2% de cashback en CRO.' },
+          { q: '¿La tarjeta Crypto.com Midnight Blue es realmente gratuita?', a: 'Sí, la Midnight Blue no requiere staking ni cuota anual. El cashback es del 1% en CRO.' },
+          { q: '¿La tarjeta Crypto.com está disponible en España?', a: 'Sí, todas las tarjetas Crypto.com Visa están disponibles en España y en toda la UE.' },
+        ],
       },
       it: {
         title: `Carte Crypto.com ${YEAR} — Confronto Midnight Blue vs Obsidian | TopCryptoCards`,
         description: `Confronta tutti i livelli della carta Crypto.com nel ${YEAR}: Midnight Blue, Ruby Steel, Jade Green, Frosted Rose, Obsidian. Cashback CRO, vantaggi e condizioni.`,
         intro: `Crypto.com offre 5 livelli di carta Visa, dal piano gratuito Midnight Blue alla carta Obsidian che richiede 400.000 CRO in staking. Il cashback varia dallo 0% all'8% in CRO a seconda del tier.`,
         outro: `Per la maggior parte degli utenti, la carta Ruby Steel (400 CRO, ~200€) offre il miglior rapporto qualità-prezzo con il 2% di cashback e il vantaggio Spotify.`,
+        faq: [
+          { q: 'Quanto staking serve per la carta Crypto.com Ruby Steel?', a: 'La Ruby Steel richiede 400 CRO (~200€) in staking per 180 giorni e offre il 2% di cashback in CRO.' },
+          { q: 'La carta Crypto.com Midnight Blue è davvero gratuita?', a: 'Sì, la Midnight Blue non richiede staking né canone annuale. Il cashback è dell\'1% in CRO.' },
+          { q: 'La carta Crypto.com è disponibile in Italia?', a: 'Sì, tutte le carte Crypto.com Visa sono disponibili in Italia e in tutta l\'UE.' },
+        ],
       },
       en: {
         title: `Crypto.com Cards ${YEAR} — Compare Midnight Blue vs Obsidian | TopCryptoCards`,
         description: `Compare all Crypto.com card tiers in ${YEAR}: Midnight Blue, Ruby Steel, Jade Green, Frosted Rose, Obsidian. CRO cashback, perks and conditions.`,
         intro: `Crypto.com offers 5 Visa card tiers, from the free Midnight Blue to the Obsidian card requiring 400,000 CRO staking (~$200K). Cashback ranges from 0% (no staking) to 8% in CRO. This comparison helps you find the right tier for your profile.`,
         outro: `For most users, the Ruby Steel card (400 CRO staked, ~$200) offers the best value with 2% cashback plus Spotify perks. Beyond that, staking requirements grow exponentially for diminishing returns.`,
+        faq: [
+          { q: 'How much staking is required for the Crypto.com Ruby Steel card?', a: 'The Ruby Steel requires staking 400 CRO (~$200) for 180 days. It offers 2% cashback in CRO plus a Spotify subscription reimbursement.' },
+          { q: 'Is the Crypto.com Midnight Blue card truly free?', a: 'Yes, the Midnight Blue requires no staking and has no annual fee. Cashback is 1% in CRO with no additional perks.' },
+          { q: 'Is Crypto.com cashback paid in CRO or euros?', a: 'Cashback is exclusively paid in CRO, Crypto.com\'s native token. Its value fluctuates with the CRO market price, adding currency risk.' },
+          { q: 'Is the Crypto.com card available in Europe in 2026?', a: 'Yes, all Crypto.com Visa cards are available across France, Germany, Spain, Italy and the EU. The card works anywhere Visa is accepted.' },
+          { q: 'What is the difference between the 5 Crypto.com card tiers?', a: 'Midnight Blue (free, 1% CRO), Ruby Steel (400 CRO, 2% + Spotify), Jade/Indigo (4,000 CRO, 3% + Netflix), Frosted Rose (40,000 CRO, 5% + Spotify+Netflix+Amazon), Obsidian (400,000 CRO, 8% + premium perks). Staking is locked for 180 days.' },
+        ],
       },
     },
   },
@@ -107,6 +144,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://nexo.io',
     founded: 2018,
     hq: 'Suisse',
+    regulation: 'FINMA (Suisse)',
     seo: {
       fr: {
         title: `Carte Nexo ${YEAR} — Cashback BTC, conditions et avis | TopCryptoCards`,
@@ -137,6 +175,12 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
         description: `Everything about the Nexo card in ${YEAR}: BTC or NEXO cashback, loyalty tiers (Base, Silver, Gold, Platinum), fees and UK restrictions.`,
         intro: `The Nexo card stands out for its BTC cashback (up to 2%) without requiring third-party token staking — provided you hold a Nexo portfolio of at least $5,000. The 4 loyalty tiers (Base, Silver, Gold, Platinum) are determined by the crypto/NEXO ratio in your portfolio.`,
         outro: `Note: Nexo cashback is disabled for UK users (regulatory restriction). For EU users, a minimum $5,000 portfolio is required. Beyond these conditions, the card offers one of the most direct BTC cashback propositions on the market.`,
+        faq: [
+          { q: 'How does the Nexo loyalty tier system work?', a: 'Nexo has 4 tiers: Base, Silver, Gold, Platinum. Your tier is determined by the ratio of NEXO tokens in your portfolio vs total assets. More NEXO = higher tier = higher BTC cashback (up to 2%).' },
+          { q: 'Is the Nexo card available in the UK?', a: 'The Nexo card is available in the UK but the cashback feature is disabled for UK residents due to regulatory restrictions.' },
+          { q: 'What is the minimum portfolio required for Nexo card?', a: 'A minimum portfolio of $5,000 in your Nexo account is required to use the card\'s cashback features.' },
+          { q: 'Does the Nexo card require staking?', a: 'No staking is strictly required, but holding NEXO tokens in your portfolio improves your loyalty tier and cashback rate (up to 2% BTC vs 0.5% at Base tier).' },
+        ],
       },
     },
   },
@@ -147,6 +191,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://bybit.com',
     founded: 2018,
     hq: 'Dubaï',
+    regulation: 'MiCA (EEA), VARA (Dubaï)',
     seo: {
       fr: {
         title: `Carte Bybit ${YEAR} — Cashback crypto, conditions et avis | TopCryptoCards`,
@@ -167,6 +212,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://binance.com',
     founded: 2017,
     hq: 'Non communiqué',
+    regulation: 'MiCA (EEA), FCA (UK)',
     seo: {
       fr: { title: `Carte Binance ${YEAR} — Cashback BNB, conditions et avis | TopCryptoCards`, description: `Tout sur la Binance Card en ${YEAR} : cashback jusqu'à 8% en BNB, frais, disponibilité en Europe (hors UK).`, intro: `La Binance Card est une carte Visa débitée depuis votre portefeuille Binance. Cashback en BNB jusqu'à 8% selon votre solde BNB. Non disponible au Royaume-Uni.`, outro: `La Binance Card est idéale pour les utilisateurs Binance actifs. Le cashback maximal de 8% nécessite un solde BNB conséquent (~6 000€+).` },
       de: { title: `Binance Karte ${YEAR} — BNB Cashback und Bedingungen | TopCryptoCards`, description: `Alles über die Binance Card ${YEAR}: bis zu 8% BNB Cashback, Gebühren, Verfügbarkeit in Europa (ohne UK).`, intro: `Die Binance Card ist eine Visa-Karte, die von Ihrer Binance-Wallet belastet wird. Cashback in BNB bis zu 8% abhängig von Ihrem BNB-Guthaben. Im UK nicht verfügbar.`, outro: `Die Binance Card ist ideal für aktive Binance-Nutzer. Das maximale Cashback von 8% erfordert ein erhebliches BNB-Guthaben.` },
@@ -197,6 +243,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://coinbase.com',
     founded: 2012,
     hq: 'États-Unis',
+    regulation: 'FCA (UK), SEC/FinCEN (US)',
     seo: {
       fr: { title: `Carte Coinbase ${YEAR} — Disponible en Europe (0% cashback) | TopCryptoCards`, description: `Carte Coinbase Card disponible en Europe en ${YEAR}. Attention : le programme de récompenses est US uniquement — 0% cashback pour les utilisateurs EU/UK.`, intro: `La Coinbase Card est disponible en Europe, mais son programme de récompenses crypto est réservé aux utilisateurs américains. En EU/UK, la carte fonctionne comme une simple carte Visa débit crypto sans cashback.`, outro: `Si vous recherchez du cashback en Europe, d'autres cartes comme Crypto.com ou Wirex sont plus adaptées. La Coinbase Card reste utile pour accéder facilement à vos fonds Coinbase depuis la carte.` },
       de: { title: `Coinbase Karte ${YEAR} — In Europa verfügbar (0% Cashback) | TopCryptoCards`, description: `Coinbase Card in Europa verfügbar ${YEAR}. Achtung: Das Prämienprogramm gilt nur für US-Nutzer — 0% Cashback für EU/UK-Nutzer.`, intro: `Die Coinbase Card ist in Europa verfügbar, aber ihr Krypto-Prämienprogramm ist auf US-Nutzer beschränkt. In der EU/UK funktioniert die Karte als einfache Visa-Debitkarte ohne Cashback.`, outro: `Wenn Sie in Europa Cashback suchen, sind andere Karten wie Crypto.com oder Wirex besser geeignet.` },
@@ -212,6 +259,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://bitpanda.com',
     founded: 2014,
     hq: 'Autriche',
+    regulation: 'FMA (Autriche), BaFin (Allemagne)',
     seo: {
       fr: { title: `Carte Bitpanda ${YEAR} — Cashback BEST, conditions et avis | TopCryptoCards`, description: `Tout sur la Bitpanda Card en ${YEAR} : cashback en BEST, disponible en Europe (hors UK).`, intro: `La Bitpanda Card, émise par la néobanque autrichienne Bitpanda, offre un cashback en BEST (son token natif) sur chaque achat. Disponible dans l'UE uniquement, pas au UK.`, outro: `Bitpanda est l'une des plateformes les plus régulées d'Europe. Sa carte est idéale pour les utilisateurs de l'écosystème Bitpanda souhaitant un cashback en BEST.` },
       de: { title: `Bitpanda Karte ${YEAR} — BEST Cashback und Bedingungen | TopCryptoCards`, description: `Alles über die Bitpanda Card ${YEAR}: BEST Cashback, nur in der EU verfügbar, nicht im UK.`, intro: `Die Bitpanda Card, herausgegeben vom österreichischen Neobroker Bitpanda, bietet BEST-Cashback bei jedem Kauf. Nur in der EU verfügbar.`, outro: `Bitpanda ist eine der am stärksten regulierten Plattformen in Europa. Ideal für Nutzer des Bitpanda-Ökosystems.` },

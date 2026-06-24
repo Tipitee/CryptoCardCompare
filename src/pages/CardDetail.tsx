@@ -11,7 +11,7 @@ import {
   X,
 } from 'lucide-react';
 import type { CryptoCard } from '../types/card';
-import { fetchCardById, fetchCardArticle } from '../lib/supabase';
+import { fetchCardById, fetchCardArticle, fetchCardsByBrand } from '../lib/supabase';
 import SmartCardImage from '../components/SmartCardImage';
 import CryptoIcon from '../components/CryptoIcon';
 import TrustBadge from '../components/TrustBadge';
@@ -23,12 +23,30 @@ import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getExtraLabel } from '../i18n/extrasLabels';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+};
+const OTHER_TIERS_LABEL: Record<string, string> = {
+  fr: 'Autres niveaux de cette marque',
+  de: 'Weitere Stufen dieser Marke',
+  es: 'Otros niveles de esta marca',
+  it: 'Altri livelli di questo marchio',
+  en: 'Other tiers from this brand',
+};
+const SEE_ALL_TIERS_LABEL: Record<string, string> = {
+  fr: 'Voir tous les niveaux',
+  de: 'Alle Stufen ansehen',
+  es: 'Ver todos los niveles',
+  it: 'Vedi tutti i livelli',
+  en: 'See all tiers',
+};
+const FREE_LABEL: Record<string, string> = {
+  fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free',
 };
 
 /**
@@ -69,6 +87,7 @@ export default function CardDetail() {
   const [notFound, setNotFound] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [article, setArticle] = useState<any>(null);
+  const [brandSiblings, setBrandSiblings] = useState<CryptoCard[]>([]);
 
   useEffect(() => {
     if (!id) return;
@@ -85,6 +104,14 @@ export default function CardDetail() {
   useEffect(() => {
     if (id && lang) fetchCardArticle(id, lang).then(setArticle);
   }, [id, lang]);
+
+  // Fetch other tiers from the same brand
+  useEffect(() => {
+    if (!card?.brandId) { setBrandSiblings([]); return; }
+    fetchCardsByBrand(card.brandId).then(all => {
+      setBrandSiblings(all.filter(c => c.id !== card.id));
+    });
+  }, [card?.brandId, card?.id]);
 
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
@@ -385,7 +412,21 @@ export default function CardDetail() {
               <h1 className="text-4xl font-display font-bold text-white mb-1">
                 {card.name}
               </h1>
-              <p className="text-slate-400 text-lg mb-4">{card.issuer}</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-slate-400 text-lg">{card.issuer}</span>
+                {card.brandId && brandSiblings.length > 0 && (() => {
+                  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+                  return (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${card.brandId}`}
+                      className="inline-flex items-center gap-1 text-sm text-cyan-accent hover:underline font-medium"
+                    >
+                      {SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'}
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
+                  );
+                })()}
+              </div>
 
               {card.virtualOnly && (
                 <div className="mb-4 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm">
@@ -552,6 +593,56 @@ export default function CardDetail() {
 
           {/* Sidebar */}
           <div className="space-y-6">
+
+            {/* Other tiers from this brand */}
+            {brandSiblings.length > 0 && (() => {
+              const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+              const cardsSlugSidebar = CARD_SEGMENT[lang] || 'cards';
+              return (
+                <div className="p-5 rounded-2xl border border-bg-border bg-bg-elevated space-y-3">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    {OTHER_TIERS_LABEL[lang] || 'Other tiers'}
+                  </h3>
+                  <div className="space-y-2">
+                    {brandSiblings.map(sibling => {
+                      const maxCb = Math.max(sibling.cashbackBase, sibling.cashbackNoStaking, sibling.cashbackPremium);
+                      return (
+                        <Link
+                          key={sibling.id}
+                          to={`/${lang}/${cardsSlugSidebar}/${sibling.id}`}
+                          className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-bg-border/50 transition-colors group"
+                        >
+                          <SmartCardImage card={sibling} size="xs" className="shrink-0" />
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium text-white truncate group-hover:text-cyan-accent transition-colors">
+                              {sibling.tierLabel || sibling.name}
+                            </div>
+                            <div className="text-xs text-slate-500 flex gap-2">
+                              {maxCb > 0 && <span className="text-green-accent">{maxCb}%</span>}
+                              <span>
+                                {sibling.annualFees === 0
+                                  ? FREE_LABEL[lang] || 'Free'
+                                  : `${sibling.annualFees}€/an`}
+                              </span>
+                            </div>
+                          </div>
+                          <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-slate-400 shrink-0" />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  {card.brandId && (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${card.brandId}`}
+                      className="block text-center text-xs text-cyan-accent hover:underline pt-1"
+                    >
+                      {SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'} →
+                    </Link>
+                  )}
+                </div>
+              );
+            })()}
+
             {/* Trust score — hidden */}
             {false && card.trustScore !== undefined && (
               <div className="p-5 rounded-2xl bg-bg-elevated border border-bg-border">

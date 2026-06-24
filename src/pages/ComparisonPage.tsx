@@ -22,6 +22,7 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById } from '../lib/supabase';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -375,6 +376,18 @@ export default function ComparisonPage() {
                 {t('comparison_offer') || "Voir l'offre"}
                 <ExternalLink className="w-3 h-3" />
               </a>
+              {card.brandId && (() => {
+                const bSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+                return (
+                  <Link
+                    to={`/${lang}/${bSlug}/${card.brandId}`}
+                    className="btn-ghost border border-bg-border text-xs"
+                  >
+                    {lang === 'fr' ? 'Tous les niveaux' : lang === 'de' ? 'Alle Stufen' : lang === 'es' ? 'Todos los niveles' : lang === 'it' ? 'Tutti i livelli' : 'All tiers'}
+                    <ChevronRight className="w-3 h-3" />
+                  </Link>
+                );
+              })()}
             </div>
           </div>
         ))}
