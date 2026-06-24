@@ -7,6 +7,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 
@@ -128,6 +129,8 @@ export default function Favorites() {
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
   const lang = useLanguage();
   const { getRoute } = useLocalizedRoute();
+  const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
+  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   const ui = UI[lang] || UI.en;
   const favSeo = FAV_SEO[lang] || FAV_SEO.en;
   useSeoMeta({ title: favSeo.title, description: favSeo.desc });
@@ -181,10 +184,10 @@ export default function Favorites() {
                 </div>
               </div>
               <div className="flex items-start justify-between gap-2 mb-4">
-                <div>
-                  <div className="font-display font-semibold text-white">{c.name}</div>
+                <Link to={`/${lang}/${cardSlug}/${c.id}`} className="group/name">
+                  <div className="font-display font-semibold text-white group-hover/name:text-cyan-accent transition-colors">{c.name}</div>
                   <div className="text-xs text-slate-400">{c.issuer}</div>
-                </div>
+                </Link>
                 {c.badge && <span className="badge-accent">{c.badge}</span>}
               </div>
 
@@ -223,14 +226,20 @@ export default function Favorites() {
               </div>
 
               <div className="flex items-center justify-between pt-4 border-t border-bg-border">
-                <span className="inline-flex items-center gap-1 text-xs text-green-accent">
-                  <Star className="w-3 h-3" fill="currentColor" />
-                  {ui.in_fav}
-                </span>
+                <div className="flex items-center gap-3">
+                  {c.brandId && (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${c.brandId}`}
+                      className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-cyan-accent transition-colors"
+                    >
+                      {lang === 'fr' ? 'Marque' : lang === 'de' ? 'Marke' : lang === 'es' ? 'Marca' : lang === 'it' ? 'Marchio' : 'Brand'}
+                    </Link>
+                  )}
+                </div>
                 <a
                   href={getAffiliateLink(c)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors"
                 >
                   {ui.see_offer}

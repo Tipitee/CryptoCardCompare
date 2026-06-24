@@ -548,13 +548,19 @@ export default function Home() {
                   )}
                 </button>
 
-                {/* See all tiers CTA (multi-tier brands only) */}
-                {isMultiTier && (
+                {/* Brand page CTA — "See all tiers" for multi-tier, "Brand page" for single-tier with brandId */}
+                {brandId && (
                   <Link
                     to={`/${lang}/${brandsSlug}/${brandId}`}
-                    className="mt-3 flex items-center justify-center gap-1.5 w-full text-xs text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40 rounded-lg py-1.5 transition-colors"
+                    className={`mt-3 flex items-center justify-center gap-1.5 w-full text-xs rounded-lg py-1.5 transition-colors ${
+                      isMultiTier
+                        ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
+                        : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
+                    }`}
                   >
-                    {SEE_TIERS[lang] ?? 'See all tiers'}
+                    {isMultiTier
+                      ? SEE_TIERS[lang] ?? 'See all tiers'
+                      : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
                     <ArrowRight className="w-3 h-3" />
                   </Link>
                 )}

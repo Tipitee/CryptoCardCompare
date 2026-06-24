@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { CRYPTO_CONTENT } from '../data/cryptoContent';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { CRYPTO_COM_AFFILIATE } from '../utils/affiliateLink';
 
 /* ── Static crypto metadata ─────────────────────────────────────────────── */
 const CRYPTO_META: Record<string, { name: string; ticker: string; color: string; emoji: string }> = {
@@ -55,7 +57,7 @@ export default function CryptoPage() {
     if (!meta?.ticker) return;
     supabase
       .from('cards')
-      .select('id, name, issuer, cashback_base, cashback_premium, affiliate_link, markets')
+      .select('id, name, issuer, cashback_base, cashback_premium, affiliate_link, markets, brand_id')
       .contains('cryptos', [meta.ticker])
       .then(({ data, error }) => {
         if (error || !data) return;
@@ -155,32 +157,56 @@ export default function CryptoPage() {
             {CARDS_LABEL[lang] ?? CARDS_LABEL.en} {meta.ticker}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {cards.map((card) => (
-              <div
-                key={card.id}
-                className="flex items-center justify-between gap-3 p-4 rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/30 transition-all"
-              >
-                <div className="min-w-0">
-                  <div className="font-semibold text-white text-sm truncate">{card.name}</div>
-                  <div className="text-xs text-slate-500">{card.issuer}</div>
-                  {(card.cashback_premium || card.cashback_base) > 0 && (
-                    <div className="text-xs text-cyan-accent mt-0.5">
-                      {((card.cashback_premium || card.cashback_base) * 100).toFixed(1)}% cashback
+            {cards.map((card) => {
+              const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
+              const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+              const affiliateHref = card.issuer === 'Crypto.com' ? CRYPTO_COM_AFFILIATE : card.affiliate_link;
+              return (
+                <div
+                  key={card.id}
+                  className="rounded-xl bg-bg-card border border-bg-border hover:border-cyan-accent/30 transition-all overflow-hidden"
+                >
+                  <Link
+                    to={`/${lang}/${cardSlug}/${card.id}`}
+                    className="flex items-center justify-between gap-3 p-4"
+                  >
+                    <div className="min-w-0">
+                      <div className="font-semibold text-white text-sm truncate group-hover:text-cyan-accent">{card.name}</div>
+                      <div className="text-xs text-slate-500">{card.issuer}</div>
+                      {(card.cashback_premium || card.cashback_base) > 0 && (
+                        <div className="text-xs text-cyan-accent mt-0.5">
+                          {((card.cashback_premium || card.cashback_base) * 100).toFixed(1)}% cashback
+                        </div>
+                      )}
+                    </div>
+                    {affiliateHref && (
+                      <a
+                        href={affiliateHref}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                        className="shrink-0 p-2 rounded-lg bg-cyan-accent/10 text-cyan-accent hover:bg-cyan-accent/20 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </Link>
+                  {card.brand_id && (
+                    <div className="px-4 pb-3 flex items-center gap-3 text-xs">
+                      <Link to={`/${lang}/${cardSlug}/${card.id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
+                        <ChevronRight className="w-3 h-3" />
+                        {lang === 'fr' ? 'Détails' : lang === 'de' ? 'Details' : lang === 'es' ? 'Detalles' : lang === 'it' ? 'Dettagli' : 'Details'}
+                      </Link>
+                      <span className="text-slate-700">·</span>
+                      <Link to={`/${lang}/${brandsSlug}/${card.brand_id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
+                        <ChevronRight className="w-3 h-3" />
+                        {lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page'}
+                      </Link>
                     </div>
                   )}
                 </div>
-                {card.affiliate_link && (
-                  <a
-                    href={card.affiliate_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 p-2 rounded-lg bg-cyan-accent/10 text-cyan-accent hover:bg-cyan-accent/20 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}

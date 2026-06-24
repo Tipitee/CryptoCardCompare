@@ -387,7 +387,7 @@ export default function BrandPage() {
       <nav className="text-sm text-text-secondary flex items-center gap-2 flex-wrap">
         <Link to={`/${lang}`} className="hover:text-text-primary">{l.home}</Link>
         <span>›</span>
-        <Link to={`/${lang}`} className="hover:text-text-primary">{l.allBrands}</Link>
+        <Link to={`/${lang}/${brandsSlug}`} className="hover:text-text-primary">{l.allBrands}</Link>
         <span>›</span>
         <span className="text-text-primary">{brand.displayName}</span>
       </nav>

@@ -27,6 +27,7 @@ import ReviewList from './pages/ReviewList';
 import ReviewPage from './pages/ReviewPage';
 import NotFound from './pages/NotFound';
 import BrandPage from './pages/BrandPage';
+import BrandList from './pages/BrandList';
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -159,6 +160,11 @@ export default function App() {
               <Route key={slug} path={slug} element={<ReviewList />} />,
               <Route key={`${slug}-post`} path={`${slug}/:slug`} element={<ReviewPage />} />,
             ]
+          ))}
+
+          {/* Brand list — /:lang/marques, /de/marken, etc. */}
+          {allSlugs('brands').map((slug) => (
+            <Route key={`brands-list-${slug}`} path={slug} element={<BrandList />} />
           ))}
 
           {/* Brand pages — /:lang/marques/:brandId, /de/marken/:brandId, etc. */}

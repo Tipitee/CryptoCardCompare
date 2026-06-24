@@ -1,8 +1,11 @@
 import { ArrowDown, ArrowUp, ArrowUpDown, Check, ExternalLink, Plus, Star, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { useLanguage } from '../hooks/useLanguage';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 export type SortKey =
   | 'name'
@@ -195,6 +198,8 @@ function Row({
   onCardClick?: () => void;
   quickSlot: 'A' | 'B' | null;
 }) {
+  const lang = useLanguage();
+  const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const isBest = (key: string) => best && best[key] === card.id;
 
   const slotColor =
@@ -321,14 +326,21 @@ function Row({
           >
             <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
           </button>
-          <a
-            href={getAffiliateLink(card)}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={`/${lang}/${cardSlug}/${card.id}`}
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
-            Offre
+            {lang === 'fr' ? 'Détails' : lang === 'de' ? 'Details' : lang === 'es' ? 'Detalles' : lang === 'it' ? 'Dettagli' : 'Details'}
+          </Link>
+          <a
+            href={getAffiliateLink(card)}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
+          >
+            {lang === 'fr' ? 'Offre' : lang === 'de' ? 'Angebot' : lang === 'es' ? 'Oferta' : lang === 'it' ? 'Offerta' : 'Offer'}
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

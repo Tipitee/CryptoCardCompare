@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Sparkles, Menu, Shield, Star, TrendingUp, X } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Sparkles, Menu, Shield, Star, TrendingUp, X, Building2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -36,11 +36,15 @@ export default function Layout() {
     { key: 'blog',           label: t('nav_blog'),           icon: BookOpen },
   ];
 
+  const brandsSlug = ROUTE_TRANSLATIONS[lang]?.brands ?? 'brands';
+  const brandsLabel: Record<string, string> = { fr: 'Marques de cartes', de: 'Karten-Marken', es: 'Marcas de tarjetas', it: 'Marchi di carte', en: 'Card brands' };
+
   const thematicLinks = [
     { slug: THEMATIC_ROUTES.best[lang],         label: labels.best },
     { slug: THEMATIC_ROUTES.cashback[lang],      label: labels.cashback },
     { slug: THEMATIC_ROUTES['no-fees'][lang],    label: labels.noFees },
     { slug: THEMATIC_ROUTES['no-staking'][lang], label: labels.noStaking },
+    { slug: brandsSlug,                          label: brandsLabel[lang] ?? 'Card brands' },
     { slug: 'cryptos',                           label: labels.cryptos },
   ];
 
@@ -253,8 +257,8 @@ export default function Layout() {
       {/* ── Footer ── */}
       <footer className="border-t border-bg-border bg-bg-elevated/40 mt-20">
         <div className="container-app py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div className="col-span-2 md:col-span-1">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
+            <div className="col-span-2 md:col-span-3 lg:col-span-2">
               <div className="flex items-center gap-2 mb-3">
                 <img src="/logo.png" alt="TopCryptoCards" className="h-8 w-auto" />
                 <span className="font-display font-semibold text-white">
@@ -289,6 +293,34 @@ export default function Layout() {
                     </Link>
                   </li>
                 ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-slate-400" />
+                {brandsLabel[lang] ?? 'Card brands'}
+              </h4>
+              <ul className="space-y-2 text-sm text-slate-400 mb-4">
+                {[
+                  { id: 'crypto-com', name: 'Crypto.com' },
+                  { id: 'nexo',       name: 'Nexo' },
+                  { id: 'binance',    name: 'Binance' },
+                  { id: 'bybit',      name: 'Bybit' },
+                  { id: 'bitpanda',   name: 'Bitpanda' },
+                  { id: 'coinbase',   name: 'Coinbase' },
+                ].map(({ id, name }) => (
+                  <li key={id}>
+                    <Link to={`/${lang}/${brandsSlug}/${id}`} className="hover:text-cyan-accent transition-colors">
+                      {name}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link to={`/${lang}/${brandsSlug}`} className="hover:text-cyan-accent transition-colors text-cyan-accent/70">
+                    {brandsLabel[lang] ?? 'All brands'} →
+                  </Link>
+                </li>
               </ul>
             </div>
 

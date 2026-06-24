@@ -24,6 +24,7 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES } from '../config/routes';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -47,6 +48,27 @@ const SEE_ALL_TIERS_LABEL: Record<string, string> = {
 };
 const FREE_LABEL: Record<string, string> = {
   fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free',
+};
+const RELATED_LABEL: Record<string, string> = {
+  fr: 'Pages liées', de: 'Verwandte Seiten', es: 'Páginas relacionadas',
+  it: 'Pagine correlate', en: 'Related pages',
+};
+const REVIEW_LINK_LABEL: Record<string, string> = {
+  fr: 'Avis complet', de: 'Vollständige Bewertung', es: 'Reseña completa',
+  it: 'Recensione completa', en: 'Full review',
+};
+// Valid market code keys for restriction display
+const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
+// Map card id prefix → review slug (for "Full review" link)
+const CARD_REVIEW_SLUG: Record<string, string> = {
+  'crypto-com': 'crypto-com-visa-card',
+  'nexo': 'nexo-card',
+  'binance': 'binance-card',
+  'bybit': 'bybit-card',
+  'wirex': 'wirex-card',
+  'bitpanda': 'bitpanda-card',
+  'okx': 'okx-card',
+  'coinbase': 'coinbase-card',
 };
 
 /**
@@ -357,7 +379,21 @@ export default function CardDetail() {
   }
 
   const isFav = favorites.includes(card.id);
-  const restrictionEntries = Object.entries(card.marketRestrictions);
+
+  // Only show valid market code keys as restriction badges (fr/de/es/it/en/uk/us)
+  // Keys like note_fr, note_en, vip_only, cashback_standard are meta-data, not market flags
+  const restrictionEntries = Object.entries(card.marketRestrictions)
+    .filter(([k, v]) => VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
+
+  // Localized card-level note (from note_fr, note_de, note_en…)
+  const localNote: string | undefined =
+    (card.marketRestrictions[`note_${lang}`] as string | undefined) ||
+    (card.marketRestrictions['note_en'] as string | undefined) ||
+    undefined;
+
+  // Review slug for this card (keyed by brand prefix)
+  const reviewSlugKey = Object.keys(CARD_REVIEW_SLUG).find(prefix => card.id.startsWith(prefix));
+  const reviewSlug = reviewSlugKey ? CARD_REVIEW_SLUG[reviewSlugKey] : undefined;
 
   // Split article content into 3 parts:
   // 1. Pure article body (before thematic links)
@@ -412,16 +448,18 @@ export default function CardDetail() {
               <h1 className="text-4xl font-display font-bold text-white mb-1">
                 {card.name}
               </h1>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-4 flex-wrap">
                 <span className="text-slate-400 text-lg">{card.issuer}</span>
-                {card.brandId && brandSiblings.length > 0 && (() => {
+                {card.brandId && (() => {
                   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
                   return (
                     <Link
                       to={`/${lang}/${brandsSlug}/${card.brandId}`}
                       className="inline-flex items-center gap-1 text-sm text-cyan-accent hover:underline font-medium"
                     >
-                      {SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'}
+                      {brandSiblings.length > 0
+                        ? SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'
+                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina del marchio' : 'Brand page')}
                       <ExternalLink className="w-3 h-3" />
                     </Link>
                   );
@@ -448,6 +486,12 @@ export default function CardDetail() {
                       </span>
                     </div>
                   ))}
+                </div>
+              )}
+              {localNote && (
+                <div className="mb-4 flex items-start gap-2 px-4 py-3 rounded-xl bg-amber-500/8 border border-amber-500/25 text-amber-300 text-sm max-w-xl">
+                  <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{localNote}</span>
                 </div>
               )}
 
@@ -639,6 +683,47 @@ export default function CardDetail() {
                       {SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'} →
                     </Link>
                   )}
+                </div>
+              );
+            })()}
+
+            {/* ── Related pages ─────────────────────────────────── */}
+            {(() => {
+              const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+              const reviewsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
+              const hasCashback = card.cashbackPremium > 0 || card.cashbackBase > 0;
+              const noFees = card.annualFees === 0;
+              const noStaking = card.stakingRequired === 0;
+
+              const links: Array<{ to: string; icon: string; label: string }> = [];
+              if (card.brandId)
+                links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: brandSiblings.length > 0 ? (SEE_ALL_TIERS_LABEL[lang] || 'See all tiers') : (lang === 'fr' ? 'Page de la marque' : 'Brand page') });
+              if (reviewSlug)
+                links.push({ to: `/${lang}/${reviewsSlug}/${reviewSlug}`, icon: '⭐', label: REVIEW_LINK_LABEL[lang] || 'Full review' });
+              if (hasCashback)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.cashback[lang as keyof typeof THEMATIC_ROUTES.cashback] ?? 'crypto-card-cashback'}`, icon: '💰', label: lang === 'fr' ? 'Meilleures cartes cashback' : lang === 'de' ? 'Beste Cashback-Karten' : lang === 'es' ? 'Mejores tarjetas cashback' : lang === 'it' ? 'Migliori carte cashback' : 'Best cashback cards' });
+              if (noFees)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-fees'][lang as keyof typeof THEMATIC_ROUTES['no-fees']] ?? 'crypto-card-no-fees'}`, icon: '🆓', label: lang === 'fr' ? 'Cartes sans frais' : lang === 'de' ? 'Kostenlose Karten' : lang === 'es' ? 'Tarjetas sin comisiones' : lang === 'it' ? 'Carte senza costi' : 'No-fee cards' });
+              if (noStaking)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-staking'][lang as keyof typeof THEMATIC_ROUTES['no-staking']] ?? 'crypto-card-no-staking'}`, icon: '🔓', label: lang === 'fr' ? 'Cartes sans staking' : lang === 'de' ? 'Karten ohne Staking' : lang === 'es' ? 'Tarjetas sin staking' : lang === 'it' ? 'Carte senza staking' : 'No-staking cards' });
+
+              if (links.length === 0) return null;
+              return (
+                <div className="p-5 rounded-2xl border border-bg-border bg-bg-elevated space-y-1">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                    {RELATED_LABEL[lang] || 'Related pages'}
+                  </h3>
+                  {links.map(({ to, icon, label }) => (
+                    <Link
+                      key={to}
+                      to={to}
+                      className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-bg-border/50 text-sm text-slate-300 hover:text-white transition-colors group"
+                    >
+                      <span className="text-base">{icon}</span>
+                      <span className="flex-1 leading-tight">{label}</span>
+                      <Check className="w-3 h-3 text-slate-600 group-hover:text-cyan-accent transition-colors" />
+                    </Link>
+                  ))}
                 </div>
               );
             })()}

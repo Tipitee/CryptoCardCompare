@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, Check, RotateCcw, Sparkles, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -11,6 +12,7 @@ import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { saveQuizResult } from '../lib/supabase';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 const REC_SEO: Record<string, { title: string; desc: string }> = {
@@ -31,6 +33,8 @@ type StepDef<K extends keyof QuizAnswers> = {
 export default function Recommendation() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
+  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   const recSeo = REC_SEO[lang] || REC_SEO.en;
   useSeoMeta({ title: recSeo.title, description: recSeo.desc });
   const cards = useAppStore((s) => s.cards);
@@ -361,7 +365,7 @@ export default function Recommendation() {
                   </div>
                 )}
 
-                <div className="mt-5 flex gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   <button
                     onClick={() => toggleFavorite(r.card.id)}
                     className={`btn-secondary text-sm ${
@@ -371,17 +375,25 @@ export default function Recommendation() {
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                     {isFav ? t('quiz_in_fav') : t('quiz_add_fav')}
                   </button>
-                  <button
-                    onClick={() => setDetail(r.card)}
-                    className="btn-ghost border border-bg-border text-sm"
+                  <Link
+                    to={`/${lang}/${cardSlug}/${r.card.id}`}
+                    className="btn-ghost border border-bg-border text-sm inline-flex items-center gap-1"
                   >
                     {t('common:card_detail_view_page') || 'Voir les détails'}
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
+                  {r.card.brandId && (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${r.card.brandId}`}
+                      className="btn-ghost border border-bg-border text-sm"
+                    >
+                      {lang === 'fr' ? 'Page marque' : lang === 'de' ? 'Marke' : lang === 'es' ? 'Marca' : lang === 'it' ? 'Marchio' : 'Brand'}
+                    </Link>
+                  )}
                   <a
                     href={getAffiliateLink(r.card)}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer sponsored"
                     className="btn-ghost border border-bg-border"
                   >
                     {t('quiz_see_offer')}
