@@ -503,19 +503,26 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Card body */}
-                <button onClick={() => setDetail(card)} className="w-full text-left">
-                  <div className={`flex justify-center py-2 mb-4 ${isMultiTier ? 'mt-5' : ''}`}>
+                {/* Card body — flex column for consistent alignment across all cards */}
+                <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col">
+                  {/* Image area — fixed height so all card images align */}
+                  <div className="h-36 flex items-center justify-center mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <div className="font-display font-semibold text-white">{card.name}</div>
+
+                  {/* Name + badge — fixed min-height, no separate issuer line */}
+                  <div className="flex items-start justify-between gap-2 mb-3 min-h-[2.5rem]">
+                    <div className="font-display font-semibold text-white leading-snug">
+                      {card.name.toLowerCase().includes(card.issuer.toLowerCase())
+                        ? card.name
+                        : `${card.name} (${card.issuer})`}
+                    </div>
                     {card.badge && (
-                      <span className="badge-accent">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>
+                      <span className="badge-accent shrink-0">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>
                     )}
                   </div>
-                  <div className="text-xs text-slate-500 mb-4">{card.issuer}</div>
 
+                  {/* Stats */}
                   <dl className="grid grid-cols-3 gap-2 text-xs border-t border-bg-border pt-3">
                     <div>
                       <dt className="text-slate-500">Cashback</dt>
@@ -541,29 +548,31 @@ export default function Home() {
                     </div>
                   </dl>
 
-                  {card.trustScore !== undefined && (
-                    <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
-                      <TrustBadge card={card} />
-                    </div>
-                  )}
+                  {/* Trust badge — always renders fixed-height area to keep stats aligned */}
+                  <div className="mt-3 pt-3 border-t border-bg-border flex justify-end min-h-[2.25rem] items-center">
+                    {card.trustScore !== undefined && <TrustBadge card={card} />}
+                  </div>
                 </button>
 
-                {/* Brand page CTA — "See all tiers" for multi-tier, "Brand page" for single-tier with brandId */}
-                {brandId && (
-                  <Link
-                    to={`/${lang}/${brandsSlug}/${brandId}`}
-                    className={`mt-3 flex items-center justify-center gap-1.5 w-full text-xs rounded-lg py-1.5 transition-colors ${
-                      isMultiTier
-                        ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
-                        : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
-                    }`}
-                  >
-                    {isMultiTier
-                      ? SEE_TIERS[lang] ?? 'See all tiers'
-                      : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                )}
+                {/* Brand CTA — always renders fixed-height area to keep card bottoms aligned */}
+                <div className="mt-2 h-8 flex items-stretch">
+                  {brandId && (
+                    <Link
+                      to={`/${lang}/${brandsSlug}/${brandId}`}
+                      className={`flex items-center justify-center gap-1.5 w-full text-xs rounded-lg transition-colors ${
+                        isMultiTier
+                          ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
+                          : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
+                      }`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {isMultiTier
+                        ? SEE_TIERS[lang] ?? 'See all tiers'
+                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  )}
+                </div>
               </div>
             );
           })}
@@ -579,8 +588,8 @@ export default function Home() {
               onClick={() => setVisibleCount((n) => n + 24)}
               className="btn-secondary"
             >
-              {t('home_show_more') || `Afficher ${Math.min(24, filtered.length - visibleCount)} de plus`}
-              <span className="ml-1 text-slate-400 text-xs">({filtered.length - visibleCount} {t('home_remaining') || 'restantes'})</span>
+              {t('home_show_more')}
+              <span className="ml-1 text-slate-400 text-xs">({filtered.length - visibleCount} {t('home_remaining')})</span>
             </button>
           </div>
         )}
