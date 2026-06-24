@@ -40,7 +40,15 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
 
   if (!card) return null;
   const isFav = favorites.includes(card.id);
-  const restrictionEntries = Object.entries(card.marketRestrictions);
+
+  // Only show valid market code keys — filter out internal meta keys (note_en, vip_only, etc.)
+  const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
+  const restrictionEntries = Object.entries(card.marketRestrictions)
+    .filter(([k, v]) => VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
+  const localNote: string | undefined =
+    (card.marketRestrictions[`note_${currentLang}`] as string | undefined) ||
+    (card.marketRestrictions['note_en'] as string | undefined) ||
+    undefined;
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end animate-fade-in">
@@ -82,6 +90,13 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm">
               <AlertTriangle className="w-4 h-4 shrink-0" />
               {t('cards:virtual_only_warning')}
+            </div>
+          )}
+
+          {localNote && (
+            <div className="mb-4 flex items-start gap-2 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+              <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+              <span>{localNote}</span>
             </div>
           )}
 
