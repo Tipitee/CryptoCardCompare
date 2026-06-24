@@ -19,6 +19,7 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById } from '../lib/supabase';
 
@@ -366,7 +367,7 @@ export default function ComparisonPage() {
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
               <a
-                href={card.affiliateLink}
+                href={getAffiliateLink(card)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost border border-bg-border text-xs"

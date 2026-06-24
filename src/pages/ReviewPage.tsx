@@ -6,6 +6,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import { getAffiliateLink } from '../utils/affiliateLink';
 
 function StarRating({ value, max = 5 }: { value: number; max?: number }) {
   return (
@@ -170,7 +171,7 @@ export default function ReviewPage() {
               <p className="text-white font-semibold mb-1">{review.cardName}</p>
               <p className="text-slate-400 text-sm mb-4">Émetteur : {review.issuer}</p>
               <a
-                href={review.affiliateLink}
+                href={getAffiliateLink(review)}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="btn-primary w-full justify-center flex items-center gap-2 mb-3"
@@ -295,7 +296,7 @@ export default function ReviewPage() {
               </div>
               <p className="text-slate-300 leading-relaxed">{review.verdict}</p>
               <a
-                href={review.affiliateLink}
+                href={getAffiliateLink(review)}
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="btn-primary inline-flex items-center gap-2 mt-5"
@@ -332,7 +333,7 @@ export default function ReviewPage() {
                   </div>
                 </div>
                 <a
-                  href={review.affiliateLink}
+                  href={getAffiliateLink(review)}
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="btn-primary w-full justify-center flex items-center gap-2 mt-5 text-sm"

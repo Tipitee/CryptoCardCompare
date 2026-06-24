@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 
 interface Props {
   cards: CryptoCard[];
@@ -243,7 +244,7 @@ export default function CompareSideBySide({
               {card.badge && <span className="badge-accent mt-2">{card.badge}</span>}
 
               <a
-                href={card.affiliateLink}
+                href={getAffiliateLink(card)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 btn-secondary w-full text-xs"

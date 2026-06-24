@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUp, ArrowUpDown, Check, ExternalLink, Plus, Star, X } f
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 
 export type SortKey =
   | 'name'
@@ -321,7 +322,7 @@ function Row({
             <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
           </button>
           <a
-            href={card.affiliateLink}
+            href={getAffiliateLink(card)}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

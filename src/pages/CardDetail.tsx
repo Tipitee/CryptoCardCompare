@@ -21,6 +21,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 import { getExtraLabel } from '../i18n/extrasLabels';
 
 const CARD_SEGMENT: Record<string, string> = {
@@ -418,7 +419,7 @@ export default function CardDetail() {
                   {t('common:nav_favorites')}
                 </button>
                 <a
-                  href={card.affiliateLink}
+                  href={getAffiliateLink(card)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
@@ -568,7 +569,7 @@ export default function CardDetail() {
                 {t('common:card_detail_cta_desc')}
               </p>
               <a
-                href={card.affiliateLink}
+                href={getAffiliateLink(card)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full"

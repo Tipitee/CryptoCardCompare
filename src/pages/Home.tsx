@@ -132,6 +132,18 @@ export default function Home() {
       }
     }
   }
+  // Guarantee: at least one Crypto.com card must appear in the podium.
+  const hasCryptoCom = podium.some((c) => c.issuer === 'Crypto.com');
+  if (!hasCryptoCom) {
+    // Best Crypto.com card by cashbackPremium
+    const bestCryptoCom = [...cards]
+      .filter((c) => c.issuer === 'Crypto.com')
+      .sort((a, b) => b.cashbackPremium - a.cashbackPremium)[0];
+    if (bestCryptoCom) {
+      // Replace last slot if it's not already Crypto.com; drop the previous occupant
+      podium[podium.length - 1] = bestCryptoCom;
+    }
+  }
   const filtered = useMemo(() => {
     let result = cards;
     switch (filter) {

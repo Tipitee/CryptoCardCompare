@@ -6,6 +6,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 
 const YEAR = new Date().getFullYear();
 
@@ -227,7 +228,7 @@ export default function Favorites() {
                   {ui.in_fav}
                 </span>
                 <a
-                  href={c.affiliateLink}
+                  href={getAffiliateLink(c)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors"

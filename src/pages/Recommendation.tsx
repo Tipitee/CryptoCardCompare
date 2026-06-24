@@ -9,6 +9,7 @@ import { scoreCards } from '../utils/recommend';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 import { saveQuizResult } from '../lib/supabase';
 
 const YEAR = new Date().getFullYear();
@@ -378,7 +379,7 @@ export default function Recommendation() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <a
-                    href={r.card.affiliateLink}
+                    href={getAffiliateLink(r.card)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-ghost border border-bg-border"

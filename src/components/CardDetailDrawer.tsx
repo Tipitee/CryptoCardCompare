@@ -10,6 +10,7 @@ import TrustBadge from './TrustBadge';
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { getAffiliateLink } from '../utils/affiliateLink';
 
 interface Props {
   card: CryptoCard | null;
@@ -186,7 +187,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                 {t('common:nav_favorites')}
               </button>
               <a
-                href={card.affiliateLink}
+                href={getAffiliateLink(card)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary flex-1"
