@@ -500,6 +500,59 @@ export const CARD_REVIEWS: CardReview[] = [
     metaTitle: 'Ledger Card Avis 2026 — La Carte Crypto la Plus Sécurisée',
     metaDescription: 'Avis Ledger Card 2026 : carte crypto liée au hardware wallet, cashback BTC, sécurité maximale. Test complet et verdict pour utilisateurs avancés.',
   },
+
+  // ─────────────────────────────────────────────── DEBLOCK ───
+  {
+    slug: 'deblock-card',
+    cardName: 'Deblock Card',
+    issuer: 'Deblock',
+    network: 'Visa',
+    updatedAt: '2026-06-01',
+    globalRating: 4.2,
+    badge: 'Néobanque française',
+    ratingBreakdown: {
+      cashback: 3.5,
+      frais: 4.5,
+      facilite: 4.5,
+      securite: 4.8,
+      support: 3.8,
+    },
+    keyStats: {
+      cashbackMax: '1 % (plan Premium)',
+      stakingRequis: 'Aucun',
+      fraisAnnuels: '0 € (plan Standard gratuit)',
+      disponibilite: 'France, UE (IBAN français)',
+    },
+    pros: [
+      'IBAN français — virements SEPA instantanés inclus',
+      'Wallet self-custody intégré (vous gardez vos clés privées)',
+      'Première fintech française agréée MiCA par l\'AMF (n° A2025-001)',
+      'Régulée ACPR en tant qu\'établissement de monnaie électronique',
+      'Aucun staking requis pour le cashback',
+      'Accès à plus de 150 cryptomonnaies',
+      'Cartes virtuelles à usage unique (sécurité en ligne)',
+      'Compatible Apple Pay et Google Pay',
+      'Fonctionnalité d\'arrondi automatique en Bitcoin sur chaque achat',
+    ],
+    cons: [
+      'Cashback limité à 1 % sur le plan Premium (payant)',
+      'Plan Standard sans cashback',
+      'Plafond de retrait DAB gratuit faible en Standard (100 €/mois)',
+      'Relativement jeune (fondée en 2022) — historique limité',
+      'Cryptos disponibles moins nombreuses que les grands exchanges',
+    ],
+    verdict: 'Deblock est la meilleure carte crypto pour les Français qui veulent garder le contrôle de leurs actifs (self-custody) tout en bénéficiant d\'un vrai compte courant français. La régulation AMF + ACPR + MiCA en fait l\'option la plus sécurisée réglementairement du marché français. Le cashback de 1 % reste en retrait face à la concurrence, mais la proposition de valeur globale (IBAN FR + self-custody + conformité) est unique.',
+    sections: {
+      presentation: `**Deblock** est une néobanque française fondée en 2022 par d'anciens dirigeants de Revolut et Ledger (Jean Meyer, CEO ex-Revolut ; Mario Eguiluz, CTO ex-Ledger). Elle combine un compte courant avec IBAN français et une carte Visa avec un portefeuille crypto en self-custody — c'est-à-dire que vous conservez vos clés privées, contrairement à la quasi-totalité des autres cartes crypto du marché. En 2025, Deblock est devenue la première entreprise française à obtenir l'agrément CASP (prestataire de services sur crypto-actifs) sous MiCA auprès de l'AMF.`,
+      cashback: `Le cashback est disponible uniquement sur les plans **Premium** (14,99 €/mois ou 10 €/mois en annuel, gratuit si vous domiciliez vos revenus) et **Native** (NFT Deblock requis). Le taux est de **1 % sur tous les achats**, crédité directement dans la crypto de votre choix. Le plan Standard (gratuit) ne propose pas de cashback. En mai 2026, Deblock a introduit l'**arrondi automatique en Bitcoin** : chaque paiement peut être arrondi à l'euro supérieur, la différence étant automatiquement investie en BTC.`,
+      frais: `Le plan **Standard est entièrement gratuit** : carte Visa physique et virtuelle, IBAN FR, virements SEPA inclus, retraits DAB jusqu'à 100 €/mois sans frais. Les frais de change crypto en Standard sont de 1,99 %. Le plan **Premium** réduit ce spread à 0,49 % et porte les retraits DAB gratuits à 1 000 €/mois. Aucun frais de transaction sur les paiements en euros. Frais de change en devises étrangères standard.`,
+      securite: `Deblock est l'acteur le mieux régulé du marché français des cartes crypto : **agréée ACPR** (établissement de monnaie électronique, CIB 17748), **agréée AMF** sous MiCA (n° A2025-001 — première en France), et bénéficie de la garantie des dépôts bancaires via son partenaire bancaire. Le wallet crypto est en **self-custody** : vos clés privées ne sont jamais détenues par Deblock. Le blocage de carte est instantané via l'application. Les cartes virtuelles à usage unique protègent contre la fraude en ligne.`,
+      experience: `L'application Deblock est disponible sur iOS et Android et est très bien notée pour sa simplicité. La gestion du compte (virements, carte, crypto) se fait depuis une seule interface. La carte est compatible **Apple Pay** et **Google Pay**. Le support client est disponible en français via chat in-app. La configuration du wallet self-custody est guidée et accessible même aux débutants.`,
+    },
+    affiliateLink: 'https://deblock.com/fr-FR',
+    metaTitle: 'Deblock Card Avis 2026 — Néobanque Française Avec Wallet Crypto Self-Custody',
+    metaDescription: 'Avis complet Deblock 2026 : IBAN français, wallet self-custody, régulation AMF + MiCA, cashback 1 %. La néobanque crypto la mieux régulée en France.',
+  },
 ];
 
 // Helper : trouver un avis par slug

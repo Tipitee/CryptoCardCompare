@@ -169,6 +169,45 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     ],
   },
 
+
+  // ─── Deblock Card vs Nexo Card ───────────────────────────────────────────────
+  'deblock-card-vs-nexo-card': {
+    fr_intro: `Deblock et Nexo Card sont deux cartes crypto sans staking requis, mais elles s'adressent à des profils très différents. La **Deblock Card** est une néobanque française avec IBAN FR, wallet self-custody, et la meilleure régulation du marché (AMF + ACPR + MiCA). La **Nexo Card** se distingue par son cashback jusqu'à 2 % en BTC, bien supérieur au 1 % de Deblock Premium. Si vous habitez en France et que la sécurité réglementaire est votre priorité, Deblock est un choix unique. Si le cashback en Bitcoin est votre objectif principal, Nexo l'emporte.`,
+    fr_verdict: `Deblock gagne sur la régulation, le IBAN français et la self-custody. Nexo gagne sur le cashback (2 % BTC vs 1 % max chez Deblock) et les cryptos supportées. Notre recommandation : choisissez **Deblock** si vous voulez un vrai compte courant français crypto-compatible ; choisissez **Nexo** si vous maximisez le cashback BTC. Note : Deblock 4,2/5 vs Nexo Card 4,2/5 — ex aequo sur le global, différents sur les critères.`,
+    de_intro: `Deblock und Nexo Card sind zwei Krypto-Karten ohne Staking-Anforderungen, aber sie richten sich an sehr unterschiedliche Profile. Die **Deblock Card** ist eine französische Neobank mit französischer IBAN, Self-Custody-Wallet und der besten Regulierung auf dem Markt (AMF + ACPR + MiCA). Die **Nexo Card** zeichnet sich durch bis zu 2 % Cashback in BTC aus, was deutlich mehr ist als die 1 % von Deblock Premium.`,
+    de_verdict: `Deblock punktet bei Regulierung, französischer IBAN und Self-Custody. Nexo punktet beim Cashback (2 % BTC vs. max. 1 % bei Deblock). Unsere Empfehlung: Wählen Sie **Deblock**, wenn Sie ein echtes französisches Girokonto mit Krypto wollen; wählen Sie **Nexo**, wenn Sie BTC-Cashback maximieren möchten.`,
+    en_intro: `Deblock and Nexo Card are both crypto cards with no staking requirement, but they serve very different profiles. The **Deblock Card** is a French neobank with a French IBAN, self-custody wallet, and the best regulatory standing on the French market (AMF + ACPR + MiCA). The **Nexo Card** stands out with up to 2% cashback in BTC — significantly more than Deblock's 1% on the Premium plan.`,
+    en_verdict: `Deblock wins on regulation, French IBAN, and self-custody. Nexo wins on cashback (2% BTC vs max 1% at Deblock). Our recommendation: choose **Deblock** if you want a proper French current account with crypto integration; choose **Nexo** if maximising BTC cashback is your primary goal. Score: Deblock 4.2/5 vs Nexo Card 4.2/5 — tied overall, different on individual criteria.`,
+    faq: [
+      { q: 'Deblock ou Nexo Card : laquelle est disponible en France ?', a: 'Les deux cartes sont disponibles en France. Deblock propose en plus un IBAN français (virements SEPA instantanés inclus), ce qu\'aucune autre carte crypto du marché n\'offre.' },
+      { q: 'Quelle carte offre le meilleur cashback sans staking ?', a: 'La Nexo Card offre jusqu\'à 2 % de cashback en BTC sans staking obligatoire. La Deblock Card offre 1 % sur son plan Premium. Nexo l\'emporte sur ce critère.' },
+      { q: 'Qu\'est-ce que le self-custody de Deblock ?', a: 'Avec Deblock, vos clés privées crypto vous appartiennent — Deblock ne les détient jamais. C\'est une différence majeure avec Nexo, où vos cryptos sont hébergées par la plateforme. Self-custody = vous êtes le seul propriétaire de vos actifs.' },
+    ],
+  },
+
+  // ─── Deblock Card vs Coinbase Card ──────────────────────────────────────────
+  'deblock-card-vs-coinbase-card': {
+    fr_intro: `Deblock et Coinbase Card sont deux cartes crypto fortement axées sur la conformité réglementaire. La **Deblock Card** est régulée en France (AMF, ACPR, MiCA) et propose un IBAN français avec wallet self-custody. La **Coinbase Card** s'appuie sur Coinbase, exchange coté au Nasdaq, et offre jusqu'à 4 % de cashback en XLM ou 1 % en BTC sans staking. Pour les utilisateurs français qui veulent un ancrage local, Deblock est unique. Pour le cashback pur, Coinbase peut faire mieux.`,
+    fr_verdict: `Deblock est imbattable sur la régulation française et le IBAN local. Coinbase gagne sur le cashback potentiel (4 % XLM vs 1 % Deblock) et la profondeur de l\'exchange. Notre verdict : **Deblock** pour les Français qui veulent une solution tout-en-un banque + crypto ; **Coinbase Card** pour ceux qui sont déjà clients Coinbase et veulent maximiser leurs rewards. Note : Deblock 4,2/5 vs Coinbase Card 3,7/5.`,
+    en_intro: `Deblock and Coinbase Card are both compliance-focused crypto cards. The **Deblock Card** is regulated in France (AMF, ACPR, MiCA) and offers a French IBAN with a self-custody wallet. The **Coinbase Card** is backed by Nasdaq-listed Coinbase and offers up to 4% cashback in XLM or 1% in BTC with no staking required.`,
+    en_verdict: `Deblock is unbeatable on French regulation and local IBAN. Coinbase wins on potential cashback (4% XLM vs 1% Deblock) and exchange depth. Our verdict: **Deblock** for French users wanting an all-in-one banking + crypto solution; **Coinbase Card** for existing Coinbase users wanting to maximise rewards. Score: Deblock 4.2/5 vs Coinbase Card 3.7/5.`,
+    faq: [
+      { q: 'La Coinbase Card est-elle disponible en France ?', a: 'Oui, la Coinbase Card est disponible dans l\'UE dont la France. En revanche, elle ne propose pas d\'IBAN français — il s\'agit d\'une carte adossée à votre compte Coinbase.' },
+      { q: 'Deblock ou Coinbase Card pour un débutant en France ?', a: 'Deblock est plus adapté aux débutants français : IBAN local, interface simple, support en français, et régulation française rassurante. Coinbase est idéal si vous utilisez déjà l\'exchange Coinbase.' },
+    ],
+  },
+
+  // ─── Deblock Card vs Wirex ──────────────────────────────────────────────────
+  'deblock-card-vs-wirex-elite': {
+    fr_intro: `Deblock et Wirex sont deux approches très différentes de la carte crypto. La **Deblock Card** est une néobanque française avec IBAN local et wallet self-custody, orientée conformité et sécurité. **Wirex** est un acteur international plus orienté cashback (jusqu'à 8 % en WXT) et multi-devises. Si vous voyagez beaucoup et voulez des comptes multi-devises, Wirex peut être intéressant. Pour un usage centré sur la France avec les meilleures garanties réglementaires, Deblock s'impose.`,
+    fr_verdict: `Wirex l\'emporte sur les fonctionnalités multi-devises et le cashback potentiel en WXT. Deblock l\'emporte sur la régulation française, le IBAN local, et la self-custody. Note : Deblock 4,2/5 vs Wirex 3,5/5 — Deblock est recommandé pour les utilisateurs français.`,
+    en_intro: `Deblock and Wirex take very different approaches to crypto cards. The **Deblock Card** is a French neobank with a local IBAN and self-custody wallet, focused on compliance and security. **Wirex** is a more internationally-oriented product with cashback up to 8% in WXT and multi-currency accounts.`,
+    en_verdict: `Wirex wins on multi-currency features and potential WXT cashback. Deblock wins on French regulation, local IBAN, and self-custody. Score: Deblock 4.2/5 vs Wirex 3.5/5 — Deblock is recommended for French users.`,
+    faq: [
+      { q: 'Deblock ou Wirex pour voyager ?', a: 'Wirex est historiquement fort sur les multi-devises et les voyages. Cependant, Deblock ne facture pas de frais de change sur les paiements en euros dans l\'UE, ce qui le rend compétitif pour les voyages intra-européens.' },
+    ],
+  },
+
 };
 
 /**
