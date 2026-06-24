@@ -136,6 +136,17 @@ export async function fetchCardArticle(cardId: string, lang: string) {
   return data ?? null;
 }
 
+export async function fetchCardsByBrand(brandId: string): Promise<CryptoCard[]> {
+  const { data, error } = await supabase
+    .from('cards')
+    .select(CARD_COLUMNS)
+    .eq('brand_id', brandId)
+    .neq('status', 'discontinued')
+    .order('tier_rank', { ascending: true });
+  if (error) throw error;
+  return (data as CardRow[]).map(rowToCard);
+}
+
 export async function fetchCardById(id: string): Promise<CryptoCard | null> {
   const { data } = await supabase
     .from('cards')

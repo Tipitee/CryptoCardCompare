@@ -23,6 +23,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     reviews:        'avis',
     cryptos:        'cryptos',
     comparisons:    'comparer',
+    brands:         'marques',
   },
   de: {
     compare:        'vergleich',
@@ -34,6 +35,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     reviews:        'bewertungen',
     cryptos:        'cryptos',
     comparisons:    'vergleichen',
+    brands:         'marken',
   },
   es: {
     compare:        'comparar',
@@ -45,6 +47,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     reviews:        'opiniones',
     cryptos:        'cryptos',
     comparisons:    'comparar',
+    brands:         'marcas',
   },
   it: {
     compare:        'confronto',
@@ -56,6 +59,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     reviews:        'recensioni',
     cryptos:        'cryptos',
     comparisons:    'confrontare',
+    brands:         'marche',
   },
   en: {
     compare:        'compare',
@@ -67,5 +71,6 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     reviews:        'reviews',
     cryptos:        'cryptos',
     comparisons:    'compare',
+    brands:         'brands',
   },
 };
