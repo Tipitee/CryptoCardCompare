@@ -31,7 +31,8 @@ const CARD_COLUMNS =
   'card_network, daily_limit, free_withdrawals, extras, affiliate_link, badge, ' +
   'color_primary, color_secondary, real_card_image, image_alt, markets, status, ' +
   'virtual_only, market_restrictions, category_rates, trust_score, founded_year, ' +
-  'regulation_level, trustpilot_score, aum_tier, trust_breakdown';
+  'regulation_level, trustpilot_score, aum_tier, trust_breakdown, ' +
+  'brand_id, tier_rank, tier_label';
 
 type CardRow = {
   id: string;
@@ -66,6 +67,9 @@ type CardRow = {
   trustpilot_score: number | null;
   aum_tier: string | null;
   trust_breakdown: Record<string, unknown> | null;
+  brand_id: string | null;
+  tier_rank: number | null;
+  tier_label: string | null;
 };
 
 function rowToCard(row: CardRow): CryptoCard {
@@ -102,6 +106,9 @@ function rowToCard(row: CardRow): CryptoCard {
     trustpilotScore: row.trustpilot_score ?? null,
     aumTier: row.aum_tier ?? undefined,
     trustBreakdown: (row.trust_breakdown as CryptoCard['trustBreakdown']) ?? undefined,
+    brandId: row.brand_id ?? undefined,
+    tierRank: row.tier_rank ?? undefined,
+    tierLabel: row.tier_label ?? undefined,
   };
 }
 
