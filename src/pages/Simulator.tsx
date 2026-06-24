@@ -9,11 +9,13 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { AlertTriangle, Info, TrendingUp, Zap } from 'lucide-react';
+import { AlertTriangle, ChevronDown, ChevronRight, ExternalLink, Info, TrendingUp, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR } from '../utils/format';
@@ -192,8 +194,44 @@ export default function Simulator() {
       });
   }, [cards, spending, yearly, stakingBudget, simMode]);
 
-  const top5: ChartEntry[] = results.slice(0, 5).map((r) => ({
-    name: r.card.name,
+  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+
+  // ── Phase 4: group results by brand ──────────────────────────────────────
+  const brandedResults = useMemo(() => {
+    const groups = new Map<string, typeof results>();
+    for (const r of results) {
+      const key = r.card.brandId ?? `__single__${r.card.id}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key)!.push(r);
+    }
+    return Array.from(groups.entries())
+      .map(([key, rows]) => {
+        // Best tier = highest net gain among tiers the user can afford
+        const affordable = rows.filter((r) => r.stakingMet);
+        const primary = affordable[0] ?? rows[0];
+        return {
+          primary,
+          allTiers: rows,
+          isBrand: !key.startsWith('__single__'),
+          brandId: key.startsWith('__single__') ? null : (rows[0].card.brandId ?? null),
+          tierCount: rows.length,
+        };
+      })
+      .sort((a, b) => b.primary.net - a.primary.net);
+  }, [results]);
+
+  const [expandedBrands, setExpandedBrands] = useState<Set<string>>(new Set());
+  const toggleBrand = (key: string) =>
+    setExpandedBrands((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+
+  const top5: ChartEntry[] = brandedResults.slice(0, 5).map(({ primary: r }) => ({
+    name: r.card.tierLabel
+      ? `${r.card.issuer} · ${r.card.tierLabel}`
+      : r.card.name,
     net: Math.round(r.net),
     issuer: r.card.issuer,
     stakingMet: r.stakingMet,
@@ -202,7 +240,7 @@ export default function Simulator() {
       : null,
   }));
 
-  const best = results[0];
+  const best = brandedResults[0]?.primary;
 
   return (
     <div className="container-app py-10">
@@ -450,16 +488,19 @@ export default function Simulator() {
                     <th className="px-4 py-2.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide">
                       {t('sim_col_card')}
                     </th>
+                    <th className="px-4 py-2.5 text-left text-xs font-semibold text-slate-400 uppercase tracking-wide hidden sm:table-cell">
+                      Tier
+                    </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
                       {t('sim_col_staking')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
                       {t('sim_col_rate')}
                     </th>
-                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide hidden md:table-cell">
                       {t('sim_col_cashback')}
                     </th>
-                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                    <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide hidden md:table-cell">
                       {t('sim_col_fees')}
                     </th>
                     <th className="px-4 py-2.5 text-right text-xs font-semibold text-slate-400 uppercase tracking-wide">
@@ -468,73 +509,157 @@ export default function Simulator() {
                   </tr>
                 </thead>
                 <tbody>
-                  {results.map((r, i) => (
-                    <tr
-                      key={r.card.id}
-                      className="border-b border-bg-border last:border-0 hover:bg-bg-elevated/30"
-                    >
-                      <td className="px-4 py-3">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs text-slate-500 font-mono w-5">
-                            #{i + 1}
-                          </span>
-                          <span className="font-medium text-white">{r.card.name}</span>
-                          {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
-                          {r.bestCategory && (
-                            <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20">
-                              <Zap className="w-2.5 h-2.5" />
-                              {CATEGORIES.find((c) => c.key === r.bestCategory)?.badgeLabel}
-                            </span>
-                          )}
-                        </div>
-                        {simMode === 'base' && r.card.cashbackPremium > r.effectiveRate && (
-                          <div className="ml-7 mt-0.5 text-xs text-slate-500">
-                            {t('sim_potential_prefix')}{' '}
-                            <span className="text-amber-400/80">{r.card.cashbackPremium}%</span>
-                            {' '}{t('sim_potential_suffix')}
-                          </div>
-                        )}
-                        {simMode === 'optimistic' && r.card.cashbackBase < r.effectiveRate && r.stakingMet && (
-                          <div className="ml-7 mt-0.5 text-xs text-slate-500">
-                            {t('sim_mode_base_rate_note')}{' '}
-                            <span className="text-slate-400">{r.card.cashbackBase}%</span>
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-4 py-3 text-right">
-                        {r.card.stakingRequired === 0 ? (
-                          <span className="text-slate-500">—</span>
-                        ) : (
-                          <span className={`inline-flex items-center gap-1 text-xs font-mono ${r.stakingMet ? 'text-green-accent' : 'text-amber-400'}`}>
-                            {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
-                            {fmtEUR(r.card.stakingRequired)}
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-4 py-3 text-right">
-                        <span
-                          className={`font-mono text-sm font-semibold ${r.ratePenalized ? 'text-amber-400' : 'text-slate-200'}`}
-                          title={r.hasCustomRates ? t('sim_rate_weighted_tooltip') : undefined}
+                  {brandedResults.map(({ primary: r, allTiers, isBrand, brandId, tierCount }, i) => {
+                    const expandKey = brandId ?? r.card.id;
+                    const isExpanded = expandedBrands.has(expandKey);
+                    const hasMoreTiers = isBrand && tierCount > 1;
+
+                    return (
+                      <>
+                        {/* ── Primary row (best tier) ─────────────────── */}
+                        <tr
+                          key={r.card.id}
+                          className={`border-b border-bg-border hover:bg-bg-elevated/30 ${
+                            i === 0 ? 'bg-green-accent/3' : ''
+                          }`}
                         >
-                          {r.hasCustomRates ? '~' : ''}{r.effectiveRate.toFixed(1)}%
-                        </span>
-                        {r.ratePenalized && (
-                          <div className="text-xs text-slate-500 text-right">
-                            ({r.card.cashbackBase}% {t('sim_rate_with_staking')})
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-4 py-3 text-right font-mono text-slate-300">
-                        {fmtEUR(r.rewards)}
-                      </td>
-                      <td className="px-4 py-3 text-right font-mono text-slate-400">
-                        {r.card.annualFees === 0 ? '—' : fmtEUR(r.card.annualFees)}
-                      </td>
-                      <td className="px-4 py-3 text-right font-mono font-semibold text-green-accent">
-                        {fmtEUR(r.net)}
-                      </td>
-                    </tr>
-                  ))}
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="text-xs text-slate-500 font-mono w-5">#{i + 1}</span>
+                              <div>
+                                <div className="flex items-center gap-1.5 flex-wrap">
+                                  <span className="font-medium text-white">{r.card.issuer}</span>
+                                  {i === 0 && <span className="badge-best">{t('sim_badge_best')}</span>}
+                                  {r.bestCategory && (
+                                    <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/20">
+                                      <Zap className="w-2.5 h-2.5" />
+                                      {CATEGORIES.find((c) => c.key === r.bestCategory)?.badgeLabel}
+                                    </span>
+                                  )}
+                                </div>
+                                {simMode === 'base' && r.card.cashbackPremium > r.effectiveRate && (
+                                  <div className="mt-0.5 text-xs text-slate-500">
+                                    {t('sim_potential_prefix')}{' '}
+                                    <span className="text-amber-400/80">{r.card.cashbackPremium}%</span>
+                                    {' '}{t('sim_potential_suffix')}
+                                  </div>
+                                )}
+                              </div>
+                              {/* Brand page link */}
+                              {brandId && (
+                                <Link
+                                  to={`/${lang}/${brandsSlug}/${brandId}`}
+                                  className="text-slate-500 hover:text-cyan-accent transition-colors"
+                                  title="Voir tous les tiers"
+                                >
+                                  <ExternalLink className="w-3 h-3" />
+                                </Link>
+                              )}
+                            </div>
+                          </td>
+
+                          {/* Tier label */}
+                          <td className="px-4 py-3 hidden sm:table-cell">
+                            <div className="flex items-center gap-1.5">
+                              {r.card.tierLabel && (
+                                <span className="text-xs text-cyan-accent/80 font-medium">
+                                  {r.card.tierLabel}
+                                </span>
+                              )}
+                              {hasMoreTiers && (
+                                <button
+                                  onClick={() => toggleBrand(expandKey)}
+                                  className="inline-flex items-center gap-0.5 text-[10px] text-slate-400 hover:text-white border border-bg-border rounded px-1.5 py-0.5 transition-colors"
+                                >
+                                  {isExpanded ? <ChevronDown className="w-2.5 h-2.5" /> : <ChevronRight className="w-2.5 h-2.5" />}
+                                  {tierCount} tiers
+                                </button>
+                              )}
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-3 text-right">
+                            {r.card.stakingRequired === 0 ? (
+                              <span className="text-slate-500">—</span>
+                            ) : (
+                              <span className={`inline-flex items-center gap-1 text-xs font-mono ${r.stakingMet ? 'text-green-accent' : 'text-amber-400'}`}>
+                                {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
+                                {fmtEUR(r.card.stakingRequired)}
+                              </span>
+                            )}
+                          </td>
+
+                          <td className="px-4 py-3 text-right">
+                            <span
+                              className={`font-mono text-sm font-semibold ${r.ratePenalized ? 'text-amber-400' : 'text-slate-200'}`}
+                              title={r.hasCustomRates ? t('sim_rate_weighted_tooltip') : undefined}
+                            >
+                              {r.hasCustomRates ? '~' : ''}{r.effectiveRate.toFixed(1)}%
+                            </span>
+                            {r.ratePenalized && (
+                              <div className="text-xs text-slate-500">
+                                ({r.card.cashbackBase}% {t('sim_rate_with_staking')})
+                              </div>
+                            )}
+                          </td>
+
+                          <td className="px-4 py-3 text-right font-mono text-slate-300 hidden md:table-cell">
+                            {fmtEUR(r.rewards)}
+                          </td>
+                          <td className="px-4 py-3 text-right font-mono text-slate-400 hidden md:table-cell">
+                            {r.card.annualFees === 0 ? '—' : fmtEUR(r.card.annualFees)}
+                          </td>
+                          <td className="px-4 py-3 text-right font-mono font-semibold text-green-accent">
+                            {fmtEUR(r.net)}
+                          </td>
+                        </tr>
+
+                        {/* ── Expanded: other tiers ───────────────────── */}
+                        {isExpanded && allTiers
+                          .filter((t2) => t2.card.id !== r.card.id)
+                          .map((t2) => (
+                            <tr
+                              key={t2.card.id}
+                              className="border-b border-bg-border/50 bg-bg-elevated/20 text-slate-400"
+                            >
+                              <td className="pl-10 pr-4 py-2">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="text-[10px] text-slate-600">↳</span>
+                                  <span className="text-xs">{t2.card.name}</span>
+                                </div>
+                              </td>
+                              <td className="px-4 py-2 hidden sm:table-cell">
+                                <span className="text-xs text-slate-500">{t2.card.tierLabel ?? '—'}</span>
+                              </td>
+                              <td className="px-4 py-2 text-right">
+                                {t2.card.stakingRequired === 0 ? (
+                                  <span className="text-slate-600 text-xs">—</span>
+                                ) : (
+                                  <span className={`text-xs font-mono ${t2.stakingMet ? 'text-green-accent/60' : 'text-amber-400/60'}`}>
+                                    {!t2.stakingMet && <AlertTriangle className="w-2.5 h-2.5 inline mr-0.5" />}
+                                    {fmtEUR(t2.card.stakingRequired)}
+                                  </span>
+                                )}
+                              </td>
+                              <td className="px-4 py-2 text-right">
+                                <span className="text-xs font-mono text-slate-400">
+                                  {t2.effectiveRate.toFixed(1)}%
+                                </span>
+                              </td>
+                              <td className="px-4 py-2 text-right text-xs font-mono hidden md:table-cell">
+                                {fmtEUR(t2.rewards)}
+                              </td>
+                              <td className="px-4 py-2 text-right text-xs font-mono hidden md:table-cell">
+                                {t2.card.annualFees === 0 ? '—' : fmtEUR(t2.card.annualFees)}
+                              </td>
+                              <td className="px-4 py-2 text-right text-xs font-mono text-slate-300">
+                                {fmtEUR(t2.net)}
+                              </td>
+                            </tr>
+                          ))}
+                      </>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

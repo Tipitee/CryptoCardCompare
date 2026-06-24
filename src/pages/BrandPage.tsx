@@ -418,7 +418,7 @@ function TierCard({
           <h3 className="text-text-primary font-bold text-base leading-tight">{card.name}</h3>
         </div>
         {card.trustScore != null && (
-          <TrustBadge score={card.trustScore} size="sm" />
+          <TrustBadge card={card} />
         )}
       </div>
 
