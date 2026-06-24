@@ -379,7 +379,7 @@ export default function Recommendation() {
                     to={`/${lang}/${cardSlug}/${r.card.id}`}
                     className="btn-ghost border border-bg-border text-sm inline-flex items-center gap-1"
                   >
-                    {t('common:card_detail_view_page') || 'Voir les détails'}
+                    {t('common:card_detail_view_page')}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   {r.card.brandId && (

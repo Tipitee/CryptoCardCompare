@@ -7,6 +7,37 @@ import { getAffiliateLink } from '../utils/affiliateLink';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
+// ── i18n label maps ────────────────────────────────────────────────────────────
+const TH: Record<string, Record<string, string>> = {
+  card:       { fr: 'Carte',            de: 'Karte',             es: 'Tarjeta',          it: 'Carta',           en: 'Card' },
+  cbBase:     { fr: 'Cashback base',    de: 'Basis-Cashback',    es: 'Cashback base',    it: 'Cashback base',   en: 'Base cashback' },
+  cbMax:      { fr: 'Cashback max',     de: 'Max. Cashback',     es: 'Cashback máx.',    it: 'Cashback max.',   en: 'Max cashback' },
+  fees:       { fr: 'Frais annuels',    de: 'Jahresgebühren',    es: 'Comisiones',       it: 'Costi annuali',   en: 'Annual fees' },
+  staking:    { fr: 'Staking requis',   de: 'Staking erf.',      es: 'Staking req.',     it: 'Staking rich.',   en: 'Staking req.' },
+  cryptos:    { fr: 'Cryptos',          de: 'Kryptos',           es: 'Criptos',          it: 'Criptovalute',    en: 'Cryptos' },
+  france:     { fr: 'France',           de: 'Frankreich',        es: 'Francia',          it: 'Francia',         en: 'France' },
+  network:    { fr: 'Réseau',           de: 'Netzwerk',          es: 'Red',              it: 'Rete',            en: 'Network' },
+  withdrawals:{ fr: 'Retraits gratuits',de: 'Gratis-Abhebungen', es: 'Retiros gratis',   it: 'Prelievi gratis', en: 'Free withdrawals' },
+  actions:    { fr: 'Actions',          de: 'Aktionen',          es: 'Acciones',         it: 'Azioni',          en: 'Actions' },
+};
+const FREE_L:    Record<string, string> = { fr: 'Gratuit',   de: 'Kostenlos',  es: 'Gratis',   it: 'Gratuito',  en: 'Free' };
+const NONE_L:    Record<string, string> = { fr: 'Aucun',     de: 'Keins',      es: 'Ninguno',  it: 'Nessuno',   en: 'None' };
+const NO_CARDS:  Record<string, string> = {
+  fr: 'Aucune carte ne correspond aux filtres sélectionnés.',
+  de: 'Keine Karte entspricht den ausgewählten Filtern.',
+  es: 'Ninguna tarjeta coincide con los filtros seleccionados.',
+  it: 'Nessuna carta corrisponde ai filtri selezionati.',
+  en: 'No card matches the selected filters.',
+};
+const ADD_CMP:   Record<string, string> = { fr: 'Ajouter à la comparaison',  de: 'Zum Vergleich', es: 'Añadir a comparación', it: 'Aggiungi al confronto', en: 'Add to comparison' };
+const REM_CMP:   Record<string, string> = { fr: 'Retirer de la comparaison', de: 'Aus Vergleich', es: 'Quitar de comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison' };
+const ADD_FAV:   Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites' };
+const REM_FAV:   Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites' };
+const SELECTED:  Record<string, string> = { fr: 'Sélectionnée', de: 'Ausgewählt', es: 'Seleccionada', it: 'Selezionata', en: 'Selected' };
+const CLICK_SEL: Record<string, string> = { fr: 'Cliquer pour sélectionner', de: 'Zum Auswählen klicken', es: 'Clic para seleccionar', it: 'Clicca per selezionare', en: 'Click to select' };
+const DETAILS_L: Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details' };
+const OFFER_L:   Record<string, string> = { fr: 'Offre', de: 'Angebot', es: 'Oferta', it: 'Offerta', en: 'Offer' };
+
 export type SortKey =
   | 'name'
   | 'cashbackBase'
@@ -45,8 +76,10 @@ export default function CompareTable({
   quickSelectA,
   quickSelectB,
 }: Props) {
+  const lang = useLanguage();
   const ariaSort = (key: SortKey): 'ascending' | 'descending' | 'none' =>
     sortKey === key ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none';
+  const th = (key: string) => TH[key]?.[lang] ?? TH[key]?.en ?? key;
 
   return (
     <div className="card-surface overflow-x-auto scrollbar-thin">
@@ -61,7 +94,7 @@ export default function CompareTable({
               myKey="name"
               onClick={() => onSort('name')}
             >
-              Carte
+              {th('card')}
             </ThCell>
             <ThCell
               ariaSort={ariaSort('cashbackBase')}
@@ -70,7 +103,7 @@ export default function CompareTable({
               myKey="cashbackBase"
               onClick={() => onSort('cashbackBase')}
             >
-              Cashback base
+              {th('cbBase')}
             </ThCell>
             <ThCell
               ariaSort={ariaSort('cashbackPremium')}
@@ -79,7 +112,7 @@ export default function CompareTable({
               myKey="cashbackPremium"
               onClick={() => onSort('cashbackPremium')}
             >
-              Cashback max
+              {th('cbMax')}
             </ThCell>
             <ThCell
               ariaSort={ariaSort('annualFees')}
@@ -88,7 +121,7 @@ export default function CompareTable({
               myKey="annualFees"
               onClick={() => onSort('annualFees')}
             >
-              Frais annuels
+              {th('fees')}
             </ThCell>
             <ThCell
               ariaSort={ariaSort('stakingRequired')}
@@ -97,13 +130,13 @@ export default function CompareTable({
               myKey="stakingRequired"
               onClick={() => onSort('stakingRequired')}
             >
-              Staking requis
+              {th('staking')}
             </ThCell>
-            <ThCell>Cryptos</ThCell>
-            <ThCell>France</ThCell>
-            <ThCell>Réseau</ThCell>
-            <ThCell>Retraits gratuits</ThCell>
-            <ThCell>Actions</ThCell>
+            <ThCell>{th('cryptos')}</ThCell>
+            <ThCell>{th('france')}</ThCell>
+            <ThCell>{th('network')}</ThCell>
+            <ThCell>{th('withdrawals')}</ThCell>
+            <ThCell>{th('actions')}</ThCell>
           </tr>
         </thead>
         <tbody>
@@ -125,7 +158,7 @@ export default function CompareTable({
           {cards.length === 0 && (
             <tr>
               <td colSpan={10} className="p-10 text-center text-slate-500">
-                Aucune carte ne correspond aux filtres sélectionnés.
+                {NO_CARDS[lang] ?? NO_CARDS.en}
               </td>
             </tr>
           )}
@@ -201,6 +234,8 @@ function Row({
   const lang = useLanguage();
   const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const isBest = (key: string) => best && best[key] === card.id;
+  const free = FREE_L[lang] ?? FREE_L.en;
+  const none = NONE_L[lang] ?? NONE_L.en;
 
   const slotColor =
     quickSlot === 'A'
@@ -230,7 +265,7 @@ function Row({
             onClick={onCardClick}
             disabled={!onCardClick}
             className={`flex items-center gap-3 flex-1 text-left ${onCardClick ? 'cursor-pointer group' : ''}`}
-            title={onCardClick ? (quickSlot ? `Carte ${quickSlot} sélectionnée` : 'Cliquer pour sélectionner') : undefined}
+            title={onCardClick ? (quickSlot ? `${SELECTED[lang] ?? SELECTED.en} ${quickSlot}` : (CLICK_SEL[lang] ?? CLICK_SEL.en)) : undefined}
           >
             <div className="relative shrink-0">
               <SmartCardImage card={card} size="xs" />
@@ -266,12 +301,12 @@ function Row({
       </td>
       <td className="px-4 py-3 whitespace-nowrap">
         <span className={isBest('annualFees') ? 'badge-best' : 'text-slate-200'}>
-          {card.annualFees === 0 ? 'Gratuit' : fmtEUR(card.annualFees)}
+          {card.annualFees === 0 ? free : fmtEUR(card.annualFees)}
         </span>
       </td>
       <td className="px-4 py-3 whitespace-nowrap">
         <span className={isBest('stakingRequired') ? 'badge-best' : 'text-slate-200'}>
-          {card.stakingRequired === 0 ? 'Aucun' : fmtEUR(card.stakingRequired)}
+          {card.stakingRequired === 0 ? none : fmtEUR(card.stakingRequired)}
         </span>
       </td>
       <td className="px-4 py-3">
@@ -305,7 +340,7 @@ function Row({
         <div className="flex items-center gap-1.5">
           <button
             onClick={(e) => { e.stopPropagation(); onToggleCompare(); }}
-            aria-label={inCompare ? 'Retirer de la comparaison' : 'Ajouter à la comparaison'}
+            aria-label={inCompare ? (REM_CMP[lang] ?? REM_CMP.en) : (ADD_CMP[lang] ?? ADD_CMP.en)}
             aria-pressed={inCompare}
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               inCompare
@@ -317,7 +352,7 @@ function Row({
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onToggleFav(); }}
-            aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+            aria-label={isFav ? (REM_FAV[lang] ?? REM_FAV.en) : (ADD_FAV[lang] ?? ADD_FAV.en)}
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               isFav
                 ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
@@ -331,7 +366,7 @@ function Row({
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
-            {lang === 'fr' ? 'Détails' : lang === 'de' ? 'Details' : lang === 'es' ? 'Detalles' : lang === 'it' ? 'Dettagli' : 'Details'}
+            {DETAILS_L[lang] ?? DETAILS_L.en}
           </Link>
           <a
             href={getAffiliateLink(card)}
@@ -340,7 +375,7 @@ function Row({
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
-            {lang === 'fr' ? 'Offre' : lang === 'de' ? 'Angebot' : lang === 'es' ? 'Oferta' : lang === 'it' ? 'Offerta' : 'Offer'}
+            {OFFER_L[lang] ?? OFFER_L.en}
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

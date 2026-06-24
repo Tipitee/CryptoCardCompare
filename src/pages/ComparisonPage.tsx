@@ -313,7 +313,7 @@ export default function ComparisonPage() {
         {card2.name}
       </h1>
       <p className="text-slate-400 text-sm mb-10">
-        {t('comparison_subtitle') || 'Comparaison détaillée • Mis à jour régulièrement'}
+        {t('comparison_subtitle')}
       </p>
 
       {/* ── Card headers ─────────────────────────────────────────── */}
@@ -346,7 +346,7 @@ export default function ComparisonPage() {
             {/* Score */}
             <div className="w-full">
               <div className="text-xs text-slate-500 mb-1.5 uppercase tracking-wider">
-                {t('comparison_score') || 'Score'}
+                {t('comparison_score')}
               </div>
               <ScoreBar score={card === card1 ? score1 : score2} max={maxScore} />
             </div>
@@ -358,13 +358,13 @@ export default function ComparisonPage() {
                 className={`btn-secondary text-xs ${isFav ? 'border-green-accent/50 text-green-accent' : ''}`}
               >
                 <Star className="w-3.5 h-3.5" fill={isFav ? 'currentColor' : 'none'} />
-                {isFav ? t('comparison_in_fav') || 'Favori' : t('comparison_add_fav') || 'Ajouter'}
+                {isFav ? t('comparison_in_fav') : t('comparison_add_fav')}
               </button>
               <button
                 onClick={() => setDetail(card)}
                 className="btn-ghost border border-bg-border text-xs"
               >
-                {t('comparison_details') || 'Détails'}
+                {t('comparison_details')}
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
               <a
@@ -373,7 +373,7 @@ export default function ComparisonPage() {
                 rel="noopener noreferrer"
                 className="btn-ghost border border-bg-border text-xs"
               >
-                {t('comparison_offer') || "Voir l'offre"}
+                {t('comparison_offer')}
                 <ExternalLink className="w-3 h-3" />
               </a>
               {card.brandId && (() => {
@@ -403,7 +403,7 @@ export default function ComparisonPage() {
                 {card1.name}
               </th>
               <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-400 w-[16%]">
-                {t('comparison_criteria') || 'Critère'}
+                {t('comparison_criteria')}
               </th>
               <th className="px-5 py-3 text-center text-xs font-semibold uppercase tracking-wider text-green-accent w-[42%]">
                 {card2.name}

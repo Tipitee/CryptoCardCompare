@@ -4,6 +4,8 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { useLanguage } from '../hooks/useLanguage';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 interface Props {
   cards: CryptoCard[];
@@ -16,85 +18,62 @@ type MetricKind = 'pct' | 'eur' | 'eur_or_free' | 'eur_or_none' | 'bool' | 'text
 
 interface MetricDef {
   key: string;
-  label: string;
   kind: MetricKind;
   higherIsBetter?: boolean;
   lowerIsBetter?: boolean;
   get: (c: CryptoCard) => number | string | boolean | string[];
 }
 
+// Labels per metric key per language
+const METRIC_LABELS: Record<string, Record<string, string>> = {
+  cashbackBase:     { fr: 'Cashback de base',     de: 'Basis-Cashback',       es: 'Cashback base',         it: 'Cashback base',          en: 'Base cashback' },
+  cashbackPremium:  { fr: 'Cashback max',          de: 'Max. Cashback',        es: 'Cashback máx.',         it: 'Cashback max.',           en: 'Max cashback' },
+  annualFees:       { fr: 'Frais annuels',         de: 'Jahresgebühren',       es: 'Comisiones anuales',    it: 'Costi annuali',           en: 'Annual fees' },
+  stakingRequired:  { fr: 'Staking requis',        de: 'Staking erforderlich', es: 'Staking requerido',     it: 'Staking richiesto',       en: 'Staking required' },
+  dailyLimit:       { fr: 'Plafond journalier',    de: 'Tageslimit',           es: 'Límite diario',         it: 'Limite giornaliero',      en: 'Daily limit' },
+  cardNetwork:      { fr: 'Réseau',                de: 'Netzwerk',             es: 'Red',                   it: 'Rete',                    en: 'Network' },
+  availableFrance:  { fr: 'Disponible France',     de: 'Verfügbar FR',         es: 'Disponible Francia',    it: 'Disponibile Francia',     en: 'Available France' },
+  availableEU:      { fr: 'Disponible UE',         de: 'Verfügbar EU',         es: 'Disponible UE',         it: 'Disponibile UE',          en: 'Available EU' },
+  freeWithdrawals:  { fr: 'Retraits gratuits',     de: 'Gratis-Abhebungen',    es: 'Retiros gratuitos',     it: 'Prelievi gratuiti',       en: 'Free withdrawals' },
+  cryptos:          { fr: 'Cryptos supportées',    de: 'Unterstützte Kryptos', es: 'Criptos admitidas',     it: 'Criptovalute supportate', en: 'Supported cryptos' },
+  extras:           { fr: 'Avantages inclus',      de: 'Enthaltene Vorteile',  es: 'Ventajas incluidas',    it: 'Vantaggi inclusi',        en: 'Included benefits' },
+};
+
+const FREE_LABEL:  Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis',  it: 'Gratuito', en: 'Free' };
+const NONE_LABEL:  Record<string, string> = { fr: 'Aucun',   de: 'Keins',     es: 'Ninguno', it: 'Nessuno',  en: 'None' };
+const BEST_LABEL:  Record<string, string> = { fr: 'Meilleur', de: 'Beste',    es: 'Mejor',   it: 'Migliore', en: 'Best' };
+const EMPTY_LABEL: Record<string, string> = {
+  fr: 'Aucune carte sélectionnée à comparer.',
+  de: 'Keine Karte zur Vergleich ausgewählt.',
+  es: 'Ninguna tarjeta seleccionada para comparar.',
+  it: 'Nessuna carta selezionata per il confronto.',
+  en: 'No card selected for comparison.',
+};
+const CHOOSE_LABEL: Record<string, string> = {
+  fr: 'Choisir des cartes', de: 'Karten wählen', es: 'Elegir tarjetas', it: 'Scegli carte', en: 'Choose cards',
+};
+const REMOVE_LABEL: Record<string, string> = {
+  fr: 'Retirer de la comparaison', de: 'Aus Vergleich entfernen',
+  es: 'Quitar de la comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison',
+};
+const ADD_FAV_LABEL:    Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites' };
+const REMOVE_FAV_LABEL: Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites' };
+const SEE_OFFER_LABEL:  Record<string, string> = { fr: "Voir l'offre", de: 'Angebot', es: 'Ver oferta', it: 'Vedi offerta', en: 'See offer' };
+const COMPARE_LABEL:    Record<string, string> = { fr: 'Comparaison détaillée', de: 'Detaillierter Vergleich', es: 'Comparación detallada', it: 'Confronto dettagliato', en: 'Detailed comparison' };
+const DETAILS_LABEL:    Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details' };
+
 const METRICS: MetricDef[] = [
-  {
-    key: 'cashbackBase',
-    label: 'Cashback de base',
-    kind: 'pct',
-    higherIsBetter: true,
-    get: (c) => c.cashbackBase,
-  },
-  {
-    key: 'cashbackPremium',
-    label: 'Cashback max',
-    kind: 'pct',
-    higherIsBetter: true,
-    get: (c) => c.cashbackPremium,
-  },
-  {
-    key: 'annualFees',
-    label: 'Frais annuels',
-    kind: 'eur_or_free',
-    lowerIsBetter: true,
-    get: (c) => c.annualFees,
-  },
-  {
-    key: 'stakingRequired',
-    label: 'Staking requis',
-    kind: 'eur_or_none',
-    lowerIsBetter: true,
-    get: (c) => c.stakingRequired,
-  },
-  {
-    key: 'dailyLimit',
-    label: 'Plafond journalier',
-    kind: 'number_eur',
-    higherIsBetter: true,
-    get: (c) => c.dailyLimit,
-  },
-  {
-    key: 'cardNetwork',
-    label: 'Réseau',
-    kind: 'text',
-    get: (c) => c.cardNetwork,
-  },
-  {
-    key: 'availableFrance',
-    label: 'Disponible France',
-    kind: 'bool',
-    get: (c) => c.availableFrance,
-  },
-  {
-    key: 'availableEU',
-    label: 'Disponible UE',
-    kind: 'bool',
-    get: (c) => c.availableEU,
-  },
-  {
-    key: 'freeWithdrawals',
-    label: 'Retraits gratuits',
-    kind: 'bool',
-    get: (c) => c.freeWithdrawals,
-  },
-  {
-    key: 'cryptos',
-    label: 'Cryptos supportées',
-    kind: 'list',
-    get: (c) => c.cryptos,
-  },
-  {
-    key: 'extras',
-    label: 'Avantages inclus',
-    kind: 'list',
-    get: (c) => c.extras,
-  },
+  { key: 'cashbackBase',    kind: 'pct',         higherIsBetter: true,  get: (c) => c.cashbackBase },
+  { key: 'cashbackPremium', kind: 'pct',         higherIsBetter: true,  get: (c) => c.cashbackPremium },
+  { key: 'annualFees',      kind: 'eur_or_free', lowerIsBetter: true,   get: (c) => c.annualFees },
+  { key: 'stakingRequired', kind: 'eur_or_none', lowerIsBetter: true,   get: (c) => c.stakingRequired },
+  { key: 'dailyLimit',      kind: 'number_eur',  higherIsBetter: true,  get: (c) => c.dailyLimit },
+  { key: 'cardNetwork',     kind: 'text',                               get: (c) => c.cardNetwork },
+  { key: 'availableFrance', kind: 'bool',                               get: (c) => c.availableFrance },
+  { key: 'availableEU',     kind: 'bool',                               get: (c) => c.availableEU },
+  { key: 'freeWithdrawals', kind: 'bool',                               get: (c) => c.freeWithdrawals },
+  { key: 'cryptos',         kind: 'list',                               get: (c) => c.cryptos },
+  { key: 'extras',          kind: 'list',                               get: (c) => c.extras },
 ];
 
 function computeBest(metric: MetricDef, cards: CryptoCard[]): Set<string> {
@@ -117,8 +96,10 @@ function computeBest(metric: MetricDef, cards: CryptoCard[]): Set<string> {
   return best;
 }
 
-function formatValue(metric: MetricDef, card: CryptoCard) {
+function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
   const v = metric.get(card);
+  const free = FREE_LABEL[lang] ?? FREE_LABEL.en;
+  const none = NONE_LABEL[lang] ?? NONE_LABEL.en;
   switch (metric.kind) {
     case 'pct':
       return <span className="font-mono font-semibold">{fmtPct(v as number)}</span>;
@@ -127,13 +108,13 @@ function formatValue(metric: MetricDef, card: CryptoCard) {
     case 'eur_or_free':
       return (
         <span className="font-mono font-semibold">
-          {(v as number) === 0 ? 'Gratuit' : fmtEUR(v as number)}
+          {(v as number) === 0 ? free : fmtEUR(v as number)}
         </span>
       );
     case 'eur_or_none':
       return (
         <span className="font-mono font-semibold">
-          {(v as number) === 0 ? 'Aucun' : fmtEUR(v as number)}
+          {(v as number) === 0 ? none : fmtEUR(v as number)}
         </span>
       );
     case 'number_eur':
@@ -180,13 +161,16 @@ export default function CompareSideBySide({
   onToggleFavorite,
   onRemove,
 }: Props) {
+  const lang = useLanguage();
+  const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
+
   if (cards.length === 0) {
     return (
       <div className="card-surface p-12 text-center">
-        <div className="text-slate-400 mb-5">Aucune carte sélectionnée à comparer.</div>
-        <Link to="/" className="btn-primary">
+        <div className="text-slate-400 mb-5">{EMPTY_LABEL[lang] ?? EMPTY_LABEL.en}</div>
+        <Link to={`/${lang}`} className="btn-primary">
           <Plus className="w-4 h-4" />
-          Choisir des cartes
+          {CHOOSE_LABEL[lang] ?? CHOOSE_LABEL.en}
         </Link>
       </div>
     );
@@ -217,14 +201,14 @@ export default function CompareSideBySide({
             >
               <button
                 onClick={() => onRemove(card.id)}
-                aria-label="Retirer de la comparaison"
+                aria-label={REMOVE_LABEL[lang] ?? REMOVE_LABEL.en}
                 className="absolute top-3 right-3 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
               >
                 <X className="w-4 h-4" />
               </button>
               <button
                 onClick={() => onToggleFavorite(card.id)}
-                aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                aria-label={isFav ? (REMOVE_FAV_LABEL[lang] ?? REMOVE_FAV_LABEL.en) : (ADD_FAV_LABEL[lang] ?? ADD_FAV_LABEL.en)}
                 className={`absolute top-3 left-3 p-2 rounded-lg transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center ${
                   isFav
                     ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
@@ -243,13 +227,20 @@ export default function CompareSideBySide({
               <div className="text-xs text-slate-500 mt-0.5">{card.issuer}</div>
               {card.badge && <span className="badge-accent mt-2">{card.badge}</span>}
 
+              <Link
+                to={`/${lang}/${cardSlug}/${card.id}`}
+                className="mt-3 btn-ghost w-full text-xs"
+              >
+                {DETAILS_LABEL[lang] ?? DETAILS_LABEL.en}
+              </Link>
+
               <a
                 href={getAffiliateLink(card)}
                 target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 btn-secondary w-full text-xs"
+                rel="noopener noreferrer sponsored"
+                className="mt-2 btn-secondary w-full text-xs"
               >
-                Voir l'offre
+                {SEE_OFFER_LABEL[lang] ?? SEE_OFFER_LABEL.en}
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -260,7 +251,7 @@ export default function CompareSideBySide({
       <div className="card-surface overflow-hidden">
         <div
           role="table"
-          aria-label="Comparaison détaillée"
+          aria-label={COMPARE_LABEL[lang] ?? COMPARE_LABEL.en}
           className="divide-y divide-bg-border"
         >
           {METRICS.map((metric, rowIdx) => (
@@ -275,7 +266,7 @@ export default function CompareSideBySide({
                 role="rowheader"
                 className="px-4 py-3 text-xs uppercase tracking-wide font-semibold text-slate-400 border-r border-bg-border flex items-center"
               >
-                {metric.label}
+                {METRIC_LABELS[metric.key]?.[lang] ?? METRIC_LABELS[metric.key]?.en ?? metric.key}
               </div>
               <div
                 className={`grid grid-cols-1 ${colsClass} divide-x divide-bg-border`}
@@ -291,14 +282,14 @@ export default function CompareSideBySide({
                       }`}
                     >
                       <div className="relative inline-flex items-center gap-2">
-                        {formatValue(metric, card)}
+                        {formatValue(metric, card, lang)}
                         {isBest && (
                           <span
-                            title="Meilleure valeur"
+                            title={BEST_LABEL[lang] ?? 'Best'}
                             className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide bg-green-accent/15 text-green-accent border border-green-accent/30"
                           >
                             <Trophy className="w-3 h-3" />
-                            Best
+                            {BEST_LABEL[lang] ?? 'Best'}
                           </span>
                         )}
                       </div>

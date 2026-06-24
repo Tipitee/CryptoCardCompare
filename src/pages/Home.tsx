@@ -406,12 +406,12 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs text-slate-400 shrink-0">{t('sort_by') || 'Trier par'} :</span>
+          <span className="text-xs text-slate-400 shrink-0">{t('sort_by')} :</span>
           <div className="flex gap-1.5">
             {([
-              { key: 'trust', label: t('sort_trust') || 'Confiance' },
-              { key: 'cashback', label: t('sort_cashback') || 'Cashback' },
-              { key: 'fees', label: t('sort_fees') || 'Frais' },
+              { key: 'trust', label: t('sort_trust') },
+              { key: 'cashback', label: t('sort_cashback') },
+              { key: 'fees', label: t('sort_fees') },
             ] as const).map(({ key, label }) => (
               <button
                 key={key}
