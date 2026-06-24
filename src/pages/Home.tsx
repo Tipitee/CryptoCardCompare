@@ -34,8 +34,24 @@ const HOME_SEO: Record<string, { title: string; desc: string }> = {
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import type { CryptoCard } from '../types/card';
+
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
+
+// ── Phase 3: brand-grouping labels ───────────────────────────────────────────
+const TIERS_LABEL: Record<string, string> = {
+  fr: 'niveaux', de: 'Stufen', es: 'niveles', it: 'livelli', en: 'tiers',
+};
+const SEE_TIERS: Record<string, string> = {
+  fr: 'Voir les niveaux', de: 'Alle Stufen', es: 'Ver niveles', it: 'Vedi livelli', en: 'See all tiers',
+};
+const UP_TO: Record<string, string> = {
+  fr: "Jusqu'à", de: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to',
+};
+const FROM_LABEL: Record<string, string> = {
+  fr: 'Dès', de: 'Ab', es: 'Desde', it: 'Da', en: 'From',
+};
 export default function Home() {
   const cards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);
@@ -53,6 +69,7 @@ export default function Home() {
   const { getRoute } = useLocalizedRoute();
   const lang = useLanguage();
   const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
+  const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc });
   useEffect(() => {
     const schema = {
@@ -144,31 +161,58 @@ export default function Home() {
       podium[podium.length - 1] = bestCryptoCom;
     }
   }
+  // ── Phase 3: group cards by brand, one representative per brand ──────────
+  const brandReps = useMemo(() => {
+    const groups: Record<string, CryptoCard[]> = {};
+    for (const card of cards) {
+      const key = card.brandId ?? `__single__${card.id}`;
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(card);
+    }
+    return Object.entries(groups).map(([key, brandCards]) => {
+      // Best representative = highest cashbackPremium, tie-break by trustScore
+      const representative = [...brandCards].sort((a, b) => {
+        const diff = b.cashbackPremium - a.cashbackPremium;
+        if (Math.abs(diff) > 0.001) return diff;
+        return (b.trustScore ?? 0) - (a.trustScore ?? 0);
+      })[0];
+      const isSingle = key.startsWith('__single__');
+      return {
+        card: representative,
+        tierCount: isSingle ? 1 : brandCards.length,
+        brandId: isSingle ? null : key,
+        minFees: Math.min(...brandCards.map((c) => c.annualFees)),
+        maxCashback: Math.max(...brandCards.map((c) => c.cashbackPremium)),
+        hasNoStaking: brandCards.some((c) => c.stakingRequired === 0),
+      };
+    });
+  }, [cards]);
+
   const filtered = useMemo(() => {
-    let result = cards;
+    let result = brandReps;
     switch (filter) {
       case 'no_fees':
-        result = result.filter((c) => c.annualFees === 0);
+        result = result.filter(({ minFees }) => minFees === 0);
         break;
       case 'high_cashback':
-        result = result.filter((c) => c.cashbackPremium >= 3);
+        result = result.filter(({ maxCashback }) => maxCashback >= 3);
         break;
       case 'no_staking':
-        result = result.filter((c) => c.stakingRequired === 0);
+        result = result.filter(({ hasNoStaking }) => hasNoStaking);
         break;
       case 'france':
-        result = result.filter((c) => c.availableFrance);
+        result = result.filter(({ card }) => card.availableFrance);
         break;
     }
     if (minTrust > 0) {
-      result = result.filter((c) => (c.trustScore ?? 0) >= minTrust);
+      result = result.filter(({ card }) => (card.trustScore ?? 0) >= minTrust);
     }
     return [...result].sort((a, b) => {
-      if (sortBy === 'cashback') return b.cashbackPremium - a.cashbackPremium;
-      if (sortBy === 'fees') return a.annualFees - b.annualFees;
-      return (b.trustScore ?? 0) - (a.trustScore ?? 0); // default: trust
+      if (sortBy === 'cashback') return b.maxCashback - a.maxCashback;
+      if (sortBy === 'fees') return a.minFees - b.minFees;
+      return (b.card.trustScore ?? 0) - (a.card.trustScore ?? 0);
     });
-  }, [cards, filter, minTrust, sortBy]);
+  }, [brandReps, filter, minTrust, sortBy]);
   const heroCards = cards.slice(0, 3);
   useEffect(() => {
     if (cards.length === 0) return;
@@ -406,9 +450,11 @@ export default function Home() {
           </div>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.slice(0, visibleCount).map((card) => {
+          {filtered.slice(0, visibleCount).map(({ card, tierCount, brandId, maxCashback, minFees }) => {
             const isFav = favorites.includes(card.id);
             const inCompare = compareSelection.includes(card.id);
+            const isMultiTier = tierCount > 1;
+            const tiersLbl = TIERS_LABEL[lang] ?? 'tiers';
             return (
               <div
                 key={card.id}
@@ -418,12 +464,22 @@ export default function Home() {
                     : 'hover:border-cyan-accent/40 hover:shadow-glow'
                 }`}
               >
+                {/* Tier count badge — top left */}
+                {isMultiTier && (
+                  <Link
+                    to={`/${lang}/${brandsSlug}/${brandId}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-4 left-4 z-10 flex items-center gap-1 bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[10px] font-bold px-2 py-0.5 rounded-full hover:bg-brand-accent/20 transition-colors"
+                  >
+                    <span>{tierCount}</span>
+                    <span>{tiersLbl}</span>
+                  </Link>
+                )}
+
+                {/* Fav + Compare buttons — top right */}
                 <div className="absolute top-4 right-4 z-10 flex gap-1.5">
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleCompare(card.id);
-                    }}
+                    onClick={(e) => { e.stopPropagation(); toggleCompare(card.id); }}
                     aria-label={inCompare ? t('home_compare_remove_label') : t('home_compare_add_label')}
                     aria-pressed={inCompare}
                     className={`p-2 rounded-lg transition-all ${
@@ -435,10 +491,7 @@ export default function Home() {
                     {inCompare ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </button>
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleFavorite(card.id);
-                    }}
+                    onClick={(e) => { e.stopPropagation(); toggleFavorite(card.id); }}
                     aria-label={isFav ? t('home_fav_remove_label') : t('home_fav_add_label')}
                     className={`p-2 rounded-lg transition-colors ${
                       isFav
@@ -449,27 +502,35 @@ export default function Home() {
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                   </button>
                 </div>
-                <button
-                  onClick={() => setDetail(card)}
-                  className="w-full text-left"
-                >
-                  <div className="flex justify-center py-2 mb-4">
+
+                {/* Card body */}
+                <button onClick={() => setDetail(card)} className="w-full text-left">
+                  <div className={`flex justify-center py-2 mb-4 ${isMultiTier ? 'mt-5' : ''}`}>
                     <SmartCardImage card={card} size="md" />
                   </div>
                   <div className="flex items-start justify-between gap-2 mb-1">
                     <div className="font-display font-semibold text-white">{card.name}</div>
-                    {card.badge && <span className="badge-accent">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>}
+                    {card.badge && (
+                      <span className="badge-accent">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>
+                    )}
                   </div>
                   <div className="text-xs text-slate-500 mb-4">{card.issuer}</div>
+
                   <dl className="grid grid-cols-3 gap-2 text-xs border-t border-bg-border pt-3">
                     <div>
                       <dt className="text-slate-500">Cashback</dt>
-                      <dd className="text-white font-semibold">{fmtPct(card.cashbackPremium)}</dd>
+                      <dd className="text-white font-semibold">
+                        {maxCashback > 0
+                          ? <><span className="text-slate-400 text-[10px]">{UP_TO[lang] ?? 'Up to'} </span>{fmtPct(maxCashback)}</>
+                          : '—'}
+                      </dd>
                     </div>
                     <div>
                       <dt className="text-slate-500">{t('home_card_fees')}</dt>
                       <dd className="text-white font-semibold">
-                        {card.annualFees === 0 ? t('home_card_free') : fmtEUR(card.annualFees)}
+                        {minFees === 0
+                          ? t('home_card_free')
+                          : <><span className="text-slate-400 text-[10px]">{FROM_LABEL[lang] ?? 'From'} </span>{fmtEUR(minFees)}</>}
                       </dd>
                     </div>
                     <div>
@@ -479,12 +540,24 @@ export default function Home() {
                       </dd>
                     </div>
                   </dl>
+
                   {card.trustScore !== undefined && (
                     <div className="mt-3 pt-3 border-t border-bg-border flex justify-end">
                       <TrustBadge card={card} />
                     </div>
                   )}
                 </button>
+
+                {/* See all tiers CTA (multi-tier brands only) */}
+                {isMultiTier && (
+                  <Link
+                    to={`/${lang}/${brandsSlug}/${brandId}`}
+                    className="mt-3 flex items-center justify-center gap-1.5 w-full text-xs text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40 rounded-lg py-1.5 transition-colors"
+                  >
+                    {SEE_TIERS[lang] ?? 'See all tiers'}
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
               </div>
             );
           })}
