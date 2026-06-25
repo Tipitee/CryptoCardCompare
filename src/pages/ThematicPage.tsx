@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
@@ -653,7 +652,6 @@ interface ThematicPageProps { theme: string; }
 
 export default function ThematicPage({ theme }: ThematicPageProps) {
   const { lang = 'fr' } = useParams<{ lang: string }>();
-  const { t } = useTranslation('common');
   const [cards, setCards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -760,10 +758,12 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   if (!config) return null;
 
   const L = {
-    free:    { fr:'Gratuit', de:'Kostenlos', es:'Gratis', it:'Gratuito', en:'Free' },
-    updated: { fr:'Mis à jour', de:'Aktualisiert', es:'Actualizado', it:'Aggiornato', en:'Updated' },
-    cards:   { fr:'cartes', de:'Karten', es:'tarjetas', it:'carte', en:'cards' },
-    faq:     { fr:'Questions fréquentes', de:'Häufige Fragen', es:'Preguntas frecuentes', it:'Domande frequenti', en:'Frequently Asked Questions' },
+    free:              { fr:'Gratuit', de:'Kostenlos', es:'Gratis', it:'Gratuito', en:'Free' },
+    updated:           { fr:'Mis à jour', de:'Aktualisiert', es:'Actualizado', it:'Aggiornato', en:'Updated' },
+    cards:             { fr:'cartes', de:'Karten', es:'tarjetas', it:'carte', en:'cards' },
+    faq:               { fr:'Questions fréquentes', de:'Häufige Fragen', es:'Preguntas frecuentes', it:'Domande frequenti', en:'Frequently Asked Questions' },
+    crypto_guide_title:{ fr:'Guide des Cryptomonnaies', de:'Kryptowährungs-Guide', es:'Guía de Criptomonedas', it:'Guida alle Criptovalute', en:'Cryptocurrency Guide' },
+    crypto_guide_desc: { fr:'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches', de:'Bitcoin, Ethereum, XRP… 10 Krypto-Guides', es:'Bitcoin, Ethereum, XRP… 10 guías completas', it:'Bitcoin, Ethereum, XRP… 10 guide complete', en:'Bitcoin, Ethereum, XRP… 10 in-depth guides' },
   };
   const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[lang] || (L[key] as Record<string, string>)['en'] || '';
 
