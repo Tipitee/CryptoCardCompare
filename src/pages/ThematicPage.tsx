@@ -600,6 +600,41 @@ const RELATED_TITLE: Record<string, string> = {
 };
 
 const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: string }[]>> = {
+  best: {
+    fr: [{ slug: 'carte-crypto-top-10-2026',                      title: 'Top 10 cartes crypto en 2026' }],
+    de: [{ slug: 'kryptokarte-mit-cashback-die-besten-angebote',  title: 'Beste Krypto-Karten: die besten Angebote' }],
+    es: [{ slug: 'tarjeta-crypto-con-cashback-las-mejores-ofertas-en', title: 'Las mejores tarjetas crypto con cashback' }],
+    it: [{ slug: 'carta-crypto-con-cashback-le-migliori-offerte-nel',  title: 'Le migliori carte crypto con cashback' }],
+    en: [{ slug: 'crypto-card-with-cashback-the-best-offers-in',  title: 'Best crypto cards: the top offers' }],
+  },
+  cashback: {
+    fr: [{ slug: 'carte-crypto-cashback-2026-classement',         title: 'Classement cartes crypto cashback 2026' }],
+    de: [{ slug: 'cashback-vergleich-welche-kryptokarte-verdient-2025-am', title: 'Cashback-Vergleich: welche Krypto-Karte verdient am meisten?' }],
+    es: [{ slug: 'comparativa-de-cashback-que-tarjeta-cripto-gana-mas-en', title: 'Comparativa cashback: ¿qué tarjeta cripto gana más?' }],
+    it: [{ slug: 'confronto-cashback-quale-carta-crypto-guadagna-di-piu-nel', title: 'Confronto cashback: quale carta crypto guadagna di più?' }],
+    en: [{ slug: 'cashback-comparison-which-crypto-card-earns-the-most-in', title: 'Cashback comparison: which crypto card earns the most?' }],
+  },
+  'no-fees': {
+    fr: [{ slug: 'cartes-crypto-sans-frais',                      title: 'Les meilleures cartes crypto sans frais' }],
+    de: [{ slug: 'kryptokarte-ohne-jahresgebuhren-unsere-auswahl', title: 'Krypto-Karte ohne Jahresgebühren: unsere Auswahl' }],
+    es: [{ slug: 'tarjeta-crypto-sin-cuotas-anuales-nuestra-seleccion', title: 'Tarjeta crypto sin cuotas anuales: nuestra selección' }],
+    it: [{ slug: 'carta-crypto-senza-commissioni-annuali-la-nostra-selezione', title: 'Carta crypto senza commissioni: la nostra selezione' }],
+    en: [{ slug: 'the-best-zero-fee-crypto-cards-in-2025',        title: 'The best zero-fee crypto cards' }],
+  },
+  'no-staking': {
+    fr: [{ slug: 'meilleure-carte-crypto-sans-staking-2026',      title: 'Meilleure carte crypto sans staking 2026' }],
+    de: [{ slug: 'beste-krypto-karte-ohne-staking-2026',          title: 'Beste Krypto-Karte ohne Staking 2026' }],
+    es: [{ slug: 'mejor-tarjeta-crypto-sin-staking-2026',         title: 'Mejor tarjeta crypto sin staking 2026' }],
+    it: [{ slug: 'migliore-carta-crypto-senza-staking-2026',      title: 'Migliore carta crypto senza staking 2026' }],
+    en: [{ slug: 'best-crypto-card-no-staking-2026',              title: 'Best crypto card without staking 2026' }],
+  },
+  france: {
+    fr: [{ slug: 'carte-crypto-france-disponible',                title: 'Cartes crypto disponibles en France' }],
+    de: [{ slug: 'die-besten-gebuhrenfreien-kryptokarten-2025',   title: 'Die besten Krypto-Karten in Deutschland' }],
+    es: [{ slug: 'las-mejores-tarjetas-cripto-sin-comisiones-en', title: 'Las mejores tarjetas crypto en España' }],
+    it: [{ slug: 'le-migliori-carte-crypto-senza-commissioni-nel', title: 'Le migliori carte crypto in Italia' }],
+    en: [{ slug: 'best-crypto-card-in-france-in-2025-complete',   title: 'Best crypto cards available in Europe' }],
+  },
   travel: {
     fr: [{ slug: 'carte-crypto-voyage-guide-complet',     title: 'Guide complet : payer en crypto à l\'étranger' }],
     de: [{ slug: 'krypto-karte-reise-kompletter-guide',   title: 'Krypto-Karte auf Reisen: der komplette Guide' }],
@@ -764,6 +799,8 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     faq:               { fr:'Questions fréquentes', de:'Häufige Fragen', es:'Preguntas frecuentes', it:'Domande frequenti', en:'Frequently Asked Questions' },
     crypto_guide_title:{ fr:'Guide des Cryptomonnaies', de:'Kryptowährungs-Guide', es:'Guía de Criptomonedas', it:'Guida alle Criptovalute', en:'Cryptocurrency Guide' },
     crypto_guide_desc: { fr:'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches', de:'Bitcoin, Ethereum, XRP… 10 Krypto-Guides', es:'Bitcoin, Ethereum, XRP… 10 guías completas', it:'Bitcoin, Ethereum, XRP… 10 guide complete', en:'Bitcoin, Ethereum, XRP… 10 in-depth guides' },
+    no_stake:          { fr:'Sans staking', de:'Kein Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
+    virtual:           { fr:'Virtuelle', de:'Virtuell', es:'Virtual', it:'Virtuale', en:'Virtual' },
   };
   const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[lang] || (L[key] as Record<string, string>)['en'] || '';
 
@@ -783,7 +820,9 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         {' · '}
         <span className="text-cyan-400">{loading ? '…' : filteredCards.length}</span>{' '}{t('cards')}
       </p>
-      <p className="text-slate-300 mb-8 max-w-3xl leading-relaxed">{config.intro}</p>
+      <div className="mb-8 max-w-3xl bg-cyan-500/5 border border-cyan-500/20 rounded-xl px-5 py-4">
+        <p className="text-slate-300 leading-relaxed">{config.intro}</p>
+      </div>
 
       {/* Card grid */}
       {loading ? (
@@ -800,13 +839,27 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
             <div key={card.id} className="flex flex-col">
               <Link
                 to={`/${lang}/${segment}/${card.id}`}
-                className="card-surface p-4 rounded-xl hover:border-cyan-500/50 border border-transparent transition-all block relative flex-1"
+                className="card-surface p-4 rounded-xl hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/5 border border-transparent transition-all block relative flex-1 group/card"
               >
-                {idx < 3 && (
-                  <span className="absolute top-3 right-3 bg-cyan-500/20 text-cyan-400 text-xs font-bold px-2 py-0.5 rounded-full">
-                    #{idx + 1}
-                  </span>
-                )}
+                {/* Top badges row */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-1 z-10">
+                  {idx < 3 && (
+                    <span className="bg-cyan-500/20 text-cyan-400 text-xs font-bold px-2 py-0.5 rounded-full">
+                      #{idx + 1}
+                    </span>
+                  )}
+                  {idx >= 3 && <span />}
+                  {card.trust_score != null && (
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                      card.trust_score >= 8 ? 'bg-emerald-500/15 text-emerald-400' :
+                      card.trust_score >= 6 ? 'bg-yellow-500/15 text-yellow-400' :
+                                              'bg-red-500/15 text-red-400'
+                    }`}>
+                      ★ {card.trust_score.toFixed(1)}
+                    </span>
+                  )}
+                </div>
+
                 {card.real_card_image && (
                   <div style={{ borderRadius:'12px', overflow:'hidden', marginBottom:'12px', width:'100%', aspectRatio:'1.586' }}>
                     <img src={card.real_card_image} alt={card.name}
@@ -816,15 +869,36 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                     />
                   </div>
                 )}
-                <h2 className="text-white font-semibold text-base mb-1">{card.name}</h2>
-                <p className="text-slate-400 text-sm">{card.issuer}</p>
-                <div className="mt-3 flex gap-3 text-xs">
+
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <h2 className="text-white font-semibold text-base group-hover/card:text-cyan-400 transition-colors">{card.name}</h2>
+                  {card.card_network && (
+                    <span className="text-[10px] font-medium text-slate-500 shrink-0 mt-0.5 border border-slate-700 rounded px-1.5 py-0.5">
+                      {card.card_network}
+                    </span>
+                  )}
+                </div>
+                <p className="text-slate-400 text-sm mb-3">{card.issuer}</p>
+
+                <div className="flex flex-wrap gap-2 text-xs">
                   {(card.cashback_premium || card.cashback_base) ? (
-                    <span className="text-cyan-400 font-medium">{card.cashback_premium || card.cashback_base}% cashback</span>
+                    <span className="inline-flex items-center gap-1 bg-cyan-500/10 text-cyan-400 font-medium px-2 py-0.5 rounded-full">
+                      💰 {card.cashback_premium || card.cashback_base}%
+                    </span>
                   ) : null}
-                  <span className="text-slate-500">
-                    {(card.annual_fees || 0) > 0 ? `${card.annual_fees} €/an` : t('free')}
+                  <span className="inline-flex items-center gap-1 bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">
+                    {(card.annual_fees || 0) > 0 ? `${card.annual_fees} €/an` : `🆓 ${t('free')}`}
                   </span>
+                  {(card.staking_required || 0) === 0 && (
+                    <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full">
+                      🔓 {t('no_stake')}
+                    </span>
+                  )}
+                  {card.virtual_only && (
+                    <span className="inline-flex items-center gap-1 bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full">
+                      📱 {t('virtual')}
+                    </span>
+                  )}
                 </div>
               </Link>
               {card.brand_id && (
@@ -841,9 +915,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       )}
 
       {/* Outro */}
-      <p className="text-slate-300 mb-10 max-w-3xl leading-relaxed border-l-2 border-cyan-500/30 pl-4 italic">
-        {config.outro}
-      </p>
+      <div className="mb-10 max-w-3xl bg-slate-800/60 border border-slate-700 rounded-xl px-5 py-4 flex gap-3">
+        <span className="text-cyan-500/60 text-xl shrink-0 mt-0.5">💡</span>
+        <p className="text-slate-300 leading-relaxed italic">{config.outro}</p>
+      </div>
 
       {/* Internal link: crypto guide hub */}
       <div className="mb-12">

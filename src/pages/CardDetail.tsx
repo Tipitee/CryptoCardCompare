@@ -730,6 +730,9 @@ export default function CardDetail() {
               const noFees = card.annualFees === 0;
               const noStaking = card.stakingRequired === 0;
 
+              const isVirtual = card.virtualOnly === true;
+              const isBeginnerFriendly = noFees && noStaking;
+
               const links: Array<{ to: string; icon: string; label: string }> = [];
               if (card.brandId)
                 links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: brandSiblings.length > 0 ? (SEE_ALL_TIERS_LABEL[lang] || 'See all tiers') : t('common:brand_page') });
@@ -741,6 +744,15 @@ export default function CardDetail() {
                 links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-fees'][lang as keyof typeof THEMATIC_ROUTES['no-fees']] ?? 'crypto-card-no-fees'}`, icon: '🆓', label: t('common:no_fee_cards') });
               if (noStaking)
                 links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-staking'][lang as keyof typeof THEMATIC_ROUTES['no-staking']] ?? 'crypto-card-no-staking'}`, icon: '🔓', label: t('common:no_staking_cards') });
+              if (isVirtual)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.virtual[lang as keyof typeof THEMATIC_ROUTES.virtual] ?? 'virtual-crypto-card'}`, icon: '📱', label: t('common:virtual_cards') });
+              if (isBeginnerFriendly)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.beginner[lang as keyof typeof THEMATIC_ROUTES.beginner] ?? 'beginner-crypto-cards'}`, icon: '🎯', label: t('common:beginner_cards') });
+              if (hasCashback && !isVirtual)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.rewards[lang as keyof typeof THEMATIC_ROUTES.rewards] ?? 'crypto-card-rewards'}`, icon: '🎁', label: t('common:rewards_cards') });
+              if (!isVirtual)
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.travel[lang as keyof typeof THEMATIC_ROUTES.travel] ?? 'crypto-card-travel'}`, icon: '✈️', label: t('common:travel_cards') });
+              links.push({ to: `/${lang}/${THEMATIC_ROUTES['2026'][lang as keyof typeof THEMATIC_ROUTES['2026']] ?? 'best-crypto-card-2026'}`, icon: '🚀', label: t('common:cards_2026') });
 
               if (links.length === 0) return null;
               return (

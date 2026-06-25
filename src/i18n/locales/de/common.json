@@ -323,5 +323,10 @@
   "see_all_tiers_tooltip": "Alle Stufen ansehen",
   "cashback_cards": "Beste Cashback-Karten",
   "no_fee_cards": "Karten ohne Gebühren",
-  "no_staking_cards": "Karten ohne Staking"
+  "no_staking_cards": "Karten ohne Staking",
+  "travel_cards": "Karten für Reisende",
+  "rewards_cards": "Karten mit Prämien",
+  "virtual_cards": "Virtuelle Karten",
+  "beginner_cards": "Karten für Einsteiger",
+  "cards_2026": "Beste Karten 2026"
 }

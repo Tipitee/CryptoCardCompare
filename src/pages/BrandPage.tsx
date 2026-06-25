@@ -11,6 +11,7 @@ import { getBrandMeta } from '../data/brandConfig';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES } from '../config/routes';
 import type { CryptoCard } from '../types/card';
 
 // ── Labels ────────────────────────────────────────────────────────────────────
@@ -65,6 +66,7 @@ const L = {
     upTo: 'Jusqu\'à',
     websiteLabel: 'Site officiel',
     whyChooseTitle: 'Pourquoi choisir',
+    thematicLinksTitle: 'Pages connexes',
   },
   de: {
     prosTitle: 'Vorteile',
@@ -115,6 +117,7 @@ const L = {
     upTo: 'Bis zu',
     websiteLabel: 'Offizielle Website',
     whyChooseTitle: 'Warum',
+    thematicLinksTitle: 'Verwandte Seiten',
   },
   es: {
     prosTitle: 'Puntos fuertes',
@@ -165,6 +168,7 @@ const L = {
     upTo: 'Hasta',
     websiteLabel: 'Sitio oficial',
     whyChooseTitle: 'Por qué elegir',
+    thematicLinksTitle: 'Páginas relacionadas',
   },
   it: {
     prosTitle: 'Punti di forza',
@@ -215,6 +219,7 @@ const L = {
     upTo: 'Fino a',
     websiteLabel: 'Sito ufficiale',
     whyChooseTitle: 'Perché scegliere',
+    thematicLinksTitle: 'Pagine correlate',
   },
   en: {
     prosTitle: 'Strengths',
@@ -265,6 +270,7 @@ const L = {
     upTo: 'Up to',
     websiteLabel: 'Official website',
     whyChooseTitle: 'Why choose',
+    thematicLinksTitle: 'Related pages',
   },
 } as const;
 
@@ -448,6 +454,22 @@ export default function BrandPage() {
   const bestCashback = Math.max(...cards.map(c =>
     Math.max(c.cashbackBase, c.cashbackNoStaking, c.cashbackPremium)
   ));
+
+  // Thematic links based on brand card features
+  const brandHasCashback = bestCashback > 0;
+  const brandHasNoFees = cards.some(c => c.annualFees === 0);
+  const brandHasNoStaking = cards.some(c => c.stakingRequired === 0 && (c.cashbackBase > 0 || c.cashbackNoStaking > 0));
+  const brandHasVirtual = cards.some(c => c.virtualOnly);
+  const thematicLinks: Array<{ to: string; icon: string; label: string }> = [];
+  if (brandHasCashback)
+    thematicLinks.push({ to: `/${lang}/${THEMATIC_ROUTES.cashback[lang as keyof typeof THEMATIC_ROUTES.cashback]}`, icon: '💰', label: { fr:'Cartes cashback', de:'Cashback-Karten', es:'Tarjetas cashback', it:'Carte cashback', en:'Cashback cards' }[lang] || 'Cashback cards' });
+  if (brandHasNoFees)
+    thematicLinks.push({ to: `/${lang}/${THEMATIC_ROUTES['no-fees'][lang as keyof typeof THEMATIC_ROUTES['no-fees']]}`, icon: '🆓', label: { fr:'Cartes sans frais', de:'Kostenlose Karten', es:'Tarjetas sin comisiones', it:'Carte senza commissioni', en:'No-fee cards' }[lang] || 'No-fee cards' });
+  if (brandHasNoStaking)
+    thematicLinks.push({ to: `/${lang}/${THEMATIC_ROUTES['no-staking'][lang as keyof typeof THEMATIC_ROUTES['no-staking']]}`, icon: '🔓', label: { fr:'Sans staking', de:'Ohne Staking', es:'Sin staking', it:'Senza staking', en:'No-staking cards' }[lang] || 'No-staking cards' });
+  if (brandHasVirtual)
+    thematicLinks.push({ to: `/${lang}/${THEMATIC_ROUTES.virtual[lang as keyof typeof THEMATIC_ROUTES.virtual]}`, icon: '📱', label: { fr:'Cartes virtuelles', de:'Virtuelle Karten', es:'Tarjetas virtuales', it:'Carte virtuali', en:'Virtual cards' }[lang] || 'Virtual cards' });
+  thematicLinks.push({ to: `/${lang}/${THEMATIC_ROUTES.best[lang as keyof typeof THEMATIC_ROUTES.best]}`, icon: '⭐', label: { fr:'Meilleures cartes', de:'Beste Karten', es:'Mejores tarjetas', it:'Migliori carte', en:'Best cards' }[lang] || 'Best cards' });
 
   // Affiliate-aware website link
   const websiteHref = brand.affiliateLink ?? brand.website;
@@ -763,6 +785,27 @@ export default function BrandPage() {
             {REVIEW_LABEL[lang] || REVIEW_LABEL.en}
             <ChevronRight className="w-4 h-4" />
           </Link>
+        </section>
+      )}
+
+      {/* ── Thematic links ──────────────────────────────────────────────────── */}
+      {thematicLinks.length > 0 && (
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
+            {l.thematicLinksTitle}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {thematicLinks.map(({ to, icon, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-brand-accent hover:border-brand-accent/40 transition-all"
+              >
+                <span>{icon}</span>
+                {label}
+              </Link>
+            ))}
+          </div>
         </section>
       )}
 

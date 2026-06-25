@@ -26,11 +26,11 @@ const COMPARE_PREFIX: Record<string, string> = {
   fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
 };
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Comparatif Cartes Crypto ${YEAR} — Cashback, Frais, Avis | TopCryptoCards`, desc: `Comparez les meilleures cartes crypto en France. Cashback, frais, disponibilité : notre sélection complète ${YEAR}.` },
-  de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback, Gebühren | TopCryptoCards`, desc: `Vergleichen Sie die besten Krypto-Karten in Deutschland. Cashback, Gebühren, Verfügbarkeit: unsere vollständige Auswahl ${YEAR}.` },
-  es: { title: `Comparativa Tarjetas Crypto ${YEAR} — Cashback, Comisiones | TopCryptoCards`, desc: `Compara las mejores tarjetas crypto en España. Cashback, comisiones, disponibilidad: nuestra selección completa ${YEAR}.` },
-  it: { title: `Confronto Carte Crypto ${YEAR} — Cashback, Commissioni | TopCryptoCards`, desc: `Confronta le migliori carte crypto in Italia. Cashback, commissioni, disponibilità: la nostra selezione completa ${YEAR}.` },
-  en: { title: `Best Crypto Cards ${YEAR} — Cashback, Fees Compared | TopCryptoCards`, desc: `Compare the best crypto cards in Europe. Cashback, fees, availability: our complete selection for ${YEAR}.` },
+  fr: { title: `Comparatif Cartes Crypto ${YEAR} — Cashback, Frais, Avis | TopCryptoCards`, desc: `Comparez les meilleures cartes crypto en France en ${YEAR} : cashback jusqu'à 8 %, sans frais annuels, sans staking. Crypto.com, Nexo, Binance, Bybit et plus.` },
+  de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback, Gebühren | TopCryptoCards`, desc: `Vergleichen Sie die besten Krypto-Karten in Deutschland ${YEAR}: bis zu 8 % Cashback, ohne Jahresgebühren, ohne Staking. Crypto.com, Nexo, Binance, Bybit u. v. m.` },
+  es: { title: `Comparativa Tarjetas Crypto ${YEAR} — Cashback, Comisiones | TopCryptoCards`, desc: `Compara las mejores tarjetas crypto en España en ${YEAR}: hasta 8 % cashback, sin comisiones anuales, sin staking. Crypto.com, Nexo, Binance, Bybit y más.` },
+  it: { title: `Confronto Carte Crypto ${YEAR} — Cashback, Commissioni | TopCryptoCards`, desc: `Confronta le migliori carte crypto in Italia nel ${YEAR}: fino all'8 % di cashback, senza commissioni annuali, senza staking. Crypto.com, Nexo, Binance, Bybit e altri.` },
+  en: { title: `Best Crypto Cards ${YEAR} — Cashback, Fees Compared | TopCryptoCards`, desc: `Compare the best crypto cards in Europe in ${YEAR}: up to 8 % cashback, no annual fees, no staking required. Crypto.com, Nexo, Binance, Bybit and more.` },
 };
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
@@ -94,20 +94,35 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const schema = {
+    const BASE = 'https://topcryptocards.eu';
+    // WebSite schema with Sitelinks Searchbox
+    const websiteSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'TopCryptoCards',
+      url: `${BASE}/${lang}`,
+      description: homeSeo.desc,
+      inLanguage: lang,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${BASE}/${lang}?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
+    };
+    // Organization schema
+    const orgSchema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'TopCryptoCards',
-      url: 'https://topcryptocards.eu',
+      url: BASE,
       description: homeSeo.desc,
-      inLanguage: lang,
       sameAs: [],
     };
     document.getElementById('schema-org-home')?.remove();
     const el = document.createElement('script');
     el.id = 'schema-org-home';
     el.type = 'application/ld+json';
-    el.textContent = JSON.stringify(schema);
+    el.textContent = JSON.stringify([websiteSchema, orgSchema]);
     document.head.appendChild(el);
     return () => { document.getElementById('schema-org-home')?.remove(); };
   }, [lang, homeSeo.desc]);
