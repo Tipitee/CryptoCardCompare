@@ -269,7 +269,7 @@ const MARKET_FLAG: Record<string, string> = {
 
 // ── Review slugs by brand (FR review slug; ReviewPage handles multi-lang) ─────
 const BRAND_REVIEW_SLUG: Record<string, string> = {
-  'crypto-com': 'crypto-com-visa-card',
+  'crypto-com': 'crypto-com-card',
   'nexo': 'nexo-card',
   'binance': 'binance-card',
   'bybit': 'bybit-card',
@@ -277,6 +277,13 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'bitpanda': 'bitpanda-card',
   'okx': 'okx-card',
   'coinbase': 'coinbase-card',
+  'revolut': 'revolut-card',
+  'deblock': 'deblock-card',
+  'bleap': 'bleap-card',
+  'plutus': 'plutus-card',
+  'trade-republic': 'trade-republic-card',
+  'ledger': 'ledger-card',
+  'gnosis': 'gnosis-pay-card',
 };
 
 const REVIEW_LABEL: Record<string, string> = {
