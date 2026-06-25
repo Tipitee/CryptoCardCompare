@@ -284,6 +284,16 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'trade-republic': 'trade-republic-card',
   'ledger': 'ledger-card',
   'gnosis': 'gnosis-pay-card',
+  // New brands
+  'kraken': 'kraken-card',
+  'metamask': 'metamask-card',
+  'ether-fi': 'ether-fi-card',
+  'bitget': 'bitget-card',
+  'kucoin': 'kucard',
+  'young-platform': 'young-platform-card',
+  'bit2me': 'bit2me-card',
+  'brighty': 'brighty-card',
+  'whitebit': 'whitebit-card',
 };
 
 const REVIEW_LABEL: Record<string, string> = {
