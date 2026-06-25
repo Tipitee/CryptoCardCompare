@@ -716,7 +716,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-  const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir tous les niveaux', de: 'Alle Stufen', es: 'Ver niveles', it: 'Vedi livelli', en: 'See all tiers' };
+  const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir toutes les cartes', de: 'Alle Karten', es: 'Ver tarjetas', it: 'Vedi carte', en: 'See all cards' };
 
   // ── SEO ───────────────────────────────────────────────────────────────────────
   useSeoMeta({

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { computeTrustScore } from '../utils/trustScore';
 import {
   ArrowRight,
   BarChart3,
@@ -42,7 +43,7 @@ type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
 
 // ── Phase 3: brand-grouping labels ───────────────────────────────────────────
 const TIERS_LABEL: Record<string, string> = {
-  fr: 'niveaux', de: 'Stufen', es: 'niveles', it: 'livelli', en: 'tiers',
+  fr: 'cartes', de: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 const ABOUT_LABEL: Record<string, string> = {
   fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About',
@@ -144,9 +145,9 @@ export default function Home() {
       navigate(`${getRoute('compare')}?selected=${compareSelection.join(',')}`);
     }
   };
-  // Slot 1: highest cashback premium among trusted cards (trustScore >= 50)
+  // Slot 1: highest cashback premium among trusted cards (computed score >= 50)
   const topCashback = [...cards]
-    .filter((c) => (c.trustScore ?? 0) >= 50)
+    .filter((c) => computeTrustScore(c) >= 50)
     .sort((a, b) => {
       const diff = b.cashbackPremium - a.cashbackPremium;
       if (Math.abs(diff) > 0.001) return diff;
@@ -207,11 +208,11 @@ export default function Home() {
       groups[key].push(card);
     }
     return Object.entries(groups).map(([key, brandCards]) => {
-      // Best representative = highest cashbackPremium, tie-break by trustScore
+      // Best representative = highest cashbackPremium, tie-break by computed trust score
       const representative = [...brandCards].sort((a, b) => {
         const diff = b.cashbackPremium - a.cashbackPremium;
         if (Math.abs(diff) > 0.001) return diff;
-        return (b.trustScore ?? 0) - (a.trustScore ?? 0);
+        return computeTrustScore(b) - computeTrustScore(a);
       })[0];
       const isSingle = key.startsWith('__single__');
       return {
@@ -242,12 +243,12 @@ export default function Home() {
         break;
     }
     if (minTrust > 0) {
-      result = result.filter(({ card }) => (card.trustScore ?? 0) >= minTrust);
+      result = result.filter(({ card }) => computeTrustScore(card) >= minTrust);
     }
     return [...result].sort((a, b) => {
       if (sortBy === 'cashback') return b.maxCashback - a.maxCashback;
       if (sortBy === 'fees') return a.minFees - b.minFees;
-      return (b.card.trustScore ?? 0) - (a.card.trustScore ?? 0);
+      return computeTrustScore(b.card) - computeTrustScore(a.card);
     });
   }, [brandReps, filter, minTrust, sortBy]);
   const heroCards = cards.slice(0, 3);

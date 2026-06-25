@@ -196,8 +196,8 @@ const ISSUER_TO_BRAND: Record<string, string> = {
   'Bleap': 'bleap', 'Plutus': 'plutus', 'Gnosis': 'gnosis', 'Trade Republic': 'trade-republic',
 };
 const SEE_ALL_TIERS: Record<string, string> = {
-  fr: 'Voir tous les niveaux', de: 'Alle Stufen ansehen',
-  es: 'Ver todos los niveles', it: 'Vedi tutti i livelli', en: 'See all tiers',
+  fr: 'Voir toutes les cartes', de: 'Alle Karten ansehen',
+  es: 'Ver todas las tarjetas', it: 'Vedi tutte le carte', en: 'See all cards',
 };
 
 const DATE_LOCALE: Record<string, string> = {

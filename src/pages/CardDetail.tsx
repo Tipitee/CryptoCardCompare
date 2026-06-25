@@ -33,18 +33,18 @@ const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
 };
 const OTHER_TIERS_LABEL: Record<string, string> = {
-  fr: 'Autres niveaux de cette marque',
-  de: 'Weitere Stufen dieser Marke',
-  es: 'Otros niveles de esta marca',
-  it: 'Altri livelli di questo marchio',
-  en: 'Other tiers from this brand',
+  fr: 'Autres cartes de cette marque',
+  de: 'Weitere Karten dieser Marke',
+  es: 'Otras tarjetas de esta marca',
+  it: 'Altre carte di questo marchio',
+  en: 'Other cards from this brand',
 };
 const SEE_ALL_TIERS_LABEL: Record<string, string> = {
-  fr: 'Voir tous les niveaux',
-  de: 'Alle Stufen ansehen',
-  es: 'Ver todos los niveles',
-  it: 'Vedi tutti i livelli',
-  en: 'See all tiers',
+  fr: 'Voir toutes les cartes',
+  de: 'Alle Karten ansehen',
+  es: 'Ver todas las tarjetas',
+  it: 'Vedi tutte le carte',
+  en: 'See all cards',
 };
 const FREE_LABEL: Record<string, string> = {
   fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free',

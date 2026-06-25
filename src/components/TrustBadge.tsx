@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Shield } from 'lucide-react';
 import type { CryptoCard } from '../types/card';
+import { computeTrustScore } from '../utils/trustScore';
 
 const REGULATION_SCORES: Record<string, number> = {
   banking: 100,
@@ -32,18 +33,7 @@ const AUM_I18N_KEY: Record<string, string> = {
   small:      'trust_aum_small',
 };
 
-function computeScore(bd: CryptoCard['trustBreakdown']): number | undefined {
-  if (!bd) return undefined;
-  const ageScore = bd.age != null
-    ? Math.min(Math.round((bd.age / 10) * 100), 100)
-    : 25;
-  const regScore = REGULATION_SCORES[bd.regulation ?? ''] ?? 38;
-  const tpScore = bd.trustpilot != null
-    ? Math.round((bd.trustpilot / 5) * 100)
-    : 35;
-  const aumScore = AUM_SCORES[bd.aum ?? ''] ?? 40;
-  return Math.round(regScore * 0.35 + tpScore * 0.25 + ageScore * 0.20 + aumScore * 0.20);
-}
+// computeScore is now shared via src/utils/trustScore.ts
 
 function scoreColor(score: number): string {
   if (score >= 65) return '#00FF85';
@@ -75,7 +65,7 @@ interface Props {
 
 export default function TrustBadge({ card, variant = 'badge' }: Props) {
   const { t } = useTranslation('common');
-  const score = computeScore(card.trustBreakdown) ?? card.trustScore ?? 0;
+  const score = computeTrustScore(card);
   const color = scoreColor(score);
   const bd = card.trustBreakdown ?? {};
 

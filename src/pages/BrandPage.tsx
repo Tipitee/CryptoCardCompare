@@ -31,7 +31,7 @@ const L = {
     home: 'Accueil',
     allCards: 'Toutes les cartes',
     allBrands: 'Toutes les marques',
-    tier: 'Niveau',
+    tier: 'Carte',
     cashback: 'Cashback',
     fees: 'Frais annuels',
     staking: 'Staking requis',
@@ -52,10 +52,10 @@ const L = {
     withStaking: 'avec staking',
     noStaking: 'sans staking',
     premium: 'premium',
-    tiers: 'niveaux',
-    tier1: 'niveau',
+    tiers: 'cartes',
+    tier1: 'carte',
     markets: 'Marchés',
-    compareTitle: 'Comparaison des niveaux',
+    compareTitle: 'Comparaison des cartes',
     aboutTitle: 'À propos de',
     foundedLabel: 'Fondée en',
     hqLabel: 'Siège',
@@ -82,7 +82,7 @@ const L = {
     home: 'Startseite',
     allCards: 'Alle Karten',
     allBrands: 'Alle Marken',
-    tier: 'Stufe',
+    tier: 'Karte',
     cashback: 'Cashback',
     fees: 'Jahresgebühr',
     staking: 'Staking erforderlich',
@@ -103,10 +103,10 @@ const L = {
     withStaking: 'mit Staking',
     noStaking: 'ohne Staking',
     premium: 'premium',
-    tiers: 'Stufen',
-    tier1: 'Stufe',
+    tiers: 'Karten',
+    tier1: 'Karte',
     markets: 'Märkte',
-    compareTitle: 'Stufenvergleich',
+    compareTitle: 'Kartenvergleich',
     aboutTitle: 'Über',
     foundedLabel: 'Gegründet',
     hqLabel: 'Hauptsitz',
@@ -133,7 +133,7 @@ const L = {
     home: 'Inicio',
     allCards: 'Todas las tarjetas',
     allBrands: 'Todas las marcas',
-    tier: 'Nivel',
+    tier: 'Tarjeta',
     cashback: 'Cashback',
     fees: 'Cuota anual',
     staking: 'Staking requerido',
@@ -154,10 +154,10 @@ const L = {
     withStaking: 'con staking',
     noStaking: 'sin staking',
     premium: 'premium',
-    tiers: 'niveles',
-    tier1: 'nivel',
+    tiers: 'tarjetas',
+    tier1: 'tarjeta',
     markets: 'Mercados',
-    compareTitle: 'Comparación de niveles',
+    compareTitle: 'Comparación de tarjetas',
     aboutTitle: 'Acerca de',
     foundedLabel: 'Fundada en',
     hqLabel: 'Sede',
@@ -184,7 +184,7 @@ const L = {
     home: 'Home',
     allCards: 'Tutte le carte',
     allBrands: 'Tutti i marchi',
-    tier: 'Livello',
+    tier: 'Carta',
     cashback: 'Cashback',
     fees: 'Costo annuale',
     staking: 'Staking richiesto',
@@ -205,10 +205,10 @@ const L = {
     withStaking: 'con staking',
     noStaking: 'senza staking',
     premium: 'premium',
-    tiers: 'livelli',
-    tier1: 'livello',
+    tiers: 'carte',
+    tier1: 'carta',
     markets: 'Mercati',
-    compareTitle: 'Confronto livelli',
+    compareTitle: 'Confronto carte',
     aboutTitle: 'Informazioni su',
     foundedLabel: 'Fondata nel',
     hqLabel: 'Sede',
@@ -256,10 +256,10 @@ const L = {
     withStaking: 'with staking',
     noStaking: 'no staking',
     premium: 'premium',
-    tiers: 'tiers',
-    tier1: 'tier',
+    tiers: 'cards',
+    tier1: 'card',
     markets: 'Markets',
-    compareTitle: 'Tier comparison',
+    compareTitle: 'Card comparison',
     aboutTitle: 'About',
     foundedLabel: 'Founded',
     hqLabel: 'HQ',
@@ -552,11 +552,13 @@ export default function BrandPage() {
             />
           </div>
         ) : (
-          /* Multiple cards: show tier grid, review card as separate section below */
+          /* Multiple cards: centered flex-wrap so last row is always centred (pyramid) */
           <>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-wrap gap-6 justify-center">
               {cards.map((card) => (
-                <TierCard key={card.id} card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
+                <div key={card.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                  <TierCard card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
+                </div>
               ))}
             </div>
             {review && (
