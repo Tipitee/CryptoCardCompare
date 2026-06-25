@@ -137,13 +137,48 @@ export default function CardDetail() {
 
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
+  const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review' };
+  const FEES_LABEL: Record<string, string> = { fr: 'frais', de: 'Gebühren', es: 'comisiones', it: 'commissioni', en: 'fees' };
+  const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free' };
+  const CASHBACK_LABEL: Record<string, string> = { fr: 'Cashback', de: 'Cashback', es: 'Cashback', it: 'Cashback', en: 'Cashback' };
+  const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
+    fr: (name, issuer, cb, fees) => `Avis complet sur la carte ${name} par ${issuer}. Cashback ${cb}%, ${FEES_LABEL.fr} ${fees === 0 ? FREE_LABEL.fr : fees + ' €/an'}.`,
+    de: (name, issuer, cb, fees) => `Vollständige Bewertung der ${name} von ${issuer}. Cashback ${cb}%, ${FEES_LABEL.de} ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'}.`,
+    es: (name, issuer, cb, fees) => `Análisis completo de la tarjeta ${name} de ${issuer}. Cashback ${cb}%, ${FEES_LABEL.es} ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}.`,
+    it: (name, issuer, cb, fees) => `Recensione completa della carta ${name} di ${issuer}. Cashback ${cb}%, ${FEES_LABEL.it} ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}.`,
+    en: (name, issuer, cb, fees) => `Full review of the ${name} by ${issuer}. Cashback ${cb}%, ${FEES_LABEL.en} ${fees === 0 ? FREE_LABEL.en : fees + ' €/year'}.`,
+  };
   const seoTitle = card
-    ? (article?.meta_title || `${card.name} — Avis ${year} | TopCryptoCards`)
+    ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[lang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
     : 'TopCryptoCards';
   const seoDesc = card
-    ? (article?.meta_description || `Avis complet sur la carte ${card.name} par ${card.issuer}. Cashback ${card.cashbackPremium}%, frais ${card.annualFees === 0 ? 'gratuit' : card.annualFees + ' €/an'}.`)
+    ? (article?.meta_description || (DESC_TPL[lang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
+
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!card) return;
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-carddetail]').forEach(el => el.remove());
+    const langs = ['fr', 'de', 'es', 'it', 'en'];
+    langs.forEach(l => {
+      const seg = CARD_SEGMENT[l] || 'cards';
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${seg}/${card.id}`);
+      el.setAttribute('data-hreflang-carddetail', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/${CARD_SEGMENT.fr}/${card.id}`);
+    xd.setAttribute('data-hreflang-carddetail', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-carddetail]').forEach(el => el.remove()); };
+  }, [card?.id, lang]);
 
   // ── Schema.org FinancialProduct + AggregateRating ────────────────────────────
   useEffect(() => {

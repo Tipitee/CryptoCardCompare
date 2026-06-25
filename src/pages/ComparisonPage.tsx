@@ -253,6 +253,30 @@ export default function ComparisonPage() {
       : '',
   });
 
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!slug || !card1 || !card2) return;
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-comparison]').forEach(el => el.remove());
+    const langs = ['fr', 'de', 'es', 'it', 'en'];
+    langs.forEach(l => {
+      const seg = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare';
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${seg}/${slug}`);
+      el.setAttribute('data-hreflang-comparison', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/${ROUTE_TRANSLATIONS.fr.comparisons}/${slug}`);
+    xd.setAttribute('data-hreflang-comparison', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-comparison]').forEach(el => el.remove()); };
+  }, [slug, card1?.id, card2?.id, lang]);
+
   // Not found state
   if (notFound) {
     return (

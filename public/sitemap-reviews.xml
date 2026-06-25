@@ -390,10 +390,76 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- revolut-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/revolut-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/revolut-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/revolut-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/revolut-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/revolut-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- deblock-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/deblock-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/deblock-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/deblock-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/deblock-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/deblock-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- trade-republic-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/trade-republic-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/trade-republic-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/trade-republic-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/trade-republic-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/trade-republic-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- kraken-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/kraken-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/kraken-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/kraken-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/kraken-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/kraken-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- plutus-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/plutus-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/plutus-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/plutus-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/plutus-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/plutus-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- bleap-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/bleap-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/bleap-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/bleap-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/bleap-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/bleap-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- bitget-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/bitget-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/bitget-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/bitget-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/bitget-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/bitget-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- bit2me-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/bit2me-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/bit2me-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/bit2me-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/bit2me-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/bit2me-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- ether-fi-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/ether-fi-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/ether-fi-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/ether-fi-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/ether-fi-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/ether-fi-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- whitebit-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/whitebit-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/whitebit-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/whitebit-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/whitebit-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/whitebit-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- young-platform-card -->
+  <url><loc>https://topcryptocards.eu/fr/avis/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <!-- ReviewList index pages -->
-  <url><loc>https://topcryptocards.eu/fr/avis</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://topcryptocards.eu/de/bewertungen</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://topcryptocards.eu/es/opiniones</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://topcryptocards.eu/it/recensioni</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://topcryptocards.eu/en/reviews</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://topcryptocards.eu/fr/avis</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

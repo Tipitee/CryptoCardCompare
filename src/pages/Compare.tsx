@@ -61,6 +61,28 @@ export default function Compare() {
   const lang = useLanguage();
   const compareSeo = COMPARE_SEO[lang] || COMPARE_SEO.en;
   useSeoMeta({ title: compareSeo.title, description: compareSeo.desc });
+
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const RT = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+    document.querySelectorAll('link[data-hreflang-compare]').forEach(el => el.remove());
+    Object.entries(RT).forEach(([l, seg]) => {
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${seg}`);
+      el.setAttribute('data-hreflang-compare', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/comparer`);
+    xd.setAttribute('data-hreflang-compare', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-compare]').forEach(el => el.remove()); };
+  }, []);
+
   const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);

@@ -40,12 +40,19 @@ export default function Layout() {
   const brandsLabel: Record<string, string> = { fr: 'Marques de cartes', de: 'Karten-Marken', es: 'Marcas de tarjetas', it: 'Marchi di carte', en: 'Card brands' };
 
   const thematicLinks = [
-    { slug: THEMATIC_ROUTES.best[lang],         label: labels.best },
-    { slug: THEMATIC_ROUTES.cashback[lang],      label: labels.cashback },
-    { slug: THEMATIC_ROUTES['no-fees'][lang],    label: labels.noFees },
-    { slug: THEMATIC_ROUTES['no-staking'][lang], label: labels.noStaking },
-    { slug: brandsSlug,                          label: brandsLabel[lang] ?? 'Card brands' },
-    { slug: 'cryptos',                           label: labels.cryptos },
+    { slug: THEMATIC_ROUTES.best[lang],           label: labels.best },
+    { slug: THEMATIC_ROUTES.cashback[lang],        label: labels.cashback },
+    { slug: THEMATIC_ROUTES['no-fees'][lang],      label: labels.noFees },
+    { slug: THEMATIC_ROUTES['no-staking'][lang],   label: labels.noStaking },
+    { slug: THEMATIC_ROUTES.france[lang],          label: labels.france },
+    { slug: THEMATIC_ROUTES.virtual[lang],         label: labels.virtual },
+    { slug: THEMATIC_ROUTES.beginner[lang],        label: labels.beginner },
+    { slug: THEMATIC_ROUTES['no-kyc'][lang],       label: labels.noKyc },
+    { slug: THEMATIC_ROUTES['2026'][lang],         label: labels.year2026 },
+    { slug: THEMATIC_ROUTES.travel[lang],          label: labels.travel },
+    { slug: THEMATIC_ROUTES.rewards[lang],         label: labels.rewards },
+    { slug: brandsSlug,                            label: brandsLabel[lang] ?? 'Card brands' },
+    { slug: 'cryptos',                             label: labels.cryptos },
   ];
 
   useEffect(() => {

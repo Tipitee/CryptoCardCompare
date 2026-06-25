@@ -614,6 +614,34 @@ const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: str
     it: [{ slug: 'carta-crypto-premi-vantaggi-guida',        title: 'Carte crypto: cashback, lounge, Netflix e Spotify' }],
     en: [{ slug: 'crypto-card-rewards-benefits-guide',       title: 'Crypto cards: cashback, lounges, Netflix & Spotify' }],
   },
+  virtual: {
+    fr: [{ slug: 'carte-crypto-virtuelle-guide-complet',       title: 'Cartes crypto virtuelles : le guide complet 2025' }],
+    de: [{ slug: 'virtuelle-krypto-karte-leitfaden',           title: 'Virtuelle Krypto-Karten: Der vollständige Leitfaden 2025' }],
+    es: [{ slug: 'tarjeta-crypto-virtual-guia-completa',       title: 'Tarjetas crypto virtuales: guía completa 2025' }],
+    it: [{ slug: 'carta-crypto-virtuale-guida-completa',       title: 'Carte crypto virtuali: la guida completa 2025' }],
+    en: [{ slug: 'virtual-crypto-card-complete-guide',         title: 'Virtual Crypto Cards: The Complete Guide 2025' }],
+  },
+  beginner: {
+    fr: [{ slug: 'cartes-crypto-guide-debutant',               title: 'Guide débutant : comment choisir sa première carte crypto' }],
+    de: [{ slug: 'krypto-karten-leitfaden-einsteiger',         title: 'Einsteiger-Leitfaden: Wie wählt man seine erste Krypto-Karte?' }],
+    es: [{ slug: 'tarjetas-crypto-guia-principiante',          title: 'Guía para principiantes: cómo elegir tu primera tarjeta crypto' }],
+    it: [{ slug: 'carte-crypto-guida-principiante',            title: 'Guida per principianti: come scegliere la prima carta crypto' }],
+    en: [{ slug: 'beginners-guide-crypto-cards',               title: 'Beginner\'s Guide to Crypto Cards: How to Choose Your First One' }],
+  },
+  'no-kyc': {
+    fr: [{ slug: 'carte-crypto-sans-kyc-guide',                title: 'Cartes crypto sans KYC en 2025 : ce qu\'il faut savoir' }],
+    de: [{ slug: 'krypto-karte-ohne-kyc-guide',                title: 'Krypto-Karten ohne KYC 2025: Was Sie wissen müssen' }],
+    es: [{ slug: 'tarjeta-crypto-sin-kyc-guia',                title: 'Tarjetas crypto sin KYC en 2025: lo que debes saber' }],
+    it: [{ slug: 'carta-cripto-senza-kyc-guida',               title: 'Carte crypto senza KYC nel 2025: quello che devi sapere' }],
+    en: [{ slug: 'crypto-card-no-kyc-guide',                   title: 'Crypto Cards Without KYC in 2025: What You Need to Know' }],
+  },
+  '2026': {
+    fr: [{ slug: 'meilleures-cartes-crypto-2026',              title: 'Meilleures cartes crypto en 2026 : le classement complet' }],
+    de: [{ slug: 'beste-krypto-karten-2026',                   title: 'Beste Krypto-Karten 2026: Das vollständige Ranking' }],
+    es: [{ slug: 'mejores-tarjetas-cripto-2026',               title: 'Mejores tarjetas crypto en 2026: el ranking completo' }],
+    it: [{ slug: 'migliori-carte-cripto-2026',                 title: 'Migliori carte crypto nel 2026: il ranking completo' }],
+    en: [{ slug: 'best-crypto-cards-2026',                     title: 'Best Crypto Cards in 2026: The Complete Ranking' }],
+  },
 };
 
 const READ_MORE_TITLE: Record<string, string> = {

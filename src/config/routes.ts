@@ -109,14 +109,21 @@ export interface ThematicNavGroup {
   noFees: string;
   noStaking: string;
   cryptos: string;
+  france: string;
+  virtual: string;
+  beginner: string;
+  noKyc: string;
+  year2026: string;
+  travel: string;
+  rewards: string;
 }
 
 export const THEMATIC_NAV_LABELS: Record<Language, ThematicNavGroup> = {
-  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies' },
-  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide' },
-  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas' },
-  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute' },
-  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide' },
+  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies', france: 'Cartes disponibles en France', virtual: 'Cartes virtuelles', beginner: 'Cartes pour débutants', noKyc: 'Cartes sans KYC', year2026: 'Meilleures cartes 2026', travel: 'Cartes voyage', rewards: 'Cartes avec récompenses' },
+  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide', france: 'Karten in Deutschland', virtual: 'Virtuelle Karten', beginner: 'Karten für Einsteiger', noKyc: 'Karten ohne KYC', year2026: 'Beste Karten 2026', travel: 'Reise-Karten', rewards: 'Karten mit Prämien' },
+  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas', france: 'Tarjetas en España', virtual: 'Tarjetas virtuales', beginner: 'Tarjetas para principiantes', noKyc: 'Tarjetas sin KYC', year2026: 'Mejores tarjetas 2026', travel: 'Tarjetas de viaje', rewards: 'Tarjetas con recompensas' },
+  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute', france: 'Carte in Italia', virtual: 'Carte virtuali', beginner: 'Carte per principianti', noKyc: 'Carte senza KYC', year2026: 'Migliori carte 2026', travel: 'Carte da viaggio', rewards: 'Carte con premi' },
+  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide', france: 'Cards available in Europe', virtual: 'Virtual cards', beginner: 'Cards for beginners', noKyc: 'No-KYC cards', year2026: 'Best cards in 2026', travel: 'Travel cards', rewards: 'Rewards cards' },
 };
 
 // ---------------------------------------------------------------------------

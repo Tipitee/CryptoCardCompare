@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ExternalLink, CheckCircle, TrendingUp, ChevronRight } from 'lucide-react';
 import { CARD_REVIEWS } from '../data/cardReviews';
@@ -125,6 +126,27 @@ export default function ReviewList() {
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
 
   useSeoMeta({ title: l.title, description: l.desc });
+
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-reviewlist]').forEach(el => el.remove());
+    const segs: Record<string, string> = { fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews' };
+    Object.entries(segs).forEach(([l, seg]) => {
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${seg}`);
+      el.setAttribute('data-hreflang-reviewlist', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/avis`);
+    xd.setAttribute('data-hreflang-reviewlist', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-reviewlist]').forEach(el => el.remove()); };
+  }, []);
 
   const sorted = [...CARD_REVIEWS].sort((a, b) => b.globalRating - a.globalRating);
 

@@ -72,6 +72,27 @@ export default function Home() {
   const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc });
+
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-home]').forEach(el => el.remove());
+    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}`);
+      el.setAttribute('data-hreflang-home', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr`);
+    xd.setAttribute('data-hreflang-home', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-home]').forEach(el => el.remove()); };
+  }, []);
+
   useEffect(() => {
     const schema = {
       '@context': 'https://schema.org',

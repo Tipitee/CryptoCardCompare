@@ -297,6 +297,17 @@ export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPo
   return result;
 }
 
+/** Fetch all language variants of a post (for hreflang tags). */
+export async function fetchPostVariants(topicKey: string): Promise<{ lang: string; slug: string }[]> {
+  if (!topicKey) return [];
+  const { data } = await supabase
+    .from('blog_posts')
+    .select('lang, slug')
+    .eq('topic_key', topicKey)
+    .eq('published', true);
+  return (data ?? []) as { lang: string; slug: string }[];
+}
+
 export async function fetchRelatedPosts(
   tags: string[],
   excludeSlug: string,

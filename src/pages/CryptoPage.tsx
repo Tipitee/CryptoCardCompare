@@ -74,6 +74,28 @@ export default function CryptoPage() {
     description: copy?.meta_description ?? '',
   });
 
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-crypto]').forEach(el => el.remove());
+    const langs = ['fr', 'de', 'es', 'it', 'en'];
+    langs.forEach(l => {
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/cryptos/${sym}`);
+      el.setAttribute('data-hreflang-crypto', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/cryptos/${sym}`);
+    xd.setAttribute('data-hreflang-crypto', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-crypto]').forEach(el => el.remove()); };
+  }, [sym]);
+
   // ── Schema.org FAQPage ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!copy?.faq?.length) return;

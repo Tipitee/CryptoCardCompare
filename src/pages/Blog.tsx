@@ -43,6 +43,26 @@ export default function Blog() {
     description: t('blog_header_desc'),
   });
 
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-blog]').forEach(el => el.remove());
+    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/blog`);
+      el.setAttribute('data-hreflang-blog', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/blog`);
+    xd.setAttribute('data-hreflang-blog', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-blog]').forEach(el => el.remove()); };
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     fetchPublishedPosts(lang)

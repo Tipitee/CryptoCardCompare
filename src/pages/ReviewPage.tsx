@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, ChevronRight, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
 import { getReviewBySlug, getRelatedReviews } from '../data/cardReviews';
@@ -7,6 +8,15 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+
+const CARD_SEGMENT: Record<string, string> = {
+  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
+};
+
+const VIEW_CARD_LABEL: Record<string, string> = {
+  fr: 'Voir la fiche complète', de: 'Vollständige Karte ansehen',
+  es: 'Ver ficha completa', it: 'Vedi scheda completa', en: 'View full card details',
+};
 
 // ── i18n ──────────────────────────────────────────────────────────────────────
 const L: Record<string, {
@@ -252,6 +262,30 @@ export default function ReviewPage() {
     type: 'article',
   });
 
+  // ── Hreflang ─────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!review || !slug) return;
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-review]').forEach(el => el.remove());
+    const langs = ['fr', 'de', 'es', 'it', 'en'];
+    langs.forEach(l => {
+      const seg = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
+      const el = document.createElement('link');
+      el.rel = 'alternate';
+      el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${seg}/${slug}`);
+      el.setAttribute('data-hreflang-review', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate';
+    xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/fr/${ROUTE_TRANSLATIONS.fr.reviews}/${slug}`);
+    xd.setAttribute('data-hreflang-review', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-review]').forEach(el => el.remove()); };
+  }, [review, slug, lang]);
+
   if (!review) {
     return (
       <div className="container-app py-24 text-center">
@@ -354,7 +388,13 @@ export default function ReviewPage() {
                 {l.getCard}
                 <ExternalLink className="w-4 h-4" />
               </a>
-              <Link to={getRoute('compare')} className="btn-secondary w-full justify-center flex text-sm mb-3">
+              <Link
+                to={`/${lang}/${CARD_SEGMENT[lang] ?? 'cards'}/${slug}`}
+                className="btn-secondary w-full justify-center flex text-sm mb-3"
+              >
+                {VIEW_CARD_LABEL[lang] ?? VIEW_CARD_LABEL.en}
+              </Link>
+              <Link to={getRoute('compare')} className="btn-ghost w-full justify-center flex text-sm mb-3 border border-bg-border">
                 {l.compareCards}
               </Link>
               {ISSUER_TO_BRAND[review.issuer] && (() => {

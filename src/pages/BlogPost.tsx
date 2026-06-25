@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, BookOpen, Calendar, Clock, ExternalLink, Tag } from 'lucide-react';
 import type { BlogPost as BlogPostType } from '../types/blog';
-import { fetchPostBySlug, fetchRelatedPosts } from '../lib/supabase';
+import { fetchPostBySlug, fetchRelatedPosts, fetchPostVariants } from '../lib/supabase';
 import { renderMarkdown, estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
@@ -37,6 +37,7 @@ export default function BlogPost() {
   const [related, setRelated] = useState<BlogPostType[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [langVariants, setLangVariants] = useState<{ lang: string; slug: string }[]>([]);
 
   useEffect(() => {
     if (!slug) return;
@@ -50,8 +51,12 @@ export default function BlogPost() {
           return;
         }
         setPost(p);
-        const rel = await fetchRelatedPosts(p.tags ?? [], p.slug, lang);
+        const [rel, variants] = await Promise.all([
+          fetchRelatedPosts(p.tags ?? [], p.slug, lang),
+          p.topic_key ? fetchPostVariants(p.topic_key) : Promise.resolve([]),
+        ]);
         setRelated(rel);
+        setLangVariants(variants);
       })
       .finally(() => setLoading(false));
   }, [slug, lang]);
@@ -90,6 +95,31 @@ export default function BlogPost() {
     document.head.appendChild(el);
     return () => { document.getElementById('schema-article')?.remove(); };
   }, [post]);
+
+  // ── Hreflang — uses topic_key variants for accurate cross-lang URLs ──────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    document.querySelectorAll('link[data-hreflang-blogpost]').forEach(el => el.remove());
+    if (langVariants.length > 0) {
+      langVariants.forEach(({ lang: l, slug: s }) => {
+        const el = document.createElement('link');
+        el.rel = 'alternate';
+        el.setAttribute('hreflang', l);
+        el.setAttribute('href', `${BASE}/${l}/blog/${s}`);
+        el.setAttribute('data-hreflang-blogpost', 'true');
+        document.head.appendChild(el);
+      });
+      const frVariant = langVariants.find(v => v.lang === 'fr');
+      if (frVariant) {
+        const xd = document.createElement('link');
+        xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+        xd.setAttribute('href', `${BASE}/fr/blog/${frVariant.slug}`);
+        xd.setAttribute('data-hreflang-blogpost', 'true');
+        document.head.appendChild(xd);
+      }
+    }
+    return () => { document.querySelectorAll('link[data-hreflang-blogpost]').forEach(el => el.remove()); };
+  }, [langVariants]);
 
   if (loading) {
     return (
