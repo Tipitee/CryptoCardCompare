@@ -25,6 +25,7 @@ import { getAffiliateLink } from '../utils/affiliateLink';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
+import { generateCardContent } from '../utils/cardContent';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -57,6 +58,28 @@ const REVIEW_LINK_LABEL: Record<string, string> = {
   fr: 'Avis complet', de: 'Vollständige Bewertung', es: 'Reseña completa',
   it: 'Recensione completa', en: 'Full review',
 };
+// ── Generated-content section labels ─────────────────────────────────────────
+const OVERVIEW_LABEL: Record<string, string> = {
+  fr: 'Présentation', de: 'Beschreibung', es: 'Descripción', it: 'Descrizione', en: 'Overview',
+};
+const FORWHO_LABEL: Record<string, string> = {
+  fr: 'Pour qui est cette carte ?',
+  de: 'Für wen ist diese Karte?',
+  es: '¿Para quién es esta tarjeta?',
+  it: 'Per chi è questa carta?',
+  en: 'Who is this card for?',
+};
+const PROS_LABEL: Record<string, string> = {
+  fr: 'Avantages', de: 'Vorteile', es: 'Ventajas', it: 'Vantaggi', en: 'Advantages',
+};
+const CONS_LABEL: Record<string, string> = {
+  fr: 'Inconvénients', de: 'Nachteile', es: 'Inconvenientes', it: 'Svantaggi', en: 'Disadvantages',
+};
+const FAQ_SECTION_LABEL: Record<string, string> = {
+  fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes',
+  it: 'Domande frequenti', en: 'FAQ',
+};
+
 // Valid market code keys for restriction display
 const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
 // Map card id prefix → review slug (for "Full review" link)
@@ -228,135 +251,15 @@ export default function CardDetail() {
     };
   }, [card, article, lang, seoDesc]);
 
-  // ── Schema.org FAQPage ────────────────────────────────────────────────────────
+  // ── Schema.org FAQPage — uses generateCardContent for rich 5-question FAQ ───
   useEffect(() => {
     if (!card) return;
 
-    const name = card.name;
-    const cashback = card.cashbackPremium || card.cashbackBase || 0;
-    const fees = card.annualFees;
-    const network = card.cardNetwork || 'Visa/Mastercard';
-    const staking = card.stakingRequired;
-
-    type FaqItem = { q: string; a: string };
-    const faqsByLang: Record<string, FaqItem[]> = {
-      fr: [
-        {
-          q: `La ${name} est-elle gratuite ?`,
-          a: fees === 0 ? `Oui, la ${name} ne nécessite aucun frais annuel.` : `La ${name} coûte ${fees} €/an.`,
-        },
-        {
-          q: `Quel est le cashback de la ${name} ?`,
-          a: cashback > 0
-            ? `La ${name} offre jusqu'à ${cashback}% de cashback en cryptomonnaies.`
-            : `La ${name} n'offre pas de cashback standard.`,
-        },
-        {
-          q: `La ${name} nécessite-t-elle du staking ?`,
-          a: staking
-            ? `Oui, la ${name} nécessite un staking minimum pour bénéficier de tous les avantages.`
-            : `Non, la ${name} ne nécessite aucun staking.`,
-        },
-        {
-          q: `Sur quel réseau fonctionne la ${name} ?`,
-          a: `La ${name} fonctionne sur le réseau ${network}.`,
-        },
-      ],
-      de: [
-        {
-          q: `Ist die ${name} kostenlos ?`,
-          a: fees === 0 ? `Ja, die ${name} hat keine Jahresgebühren.` : `Die ${name} kostet ${fees} €/Jahr.`,
-        },
-        {
-          q: `Welches Cashback bietet die ${name} ?`,
-          a: cashback > 0
-            ? `Die ${name} bietet bis zu ${cashback}% Cashback in Kryptowährungen.`
-            : `Die ${name} bietet kein Standard-Cashback.`,
-        },
-        {
-          q: `Erfordert die ${name} Staking ?`,
-          a: staking
-            ? `Ja, die ${name} erfordert ein Mindest-Staking für die vollen Vorteile.`
-            : `Nein, die ${name} erfordert kein Staking.`,
-        },
-        {
-          q: `In welchem Netzwerk funktioniert die ${name} ?`,
-          a: `Die ${name} läuft im ${network}-Netzwerk.`,
-        },
-      ],
-      es: [
-        {
-          q: `¿Es gratuita la ${name} ?`,
-          a: fees === 0 ? `Sí, la ${name} no tiene tarifas anuales.` : `La ${name} cuesta ${fees} €/año.`,
-        },
-        {
-          q: `¿Qué cashback ofrece la ${name} ?`,
-          a: cashback > 0
-            ? `La ${name} ofrece hasta un ${cashback}% de cashback en criptomonedas.`
-            : `La ${name} no ofrece cashback estándar.`,
-        },
-        {
-          q: `¿La ${name} requiere staking ?`,
-          a: staking
-            ? `Sí, la ${name} requiere un staking mínimo para acceder a todos los beneficios.`
-            : `No, la ${name} no requiere staking.`,
-        },
-        {
-          q: `¿En qué red funciona la ${name} ?`,
-          a: `La ${name} funciona en la red ${network}.`,
-        },
-      ],
-      it: [
-        {
-          q: `La ${name} è gratuita ?`,
-          a: fees === 0 ? `Sì, la ${name} non ha costi annuali.` : `La ${name} costa ${fees} €/anno.`,
-        },
-        {
-          q: `Quale cashback offre la ${name} ?`,
-          a: cashback > 0
-            ? `La ${name} offre fino al ${cashback}% di cashback in criptovalute.`
-            : `La ${name} non offre cashback standard.`,
-        },
-        {
-          q: `La ${name} richiede staking ?`,
-          a: staking
-            ? `Sì, la ${name} richiede uno staking minimo per ottenere tutti i vantaggi.`
-            : `No, la ${name} non richiede staking.`,
-        },
-        {
-          q: `Su quale rete funziona la ${name} ?`,
-          a: `La ${name} funziona sulla rete ${network}.`,
-        },
-      ],
-      en: [
-        {
-          q: `Is the ${name} free ?`,
-          a: fees === 0 ? `Yes, the ${name} has no annual fees.` : `The ${name} costs €${fees}/year.`,
-        },
-        {
-          q: `What cashback does the ${name} offer ?`,
-          a: cashback > 0
-            ? `The ${name} offers up to ${cashback}% cashback in cryptocurrencies.`
-            : `The ${name} does not offer standard cashback.`,
-        },
-        {
-          q: `Does the ${name} require staking ?`,
-          a: staking
-            ? `Yes, the ${name} requires a minimum staking to unlock the full benefits.`
-            : `No, the ${name} does not require any staking.`,
-        },
-        {
-          q: `What network does the ${name} use ?`,
-          a: `The ${name} runs on the ${network} network.`,
-        },
-      ],
-    };
-
-    const faqs = faqsByLang[lang] ?? faqsByLang.en;
+    const { faq } = generateCardContent(card, lang);
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map(({ q, a }) => ({
+      mainEntity: faq.map(({ q, a }) => ({
         '@type': 'Question',
         name: q,
         acceptedAnswer: { '@type': 'Answer', text: a },
@@ -585,7 +488,80 @@ export default function CardDetail() {
               </div>
             </section>
 
-            {/* Article body (pure content, no links, no FAQ) */}
+            {/* ── Generated content (when no Supabase article) ─────────────── */}
+            {!articleBodyHtml && (() => {
+              const gen = generateCardContent(card, lang);
+              return (
+                <>
+                  {/* Intro */}
+                  <section>
+                    <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                      {OVERVIEW_LABEL[lang] || 'Overview'}
+                    </h2>
+                    <div className="card-surface p-6 rounded-2xl space-y-3">
+                      {gen.intro.map((para, i) => (
+                        <p key={i} className="text-slate-300 leading-relaxed">{para}</p>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* Pour qui */}
+                  {gen.forWhom.length > 0 && (
+                    <section>
+                      <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                        {FORWHO_LABEL[lang] || 'Who is this card for?'}
+                      </h2>
+                      <div className="card-surface p-5 rounded-2xl mb-4">
+                        <ul className="space-y-2.5">
+                          {gen.forWhom.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                              <span className="text-cyan-accent font-bold shrink-0 mt-0.5">→</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Pros / Cons */}
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {gen.pros.length > 0 && (
+                          <div className="card-surface p-5 rounded-2xl">
+                            <h3 className="text-xs font-semibold uppercase tracking-wider text-green-accent mb-3">
+                              {PROS_LABEL[lang] || 'Advantages'}
+                            </h3>
+                            <ul className="space-y-2">
+                              {gen.pros.map((pro, i) => (
+                                <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                                  <Check className="w-4 h-4 text-green-accent shrink-0 mt-0.5" />
+                                  <span>{pro}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {gen.cons.length > 0 && (
+                          <div className="card-surface p-5 rounded-2xl">
+                            <h3 className="text-xs font-semibold uppercase tracking-wider text-red-400 mb-3">
+                              {CONS_LABEL[lang] || 'Disadvantages'}
+                            </h3>
+                            <ul className="space-y-2">
+                              {gen.cons.map((con, i) => (
+                                <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                                  <X className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                                  <span>{con}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  )}
+                </>
+              );
+            })()}
+
+            {/* Article body (pure content, no links, no FAQ) — Supabase articles */}
             <style>{`
               .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
               .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
@@ -660,7 +636,32 @@ export default function CardDetail() {
               />
             )}
 
-            {/* FAQ — very last, just above footer */}
+            {/* FAQ — Generated (no article) */}
+            {!articleBodyHtml && (() => {
+              const { faq } = generateCardContent(card, lang);
+              return (
+                <section>
+                  <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                    {FAQ_SECTION_LABEL[lang] || 'FAQ'}
+                  </h2>
+                  <div className="space-y-2">
+                    {faq.map((item, i) => (
+                      <details key={i} className="card-surface rounded-xl overflow-hidden group">
+                        <summary className="px-5 py-4 cursor-pointer flex items-center justify-between text-white font-medium text-sm hover:text-cyan-accent transition-colors list-none select-none">
+                          <span>{item.q}</span>
+                          <span className="text-slate-500 ml-4 shrink-0 transition-transform group-open:rotate-180">▾</span>
+                        </summary>
+                        <div className="px-5 pb-4 pt-3 text-sm text-slate-400 leading-relaxed border-t border-bg-border">
+                          {item.a}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              );
+            })()}
+
+            {/* FAQ — from Supabase article */}
             {articleFaqHtml && (
               <div
                 className="card-surface card-article p-6"
