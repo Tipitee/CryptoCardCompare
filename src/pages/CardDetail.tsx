@@ -228,17 +228,6 @@ export default function CardDetail() {
       ],
     };
 
-    // AggregateRating — from trustScore (0–100 → 0–10)
-    if (card.trustScore != null && card.trustScore > 0) {
-      schema.aggregateRating = {
-        '@type': 'AggregateRating',
-        ratingValue: Math.round(card.trustScore / 10 * 10) / 10,
-        bestRating: 10,
-        worstRating: 1,
-        ratingCount: 1,
-      };
-    }
-
     document.getElementById('schema-financial-product')?.remove();
     const schemaEl = document.createElement('script');
     schemaEl.id = 'schema-financial-product';
