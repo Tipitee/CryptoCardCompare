@@ -813,8 +813,6 @@ export const CARD_REVIEWS: CardReview[] = [
     metaDescription: 'Avis complet Deblock 2026 : IBAN français, wallet self-custody, régulation AMF + MiCA, cashback 1 %. La néobanque crypto la mieux régulée en France.',
   },
 
-<<<<<<< HEAD
-=======
   // ─────────────────────────────────────────────────────── KRAKEN ───
   {
     slug: 'kraken-card',
@@ -1267,7 +1265,6 @@ export const CARD_REVIEWS: CardReview[] = [
   },
 ];
 
->>>>>>> 3697903 (feat: market fixes (fr/en) + 20 orphan theme blog articles)
 // Helper : trouver un avis par slug
 export function getReviewBySlug(slug: string): CardReview | undefined {
   return CARD_REVIEWS.find(r => r.slug === slug);
