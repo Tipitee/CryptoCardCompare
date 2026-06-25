@@ -456,6 +456,12 @@
   <url><loc>https://topcryptocards.eu/es/opiniones/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://topcryptocards.eu/it/recensioni/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://topcryptocards.eu/en/reviews/young-platform-card</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- kucard -->
+  <url><loc>https://topcryptocards.eu/fr/avis/kucard</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/de/bewertungen/kucard</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/es/opiniones/kucard</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/it/recensioni/kucard</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://topcryptocards.eu/en/reviews/kucard</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <!-- ReviewList index pages -->
   <url><loc>https://topcryptocards.eu/fr/avis</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://topcryptocards.eu/de/bewertungen</loc><lastmod>2026-06-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>

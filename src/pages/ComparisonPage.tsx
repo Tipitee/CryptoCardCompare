@@ -407,7 +407,7 @@ export default function ComparisonPage() {
                     to={`/${lang}/${bSlug}/${card.brandId}`}
                     className="btn-ghost border border-bg-border text-xs"
                   >
-                    {lang === 'fr' ? 'Tous les niveaux' : lang === 'de' ? 'Alle Stufen' : lang === 'es' ? 'Todos los niveles' : lang === 'it' ? 'Tutti i livelli' : 'All tiers'}
+                    {t('all_tiers')}
                     <ChevronRight className="w-3 h-3" />
                   </Link>
                 );
@@ -601,7 +601,7 @@ export default function ComparisonPage() {
       {specificContent?.faq && specificContent.faq.length > 0 && (
         <section className="mt-10">
           <h2 className="text-lg font-display font-semibold text-white mb-5">
-            {lang === 'fr' ? 'Questions fréquentes' : lang === 'de' ? 'Häufige Fragen' : lang === 'es' ? 'Preguntas frecuentes' : lang === 'it' ? 'Domande frequenti' : 'Frequently Asked Questions'}
+            {t('faq_title')}
           </h2>
           <div className="space-y-4">
             {specificContent.faq.map((item, i) => (

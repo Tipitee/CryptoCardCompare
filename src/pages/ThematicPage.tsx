@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
@@ -652,6 +653,7 @@ interface ThematicPageProps { theme: string; }
 
 export default function ThematicPage({ theme }: ThematicPageProps) {
   const { lang = 'fr' } = useParams<{ lang: string }>();
+  const { t } = useTranslation('common');
   const [cards, setCards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -852,10 +854,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           <span className="text-2xl">₿</span>
           <div>
             <div className="font-semibold text-white group-hover:text-cyan-accent transition-colors text-sm">
-              {lang === 'fr' ? 'Guide des Cryptomonnaies' : lang === 'de' ? 'Kryptowährungs-Guide' : lang === 'es' ? 'Guía de Criptomonedas' : lang === 'it' ? 'Guida alle Criptovalute' : 'Cryptocurrency Guide'}
+              {t('crypto_guide_title')}
             </div>
             <div className="text-xs text-slate-500 mt-0.5">
-              {lang === 'fr' ? 'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches' : lang === 'de' ? 'Bitcoin, Ethereum, XRP… 10 Krypto-Guides' : lang === 'es' ? 'Bitcoin, Ethereum, XRP… 10 guías completas' : lang === 'it' ? 'Bitcoin, Ethereum, XRP… 10 guide complete' : 'Bitcoin, Ethereum, XRP… 10 in-depth guides'}
+              {t('crypto_guide_desc')}
             </div>
           </div>
           <span className="ml-auto text-cyan-accent/50 group-hover:text-cyan-accent transition-colors text-lg">→</span>

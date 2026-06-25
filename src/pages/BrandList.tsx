@@ -14,6 +14,10 @@ import type { CryptoCard } from '../types/card';
 
 const YEAR = new Date().getFullYear();
 
+const LOADING_LABEL: Record<string, string> = {
+  fr: 'Chargement…', de: 'Wird geladen…', es: 'Cargando…', it: 'Caricamento…', en: 'Loading…',
+};
+
 const L: Record<string, {
   title: string; desc: string; home: string; h1: string; sub: string;
   tiers: string; tier1: string; upTo: string; cashback: string;
@@ -156,7 +160,7 @@ export default function BrandList() {
   if (!ready) {
     return (
       <div className="min-h-screen flex items-center justify-center text-slate-400">
-        {lang === 'fr' ? 'Chargement…' : 'Loading…'}
+        {LOADING_LABEL[lang] || LOADING_LABEL.en}
       </div>
     );
   }

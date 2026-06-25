@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ExternalLink, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
@@ -47,6 +48,7 @@ const THEMATIC_LINK_LABELS: Record<string, { best: string; cashback: string; noF
 
 export default function CryptoPage() {
   const { lang = 'fr', symbol = 'btc' } = useParams<{ lang: string; symbol: string }>();
+  const { t } = useTranslation('common');
   const sym  = symbol.toLowerCase();
   const meta = CRYPTO_META[sym];
   const copy = CRYPTO_CONTENT[sym]?.[lang] ?? CRYPTO_CONTENT[sym]?.['fr'];
@@ -217,12 +219,12 @@ export default function CryptoPage() {
                     <div className="px-4 pb-3 flex items-center gap-3 text-xs">
                       <Link to={`/${lang}/${cardSlug}/${card.id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
                         <ChevronRight className="w-3 h-3" />
-                        {lang === 'fr' ? 'Détails' : lang === 'de' ? 'Details' : lang === 'es' ? 'Detalles' : lang === 'it' ? 'Dettagli' : 'Details'}
+                        {t('see_details')}
                       </Link>
                       <span className="text-slate-700">·</span>
                       <Link to={`/${lang}/${brandsSlug}/${card.brand_id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
                         <ChevronRight className="w-3 h-3" />
-                        {lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page'}
+                        {t('brand_page')}
                       </Link>
                     </div>
                   )}

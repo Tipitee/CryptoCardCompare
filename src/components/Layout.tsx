@@ -343,13 +343,13 @@ export default function Layout() {
                 <li>
                   <Link to="/affiliate-disclosure" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" />
-                    Affiliate Disclosure
+                    {t('footer_affiliate')}
                   </Link>
                 </li>
                 <li>
                   <Link to="/risk-summary" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Shield className="w-3.5 h-3.5" />
-                    Risk Summary
+                    {t('footer_risk')} Summary
                   </Link>
                 </li>
               </ul>
@@ -365,8 +365,8 @@ export default function Layout() {
               <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>
               <Link to="/datenschutz" className="hover:text-slate-300 transition-colors">Datenschutz</Link>
               <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
-              <Link to="/affiliate-disclosure" className="hover:text-slate-300 transition-colors">Affiliate</Link>
-              <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">Risk</Link>
+              <Link to="/affiliate-disclosure" className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
+              <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">{t('footer_risk')}</Link>
             </div>
             <span>{t('footer_tagline')}</span>
           </div>

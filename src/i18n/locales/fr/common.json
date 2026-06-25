@@ -308,5 +308,20 @@
   "sort_cashback": "Cashback",
   "sort_fees": "Frais",
   "home_show_more": "Afficher plus",
-  "home_remaining": "restantes"
+  "home_remaining": "restantes",
+  "all_tiers": "Tous les niveaux",
+  "brand_page": "Page de la marque",
+  "see_details": "Détails",
+  "brand_label": "Marque",
+  "read_guide": "Lire le guide →",
+  "faq_title": "Questions fréquentes",
+  "crypto_guide_title": "Guide des Cryptomonnaies",
+  "crypto_guide_desc": "Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches",
+  "footer_affiliate": "Divulgation affiliés",
+  "footer_risk": "Risques",
+  "footer_privacy": "Confidentialité",
+  "see_all_tiers_tooltip": "Voir tous les niveaux",
+  "cashback_cards": "Meilleures cartes cashback",
+  "no_fee_cards": "Cartes sans frais",
+  "no_staking_cards": "Cartes sans staking"
 }

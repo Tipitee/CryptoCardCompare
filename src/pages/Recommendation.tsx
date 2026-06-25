@@ -387,7 +387,7 @@ export default function Recommendation() {
                       to={`/${lang}/${brandsSlug}/${r.card.brandId}`}
                       className="btn-ghost border border-bg-border text-sm"
                     >
-                      {lang === 'fr' ? 'Page marque' : lang === 'de' ? 'Marke' : lang === 'es' ? 'Marca' : lang === 'it' ? 'Marchio' : 'Brand'}
+                      {t('brand_label')}
                     </Link>
                   )}
                   <a

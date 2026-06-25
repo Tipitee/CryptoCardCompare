@@ -550,7 +550,7 @@ export default function Simulator() {
                                 <Link
                                   to={`/${lang}/${brandsSlug}/${brandId}`}
                                   className="text-slate-500 hover:text-cyan-accent transition-colors"
-                                  title="Voir tous les tiers"
+                                  title={t('see_all_tiers_tooltip')}
                                 >
                                   <ExternalLink className="w-3 h-3" />
                                 </Link>

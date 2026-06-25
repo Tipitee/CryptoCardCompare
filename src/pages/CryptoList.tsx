@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 
@@ -74,6 +75,7 @@ const CRYPTO_SEGMENT: Record<string, string> = { fr: 'cryptos', de: 'cryptos', e
 
 export default function CryptoList() {
   const { lang = 'fr' } = useParams<{ lang: string }>();
+  const { t } = useTranslation('common');
   const seo = SEO[lang] || SEO.en;
   const segment = CRYPTO_SEGMENT[lang] || 'cryptos';
   const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
@@ -155,7 +157,7 @@ export default function CryptoList() {
               {crypto.desc[lang as keyof typeof crypto.desc] || crypto.desc.en}
             </p>
             <div className="mt-3 text-xs text-cyan-accent/70 group-hover:text-cyan-accent transition-colors">
-              {lang === 'fr' ? 'Lire le guide →' : lang === 'de' ? 'Guide lesen →' : lang === 'es' ? 'Leer guía →' : lang === 'it' ? 'Leggi la guida →' : 'Read guide →'}
+              {t('read_guide')}
             </div>
           </Link>
         ))}

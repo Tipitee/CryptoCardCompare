@@ -201,7 +201,7 @@ export default function CardDetail() {
       },
       additionalProperty: [
         { '@type': 'PropertyValue', name: 'Cashback', value: `${card.cashbackPremium || card.cashbackBase || 0}%` },
-        { '@type': 'PropertyValue', name: 'Réseau', value: card.cardNetwork || 'Visa/Mastercard' },
+        { '@type': 'PropertyValue', name: 'Network', value: card.cardNetwork || 'Visa/Mastercard' },
       ],
     };
 
@@ -494,7 +494,7 @@ export default function CardDetail() {
                     >
                       {brandSiblings.length > 0
                         ? SEE_ALL_TIERS_LABEL[lang] || 'See all tiers'
-                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina del marchio' : 'Brand page')}
+                        : t('common:brand_page')}
                       <ExternalLink className="w-3 h-3" />
                     </Link>
                   );
@@ -732,15 +732,15 @@ export default function CardDetail() {
 
               const links: Array<{ to: string; icon: string; label: string }> = [];
               if (card.brandId)
-                links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: brandSiblings.length > 0 ? (SEE_ALL_TIERS_LABEL[lang] || 'See all tiers') : (lang === 'fr' ? 'Page de la marque' : 'Brand page') });
+                links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: brandSiblings.length > 0 ? (SEE_ALL_TIERS_LABEL[lang] || 'See all tiers') : t('common:brand_page') });
               if (reviewSlug)
                 links.push({ to: `/${lang}/${reviewsSlug}/${reviewSlug}`, icon: '⭐', label: REVIEW_LINK_LABEL[lang] || 'Full review' });
               if (hasCashback)
-                links.push({ to: `/${lang}/${THEMATIC_ROUTES.cashback[lang as keyof typeof THEMATIC_ROUTES.cashback] ?? 'crypto-card-cashback'}`, icon: '💰', label: lang === 'fr' ? 'Meilleures cartes cashback' : lang === 'de' ? 'Beste Cashback-Karten' : lang === 'es' ? 'Mejores tarjetas cashback' : lang === 'it' ? 'Migliori carte cashback' : 'Best cashback cards' });
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES.cashback[lang as keyof typeof THEMATIC_ROUTES.cashback] ?? 'crypto-card-cashback'}`, icon: '💰', label: t('common:cashback_cards') });
               if (noFees)
-                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-fees'][lang as keyof typeof THEMATIC_ROUTES['no-fees']] ?? 'crypto-card-no-fees'}`, icon: '🆓', label: lang === 'fr' ? 'Cartes sans frais' : lang === 'de' ? 'Kostenlose Karten' : lang === 'es' ? 'Tarjetas sin comisiones' : lang === 'it' ? 'Carte senza costi' : 'No-fee cards' });
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-fees'][lang as keyof typeof THEMATIC_ROUTES['no-fees']] ?? 'crypto-card-no-fees'}`, icon: '🆓', label: t('common:no_fee_cards') });
               if (noStaking)
-                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-staking'][lang as keyof typeof THEMATIC_ROUTES['no-staking']] ?? 'crypto-card-no-staking'}`, icon: '🔓', label: lang === 'fr' ? 'Cartes sans staking' : lang === 'de' ? 'Karten ohne Staking' : lang === 'es' ? 'Tarjetas sin staking' : lang === 'it' ? 'Carte senza staking' : 'No-staking cards' });
+                links.push({ to: `/${lang}/${THEMATIC_ROUTES['no-staking'][lang as keyof typeof THEMATIC_ROUTES['no-staking']] ?? 'crypto-card-no-staking'}`, icon: '🔓', label: t('common:no_staking_cards') });
 
               if (links.length === 0) return null;
               return (

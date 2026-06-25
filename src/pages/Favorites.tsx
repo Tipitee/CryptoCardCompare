@@ -11,6 +11,10 @@ import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 
+const BRAND_LABEL: Record<string, string> = {
+  fr: 'Marque', de: 'Marke', es: 'Marca', it: 'Marchio', en: 'Brand',
+};
+
 const FAV_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Mes Cartes Crypto Favorites ${YEAR} | TopCryptoCards`, desc: 'Retrouvez toutes vos cartes crypto préférées en un seul endroit.' },
   de: { title: `Meine Lieblings-Krypto-Karten ${YEAR} | TopCryptoCards`, desc: 'Finden Sie alle Ihre bevorzugten Krypto-Karten an einem Ort.' },
@@ -232,7 +236,7 @@ export default function Favorites() {
                       to={`/${lang}/${brandsSlug}/${c.brandId}`}
                       className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-cyan-accent transition-colors"
                     >
-                      {lang === 'fr' ? 'Marque' : lang === 'de' ? 'Marke' : lang === 'es' ? 'Marca' : lang === 'it' ? 'Marchio' : 'Brand'}
+                      {BRAND_LABEL[lang] || BRAND_LABEL.en}
                     </Link>
                   )}
                 </div>
