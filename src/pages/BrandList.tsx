@@ -197,9 +197,13 @@ export default function BrandList() {
               className="bg-bg-card border border-border-card rounded-2xl p-5 hover:border-brand-accent/40 transition-colors group flex flex-col gap-3"
             >
               {/* Card images strip */}
-              <div className="flex -space-x-4 mb-1">
-                {brandCards.slice(0, 4).map((card) => (
-                  <div key={card.id} className="ring-2 ring-bg-card rounded-xl">
+              <div className="flex -space-x-6 mb-1 overflow-hidden">
+                {brandCards.slice(0, 3).map((card, idx) => (
+                  <div
+                    key={card.id}
+                    className="rounded-xl ring-2 ring-bg-card flex-none shrink-0"
+                    style={{ zIndex: idx + 1 }}
+                  >
                     <SmartCardImage card={card} size="xs" tilt={false} />
                   </div>
                 ))}

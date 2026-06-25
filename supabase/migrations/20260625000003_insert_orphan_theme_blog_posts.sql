@@ -274,15 +274,4 @@ INSERT INTO blog_posts (slug, title, excerpt, content, image_hero, tags, meta_ti
   true, 'en', 'guide-2026-crypto-card', 'guide'
 )
 
-ON CONFLICT (slug) DO UPDATE SET
-  title = EXCLUDED.title,
-  excerpt = EXCLUDED.excerpt,
-  content = EXCLUDED.content,
-  tags = EXCLUDED.tags,
-  meta_title = EXCLUDED.meta_title,
-  meta_description = EXCLUDED.meta_description,
-  lang = EXCLUDED.lang,
-  topic_key = EXCLUDED.topic_key,
-  category = EXCLUDED.category,
-  published = EXCLUDED.published,
-  updated_at = now();
+ON CONFLICT DO NOTHING;

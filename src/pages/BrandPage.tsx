@@ -8,6 +8,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getBrandMeta } from '../data/brandConfig';
+import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import type { CryptoCard } from '../types/card';
@@ -63,6 +64,7 @@ const L = {
     relatedTitle: 'Voir aussi',
     upTo: 'Jusqu\'à',
     websiteLabel: 'Site officiel',
+    whyChooseTitle: 'Pourquoi choisir',
   },
   de: {
     prosTitle: 'Vorteile',
@@ -112,6 +114,7 @@ const L = {
     relatedTitle: 'Siehe auch',
     upTo: 'Bis zu',
     websiteLabel: 'Offizielle Website',
+    whyChooseTitle: 'Warum',
   },
   es: {
     prosTitle: 'Puntos fuertes',
@@ -161,6 +164,7 @@ const L = {
     relatedTitle: 'Ver también',
     upTo: 'Hasta',
     websiteLabel: 'Sitio oficial',
+    whyChooseTitle: 'Por qué elegir',
   },
   it: {
     prosTitle: 'Punti di forza',
@@ -210,6 +214,7 @@ const L = {
     relatedTitle: 'Vedi anche',
     upTo: 'Fino a',
     websiteLabel: 'Sito ufficiale',
+    whyChooseTitle: 'Perché scegliere',
   },
   en: {
     prosTitle: 'Strengths',
@@ -259,6 +264,7 @@ const L = {
     relatedTitle: 'See also',
     upTo: 'Up to',
     websiteLabel: 'Official website',
+    whyChooseTitle: 'Why choose',
   },
 } as const;
 
@@ -446,6 +452,7 @@ export default function BrandPage() {
   // Affiliate-aware website link
   const websiteHref = brand.affiliateLink ?? brand.website;
   const hasReview = !!BRAND_REVIEW_SLUG[brandId ?? ''];
+  const whyChoose = brandId ? BRAND_WHY_CHOOSE[brandId]?.[lang] : undefined;
 
   // ── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -508,6 +515,43 @@ export default function BrandPage() {
         </div>
       </header>
 
+      {/* ── Tier cards + optional review mini-card ──────────────────────────── */}
+      <section>
+        {cards.length === 1 && review ? (
+          /* Single card: show tier card and review card side by side */
+          <div className="grid gap-6 sm:grid-cols-2">
+            <TierCard card={cards[0]} lang={lang} l={l} cardsSlug={cardsSlug} />
+            <ReviewMiniCard
+              review={review}
+              seo={seo}
+              lang={lang}
+              l={l}
+              reviewsSlug={reviewsSlug}
+            />
+          </div>
+        ) : (
+          /* Multiple cards: show tier grid, review card as separate section below */
+          <>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {cards.map((card) => (
+                <TierCard key={card.id} card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
+              ))}
+            </div>
+            {review && (
+              <div className="mt-6 max-w-sm">
+                <ReviewMiniCard
+                  review={review}
+                  seo={seo}
+                  lang={lang}
+                  l={l}
+                  reviewsSlug={reviewsSlug}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </section>
+
       {/* ── Pros & Cons ─────────────────────────────────────────────────────── */}
       {(seo.pros?.length || seo.cons?.length) && (
         <section className="grid sm:grid-cols-2 gap-4">
@@ -546,42 +590,15 @@ export default function BrandPage() {
         </section>
       )}
 
-      {/* ── Tier cards + optional review mini-card ──────────────────────────── */}
-      <section>
-        {cards.length === 1 && review ? (
-          /* Single card: show tier card and review card side by side */
-          <div className="grid gap-6 sm:grid-cols-2">
-            <TierCard card={cards[0]} lang={lang} l={l} cardsSlug={cardsSlug} />
-            <ReviewMiniCard
-              review={review}
-              seo={seo}
-              lang={lang}
-              l={l}
-              reviewsSlug={reviewsSlug}
-            />
-          </div>
-        ) : (
-          /* Multiple cards: show tier grid, review card as separate section below */
-          <>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {cards.map((card) => (
-                <TierCard key={card.id} card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
-              ))}
-            </div>
-            {review && (
-              <div className="mt-6 max-w-sm">
-                <ReviewMiniCard
-                  review={review}
-                  seo={seo}
-                  lang={lang}
-                  l={l}
-                  reviewsSlug={reviewsSlug}
-                />
-              </div>
-            )}
-          </>
-        )}
-      </section>
+      {/* ── Why choose ──────────────────────────────────────────────────────── */}
+      {whyChoose && (
+        <section className="bg-bg-card rounded-xl p-6 border border-border-card">
+          <h2 className="text-lg font-bold text-text-primary mb-3">
+            {l.whyChooseTitle} {brand.displayName} ?
+          </h2>
+          <p className="text-text-secondary leading-relaxed">{whyChoose}</p>
+        </section>
+      )}
 
       {/* ── About the brand ─────────────────────────────────────────────────── */}
       {(brand.founded > 0 || brand.hq || brand.regulation) && (

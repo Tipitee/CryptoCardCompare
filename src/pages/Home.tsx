@@ -20,6 +20,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { fmtEUR, fmtPct } from '../utils/format';
+import { BRAND_CONFIG } from '../data/brandConfig';
 const YEAR = new Date().getFullYear();
 const COMPARE_PREFIX: Record<string, string> = {
   fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
@@ -567,7 +568,7 @@ export default function Home() {
                       className="flex items-center justify-center gap-1.5 w-full h-full text-xs rounded-lg transition-colors text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40"
                     >
                       <span className="truncate">
-                        {ABOUT_LABEL[lang] ?? 'About'} {isMultiTier ? card.issuer : displayName}
+                        {ABOUT_LABEL[lang] ?? 'About'} {(brandId && BRAND_CONFIG[brandId]?.displayName) ?? card.issuer}
                       </span>
                       <ArrowRight className="w-3 h-3 shrink-0" />
                     </Link>
