@@ -43,8 +43,8 @@ type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
 const TIERS_LABEL: Record<string, string> = {
   fr: 'niveaux', de: 'Stufen', es: 'niveles', it: 'livelli', en: 'tiers',
 };
-const SEE_TIERS: Record<string, string> = {
-  fr: 'Voir les niveaux', de: 'Alle Stufen', es: 'Ver niveles', it: 'Vedi livelli', en: 'See all tiers',
+const ABOUT_LABEL: Record<string, string> = {
+  fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About',
 };
 const UP_TO: Record<string, string> = {
   fr: "Jusqu'à", de: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to',
@@ -564,16 +564,12 @@ export default function Home() {
                     <Link
                       to={`/${lang}/${brandsSlug}/${brandId}`}
                       onClick={(e) => e.stopPropagation()}
-                      className={`flex items-center justify-center gap-1.5 w-full h-full text-xs rounded-lg transition-colors ${
-                        isMultiTier
-                          ? 'text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40'
-                          : 'text-slate-500 hover:text-slate-300 border border-bg-border hover:border-slate-600'
-                      }`}
+                      className="flex items-center justify-center gap-1.5 w-full h-full text-xs rounded-lg transition-colors text-brand-accent/80 hover:text-brand-accent border border-brand-accent/20 hover:border-brand-accent/40"
                     >
-                      {isMultiTier
-                        ? SEE_TIERS[lang] ?? 'See all tiers'
-                        : (lang === 'fr' ? 'Page de la marque' : lang === 'de' ? 'Markenseite' : lang === 'es' ? 'Página de marca' : lang === 'it' ? 'Pagina marchio' : 'Brand page')}
-                      <ArrowRight className="w-3 h-3" />
+                      <span className="truncate">
+                        {ABOUT_LABEL[lang] ?? 'About'} {isMultiTier ? card.issuer : displayName}
+                      </span>
+                      <ArrowRight className="w-3 h-3 shrink-0" />
                     </Link>
                   )}
                 </div>

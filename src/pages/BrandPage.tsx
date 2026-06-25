@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ExternalLink, Building2, Calendar, Shield, ChevronRight, CheckCircle2, XCircle, Star } from 'lucide-react';
+import { ExternalLink, Building2, Calendar, Shield, ChevronRight, CheckCircle2, CheckCircle, XCircle, Star } from 'lucide-react';
 import { fetchCardsByBrand } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useLanguage } from '../hooks/useLanguage';
@@ -8,6 +8,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getBrandMeta } from '../data/brandConfig';
+import { getReviewBySlug } from '../data/cardReviews';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import type { CryptoCard } from '../types/card';
 
@@ -18,6 +19,13 @@ const L = {
     prosTitle: 'Les points forts',
     consTitle: 'Les points faibles',
     ratingLabel: 'Note globale',
+    readReview: 'Lire l\'avis',
+    updatedAt: 'Mis à jour',
+    cashbackLabel: 'Cashback max',
+    stakingLabel: 'Staking requis',
+    feesLabel: 'Frais annuels',
+    stakingNo: '✓ Non requis',
+    stakingYes: '⚠️ Oui',
     home: 'Accueil',
     allCards: 'Toutes les cartes',
     allBrands: 'Toutes les marques',
@@ -60,6 +68,13 @@ const L = {
     prosTitle: 'Vorteile',
     consTitle: 'Nachteile',
     ratingLabel: 'Gesamtbewertung',
+    readReview: 'Bewertung lesen',
+    updatedAt: 'Aktualisiert',
+    cashbackLabel: 'Max. Cashback',
+    stakingLabel: 'Staking erforderlich',
+    feesLabel: 'Jahresgebühr',
+    stakingNo: '✓ Nicht erforderlich',
+    stakingYes: '⚠️ Ja',
     home: 'Startseite',
     allCards: 'Alle Karten',
     allBrands: 'Alle Marken',
@@ -102,6 +117,13 @@ const L = {
     prosTitle: 'Puntos fuertes',
     consTitle: 'Puntos débiles',
     ratingLabel: 'Valoración global',
+    readReview: 'Leer la reseña',
+    updatedAt: 'Actualizado',
+    cashbackLabel: 'Cashback máx.',
+    stakingLabel: 'Staking requerido',
+    feesLabel: 'Cuota anual',
+    stakingNo: '✓ No requerido',
+    stakingYes: '⚠️ Sí',
     home: 'Inicio',
     allCards: 'Todas las tarjetas',
     allBrands: 'Todas las marcas',
@@ -144,6 +166,13 @@ const L = {
     prosTitle: 'Punti di forza',
     consTitle: 'Punti deboli',
     ratingLabel: 'Valutazione globale',
+    readReview: 'Leggi la recensione',
+    updatedAt: 'Aggiornato',
+    cashbackLabel: 'Cashback max',
+    stakingLabel: 'Staking richiesto',
+    feesLabel: 'Costo annuale',
+    stakingNo: '✓ Non richiesto',
+    stakingYes: '⚠️ Sì',
     home: 'Home',
     allCards: 'Tutte le carte',
     allBrands: 'Tutti i marchi',
@@ -186,6 +215,13 @@ const L = {
     prosTitle: 'Strengths',
     consTitle: 'Weaknesses',
     ratingLabel: 'Overall rating',
+    readReview: 'Read the review',
+    updatedAt: 'Updated',
+    cashbackLabel: 'Max cashback',
+    stakingLabel: 'Staking required',
+    feesLabel: 'Annual fees',
+    stakingNo: '✓ Not required',
+    stakingYes: '⚠️ Yes',
     home: 'Home',
     allCards: 'All cards',
     allBrands: 'All brands',
@@ -252,6 +288,14 @@ const BASE_URL = 'https://topcryptocards.eu';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
+function ratingColor(r: number) {
+  if (r >= 4.5) return 'text-emerald-400';
+  if (r >= 4.0) return 'text-green-400';
+  if (r >= 3.5) return 'text-yellow-400';
+  if (r >= 3.0) return 'text-orange-400';
+  return 'text-red-400';
+}
+
 function FeeBadge({ card, lang }: { card: CryptoCard; lang: string }) {
   const l = L[lang as keyof typeof L] ?? L.en;
   if (card.annualFees === 0) return <span className="text-green-400 font-medium">{l.free}</span>;
@@ -283,6 +327,8 @@ export default function BrandPage() {
 
   const brand = getBrandMeta(brandId ?? '');
   const seo = brand.seo[lang] ?? brand.seo.en;
+  const reviewSlug = BRAND_REVIEW_SLUG[brandId ?? ''];
+  const review = reviewSlug ? getReviewBySlug(reviewSlug) : undefined;
 
   useSeoMeta({
     title: seo.title || `${brand.displayName} — TopCryptoCards`,
@@ -493,13 +539,41 @@ export default function BrandPage() {
         </section>
       )}
 
-      {/* ── Tier cards grid ─────────────────────────────────────────────────── */}
+      {/* ── Tier cards + optional review mini-card ──────────────────────────── */}
       <section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
-            <TierCard key={card.id} card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
-          ))}
-        </div>
+        {cards.length === 1 && review ? (
+          /* Single card: show tier card and review card side by side */
+          <div className="grid gap-6 sm:grid-cols-2">
+            <TierCard card={cards[0]} lang={lang} l={l} cardsSlug={cardsSlug} />
+            <ReviewMiniCard
+              review={review}
+              seo={seo}
+              lang={lang}
+              l={l}
+              reviewsSlug={reviewsSlug}
+            />
+          </div>
+        ) : (
+          /* Multiple cards: show tier grid, review card as separate section below */
+          <>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {cards.map((card) => (
+                <TierCard key={card.id} card={card} lang={lang} l={l} cardsSlug={cardsSlug} />
+              ))}
+            </div>
+            {review && (
+              <div className="mt-6 max-w-sm">
+                <ReviewMiniCard
+                  review={review}
+                  seo={seo}
+                  lang={lang}
+                  l={l}
+                  reviewsSlug={reviewsSlug}
+                />
+              </div>
+            )}
+          </>
+        )}
       </section>
 
       {/* ── About the brand ─────────────────────────────────────────────────── */}
@@ -814,5 +888,96 @@ function CompareRow({
         </td>
       ))}
     </tr>
+  );
+}
+
+import type { CardReview } from '../data/cardReviews';
+
+function ReviewMiniCard({
+  review, seo, lang, l, reviewsSlug,
+}: {
+  review: CardReview;
+  seo: { rating?: number; pros?: string[] };
+  lang: string;
+  l: (typeof L)[keyof typeof L];
+  reviewsSlug: string;
+}) {
+  const rating = seo.rating ?? review.globalRating;
+  const dateLocale = lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB';
+  const updatedLabel = new Date(review.updatedAt).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
+
+  return (
+    <Link
+      to={`/${lang}/${reviewsSlug}/${review.slug}`}
+      className="bg-bg-card border border-border-card rounded-2xl flex flex-col overflow-hidden hover:border-brand-accent/50 hover:shadow-lg transition-all group"
+    >
+      {/* Header */}
+      <div className="p-5 pb-4 flex items-start justify-between gap-3 border-b border-bg-border">
+        <div>
+          {review.badge && (
+            <span className="inline-flex items-center text-xs font-semibold text-text-secondary bg-bg-elevated border border-bg-border px-2 py-0.5 rounded-full mb-2">
+              {review.badge}
+            </span>
+          )}
+          <h3 className="font-display font-bold text-text-primary group-hover:text-brand-accent transition-colors text-base leading-tight">
+            {review.cardName}
+          </h3>
+          <p className="text-text-secondary text-xs mt-0.5">{review.issuer} · {review.network}</p>
+        </div>
+        <div className="shrink-0 text-right">
+          <div className={`text-2xl font-display font-bold ${ratingColor(rating)}`}>
+            {rating.toFixed(1)}
+          </div>
+          <div className="flex gap-0.5 justify-end mt-0.5">
+            {[1,2,3,4,5].map((i) => (
+              <Star
+                key={i}
+                className={`w-3 h-3 ${i <= Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Key stats */}
+      <div className="p-5 flex-1 space-y-2">
+        <div className="flex items-center justify-between text-sm">
+          <span className="text-text-secondary">{l.cashbackLabel}</span>
+          <span className="font-semibold text-text-primary">{review.keyStats.cashbackMax}</span>
+        </div>
+        <div className="flex items-center justify-between text-sm">
+          <span className="text-text-secondary">{l.stakingLabel}</span>
+          <span className="font-semibold text-text-primary">
+            {review.keyStats.stakingRequis.toLowerCase().includes('aucun') || review.keyStats.stakingRequis.toLowerCase().includes('non')
+              ? l.stakingNo
+              : l.stakingYes}
+          </span>
+        </div>
+        <div className="flex items-center justify-between text-sm">
+          <span className="text-text-secondary">{l.feesLabel}</span>
+          <span className="font-semibold text-text-primary">{review.keyStats.fraisAnnuels}</span>
+        </div>
+      </div>
+
+      {/* Top pros — use seo.pros if available (multilingual), else review.pros (FR) */}
+      <div className="px-5 pb-4">
+        <div className="space-y-1">
+          {(seo.pros ?? review.pros).slice(0, 2).map((pro, i) => (
+            <div key={i} className="flex items-start gap-1.5 text-xs text-text-secondary leading-snug">
+              <CheckCircle className="w-3.5 h-3.5 text-green-400 shrink-0 mt-0.5" />
+              <span className="line-clamp-2">{pro}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="px-5 py-4 border-t border-bg-border flex items-center justify-between">
+        <span className="text-xs text-text-secondary">{l.updatedAt} {updatedLabel}</span>
+        <span className="text-brand-accent text-sm font-semibold group-hover:translate-x-0.5 transition-transform">
+          {l.readReview} →
+        </span>
+      </div>
+    </Link>
   );
 }
