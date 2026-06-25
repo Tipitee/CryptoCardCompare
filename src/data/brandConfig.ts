@@ -20,6 +20,12 @@ export interface BrandMeta {
     description: string;
     intro: string;
     outro: string;
+    /** Overall rating out of 5 */
+    rating?: number;
+    /** Pros list (advantages) */
+    pros?: string[];
+    /** Cons list (disadvantages) */
+    cons?: string[];
     /** Brand-level FAQ shown on the brand page */
     faq?: Array<{ q: string; a: string }>;
   }>;
@@ -305,12 +311,140 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     website: 'https://revolut.com',
     founded: 2015,
     hq: 'Royaume-Uni',
+    regulation: 'FCA (UK), licences EMI UE',
     seo: {
-      fr: { title: `Carte Revolut Crypto ${YEAR} — Paiements crypto sans cashback | TopCryptoCards`, description: `Revolut et les cryptos en ${YEAR} : paiements en crypto, carte Metal, RevPoints. 0% cashback crypto pour tous les tiers.`, intro: `Revolut n'est pas une carte crypto au sens strict : il n'y a pas de cashback en cryptomonnaies. En revanche, c'est une excellente carte multi-devises avec paiement en crypto possible et RevPoints sur les plans Premium+.`, outro: `Si vous cherchez du cashback crypto, Revolut n'est pas le bon choix. En revanche, pour une carte multi-devises avec accès aux crypto, Revolut est excellent — notamment pour les voyageurs.` },
-      de: { title: `Revolut Krypto Karte ${YEAR} — Krypto-Zahlungen ohne Cashback | TopCryptoCards`, description: `Revolut und Krypto ${YEAR}: Krypto-Zahlungen, Metal-Karte, RevPoints. 0% Krypto-Cashback für alle Tiers.`, intro: `Revolut ist keine Krypto-Karte im eigentlichen Sinne: Es gibt kein Krypto-Cashback. Dafür ist es eine ausgezeichnete Multi-Währungskarte mit Krypto-Zahlungsmöglichkeit.`, outro: `Wenn Sie Krypto-Cashback suchen, ist Revolut nicht die richtige Wahl. Für eine Mehrzweckkarte mit Krypto-Zugang ist Revolut jedoch ausgezeichnet.` },
-      es: { title: `Tarjeta Revolut Crypto ${YEAR} — Pagos crypto sin cashback | TopCryptoCards`, description: `Revolut y las criptos en ${YEAR}: pagos en crypto, tarjeta Metal, RevPoints. 0% cashback crypto.`, intro: `Revolut no es una tarjeta crypto en el sentido estricto: no hay cashback en criptomonedas. Sin embargo, es una excelente tarjeta multidivisa con opción de pago en cripto.`, outro: `Si buscas cashback crypto, Revolut no es la mejor opción. Para una tarjeta multiusos con acceso a cripto, Revolut es excelente — especialmente para viajeros.` },
-      it: { title: `Carta Revolut Crypto ${YEAR} — Pagamenti crypto senza cashback | TopCryptoCards`, description: `Revolut e le cripto nel ${YEAR}: pagamenti in cripto, carta Metal, RevPoints. 0% cashback cripto.`, intro: `Revolut non è una carta crypto in senso stretto: non c'è cashback in criptovalute. Tuttavia, è un'ottima carta multivaluta con possibilità di pagamento in cripto.`, outro: `Se cerchi cashback crypto, Revolut non è la scelta giusta. Per una carta multiuso con accesso alle cripto, Revolut è eccellente — specialmente per i viaggiatori.` },
-      en: { title: `Revolut Crypto Card ${YEAR} — Crypto Payments Without Cashback | TopCryptoCards`, description: `Revolut and crypto in ${YEAR}: crypto payments, Metal card, RevPoints. 0% crypto cashback on all tiers.`, intro: `Revolut is not a crypto card in the strict sense — there's no crypto cashback. However, it's an excellent multi-currency card with crypto payment capability and RevPoints on Premium+ plans.`, outro: `If you're looking for crypto cashback, Revolut isn't the right choice. But for a multi-purpose card with crypto access, Revolut excels — especially for frequent travellers.` },
+      fr: {
+        title: `Carte Revolut Crypto ${YEAR} — Paiements crypto sans cashback | TopCryptoCards`,
+        description: `Revolut et les cryptos en ${YEAR} : paiements en crypto, carte Metal, RevPoints. 0% cashback crypto pour tous les tiers.`,
+        intro: `Revolut n'est pas une carte crypto au sens strict : il n'y a pas de cashback en cryptomonnaies. En revanche, c'est une excellente carte multi-devises avec paiement en crypto possible et RevPoints sur les plans Premium+. La carte physique crypto lancée en mai 2026 permet de dépenser ses cryptos chez tous les marchands Visa, avec conversion automatique au moment du paiement.`,
+        outro: `Si vous cherchez du cashback crypto, Revolut n'est pas le bon choix — des cartes comme Nexo ou Bleap sont bien supérieures. En revanche, pour une carte multi-devises premium avec accès aux crypto et une app irréprochable, Revolut reste le meilleur de sa catégorie — notamment pour les voyageurs fréquents.`,
+        rating: 3.9,
+        pros: [
+          'Carte physique crypto lancée en mai 2026 — dépense directe en crypto chez tous les marchands Visa',
+          'Conversion crypto → EUR instantanée, sans frais supplémentaires (dans la limite mensuelle)',
+          'Plus de 30 cryptomonnaies supportées pour le paiement',
+          'Application Revolut notée 4,7/5 — meilleure UX du secteur',
+          'Plan Standard entièrement gratuit, compatible Apple Pay & Google Pay',
+          'Régulé FCA (UK) + licences EMI dans l\'UE — l\'une des fintech les plus solides d\'Europe',
+        ],
+        cons: [
+          'Aucun cashback en crypto — uniquement des RevPoints sur les plans payants',
+          'Limite d\'échange à 1 000 €/mois sans frais sur le plan Standard (1 % au-delà)',
+          'Support client critiqué : réponses lentes, uniquement via chat in-app',
+          'RevPoints peu valorisables — difficiles à convertir en valeur réelle',
+        ],
+        faq: [
+          { q: 'La carte Revolut offre-t-elle du cashback en crypto ?', a: 'Non. Revolut ne propose pas de cashback en cryptomonnaies. Les plans Premium (9,99€/mois) et Ultra (45€/mois) offrent des RevPoints, convertibles en miles ou remises voyages, mais ce n\'est pas du cashback crypto à proprement parler.' },
+          { q: 'Comment fonctionne la carte physique crypto Revolut lancée en 2026 ?', a: 'La carte Revolut Crypto Card (lancée mai 2026) est une Visa physique qui permet de payer directement avec ses cryptos chez n\'importe quel marchand Visa. La conversion crypto → EUR se fait automatiquement au moment du paiement, sans frais supplémentaires dans la limite mensuelle.' },
+          { q: 'Quelle est la différence entre Revolut Standard, Premium et Ultra ?', a: 'Standard est gratuit (1 000€/mois d\'échange sans frais). Premium à 9,99€/mois ajoute des RevPoints (1 pt/4€) et des limites plus élevées. Ultra à 45€/mois offre 1 pt/1€, cashback métal et avantages premium. Aucun tier ne propose de cashback crypto.' },
+          { q: 'La carte Revolut est-elle disponible en France en 2026 ?', a: 'Oui, Revolut et sa carte crypto sont disponibles en France et dans toute l\'EEA (hors Hongrie, Suisse et Portugal). La carte physique crypto se commande directement depuis l\'app Revolut.' },
+        ],
+      },
+      de: {
+        title: `Revolut Krypto Karte ${YEAR} — Krypto-Zahlungen ohne Cashback | TopCryptoCards`,
+        description: `Revolut und Krypto ${YEAR}: Krypto-Zahlungen, Metal-Karte, RevPoints. 0% Krypto-Cashback für alle Tiers.`,
+        intro: `Revolut ist keine Krypto-Karte im eigentlichen Sinne: Es gibt kein Krypto-Cashback. Dafür ist es eine ausgezeichnete Multi-Währungskarte mit Krypto-Zahlungsmöglichkeit und RevPoints auf Premium+-Plänen. Die im Mai 2026 gestartete physische Krypto-Karte ermöglicht direkte Krypto-Zahlungen bei allen Visa-Händlern.`,
+        outro: `Wer Krypto-Cashback sucht, ist bei Revolut falsch — Nexo oder Bleap sind besser geeignet. Für eine Premium-Multi-Währungskarte mit Krypto-Zugang und der besten App auf dem Markt ist Revolut jedoch unschlagbar — besonders für Vielreisende.`,
+        rating: 3.9,
+        pros: [
+          'Physische Krypto-Karte seit Mai 2026 — direkte Krypto-Zahlungen bei allen Visa-Händlern',
+          'Sofortige Krypto → EUR-Konvertierung ohne zusätzliche Gebühren (innerhalb des Monatslimits)',
+          'Mehr als 30 Kryptowährungen für Zahlungen unterstützt',
+          'Revolut-App mit 4,7/5 bewertet — beste UX der Branche',
+          'Standard-Plan komplett kostenlos, Apple Pay & Google Pay kompatibel',
+          'FCA (UK) reguliert + EMI-Lizenzen in der EU — eine der solidesten Fintechs Europas',
+        ],
+        cons: [
+          'Kein Krypto-Cashback — nur RevPoints auf kostenpflichtigen Plänen',
+          'Tausch-Limit von 1.000 €/Monat gebührenfrei im Standard-Plan (1% darüber hinaus)',
+          'Kundensupport kritisiert: langsame Antworten, nur über In-App-Chat',
+          'RevPoints schwer zu verwerten — kaum in realen Wert umwandelbar',
+        ],
+        faq: [
+          { q: 'Bietet die Revolut-Karte Krypto-Cashback?', a: 'Nein. Revolut bietet kein Krypto-Cashback. Premium- (9,99€/Monat) und Ultra-Pläne (45€/Monat) bieten RevPoints, die in Meilen oder Reiserabatte umgewandelt werden können, aber kein Krypto-Cashback.' },
+          { q: 'Wie funktioniert die physische Krypto-Karte von Revolut (2026)?', a: 'Die im Mai 2026 gestartete Revolut Crypto Card ist eine physische Visa-Karte, mit der Krypto direkt bei jedem Visa-Händler bezahlt werden kann. Die Konvertierung von Krypto in EUR erfolgt automatisch beim Bezahlen.' },
+          { q: 'Ist die Revolut-Karte in Deutschland verfügbar?', a: 'Ja, Revolut und seine Krypto-Karte sind in Deutschland und der gesamten EEA verfügbar (außer Ungarn, Schweiz und Portugal).' },
+        ],
+      },
+      es: {
+        title: `Tarjeta Revolut Crypto ${YEAR} — Pagos crypto sin cashback | TopCryptoCards`,
+        description: `Revolut y las criptos en ${YEAR}: pagos en crypto, tarjeta Metal, RevPoints. 0% cashback crypto.`,
+        intro: `Revolut no es una tarjeta crypto en el sentido estricto: no hay cashback en criptomonedas. Sin embargo, es una excelente tarjeta multidivisa con opción de pago en cripto y RevPoints en los planes Premium+. La tarjeta física crypto lanzada en mayo de 2026 permite gastar criptos en cualquier comercio Visa, con conversión automática en el momento del pago.`,
+        outro: `Si buscas cashback crypto, Revolut no es la mejor opción — tarjetas como Nexo o Bleap son superiores. Para una tarjeta multidivisa premium con acceso a cripto y la mejor app del mercado, Revolut es insuperable — especialmente para viajeros frecuentes.`,
+        rating: 3.9,
+        pros: [
+          'Tarjeta física crypto desde mayo 2026 — pago directo en cripto en todos los comercios Visa',
+          'Conversión cripto → EUR instantánea sin comisiones adicionales (dentro del límite mensual)',
+          'Más de 30 criptomonedas admitidas para pago',
+          'App Revolut valorada 4,7/5 — mejor UX del sector',
+          'Plan Standard totalmente gratuito, compatible con Apple Pay y Google Pay',
+          'Regulado por la FCA (UK) + licencias EMI en la UE — una de las fintech más sólidas de Europa',
+        ],
+        cons: [
+          'Sin cashback en cripto — solo RevPoints en planes de pago',
+          'Límite de cambio de 1.000 €/mes sin comisiones en el plan Standard (1% por encima)',
+          'Soporte al cliente criticado: respuestas lentas, solo por chat in-app',
+          'RevPoints difíciles de valorar — complicados de convertir en valor real',
+        ],
+        faq: [
+          { q: '¿La tarjeta Revolut ofrece cashback en cripto?', a: 'No. Revolut no ofrece cashback en criptomonedas. Los planes Premium (9,99€/mes) y Ultra (45€/mes) ofrecen RevPoints canjeables en millas o descuentos de viaje, pero no son cashback crypto.' },
+          { q: '¿Cómo funciona la tarjeta física crypto de Revolut lanzada en 2026?', a: 'La Revolut Crypto Card (lanzada en mayo 2026) es una tarjeta Visa física que permite pagar directamente con criptos en cualquier comercio Visa. La conversión cripto → EUR se hace automáticamente en el momento del pago.' },
+          { q: '¿Está disponible la tarjeta Revolut en España en 2026?', a: 'Sí, Revolut y su tarjeta crypto están disponibles en España y en toda la EEA (excepto Hungría, Suiza y Portugal).' },
+        ],
+      },
+      it: {
+        title: `Carta Revolut Crypto ${YEAR} — Pagamenti crypto senza cashback | TopCryptoCards`,
+        description: `Revolut e le cripto nel ${YEAR}: pagamenti in cripto, carta Metal, RevPoints. 0% cashback cripto.`,
+        intro: `Revolut non è una carta crypto in senso stretto: non c'è cashback in criptovalute. Tuttavia, è un'ottima carta multivaluta con possibilità di pagamento in cripto e RevPoints sui piani Premium+. La carta fisica crypto lanciata a maggio 2026 permette di spendere criptovalute presso qualsiasi esercente Visa, con conversione automatica al momento del pagamento.`,
+        outro: `Se cerchi cashback crypto, Revolut non è la scelta giusta — Nexo o Bleap sono superiori. Per una carta multivaluta premium con accesso alle cripto e la migliore app del mercato, Revolut è insuperabile — specialmente per i viaggiatori frequenti.`,
+        rating: 3.9,
+        pros: [
+          'Carta fisica crypto da maggio 2026 — pagamento diretto in cripto presso tutti gli esercenti Visa',
+          'Conversione cripto → EUR istantanea senza commissioni aggiuntive (entro il limite mensile)',
+          'Oltre 30 criptovalute supportate per i pagamenti',
+          'App Revolut valutata 4,7/5 — migliore UX del settore',
+          'Piano Standard completamente gratuito, compatibile con Apple Pay e Google Pay',
+          'Regolamentata dalla FCA (UK) + licenze EMI nell\'UE — una delle fintech più solide d\'Europa',
+        ],
+        cons: [
+          'Nessun cashback in cripto — solo RevPoints sui piani a pagamento',
+          'Limite di cambio di 1.000 €/mese senza commissioni nel piano Standard (1% oltre)',
+          'Assistenza clienti criticata: risposte lente, solo via chat in-app',
+          'RevPoints difficili da valorizzare — complicati da convertire in valore reale',
+        ],
+        faq: [
+          { q: 'La carta Revolut offre cashback in cripto?', a: 'No. Revolut non offre cashback in criptovalute. I piani Premium (9,99€/mese) e Ultra (45€/mese) offrono RevPoints convertibili in miglia o sconti viaggi, ma non sono cashback crypto.' },
+          { q: 'Come funziona la carta fisica crypto di Revolut lanciata nel 2026?', a: 'La Revolut Crypto Card (lanciata a maggio 2026) è una carta Visa fisica che permette di pagare direttamente con le cripto presso qualsiasi esercente Visa. La conversione cripto → EUR avviene automaticamente al momento del pagamento.' },
+          { q: 'La carta Revolut è disponibile in Italia nel 2026?', a: 'Sì, Revolut e la sua carta crypto sono disponibili in Italia e in tutta l\'EEA (tranne Ungheria, Svizzera e Portogallo).' },
+        ],
+      },
+      en: {
+        title: `Revolut Crypto Card ${YEAR} — Crypto Payments Without Cashback | TopCryptoCards`,
+        description: `Revolut and crypto in ${YEAR}: crypto payments, Metal card, RevPoints. 0% crypto cashback on all tiers.`,
+        intro: `Revolut is not a crypto card in the strict sense — there's no crypto cashback. However, it's an excellent multi-currency card with crypto payment capability and RevPoints on Premium+ plans. The physical crypto card launched in May 2026 lets you spend your crypto at any Visa merchant, with automatic conversion at the point of sale.`,
+        outro: `If you're looking for crypto cashback, Revolut isn't the right choice — cards like Nexo or Bleap are far better. But for a premium multi-currency card with crypto access and the best app on the market, Revolut is unmatched — especially for frequent travellers.`,
+        rating: 3.9,
+        pros: [
+          'Physical crypto card since May 2026 — spend crypto directly at any Visa merchant',
+          'Instant crypto → EUR conversion with no extra fees (within monthly limit)',
+          'Over 30 cryptocurrencies supported for payments',
+          'Revolut app rated 4.7/5 — best UX in the industry',
+          'Standard plan completely free, Apple Pay & Google Pay compatible',
+          'FCA (UK) regulated + EMI licences across the EU — one of Europe\'s most solid fintechs',
+        ],
+        cons: [
+          'No crypto cashback — only RevPoints on paid plans',
+          'Exchange limit of €1,000/month fee-free on Standard plan (1% above)',
+          'Customer support criticised: slow responses, in-app chat only',
+          'RevPoints hard to value — difficult to convert into real-world worth',
+        ],
+        faq: [
+          { q: 'Does the Revolut card offer crypto cashback?', a: 'No. Revolut does not offer crypto cashback. Premium (€9.99/month) and Ultra (€45/month) plans offer RevPoints redeemable for airline miles or travel discounts, but these are not crypto cashback.' },
+          { q: 'How does the Revolut physical crypto card launched in 2026 work?', a: 'The Revolut Crypto Card (launched May 2026) is a physical Visa card that lets you pay with crypto at any Visa merchant. The crypto → EUR conversion happens automatically at the point of sale, with no extra fees within the monthly limit.' },
+          { q: 'What\'s the difference between Revolut Standard, Premium and Ultra?', a: 'Standard is free (€1,000/month fee-free exchange). Premium at €9.99/month adds RevPoints (1 pt/€4) and higher limits. Ultra at €45/month offers 1 pt/€1, metal cashback and premium perks. No tier offers crypto cashback.' },
+          { q: 'Is the Revolut card available in the UK and EU in 2026?', a: 'Yes, Revolut and its crypto card are available across the EEA and the UK (except Hungary, Switzerland and Portugal). The physical crypto card can be ordered directly from the Revolut app.' },
+        ],
+      },
     },
   },
 

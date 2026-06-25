@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ExternalLink, Building2, Calendar, Shield, ChevronRight } from 'lucide-react';
+import { ExternalLink, Building2, Calendar, Shield, ChevronRight, CheckCircle2, XCircle, Star } from 'lucide-react';
 import { fetchCardsByBrand } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useLanguage } from '../hooks/useLanguage';
@@ -15,6 +15,9 @@ import type { CryptoCard } from '../types/card';
 
 const L = {
   fr: {
+    prosTitle: 'Les points forts',
+    consTitle: 'Les points faibles',
+    ratingLabel: 'Note globale',
     home: 'Accueil',
     allCards: 'Toutes les cartes',
     allBrands: 'Toutes les marques',
@@ -54,6 +57,9 @@ const L = {
     websiteLabel: 'Site officiel',
   },
   de: {
+    prosTitle: 'Vorteile',
+    consTitle: 'Nachteile',
+    ratingLabel: 'Gesamtbewertung',
     home: 'Startseite',
     allCards: 'Alle Karten',
     allBrands: 'Alle Marken',
@@ -93,6 +99,9 @@ const L = {
     websiteLabel: 'Offizielle Website',
   },
   es: {
+    prosTitle: 'Puntos fuertes',
+    consTitle: 'Puntos débiles',
+    ratingLabel: 'Valoración global',
     home: 'Inicio',
     allCards: 'Todas las tarjetas',
     allBrands: 'Todas las marcas',
@@ -132,6 +141,9 @@ const L = {
     websiteLabel: 'Sitio oficial',
   },
   it: {
+    prosTitle: 'Punti di forza',
+    consTitle: 'Punti deboli',
+    ratingLabel: 'Valutazione globale',
     home: 'Home',
     allCards: 'Tutte le carte',
     allBrands: 'Tutti i marchi',
@@ -171,6 +183,9 @@ const L = {
     websiteLabel: 'Sito ufficiale',
   },
   en: {
+    prosTitle: 'Strengths',
+    consTitle: 'Weaknesses',
+    ratingLabel: 'Overall rating',
     home: 'Home',
     allCards: 'All cards',
     allBrands: 'All brands',
@@ -396,6 +411,12 @@ export default function BrandPage() {
       <header className="space-y-4">
         <div className="flex items-center gap-3 flex-wrap">
           <h1 className="text-3xl font-bold text-text-primary">{brand.displayName}</h1>
+          {seo.rating != null && (
+            <span className="inline-flex items-center gap-1.5 bg-yellow-400/10 text-yellow-400 text-sm font-semibold px-3 py-1 rounded-full">
+              <Star className="w-3.5 h-3.5 fill-yellow-400" />
+              {seo.rating.toFixed(1)}/5
+            </span>
+          )}
           {bestCashback > 0 && (
             <span className="bg-brand-accent/10 text-brand-accent text-sm font-semibold px-3 py-1 rounded-full">
               {l.upTo} {bestCashback}% cashback
@@ -433,6 +454,44 @@ export default function BrandPage() {
           )}
         </div>
       </header>
+
+      {/* ── Pros & Cons ─────────────────────────────────────────────────────── */}
+      {(seo.pros?.length || seo.cons?.length) && (
+        <section className="grid sm:grid-cols-2 gap-4">
+          {seo.pros && seo.pros.length > 0 && (
+            <div className="bg-bg-card border border-green-500/20 rounded-xl p-5">
+              <h2 className="text-sm font-semibold text-green-400 uppercase tracking-wide mb-3 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4" />
+                {l.prosTitle}
+              </h2>
+              <ul className="space-y-2">
+                {seo.pros.map((pro, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-text-secondary leading-snug">
+                    <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                    {pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {seo.cons && seo.cons.length > 0 && (
+            <div className="bg-bg-card border border-red-500/20 rounded-xl p-5">
+              <h2 className="text-sm font-semibold text-red-400 uppercase tracking-wide mb-3 flex items-center gap-2">
+                <XCircle className="w-4 h-4" />
+                {l.consTitle}
+              </h2>
+              <ul className="space-y-2">
+                {seo.cons.map((con, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-text-secondary leading-snug">
+                    <XCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    {con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* ── Tier cards grid ─────────────────────────────────────────────────── */}
       <section>
@@ -581,6 +640,31 @@ export default function BrandPage() {
               </div>
             ))}
           </div>
+        </section>
+      )}
+
+      {/* ── Full review CTA ─────────────────────────────────────────────────── */}
+      {hasReview && (
+        <section className="bg-bg-card border border-brand-accent/20 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p className="text-text-primary font-semibold text-base">
+              {REVIEW_LABEL[lang] || REVIEW_LABEL.en} — {brand.displayName}
+            </p>
+            <p className="text-text-secondary text-sm mt-0.5">
+              {lang === 'fr' && 'Cashback, frais, sécurité, expérience utilisateur — tout est détaillé.'}
+              {lang === 'de' && 'Cashback, Gebühren, Sicherheit, Nutzererfahrung — alles im Detail.'}
+              {lang === 'es' && 'Cashback, comisiones, seguridad, experiencia de usuario — todo en detalle.'}
+              {lang === 'it' && 'Cashback, commissioni, sicurezza, esperienza utente — tutto nel dettaglio.'}
+              {lang === 'en' && 'Cashback, fees, security, user experience — everything covered in depth.'}
+            </p>
+          </div>
+          <Link
+            to={`/${lang}/${reviewsSlug}/${BRAND_REVIEW_SLUG[brandId ?? '']}`}
+            className="shrink-0 inline-flex items-center gap-1.5 bg-brand-accent text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:opacity-90 transition-opacity"
+          >
+            {REVIEW_LABEL[lang] || REVIEW_LABEL.en}
+            <ChevronRight className="w-4 h-4" />
+          </Link>
         </section>
       )}
 
