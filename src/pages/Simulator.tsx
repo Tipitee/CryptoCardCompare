@@ -74,7 +74,7 @@ export default function Simulator() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
   const simSeo = SIM_SEO[lang] || SIM_SEO.en;
-  useSeoMeta({ title: simSeo.title, description: simSeo.desc });
+  useSeoMeta({ title: simSeo.title, description: simSeo.desc, lang });
 
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';

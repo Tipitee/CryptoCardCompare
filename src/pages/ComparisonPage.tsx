@@ -251,6 +251,7 @@ export default function ComparisonPage() {
     description: card1 && card2
       ? comparisonSeo.desc(card1.name, card2.name)
       : '',
+    lang,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

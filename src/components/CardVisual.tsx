@@ -1,5 +1,6 @@
 import { useRef, useState, MouseEvent } from 'react';
 import type { CryptoCard } from '../types/card';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface Props {
   card: CryptoCard;
@@ -18,6 +19,7 @@ const SIZES: Record<string, string> = {
 export default function CardVisual({ card, size = 'md', tilt = true, className = '' }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [t, setT] = useState({ rx: 0, ry: 0, gx: 50, gy: 50 });
+  const lang = useLanguage();
 
   const prefersReduced =
     typeof window !== 'undefined' &&
@@ -119,11 +121,11 @@ export default function CardVisual({ card, size = 'md', tilt = true, className =
           )}
           <div className="flex items-end justify-between">
             <div className="min-w-0">
-              <div className="text-[9px] uppercase tracking-wider opacity-60">Titulaire</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Titulaire', de: 'Inhaber', es: 'Titular', it: 'Titolare', en: 'Holder' }[lang] ?? 'Holder'}</div>
               <div className="text-xs font-semibold truncate">{card.name}</div>
             </div>
             <div className="text-right">
-              <div className="text-[9px] uppercase tracking-wider opacity-60">Réseau</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Réseau', de: 'Netzwerk', es: 'Red', it: 'Rete', en: 'Network' }[lang] ?? 'Network'}</div>
               <div className="text-sm font-bold italic">
                 {card.cardNetwork.toUpperCase()}
               </div>

@@ -60,7 +60,7 @@ export default function Compare() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
   const compareSeo = COMPARE_SEO[lang] || COMPARE_SEO.en;
-  useSeoMeta({ title: compareSeo.title, description: compareSeo.desc });
+  useSeoMeta({ title: compareSeo.title, description: compareSeo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
   useEffect(() => {

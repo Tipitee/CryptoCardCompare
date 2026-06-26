@@ -260,6 +260,7 @@ export default function ReviewPage() {
     title: review?.metaTitle || `${l.reviewWord} | TopCryptoCards`,
     description: review?.metaDescription || '',
     type: 'article',
+    lang,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

@@ -72,6 +72,7 @@ export default function BlogPost() {
     description: post?.meta_description || post?.excerpt || '',
     image: post?.image_hero || undefined,
     type: 'article',
+    lang,
   });
 
   useEffect(() => {

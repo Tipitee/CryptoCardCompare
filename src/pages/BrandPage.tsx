@@ -352,6 +352,7 @@ export default function BrandPage() {
   useSeoMeta({
     title: seo.title || `${brand.displayName} — TopCryptoCards`,
     description: seo.description || '',
+    lang,
   });
 
   // ── Hreflang ───────────────────────────────────────────────────────────────

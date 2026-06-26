@@ -83,6 +83,11 @@ export default function Layout() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  // Sync <html lang> with current language
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
       isActive
@@ -168,7 +173,7 @@ export default function Layout() {
             <button
               className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
               onClick={() => setMenuOpen(true)}
-              aria-label="Ouvrir le menu"
+              aria-label={{ fr: 'Ouvrir le menu', de: 'Menü öffnen', es: 'Abrir menú', it: 'Apri menu', en: 'Open menu' }[lang] ?? 'Open menu'}
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -198,7 +203,7 @@ export default function Layout() {
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-bg-card transition-colors"
-                aria-label="Fermer le menu"
+                aria-label={{ fr: 'Fermer le menu', de: 'Menü schließen', es: 'Cerrar menú', it: 'Chiudi menu', en: 'Close menu' }[lang] ?? 'Close menu'}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -349,7 +354,7 @@ export default function Layout() {
                 <li>
                   <Link to="/risk-summary" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Shield className="w-3.5 h-3.5" />
-                    {t('footer_risk')} Summary
+                    {t('footer_risk')}
                   </Link>
                 </li>
               </ul>

@@ -177,7 +177,7 @@ export default function CardDetail() {
   const seoDesc = card
     ? (article?.meta_description || (DESC_TPL[lang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
     : '';
-  useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article' });
+  useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article', lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -215,7 +215,9 @@ export default function CardDetail() {
       url: `https://topcryptocards.eu/${lang}/${CARD_SEGMENT[lang] || 'cards'}/${card.id}`,
       image: card.realCardImage || '',
       provider: { '@type': 'Organization', name: card.issuer },
-      feesAndCommissionsSpecification: card.annualFees > 0 ? `${card.annualFees} €/an` : 'Gratuit',
+      feesAndCommissionsSpecification: card.annualFees > 0
+        ? `${card.annualFees} ${{ fr: '€/an', de: '€/Jahr', es: '€/año', it: '€/anno', en: '€/year' }[lang] ?? '€/year'}`
+        : ({ fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' }[lang] ?? 'Free'),
       offers: {
         '@type': 'Offer',
         price: String(card.annualFees || 0),
@@ -691,7 +693,7 @@ export default function CardDetail() {
                               <span>
                                 {sibling.annualFees === 0
                                   ? FREE_LABEL[lang] || 'Free'
-                                  : `${sibling.annualFees}€/an`}
+                                  : `${sibling.annualFees}${{ fr: '€/an', de: '€/J.', es: '€/año', it: '€/anno', en: '€/yr' }[lang] ?? '€/yr'}`}
                               </span>
                             </div>
                           </div>

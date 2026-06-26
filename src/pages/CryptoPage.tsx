@@ -74,6 +74,7 @@ export default function CryptoPage() {
   useSeoMeta({
     title:       copy?.meta_title       ?? `${meta?.name ?? sym} | TopCryptoCards`,
     description: copy?.meta_description ?? '',
+    lang,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

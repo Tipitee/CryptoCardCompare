@@ -722,6 +722,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   useSeoMeta({
     title: config?.title || 'TopCryptoCards',
     description: config?.description || '',
+    lang,
   });
 
   /* Hreflang */
@@ -832,7 +833,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           ))}
         </div>
       ) : filteredCards.length === 0 ? (
-        <p className="text-slate-400 mb-10">Aucune carte trouvée pour ce critère.</p>
+        <p className="text-slate-400 mb-10">{{ fr: 'Aucune carte trouvée pour ce critère.', de: 'Keine Karte für dieses Kriterium gefunden.', es: 'Ninguna tarjeta encontrada.', it: 'Nessuna carta trovata.', en: 'No cards found for this criterion.' }[lang] ?? 'No cards found.'}</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {filteredCards.map((card: any, idx: number) => (

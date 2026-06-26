@@ -125,7 +125,7 @@ export default function ReviewList() {
   const reviewSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
 
-  useSeoMeta({ title: l.title, description: l.desc });
+  useSeoMeta({ title: l.title, description: l.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
   useEffect(() => {

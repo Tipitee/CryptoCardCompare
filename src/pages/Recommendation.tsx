@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Award, Check, RotateCcw, Sparkles, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -36,7 +36,27 @@ export default function Recommendation() {
   const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   const recSeo = REC_SEO[lang] || REC_SEO.en;
-  useSeoMeta({ title: recSeo.title, description: recSeo.desc });
+  useSeoMeta({ title: recSeo.title, description: recSeo.desc, lang });
+
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
+    document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove());
+    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
+      const el = document.createElement('link');
+      el.rel = 'alternate'; el.setAttribute('hreflang', l);
+      el.setAttribute('href', `${BASE}/${l}/${SLUGS[l]}`);
+      el.setAttribute('data-hreflang-rec', 'true');
+      document.head.appendChild(el);
+    });
+    const xd = document.createElement('link');
+    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
+    xd.setAttribute('href', `${BASE}/en/recommendation`);
+    xd.setAttribute('data-hreflang-rec', 'true');
+    document.head.appendChild(xd);
+    return () => { document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove()); };
+  }, []);
+
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);

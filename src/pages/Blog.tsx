@@ -41,6 +41,7 @@ export default function Blog() {
   useSeoMeta({
     title: `${t('blog_header_title')} | TopCryptoCards`,
     description: t('blog_header_desc'),
+    lang,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

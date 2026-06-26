@@ -73,7 +73,7 @@ export default function BrandList() {
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   const cardsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
 
-  useSeoMeta({ title: l.title, description: l.desc });
+  useSeoMeta({ title: l.title, description: l.desc, lang });
 
   useEffect(() => {
     if (cards.length > 0) setReady(true);

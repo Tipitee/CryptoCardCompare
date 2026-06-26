@@ -81,7 +81,7 @@ export default function CryptoList() {
   const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
   const guideLinks = GUIDES_LINKS[lang] || GUIDES_LINKS.en;
 
-  useSeoMeta({ title: seo.title, description: seo.desc });
+  useSeoMeta({ title: seo.title, description: seo.desc, lang });
 
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
