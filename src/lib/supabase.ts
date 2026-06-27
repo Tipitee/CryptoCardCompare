@@ -233,19 +233,25 @@ export async function saveQuizResult(
 // ── Blog ──────────────────────────────────────────────────────────────────────
 
 async function backfillHeroImages(posts: BlogPost[]): Promise<BlogPost[]> {
-  const missing = posts.filter(p => !p.image_hero).map(p => p.slug);
+  const missing = posts.filter(p => !p.image_hero);
   if (missing.length === 0) return posts;
+  // Use topic_key to find images from any language variant (slugs differ across languages)
+  const topicKeys = missing.map(p => p.topic_key).filter((k): k is string => !!k);
+  if (topicKeys.length === 0) return posts;
   const { data } = await supabase
     .from('blog_posts')
-    .select('slug, image_hero')
-    .eq('lang', 'fr')
-    .in('slug', missing)
+    .select('topic_key, image_hero')
+    .in('topic_key', topicKeys)
     .not('image_hero', 'is', null);
   if (!data || data.length === 0) return posts;
   const heroMap = Object.fromEntries(
-    (data as { slug: string; image_hero: string }[]).map(r => [r.slug, r.image_hero])
+    (data as { topic_key: string; image_hero: string }[]).map(r => [r.topic_key, r.image_hero])
   );
-  return posts.map(p => (!p.image_hero && heroMap[p.slug] ? { ...p, image_hero: heroMap[p.slug] } : p));
+  return posts.map(p =>
+    !p.image_hero && p.topic_key && heroMap[p.topic_key]
+      ? { ...p, image_hero: heroMap[p.topic_key] }
+      : p
+  );
 }
 
 export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {

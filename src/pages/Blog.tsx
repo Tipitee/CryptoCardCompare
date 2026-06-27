@@ -277,7 +277,7 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
       )}
 
       <div className="p-5 flex flex-col flex-1">
-        {(post.tags ?? []).length > 0 && (
+        {lang === 'fr' && (post.tags ?? []).length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
             {(post.tags ?? []).slice(0, 3).map(tag => (
               <span key={tag} className="text-xs font-semibold text-cyan-accent bg-cyan-accent/15 px-2.5 py-1 rounded-full border border-cyan-accent/30 group-hover:border-cyan-accent/60 group-hover:bg-cyan-accent/25 transition-all">
