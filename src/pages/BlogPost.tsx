@@ -20,7 +20,6 @@ const DATE_LOCALES: Record<string, string> = {
 
 function formatDate(iso: string, lang: string): string {
   return new Date(iso).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {
-    day: 'numeric',
     month: 'long',
     year: 'numeric',
   });
