@@ -24,45 +24,45 @@
 */
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/binance-card.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/binance-card.jpg'
 WHERE id = 'binance-standard';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/bitpanda-card.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/bitpanda-card.jpg'
 WHERE id = 'bitpanda-card';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/coinbase-card.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/coinbase-card.jpg'
 WHERE id = 'coinbase-card';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-frosted-rose-gold.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-frosted-rose-gold.jpg'
 WHERE id = 'crypto-com-frosted-rose';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-jade-green.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-jade-green.jpg'
 WHERE id = 'crypto-com-jade-green';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-midnight-blue.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-midnight-blue.jpg'
 WHERE id = 'crypto-com-midnight-blue';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-royal-indigo.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-royal-indigo.jpg'
 WHERE id = 'crypto-com-royal-indigo';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-ruby-steel.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-ruby-steel.jpg'
 WHERE id = 'crypto-com-ruby-steel';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/nexo-card.png'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/nexo-card.png'
 WHERE id = 'nexo-card';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/plutus-card.jpeg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/plutus-card.jpeg'
 WHERE id = 'plutus-card';
 
 UPDATE cards
-SET real_card_image = 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/wirex-elite-card.jpg'
+SET real_card_image = 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/wirex-elite-card.jpg'
 WHERE id = 'wirex-elite';

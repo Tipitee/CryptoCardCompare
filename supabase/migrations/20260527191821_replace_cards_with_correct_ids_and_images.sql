@@ -53,7 +53,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Jusqu''à 8% cashback avec BNB staké','Paiement sans frais','Intégration wallet Binance'],
  'https://www.binance.com/', 'Meilleur rapport',
  '#f59e0b', '#78350f',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/binance-card.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/binance-card.jpg',
  'Carte physique Binance Card de Binance, vue de face',
  ARRAY['de','es','it','en']),
 
@@ -72,7 +72,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Jusqu''à 2% avec BEST staké','Multi-portefeuilles','Actions et ETF intégrés'],
  'https://www.bitpanda.com/', NULL,
  '#10b981', '#065f46',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/bitpanda-card.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/bitpanda-card.jpg',
  'Carte physique Bitpanda Card de Bitpanda, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -91,7 +91,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Cashback en crypto au choix','Intégration Coinbase','Notifications temps réel'],
  'https://www.coinbase.com/card', NULL,
  '#2563eb', '#1e3a8a',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/coinbase-card.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/coinbase-card.jpg',
  'Carte physique Coinbase Card de Coinbase, vue de face',
  ARRAY['de','es','it','en']),
 
@@ -101,7 +101,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Tous abonnements premium','Salons aéroports illimités','Conciergerie dédiée','Airbnb remboursé'],
  'https://crypto.com/', 'Premium',
  '#fb7185', '#881337',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-frosted-rose-gold.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-frosted-rose-gold.jpg',
  'Carte physique Frosted Rose Gold de Crypto.com, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -111,7 +111,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Netflix & Spotify remboursés','Salons aéroports','Amazon Prime remboursé'],
  'https://crypto.com/', NULL,
  '#059669', '#064e3b',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-jade-green.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-jade-green.jpg',
  'Carte physique Jade Green de Crypto.com, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -121,7 +121,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Application mobile complète','Paiement sans contact','Apple Pay & Google Pay'],
  'https://crypto.com/', NULL,
  '#1e3a8a', '#0f172a',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-midnight-blue.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-midnight-blue.jpg',
  'Carte physique Midnight Blue de Crypto.com, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -131,7 +131,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Netflix & Spotify remboursés','Accès salons aéroports','Retraits ATM gratuits jusqu''à 400€/mois'],
  'https://crypto.com/', NULL,
  '#4338ca', '#1e1b4b',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-royal-indigo.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-royal-indigo.jpg',
  'Carte physique Royal Indigo de Crypto.com, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -141,7 +141,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Spotify remboursé','100% Apple Pay','Retraits ATM gratuits jusqu''à 200€/mois'],
  'https://crypto.com/', 'Populaire',
  '#be123c', '#450a0a',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/cryptocom-ruby-steel.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/cryptocom-ruby-steel.jpg',
  'Carte physique Ruby Steel de Crypto.com, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -160,7 +160,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Crédit sans vente de crypto','Jusqu''à 2% cashback en NEXO','Aucun minimum de dépense'],
  'https://nexo.com/', 'Zéro frais',
  '#0ea5e9', '#0c4a6e',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/nexo-card.png',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/nexo-card.png',
  'Carte physique Nexo Card de Nexo, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -170,7 +170,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Cashback en PLU','Perks Netflix/Spotify/Amazon','Staking flexible'],
  'https://plutus.it/', NULL,
  '#f97316', '#7c2d12',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/plutus-card.jpeg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/plutus-card.jpeg',
  'Carte physique Plutus Card de Plutus, vue de face',
  ARRAY['fr','de','es','it','en']),
 
@@ -198,7 +198,7 @@ INSERT INTO cards (id, name, issuer, cashback_base, cashback_premium, annual_fee
  ARRAY['Jusqu''à 8% cryptoback','Salons aéroports','Assurance voyage premium'],
  'https://wirexapp.com/', NULL,
  '#0f172a', '#000000',
- 'https://zulquoqrtmafwxfbjele.supabase.co/storage/v1/object/public/card-images/wirex-elite-card.jpg',
+ 'https://pnrwskzladqibjqngxem.supabase.co/storage/v1/object/public/card-images/wirex-elite-card.jpg',
  'Carte physique Wirex Elite de Wirex, vue de face',
  ARRAY['fr','de','es','it','en']),
 
