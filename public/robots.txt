@@ -11,3 +11,5 @@ Disallow: /datenschutz
 Disallow: /privacy
 Disallow: /risk-summary
 Sitemap: https://topcryptocards.eu/sitemap-index.xml
+Sitemap: https://topcryptocards.eu/sitemap-reviews.xml
+Sitemap: https://topcryptocards.eu/sitemap-brands.xml
