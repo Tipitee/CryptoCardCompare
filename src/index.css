@@ -10,6 +10,27 @@
     /* Prevent iOS auto-zoom on input focus */
     -webkit-text-size-adjust: 100%;
   }
+
+  /* ── Skip-to-content link (screen readers + keyboard nav) ─────────────── */
+  .skip-to-content {
+    @apply absolute -top-full left-4 z-[9999] px-4 py-2 rounded-b-lg text-sm font-semibold;
+    background: #00D4FF;
+    color: #0A0E1A;
+  }
+  .skip-to-content:focus {
+    @apply top-0;
+  }
+
+  /* ── Global focus-visible ring (keyboard nav) ─────────────────────────── */
+  :focus-visible {
+    outline: 2px solid #00D4FF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Don't show outline on mouse clicks */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
   body {
     @apply bg-bg text-slate-200 font-sans antialiased;
     font-size: 16px;

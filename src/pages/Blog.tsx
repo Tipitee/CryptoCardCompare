@@ -142,6 +142,7 @@ export default function Blog() {
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
           <input
             type="text"
+            aria-label={t('blog_search_placeholder')}
             placeholder={t('blog_search_placeholder')}
             value={search}
             onChange={e => handleSearch(e.target.value)}
@@ -276,7 +277,7 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
       )}
 
       <div className="p-5 flex flex-col flex-1">
-        {lang === 'fr' && (post.tags ?? []).length > 0 && (
+        {(post.tags ?? []).length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3">
             {(post.tags ?? []).slice(0, 3).map(tag => (
               <span key={tag} className="text-xs font-semibold text-cyan-accent bg-cyan-accent/15 px-2.5 py-1 rounded-full border border-cyan-accent/30 group-hover:border-cyan-accent/60 group-hover:bg-cyan-accent/25 transition-all">

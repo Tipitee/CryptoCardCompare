@@ -106,6 +106,11 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col bg-bg">
       <LanguageSync />
 
+      {/* ── Skip to content (keyboard / screen reader) ── */}
+      <a href="#main-content" className="skip-to-content">
+        {{ fr: 'Aller au contenu', de: 'Zum Inhalt', es: 'Ir al contenido', it: 'Vai al contenuto', en: 'Skip to content' }[lang] ?? 'Skip to content'}
+      </a>
+
       {/* ── Header ── */}
       <header className="sticky top-0 z-40 border-b border-bg-border bg-bg/80 backdrop-blur-lg">
         <div className="container-app flex items-center justify-between h-16">
@@ -262,7 +267,7 @@ export default function Layout() {
         </div>
       )}
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Outlet />
       </main>
 
