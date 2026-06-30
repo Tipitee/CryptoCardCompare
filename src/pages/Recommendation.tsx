@@ -57,6 +57,29 @@ export default function Recommendation() {
     return () => { document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove()); };
   }, []);
 
+  // ── Schema.org WebPage (Quiz) ─────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
+    const seg = SLUGS[lang] ?? 'recommendation';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: recSeo.title,
+      description: recSeo.desc,
+      url: `${BASE}/${lang}/${seg}`,
+      inLanguage: lang,
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
+    };
+    document.getElementById('schema-recommendation')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-recommendation';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-recommendation')?.remove(); };
+  }, [lang, recSeo]);
+
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);

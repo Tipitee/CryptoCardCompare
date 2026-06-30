@@ -97,6 +97,32 @@ export default function Simulator() {
     return () => { document.querySelectorAll('link[data-hreflang-simulator]').forEach(el => el.remove()); };
   }, [lang]);
 
+  // ── Schema.org SoftwareApplication ───────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
+    const seg = SIM_SLUGS[lang] ?? 'simulator';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: simSeo.title,
+      description: simSeo.desc,
+      url: `${BASE}/${lang}/${seg}`,
+      inLanguage: lang,
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
+    };
+    document.getElementById('schema-simulator')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-simulator';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-simulator')?.remove(); };
+  }, [lang, simSeo]);
+
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);

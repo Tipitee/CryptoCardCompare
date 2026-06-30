@@ -18,7 +18,7 @@ const L: Record<string, {
   breadcrumb: string; brandPage: string; home: string;
 }> = {
   fr: {
-    title: `Avis Cartes Crypto ${YEAR} — Comparatif & Tests Complets | TopCryptoCards`,
+    title: `Avis Cartes Crypto ${YEAR} — Tests & Comparatif | TopCryptoCards`,
     desc: `Avis détaillés et objectifs sur les meilleures cartes crypto : Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase et plus. Notes, cashback, frais et verdicts.`,
     badge: `Avis & Tests ${YEAR}`, h1: 'Avis sur les Cartes Crypto',
     sub: 'Tests complets et objectifs des meilleures cartes crypto du marché. Cashback, frais, sécurité et expérience utilisateur passés au crible.',
@@ -32,7 +32,7 @@ const L: Record<string, {
     breadcrumb: 'Avis cartes crypto', brandPage: 'Page de la marque →', home: 'Accueil',
   },
   de: {
-    title: `Krypto-Karten Bewertungen ${YEAR} — Vollständige Tests | TopCryptoCards`,
+    title: `Krypto-Karten Bewertungen ${YEAR} — Tests | TopCryptoCards`,
     desc: `Detaillierte und objektive Bewertungen der besten Krypto-Karten: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase und mehr.`,
     badge: `Tests & Bewertungen ${YEAR}`, h1: 'Krypto-Karten Bewertungen',
     sub: 'Vollständige und objektive Tests der besten Krypto-Karten auf dem Markt. Cashback, Gebühren, Sicherheit und Benutzererfahrung unter der Lupe.',
@@ -60,7 +60,7 @@ const L: Record<string, {
     breadcrumb: 'Opiniones tarjetas crypto', brandPage: 'Página de la marca →', home: 'Inicio',
   },
   it: {
-    title: `Recensioni Carte Crypto ${YEAR} — Confronto & Test Completi | TopCryptoCards`,
+    title: `Recensioni Carte Crypto ${YEAR} — Test | TopCryptoCards`,
     desc: `Recensioni dettagliate e obiettive sulle migliori carte crypto: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase e altro.`,
     badge: `Recensioni & Test ${YEAR}`, h1: 'Recensioni Carte Crypto',
     sub: 'Test completi e obiettivi delle migliori carte crypto sul mercato. Cashback, commissioni, sicurezza ed esperienza utente analizzati.',

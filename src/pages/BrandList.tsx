@@ -110,6 +110,7 @@ export default function BrandList() {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: l.h1,
+      inLanguage: lang,
       numberOfItems: Object.keys(brandGroups).length,
       itemListElement: Object.entries(brandGroups).map(([bid], i) => ({
         '@type': 'ListItem',

@@ -259,6 +259,7 @@ export default function ReviewPage() {
   useSeoMeta({
     title: review?.metaTitle || `${l.reviewWord} | TopCryptoCards`,
     description: review?.metaDescription || '',
+    image: review?.realCardImage || undefined,
     type: 'article',
     lang,
   });

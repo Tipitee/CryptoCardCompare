@@ -18,6 +18,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
+import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getSpecificComparison } from '../data/comparisonContent';
@@ -278,6 +279,27 @@ export default function ComparisonPage() {
     return () => { document.querySelectorAll('link[data-hreflang-comparison]').forEach(el => el.remove()); };
   }, [slug, card1?.id, card2?.id, lang]);
 
+  // ── Schema.org FAQPage (when specific FAQ available) ─────────────────────────
+  useEffect(() => {
+    if (!card1 || !card2 || !specificContent?.faq?.length) return;
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: specificContent.faq.map((item: { q: string; a: string }) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    };
+    document.getElementById('schema-comparison-faq')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-comparison-faq';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-comparison-faq')?.remove(); };
+  }, [card1?.id, card2?.id, specificContent]);
+
   // Not found state
   if (notFound) {
     return (
@@ -320,12 +342,22 @@ export default function ComparisonPage() {
   );
   const maxScore = Math.max(score1, score2, 1);
 
+  const compareLabel: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare' };
+  const homeLabel: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+
   return (
     <div className="container-app py-10 max-w-5xl">
+      {/* Breadcrumb */}
+      <Breadcrumb items={[
+        { label: homeLabel[lang] ?? 'Home', href: `/${lang}` },
+        { label: compareLabel[lang] ?? 'Compare', href: getRoute('compare') },
+        { label: `${card1.name} vs ${card2.name}` },
+      ]} />
+
       {/* Back link */}
       <Link
         to={getRoute('compare')}
-        className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mb-8 transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mb-8 mt-4 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('comparison_back')}

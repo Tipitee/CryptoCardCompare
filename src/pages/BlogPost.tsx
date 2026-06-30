@@ -76,16 +76,20 @@ export default function BlogPost() {
 
   useEffect(() => {
     if (!post) return;
+    const articleUrl = `https://topcryptocards.eu${window.location.pathname}`;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'Article',
+      mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+      url: articleUrl,
       headline: post.title,
       description: post.excerpt || post.meta_description || '',
       image: post.image_hero || 'https://topcryptocards.eu/og-default.jpg',
       datePublished: post.created_at,
       dateModified: post.updated_at || post.created_at,
+      inLanguage: post.lang ?? 'fr',
       author: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
-      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png' } },
     };
     document.getElementById('schema-article')?.remove();
     const el = document.createElement('script');

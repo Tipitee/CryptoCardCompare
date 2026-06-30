@@ -284,6 +284,9 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'crypto-com': 'crypto-com-card',
   'nexo': 'nexo-card',
   'binance': 'binance-card',
+  'kraken': 'kraken-card',
+  'brighty': 'brighty-card',
+  'gnosis': 'gnosis-pay-card',
   'bybit': 'bybit-card',
   'wirex': 'wirex-card',
   'bitpanda': 'bitpanda-card',
@@ -349,9 +352,11 @@ export default function BrandPage() {
   const reviewSlug = BRAND_REVIEW_SLUG[brandId ?? ''];
   const review = reviewSlug ? getReviewBySlug(reviewSlug) : undefined;
 
+  const brandOgImage = cards.find(c => c.realCardImage)?.realCardImage || undefined;
   useSeoMeta({
     title: seo.title || `${brand.displayName} — TopCryptoCards`,
     description: seo.description || '',
+    image: brandOgImage,
     lang,
   });
 

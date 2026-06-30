@@ -763,6 +763,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       el.textContent = JSON.stringify({
         '@context': 'https://schema.org', '@type': 'ItemList',
         name: config.h1, description: config.description, url: window.location.href,
+        inLanguage: lang,
         numberOfItems: filteredCards.length,
         itemListElement: filteredCards.slice(0, 10).map((card: any, i: number) => ({
           '@type': 'ListItem', position: i + 1, name: card.name,

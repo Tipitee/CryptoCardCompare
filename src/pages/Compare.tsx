@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import Breadcrumb from '../components/Breadcrumb';
 import {
   AlertTriangle,
   ArrowRight,
@@ -27,10 +28,10 @@ import {
 
 const YEAR = new Date().getFullYear();
 const COMPARE_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Comparateur Cartes Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez et filtrez toutes les cartes crypto : cashback, frais annuels, staking requis. Trouvez la meilleure carte pour votre profil.` },
-  de: { title: `Krypto Karten Vergleich ${YEAR} — Cashback & Gebühren | TopCryptoCards`, desc: `Vergleichen Sie alle Krypto-Karten nach Cashback, Jahresgebühren und Staking-Anforderungen.` },
-  es: { title: `Comparador Tarjetas Crypto ${YEAR} — Cashback & Comisiones | TopCryptoCards`, desc: `Compara y filtra todas las tarjetas crypto: cashback, comisiones anuales, staking requerido.` },
-  it: { title: `Comparatore Carte Crypto ${YEAR} — Cashback & Commissioni | TopCryptoCards`, desc: `Confronta e filtra tutte le carte crypto: cashback, commissioni annuali, staking richiesto.` },
+  fr: { title: `Comparateur Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez et filtrez toutes les cartes crypto : cashback, frais annuels, staking requis. Trouvez la meilleure carte pour votre profil.` },
+  de: { title: `Krypto-Karten Vergleich ${YEAR} — Cashback | TopCryptoCards`, desc: `Vergleichen Sie alle Krypto-Karten nach Cashback, Jahresgebühren und Staking-Anforderungen.` },
+  es: { title: `Comparador Crypto ${YEAR} — Cashback & Comisiones | TopCryptoCards`, desc: `Compara y filtra todas las tarjetas crypto: cashback, comisiones anuales, staking requerido.` },
+  it: { title: `Comparatore Carte Crypto ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta e filtra tutte le carte crypto: cashback, commissioni annuali, staking richiesto.` },
   en: { title: `Crypto Card Comparison ${YEAR} — Cashback & Fees | TopCryptoCards`, desc: `Compare and filter all crypto cards: cashback rates, annual fees, staking requirements. Find the best card for your profile.` },
 };
 
@@ -82,6 +83,32 @@ export default function Compare() {
     document.head.appendChild(xd);
     return () => { document.querySelectorAll('link[data-hreflang-compare]').forEach(el => el.remove()); };
   }, []);
+
+  // ── Schema.org WebApplication ─────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+    const seg = RT[lang] ?? 'compare';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: compareSeo.title,
+      description: compareSeo.desc,
+      url: `${BASE}/${lang}/${seg}`,
+      inLanguage: lang,
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
+    };
+    document.getElementById('schema-compare')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-compare';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-compare')?.remove(); };
+  }, [lang, compareSeo]);
 
   const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
@@ -413,9 +440,16 @@ export default function Compare() {
   const cardAName = allCards.find((c) => c.id === quickA)?.name;
   const cardBName = allCards.find((c) => c.id === quickB)?.name;
 
+  const compareBreadcrumb: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare' };
+  const homeBreadcrumb: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+
   return (
     <div className="container-app py-10">
-      <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <Breadcrumb items={[
+        { label: homeBreadcrumb[lang] ?? 'Home', href: `/${lang}` },
+        { label: compareBreadcrumb[lang] ?? 'Compare' },
+      ]} />
+      <header className="mb-8 mt-4 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{t('compare_title')}</h1>
           <p className="text-slate-400 max-w-2xl">

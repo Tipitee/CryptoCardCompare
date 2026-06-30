@@ -71,8 +71,18 @@ export default function CryptoPage() {
       .catch(() => { /* column may not exist yet — silent fail */ });
   }, [sym, lang]); // eslint-disable-line
 
+  const YEAR = new Date().getFullYear();
+  const CRYPTO_TITLE_FALLBACK: Record<string, (name: string) => string> = {
+    fr: (n) => `${n} et cartes crypto — Cashback & Guide ${YEAR} | TopCryptoCards`,
+    de: (n) => `${n} Krypto-Karte — Cashback & Ratgeber ${YEAR} | TopCryptoCards`,
+    es: (n) => `${n} y tarjetas crypto — Cashback & Guía ${YEAR} | TopCryptoCards`,
+    it: (n) => `${n} e carte crypto — Cashback & Guida ${YEAR} | TopCryptoCards`,
+    en: (n) => `${n} Crypto Card — Cashback & Guide ${YEAR} | TopCryptoCards`,
+  };
+  const cryptoName = meta?.name ?? sym.toUpperCase();
+  const fallbackTitle = (CRYPTO_TITLE_FALLBACK[lang] ?? CRYPTO_TITLE_FALLBACK.en)(cryptoName);
   useSeoMeta({
-    title:       copy?.meta_title       ?? `${meta?.name ?? sym} | TopCryptoCards`,
+    title:       copy?.meta_title       ?? fallbackTitle,
     description: copy?.meta_description ?? '',
     lang,
   });
