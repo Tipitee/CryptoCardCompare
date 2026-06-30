@@ -117,7 +117,7 @@ export default function Layout() {
 
           {/* Brand — logo + text, links to home */}
           <NavLink to={getRoute('')} className="flex items-center gap-2.5 shrink-0">
-            <img src="/logo.png" alt="TopCryptoCards" className="h-10 w-auto" />
+            <img src="/logo.png" alt="TopCryptoCards" className="h-10 w-auto" width="40" height="40" loading="eager" fetchPriority="high" />
             <span className="font-display font-bold text-white text-lg tracking-tight leading-none">
               TopCrypto<span className="text-cyan-accent">Cards</span>
             </span>

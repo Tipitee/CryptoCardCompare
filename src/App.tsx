@@ -1,33 +1,36 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Layout from './components/Layout';
+// Home chargé en eager (page d'atterrissage principale)
 import Home from './pages/Home';
-import Compare from './pages/Compare';
-import Simulator from './pages/Simulator';
-import Recommendation from './pages/Recommendation';
-import Favorites from './pages/Favorites';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import AdminBlog from './pages/AdminBlog';
-import AdminHeroImages from './pages/AdminHeroImages';
-import BlogAdminHub from './pages/BlogAdminHub';
-import Impressum from './pages/Impressum';
-import Datenschutz from './pages/Datenschutz';
-import Privacy from './pages/Privacy';
-import AffiliateDisclosurePage from './pages/AffiliateDisclosurePage';
-import RiskSummary from './pages/RiskSummary';
-import CardDetail from './pages/CardDetail';
-import ThematicPage from './pages/ThematicPage';
-import ComparisonPage from './pages/ComparisonPage';
-import CryptoList from './pages/CryptoList';
-import CryptoPage from './pages/CryptoPage';
-import ReviewList from './pages/ReviewList';
-import ReviewPage from './pages/ReviewPage';
-import NotFound from './pages/NotFound';
-import BrandPage from './pages/BrandPage';
-import BrandList from './pages/BrandList';
+
+// Toutes les autres pages en lazy — réduit le bundle initial significativement
+const Compare              = lazy(() => import('./pages/Compare'));
+const Simulator            = lazy(() => import('./pages/Simulator'));
+const Recommendation       = lazy(() => import('./pages/Recommendation'));
+const Favorites            = lazy(() => import('./pages/Favorites'));
+const Blog                 = lazy(() => import('./pages/Blog'));
+const BlogPost             = lazy(() => import('./pages/BlogPost'));
+const AdminBlog            = lazy(() => import('./pages/AdminBlog'));
+const AdminHeroImages      = lazy(() => import('./pages/AdminHeroImages'));
+const BlogAdminHub         = lazy(() => import('./pages/BlogAdminHub'));
+const Impressum            = lazy(() => import('./pages/Impressum'));
+const Datenschutz          = lazy(() => import('./pages/Datenschutz'));
+const Privacy              = lazy(() => import('./pages/Privacy'));
+const AffiliateDisclosurePage = lazy(() => import('./pages/AffiliateDisclosurePage'));
+const RiskSummary          = lazy(() => import('./pages/RiskSummary'));
+const CardDetail           = lazy(() => import('./pages/CardDetail'));
+const ThematicPage         = lazy(() => import('./pages/ThematicPage'));
+const ComparisonPage       = lazy(() => import('./pages/ComparisonPage'));
+const CryptoList           = lazy(() => import('./pages/CryptoList'));
+const CryptoPage           = lazy(() => import('./pages/CryptoPage'));
+const ReviewList           = lazy(() => import('./pages/ReviewList'));
+const ReviewPage           = lazy(() => import('./pages/ReviewPage'));
+const NotFound             = lazy(() => import('./pages/NotFound'));
+const BrandPage            = lazy(() => import('./pages/BrandPage'));
+const BrandList            = lazy(() => import('./pages/BrandList'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -82,9 +85,15 @@ function BarePathRedirect({ slug }: { slug: string }) {
 // App
 // ---------------------------------------------------------------------------
 
+// Fallback minimal pour Suspense (pas de spinner visible, juste blanc momentané)
+function PageLoader() {
+  return <div style={{ minHeight: '100vh' }} />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<RootRedirect />} />
 
@@ -175,6 +184,7 @@ export default function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
