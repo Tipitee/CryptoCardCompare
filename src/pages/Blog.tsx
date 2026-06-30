@@ -90,6 +90,10 @@ export default function Blog() {
         '@type': 'Organization',
         name: 'TopCryptoCards',
         url: BASE,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${BASE}/og-default.jpg`,
+        },
       },
     };
     document.getElementById('schema-blog-collection')?.remove();

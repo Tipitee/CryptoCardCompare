@@ -17,10 +17,10 @@ import { ROUTE_TRANSLATIONS } from '../i18n/types';
 const YEAR = new Date().getFullYear();
 const REC_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Quiz — Quelle Carte Crypto pour Vous ? ${YEAR} | TopCryptoCards`, desc: `Répondez à 6 questions et obtenez une recommandation personnalisée de carte crypto adaptée à votre profil et vos habitudes.` },
-  de: { title: `Quiz — Welche Krypto-Karte passt zu Ihnen? ${YEAR} | TopCryptoCards`, desc: `Beantworten Sie 6 Fragen und erhalten Sie eine personalisierte Krypto-Karten-Empfehlung.` },
+  de: { title: `Welche Krypto-Karte passt zu Ihnen? ${YEAR} | TopCryptoCards`, desc: `Beantworten Sie 6 Fragen und erhalten Sie eine personalisierte Krypto-Karten-Empfehlung.` },
   es: { title: `Quiz — ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén una recomendación personalizada de tarjeta crypto.` },
   it: { title: `Quiz — Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni una raccomandazione personalizzata di carta crypto.` },
-  en: { title: `Quiz — Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and get a personalized crypto card recommendation tailored to your profile and spending habits.` },
+  en: { title: `Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and get a personalized crypto card recommendation tailored to your profile and spending habits.` },
 };
 
 type StepDef<K extends keyof QuizAnswers> = {

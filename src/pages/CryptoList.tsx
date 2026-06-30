@@ -103,6 +103,36 @@ export default function CryptoList() {
     return () => { document.querySelectorAll('link[data-hreflang-cryptolist]').forEach(el => el.remove()); };
   }, [lang]);
 
+  // Schema.org CollectionPage
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: seo.h1,
+      description: seo.desc,
+      url: `${BASE}/${lang}/cryptos`,
+      inLanguage: lang,
+      publisher: {
+        '@type': 'Organization',
+        name: 'TopCryptoCards',
+        url: BASE,
+      },
+      hasPart: CRYPTOS.map((c) => ({
+        '@type': 'WebPage',
+        name: c.name,
+        url: `${BASE}/${lang}/cryptos/${c.symbol}`,
+      })),
+    };
+    document.getElementById('schema-cryptolist')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-cryptolist';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-cryptolist')?.remove(); };
+  }, [lang, seo]);
+
   return (
     <div className="container-app py-10">
       <Breadcrumb items={[

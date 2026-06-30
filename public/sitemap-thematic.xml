@@ -605,29 +605,34 @@
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/de/krypto-karten-deutschland</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/es/tarjetas-crypto-espana</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/it/carte-crypto-italia</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/en/crypto-cards-europe</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
 </urlset>

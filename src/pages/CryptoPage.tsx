@@ -109,6 +109,33 @@ export default function CryptoPage() {
     return () => { document.querySelectorAll('link[data-hreflang-crypto]').forEach(el => el.remove()); };
   }, [sym]);
 
+  // ── Schema.org WebPage ───────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const pageTitle = copy?.meta_title ?? fallbackTitle;
+    const pageDesc  = copy?.meta_description ?? '';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: pageTitle,
+      description: pageDesc,
+      url: `${BASE}/${lang}/cryptos/${sym}`,
+      inLanguage: lang,
+      publisher: {
+        '@type': 'Organization',
+        name: 'TopCryptoCards',
+        url: BASE,
+      },
+    };
+    document.getElementById('schema-cryptopage-webpage')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-cryptopage-webpage';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-cryptopage-webpage')?.remove(); };
+  }, [lang, sym, copy, fallbackTitle]);
+
   // ── Schema.org FAQPage ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!copy?.faq?.length) return;

@@ -46,7 +46,7 @@ const L: Record<string, {
     breadcrumb: 'Krypto-Karten Bewertungen', brandPage: 'Markenseite →', home: 'Startseite',
   },
   es: {
-    title: `Opiniones Tarjetas Crypto ${YEAR} — Comparativa & Tests | TopCryptoCards`,
+    title: `Opiniones Tarjetas Crypto ${YEAR} — Tests | TopCryptoCards`,
     desc: `Opiniones detalladas y objetivas sobre las mejores tarjetas crypto: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase y más.`,
     badge: `Opiniones & Tests ${YEAR}`, h1: 'Opiniones sobre Tarjetas Crypto',
     sub: 'Tests completos y objetivos de las mejores tarjetas crypto del mercado. Cashback, comisiones, seguridad y experiencia de usuario analizados.',
@@ -74,7 +74,7 @@ const L: Record<string, {
     breadcrumb: 'Recensioni carte crypto', brandPage: 'Pagina del marchio →', home: 'Home',
   },
   en: {
-    title: `Crypto Card Reviews ${YEAR} — Full Comparison & Tests | TopCryptoCards`,
+    title: `Crypto Card Reviews ${YEAR} — Tests | TopCryptoCards`,
     desc: `Detailed and objective reviews of the best crypto cards: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase and more.`,
     badge: `Reviews & Tests ${YEAR}`, h1: 'Crypto Card Reviews',
     sub: 'Complete and objective tests of the best crypto cards on the market. Cashback, fees, security and user experience scrutinized.',
@@ -157,6 +157,7 @@ export default function ReviewList() {
     name: l.h1,
     description: l.sub,
     url: `https://topcryptocards.eu/${lang}/${reviewSlug}`,
+    inLanguage: lang,
     numberOfItems: CARD_REVIEWS.length,
     itemListElement: sorted.map((r, i) => ({
       '@type': 'ListItem',
