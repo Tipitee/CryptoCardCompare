@@ -65,28 +65,17 @@ const LANG_CONFIG = {
   },
 };
 
-/* ── Prompt ──────────────────────────────────────────────────────────────── */
-function buildPrompt(frPost, targetLang) {
+/* ── Prompts ─────────────────────────────────────────────────────────────── */
+function buildMetaPrompt(frPost, targetLang) {
   const cfg = LANG_CONFIG[targetLang];
-  return `You are a professional crypto card expert and multilingual SEO writer.
+  return `You are a professional crypto card expert and multilingual SEO writer for ${cfg.site}.
 
-Your task: translate and adapt a French blog article into ${cfg.name} for the site ${cfg.site}.
+Translate and adapt these fields from French to ${cfg.name}. Tone: ${cfg.tone}.
+Keep crypto card brand names (Binance Card, Gnosis Pay, MetaMask Card, etc.) in English.
 
-SOURCE ARTICLE (French):
+SOURCE (French):
 Title: ${frPost.title}
 Excerpt: ${frPost.excerpt || ''}
-
-Content:
-${frPost.content}
-
-TRANSLATION INSTRUCTIONS:
-- Target language: ${cfg.name} — write the ENTIRE response in this language only
-- Tone: ${cfg.tone}
-- This is a TRANSLATION + LOCALIZATION, not a summary. Keep the same structure, headings, and depth.
-- Adapt examples and references to be natural in ${cfg.name} if needed
-- Keep crypto card brand names (Binance Card, Gnosis Pay, MetaMask Card, etc.) in their original English form
-- Translate markdown formatting exactly: ## headings stay as ## headings, bullet lists stay as bullet lists
-- Generate a localized URL slug (lowercase, hyphens, no accents, appropriate keywords for ${cfg.name})
 
 Return ONLY valid JSON (no markdown wrapper, no comments):
 {
@@ -94,33 +83,57 @@ Return ONLY valid JSON (no markdown wrapper, no comments):
   "meta_title": "string (60–70 chars, include main keyword in ${cfg.name})",
   "meta_description": "string (145–160 chars, compelling, includes keyword, in ${cfg.name})",
   "title": "string (H1 title in ${cfg.name})",
-  "excerpt": "string (2–3 sentence summary in ${cfg.name})",
-  "content": "string (full translated article in Markdown, same length and structure as source)"
+  "excerpt": "string (2–3 sentence summary in ${cfg.name})"
 }`;
 }
 
-/* ── Generate one translation ────────────────────────────────────────────── */
-async function generateTranslation(frPost, targetLang) {
-  const prompt = buildPrompt(frPost, targetLang);
+function buildContentPrompt(frPost, targetLang) {
+  const cfg = LANG_CONFIG[targetLang];
+  return `You are a professional crypto card expert and multilingual SEO writer for ${cfg.site}.
 
-  const msg = await anthropic.messages.create({
+Translate the following French blog article body into ${cfg.name}.
+- Tone: ${cfg.tone}
+- Full translation + localization — keep the same structure, headings, and depth
+- Keep crypto card brand names (Binance Card, Gnosis Pay, MetaMask Card, etc.) in English
+- Translate markdown formatting exactly (## headings, bullet lists, bold, etc.)
+- Output ONLY the translated markdown article body — no JSON, no wrapper, no preamble
+
+SOURCE ARTICLE BODY (French):
+${frPost.content}`;
+}
+
+/* ── Generate one translation (2 calls: meta + content) ─────────────────── */
+async function generateTranslation(frPost, targetLang) {
+  // Call 1: metadata (always small, no truncation risk)
+  const metaMsg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 8192,
-    messages: [{ role: 'user', content: prompt }],
+    max_tokens: 1024,
+    messages: [{ role: 'user', content: buildMetaPrompt(frPost, targetLang) }],
   });
 
-  const raw = msg.content[0].text.trim();
-  const jsonStr = raw
-    .replace(/^```json\s*/i, '')
-    .replace(/^```\s*/i, '')
-    .replace(/\s*```$/i, '');
+  const metaRaw = metaMsg.content[0].text.trim()
+    .replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/i, '');
 
+  let meta;
   try {
-    return JSON.parse(jsonStr);
+    meta = JSON.parse(metaRaw);
   } catch {
-    console.error(`  ❌ JSON parse error. Raw:\n${raw.slice(0, 400)}`);
-    throw new Error('JSON parse failed');
+    console.error(`  ❌ Meta JSON parse error. Raw:\n${metaRaw.slice(0, 300)}`);
+    throw new Error('Meta JSON parse failed');
   }
+
+  await sleep(600);
+
+  // Call 2: article content (long, but no JSON wrapping so truncation is recoverable)
+  const contentMsg = await anthropic.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 8192,
+    messages: [{ role: 'user', content: buildContentPrompt(frPost, targetLang) }],
+  });
+
+  const content = contentMsg.content[0].text.trim();
+
+  return { ...meta, content };
 }
 
 /* ── Check if translation exists ─────────────────────────────────────────── */

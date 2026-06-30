@@ -2325,7 +2325,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     },
   },
 
-  'gnosis': {
+  'brighty': {
     brandId: 'brighty',
     displayName: 'Brighty',
     website: 'https://brighty.app',
@@ -2475,7 +2475,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     },
   },
 
-  {
+  'gnosis': {
     brandId: 'gnosis',
     displayName: 'Gnosis Pay',
     website: 'https://gnosispay.com',
