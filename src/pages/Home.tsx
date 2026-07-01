@@ -311,6 +311,11 @@ export default function Home() {
               </Link>
             </div>
           </div>
+          {/* Hero card stack — desktop only. No priority/eager loading: the
+              container is hidden on mobile so we must not pre-load these images
+              on mobile. On desktop they are visible and load normally (lazy but
+              immediately in-viewport). The real LCP on desktop is heroCards[0]
+              which the browser will detect and load first anyway. */}
           <div className="relative h-[340px] sm:h-[400px] hidden lg:block">
             {heroCards[2] && (
               <div
@@ -333,7 +338,7 @@ export default function Home() {
                 className="absolute top-28 right-10"
                 style={{ transform: 'rotate(5deg)' }}
               >
-                <SmartCardImage card={heroCards[0]} size="lg" priority />
+                <SmartCardImage card={heroCards[0]} size="lg" />
               </div>
             )}
           </div>
@@ -386,7 +391,8 @@ export default function Home() {
                   <span className={l.color}>{l.title}</span>
                 </div>
                 <div className="flex justify-center mb-5">
-                  <SmartCardImage card={card} size="md" />
+                  {/* First podium card is the LCP element on mobile */}
+                  <SmartCardImage card={card} size="md" priority={idx === 0} />
                 </div>
                 <div className="font-display font-bold text-white text-lg">{card.name}</div>
                 <div className="text-xs text-slate-500 mb-4">{card.issuer}</div>

@@ -24,6 +24,21 @@ const SIZE_DIMS: Record<string, { width: number; height: number }> = {
   lg: { width: 340, height: 210 },
 };
 
+/**
+ * Converts a Supabase Storage URL to use the image transform API,
+ * which resizes and compresses images server-side.
+ * Falls back to the original URL for non-Supabase images.
+ */
+function getOptimizedImageUrl(url: string, width: number, quality = 80): string {
+  const match = url.match(
+    /^(https:\/\/[^/]+\.supabase\.co\/storage\/v1\/)object\/public\/(.+)$/
+  );
+  if (match) {
+    return `${match[1]}render/image/public/${match[2]}?width=${width}&quality=${quality}`;
+  }
+  return url;
+}
+
 export default function SmartCardImage({ card, size = 'md', tilt = false, className = '', priority = false }: Props) {
   const [errored, setErrored] = useState(false);
 
@@ -37,12 +52,14 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
   const alt =
     card.imageAlt || `Carte physique ${card.name} de ${card.issuer}, vue de face`;
 
+  const optimizedSrc = getOptimizedImageUrl(card.realCardImage, dims.width * 2);
+
   return (
     <div
       className={`${sizeClass} flex-none shrink-0 relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-bg-card ${className}`}
     >
       <img
-        src={card.realCardImage}
+        src={optimizedSrc}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
