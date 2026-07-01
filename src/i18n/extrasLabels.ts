@@ -42,6 +42,14 @@ const EXTRAS: Record<string, Record<Lang, string>> = {
   new_2025:            { fr: 'Nouveau en 2025',                de: 'Neu 2025',                       es: 'Nuevo en 2025',                   it: 'Nuovo nel 2025',                  en: 'New in 2025' },
   fca_licensed:        { fr: 'Agréé FCA (UK)',                 de: 'FCA-lizenziert (UK)',            es: 'Con licencia FCA (UK)',           it: 'Licenza FCA (UK)',                en: 'FCA Licensed (UK)' },
   stablecoin_only:     { fr: 'Uniquement stablecoins',         de: 'Nur Stablecoins',                es: 'Solo stablecoins',                it: 'Solo stablecoin',                 en: 'Stablecoin spending only' },
+  // feature_* keys used in DB extras field
+  feature_free_account:    { fr: 'Compte gratuit',            de: 'Kostenloses Konto',              es: 'Cuenta gratuita',                 it: 'Account gratuito',                en: 'Free Account' },
+  feature_cashback_boost:  { fr: 'Boost cashback',            de: 'Cashback-Boost',                 es: 'Aumento de reembolso',            it: 'Boost cashback',                  en: 'Cashback Boost' },
+  feature_instant_card:    { fr: 'Carte instantanée',         de: 'Sofortkarte',                    es: 'Tarjeta instantánea',             it: 'Carta istantanea',                en: 'Instant Card' },
+  feature_staking_rewards: { fr: 'Récompenses staking',       de: 'Staking-Prämien',                es: 'Recompensas de staking',          it: 'Premi staking',                   en: 'Staking Rewards' },
+  feature_lounge_access:   { fr: 'Accès lounge aéroport',     de: 'Flughafen-Lounge-Zugang',        es: 'Acceso a salón VIP',              it: 'Accesso lounge aeroporto',        en: 'Airport Lounge Access' },
+  feature_insurance:       { fr: 'Assurance voyage',          de: 'Reiseversicherung',              es: 'Seguro de viaje',                 it: 'Assicurazione viaggio',           en: 'Travel Insurance' },
+  feature_concierge:       { fr: 'Service conciergerie',      de: 'Concierge-Service',              es: 'Servicio de conserjería',         it: 'Servizio concierge',              en: 'Concierge Service' },
 };
 
 /** Converts an unknown key to readable text: self_custody → Self custody */

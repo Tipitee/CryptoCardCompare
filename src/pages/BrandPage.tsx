@@ -308,6 +308,25 @@ const REVIEW_LABEL: Record<string, string> = {
 
 const BASE_URL = 'https://topcryptocards.eu';
 
+// ── HQ localization ───────────────────────────────────────────────────────────
+// brand.hq is stored in French; translate it for non-FR pages
+const HQ_TRANSLATIONS: Record<string, Record<string, string>> = {
+  'Singapour':      { de: 'Singapur',            es: 'Singapur',            it: 'Singapore',           en: 'Singapore' },
+  'Royaume-Uni':    { de: 'Vereinigtes Königreich', es: 'Reino Unido',       it: 'Regno Unito',         en: 'United Kingdom' },
+  'Suisse':         { de: 'Schweiz',              es: 'Suiza',               it: 'Svizzera',            en: 'Switzerland' },
+  'Dubaï':          { de: 'Dubai',                es: 'Dubái',               it: 'Dubai',               en: 'Dubai' },
+  'États-Unis':     { de: 'Vereinigte Staaten',   es: 'Estados Unidos',      it: 'Stati Uniti',         en: 'United States' },
+  'Autriche':       { de: 'Österreich',           es: 'Austria',             it: 'Austria',             en: 'Austria' },
+  'Allemagne':      { de: 'Deutschland',          es: 'Alemania',            it: 'Germania',            en: 'Germany' },
+  'Pologne':        { de: 'Polen',                es: 'Polonia',             it: 'Polonia',             en: 'Poland' },
+  'Non communiqué': { de: 'Unbekannt',            es: 'Desconocido',         it: 'Sconosciuto',         en: 'N/A' },
+};
+
+function translateHq(hq: string, lang: string): string {
+  if (lang === 'fr') return hq;
+  return HQ_TRANSLATIONS[hq]?.[lang] ?? hq;
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function ratingColor(r: number) {
@@ -555,6 +574,7 @@ export default function BrandPage() {
               lang={lang}
               l={l}
               reviewsSlug={reviewsSlug}
+              primaryCard={cards[0]}
             />
           </div>
         ) : (
@@ -575,6 +595,7 @@ export default function BrandPage() {
                   lang={lang}
                   l={l}
                   reviewsSlug={reviewsSlug}
+                  primaryCard={cards[0]}
                 />
               </div>
             )}
@@ -649,7 +670,7 @@ export default function BrandPage() {
               <AboutChip
                 icon={<Building2 className="w-4 h-4 text-brand-accent" />}
                 label={l.hqLabel}
-                value={brand.hq}
+                value={translateHq(brand.hq, lang)}
               />
             )}
             {brand.regulation && (
@@ -968,18 +989,44 @@ function CompareRow({
 
 import type { CardReview } from '../data/cardReviews';
 
+// ── Helpers for ReviewMiniCard keyStats (lang-aware, from numeric card data) ──
+const UP_TO: Record<string, string> = { fr: "Jusqu'à", de: 'Bis zu', es: 'Hasta', it: 'Fino al', en: 'Up to' };
+const FREE: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
+const PER_YEAR: Record<string, string> = { fr: '/an', de: '/Jahr', es: '/año', it: '/anno', en: '/year' };
+
+function fmtCashbackMax(card: CryptoCard, lang: string): string {
+  const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
+  if (!pct) return '—';
+  const upTo = UP_TO[lang] ?? UP_TO.en;
+  return `${upTo} ${pct} %`;
+}
+
+function fmtAnnualFees(card: CryptoCard, lang: string): string {
+  const fees = card.annualFees ?? 0;
+  if (fees === 0) return FREE[lang] ?? FREE.en;
+  return `${fees} €${PER_YEAR[lang] ?? PER_YEAR.en}`;
+}
+
 function ReviewMiniCard({
-  review, seo, lang, l, reviewsSlug,
+  review, seo, lang, l, reviewsSlug, primaryCard,
 }: {
   review: CardReview;
   seo: { rating?: number; pros?: string[] };
   lang: string;
   l: (typeof L)[keyof typeof L];
   reviewsSlug: string;
+  primaryCard?: CryptoCard;
 }) {
   const rating = seo.rating ?? review.globalRating;
   const dateLocale = lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB';
   const updatedLabel = new Date(review.updatedAt).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
+
+  // Use numeric card data for keyStats when available (avoids FR-only strings)
+  const cashbackDisplay = primaryCard ? fmtCashbackMax(primaryCard, lang) : (lang === 'fr' ? review.keyStats.cashbackMax : '—');
+  const feesDisplay = primaryCard ? fmtAnnualFees(primaryCard, lang) : (lang === 'fr' ? review.keyStats.fraisAnnuels : '—');
+  const stakingBool = primaryCard
+    ? (primaryCard.stakingRequired ?? 0) > 0
+    : review.keyStats.stakingRequis.toLowerCase().includes('aucun') || review.keyStats.stakingRequis.toLowerCase().includes('non') ? false : true;
 
   return (
     <Link
@@ -1014,30 +1061,28 @@ function ReviewMiniCard({
         </div>
       </div>
 
-      {/* Key stats */}
+      {/* Key stats — computed from numeric card data (language-agnostic) */}
       <div className="p-5 flex-1 space-y-2">
         <div className="flex items-center justify-between text-sm">
           <span className="text-text-secondary">{l.cashbackLabel}</span>
-          <span className="font-semibold text-text-primary">{review.keyStats.cashbackMax}</span>
+          <span className="font-semibold text-text-primary">{cashbackDisplay}</span>
         </div>
         <div className="flex items-center justify-between text-sm">
           <span className="text-text-secondary">{l.stakingLabel}</span>
           <span className="font-semibold text-text-primary">
-            {review.keyStats.stakingRequis.toLowerCase().includes('aucun') || review.keyStats.stakingRequis.toLowerCase().includes('non')
-              ? l.stakingNo
-              : l.stakingYes}
+            {stakingBool ? l.stakingYes : l.stakingNo}
           </span>
         </div>
         <div className="flex items-center justify-between text-sm">
           <span className="text-text-secondary">{l.feesLabel}</span>
-          <span className="font-semibold text-text-primary">{review.keyStats.fraisAnnuels}</span>
+          <span className="font-semibold text-text-primary">{feesDisplay}</span>
         </div>
       </div>
 
-      {/* Top pros — use seo.pros if available (multilingual), else review.pros (FR) */}
+      {/* Top pros — use seo.pros if available (multilingual), else review.pros as fallback */}
       <div className="px-5 pb-4">
         <div className="space-y-1">
-          {(seo.pros ?? review.pros).slice(0, 2).map((pro, i) => (
+          {(seo.pros ?? review.pros ?? []).slice(0, 2).map((pro, i) => (
             <div key={i} className="flex items-start gap-1.5 text-xs text-text-secondary leading-snug">
               <CheckCircle className="w-3.5 h-3.5 text-green-400 shrink-0 mt-0.5" />
               <span className="line-clamp-2">{pro}</span>

@@ -9,7 +9,7 @@ import CryptoIcon from './CryptoIcon';
 import TrustBadge from './TrustBadge';
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 
 interface Props {
@@ -41,10 +41,10 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
   if (!card) return null;
   const isFav = favorites.includes(card.id);
 
-  // Only show valid market code keys — filter out internal meta keys (note_en, vip_only, etc.)
   const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
+  // Only show restriction for the CURRENT market — FR restriction on DE page is irrelevant
   const restrictionEntries = Object.entries(card.marketRestrictions)
-    .filter(([k, v]) => VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
+    .filter(([k, v]) => k === currentLang && VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
   const localNote: string | undefined =
     (card.marketRestrictions[`note_${currentLang}`] as string | undefined) ||
     (card.marketRestrictions['note_en'] as string | undefined) ||
@@ -108,7 +108,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                   className="flex items-start gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs"
                 >
                   <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                  <span><span className="font-semibold uppercase">{market}</span> — {reason}</span>
+                  <span><span className="font-semibold uppercase">{market}</span> — {translateRestriction(reason, currentLang)}</span>
                 </div>
               ))}
             </div>

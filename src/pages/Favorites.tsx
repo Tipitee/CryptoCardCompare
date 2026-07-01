@@ -6,7 +6,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import SmartCardImage from '../components/SmartCardImage';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
@@ -213,7 +213,7 @@ export default function Favorites() {
                   <div className="font-display font-semibold text-white group-hover/name:text-cyan-accent transition-colors">{c.name}</div>
                   <div className="text-xs text-slate-400">{c.issuer}</div>
                 </Link>
-                {c.badge && <span className="badge-accent">{c.badge}</span>}
+                {c.badge && <span className="badge-accent">{translateBadge(c.badge, lang)}</span>}
               </div>
 
               <dl className="grid grid-cols-2 gap-3 text-sm mb-4">

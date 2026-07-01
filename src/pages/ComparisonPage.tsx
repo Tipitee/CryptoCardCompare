@@ -234,11 +234,16 @@ export default function ComparisonPage() {
     if (!specificContent) return block;
     const langKey = lang as string;
     if (i === 0) {
-      const intro = (specificContent as Record<string, string>)[`${langKey}_intro`] ?? specificContent.fr_intro;
+      // Use lang-specific override first, then EN, then fall back to generic (avoid FR fallback for non-FR)
+      const intro = (specificContent as Record<string, string>)[`${langKey}_intro`]
+        ?? (langKey !== 'en' ? (specificContent as Record<string, string>)['en_intro'] : undefined)
+        ?? undefined;
       return intro ? { ...block, body: intro } : block;
     }
     if (i === genericBlocks.length - 1) {
-      const verdict = (specificContent as Record<string, string>)[`${langKey}_verdict`] ?? specificContent.fr_verdict;
+      const verdict = (specificContent as Record<string, string>)[`${langKey}_verdict`]
+        ?? (langKey !== 'en' ? (specificContent as Record<string, string>)['en_verdict'] : undefined)
+        ?? undefined;
       return verdict ? { ...block, body: verdict } : block;
     }
     return block;

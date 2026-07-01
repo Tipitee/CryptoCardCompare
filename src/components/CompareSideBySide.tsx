@@ -2,7 +2,7 @@ import { Check, ExternalLink, Minus, Plus, Star, Trophy, X } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -225,7 +225,7 @@ export default function CompareSideBySide({
                 {card.name}
               </div>
               <div className="text-xs text-slate-500 mt-0.5">{card.issuer}</div>
-              {card.badge && <span className="badge-accent mt-2">{card.badge}</span>}
+              {card.badge && <span className="badge-accent mt-2">{translateBadge(card.badge, lang)}</span>}
 
               <Link
                 to={`/${lang}/${cardSlug}/${card.id}`}

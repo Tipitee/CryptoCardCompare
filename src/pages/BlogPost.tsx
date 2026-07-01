@@ -10,6 +10,10 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 
+const HOME_LABEL: Record<string, string> = {
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+};
+
 const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR',
   de: 'de-DE',
@@ -182,7 +186,7 @@ export default function BlogPost() {
 
         <div className="absolute bottom-0 left-0 right-0 container-app pb-8">
           <Breadcrumb items={[
-            { label: 'Home', href: `/${lang}` },
+            { label: HOME_LABEL[lang] || 'Home', href: `/${lang}` },
             { label: 'Blog', href: getRoute('blog') },
             { label: post.title },
           ]} />

@@ -15,7 +15,103 @@ function premiumScore(pct: number): number {
   return Math.round(20 * Math.log2(1 + pct));
 }
 
-export function scoreCards(cards: CryptoCard[], a: QuizAnswers): ScoredCard[] {
+// ─── Localized strings ───────────────────────────────────────────────────────
+type Lang = 'fr' | 'de' | 'es' | 'it' | 'en';
+
+function getLabels(lang: string) {
+  const l = (lang as Lang) in LABELS ? (lang as Lang) : 'en';
+  return LABELS[l];
+}
+
+const LABELS: Record<Lang, {
+  highCashback:     (pct: number) => string;
+  cashbackNoStake:  (pct: number) => string;
+  noAnnualFees:     string;
+  noStaking:        string;
+  freeAtm:          string;
+  easyToUse:        string;
+  travelPerks:      string;
+  profitability:    (net: number) => string;
+  stakingRequired:  (amount: number) => string;
+  annualFees:       (amount: number) => string;
+  notAvailableFR:   string;
+  paidAtm:          string;
+}> = {
+  fr: {
+    highCashback:    (pct) => `Cashback élevé jusqu'à ${pct}%`,
+    cashbackNoStake: (pct) => `${pct}% de cashback sans staking requis`,
+    noAnnualFees:    'Aucun frais annuel',
+    noStaking:       'Aucun staking requis',
+    freeAtm:         'Retraits ATM gratuits',
+    easyToUse:       'Simple à prendre en main, sans staking ni frais',
+    travelPerks:     'Avantages voyage inclus',
+    profitability:   (net) => `Rentabilité positive pour votre budget (~${net} € net/an)`,
+    stakingRequired: (amt) => `Staking de ${amt} € requis pour le cashback maximum`,
+    annualFees:      (amt) => `Frais annuels de ${amt} €`,
+    notAvailableFR:  'Non disponible en France',
+    paidAtm:         'Retraits ATM payants',
+  },
+  de: {
+    highCashback:    (pct) => `Hoher Cashback bis zu ${pct}%`,
+    cashbackNoStake: (pct) => `${pct}% Cashback ohne Staking`,
+    noAnnualFees:    'Keine Jahresgebühr',
+    noStaking:       'Kein Staking erforderlich',
+    freeAtm:         'Kostenlose Geldautomaten-Abhebungen',
+    easyToUse:       'Einfach zu nutzen, kein Staking, keine Gebühren',
+    travelPerks:     'Reisevorteile inklusive',
+    profitability:   (net) => `Positiver ROI für Ihr Budget (~${net} € netto/Jahr)`,
+    stakingRequired: (amt) => `${amt} € Staking für maximalen Cashback erforderlich`,
+    annualFees:      (amt) => `Jahresgebühr ${amt} €`,
+    notAvailableFR:  'Nicht in Frankreich verfügbar',
+    paidAtm:         'Geldautomaten-Abhebungen kostenpflichtig',
+  },
+  es: {
+    highCashback:    (pct) => `Alto cashback hasta el ${pct}%`,
+    cashbackNoStake: (pct) => `${pct}% de cashback sin staking`,
+    noAnnualFees:    'Sin cuota anual',
+    noStaking:       'Sin staking requerido',
+    freeAtm:         'Retiradas en cajero gratuitas',
+    easyToUse:       'Fácil de usar, sin staking ni cuotas',
+    travelPerks:     'Ventajas de viaje incluidas',
+    profitability:   (net) => `Rentabilidad positiva para tu presupuesto (~${net} € neto/año)`,
+    stakingRequired: (amt) => `${amt} € de staking requeridos para el cashback máximo`,
+    annualFees:      (amt) => `Cuota anual de ${amt} €`,
+    notAvailableFR:  'No disponible en Francia',
+    paidAtm:         'Retiradas en cajero con comisión',
+  },
+  it: {
+    highCashback:    (pct) => `Alto cashback fino al ${pct}%`,
+    cashbackNoStake: (pct) => `${pct}% di cashback senza staking`,
+    noAnnualFees:    'Nessun costo annuale',
+    noStaking:       'Nessuno staking richiesto',
+    freeAtm:         'Prelievi ATM gratuiti',
+    easyToUse:       'Facile da usare, senza staking né costi',
+    travelPerks:     'Vantaggi viaggio inclusi',
+    profitability:   (net) => `Redditività positiva per il tuo budget (~${net} € netto/anno)`,
+    stakingRequired: (amt) => `${amt} € di staking richiesti per il cashback massimo`,
+    annualFees:      (amt) => `Costo annuale di ${amt} €`,
+    notAvailableFR:  'Non disponibile in Francia',
+    paidAtm:         'Prelievi ATM a pagamento',
+  },
+  en: {
+    highCashback:    (pct) => `High cashback up to ${pct}%`,
+    cashbackNoStake: (pct) => `${pct}% cashback with no staking required`,
+    noAnnualFees:    'No annual fee',
+    noStaking:       'No staking required',
+    freeAtm:         'Free ATM withdrawals',
+    easyToUse:       'Easy to use — no staking, no fees',
+    travelPerks:     'Travel perks included',
+    profitability:   (net) => `Positive ROI for your budget (~€${net} net/year)`,
+    stakingRequired: (amt) => `€${amt} staking required for maximum cashback`,
+    annualFees:      (amt) => `€${amt} annual fee`,
+    notAvailableFR:  'Not available in France',
+    paidAtm:         'ATM withdrawals are charged',
+  },
+};
+
+export function scoreCards(cards: CryptoCard[], a: QuizAnswers, lang = 'fr'): ScoredCard[] {
+  const lbl = getLabels(lang);
+
   const budget =
     a.budget === 'lt200'
       ? 150
@@ -57,19 +153,19 @@ export function scoreCards(cards: CryptoCard[], a: QuizAnswers): ScoredCard[] {
     // Premium potential with diminishing returns — avoids saturation at 100
     const premiumW = a.priority === 'cashback' ? 1.5 : 0.75;
     score += premiumScore(c.cashbackPremium) * premiumW;
-    if (c.cashbackPremium >= 3) reasons.push(`Cashback élevé jusqu'à ${c.cashbackPremium}%`);
+    if (c.cashbackPremium >= 3) reasons.push(lbl.highCashback(c.cashbackPremium));
 
     // Base quality signal: the real rate the user will actually get
     const baseW = a.priority === 'cashback' ? 7 : 3.5;
     score += effectiveCashback * baseW;
     if (effectiveCashback >= 2 && c.stakingRequired === 0) {
-      reasons.push(`${effectiveCashback}% de cashback sans staking requis`);
+      reasons.push(lbl.cashbackNoStake(effectiveCashback));
     }
 
     if (a.priority === 'zero_fees') {
       if (c.annualFees === 0) {
         score += 20;
-        reasons.push('Aucun frais annuel');
+        reasons.push(lbl.noAnnualFees);
       } else {
         score -= c.annualFees / 20;
       }
@@ -80,7 +176,7 @@ export function scoreCards(cards: CryptoCard[], a: QuizAnswers): ScoredCard[] {
     if (a.priority === 'staking_fair') {
       if (c.stakingRequired === 0) {
         score += 15;
-        reasons.push('Aucun staking requis');
+        reasons.push(lbl.noStaking);
       } else {
         score -= c.stakingRequired / 250;
       }
@@ -89,21 +185,21 @@ export function scoreCards(cards: CryptoCard[], a: QuizAnswers): ScoredCard[] {
     if (a.priority === 'withdrawals' || a.travel === 'often' || a.travel === 'regular') {
       if (c.freeWithdrawals) {
         score += 10;
-        if (a.priority === 'withdrawals') reasons.push('Retraits ATM gratuits');
+        if (a.priority === 'withdrawals') reasons.push(lbl.freeAtm);
       }
     }
 
     if (a.priority === 'ease' && (a.crypto_relation === 'beginner' || a.crypto_relation === 'basics')) {
       if (c.stakingRequired === 0 && c.annualFees === 0) {
         score += 12;
-        reasons.push('Simple à prendre en main, sans staking ni frais');
+        reasons.push(lbl.easyToUse);
       }
     }
 
     if (a.travel === 'often' || a.travel === 'regular') {
-      if (c.extras.some((e) => /salon|aéroport|voyage|assurance/i.test(e))) {
+      if (c.extras.some((e) => /salon|aéroport|voyage|assurance|lounge|airport|travel|insurance/i.test(e))) {
         score += 8;
-        reasons.push('Avantages voyage inclus');
+        reasons.push(lbl.travelPerks);
       }
     }
 
@@ -114,22 +210,20 @@ export function scoreCards(cards: CryptoCard[], a: QuizAnswers): ScoredCard[] {
     // Profitability calculated on the rate the user will actually receive
     const estAnnualCashback = budget * 12 * (effectiveCashback / 100);
     if (estAnnualCashback > c.annualFees + 20) {
-      reasons.push(
-        `Rentabilité positive pour votre budget (~${Math.round(estAnnualCashback - c.annualFees)} € net/an)`
-      );
+      reasons.push(lbl.profitability(Math.round(estAnnualCashback - c.annualFees)));
     }
 
     if (c.stakingRequired > 0) {
-      drawbacks.push(`Staking de ${c.stakingRequired} € requis pour le cashback maximum`);
+      drawbacks.push(lbl.stakingRequired(c.stakingRequired));
     }
     if (c.annualFees > 0) {
-      drawbacks.push(`Frais annuels de ${c.annualFees} €`);
+      drawbacks.push(lbl.annualFees(c.annualFees));
     }
     if (a.geo === 'france' && !c.availableFrance) {
-      drawbacks.push('Non disponible en France');
+      drawbacks.push(lbl.notAvailableFR);
     }
     if (!c.freeWithdrawals) {
-      drawbacks.push('Retraits ATM payants');
+      drawbacks.push(lbl.paidAtm);
     }
 
     score = Math.max(0, Math.round(score));

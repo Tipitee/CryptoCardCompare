@@ -165,7 +165,7 @@ export default function Recommendation() {
   const currentStep = STEPS[step];
   const currentValue = answers[currentStep.key];
 
-  const results = useMemo(() => scoreCards(cards, answers).slice(0, 3), [cards, answers]);
+  const results = useMemo(() => scoreCards(cards, answers, lang).slice(0, 3), [cards, answers, lang]);
 
   const handleSelect = (value: string) => {
     setQuizAnswer(currentStep.key, value as never);

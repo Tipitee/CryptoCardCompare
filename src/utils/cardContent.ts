@@ -625,18 +625,53 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
-function formatExtras(extras: string[], _lang: string): string {
-  const labels: Record<string, string> = {
-    lounge_access: "l'accès aux salons d'aéroport",
-    travel_insurance: "l'assurance voyage",
-    self_custody: "la garde de vos clés privées",
-    cashback_crypto: "le cashback en cryptos",
-    metal_card: "sa carte en métal",
-    concierge: "le service conciergerie",
+function formatExtras(extras: string[], lang: string): string {
+  const labels: Record<string, Record<string, string>> = {
+    fr: {
+      lounge_access: "l'accès aux salons d'aéroport",
+      travel_insurance: "l'assurance voyage",
+      self_custody: "la garde de vos clés privées",
+      cashback_crypto: "le cashback en cryptos",
+      metal_card: "sa carte en métal",
+      concierge: "le service conciergerie",
+    },
+    de: {
+      lounge_access: 'den Lounge-Zugang',
+      travel_insurance: 'die Reiseversicherung',
+      self_custody: 'die Verwahrung Ihrer privaten Schlüssel',
+      cashback_crypto: 'Cashback in Krypto',
+      metal_card: 'die Metallkarte',
+      concierge: 'den Concierge-Service',
+    },
+    es: {
+      lounge_access: 'el acceso a salas VIP de aeropuerto',
+      travel_insurance: 'el seguro de viaje',
+      self_custody: 'la custodia de tus claves privadas',
+      cashback_crypto: 'el cashback en crypto',
+      metal_card: 'la tarjeta de metal',
+      concierge: 'el servicio de conserjería',
+    },
+    it: {
+      lounge_access: "l'accesso alle lounge aeroportuali",
+      travel_insurance: "l'assicurazione viaggio",
+      self_custody: 'la custodia delle chiavi private',
+      cashback_crypto: 'il cashback in crypto',
+      metal_card: 'la carta in metallo',
+      concierge: 'il servizio di concierge',
+    },
+    en: {
+      lounge_access: 'airport lounge access',
+      travel_insurance: 'travel insurance',
+      self_custody: 'private key self-custody',
+      cashback_crypto: 'crypto cashback',
+      metal_card: 'metal card',
+      concierge: 'concierge service',
+    },
   };
+  const dict = labels[lang] ?? labels.en;
   return extras
     .slice(0, 3)
-    .map(e => labels[e] || e)
+    .map(e => dict[e] ?? e)
     .join(', ');
 }
 

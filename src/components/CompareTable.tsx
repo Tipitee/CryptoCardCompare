@@ -2,7 +2,7 @@ import { ArrowDown, ArrowUp, ArrowUpDown, Check, ExternalLink, Plus, Star, X } f
 import { Link } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -282,7 +282,7 @@ function Row({
                 onCardClick ? 'group-hover:text-cyan-accent' : ''
               } ${quickSlot === 'A' ? 'text-cyan-accent' : quickSlot === 'B' ? 'text-green-accent' : 'text-white'}`}>
                 {card.name}
-                {card.badge && <span className="badge-accent">{card.badge}</span>}
+                {card.badge && <span className="badge-accent">{translateBadge(card.badge, lang)}</span>}
               </div>
               <div className="text-xs text-slate-500">{card.issuer}</div>
             </div>

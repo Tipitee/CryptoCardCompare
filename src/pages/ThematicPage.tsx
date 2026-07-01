@@ -803,6 +803,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     crypto_guide_desc: { fr:'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches', de:'Bitcoin, Ethereum, XRP… 10 Krypto-Guides', es:'Bitcoin, Ethereum, XRP… 10 guías completas', it:'Bitcoin, Ethereum, XRP… 10 guide complete', en:'Bitcoin, Ethereum, XRP… 10 in-depth guides' },
     no_stake:          { fr:'Sans staking', de:'Kein Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
     virtual:           { fr:'Virtuelle', de:'Virtuell', es:'Virtual', it:'Virtuale', en:'Virtual' },
+    annual_suffix:     { fr:'€/an', de:'€/Jahr', es:'€/año', it:'€/anno', en:'€/year' },
   };
   const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[lang] || (L[key] as Record<string, string>)['en'] || '';
 
@@ -889,7 +890,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                     </span>
                   ) : null}
                   <span className="inline-flex items-center gap-1 bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">
-                    {(card.annual_fees || 0) > 0 ? `${card.annual_fees} €/an` : `🆓 ${t('free')}`}
+                    {(card.annual_fees || 0) > 0 ? `${card.annual_fees} ${t('annual_suffix')}` : `🆓 ${t('free')}`}
                   </span>
                   {(card.staking_required || 0) === 0 && (
                     <span className="inline-flex items-center gap-1 bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full">

@@ -20,7 +20,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -309,10 +309,11 @@ export default function CardDetail() {
 
   const isFav = favorites.includes(card.id);
 
-  // Only show valid market code keys as restriction badges (fr/de/es/it/en/uk/us)
-  // Keys like note_fr, note_en, vip_only, cashback_standard are meta-data, not market flags
+  // Only show the restriction for the CURRENT page language's market.
+  // Keys like note_fr, note_en, vip_only, cashback_standard are meta-data, not market flags.
+  // Showing FR restrictions on a DE page (and vice-versa) is confusing and irrelevant.
   const restrictionEntries = Object.entries(card.marketRestrictions)
-    .filter(([k, v]) => VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
+    .filter(([k, v]) => k === lang && VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
 
   // Localized card-level note (from note_fr, note_de, note_en…)
   const localNote: string | undefined =
@@ -411,7 +412,7 @@ export default function CardDetail() {
                     >
                       <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                       <span>
-                        <span className="font-semibold uppercase">{market}</span> — {reason}
+                        <span className="font-semibold uppercase">{market}</span> — {translateRestriction(reason, lang)}
                       </span>
                     </div>
                   ))}
