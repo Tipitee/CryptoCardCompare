@@ -117,7 +117,7 @@ export default function Layout() {
 
           {/* Brand — logo + text, links to home */}
           <NavLink to={getRoute('')} className="flex items-center gap-2.5 shrink-0">
-            <img src="/logo.png" alt="TopCryptoCards" className="h-10 w-auto" width="40" height="40" loading="eager" fetchPriority="high" />
+            <img src="/logo-small.png" alt="TopCryptoCards" className="h-10 w-auto" width="40" height="40" loading="eager" fetchPriority="high" />
             <span className="font-display font-bold text-white text-lg tracking-tight leading-none">
               TopCrypto<span className="text-cyan-accent">Cards</span>
             </span>
@@ -200,7 +200,7 @@ export default function Layout() {
             {/* Panel header */}
             <div className="flex items-center justify-between px-4 py-4 border-b border-bg-border shrink-0">
               <NavLink to={getRoute('')} className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-                <img src="/logo.png" alt="TopCryptoCards" className="h-8 w-auto" />
+                <img src="/logo-small.png" alt="TopCryptoCards" className="h-8 w-auto" />
                 <span className="font-display font-bold text-white text-base">
                   TopCrypto<span className="text-cyan-accent">Cards</span>
                 </span>
@@ -277,7 +277,7 @@ export default function Layout() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-8">
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
               <div className="flex items-center gap-2 mb-3">
-                <img src="/logo.png" alt="TopCryptoCards" className="h-8 w-auto" />
+                <img src="/logo-small.png" alt="TopCryptoCards" className="h-8 w-auto" />
                 <span className="font-display font-semibold text-white">
                   TopCryptoCards
                 </span>

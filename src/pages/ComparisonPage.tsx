@@ -290,6 +290,7 @@ export default function ComparisonPage() {
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
+      inLanguage: lang,
       mainEntity: specificContent.faq.map((item: { q: string; a: string }) => ({
         '@type': 'Question',
         name: item.q,

@@ -410,6 +410,7 @@ export default function BrandPage() {
     const itemListSchema = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
+      inLanguage: lang,
       name: brand.displayName,
       numberOfItems: cards.length,
       itemListElement: cards.map((c, i) => ({
@@ -427,6 +428,7 @@ export default function BrandPage() {
       faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
+        inLanguage: lang,
         mainEntity: faqs.map(({ q, a }) => ({
           '@type': 'Question',
           name: q,

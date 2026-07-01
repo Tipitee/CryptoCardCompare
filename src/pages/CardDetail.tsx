@@ -211,6 +211,7 @@ export default function CardDetail() {
       '@context': 'https://schema.org',
       '@type': 'FinancialProduct',
       name: card.name,
+      inLanguage: lang,
       description: article?.excerpt || seoDesc,
       url: `https://topcryptocards.eu/${lang}/${CARD_SEGMENT[lang] || 'cards'}/${card.id}`,
       image: card.realCardImage || '',

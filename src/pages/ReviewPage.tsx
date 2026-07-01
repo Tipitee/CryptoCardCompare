@@ -309,6 +309,7 @@ export default function ReviewPage() {
   const reviewSchema = {
     '@context': 'https://schema.org',
     '@type': 'Review',
+    inLanguage: lang,
     name: review.metaTitle,
     reviewBody: review.verdict,
     reviewRating: { '@type': 'Rating', ratingValue: review.globalRating, bestRating: 5, worstRating: 1 },
