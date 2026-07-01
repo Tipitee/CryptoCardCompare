@@ -25,18 +25,13 @@ const SIZE_DIMS: Record<string, { width: number; height: number }> = {
 };
 
 /**
- * Converts a Supabase Storage URL to use the image transform API,
- * which resizes and compresses images server-side.
- * Falls back to the original URL for non-Supabase images.
+ * Proxies any image through Netlify Image CDN, which resizes, compresses,
+ * and serves WebP automatically. Available on all Netlify plans at no extra cost.
+ * Path: /.netlify/images?url=<encoded>&w=<px>&q=<0-100>
  */
 function getOptimizedImageUrl(url: string, width: number, quality = 80): string {
-  const match = url.match(
-    /^(https:\/\/[^/]+\.supabase\.co\/storage\/v1\/)object\/public\/(.+)$/
-  );
-  if (match) {
-    return `${match[1]}render/image/public/${match[2]}?width=${width}&quality=${quality}`;
-  }
-  return url;
+  if (!url) return url;
+  return `/.netlify/images?url=${encodeURIComponent(url)}&w=${width}&q=${quality}&fm=webp`;
 }
 
 export default function SmartCardImage({ card, size = 'md', tilt = false, className = '', priority = false }: Props) {
