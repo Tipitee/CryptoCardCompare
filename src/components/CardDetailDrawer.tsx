@@ -11,6 +11,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 
 interface Props {
   card: CryptoCard | null;
@@ -206,6 +207,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary flex-1"
+                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_drawer', currentLang)}
               >
                 {t('common:quiz_see_offer')}
                 <ExternalLink className="w-4 h-4" />

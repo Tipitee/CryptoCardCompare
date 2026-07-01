@@ -8,6 +8,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
@@ -266,6 +267,7 @@ export default function Favorites() {
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors"
+                  onClick={() => trackAffiliateClick(c.name, c.issuer, getAffiliateLink(c), 'favorites', lang)}
                 >
                   {ui.see_offer}
                   <ExternalLink className="w-3 h-3" />

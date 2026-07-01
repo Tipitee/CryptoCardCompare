@@ -21,6 +21,7 @@ import CardDetailDrawer from '../components/CardDetailDrawer';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById } from '../lib/supabase';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -435,6 +436,7 @@ export default function ComparisonPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-ghost border border-bg-border text-xs"
+                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'comparison', lang)}
               >
                 {t('comparison_offer')}
                 <ExternalLink className="w-3 h-3" />

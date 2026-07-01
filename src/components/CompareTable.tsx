@@ -4,6 +4,7 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
@@ -372,7 +373,7 @@ function Row({
             href={getAffiliateLink(card)}
             target="_blank"
             rel="noopener noreferrer sponsored"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'compare_tool', lang); }}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
             {OFFER_L[lang] ?? OFFER_L.en}

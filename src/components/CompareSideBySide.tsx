@@ -4,6 +4,7 @@ import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
@@ -239,6 +240,7 @@ export default function CompareSideBySide({
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="mt-2 btn-secondary w-full text-xs"
+                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'compare_tool', lang)}
               >
                 {SEE_OFFER_LABEL[lang] ?? SEE_OFFER_LABEL.en}
                 <ExternalLink className="w-3.5 h-3.5" />

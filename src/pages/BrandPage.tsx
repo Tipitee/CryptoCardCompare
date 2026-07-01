@@ -7,6 +7,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { getBrandMeta } from '../data/brandConfig';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
@@ -745,6 +746,7 @@ export default function BrandPage() {
                         target="_blank"
                         rel="noopener noreferrer nofollow"
                         className="inline-block bg-brand-accent text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:opacity-90 transition-opacity"
+                        onClick={() => trackAffiliateClick(c.name, c.issuer, getAffiliateLink(c), 'brand_page', lang)}
                       >
                         {l.seeOffer}
                       </a>
@@ -928,6 +930,7 @@ function TierCard({
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="flex-1 text-center bg-brand-accent text-white text-sm font-semibold py-2 rounded-xl hover:opacity-90 transition-opacity"
+          onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'brand_page', lang)}
         >
           {l.seeOffer}
         </a>

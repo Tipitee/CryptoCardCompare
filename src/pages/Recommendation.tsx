@@ -11,6 +11,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { saveQuizResult } from '../lib/supabase';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
@@ -438,6 +439,7 @@ export default function Recommendation() {
                     target="_blank"
                     rel="noopener noreferrer sponsored"
                     className="btn-ghost border border-bg-border"
+                    onClick={() => trackAffiliateClick(r.card.name, r.card.issuer, getAffiliateLink(r.card), 'recommendation', lang)}
                   >
                     {t('quiz_see_offer')}
                   </a>

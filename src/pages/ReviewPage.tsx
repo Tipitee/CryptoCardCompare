@@ -8,6 +8,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const CARD_SEGMENT: Record<string, string> = {
@@ -390,6 +391,7 @@ export default function ReviewPage() {
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="btn-primary w-full justify-center flex items-center gap-2 mb-3"
+                onClick={() => trackAffiliateClick(review.cardName, review.issuer, getAffiliateLink(review), 'review', lang)}
               >
                 {l.getCard}
                 <ExternalLink className="w-4 h-4" />
@@ -516,6 +518,7 @@ export default function ReviewPage() {
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 className="btn-primary inline-flex items-center gap-2 mt-5"
+                onClick={() => trackAffiliateClick(review.cardName, review.issuer, getAffiliateLink(review), 'review', lang)}
               >
                 {l.getCard}
                 <ExternalLink className="w-4 h-4" />
@@ -561,6 +564,7 @@ export default function ReviewPage() {
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="btn-primary w-full justify-center flex items-center gap-2 mt-5 text-sm"
+                  onClick={() => trackAffiliateClick(review.cardName, review.issuer, getAffiliateLink(review), 'review', lang)}
                 >
                   {l.getCard}
                   <ExternalLink className="w-3.5 h-3.5" />

@@ -22,6 +22,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
+import { trackAffiliateClick } from '../utils/analytics';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
@@ -439,6 +440,7 @@ export default function CardDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"
+                  onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_detail', lang)}
                 >
                   {t('common:quiz_see_offer')}
                   <ExternalLink className="w-4 h-4" />
@@ -790,6 +792,7 @@ export default function CardDetail() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full"
+                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_detail', lang)}
               >
                 {t('common:quiz_see_offer')}
                 <ExternalLink className="w-4 h-4" />
