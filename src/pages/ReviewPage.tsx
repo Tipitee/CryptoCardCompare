@@ -421,6 +421,15 @@ export default function ReviewPage() {
     <div className="animate-fade-in">
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: l.home, item: `https://topcryptocards.eu/${lang}` },
+          { '@type': 'ListItem', position: 2, name: l.breadcrumbReviews, item: `https://topcryptocards.eu/${lang}/${reviewSlug}` },
+          { '@type': 'ListItem', position: 3, name: review.cardName, item: `https://topcryptocards.eu/${lang}/${reviewSlug}/${review.slug}` },
+        ],
+      }) }} />
 
       {/* Hero */}
       <div className="bg-gradient-to-br from-bg-elevated via-bg-card to-bg border-b border-bg-border">

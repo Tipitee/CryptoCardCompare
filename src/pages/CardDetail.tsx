@@ -283,6 +283,27 @@ export default function CardDetail() {
     return () => { document.getElementById('schema-faq-card')?.remove(); };
   }, [card, lang]);
 
+  // ── BreadcrumbList schema ────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!card) return;
+    const BASE = 'https://topcryptocards.eu';
+    const seg = CARD_SEGMENT[lang] || 'cards';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: HOME_LABEL[lang] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: card.name, item: `${BASE}/${lang}/${seg}/${card.id}` },
+      ],
+    };
+    document.getElementById('schema-card-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-card-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-card-breadcrumb')?.remove(); };
+  }, [card, lang]);
+
   if (loading) {
     return (
       <div className="container-app py-12 max-w-4xl">

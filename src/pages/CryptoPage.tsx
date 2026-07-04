@@ -168,6 +168,27 @@ export default function CryptoPage() {
     return () => { document.getElementById('schema-faq-crypto')?.remove(); };
   }, [copy, sym, lang]);
 
+  // ── BreadcrumbList schema ────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const cryptoName = CRYPTO_META[sym]?.name ?? sym.toUpperCase();
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: HOME_LABEL[lang] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: CRYPTO_LABEL[lang] ?? 'Cryptocurrencies', item: `${BASE}/${lang}/cryptos` },
+        { '@type': 'ListItem', position: 3, name: cryptoName, item: `${BASE}/${lang}/cryptos/${sym}` },
+      ],
+    };
+    document.getElementById('schema-cryptopage-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-cryptopage-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-cryptopage-breadcrumb')?.remove(); };
+  }, [lang, sym]);
+
   if (!meta || !copy) {
     return (
       <div className="container-app py-20 text-center text-slate-400">
