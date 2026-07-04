@@ -449,7 +449,18 @@ export default function BrandPage() {
       ],
     };
 
-    ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb'].forEach(id => document.getElementById(id)?.remove());
+    // Organization — brand entity
+    const orgSchema: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: brand.displayName,
+      url: brand.website,
+      description: seo.description,
+      ...(brand.founded > 0 ? { foundingDate: String(brand.founded) } : {}),
+      ...(brand.twitter ? { sameAs: [`https://twitter.com/${brand.twitter}`] } : {}),
+    };
+
+    ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb', 'schema-brand-org'].forEach(id => document.getElementById(id)?.remove());
 
     const listEl = document.createElement('script');
     listEl.id = 'schema-brand-itemlist';
@@ -471,10 +482,16 @@ export default function BrandPage() {
       document.head.appendChild(faqEl);
     }
 
+    const orgEl = document.createElement('script');
+    orgEl.id = 'schema-brand-org';
+    orgEl.type = 'application/ld+json';
+    orgEl.textContent = JSON.stringify(orgSchema);
+    document.head.appendChild(orgEl);
+
     return () => {
-      ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb'].forEach(id => document.getElementById(id)?.remove());
+      ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb', 'schema-brand-org'].forEach(id => document.getElementById(id)?.remove());
     };
-  }, [brandId, cards, seo, lang, cardsSlug, brand.displayName]);
+  }, [brandId, cards, seo, lang, cardsSlug, brand.displayName, brand.website, brand.founded, brand.twitter]);
 
   // ── Loading ────────────────────────────────────────────────────────────────
   if (loading) {

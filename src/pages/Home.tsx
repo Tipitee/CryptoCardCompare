@@ -204,6 +204,12 @@ export default function Home() {
       '@type': 'Organization',
       name: 'TopCryptoCards',
       url: BASE,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${BASE}/logo.png`,
+        width: 200,
+        height: 60,
+      },
       description: homeSeo.desc,
       sameAs: [],
     };

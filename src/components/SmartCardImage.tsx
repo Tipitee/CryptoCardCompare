@@ -44,8 +44,16 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
     return <CardVisual card={card} size={size} tilt={tilt} className={`flex-none shrink-0 ${className}`} />;
   }
 
-  const alt =
-    card.imageAlt || `Carte physique ${card.name} de ${card.issuer}, vue de face`;
+  const pageLang = window.location.pathname.split('/')[1] || 'fr';
+  const ALT_TPL: Record<string, (n: string, i: string) => string> = {
+    fr: (n, i) => `Carte physique ${n} de ${i}, vue de face`,
+    de: (n, i) => `Physische ${n} Karte von ${i}, Vorderseite`,
+    es: (n, i) => `Tarjeta física ${n} de ${i}, vista frontal`,
+    it: (n, i) => `Carta fisica ${n} di ${i}, vista frontale`,
+    en: (n, i) => `${n} physical card by ${i}, front view`,
+  };
+  const altFn = ALT_TPL[pageLang] ?? ALT_TPL.en;
+  const alt = card.imageAlt || altFn(card.name, card.issuer);
 
   const optimizedSrc = getOptimizedImageUrl(card.realCardImage, dims.width * 2);
 

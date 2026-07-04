@@ -11,6 +11,64 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
   en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
 };
+const CRYPTOLIST_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { emoji: string; label: string; slug: string }[] }> = {
+  fr: {
+    h2: 'Crypto et carte bancaire : ce que vous devez savoir',
+    body: `Le choix d'une carte crypto dépend en grande partie des cryptomonnaies que vous détenez ou souhaitez utiliser. Certaines cartes comme la Crypto.com Obsidian n'acceptent que des cryptos natives (CRO, BTC, ETH) pour les dépenses cashback, tandis que d'autres comme la Gnosis Pay fonctionnent avec des stablecoins (USDC, EURE) pour une utilisation quotidienne sans volatilité. Bitcoin reste la crypto la plus universellement supportée, mais Ethereum et les stablecoins dominent pour les paiements en ligne. Avant de choisir votre carte, vérifiez quelles cryptos sont acceptées pour le staking, quelles conversions sont automatiques et si des frais de change s'appliquent. Nos fiches individuelles pour chaque crypto vous indiquent précisément quelles cartes les supportent.`,
+    related: 'Trouver la bonne carte',
+    links: [
+      { emoji: '⭐', label: 'Meilleures cartes', slug: 'best' },
+      { emoji: '💰', label: 'Cartes cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Sans frais', slug: 'noFees' },
+      { emoji: '🔓', label: 'Sans staking', slug: 'noStaking' },
+    ],
+  },
+  de: {
+    h2: 'Krypto und Bankkarte: Was Sie wissen müssen',
+    body: `Die Wahl einer Krypto-Karte hängt stark davon ab, welche Kryptowährungen Sie halten oder verwenden möchten. Einige Karten wie die Crypto.com Obsidian akzeptieren nur native Kryptos (CRO, BTC, ETH) für Cashback-Ausgaben, während andere wie Gnosis Pay mit Stablecoins (USDC, EURE) für den täglichen Gebrauch ohne Volatilität funktionieren. Bitcoin bleibt die am universellsten unterstützte Krypto, aber Ethereum und Stablecoins dominieren bei Online-Zahlungen. Prüfen Sie vor der Kartenwahl, welche Kryptos für Staking akzeptiert werden, welche Konvertierungen automatisch erfolgen und ob Wechselgebühren anfallen. Unsere individuellen Krypto-Guides zeigen genau, welche Karten sie unterstützen.`,
+    related: 'Die richtige Karte finden',
+    links: [
+      { emoji: '⭐', label: 'Beste Karten', slug: 'best' },
+      { emoji: '💰', label: 'Cashback-Karten', slug: 'cashback' },
+      { emoji: '🆓', label: 'Ohne Gebühren', slug: 'noFees' },
+      { emoji: '🔓', label: 'Ohne Staking', slug: 'noStaking' },
+    ],
+  },
+  es: {
+    h2: 'Cripto y tarjeta bancaria: lo que debes saber',
+    body: `La elección de una tarjeta crypto depende en gran medida de las criptomonedas que posees o deseas utilizar. Algunas tarjetas como la Crypto.com Obsidian solo aceptan criptos nativas (CRO, BTC, ETH) para el cashback, mientras que otras como Gnosis Pay funcionan con stablecoins (USDC, EURE) para uso diario sin volatilidad. Bitcoin sigue siendo la cripto más universalmente compatible, pero Ethereum y los stablecoins dominan para pagos online. Antes de elegir tu tarjeta, comprueba qué criptos se aceptan para el staking, qué conversiones son automáticas y si se aplican comisiones de cambio. Nuestras fichas individuales para cada cripto indican exactamente qué tarjetas las soportan.`,
+    related: 'Encontrar la tarjeta adecuada',
+    links: [
+      { emoji: '⭐', label: 'Mejores tarjetas', slug: 'best' },
+      { emoji: '💰', label: 'Tarjetas cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Sin comisiones', slug: 'noFees' },
+      { emoji: '🔓', label: 'Sin staking', slug: 'noStaking' },
+    ],
+  },
+  it: {
+    h2: 'Cripto e carta bancaria: cosa devi sapere',
+    body: `La scelta di una carta crypto dipende in gran parte dalle criptovalute che detieni o desideri utilizzare. Alcune carte come la Crypto.com Obsidian accettano solo cripto native (CRO, BTC, ETH) per il cashback, mentre altre come Gnosis Pay funzionano con stablecoin (USDC, EURE) per l'uso quotidiano senza volatilità. Bitcoin rimane la cripto più universalmente supportata, ma Ethereum e gli stablecoin dominano per i pagamenti online. Prima di scegliere la tua carta, verifica quali cripto sono accettate per lo staking, quali conversioni sono automatiche e se si applicano commissioni di cambio. Le nostre schede individuali per ogni cripto indicano esattamente quali carte le supportano.`,
+    related: 'Trovare la carta giusta',
+    links: [
+      { emoji: '⭐', label: 'Migliori carte', slug: 'best' },
+      { emoji: '💰', label: 'Carte cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Senza costi', slug: 'noFees' },
+      { emoji: '🔓', label: 'Senza staking', slug: 'noStaking' },
+    ],
+  },
+  en: {
+    h2: 'Crypto and payment card: what you need to know',
+    body: `Choosing a crypto card depends heavily on which cryptocurrencies you hold or plan to use. Some cards like the Crypto.com Obsidian only accept native cryptos (CRO, BTC, ETH) for cashback spending, while others like Gnosis Pay work with stablecoins (USDC, EURE) for everyday use without volatility. Bitcoin remains the most universally supported crypto, but Ethereum and stablecoins dominate for online payments. Before choosing your card, check which cryptos are accepted for staking, which conversions happen automatically, and whether exchange fees apply. Our individual guides for each crypto tell you exactly which cards support them.`,
+    related: 'Find the right card',
+    links: [
+      { emoji: '⭐', label: 'Best cards', slug: 'best' },
+      { emoji: '💰', label: 'Cashback cards', slug: 'cashback' },
+      { emoji: '🆓', label: 'No fees', slug: 'noFees' },
+      { emoji: '🔓', label: 'No staking', slug: 'noStaking' },
+    ],
+  },
+};
+
 const GUIDES_TITLE: Record<string, string> = {
   fr: 'Guides thématiques', de: 'Thematische Ratgeber', es: 'Guías temáticas', it: 'Guide tematiche', en: 'Thematic Guides',
 };
@@ -211,6 +269,30 @@ export default function CryptoList() {
           </Link>
         ))}
       </div>
+
+      {/* Bloc éditorial — thin content fix + liens thématiques */}
+      {(() => {
+        const ed = CRYPTOLIST_EDITORIAL[lang] ?? CRYPTOLIST_EDITORIAL.en;
+        const slugs = THEMATIC_SLUGS[lang] ?? THEMATIC_SLUGS.en;
+        return (
+          <div className="mt-14 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ emoji, label, slug }) => {
+                const href = slugs[slug as keyof typeof slugs];
+                if (!href) return null;
+                return (
+                  <Link key={slug} to={`/${lang}/${href}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

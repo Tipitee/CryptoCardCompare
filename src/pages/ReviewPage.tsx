@@ -379,8 +379,9 @@ export default function ReviewPage() {
     '@context': 'https://schema.org',
     '@type': 'Review',
     inLanguage: lang,
-    name: review.metaTitle,
-    reviewBody: review.verdict,
+    name: i18n?.metaTitle ?? review.metaTitle,
+    reviewBody: i18n?.verdict ?? review.verdict,
+    url: `https://topcryptocards.eu/${lang}/${reviewSlug}/${review.slug}`,
     reviewRating: { '@type': 'Rating', ratingValue: review.globalRating, bestRating: 5, worstRating: 1 },
     author: { '@type': 'Organization', name: 'TopCryptoCards' },
     itemReviewed: {
@@ -396,7 +397,8 @@ export default function ReviewPage() {
       },
     },
     datePublished: review.updatedAt,
-    publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
+    dateModified: review.updatedAt,
+    publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png' } },
   };
 
   const breakdownItems = [

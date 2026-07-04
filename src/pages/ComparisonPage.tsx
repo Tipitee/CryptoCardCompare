@@ -193,6 +193,74 @@ function ScoreBar({ score, max = 100 }: { score: number; max?: number }) {
   );
 }
 
+// ─── Editorial bloc ───────────────────────────────────────────────────────────
+
+const COMP_THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },
+  de: { best: 'beste-krypto-karte', cashback: 'krypto-karte-cashback', noFees: 'krypto-karte-ohne-jahresgebuehr', noStaking: 'krypto-karte-ohne-staking' },
+  es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
+  it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
+  en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+};
+
+const COMPARISON_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { emoji: string; label: string; slug: string }[] }> = {
+  fr: {
+    h2: 'Comment choisir entre deux cartes crypto ?',
+    body: `Comparer deux cartes crypto ne se résume pas à regarder le taux de cashback affiché. Il faut tenir compte du montant de staking requis pour débloquer ce taux, des frais annuels qui viennent éroder le rendement net, des limites de dépenses quotidiennes et de la disponibilité géographique de la carte. Par exemple, une carte offrant 5 % de cashback mais nécessitant 10 000 € de staking peut être moins intéressante qu'une carte à 2 % sans staking requis, selon votre profil. Notre comparatif met en regard tous ces critères pour vous aider à prendre la meilleure décision. Vous pouvez également utiliser notre simulateur de cashback pour calculer votre rendement estimé selon vos habitudes de dépenses.`,
+    related: 'Explorer par critère',
+    links: [
+      { emoji: '⭐', label: 'Meilleures cartes', slug: 'best' },
+      { emoji: '💰', label: 'Cartes cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Sans frais annuels', slug: 'noFees' },
+      { emoji: '🔓', label: 'Sans staking requis', slug: 'noStaking' },
+    ],
+  },
+  de: {
+    h2: 'Wie wählt man zwischen zwei Krypto-Karten?',
+    body: `Der Vergleich zweier Krypto-Karten beschränkt sich nicht auf den angezeigten Cashback-Satz. Es ist wichtig, den erforderlichen Staking-Betrag, die jährlichen Gebühren, die täglichen Ausgabenlimits und die geografische Verfügbarkeit zu berücksichtigen. Eine Karte mit 5 % Cashback, die aber 10.000 € Staking erfordert, kann je nach Profil weniger interessant sein als eine Karte mit 2 % ohne Staking-Anforderung. Unser Vergleich stellt all diese Kriterien gegenüber, damit Sie die beste Entscheidung treffen können. Sie können auch unseren Cashback-Simulator nutzen, um Ihre geschätzte Rendite basierend auf Ihren Ausgabengewohnheiten zu berechnen.`,
+    related: 'Nach Kriterium suchen',
+    links: [
+      { emoji: '⭐', label: 'Beste Karten', slug: 'best' },
+      { emoji: '💰', label: 'Cashback-Karten', slug: 'cashback' },
+      { emoji: '🆓', label: 'Ohne Jahresgebühr', slug: 'noFees' },
+      { emoji: '🔓', label: 'Ohne Staking', slug: 'noStaking' },
+    ],
+  },
+  es: {
+    h2: '¿Cómo elegir entre dos tarjetas crypto?',
+    body: `Comparar dos tarjetas crypto no se reduce a mirar el porcentaje de cashback mostrado. Hay que tener en cuenta el importe de staking requerido para desbloquear ese porcentaje, las comisiones anuales que erosionan el rendimiento neto, los límites de gasto diario y la disponibilidad geográfica de la tarjeta. Por ejemplo, una tarjeta que ofrece un 5 % de cashback pero requiere 10.000 € en staking puede ser menos interesante que una tarjeta al 2 % sin staking requerido, según tu perfil. Nuestra comparativa pone frente a frente todos estos criterios para ayudarte a tomar la mejor decisión. También puedes usar nuestro simulador de cashback para calcular tu rendimiento estimado según tus hábitos de gasto.`,
+    related: 'Explorar por criterio',
+    links: [
+      { emoji: '⭐', label: 'Mejores tarjetas', slug: 'best' },
+      { emoji: '💰', label: 'Tarjetas cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Sin comisiones anuales', slug: 'noFees' },
+      { emoji: '🔓', label: 'Sin staking requerido', slug: 'noStaking' },
+    ],
+  },
+  it: {
+    h2: 'Come scegliere tra due carte crypto?',
+    body: `Confrontare due carte crypto non si riduce a guardare il tasso di cashback indicato. Bisogna considerare l'importo di staking richiesto per sbloccare quel tasso, le commissioni annuali che erodono il rendimento netto, i limiti di spesa giornalieri e la disponibilità geografica della carta. Ad esempio, una carta che offre il 5% di cashback ma richiede 10.000 € di staking può essere meno conveniente di una carta al 2% senza staking, a seconda del profilo. Il nostro confronto mette a paragone tutti questi criteri per aiutarti a prendere la decisione migliore. Puoi anche usare il nostro simulatore di cashback per calcolare il tuo rendimento stimato in base alle tue abitudini di spesa.`,
+    related: 'Esplora per criterio',
+    links: [
+      { emoji: '⭐', label: 'Migliori carte', slug: 'best' },
+      { emoji: '💰', label: 'Carte cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Senza commissioni annuali', slug: 'noFees' },
+      { emoji: '🔓', label: 'Senza staking', slug: 'noStaking' },
+    ],
+  },
+  en: {
+    h2: 'How to choose between two crypto cards?',
+    body: `Comparing two crypto cards is not just about looking at the cashback rate on the label. You need to factor in the staking amount required to unlock that rate, the annual fees that eat into net returns, the daily spending limits, and the geographic availability of the card. For instance, a card offering 5% cashback but requiring €10,000 in staking may be less attractive than a 2% card with no staking requirement, depending on your profile. Our comparison puts all these criteria side by side to help you make the best decision. You can also use our cashback simulator to calculate your estimated return based on your spending habits.`,
+    related: 'Explore by criterion',
+    links: [
+      { emoji: '⭐', label: 'Best cards', slug: 'best' },
+      { emoji: '💰', label: 'Cashback cards', slug: 'cashback' },
+      { emoji: '🆓', label: 'No annual fees', slug: 'noFees' },
+      { emoji: '🔓', label: 'No staking required', slug: 'noStaking' },
+    ],
+  },
+};
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ComparisonPage() {
@@ -258,6 +326,17 @@ export default function ComparisonPage() {
     return block;
   });
 
+  // ── Canonical slug: always alphabetical order to prevent A-vs-B / B-vs-A duplicates ──
+  const canonicalSlug = (() => {
+    const vsIdx = (slug ?? '').indexOf('-vs-');
+    if (vsIdx < 0) return slug ?? '';
+    const a = (slug ?? '').slice(0, vsIdx);
+    const b = (slug ?? '').slice(vsIdx + 4);
+    return [a, b].sort().join('-vs-');
+  })();
+  const comparisonRt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+  const canonicalUrl = `https://topcryptocards.eu/${lang}/${comparisonRt.comparisons ?? 'compare'}/${canonicalSlug}`;
+
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
     title: card1 && card2
@@ -266,6 +345,7 @@ export default function ComparisonPage() {
     description: card1 && card2
       ? comparisonSeo.desc(card1.name, card2.name)
       : '',
+    canonical: canonicalUrl,
     lang,
   });
 
@@ -314,6 +394,32 @@ export default function ComparisonPage() {
     document.head.appendChild(el);
     return () => { document.getElementById('schema-comparison-faq')?.remove(); };
   }, [card1?.id, card2?.id, localFaq]);
+
+  // ── Schema.org BreadcrumbList ─────────────────────────────────────────────
+  useEffect(() => {
+    if (!card1 || !card2) return;
+    const BASE = 'https://topcryptocards.eu';
+    const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+    const compSlug = rt.comparisons ?? 'compare';
+    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+    const compareL: Record<string, string> = { fr: 'Comparatif', de: 'Vergleich', es: 'Comparativa', it: 'Confronto', en: 'Comparison' };
+    const breadcrumb = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: homeL[lang] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: compareL[lang] ?? 'Comparison', item: `${BASE}/${lang}/${compSlug}` },
+        { '@type': 'ListItem', position: 3, name: `${card1.name} vs ${card2.name}`, item: `${BASE}/${lang}/${compSlug}/${slug}` },
+      ],
+    };
+    document.getElementById('schema-comparison-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-comparison-breadcrumb';
+    el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(breadcrumb);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-comparison-breadcrumb')?.remove(); };
+  }, [card1, card2, lang, slug]);
 
   // Not found state
   if (notFound) {
@@ -728,6 +834,30 @@ export default function ComparisonPage() {
                 </div>
               );
             })}
+          </div>
+        );
+      })()}
+
+      {/* Bloc éditorial — enrichissement contenu + liens thématiques */}
+      {(() => {
+        const ed = COMPARISON_EDITORIAL[lang] ?? COMPARISON_EDITORIAL.en;
+        const slugs = COMP_THEMATIC_SLUGS[lang] ?? COMP_THEMATIC_SLUGS.en;
+        return (
+          <div className="mt-14 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ emoji, label, slug }) => {
+                const href = slugs[slug as keyof typeof slugs];
+                if (!href) return null;
+                return (
+                  <Link key={slug} to={`/${lang}/${href}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         );
       })()}
