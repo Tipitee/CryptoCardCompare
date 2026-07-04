@@ -3377,6 +3377,278 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     },
     "metaTitle": "Ether.fi Cash Test 2026 — DeFi-Karte, 2-3% ETH Cashback",
     "metaDescription": "Ether.fi Cash 2026 Test: Native DeFi Visa-Karte mit 2-3% ETH Cashback, Self-Custody, EigenLayer Restaking. Kostenlos. Verfügbar in Frankreich und EU."
+  },
+
+  // ─── KUCARD ──────────────────────────────────────────────────────────────────
+  "kucard__de": {
+    "badge": "Exchange seit 2017",
+    "keyStats": {
+      "cashbackMax": "1–3 % in KCS",
+      "stakingRequis": "KCS-Bestand empfohlen",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Frankreich, EU"
+    },
+    "pros": [
+      "Keine Jahresgebühren",
+      "1–3 % Cashback in KCS auf alle Zahlungen",
+      "Direkte Integration mit dem KuCoin-Konto",
+      "KuCoin: einer der ältesten Exchanges (seit 2017)",
+      "Verfügbar in Frankreich und der gesamten EU",
+      "In 180+ Ländern via Visa akzeptiert"
+    ],
+    "cons": [
+      "Cashback in KCS — volatiles Token",
+      "Guthaben auf der Börse (kein Self-Custody)",
+      "KuCoin mit Sitz auf den Seychellen — Offshore-Regulierung",
+      "KuCoin wurde 2024 vom US-DOJ sanktioniert",
+      "Begrenzter deutschsprachiger Support"
+    ],
+    "verdict": "Die KuCard eignet sich für aktive KuCoin-Nutzer, die Cashback in KCS auf ihre täglichen Ausgaben erhalten möchten. Das Alter des Exchanges (2017) ist positiv, aber die DOJ-Sanktion 2024 und die Offshore-Regulierung bleiben wichtige Risikofaktoren.",
+    "sections": {
+      "presentation": "**KuCoin** ist einer der ältesten und größten Krypto-Exchanges der Welt, 2017 in Singapur gegründet. Die **KuCard** ist die offizielle Visa-Karte von KuCoin, mit der Sie Ihre Krypto-Assets direkt im Alltag ausgeben können.",
+      "cashback": "Das Cashback beträgt **1 % bis 3 %** in KCS (KuCoin Token), direkt Ihrem KuCoin-Konto gutgeschrieben. Der Cashback-Satz steigt mit Ihrem KCS-Bestand. Kein striktes Staking für den Basis-Cashback von 1 % erforderlich.",
+      "frais": "Die KuCard ist **vollständig kostenlos**: 0 € Jahresgebühren. Sie ist eine der wenigen Krypto-Karten, die Cashback ohne Jahresgebühren kombiniert.",
+      "securite": "KuCoin ist auf den Seychellen ansässig und unterliegt keiner strengen europäischen Regulierung. **Wichtig**: Der Exchange wurde 2024 vom US-Justizministerium wegen Verstößen gegen Geldwäschegesetze sanktioniert. Für europäische Nutzer empfiehlt sich Vorsicht.",
+      "experience": "Die KuCoin-App ist auf iOS und Android verfügbar. Die Karte wird direkt über das KuCoin-Konto verwaltet. Interface hauptsächlich auf Englisch."
+    },
+    "metaTitle": "KuCard Test 2026 — KuCoin Visa, 1-3% KCS Cashback",
+    "metaDescription": "KuCard 2026 Test: KuCoin Visa-Karte mit 1-3% Cashback in KCS, 0 € Jahresgebühren. Verfügbar in EU. Wichtig: KuCoin-Regulierungsrisiken kennen."
+  },
+  "kucard__es": {
+    "badge": "Exchange desde 2017",
+    "keyStats": {
+      "cashbackMax": "1–3 % en KCS",
+      "stakingRequis": "Tenencia de KCS recomendada",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Francia, UE"
+    },
+    "pros": [
+      "Sin comisiones anuales",
+      "Cashback del 1–3 % en KCS en todos los pagos",
+      "Integración directa con la cuenta KuCoin",
+      "KuCoin: uno de los exchanges más antiguos (desde 2017)",
+      "Disponible en Francia y toda la UE",
+      "Aceptada en más de 180 países vía Visa"
+    ],
+    "cons": [
+      "Cashback en KCS — token volátil",
+      "Fondos en el exchange (sin self-custody)",
+      "KuCoin con sede en Seychelles — regulación offshore",
+      "KuCoin fue sancionado por el DOJ de EE.UU. en 2024",
+      "Soporte en español limitado"
+    ],
+    "verdict": "La KuCard es adecuada para usuarios activos en KuCoin que desean cashback en KCS en sus gastos diarios. La antigüedad del exchange (2017) es positiva, pero la sanción del DOJ en 2024 y la regulación offshore son factores de riesgo importantes.",
+    "sections": {
+      "presentation": "**KuCoin** es uno de los exchanges de criptomonedas más antiguos e importantes del mundo, fundado en 2017 en Singapur. La **KuCard** es la tarjeta Visa oficial de KuCoin, que permite gastar tus activos crypto directamente en el día a día.",
+      "cashback": "El cashback es del **1 % al 3 %** en KCS (KuCoin Token), acreditado directamente en tu cuenta KuCoin. La tasa de cashback aumenta con tu nivel de tenencia de KCS. No se requiere staking estricto para el cashback base del 1 %.",
+      "frais": "La KuCard es **totalmente gratuita**: 0 € de comisiones anuales. Es una de las pocas tarjetas crypto que combina cashback sin comisiones anuales.",
+      "securite": "KuCoin tiene su sede en las Seychelles y no está sujeto a regulación europea estricta. **Importante**: El exchange fue sancionado en 2024 por el Departamento de Justicia de EE.UU. por infracciones antilavado. Se recomienda precaución para los usuarios europeos.",
+      "experience": "La app de KuCoin está disponible en iOS y Android. La tarjeta se gestiona directamente desde la cuenta KuCoin. La interfaz está principalmente en inglés."
+    },
+    "metaTitle": "KuCard Opinión 2026 — Visa KuCoin, 1-3% Cashback en KCS",
+    "metaDescription": "KuCard 2026: tarjeta Visa KuCoin con 1-3% cashback en KCS, 0 € de comisiones. Disponible en UE. Importante: conocer los riesgos regulatorios de KuCoin."
+  },
+  "kucard__it": {
+    "badge": "Exchange dal 2017",
+    "keyStats": {
+      "cashbackMax": "1–3 % in KCS",
+      "stakingRequis": "Detenzione di KCS consigliata",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Francia, UE"
+    },
+    "pros": [
+      "Nessuna commissione annuale",
+      "Cashback 1–3 % in KCS su tutti i pagamenti",
+      "Integrazione diretta con il conto KuCoin",
+      "KuCoin: uno dei exchange più antichi (dal 2017)",
+      "Disponibile in Francia e nell'intera UE",
+      "Accettata in 180+ paesi tramite Visa"
+    ],
+    "cons": [
+      "Cashback in KCS — token volatile",
+      "Fondi sull'exchange (nessun self-custody)",
+      "KuCoin con sede alle Seychelles — regolamentazione offshore",
+      "KuCoin è stato sanzionato dal DOJ USA nel 2024",
+      "Supporto in italiano limitato"
+    ],
+    "verdict": "La KuCard è adatta agli utenti attivi su KuCoin che desiderano cashback in KCS sulle spese quotidiane. La storicità dell'exchange (2017) è un punto positivo, ma la sanzione DOJ 2024 e la regolamentazione offshore rimangono rischi importanti da considerare.",
+    "sections": {
+      "presentation": "**KuCoin** è uno dei exchange di criptovalute più antichi e importanti al mondo, fondato nel 2017 a Singapore. La **KuCard** è la carta Visa ufficiale di KuCoin, che permette di spendere i propri asset crypto nella vita quotidiana.",
+      "cashback": "Il cashback è dell'**1 % al 3 %** in KCS (KuCoin Token), accreditato direttamente sul conto KuCoin. Il tasso di cashback aumenta con il livello di detenzione di KCS. Nessun staking rigoroso richiesto per il cashback base dell'1 %.",
+      "frais": "La KuCard è **completamente gratuita**: 0 € di commissioni annuali. È una delle poche carte crypto che combina cashback senza commissioni annuali.",
+      "securite": "KuCoin ha sede alle Seychelles e non è soggetto a rigida regolamentazione europea. **Importante**: L'exchange è stato sanzionato nel 2024 dal Dipartimento di Giustizia USA per violazioni antiriciclaggio. Si raccomanda prudenza agli utenti europei.",
+      "experience": "L'app KuCoin è disponibile su iOS e Android. La carta si gestisce direttamente dall'account KuCoin. L'interfaccia è principalmente in inglese."
+    },
+    "metaTitle": "KuCard Recensione 2026 — Visa KuCoin, 1-3% Cashback in KCS",
+    "metaDescription": "KuCard 2026: carta Visa KuCoin con 1-3% cashback in KCS, 0 € di commissioni. Disponibile in UE. Importante: conoscere i rischi regolatori di KuCoin."
+  },
+  "kucard__en": {
+    "badge": "Exchange since 2017",
+    "keyStats": {
+      "cashbackMax": "1–3% in KCS",
+      "stakingRequis": "KCS holding recommended",
+      "fraisAnnuels": "€0",
+      "disponibilite": "France, EU"
+    },
+    "pros": [
+      "No annual fees",
+      "1–3% cashback in KCS on all payments",
+      "Direct integration with KuCoin account",
+      "KuCoin: one of the oldest exchanges (since 2017)",
+      "Available in France and across the EU",
+      "Accepted in 180+ countries via Visa"
+    ],
+    "cons": [
+      "Cashback in KCS — volatile token",
+      "Funds on exchange (no self-custody)",
+      "KuCoin based in Seychelles — offshore regulation",
+      "KuCoin was sanctioned by the US DOJ in 2024",
+      "Limited English-language support quality"
+    ],
+    "verdict": "The KuCard suits active KuCoin users who want KCS cashback on daily spending. The exchange's longevity (2017) is a plus, but the 2024 DOJ sanction and offshore regulation remain significant risk factors to consider.",
+    "sections": {
+      "presentation": "**KuCoin** is one of the world's oldest and largest crypto exchanges, founded in 2017 in Singapore. The **KuCard** is KuCoin's official Visa card, allowing you to spend your crypto assets in everyday life across 180+ countries.",
+      "cashback": "Cashback is **1% to 3%** in KCS (KuCoin Token), credited directly to your KuCoin account. The cashback rate increases with your KCS holding level. No strict staking required for the base 1% cashback.",
+      "frais": "The KuCard is **completely free**: €0 annual fees. It's one of the few crypto cards that combines cashback with no annual costs.",
+      "securite": "KuCoin is headquartered in the Seychelles and is not subject to strict European regulation. **Important**: The exchange was sanctioned in 2024 by the US Department of Justice for anti-money laundering violations. European users should exercise caution.",
+      "experience": "The KuCoin app is available on iOS and Android. The card is managed directly from your KuCoin account. Interface primarily in English."
+    },
+    "metaTitle": "KuCard Review 2026 — KuCoin Visa, 1-3% KCS Cashback",
+    "metaDescription": "KuCard 2026 review: KuCoin Visa card with 1-3% cashback in KCS, €0 annual fees. Available in EU. Important: understand KuCoin's regulatory risks."
+  },
+
+  // ─── BIT2ME CARD ─────────────────────────────────────────────────────────────
+  "bit2me-card__de": {
+    "badge": "Nr. 1 Spanien seit 2014",
+    "keyStats": {
+      "cashbackMax": "2–7 % in B2M",
+      "stakingRequis": "B2M-Bestand für höhere Stufen",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Hauptsächlich Spanien"
+    },
+    "pros": [
+      "Ältester Krypto-Exchange Spaniens (seit 2014)",
+      "2–7 % Cashback in B2M auf alle Zahlungen",
+      "Keine Jahresgebühren",
+      "Reguliert von der spanischen CNMV",
+      "Nativer spanischsprachiger Support",
+      "Über 100 Kryptowährungen verfügbar",
+      "Erstes spanisches Unternehmen mit vollständiger VASP-Lizenz"
+    ],
+    "cons": [
+      "Hauptsächlich in Spanien verfügbar",
+      "Cashback in B2M — weniger liquides Token als ETH/BTC",
+      "Begrenzte Präsenz außerhalb des spanischsprachigen Marktes"
+    ],
+    "verdict": "Bit2Me ist die erste Wahl für spanische Nutzer, die eine vertrauenswürdige Krypto-Karte mit großzügigem Cashback suchen. Mit 10 Jahren Erfahrung, CNMV-Regulierung und bis zu 7 % Cashback in B2M ist es das umfassendste und am stärksten regulierte Angebot auf dem spanischen Markt.",
+    "sections": {
+      "presentation": "**Bit2Me** ist der älteste Krypto-Exchange Spaniens, 2014 gegründet. Als erstes spanisches Unternehmen erhielt Bit2Me die vollständige VASP-Lizenz und ist von der CNMV (spanische Finanzaufsicht) reguliert. Die **Bit2Me Card** ist eine Mastercard für den täglichen Einsatz.",
+      "cashback": "Das Cashback beträgt **2 % bis 7 %** in B2M (Bit2Me Token), abhängig von Ihrem B2M-Bestand. Kein striktes Staking erforderlich — einfach B2M halten, um höhere Cashback-Raten zu erhalten.",
+      "frais": "Die Bit2Me Card ist **vollständig kostenlos**: 0 € Jahresgebühren auf allen Stufen. Sie bietet eines der attraktivsten Cashback-zu-Gebühren-Verhältnisse auf dem spanischen Markt.",
+      "securite": "Bit2Me ist von der spanischen **CNMV** reguliert und war das erste spanische Unternehmen, das die vollständige VASP-Lizenz erhielt. Die Plattform unterliegt strengen europäischen Compliance-Standards.",
+      "experience": "Die Bit2Me-App ist auf iOS und Android verfügbar. Interface auf Spanisch optimiert — ideal für hispanophone Nutzer. Der Kundensupport erfolgt auf Spanisch."
+    },
+    "metaTitle": "Bit2Me Card Test 2026 — Spaniens Nr. 1, 2-7% B2M Cashback",
+    "metaDescription": "Bit2Me Card 2026 Test: Mastercard des ältesten spanischen Krypto-Exchange mit 2-7% Cashback in B2M, 0 € Jahresgebühren, CNMV-reguliert."
+  },
+  "bit2me-card__es": {
+    "badge": "N°1 España desde 2014",
+    "keyStats": {
+      "cashbackMax": "2–7 % en B2M",
+      "stakingRequis": "Tenencia de B2M para niveles altos",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Principalmente España"
+    },
+    "pros": [
+      "Exchange crypto más antiguo de España (desde 2014)",
+      "Cashback del 2–7 % en B2M en todos los pagos",
+      "Sin comisiones anuales",
+      "Regulado por la CNMV española",
+      "Soporte nativo en español",
+      "Más de 100 criptomonedas disponibles",
+      "Primera empresa española con licencia VASP completa"
+    ],
+    "cons": [
+      "Principalmente disponible en España",
+      "Cashback en B2M — token menos líquido que ETH/BTC",
+      "Presencia limitada fuera del mercado hispanohablante"
+    ],
+    "verdict": "Bit2Me es la opción incontestable para usuarios españoles que buscan una tarjeta crypto de confianza con cashback generoso. Con 10 años de experiencia, regulación CNMV y hasta 7% de cashback en B2M, es la oferta más completa y regulada del mercado español.",
+    "sections": {
+      "presentation": "**Bit2Me** es el exchange de criptomonedas más antiguo de España, fundado en 2014. Como primera empresa española en obtener la licencia VASP completa, está regulada por la CNMV. La **Bit2Me Card** es una Mastercard para uso diario.",
+      "cashback": "El cashback es del **2 % al 7 %** en B2M (Bit2Me Token), según tu nivel de tenencia de B2M. No se requiere staking estricto — simplemente mantén B2M para obtener tasas de cashback más altas.",
+      "frais": "La Bit2Me Card es **completamente gratuita**: 0 € de comisiones anuales en todos los niveles. Ofrece una de las mejores relaciones cashback/comisiones del mercado español.",
+      "securite": "Bit2Me está regulada por la **CNMV** española y fue la primera empresa española en obtener la licencia VASP completa. Cumple con los estrictos estándares europeos de compliance.",
+      "experience": "La app de Bit2Me está disponible en iOS y Android. Interfaz optimizada en español — ideal para usuarios hispanohablantes. El soporte al cliente se realiza en español."
+    },
+    "metaTitle": "Bit2Me Card Opinión 2026 — N°1 España, 2-7% Cashback B2M",
+    "metaDescription": "Bit2Me Card 2026: Mastercard del exchange crypto más antiguo de España con 2-7% cashback en B2M, 0 € comisiones, regulada por la CNMV."
+  },
+  "bit2me-card__it": {
+    "badge": "N°1 Spagna dal 2014",
+    "keyStats": {
+      "cashbackMax": "2–7 % in B2M",
+      "stakingRequis": "Detenzione B2M per livelli alti",
+      "fraisAnnuels": "0 €",
+      "disponibilite": "Principalmente Spagna"
+    },
+    "pros": [
+      "Exchange crypto più antico della Spagna (dal 2014)",
+      "Cashback 2–7 % in B2M su tutti i pagamenti",
+      "Nessuna commissione annuale",
+      "Regolamentato dalla CNMV spagnola",
+      "Supporto nativo in spagnolo",
+      "Oltre 100 criptovalute disponibili",
+      "Prima azienda spagnola con licenza VASP completa"
+    ],
+    "cons": [
+      "Principalmente disponibile in Spagna",
+      "Cashback in B2M — token meno liquido di ETH/BTC",
+      "Presenza limitata fuori dal mercato ispanico"
+    ],
+    "verdict": "Bit2Me è la scelta incontestabile per gli utenti spagnoli che cercano una carta crypto affidabile con cashback generoso. Con 10 anni di esperienza, regolamentazione CNMV e fino al 7% di cashback in B2M, è l'offerta più completa e regolamentata del mercato spagnolo.",
+    "sections": {
+      "presentation": "**Bit2Me** è il più antico exchange di criptovalute della Spagna, fondato nel 2014. Come prima azienda spagnola ad ottenere la licenza VASP completa, è regolamentata dalla CNMV. La **Bit2Me Card** è una Mastercard per uso quotidiano.",
+      "cashback": "Il cashback è del **2 % al 7 %** in B2M (Bit2Me Token), a seconda del livello di detenzione di B2M. Nessun staking rigoroso richiesto — basta detenere B2M per ottenere tassi di cashback più elevati.",
+      "frais": "La Bit2Me Card è **completamente gratuita**: 0 € di commissioni annuali su tutti i livelli. Offre uno dei migliori rapporti cashback/commissioni del mercato spagnolo.",
+      "securite": "Bit2Me è regolamentata dalla **CNMV** spagnola ed è stata la prima azienda spagnola ad ottenere la licenza VASP completa. Si conforma ai rigidi standard europei di compliance.",
+      "experience": "L'app Bit2Me è disponibile su iOS e Android. Interfaccia ottimizzata in spagnolo — ideale per utenti ispanici. Il supporto clienti viene fornito in spagnolo."
+    },
+    "metaTitle": "Bit2Me Card Recensione 2026 — N°1 Spagna, 2-7% Cashback B2M",
+    "metaDescription": "Bit2Me Card 2026: Mastercard dell'exchange crypto più antico di Spagna con 2-7% cashback in B2M, 0 € commissioni, regolamentata dalla CNMV."
+  },
+  "bit2me-card__en": {
+    "badge": "Spain's #1 since 2014",
+    "keyStats": {
+      "cashbackMax": "2–7% in B2M",
+      "stakingRequis": "B2M holding for higher tiers",
+      "fraisAnnuels": "€0",
+      "disponibilite": "Mainly Spain"
+    },
+    "pros": [
+      "Spain's oldest crypto exchange (since 2014)",
+      "2–7% cashback in B2M on all payments",
+      "No annual fees",
+      "Regulated by the Spanish CNMV",
+      "Native Spanish-language support",
+      "Over 100 cryptocurrencies available",
+      "First Spanish company to obtain full VASP licence"
+    ],
+    "cons": [
+      "Mainly available in Spain",
+      "Cashback in B2M — less liquid than ETH/BTC",
+      "Limited presence outside the Spanish-speaking market"
+    ],
+    "verdict": "Bit2Me is the go-to choice for Spanish users seeking a trusted crypto card with generous cashback. With 10 years of experience, CNMV regulation and up to 7% cashback in B2M, it's the most comprehensive and regulated offering on the Spanish market.",
+    "sections": {
+      "presentation": "**Bit2Me** is Spain's oldest crypto exchange, founded in 2014. As the first Spanish company to obtain a full VASP licence, it is regulated by the CNMV. The **Bit2Me Card** is a Mastercard for everyday use.",
+      "cashback": "Cashback is **2% to 7%** in B2M (Bit2Me Token), based on your B2M holding level. No strict staking required — simply hold B2M to unlock higher cashback rates.",
+      "frais": "The Bit2Me Card is **completely free**: €0 annual fees across all tiers. It offers one of the best cashback-to-fee ratios on the Spanish market.",
+      "securite": "Bit2Me is regulated by the Spanish **CNMV** and was the first Spanish company to obtain a full VASP licence. It complies with strict European compliance standards.",
+      "experience": "The Bit2Me app is available on iOS and Android. Interface optimised in Spanish — ideal for Spanish-speaking users. Customer support is provided in Spanish."
+    },
+    "metaTitle": "Bit2Me Card Review 2026 — Spain's #1, 2-7% B2M Cashback",
+    "metaDescription": "Bit2Me Card 2026 review: Mastercard from Spain's oldest crypto exchange with 2-7% cashback in B2M, €0 fees, regulated by the CNMV."
   }
 };
 
