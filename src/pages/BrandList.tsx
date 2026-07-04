@@ -193,6 +193,27 @@ export default function BrandList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, lang]);
 
+  // BreadcrumbList schema
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+    const slug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: homeL[lang] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: l.h1, item: `${BASE}/${lang}/${slug}` },
+      ],
+    };
+    document.getElementById('schema-brandlist-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-brandlist-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-brandlist-breadcrumb')?.remove(); };
+  }, [lang, l.h1]);
+
   // Group cards by brandId; cards without brandId go into individual entries
   const { brandGroups, singles } = useMemo(() => {
     const groups: Record<string, CryptoCard[]> = {};

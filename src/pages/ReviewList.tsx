@@ -8,6 +8,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES } from '../config/routes';
 
 const YEAR = new Date().getFullYear();
 
@@ -88,6 +89,37 @@ const L: Record<string, {
     compare: 'Compare all cards', recommend: 'Find my ideal card',
     breadcrumb: 'Crypto card reviews', brandPage: 'Brand page →', home: 'Home',
   },
+};
+
+// Editorial intro paragraph (enrichit le contenu pour Google)
+const REVIEW_EDITORIAL: Record<string, string> = {
+  fr: `Choisir une carte crypto en 2026 demande de comparer bien plus que le simple taux de cashback affiché. Les conditions réelles — staking obligatoire, plafonds mensuels, disponibilité en France, réseau Visa ou Mastercard — font toute la différence entre une carte rentable et une offre marketing. Nos avis sont rédigés après une analyse approfondie de chaque produit : nous consultons les conditions générales, les forums utilisateurs, les retours d'expérience réels et les données officielles publiées par les émetteurs. Chaque carte reçoit une note globale sur 5 calculée à partir de cinq dimensions : cashback, frais, accessibilité, sécurité réglementaire et expérience utilisateur. Nos revues couvrent les acteurs majeurs — Crypto.com, Binance, Bybit, OKX, Nexo — mais aussi les alternatives moins connues qui méritent votre attention : Gnosis Pay, MetaMask Card, Brighty, Trade Republic. Que vous cherchiez la carte avec le meilleur cashback sans staking, la plus adaptée aux voyages, ou simplement la plus simple à ouvrir en tant que débutant, notre comparatif complet vous aide à prendre la meilleure décision.`,
+  de: `Die Wahl einer Krypto-Karte im Jahr 2026 erfordert weit mehr als einen Blick auf die ausgewiesene Cashback-Rate. Die realen Bedingungen — obligatorisches Staking, monatliche Obergrenzen, Verfügbarkeit in Deutschland, Visa- oder Mastercard-Netzwerk — entscheiden darüber, ob eine Karte wirklich rentabel ist oder nur ein Marketingversprechen bleibt. Unsere Bewertungen entstehen nach einer eingehenden Analyse jedes Produkts: Wir prüfen die allgemeinen Geschäftsbedingungen, Nutzerforen, reale Erfahrungsberichte und offizielle Daten der Emittenten. Jede Karte erhält eine Gesamtbewertung aus fünf von 5, berechnet aus fünf Dimensionen: Cashback, Gebühren, Zugänglichkeit, regulatorische Sicherheit und Benutzererfahrung. Unsere Tests decken die großen Anbieter — Crypto.com, Binance, Bybit, OKX, Nexo — sowie weniger bekannte Alternativen ab, die Ihre Aufmerksamkeit verdienen: Gnosis Pay, MetaMask Card, Brighty, Trade Republic.`,
+  es: `Elegir una tarjeta crypto en 2026 requiere mucho más que comparar el porcentaje de cashback anunciado. Las condiciones reales — staking obligatorio, límites mensuales, disponibilidad en España, red Visa o Mastercard — son las que determinan si una tarjeta es realmente rentable o simplemente una promesa de marketing. Nuestras opiniones se elaboran tras un análisis exhaustivo de cada producto: consultamos los términos y condiciones, foros de usuarios, experiencias reales y datos oficiales publicados por los emisores. Cada tarjeta recibe una nota global sobre 5 calculada a partir de cinco dimensiones: cashback, comisiones, accesibilidad, seguridad regulatoria y experiencia de usuario. Nuestras reseñas cubren los grandes actores — Crypto.com, Binance, Bybit, OKX, Nexo — pero también alternativas menos conocidas que merecen su atención: Gnosis Pay, MetaMask Card, Brighty, Trade Republic.`,
+  it: `Scegliere una carta crypto nel 2026 richiede ben più di un confronto tra le percentuali di cashback pubblicizzate. Le condizioni reali — staking obbligatorio, limiti mensili, disponibilità in Italia, rete Visa o Mastercard — sono quelle che determinano se una carta è davvero redditizia o semplice marketing. Le nostre recensioni vengono redatte dopo un'analisi approfondita di ogni prodotto: consultiamo i termini e le condizioni, i forum utenti, le esperienze reali e i dati ufficiali pubblicati dagli emittenti. Ogni carta riceve un voto globale su 5 calcolato su cinque dimensioni: cashback, commissioni, accessibilità, sicurezza normativa ed esperienza utente. Le nostre recensioni coprono i grandi attori — Crypto.com, Binance, Bybit, OKX, Nexo — ma anche alternative meno note che meritano la vostra attenzione: Gnosis Pay, MetaMask Card, Brighty, Trade Republic.`,
+  en: `Choosing a crypto card in 2026 requires far more than glancing at the advertised cashback rate. The real conditions — mandatory staking, monthly caps, availability in your country, Visa or Mastercard network — determine whether a card is genuinely profitable or just a marketing promise. Our reviews are written after in-depth analysis of each product: we examine the terms and conditions, user forums, real-world feedback and official data published by the issuers. Each card receives an overall score out of 5 calculated across five dimensions: cashback, fees, accessibility, regulatory security and user experience. Our reviews cover the major players — Crypto.com, Binance, Bybit, OKX, Nexo — as well as lesser-known alternatives that deserve your attention: Gnosis Pay, MetaMask Card, Brighty, Trade Republic.`,
+};
+
+// Liens thématiques à afficher en bas de la ReviewList
+const REVIEW_RELATED: {
+  title: Record<string, string>;
+  themes: { key: string; emoji: string; label: Record<string, string> }[];
+} = {
+  title: {
+    fr: 'Guides par type de carte',
+    de: 'Ratgeber nach Kartentyp',
+    es: 'Guías por tipo de tarjeta',
+    it: 'Guide per tipo di carta',
+    en: 'Guides by card type',
+  },
+  themes: [
+    { key: 'best',       emoji: '⭐', label: { fr: 'Meilleures cartes',     de: 'Beste Karten',         es: 'Mejores tarjetas',    it: 'Migliori carte',      en: 'Best cards' } },
+    { key: 'cashback',   emoji: '💰', label: { fr: 'Cashback élevé',         de: 'Hoher Cashback',       es: 'Alto cashback',       it: 'Alto cashback',       en: 'High cashback' } },
+    { key: 'no-fees',    emoji: '🆓', label: { fr: 'Sans frais annuels',     de: 'Ohne Jahresgebühr',    es: 'Sin comisiones',      it: 'Senza costi annuali', en: 'No annual fees' } },
+    { key: 'no-staking', emoji: '🔓', label: { fr: 'Sans staking',           de: 'Ohne Staking',         es: 'Sin staking',         it: 'Senza staking',       en: 'No staking' } },
+    { key: 'travel',     emoji: '✈️', label: { fr: 'Cartes voyage',          de: 'Reisekarten',          es: 'Tarjetas de viaje',   it: 'Carte viaggio',       en: 'Travel cards' } },
+    { key: 'beginner',   emoji: '🌱', label: { fr: 'Pour débutants',         de: 'Für Einsteiger',       es: 'Para principiantes',  it: 'Per principianti',    en: 'For beginners' } },
+  ],
 };
 
 // Map review issuer → brand ID (for BrandPage links)
@@ -188,6 +220,10 @@ export default function ReviewList() {
         </h1>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto">
           {l.sub}
+        </p>
+        {/* Editorial intro — enrichit le contenu pour Google */}
+        <p className="text-slate-500 text-sm max-w-3xl mx-auto mt-4 leading-relaxed">
+          {REVIEW_EDITORIAL[lang] ?? REVIEW_EDITORIAL.en}
         </p>
       </div>
 
@@ -321,6 +357,29 @@ export default function ReviewList() {
           <Link to={getRoute('recommendation')} className="btn-secondary inline-flex items-center gap-2">
             {l.recommend}
           </Link>
+        </div>
+      </div>
+
+      {/* Thematic guides — internal links */}
+      <div className="mt-10 border-t border-bg-border pt-10">
+        <h2 className="text-lg font-display font-bold text-white mb-5">
+          {REVIEW_RELATED.title[lang] ?? REVIEW_RELATED.title.en}
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {REVIEW_RELATED.themes.map(({ key, emoji, label }) => {
+            const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+            if (!slug) return null;
+            return (
+              <Link
+                key={key}
+                to={`/${lang}/${slug}`}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg border border-bg-border bg-bg-elevated hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300"
+              >
+                <span aria-hidden="true">{emoji}</span>
+                {label[lang] ?? label.en}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

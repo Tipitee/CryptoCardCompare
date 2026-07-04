@@ -177,6 +177,22 @@ export default function Compare() {
     return () => { document.getElementById('schema-compare')?.remove(); };
   }, [lang, compareSeo]);
 
+  // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
+  useEffect(() => {
+    const ed = COMPARE_EDITORIAL[lang] ?? COMPARE_EDITORIAL.en;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{ '@type': 'Question', name: ed.h2, acceptedAnswer: { '@type': 'Answer', text: ed.body } }],
+    };
+    document.getElementById('schema-compare-faq')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-compare-faq'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-compare-faq')?.remove(); };
+  }, [lang]);
+
   const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);

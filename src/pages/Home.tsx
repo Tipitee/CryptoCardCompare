@@ -37,6 +37,94 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES } from '../config/routes';
+
+// Section "Explorer par type de carte" — 11 thèmes × 5 langues
+const THEME_GRID: Record<string, {
+  title: string;
+  items: { key: string; emoji: string; label: string; desc: string }[];
+}> = {
+  fr: {
+    title: 'Explorer par type de carte',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Meilleures cartes',        desc: 'Notre classement des meilleures cartes crypto du marché en 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'Cashback élevé',            desc: 'Jusqu\'à 8 % de cashback en crypto sur vos dépenses quotidiennes.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sans frais annuels',        desc: 'MetaMask, Gnosis Pay, Brighty — gratuites et sans engagement.' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sans staking requis',       desc: 'Gagnez du cashback sans immobiliser de capital.' },
+      { key: 'travel',     emoji: '✈️', label: 'Voyage & étranger',         desc: '0 % de frais de change et retraits DAB gratuits à l\'international.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Avantages & récompenses',   desc: 'Lounge aéroport, Netflix, Airbnb — les cartes les plus généreuses.' },
+      { key: 'virtual',    emoji: '💳', label: 'Cartes virtuelles',         desc: 'Activables en moins de 5 minutes, compatible Apple Pay & Google Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Pour les débutants',        desc: 'Inscription simple, zéro condition — idéal pour commencer.' },
+      { key: '2026',       emoji: '🚀', label: 'Meilleures en 2026',        desc: 'Les cartes qui dominent le marché cette année.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'Sans KYC strict',          desc: 'Moins de vérifications, plus de rapidité d\'accès.' },
+      { key: 'france',     emoji: '🇫🇷', label: 'Disponibles en France',   desc: 'Toutes les cartes conformes et accessibles depuis la France.' },
+    ],
+  },
+  de: {
+    title: 'Nach Kartentyp entdecken',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Beste Karten',              desc: 'Unser Ranking der besten Krypto-Karten 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'Hoher Cashback',            desc: 'Bis zu 8 % Cashback in Krypto auf Alltagsausgaben.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Ohne Jahresgebühr',         desc: 'MetaMask, Gnosis Pay, Brighty — kostenlos und unverbindlich.' },
+      { key: 'no-staking', emoji: '🔓', label: 'Ohne Staking',              desc: 'Cashback ohne Kapitalbindung durch Staking.' },
+      { key: 'travel',     emoji: '✈️', label: 'Reise & Ausland',           desc: '0 % Wechselgebühren und kostenlose Geldautomaten-Abhebungen weltweit.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Prämien & Vorteile',        desc: 'Flughafen-Lounge, Netflix, Airbnb — die großzügigsten Karten.' },
+      { key: 'virtual',    emoji: '💳', label: 'Virtuelle Karten',          desc: 'In unter 5 Minuten aktivierbar, mit Apple Pay & Google Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Für Einsteiger',            desc: 'Einfache Registrierung, keine Bedingungen — ideal zum Starten.' },
+      { key: '2026',       emoji: '🚀', label: 'Beste 2026',                desc: 'Die Karten, die den Markt dieses Jahr dominieren.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'Ohne strenges KYC',        desc: 'Weniger Prüfungen, schnellerer Zugang.' },
+      { key: 'france',     emoji: '🇩🇪', label: 'In Deutschland verfügbar', desc: 'Alle konformen Karten für den deutschen Markt.' },
+    ],
+  },
+  es: {
+    title: 'Explorar por tipo de tarjeta',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Mejores tarjetas',          desc: 'Nuestro ranking de las mejores tarjetas crypto de 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback',             desc: 'Hasta un 8 % de cashback en crypto en tus gastos diarios.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sin comisiones anuales',    desc: 'MetaMask, Gnosis Pay, Brighty — gratuitas y sin compromiso.' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sin staking requerido',     desc: 'Gana cashback sin inmovilizar capital.' },
+      { key: 'travel',     emoji: '✈️', label: 'Viaje & extranjero',        desc: '0 % de comisiones de cambio y retiros gratuitos en cajeros.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Ventajas & recompensas',    desc: 'Sala VIP, Netflix, Airbnb — las tarjetas más generosas.' },
+      { key: 'virtual',    emoji: '💳', label: 'Tarjetas virtuales',        desc: 'Activables en menos de 5 minutos, compatible con Apple Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Para principiantes',        desc: 'Registro sencillo, sin condiciones — ideal para empezar.' },
+      { key: '2026',       emoji: '🚀', label: 'Mejores en 2026',           desc: 'Las tarjetas que dominan el mercado este año.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'Sin KYC estricto',         desc: 'Menos verificaciones, acceso más rápido.' },
+      { key: 'france',     emoji: '🇪🇸', label: 'Disponibles en España',   desc: 'Todas las tarjetas conformes y accesibles desde España.' },
+    ],
+  },
+  it: {
+    title: 'Esplora per tipo di carta',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Migliori carte',            desc: 'La nostra classifica delle migliori carte crypto del 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback',             desc: 'Fino all\'8 % di cashback in crypto sulle spese quotidiane.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Senza costi annuali',       desc: 'MetaMask, Gnosis Pay, Brighty — gratuite e senza impegno.' },
+      { key: 'no-staking', emoji: '🔓', label: 'Senza staking richiesto',   desc: 'Guadagna cashback senza immobilizzare capitale.' },
+      { key: 'travel',     emoji: '✈️', label: 'Viaggio & estero',          desc: '0 % di commissioni di cambio e prelievi ATM gratuiti.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Vantaggi & premi',          desc: 'Lounge aeroporto, Netflix, Airbnb — le carte più generose.' },
+      { key: 'virtual',    emoji: '💳', label: 'Carte virtuali',            desc: 'Attivabili in meno di 5 minuti, compatibili con Apple Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Per principianti',          desc: 'Registrazione semplice, nessuna condizione — ideale per iniziare.' },
+      { key: '2026',       emoji: '🚀', label: 'Migliori nel 2026',         desc: 'Le carte che dominano il mercato quest\'anno.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'Senza KYC rigido',         desc: 'Meno verifiche, accesso più rapido.' },
+      { key: 'france',     emoji: '🇮🇹', label: 'Disponibili in Italia',   desc: 'Tutte le carte conformi e accessibili dall\'Italia.' },
+    ],
+  },
+  en: {
+    title: 'Explore by card type',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Best cards',                desc: 'Our ranking of the best crypto cards on the market in 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'High cashback',             desc: 'Up to 8% cashback in crypto on your everyday spending.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'No annual fees',            desc: 'MetaMask, Gnosis Pay, Brighty — free and commitment-free.' },
+      { key: 'no-staking', emoji: '🔓', label: 'No staking required',       desc: 'Earn cashback without locking up capital.' },
+      { key: 'travel',     emoji: '✈️', label: 'Travel & abroad',           desc: '0% foreign exchange fees and free ATM withdrawals worldwide.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Rewards & perks',           desc: 'Airport lounge, Netflix, Airbnb — the most generous cards.' },
+      { key: 'virtual',    emoji: '💳', label: 'Virtual cards',             desc: 'Activated in under 5 minutes, compatible with Apple Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'For beginners',             desc: 'Simple sign-up, no conditions — perfect to start.' },
+      { key: '2026',       emoji: '🚀', label: 'Best in 2026',              desc: 'The cards dominating the market this year.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'No strict KYC',            desc: 'Fewer checks, faster access.' },
+      { key: 'france',     emoji: '🇬🇧', label: 'Available in Europe',     desc: 'All compliant cards accessible across Europe.' },
+    ],
+  },
+};
 import type { CryptoCard } from '../types/card';
 
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
@@ -643,6 +731,35 @@ export default function Home() {
           </div>
         )}
       </section>
+      {/* Section "Explorer par type de carte" — internal links to all thematic pages */}
+      {(() => {
+        const grid = THEME_GRID[lang] ?? THEME_GRID.en;
+        return (
+          <section className="container-app py-14 border-t border-bg-border">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+              {grid.title}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3">
+              {grid.items.map(({ key, emoji, label, desc }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link
+                    key={key}
+                    to={`/${lang}/${slug}`}
+                    className="card-surface p-4 hover:border-cyan-accent/40 hover:shadow-glow transition-all group"
+                  >
+                    <span className="text-2xl mb-2 block" aria-hidden="true">{emoji}</span>
+                    <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-cyan-accent transition-colors">{label}</h3>
+                    <p className="text-xs text-slate-500 leading-snug">{desc}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })()}
+
       <section className="container-app py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
           {t('home_help_title')}

@@ -141,6 +141,16 @@ export default function Favorites() {
   const favSeo = FAV_SEO[lang] || FAV_SEO.en;
   useSeoMeta({ title: favSeo.title, description: favSeo.desc, lang });
 
+  // Favorites is user-specific — noindex to preserve crawl budget
+  useEffect(() => {
+    const el = document.createElement('meta');
+    el.name = 'robots';
+    el.content = 'noindex, nofollow';
+    el.setAttribute('data-noindex-fav', 'true');
+    document.head.appendChild(el);
+    return () => { document.querySelectorAll('meta[data-noindex-fav]').forEach(m => m.remove()); };
+  }, []);
+
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
     const SLUGS: Record<string, string> = { fr: 'favoris', de: 'favoriten', es: 'favoritos', it: 'preferiti', en: 'favorites' };

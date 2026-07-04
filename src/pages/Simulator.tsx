@@ -187,6 +187,22 @@ export default function Simulator() {
     return () => { document.getElementById('schema-simulator')?.remove(); };
   }, [lang, simSeo]);
 
+  // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
+  useEffect(() => {
+    const ed = SIM_EDITORIAL[lang] ?? SIM_EDITORIAL.en;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{ '@type': 'Question', name: ed.h2, acceptedAnswer: { '@type': 'Answer', text: ed.body } }],
+    };
+    document.getElementById('schema-sim-faq')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-sim-faq'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-sim-faq')?.remove(); };
+  }, [lang]);
+
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);

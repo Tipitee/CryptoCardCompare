@@ -98,18 +98,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/recommandation"/>
   </url>
   <url>
-    <loc>https://topcryptocards.eu/fr/favoris</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/favoris"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/favoriten"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/favoritos"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/preferiti"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/favorites"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/favoris"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/fr/blog</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -168,18 +156,6 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/raccomandazione"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/recommendation"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/recommandation"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/de/favoriten</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/favoris"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/favoriten"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/favoritos"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/preferiti"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/favorites"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/favoris"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/de/blog</loc>
@@ -242,18 +218,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/recommandation"/>
   </url>
   <url>
-    <loc>https://topcryptocards.eu/es/favoritos</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/favoris"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/favoriten"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/favoritos"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/preferiti"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/favorites"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/favoris"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/es/blog</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -314,18 +278,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/recommandation"/>
   </url>
   <url>
-    <loc>https://topcryptocards.eu/it/preferiti</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/favoris"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/favoriten"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/favoritos"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/preferiti"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/favorites"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/favoris"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/it/blog</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -384,18 +336,6 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/raccomandazione"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/recommendation"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/recommandation"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/en/favorites</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/favoris"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/favoriten"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/favoritos"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/preferiti"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/favorites"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/favoris"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/en/blog</loc>

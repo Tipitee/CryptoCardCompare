@@ -145,6 +145,22 @@ export default function Recommendation() {
     return () => { document.getElementById('schema-recommendation')?.remove(); };
   }, [lang, recSeo]);
 
+  // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
+  useEffect(() => {
+    const ed = REC_EDITORIAL[lang] ?? REC_EDITORIAL.en;
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{ '@type': 'Question', name: ed.h2, acceptedAnswer: { '@type': 'Answer', text: ed.body } }],
+    };
+    document.getElementById('schema-rec-faq')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-rec-faq'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-rec-faq')?.remove(); };
+  }, [lang]);
+
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);
