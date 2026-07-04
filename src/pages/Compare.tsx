@@ -193,6 +193,31 @@ export default function Compare() {
     return () => { document.getElementById('schema-compare-faq')?.remove(); };
   }, [lang]);
 
+  // ── BreadcrumbList schema ────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+    const labels: Record<string, [string, string]> = {
+      fr: ['Accueil', 'Comparer'], de: ['Startseite', 'Vergleich'], es: ['Inicio', 'Comparar'], it: ['Home', 'Confronto'], en: ['Home', 'Compare'],
+    };
+    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const seg = RT[lang] ?? 'compare';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: homeL, item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: pageL, item: `${BASE}/${lang}/${seg}` },
+      ],
+    };
+    document.getElementById('schema-compare-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-compare-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-compare-breadcrumb')?.remove(); };
+  }, [lang]);
+
   const navigate = useNavigate();
   const allCards = useAppStore((s) => s.cards);
   const favorites = useAppStore((s) => s.favorites);

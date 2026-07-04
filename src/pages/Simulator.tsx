@@ -203,6 +203,31 @@ export default function Simulator() {
     return () => { document.getElementById('schema-sim-faq')?.remove(); };
   }, [lang]);
 
+  // ── BreadcrumbList schema ────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
+    const labels: Record<string, [string, string]> = {
+      fr: ['Accueil', 'Simulateur'], de: ['Startseite', 'Simulator'], es: ['Inicio', 'Simulador'], it: ['Home', 'Simulatore'], en: ['Home', 'Simulator'],
+    };
+    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const seg = SIM_SLUGS[lang] ?? 'simulator';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: homeL, item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: pageL, item: `${BASE}/${lang}/${seg}` },
+      ],
+    };
+    document.getElementById('schema-sim-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-sim-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-sim-breadcrumb')?.remove(); };
+  }, [lang]);
+
   const cards = useAppStore((s) => s.cards);
   const spending = useAppStore((s) => s.spending);
   const setSpending = useAppStore((s) => s.setSpending);

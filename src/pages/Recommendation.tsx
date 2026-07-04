@@ -161,6 +161,31 @@ export default function Recommendation() {
     return () => { document.getElementById('schema-rec-faq')?.remove(); };
   }, [lang]);
 
+  // ── BreadcrumbList schema ────────────────────────────────────────────────────
+  useEffect(() => {
+    const BASE = 'https://topcryptocards.eu';
+    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
+    const labels: Record<string, [string, string]> = {
+      fr: ['Accueil', 'Recommandation'], de: ['Startseite', 'Empfehlung'], es: ['Inicio', 'Recomendación'], it: ['Home', 'Raccomandazione'], en: ['Home', 'Recommendation'],
+    };
+    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const seg = SLUGS[lang] ?? 'recommendation';
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: homeL, item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: pageL, item: `${BASE}/${lang}/${seg}` },
+      ],
+    };
+    document.getElementById('schema-rec-breadcrumb')?.remove();
+    const el = document.createElement('script');
+    el.id = 'schema-rec-breadcrumb'; el.type = 'application/ld+json';
+    el.textContent = JSON.stringify(schema);
+    document.head.appendChild(el);
+    return () => { document.getElementById('schema-rec-breadcrumb')?.remove(); };
+  }, [lang]);
+
   const cards = useAppStore((s) => s.cards);
   const answers = useAppStore((s) => s.quizAnswers);
   const setQuizAnswer = useAppStore((s) => s.setQuizAnswer);
