@@ -175,8 +175,9 @@ export default function BlogPost() {
       datePublished: post.created_at,
       dateModified: post.updated_at || post.created_at,
       inLanguage: post.lang ?? 'fr',
-      author: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
-      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png' } },
+      ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
+      author: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://twitter.com/TopCryptoCards'] },
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://twitter.com/TopCryptoCards'], logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png', width: 200, height: 60 } },
     };
     document.getElementById('schema-article')?.remove();
     const el = document.createElement('script');

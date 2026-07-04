@@ -116,7 +116,7 @@ export default function Recommendation() {
     });
     const xd = document.createElement('link');
     xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/en/recommendation`);
+    xd.setAttribute('href', `${BASE}/fr/recommandation`);
     xd.setAttribute('data-hreflang-rec', 'true');
     document.head.appendChild(xd);
     return () => { document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove()); };

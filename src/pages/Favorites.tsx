@@ -164,7 +164,7 @@ export default function Favorites() {
     });
     const xd = document.createElement('link');
     xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/en/favorites`);
+    xd.setAttribute('href', `${BASE}/fr/favoris`);
     xd.setAttribute('data-hreflang-favorites', 'true');
     document.head.appendChild(xd);
     return () => { document.querySelectorAll('link[data-hreflang-favorites]').forEach(el => el.remove()); };
