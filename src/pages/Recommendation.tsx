@@ -14,6 +14,7 @@ import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { saveQuizResult } from '../lib/supabase';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { THEMATIC_ROUTES } from '../config/routes';
 
 const YEAR = new Date().getFullYear();
 const REC_SEO: Record<string, { title: string; desc: string }> = {
@@ -22,6 +23,69 @@ const REC_SEO: Record<string, { title: string; desc: string }> = {
   es: { title: `Quiz — ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén al instante la mejor tarjeta crypto para tu perfil. Cashback, comisiones, staking — nuestro algoritmo elige por ti. Gratis ✓` },
   it: { title: `Quiz — Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni subito la migliore carta crypto per il tuo profilo. Cashback, commissioni, staking — il nostro algoritmo sceglie per te. Gratuito ✓` },
   en: { title: `Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and instantly get the best crypto card for your profile. Cashback, fees, staking — our algorithm picks for you. Free ✓` },
+};
+
+const REC_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
+  fr: {
+    h2: 'Comment fonctionne notre quiz de recommandation ?',
+    body: `Notre outil de recommandation de carte crypto pose 6 questions clés sur votre profil : fréquence d'utilisation, dépenses mensuelles, tolérance au staking, priorité (cashback, voyages, no-KYC, zéro frais), marché de résidence, et niveau d'expérience en crypto. Sur la base de vos réponses, notre algorithme attribue un score pondéré à chaque carte parmi plus de 20 produits — Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty et d'autres — et affiche un classement personnalisé. Le résultat tient compte des disponibilités par pays, des exigences de staking et des taux de cashback réels. Pour aller plus loin, consultez notre simulateur de gains et nos comparatifs thématiques.`,
+    related: 'Guides thématiques',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Meilleures cartes' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sans frais' },
+      { key: 'beginner', emoji: '🌱', label: 'Débutants' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sans staking' },
+    ],
+  },
+  de: {
+    h2: 'Wie funktioniert unser Empfehlungs-Quiz?',
+    body: `Unser Krypto-Karten-Empfehlungstool stellt 6 Schlüsselfragen zu Ihrem Profil: Nutzungshäufigkeit, monatliche Ausgaben, Staking-Toleranz, Priorität (Cashback, Reisen, No-KYC, keine Gebühren), Wohnsitzmarkt und Krypto-Erfahrungsniveau. Basierend auf Ihren Antworten vergibt unser Algorithmus eine gewichtete Punktzahl an jede Karte aus mehr als 20 Produkten — Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty und andere — und zeigt ein personalisiertes Ranking an. Das Ergebnis berücksichtigt die Länderverfügbarkeit, Staking-Anforderungen und tatsächliche Cashback-Raten. Für weitere Details nutzen Sie unseren Gewinn-Simulator und unsere thematischen Vergleiche.`,
+    related: 'Thematische Guides',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Beste Karten' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Keine Gebühren' },
+      { key: 'beginner', emoji: '🌱', label: 'Einsteiger' },
+      { key: 'no-staking', emoji: '🔓', label: 'Kein Staking' },
+    ],
+  },
+  es: {
+    h2: '¿Cómo funciona nuestro quiz de recomendación?',
+    body: `Nuestra herramienta de recomendación de tarjeta crypto plantea 6 preguntas clave sobre tu perfil: frecuencia de uso, gastos mensuales, tolerancia al staking, prioridad (cashback, viajes, no-KYC, cero comisiones), mercado de residencia y nivel de experiencia en crypto. En base a tus respuestas, nuestro algoritmo asigna una puntuación ponderada a cada tarjeta entre más de 20 productos — Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty y otros — y muestra un ranking personalizado. El resultado tiene en cuenta la disponibilidad por país, los requisitos de staking y las tasas de cashback reales. Para profundizar, consulta nuestro simulador de ganancias y nuestras comparativas temáticas.`,
+    related: 'Guías temáticas',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Mejores tarjetas' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sin comisiones' },
+      { key: 'beginner', emoji: '🌱', label: 'Principiantes' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sin staking' },
+    ],
+  },
+  it: {
+    h2: 'Come funziona il nostro quiz di raccomandazione?',
+    body: `Il nostro strumento di raccomandazione di carte crypto pone 6 domande chiave sul tuo profilo: frequenza di utilizzo, spese mensili, tolleranza allo staking, priorità (cashback, viaggi, no-KYC, zero commissioni), mercato di residenza e livello di esperienza in crypto. In base alle tue risposte, il nostro algoritmo assegna un punteggio ponderato a ogni carta tra oltre 20 prodotti — Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty e altri — e mostra una classifica personalizzata. Il risultato tiene conto della disponibilità per paese, dei requisiti di staking e dei tassi di cashback reali. Per approfondire, consulta il nostro simulatore di guadagni e i nostri confronti tematici.`,
+    related: 'Guide tematiche',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Migliori carte' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Nessuna commissione' },
+      { key: 'beginner', emoji: '🌱', label: 'Principianti' },
+      { key: 'no-staking', emoji: '🔓', label: 'Nessuno staking' },
+    ],
+  },
+  en: {
+    h2: 'How does our recommendation quiz work?',
+    body: `Our crypto card recommendation tool asks 6 key questions about your profile: usage frequency, monthly spending, staking tolerance, priority (cashback, travel, no-KYC, zero fees), residence market, and crypto experience level. Based on your answers, our algorithm assigns a weighted score to each card across more than 20 products — Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty and others — and displays a personalised ranking. The result accounts for country availability, staking requirements and actual cashback rates. To go further, use our earnings simulator and our thematic comparison guides.`,
+    related: 'Thematic guides',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Best cards' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'No fees' },
+      { key: 'beginner', emoji: '🌱', label: 'Beginners' },
+      { key: 'no-staking', emoji: '🔓', label: 'No staking' },
+    ],
+  },
 };
 
 type StepDef<K extends keyof QuizAnswers> = {
@@ -451,6 +515,29 @@ export default function Recommendation() {
       )}
 
       <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
+
+      {/* Bloc éditorial — thin content fix + internal links */}
+      {(() => {
+        const ed = REC_EDITORIAL[lang] ?? REC_EDITORIAL.en;
+        return (
+          <div className="mt-14 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ key, emoji, label }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link key={key} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

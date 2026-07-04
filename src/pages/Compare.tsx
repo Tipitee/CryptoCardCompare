@@ -26,7 +26,74 @@ import {
   type CompareSession,
 } from '../lib/supabase';
 
+import { THEMATIC_ROUTES } from '../config/routes';
+
 const YEAR = new Date().getFullYear();
+
+// Bloc éditorial sous le comparateur — enrichit le contenu pour Google
+const COMPARE_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
+  fr: {
+    h2: 'Comment utiliser notre comparateur de cartes crypto ?',
+    body: `Notre comparateur vous permet de filtrer et trier plus de 15 cartes crypto selon vos critères : taux de cashback, frais annuels, staking requis, cryptomonnaies supportées et disponibilité par pays. Sélectionnez jusqu'à deux cartes pour une comparaison détaillée côte à côte, ou utilisez les filtres pour identifier rapidement les cartes qui correspondent à votre profil. Chaque carte est évaluée sur la base de données vérifiées et mises à jour régulièrement. Le tri par score de confiance vous aide à distinguer les émetteurs régulés et établis des nouveaux entrants. Pour aller plus loin, consultez nos avis individuels et notre simulateur de gains qui calcule votre cashback réel en fonction de vos dépenses mensuelles.`,
+    related: 'Guides par type de carte',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Meilleures cartes' },
+      { key: 'cashback',   emoji: '💰', label: 'Cashback élevé' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sans frais annuels' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sans staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Cartes voyage' },
+    ],
+  },
+  de: {
+    h2: 'Wie nutzt man unseren Krypto-Karten-Vergleich?',
+    body: `Unser Vergleichstool ermöglicht es Ihnen, über 15 Krypto-Karten nach Ihren Kriterien zu filtern und zu sortieren: Cashback-Rate, Jahresgebühren, erforderliches Staking, unterstützte Kryptowährungen und Länderverfügbarkeit. Wählen Sie bis zu zwei Karten für einen detaillierten Seite-an-Seite-Vergleich, oder nutzen Sie die Filter, um schnell Karten zu finden, die zu Ihrem Profil passen. Jede Karte wird anhand verifizierter und regelmäßig aktualisierter Daten bewertet. Die Sortierung nach Vertrauensscore hilft Ihnen, regulierte und etablierte Emittenten von Neueinsteigern zu unterscheiden. Für einen tieferen Einblick konsultieren Sie unsere individuellen Bewertungen und unseren Gewinn-Simulator.`,
+    related: 'Ratgeber nach Kartentyp',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Beste Karten' },
+      { key: 'cashback',   emoji: '💰', label: 'Hoher Cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Ohne Jahresgebühr' },
+      { key: 'no-staking', emoji: '🔓', label: 'Ohne Staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Reisekarten' },
+    ],
+  },
+  es: {
+    h2: '¿Cómo usar nuestro comparador de tarjetas crypto?',
+    body: `Nuestro comparador te permite filtrar y ordenar más de 15 tarjetas crypto según tus criterios: tasa de cashback, comisiones anuales, staking requerido, criptomonedas admitidas y disponibilidad por país. Selecciona hasta dos tarjetas para una comparación detallada lado a lado, o utiliza los filtros para identificar rápidamente las tarjetas que se adaptan a tu perfil. Cada tarjeta se evalúa con datos verificados y actualizados regularmente. La ordenación por puntuación de confianza te ayuda a distinguir los emisores regulados y establecidos de los recién llegados. Para profundizar, consulta nuestras opiniones individuales y nuestro simulador de ganancias.`,
+    related: 'Guías por tipo de tarjeta',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Mejores tarjetas' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sin comisiones' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sin staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Tarjetas de viaje' },
+    ],
+  },
+  it: {
+    h2: 'Come usare il nostro comparatore di carte crypto?',
+    body: `Il nostro comparatore ti permette di filtrare e ordinare oltre 15 carte crypto in base ai tuoi criteri: tasso di cashback, costi annuali, staking richiesto, criptovalute supportate e disponibilità per paese. Seleziona fino a due carte per un confronto dettagliato fianco a fianco, o usa i filtri per identificare rapidamente le carte che corrispondono al tuo profilo. Ogni carta viene valutata su dati verificati e aggiornati regolarmente. L'ordinamento per punteggio di fiducia ti aiuta a distinguere gli emittenti regolamentati e consolidati dai nuovi entranti. Per approfondire, consulta le nostre recensioni individuali e il nostro simulatore di guadagni.`,
+    related: 'Guide per tipo di carta',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Migliori carte' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Senza costi annuali' },
+      { key: 'no-staking', emoji: '🔓', label: 'Senza staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Carte viaggio' },
+    ],
+  },
+  en: {
+    h2: 'How to use our crypto card comparison tool?',
+    body: `Our comparison tool lets you filter and sort 15+ crypto cards by your criteria: cashback rate, annual fees, staking requirements, supported cryptocurrencies and country availability. Select up to two cards for a detailed side-by-side comparison, or use the filters to quickly identify cards that match your profile. Every card is assessed against verified, regularly updated data. Sorting by trust score helps you distinguish regulated and established issuers from newer entrants. To go further, check our individual reviews and our earnings simulator, which calculates your real cashback based on your monthly spending habits.`,
+    related: 'Guides by card type',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Best cards' },
+      { key: 'cashback',   emoji: '💰', label: 'High cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'No annual fees' },
+      { key: 'no-staking', emoji: '🔓', label: 'No staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Travel cards' },
+    ],
+  },
+};
+
 const COMPARE_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Comparateur Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez +15 cartes crypto : cashback, frais annuels, staking. Crypto.com, Nexo, Binance, Bybit — filtrez en quelques secondes. Gratuit ✓` },
   de: { title: `Krypto-Karten Vergleich ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten vergleichen: Cashback, Jahresgebühren, Staking. Crypto.com, Nexo, Binance, Bybit und mehr — in Sekunden filtern. Kostenlos ✓` },
@@ -700,6 +767,29 @@ export default function Compare() {
           quickSelectB={quickB}
         />
       )}
+
+      {/* Bloc éditorial — thin content fix */}
+      {(() => {
+        const ed = COMPARE_EDITORIAL[lang] ?? COMPARE_EDITORIAL.en;
+        return (
+          <div className="mt-14 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ key, emoji, label }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link key={key} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
