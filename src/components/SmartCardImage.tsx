@@ -25,22 +25,27 @@ const SIZE_DIMS: Record<string, { width: number; height: number }> = {
 };
 
 /**
- * Proxies any image through Netlify Image CDN, which resizes, compresses,
- * and serves WebP automatically. Available on all Netlify plans at no extra cost.
- * Path: /.netlify/images?url=<encoded>&w=<px>&q=<0-100>
+ * Returns an optimized image URL using Supabase Storage image transforms.
+ * Falls back to the raw URL for non-Supabase sources.
  */
 function getOptimizedImageUrl(url: string, width: number, quality = 80): string {
   if (!url) return url;
-  return `/.netlify/images?url=${encodeURIComponent(url)}&w=${width}&q=${quality}&fm=webp`;
+  // Supabase Storage image transform API (no extra plan required for public buckets)
+  if (url.includes('.supabase.co/storage/v1/object/public/')) {
+    return url.replace('/object/public/', '/render/image/public/') +
+      `?width=${width}&quality=${quality}&format=webp`;
+  }
+  return url;
 }
 
 export default function SmartCardImage({ card, size = 'md', tilt = false, className = '', priority = false }: Props) {
-  const [errored, setErrored] = useState(false);
+  // 'optimized' → try Supabase render URL; 'raw' → try direct URL; 'failed' → CardVisual
+  const [imgState, setImgState] = useState<'optimized' | 'raw' | 'failed'>('optimized');
 
   const sizeClass = SIZE_CLASSES[size];
   const dims = SIZE_DIMS[size];
 
-  if (!card.realCardImage || errored) {
+  if (!card.realCardImage || imgState === 'failed') {
     return <CardVisual card={card} size={size} tilt={tilt} className={`flex-none shrink-0 ${className}`} />;
   }
 
@@ -55,21 +60,28 @@ export default function SmartCardImage({ card, size = 'md', tilt = false, classN
   const altFn = ALT_TPL[pageLang] ?? ALT_TPL.en;
   const alt = card.imageAlt || altFn(card.name, card.issuer);
 
-  const optimizedSrc = getOptimizedImageUrl(card.realCardImage, dims.width * 2);
+  const src = imgState === 'optimized'
+    ? getOptimizedImageUrl(card.realCardImage, dims.width * 2)
+    : card.realCardImage;
+
+  const handleError = () => {
+    if (imgState === 'optimized') setImgState('raw');
+    else setImgState('failed');
+  };
 
   return (
     <div
       className={`${sizeClass} flex-none shrink-0 relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-bg-card ${className}`}
     >
       <img
-        src={optimizedSrc}
+        src={src}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
         decoding={priority ? 'sync' : 'async'}
         width={dims.width}
         height={dims.height}
-        onError={() => setErrored(true)}
+        onError={handleError}
         className="absolute inset-0 w-full h-full object-cover"
       />
     </div>
