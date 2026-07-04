@@ -174,6 +174,13 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
   if (extras.includes('self_custody')) {
     forWhom.push('Les utilisateurs attachés à la garde de leurs clés privées (self-custody)');
   }
+  // Catch-all fallback to guarantee at least 2 items
+  if (forWhom.length === 0) {
+    forWhom.push('Les utilisateurs souhaitant diversifier leurs moyens de paiement vers les cryptomonnaies');
+    forWhom.push('Les détenteurs de cryptos désireux de les utiliser au quotidien sans conversion manuelle');
+  } else if (forWhom.length === 1) {
+    forWhom.push('Les personnes cherchant une alternative moderne aux cartes bancaires traditionnelles');
+  }
 
   // ── Pros
   const pros: string[] = [];
@@ -187,6 +194,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
   if (extras.includes('lounge_access')) pros.push('Accès aux salons d\'aéroport inclus');
   if (extras.includes('travel_insurance')) pros.push('Assurance voyage incluse');
   if (extras.includes('self_custody')) pros.push('Carte en auto-garde (self-custody)');
+  if (extras.includes('metal_card')) pros.push('Carte physique en métal (premium)');
   if (network === 'Visa') pros.push('Acceptée dans plus de 100 millions de points de vente dans le monde');
   if (cryptos.length >= 10) pros.push(`Large choix de ${cryptos.length} cryptomonnaies supportées`);
 
@@ -315,15 +323,29 @@ function generateDE(card: CryptoCard): CardGeneratedContent {
   if (stakingRequired === 0 && hasCashback(card)) forWhom.push('Anleger, die ihre Kryptowährungen liquid halten möchten');
   if (availableEU) forWhom.push('EU-Bürger, die eine regulierte Krypto-Karte suchen');
   if (extras.includes('lounge_access')) forWhom.push('Vielreisende, die VIP-Lounges an Flughäfen nutzen möchten');
+  if (virtualOnly) forWhom.push('Online-Käufer, die keine physische Karte benötigen');
+  else if (freeWithdrawals) forWhom.push('Reisende, die regelmäßig Bargeld im Ausland abheben');
+  if (extras.includes('self_custody')) forWhom.push('Nutzer, die ihre privaten Schlüssel selbst verwahren möchten (Self-Custody)');
+  if (forWhom.length === 0) {
+    forWhom.push('Nutzer, die ihre Kryptowährungen im Alltag einsetzen möchten');
+    forWhom.push('Personen, die eine moderne Alternative zu herkömmlichen Bankkarten suchen');
+  } else if (forWhom.length === 1) {
+    forWhom.push('Personen, die eine moderne Alternative zu herkömmlichen Bankkarten suchen');
+  }
 
   const pros: string[] = [];
   if (annualFees === 0) pros.push('Keine Jahresgebühren');
   if (stakingRequired === 0 && hasCashback(card)) pros.push('Cashback ohne Staking-Pflicht');
   if (cashbackPremium >= 3) pros.push(`Attraktives Premium-Cashback bis zu ${cashbackPremium}%`);
   else if (cashbackBase > 0) pros.push(`${cashbackBase}% Cashback auf alle Einkäufe`);
+  else if (cashbackNoStaking > 0) pros.push(`${cashbackNoStaking}% Cashback ohne Staking`);
   if (availableEU) pros.push('Verfügbar in Deutschland und der EU');
   if (freeWithdrawals) pros.push('Kostenlose Geldabhebungen am Geldautomaten');
   if (extras.includes('lounge_access')) pros.push('Zugang zu Flughafenlounges inklusive');
+  if (extras.includes('travel_insurance')) pros.push('Reiseversicherung inklusive');
+  if (extras.includes('self_custody')) pros.push('Self-Custody Karte (eigene Schlüsselverwaltung)');
+  if (extras.includes('metal_card')) pros.push('Physische Metallkarte (Premium)');
+  if (cryptos.length >= 10) pros.push(`Große Auswahl: ${cryptos.length} Kryptowährungen unterstützt`);
 
   const cons: string[] = [];
   if (stakingRequired > 0) cons.push(`Mindest-Staking von ${stakingRequired} € erforderlich`);
@@ -416,15 +438,29 @@ function generateES(card: CryptoCard): CardGeneratedContent {
   if (stakingRequired === 0 && hasCashback(card)) forWhom.push('Inversores que prefieren mantener sus criptos líquidas');
   if (availableEU) forWhom.push('Residentes en España y la UE que buscan una tarjeta cripto regulada');
   if (extras.includes('lounge_access')) forWhom.push('Grandes viajeros que desean acceso a salas VIP en aeropuertos');
+  if (virtualOnly) forWhom.push('Compradores online que no necesitan tarjeta física');
+  else if (freeWithdrawals) forWhom.push('Viajeros que retiran efectivo regularmente en el extranjero');
+  if (extras.includes('self_custody')) forWhom.push('Usuarios que quieren custodiar sus propias claves privadas (self-custody)');
+  if (forWhom.length === 0) {
+    forWhom.push('Usuarios que quieren pagar con criptomonedas en su día a día');
+    forWhom.push('Personas que buscan una alternativa moderna a las tarjetas bancarias tradicionales');
+  } else if (forWhom.length === 1) {
+    forWhom.push('Personas que buscan una alternativa moderna a las tarjetas bancarias tradicionales');
+  }
 
   const pros: string[] = [];
   if (annualFees === 0) pros.push('Sin cuota anual');
   if (stakingRequired === 0 && hasCashback(card)) pros.push('Cashback sin obligación de staking');
   if (cashbackPremium >= 3) pros.push(`Cashback premium atractivo hasta el ${cashbackPremium}%`);
   else if (cashbackBase > 0) pros.push(`${cashbackBase}% de cashback en todas las compras`);
+  else if (cashbackNoStaking > 0) pros.push(`${cashbackNoStaking}% de cashback sin staking`);
   if (availableEU) pros.push('Disponible en España y toda la UE');
   if (freeWithdrawals) pros.push('Retiradas en cajero automático gratuitas');
   if (extras.includes('lounge_access')) pros.push('Acceso a salas VIP en aeropuertos');
+  if (extras.includes('travel_insurance')) pros.push('Seguro de viaje incluido');
+  if (extras.includes('self_custody')) pros.push('Tarjeta en autocustodia (self-custody)');
+  if (extras.includes('metal_card')) pros.push('Tarjeta física de metal (premium)');
+  if (cryptos.length >= 10) pros.push(`Gran selección: ${cryptos.length} criptomonedas compatibles`);
 
   const cons: string[] = [];
   if (stakingRequired > 0) cons.push(`Staking mínimo de ${stakingRequired} € requerido`);
@@ -517,15 +553,29 @@ function generateIT(card: CryptoCard): CardGeneratedContent {
   if (stakingRequired === 0 && hasCashback(card)) forWhom.push('Gli investitori che preferiscono mantenere le proprie crypto liquide');
   if (availableEU) forWhom.push('I residenti in Italia e nell\'UE alla ricerca di una carta crypto regolamentata');
   if (extras.includes('lounge_access')) forWhom.push('I grandi viaggiatori che desiderano accedere alle lounge VIP degli aeroporti');
+  if (virtualOnly) forWhom.push('Gli acquirenti online che non necessitano di una carta fisica');
+  else if (freeWithdrawals) forWhom.push('I viaggiatori che prelevano contanti regolarmente all\'estero');
+  if (extras.includes('self_custody')) forWhom.push('Gli utenti che desiderano custodire le proprie chiavi private (self-custody)');
+  if (forWhom.length === 0) {
+    forWhom.push('Gli utenti che vogliono usare le criptovalute nei pagamenti quotidiani');
+    forWhom.push('Chi cerca un\'alternativa moderna alle carte bancarie tradizionali');
+  } else if (forWhom.length === 1) {
+    forWhom.push('Chi cerca un\'alternativa moderna alle carte bancarie tradizionali');
+  }
 
   const pros: string[] = [];
   if (annualFees === 0) pros.push('Nessun costo annuale');
   if (stakingRequired === 0 && hasCashback(card)) pros.push('Cashback senza obbligo di staking');
   if (cashbackPremium >= 3) pros.push(`Cashback premium fino al ${cashbackPremium}%`);
   else if (cashbackBase > 0) pros.push(`${cashbackBase}% di cashback su tutti gli acquisti`);
+  else if (cashbackNoStaking > 0) pros.push(`${cashbackNoStaking}% di cashback senza staking`);
   if (availableEU) pros.push('Disponibile in Italia e in tutta l\'UE');
   if (freeWithdrawals) pros.push('Prelievi ATM gratuiti');
   if (extras.includes('lounge_access')) pros.push('Accesso alle lounge aeroportuali incluso');
+  if (extras.includes('travel_insurance')) pros.push('Assicurazione viaggio inclusa');
+  if (extras.includes('self_custody')) pros.push('Carta in self-custody (gestione autonoma delle chiavi)');
+  if (extras.includes('metal_card')) pros.push('Carta fisica in metallo (premium)');
+  if (cryptos.length >= 10) pros.push(`Ampia scelta: ${cryptos.length} criptovalute supportate`);
 
   const cons: string[] = [];
   if (stakingRequired > 0) cons.push(`Staking minimo di ${stakingRequired} € richiesto`);
@@ -618,16 +668,29 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
   if (stakingRequired === 0 && hasCashback(card)) forWhom.push('Investors who want to keep their crypto holdings liquid');
   if (availableEU) forWhom.push('European residents looking for a regulated crypto card');
   if (extras.includes('lounge_access')) forWhom.push('Frequent travellers seeking airport lounge access');
+  if (virtualOnly) forWhom.push('Online shoppers who don\'t need a physical card');
+  else if (freeWithdrawals) forWhom.push('Travellers who regularly withdraw cash abroad');
+  if (extras.includes('self_custody')) forWhom.push('Users who want full control over their private keys (self-custody)');
+  if (forWhom.length === 0) {
+    forWhom.push('Crypto holders looking to spend their assets in everyday life');
+    forWhom.push('Those seeking a modern alternative to traditional bank cards');
+  } else if (forWhom.length === 1) {
+    forWhom.push('Those seeking a modern alternative to traditional bank cards');
+  }
 
   const pros: string[] = [];
   if (annualFees === 0) pros.push('No annual fee');
   if (stakingRequired === 0 && hasCashback(card)) pros.push('Cashback with no staking requirement');
   if (cashbackPremium >= 3) pros.push(`Attractive premium cashback up to ${cashbackPremium}%`);
   else if (cashbackBase > 0) pros.push(`${cashbackBase}% cashback on all purchases`);
+  else if (cashbackNoStaking > 0) pros.push(`${cashbackNoStaking}% cashback with no staking`);
   if (availableEU) pros.push('Available across the EU');
   if (freeWithdrawals) pros.push('Free ATM withdrawals');
   if (extras.includes('lounge_access')) pros.push('Airport lounge access included');
   if (extras.includes('travel_insurance')) pros.push('Travel insurance included');
+  if (extras.includes('self_custody')) pros.push('Self-custody card (you control the keys)');
+  if (extras.includes('metal_card')) pros.push('Premium physical metal card');
+  if (cryptos.length >= 10) pros.push(`Wide selection: ${cryptos.length} cryptocurrencies supported`);
 
   const cons: string[] = [];
   if (stakingRequired > 0) cons.push(`Minimum staking of €${stakingRequired} required`);

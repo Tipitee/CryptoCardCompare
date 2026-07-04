@@ -11,6 +11,7 @@ import { trackAffiliateClick } from '../utils/analytics';
 import { getBrandMeta } from '../data/brandConfig';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
+import { REVIEW_I18N } from '../data/cardReviewsI18n';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import type { CryptoCard } from '../types/card';
@@ -299,7 +300,7 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'plutus': 'plutus-card',
   'trade-republic': 'trade-republic-card',
   'ledger': 'ledger-card',
-  'gnosis': 'gnosis-pay-card',
+  'metamask': 'metamask-card',
 };
 
 const REVIEW_LABEL: Record<string, string> = {
@@ -438,13 +439,29 @@ export default function BrandPage() {
       };
     }
 
-    ['schema-brand-itemlist', 'schema-brand-faq'].forEach(id => document.getElementById(id)?.remove());
+    // BreadcrumbList
+    const breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'TopCryptoCards', item: `${BASE_URL}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: brand.displayName, item: `${BASE_URL}/${lang}/${ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands'}/${brandId}` },
+      ],
+    };
+
+    ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb'].forEach(id => document.getElementById(id)?.remove());
 
     const listEl = document.createElement('script');
     listEl.id = 'schema-brand-itemlist';
     listEl.type = 'application/ld+json';
     listEl.textContent = JSON.stringify(itemListSchema);
     document.head.appendChild(listEl);
+
+    const bcEl = document.createElement('script');
+    bcEl.id = 'schema-brand-breadcrumb';
+    bcEl.type = 'application/ld+json';
+    bcEl.textContent = JSON.stringify(breadcrumbSchema);
+    document.head.appendChild(bcEl);
 
     if (faqSchema) {
       const faqEl = document.createElement('script');
@@ -455,7 +472,7 @@ export default function BrandPage() {
     }
 
     return () => {
-      ['schema-brand-itemlist', 'schema-brand-faq'].forEach(id => document.getElementById(id)?.remove());
+      ['schema-brand-itemlist', 'schema-brand-faq', 'schema-brand-breadcrumb'].forEach(id => document.getElementById(id)?.remove());
     };
   }, [brandId, cards, seo, lang, cardsSlug, brand.displayName]);
 
@@ -1041,9 +1058,9 @@ function ReviewMiniCard({
       {/* Header */}
       <div className="p-5 pb-4 flex items-start justify-between gap-3 border-b border-bg-border">
         <div>
-          {review.badge && (
+          {(REVIEW_I18N[`${review.slug}__${lang}`]?.badge ?? review.badge) && (
             <span className="inline-flex items-center text-xs font-semibold text-text-secondary bg-bg-elevated border border-bg-border px-2 py-0.5 rounded-full mb-2">
-              {review.badge}
+              {REVIEW_I18N[`${review.slug}__${lang}`]?.badge ?? review.badge}
             </span>
           )}
           <h3 className="font-display font-bold text-text-primary group-hover:text-brand-accent transition-colors text-base leading-tight">

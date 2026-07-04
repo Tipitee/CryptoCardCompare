@@ -230,6 +230,14 @@ export default function ComparisonPage() {
   const genericBlocks = getSeoText(lang, card1, card2);
   const specificContent = card1 && card2 ? getSpecificComparison(card1.id, card2.id) : null;
 
+  // Localised FAQ: use {lang}_faq if available, fall back to fr faq only for FR
+  const localFaq = (() => {
+    if (!specificContent) return undefined;
+    if (lang === 'fr') return specificContent.faq;
+    const key = `${lang}_faq` as keyof typeof specificContent;
+    return (specificContent[key] as { q: string; a: string }[] | undefined);
+  })();
+
   // Merge: replace intro (block 0) and verdict (block 3) with specific content when available
   const seoBlocks = genericBlocks.map((block, i) => {
     if (!specificContent) return block;
@@ -287,12 +295,12 @@ export default function ComparisonPage() {
 
   // ── Schema.org FAQPage (when specific FAQ available) ─────────────────────────
   useEffect(() => {
-    if (!card1 || !card2 || !specificContent?.faq?.length) return;
+    if (!card1 || !card2 || !localFaq?.length) return;
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       inLanguage: lang,
-      mainEntity: specificContent.faq.map((item: { q: string; a: string }) => ({
+      mainEntity: localFaq.map((item: { q: string; a: string }) => ({
         '@type': 'Question',
         name: item.q,
         acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -305,7 +313,7 @@ export default function ComparisonPage() {
     el.textContent = JSON.stringify(faqSchema);
     document.head.appendChild(el);
     return () => { document.getElementById('schema-comparison-faq')?.remove(); };
-  }, [card1?.id, card2?.id, specificContent]);
+  }, [card1?.id, card2?.id, localFaq]);
 
   // Not found state
   if (notFound) {
@@ -639,13 +647,13 @@ export default function ComparisonPage() {
       </section>
 
       {/* ── FAQ section (specific pairs only) ───────────────────── */}
-      {specificContent?.faq && specificContent.faq.length > 0 && (
+      {localFaq && localFaq.length > 0 && (
         <section className="mt-10">
           <h2 className="text-lg font-display font-semibold text-white mb-5">
             {t('faq_title')}
           </h2>
           <div className="space-y-4">
-            {specificContent.faq.map((item, i) => (
+            {localFaq.map((item, i) => (
               <div key={i} className="card-surface p-5">
                 <h3 className="text-sm font-semibold text-white mb-2">{item.q}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">{item.a}</p>

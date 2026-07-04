@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ExternalLink, CheckCircle, TrendingUp, ChevronRight } from 'lucide-react';
 import { CARD_REVIEWS } from '../data/cardReviews';
+import { REVIEW_I18N } from '../data/cardReviewsI18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
@@ -228,9 +229,9 @@ export default function ReviewList() {
                         ⭐ {l.topPick}
                       </span>
                     )}
-                    {review.badge && index > 0 && (
+                    {(REVIEW_I18N[`${review.slug}__${lang}`]?.badge ?? review.badge) && index > 0 && (
                       <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 bg-bg-elevated border border-bg-border px-2 py-0.5 rounded-full mb-2">
-                        {review.badge}
+                        {REVIEW_I18N[`${review.slug}__${lang}`]?.badge ?? review.badge}
                       </span>
                     )}
                     <h2 className="font-display font-bold text-white group-hover:text-cyan-accent transition-colors text-lg leading-tight">
@@ -250,7 +251,7 @@ export default function ReviewList() {
                 <div className="p-5 flex-1 space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-400">{l.cashback}</span>
-                    <span className="font-semibold text-white">{review.keyStats.cashbackMax.replace('Jusqu\'à ', '').replace('0 €', 'Gratuit')}</span>
+                    <span className="font-semibold text-white">{REVIEW_I18N[`${review.slug}__${lang}`]?.keyStats?.cashbackMax ?? review.keyStats.cashbackMax}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-400">{l.staking}</span>
@@ -258,14 +259,14 @@ export default function ReviewList() {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-400">{l.fees}</span>
-                    <span className="font-semibold text-white">{review.keyStats.fraisAnnuels}</span>
+                    <span className="font-semibold text-white">{REVIEW_I18N[`${review.slug}__${lang}`]?.keyStats?.fraisAnnuels ?? review.keyStats.fraisAnnuels}</span>
                   </div>
                 </div>
 
                 {/* Top pros */}
                 <div className="px-5 pb-4">
                   <div className="space-y-1">
-                    {review.pros.slice(0, 2).map((pro, i) => (
+                    {(REVIEW_I18N[`${review.slug}__${lang}`]?.pros ?? review.pros).slice(0, 2).map((pro, i) => (
                       <div key={i} className="flex items-start gap-1.5 text-xs text-slate-400">
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                         <span className="line-clamp-1">{pro}</span>
