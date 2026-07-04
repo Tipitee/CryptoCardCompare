@@ -9,8 +9,72 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import Breadcrumb from '../components/Breadcrumb';
+import { THEMATIC_ROUTES } from '../config/routes';
 
 const PAGE_SIZE = 6;
+
+const BLOG_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
+  fr: {
+    h2: 'Le blog crypto de référence en Europe',
+    body: `Nos articles couvrent tout ce que vous devez savoir sur les cartes crypto en Europe en ${new Date().getFullYear()} : comparatifs détaillés, analyses des changements réglementaires (MiCA), décryptages du cashback et du staking, guides par pays (France, Allemagne, Espagne, Italie). Chaque article est rédigé par une équipe spécialisée et mis à jour régulièrement pour refléter les évolutions du marché. Retrouvez aussi nos comparatifs thématiques pour choisir la carte adaptée à votre profil.`,
+    related: 'Guides thématiques',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Meilleures cartes crypto' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sans frais' },
+      { key: 'travel', emoji: '✈️', label: 'Voyages' },
+      { key: 'beginner', emoji: '🌱', label: 'Débutants' },
+    ],
+  },
+  de: {
+    h2: 'Europas Krypto-Karten-Referenzblog',
+    body: `Unsere Artikel decken alles ab, was Sie über Krypto-Karten in Europa im Jahr ${new Date().getFullYear()} wissen müssen: detaillierte Vergleiche, Analysen regulatorischer Änderungen (MiCA), Erklärungen zu Cashback und Staking, länderspezifische Ratgeber (Frankreich, Deutschland, Spanien, Italien). Jeder Artikel wird von einem Spezialisten-Team verfasst und regelmäßig aktualisiert, um Marktentwicklungen widerzuspiegeln. Entdecken Sie auch unsere thematischen Vergleiche, um die richtige Karte für Ihr Profil zu finden.`,
+    related: 'Thematische Ratgeber',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Beste Krypto-Karten' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Keine Gebühren' },
+      { key: 'travel', emoji: '✈️', label: 'Reisen' },
+      { key: 'beginner', emoji: '🌱', label: 'Einsteiger' },
+    ],
+  },
+  es: {
+    h2: 'El blog de referencia de tarjetas crypto en Europa',
+    body: `Nuestros artículos cubren todo lo que necesitas saber sobre las tarjetas crypto en Europa en ${new Date().getFullYear()}: comparativas detalladas, análisis de cambios regulatorios (MiCA), explicaciones de cashback y staking, guías por país (Francia, Alemania, España, Italia). Cada artículo es redactado por un equipo especializado y actualizado regularmente para reflejar la evolución del mercado. Consulta también nuestras comparativas temáticas para elegir la tarjeta adecuada a tu perfil.`,
+    related: 'Guías temáticas',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Mejores tarjetas crypto' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sin comisiones' },
+      { key: 'travel', emoji: '✈️', label: 'Viajes' },
+      { key: 'beginner', emoji: '🌱', label: 'Principiantes' },
+    ],
+  },
+  it: {
+    h2: 'Il blog di riferimento sulle carte crypto in Europa',
+    body: `I nostri articoli coprono tutto ciò che devi sapere sulle carte crypto in Europa nel ${new Date().getFullYear()}: comparazioni dettagliate, analisi dei cambiamenti normativi (MiCA), spiegazioni di cashback e staking, guide per paese (Francia, Germania, Spagna, Italia). Ogni articolo è redatto da un team specializzato e aggiornato regolarmente per riflettere l'evoluzione del mercato. Consulta anche le nostre comparazioni tematiche per scegliere la carta adatta al tuo profilo.`,
+    related: 'Guide tematiche',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Migliori carte crypto' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Nessuna commissione' },
+      { key: 'travel', emoji: '✈️', label: 'Viaggi' },
+      { key: 'beginner', emoji: '🌱', label: 'Principianti' },
+    ],
+  },
+  en: {
+    h2: "Europe's reference crypto card blog",
+    body: `Our articles cover everything you need to know about crypto cards in Europe in ${new Date().getFullYear()}: detailed comparisons, analyses of regulatory changes (MiCA), breakdowns of cashback and staking, country-specific guides (France, Germany, Spain, Italy). Each article is written by a specialist team and regularly updated to reflect market developments. Check out our thematic comparisons to find the card that matches your profile.`,
+    related: 'Thematic guides',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Best crypto cards' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'No fees' },
+      { key: 'travel', emoji: '✈️', label: 'Travel' },
+      { key: 'beginner', emoji: '🌱', label: 'Beginners' },
+    ],
+  },
+};
 
 const DATE_LOCALES: Record<string, string> = {
   fr: 'fr-FR',
@@ -236,6 +300,29 @@ export default function Blog() {
           )}
         </>
       )}
+
+      {/* Bloc éditorial — thin content fix + thematic links */}
+      {(() => {
+        const ed = BLOG_EDITORIAL[lang] ?? BLOG_EDITORIAL.en;
+        return (
+          <div className="mt-16 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ key, emoji, label }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link key={key} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

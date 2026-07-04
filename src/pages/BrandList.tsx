@@ -10,9 +10,73 @@ import { useAppStore } from '../store/useAppStore';
 import SmartCardImage from '../components/SmartCardImage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { BRAND_CONFIG } from '../data/brandConfig';
+import { THEMATIC_ROUTES } from '../config/routes';
 import type { CryptoCard } from '../types/card';
 
 const YEAR = new Date().getFullYear();
+
+const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
+  fr: {
+    h2: 'Toutes les marques de cartes crypto disponibles en Europe',
+    body: `Cette page recense toutes les marques de cartes crypto accessibles depuis la France, l'Allemagne, l'Espagne, l'Italie et d'autres pays européens en ${YEAR}. Chaque marque propose une gamme de cartes avec des niveaux de cashback, des frais annuels et des exigences de staking différents. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — chaque émetteur a ses forces selon votre profil : voyageur, investisseur actif, débutant, ou utilisateur quotidien. Comparez directement via notre outil ou consultez nos avis détaillés par carte.`,
+    related: 'Guides thématiques',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Meilleures cartes' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sans frais' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sans staking' },
+      { key: 'travel', emoji: '✈️', label: 'Voyages' },
+    ],
+  },
+  de: {
+    h2: 'Alle Krypto-Karten-Marken in Europa',
+    body: `Diese Seite listet alle Krypto-Karten-Marken auf, die von Frankreich, Deutschland, Spanien, Italien und anderen europäischen Ländern aus zugänglich sind. Jede Marke bietet eine Palette von Karten mit unterschiedlichen Cashback-Stufen, Jahresgebühren und Staking-Anforderungen. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — jeder Anbieter hat seine Stärken je nach Ihrem Profil: Reisender, aktiver Investor, Einsteiger oder täglicher Nutzer. Vergleichen Sie direkt über unser Tool oder lesen Sie unsere detaillierten Kartenbewertungen.`,
+    related: 'Thematische Ratgeber',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Beste Karten' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Keine Gebühren' },
+      { key: 'no-staking', emoji: '🔓', label: 'Kein Staking' },
+      { key: 'travel', emoji: '✈️', label: 'Reisen' },
+    ],
+  },
+  es: {
+    h2: 'Todas las marcas de tarjetas crypto disponibles en Europa',
+    body: `Esta página enumera todas las marcas de tarjetas crypto accesibles desde Francia, Alemania, España, Italia y otros países europeos en ${YEAR}. Cada marca ofrece una gama de tarjetas con diferentes niveles de cashback, comisiones anuales y requisitos de staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — cada emisor tiene sus puntos fuertes según tu perfil: viajero, inversor activo, principiante o usuario cotidiano. Compara directamente con nuestra herramienta o consulta nuestros análisis detallados por tarjeta.`,
+    related: 'Guías temáticas',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Mejores tarjetas' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Sin comisiones' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sin staking' },
+      { key: 'travel', emoji: '✈️', label: 'Viajes' },
+    ],
+  },
+  it: {
+    h2: 'Tutti i brand di carte crypto disponibili in Europa',
+    body: `Questa pagina elenca tutti i brand di carte crypto accessibili da Francia, Germania, Spagna, Italia e altri paesi europei nel ${YEAR}. Ogni brand offre una gamma di carte con diversi livelli di cashback, commissioni annuali e requisiti di staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — ogni emittente ha i suoi punti di forza a seconda del tuo profilo: viaggiatore, investitore attivo, principiante o utente quotidiano. Confronta direttamente con il nostro strumento o consulta le nostre recensioni dettagliate per carta.`,
+    related: 'Guide tematiche',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Migliori carte' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'Nessuna commissione' },
+      { key: 'no-staking', emoji: '🔓', label: 'Nessuno staking' },
+      { key: 'travel', emoji: '✈️', label: 'Viaggi' },
+    ],
+  },
+  en: {
+    h2: 'All crypto card brands available in Europe',
+    body: `This page lists all crypto card brands accessible from France, Germany, Spain, Italy and other European countries in ${YEAR}. Each brand offers a range of cards with different cashback levels, annual fees and staking requirements. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — each issuer has its strengths depending on your profile: traveller, active investor, beginner, or daily user. Compare directly with our tool or check our detailed per-card reviews.`,
+    related: 'Thematic guides',
+    links: [
+      { key: 'best', emoji: '🏆', label: 'Best cards' },
+      { key: 'cashback', emoji: '💰', label: 'Cashback' },
+      { key: 'no-fees', emoji: '🚫', label: 'No fees' },
+      { key: 'no-staking', emoji: '🔓', label: 'No staking' },
+      { key: 'travel', emoji: '✈️', label: 'Travel' },
+    ],
+  },
+};
 
 const LOADING_LABEL: Record<string, string> = {
   fr: 'Chargement…', de: 'Wird geladen…', es: 'Cargando…', it: 'Caricamento…', en: 'Loading…',
@@ -275,6 +339,29 @@ export default function BrandList() {
           </div>
         </section>
       )}
+
+      {/* Bloc éditorial — thin content fix + thematic links */}
+      {(() => {
+        const ed = BRANDLIST_EDITORIAL[lang] ?? BRANDLIST_EDITORIAL.en;
+        return (
+          <div className="border-t border-bg-border pt-10">
+            <h2 className="text-xl font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ key, emoji, label }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link key={key} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }
