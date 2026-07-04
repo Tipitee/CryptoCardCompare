@@ -351,6 +351,12 @@ export default function Layout() {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.about ?? 'about'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Building2 className="w-3.5 h-3.5" />
+                    {({ fr: 'À propos', de: 'Über uns', es: 'Sobre nosotros', it: 'Chi siamo', en: 'About' } as Record<string, string>)[lang] ?? 'About'}
+                  </NavLink>
+                </li>
+                <li>
                   <Link to="/affiliate-disclosure" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" />
                     {t('footer_affiliate')}

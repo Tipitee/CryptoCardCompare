@@ -24,6 +24,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     cryptos:        'cryptos',
     comparisons:    'comparer',
     brands:         'marques',
+    about:          'a-propos',
   },
   de: {
     compare:        'vergleich',
@@ -36,6 +37,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     cryptos:        'cryptos',
     comparisons:    'vergleichen',
     brands:         'marken',
+    about:          'ueber-uns',
   },
   es: {
     compare:        'comparar',
@@ -48,6 +50,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     cryptos:        'cryptos',
     comparisons:    'comparar',
     brands:         'marcas',
+    about:          'sobre-nosotros',
   },
   it: {
     compare:        'confronto',
@@ -60,6 +63,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     cryptos:        'cryptos',
     comparisons:    'confrontare',
     brands:         'marche',
+    about:          'chi-siamo',
   },
   en: {
     compare:        'compare',
@@ -72,5 +76,6 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     cryptos:        'cryptos',
     comparisons:    'compare',
     brands:         'brands',
+    about:          'about',
   },
 };

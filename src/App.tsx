@@ -31,6 +31,7 @@ const ReviewPage           = lazy(() => import('./pages/ReviewPage'));
 const NotFound             = lazy(() => import('./pages/NotFound'));
 const BrandPage            = lazy(() => import('./pages/BrandPage'));
 const BrandList            = lazy(() => import('./pages/BrandList'));
+const About                = lazy(() => import('./pages/About'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -179,6 +180,11 @@ export default function App() {
           {/* Brand pages — /:lang/marques/:brandId, /de/marken/:brandId, etc. */}
           {allSlugs('brands').map((slug) => (
             <Route key={`brand-${slug}`} path={`${slug}/:brandId`} element={<BrandPage />} />
+          ))}
+
+          {/* About / Methodology */}
+          {allSlugs('about').map((slug) => (
+            <Route key={`about-${slug}`} path={slug} element={<About />} />
           ))}
         </Route>
 
