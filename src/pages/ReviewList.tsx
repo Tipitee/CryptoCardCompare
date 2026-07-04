@@ -20,7 +20,7 @@ const L: Record<string, {
   fr: {
     title: `Avis Cartes Crypto ${YEAR} — Tests & Comparatif | TopCryptoCards`,
     desc: `Avis détaillés et objectifs sur les meilleures cartes crypto : Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase et plus. Notes, cashback, frais et verdicts.`,
-    badge: `Avis & Tests ${YEAR}`, h1: 'Avis sur les Cartes Crypto',
+    badge: `Avis & Tests ${YEAR}`, h1: `Avis Cartes Crypto ${YEAR}`,
     sub: 'Tests complets et objectifs des meilleures cartes crypto du marché. Cashback, frais, sécurité et expérience utilisateur passés au crible.',
     topPick: 'Notre meilleur choix', readReview: "Lire l'avis",
     cashback: 'Cashback max', staking: 'Staking requis', fees: 'Frais annuels',
@@ -34,7 +34,7 @@ const L: Record<string, {
   de: {
     title: `Krypto-Karten Bewertungen ${YEAR} — Tests | TopCryptoCards`,
     desc: `Detaillierte und objektive Bewertungen der besten Krypto-Karten: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase und mehr.`,
-    badge: `Tests & Bewertungen ${YEAR}`, h1: 'Krypto-Karten Bewertungen',
+    badge: `Tests & Bewertungen ${YEAR}`, h1: `Krypto-Karten Bewertungen ${YEAR}`,
     sub: 'Vollständige und objektive Tests der besten Krypto-Karten auf dem Markt. Cashback, Gebühren, Sicherheit und Benutzererfahrung unter der Lupe.',
     topPick: 'Unsere Top-Wahl', readReview: 'Bewertung lesen',
     cashback: 'Max. Cashback', staking: 'Staking erforderlich', fees: 'Jahresgebühren',
@@ -48,7 +48,7 @@ const L: Record<string, {
   es: {
     title: `Opiniones Tarjetas Crypto ${YEAR} — Tests | TopCryptoCards`,
     desc: `Opiniones detalladas y objetivas sobre las mejores tarjetas crypto: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase y más.`,
-    badge: `Opiniones & Tests ${YEAR}`, h1: 'Opiniones sobre Tarjetas Crypto',
+    badge: `Opiniones & Tests ${YEAR}`, h1: `Opiniones Tarjetas Crypto ${YEAR}`,
     sub: 'Tests completos y objetivos de las mejores tarjetas crypto del mercado. Cashback, comisiones, seguridad y experiencia de usuario analizados.',
     topPick: 'Nuestra mejor elección', readReview: 'Leer opinión',
     cashback: 'Cashback máx.', staking: 'Staking requerido', fees: 'Comisiones anuales',
@@ -62,7 +62,7 @@ const L: Record<string, {
   it: {
     title: `Recensioni Carte Crypto ${YEAR} — Test | TopCryptoCards`,
     desc: `Recensioni dettagliate e obiettive sulle migliori carte crypto: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase e altro.`,
-    badge: `Recensioni & Test ${YEAR}`, h1: 'Recensioni Carte Crypto',
+    badge: `Recensioni & Test ${YEAR}`, h1: `Recensioni Carte Crypto ${YEAR}`,
     sub: 'Test completi e obiettivi delle migliori carte crypto sul mercato. Cashback, commissioni, sicurezza ed esperienza utente analizzati.',
     topPick: 'La nostra migliore scelta', readReview: 'Leggi la recensione',
     cashback: 'Cashback max.', staking: 'Staking richiesto', fees: 'Commissioni annuali',
@@ -76,7 +76,7 @@ const L: Record<string, {
   en: {
     title: `Crypto Card Reviews ${YEAR} — Tests | TopCryptoCards`,
     desc: `Detailed and objective reviews of the best crypto cards: Crypto.com, Binance, Bybit, OKX, Nexo, Coinbase and more.`,
-    badge: `Reviews & Tests ${YEAR}`, h1: 'Crypto Card Reviews',
+    badge: `Reviews & Tests ${YEAR}`, h1: `Crypto Card Reviews ${YEAR}`,
     sub: 'Complete and objective tests of the best crypto cards on the market. Cashback, fees, security and user experience scrutinized.',
     topPick: 'Our top pick', readReview: 'Read review',
     cashback: 'Max cashback', staking: 'Staking required', fees: 'Annual fees',

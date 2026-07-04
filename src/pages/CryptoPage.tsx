@@ -79,11 +79,19 @@ export default function CryptoPage() {
     it: (n) => `${n} e carte crypto — Cashback & Guida ${YEAR} | TopCryptoCards`,
     en: (n) => `${n} Crypto Card — Cashback & Guide ${YEAR} | TopCryptoCards`,
   };
+  const CRYPTO_DESC_FALLBACK: Record<string, (name: string) => string> = {
+    fr: (n) => `Quelles cartes crypto acceptent le ${n} en ${YEAR} ? Cashback, frais, staking : comparatif complet des meilleures cartes. Gratuit ✓`,
+    de: (n) => `Welche Krypto-Karten akzeptieren ${n} in ${YEAR}? Cashback, Gebühren, Staking: vollständiger Vergleich der besten Karten. Kostenlos ✓`,
+    es: (n) => `¿Qué tarjetas crypto aceptan ${n} en ${YEAR}? Cashback, comisiones, staking: comparativa completa de las mejores tarjetas. Gratis ✓`,
+    it: (n) => `Quali carte crypto accettano ${n} nel ${YEAR}? Cashback, commissioni, staking: confronto completo delle migliori carte. Gratuito ✓`,
+    en: (n) => `Which crypto cards support ${n} in ${YEAR}? Cashback, fees, staking: full comparison of the best cards. Free ✓`,
+  };
   const cryptoName = meta?.name ?? sym.toUpperCase();
   const fallbackTitle = (CRYPTO_TITLE_FALLBACK[lang] ?? CRYPTO_TITLE_FALLBACK.en)(cryptoName);
+  const fallbackDesc = (CRYPTO_DESC_FALLBACK[lang] ?? CRYPTO_DESC_FALLBACK.en)(cryptoName);
   useSeoMeta({
     title:       copy?.meta_title       ?? fallbackTitle,
-    description: copy?.meta_description ?? '',
+    description: copy?.meta_description ?? fallbackDesc,
     lang,
   });
 
@@ -327,6 +335,27 @@ export default function CryptoPage() {
               ))}
             </div>
           </section>
+        );
+      })()}
+
+      {/* ── Internal linking: CryptoList + Simulator + ReviewList ───── */}
+      {(() => {
+        const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+        const CRYPTOLIST_LABEL: Record<string, string> = { fr: 'Toutes les cryptos', de: 'Alle Kryptowährungen', es: 'Todas las criptos', it: 'Tutte le crypto', en: 'All cryptos' };
+        const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator' };
+        const REVIEWS_LABEL: Record<string, string> = { fr: 'Avis cartes crypto', de: 'Krypto-Karten Bewertungen', es: 'Reseñas tarjetas cripto', it: 'Recensioni carte cripto', en: 'Crypto card reviews' };
+        return (
+          <div className="flex flex-wrap gap-2 mb-10">
+            <Link to={`/${lang}/${rt.cryptos ?? 'cryptos'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>🪙</span>{CRYPTOLIST_LABEL[lang] ?? CRYPTOLIST_LABEL.en}
+            </Link>
+            <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>🧮</span>{SIMULATOR_LABEL[lang] ?? SIMULATOR_LABEL.en}
+            </Link>
+            <Link to={`/${lang}/${rt.reviews ?? 'reviews'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>⭐</span>{REVIEWS_LABEL[lang] ?? REVIEWS_LABEL.en}
+            </Link>
+          </div>
         );
       })()}
 

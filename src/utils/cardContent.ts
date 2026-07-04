@@ -16,6 +16,8 @@ export interface CardFaqItem {
 export interface CardGeneratedContent {
   /** Two-paragraph intro describing the card */
   intro: string[];
+  /** Third paragraph: market positioning & comparison context */
+  comparison: string;
   /** 3–5 "pour qui" bullet points */
   forWhom: string[];
   /** Up to 6 advantages */
@@ -40,6 +42,55 @@ function maxCb(card: CryptoCard): number {
 /** Does the card have any cashback at all? */
 function hasCashback(card: CryptoCard): boolean {
   return maxCb(card) > 0;
+}
+
+// ─── COMPARISON PARAGRAPH (multilingual) ────────────────────────────────────
+
+const YEAR = new Date().getFullYear();
+
+function buildComparison(card: CryptoCard, lang: 'fr' | 'de' | 'es' | 'it' | 'en'): string {
+  const { name, issuer, annualFees, stakingRequired, cashbackPremium, virtualOnly, extras } = card;
+  const noStakingFree = stakingRequired === 0 && hasCashback(card) && annualFees === 0;
+  const highCashbackStaking = stakingRequired > 0 && cashbackPremium >= 5;
+  const hasTravel = extras.includes('lounge_access') || extras.includes('travel_insurance');
+
+  switch (lang) {
+    case 'fr':
+      if (noStakingFree) return `Parmi les cartes crypto sans frais ni staking, la ${name} est à comparer avec Gnosis Pay, MetaMask Card et Brighty, qui ciblent le même profil avec des approches on-chain ou stablecoin différentes. Toutes offrent du cashback immédiat sans immobilisation de capital — l'idéal pour démarrer sans risque en ${YEAR}.`;
+      if (highCashbackStaking) return `La ${name} s'adresse aux utilisateurs déjà engagés dans l'écosystème ${issuer}. Pour un cashback élevé sans staking, Nexo propose du cashback en BTC sans condition de blocage. Brighty et MetaMask Card conviennent quant à elles aux profils plus prudents qui préfèrent garder leurs actifs liquides.`;
+      if (hasTravel) return `Pour les voyageurs fréquents, la ${name} est à comparer avec Crypto.com et Bybit, qui proposent des avantages similaires (lounges, assurance) à des niveaux de staking différents. Pour un profil voyage sans staking, Brighty et MetaMask Card offrent d'excellentes alternatives accessibles en ${YEAR}.`;
+      if (virtualOnly) return `En tant que carte virtuelle, la ${name} est idéale pour les achats en ligne sécurisés. D'autres solutions virtuelles comme Brighty, les niveaux d'entrée de Crypto.com ou Wirex permettent une comparaison rapide selon tes besoins d'usage quotidien ou en ligne.`;
+      return `Pour trouver la carte qui correspond le mieux à ton profil, notre comparateur recense toutes les cartes crypto disponibles en France en ${YEAR}. Des alternatives comme Nexo, Gnosis Pay ou MetaMask Card méritent d'être mises côte à côte avec la ${name} selon ton niveau de dépenses et ta tolérance au risque.`;
+
+    case 'de':
+      if (noStakingFree) return `Unter den kostenlosen Krypto-Karten ohne Staking ist die ${name} mit Gnosis Pay, MetaMask Card und Brighty zu vergleichen — alle sprechen dasselbe Profil mit unterschiedlichen On-Chain- oder Stablecoin-Ansätzen an. Alle bieten sofortigen Cashback ohne Kapitalsperre, ideal für einen risikofreien Einstieg ${YEAR}.`;
+      if (highCashbackStaking) return `Die ${name} richtet sich an Nutzer, die bereits im ${issuer}-Ökosystem engagiert sind. Für hohen Cashback ohne Staking bietet Nexo BTC-Cashback ohne Sperrbedingungen. Brighty und MetaMask Card sind die bessere Wahl für konservativere Nutzer, die ihr Kapital liquide halten möchten.`;
+      if (hasTravel) return `Für Vielreisende ist die ${name} mit Crypto.com und Bybit zu vergleichen, die ähnliche Reisevorteile bei unterschiedlichen Staking-Anforderungen bieten. Ohne Staking sind Brighty und MetaMask Card hervorragende Alternativen für Reisende, die ${YEAR} flexibel bleiben möchten.`;
+      if (virtualOnly) return `Als virtuelle Karte ist die ${name} ideal für sichere Online-Einkäufe. Weitere virtuelle Lösungen wie Brighty, Einstiegsstufen von Crypto.com oder Wirex ermöglichen einen schnellen Vergleich nach Ihren täglichen oder Online-Nutzungsanforderungen.`;
+      return `Um die passende Karte für Ihr Profil zu finden, listet unser Vergleichsrechner alle in Deutschland verfügbaren Krypto-Karten ${YEAR} auf. Alternativen wie Nexo, Gnosis Pay oder MetaMask Card sollten neben der ${name} je nach Ausgabenniveau und Risikobereitschaft berücksichtigt werden.`;
+
+    case 'es':
+      if (noStakingFree) return `Entre las tarjetas crypto sin comisiones ni staking, la ${name} merece compararse con Gnosis Pay, MetaMask Card y Brighty, que apuntan al mismo perfil con enfoques on-chain o stablecoin distintos. Todas ofrecen cashback inmediato sin inmovilización de capital — ideal para empezar sin riesgo en ${YEAR}.`;
+      if (highCashbackStaking) return `La ${name} está dirigida a usuarios ya comprometidos con el ecosistema ${issuer}. Para un cashback alto sin staking, Nexo ofrece cashback en BTC sin condiciones de bloqueo. Brighty y MetaMask Card son la mejor opción para perfiles más conservadores que prefieren mantener sus activos líquidos.`;
+      if (hasTravel) return `Para viajeros frecuentes, la ${name} merece compararse con Crypto.com y Bybit, que ofrecen ventajas similares con distintos requisitos de staking. Sin staking, Brighty y MetaMask Card son excelentes alternativas para viajeros que quieren flexibilidad en ${YEAR}.`;
+      if (virtualOnly) return `Como tarjeta virtual, la ${name} es ideal para compras online seguras. Otras soluciones virtuales como Brighty, los niveles básicos de Crypto.com o Wirex permiten una comparación rápida según tus necesidades de uso diario o en línea.`;
+      return `Para encontrar la tarjeta que mejor se adapte a tu perfil, nuestro comparador recoge todas las tarjetas crypto disponibles en España en ${YEAR}. Alternativas como Nexo, Gnosis Pay o MetaMask Card merecen confrontarse con la ${name} según tu nivel de gasto y tolerancia al riesgo.`;
+
+    case 'it':
+      if (noStakingFree) return `Tra le carte crypto senza commissioni né staking, la ${name} merita di essere confrontata con Gnosis Pay, MetaMask Card e Brighty, che puntano allo stesso profilo con approcci on-chain o stablecoin diversi. Tutte offrono cashback immediato senza immobilizzazione di capitale — ideale per iniziare senza rischi nel ${YEAR}.`;
+      if (highCashbackStaking) return `La ${name} si rivolge agli utenti già impegnati nell'ecosistema ${issuer}. Per un cashback elevato senza staking, Nexo offre cashback in BTC senza condizioni di blocco. Brighty e MetaMask Card sono la scelta migliore per i profili più prudenti che preferiscono mantenere i propri asset liquidi.`;
+      if (hasTravel) return `Per i grandi viaggiatori, la ${name} merita di essere confrontata con Crypto.com e Bybit, che offrono vantaggi simili con requisiti di staking diversi. Senza staking, Brighty e MetaMask Card sono ottime alternative per i viaggiatori che vogliono flessibilità nel ${YEAR}.`;
+      if (virtualOnly) return `Come carta virtuale, la ${name} è ideale per gli acquisti online sicuri. Altre soluzioni virtuali come Brighty, i livelli base di Crypto.com o Wirex permettono un confronto rapido in base alle tue esigenze di utilizzo quotidiano o online.`;
+      return `Per trovare la carta più adatta al tuo profilo, il nostro comparatore elenca tutte le carte crypto disponibili in Italia nel ${YEAR}. Alternative come Nexo, Gnosis Pay o MetaMask Card meritano di essere confrontate con la ${name} in base al tuo livello di spesa e alla tua tolleranza al rischio.`;
+
+    case 'en':
+    default:
+      if (noStakingFree) return `Among free crypto cards with no staking requirement, the ${name} is worth comparing with Gnosis Pay, MetaMask Card and Brighty — all targeting the same profile with different on-chain or stablecoin approaches. Each offers immediate cashback without capital lockup, making them ideal zero-risk entry points in ${YEAR}.`;
+      if (highCashbackStaking) return `The ${name} targets users already committed to the ${issuer} ecosystem. For high cashback without staking, Nexo offers BTC cashback with no lock-up conditions. Brighty and MetaMask Card are the better fit for more conservative users who prefer to keep their assets liquid.`;
+      if (hasTravel) return `For frequent travellers, the ${name} is worth comparing with Crypto.com and Bybit, which offer similar travel benefits at different staking tiers. For a no-staking travel profile, Brighty and MetaMask Card offer excellent accessible alternatives in ${YEAR}.`;
+      if (virtualOnly) return `As a virtual card, the ${name} is ideal for secure online purchases. Other virtual options such as Brighty, entry-level tiers from Crypto.com or Wirex enable a quick comparison based on your daily or online usage requirements.`;
+      return `To find the card that best matches your profile, our comparison tool lists all crypto cards available in Europe in ${YEAR}. Alternatives such as Nexo, Gnosis Pay and MetaMask Card are worth putting side-by-side with the ${name} based on your spending level and risk tolerance.`;
+  }
 }
 
 // ─── FRENCH ──────────────────────────────────────────────────────────────────
@@ -211,6 +262,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
 
   return {
     intro: [p1, p2],
+    comparison: buildComparison(card, 'fr'),
     forWhom: forWhom.slice(0, 5),
     pros: pros.slice(0, 6),
     cons: cons.slice(0, 5),
@@ -316,7 +368,7 @@ function generateDE(card: CryptoCard): CardGeneratedContent {
     },
   ];
 
-  return { intro: [p1, p2], forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
+  return { intro: [p1, p2], comparison: buildComparison(card, 'de'), forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
 }
 
 // ─── SPANISH ─────────────────────────────────────────────────────────────────
@@ -417,7 +469,7 @@ function generateES(card: CryptoCard): CardGeneratedContent {
     },
   ];
 
-  return { intro: [p1, p2], forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
+  return { intro: [p1, p2], comparison: buildComparison(card, 'es'), forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
 }
 
 // ─── ITALIAN ─────────────────────────────────────────────────────────────────
@@ -518,7 +570,7 @@ function generateIT(card: CryptoCard): CardGeneratedContent {
     },
   ];
 
-  return { intro: [p1, p2], forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
+  return { intro: [p1, p2], comparison: buildComparison(card, 'it'), forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
 }
 
 // ─── ENGLISH ─────────────────────────────────────────────────────────────────
@@ -620,7 +672,7 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
     },
   ];
 
-  return { intro: [p1, p2], forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
+  return { intro: [p1, p2], comparison: buildComparison(card, 'en'), forWhom: forWhom.slice(0, 5), pros: pros.slice(0, 6), cons: cons.slice(0, 5), faq };
 }
 
 // ─── helpers ─────────────────────────────────────────────────────────────────

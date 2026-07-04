@@ -30,11 +30,11 @@ import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 const COMPARISON_SEO: Record<string, { suffix: string; desc: (n1: string, n2: string) => string }> = {
-  fr: { suffix: `Comparatif ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Comparaison détaillée ${n1} vs ${n2} : cashback, frais annuels, staking requis. Quelle carte crypto choisir en ${YEAR} ?` },
-  de: { suffix: `Vergleich ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Detaillierter Vergleich ${n1} vs ${n2}: Cashback, Jahresgebühren, Staking. Welche Krypto-Karte in ${YEAR} wählen?` },
-  es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Comparación detallada ${n1} vs ${n2}: cashback, comisiones, staking. ¿Qué tarjeta crypto elegir en ${YEAR}?` },
-  it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Confronto dettagliato ${n1} vs ${n2}: cashback, commissioni, staking. Quale carta crypto scegliere nel ${YEAR}?` },
-  en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `Detailed comparison of ${n1} vs ${n2}: cashback rates, annual fees, staking requirements. Which crypto card to choose in ${YEAR}?` },
+  fr: { suffix: `Comparatif ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2} : cashback, frais, staking — notre comparatif complet ${YEAR}. Découvrez quelle carte vous rapporte le plus. Comparateur gratuit ✓` },
+  de: { suffix: `Vergleich ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: Cashback, Jahresgebühren, Staking — unser vollständiger Vergleich ${YEAR}. Welche Krypto-Karte lohnt sich mehr? Kostenlos ✓` },
+  es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, comisiones, staking — comparativa completa ${YEAR}. Descubre qué tarjeta crypto te da más. Gratis ✓` },
+  it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, commissioni, staking — confronto completo ${YEAR}. Scopri quale carta crypto conviene di più. Gratuito ✓` },
+  en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, fees, staking — full comparison ${YEAR}. Find out which crypto card earns you more. Free tool ✓` },
 };
 
 type SeoBlock = { heading: string; body: string };
@@ -665,6 +665,64 @@ export default function ComparisonPage() {
           <ChevronRight className="w-4 h-4" />
         </Link>
       </div>
+
+      {/* ── Internal links: card detail + review + brand for each card ── */}
+      {(() => {
+        const cardsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
+        const reviewsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
+        const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+        const REVIEW_SLUGS: Record<string, string> = {
+          'crypto-com': 'crypto-com-card', nexo: 'nexo-card', binance: 'binance-card',
+          kraken: 'kraken-card', brighty: 'brighty-card', gnosis: 'gnosis-pay-card',
+          bybit: 'bybit-card', wirex: 'wirex-card', bitpanda: 'bitpanda-card',
+          okx: 'okx-card', coinbase: 'coinbase-card', revolut: 'revolut-card',
+          deblock: 'deblock-card', bleap: 'bleap-card', plutus: 'plutus-card',
+          'trade-republic': 'trade-republic-card', ledger: 'ledger-card',
+        };
+        const DETAIL_LABEL: Record<string, string> = { fr: 'Fiche complète', de: 'Vollständige Karte', es: 'Ficha completa', it: 'Scheda completa', en: 'Full details' };
+        const REVIEW_LABEL: Record<string, string> = { fr: 'Lire l\'avis', de: 'Bewertung lesen', es: 'Leer reseña', it: 'Leggi recensione', en: 'Read review' };
+        const BRAND_LABEL: Record<string, string> = { fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About' };
+        return (
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[card1, card2].map((card) => {
+              if (!card) return null;
+              const reviewSlug = REVIEW_SLUGS[card.brandId ?? ''];
+              return (
+                <div key={card.id} className="card-surface p-4">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{card.name}</p>
+                  <div className="flex flex-col gap-2">
+                    <Link
+                      to={`/${lang}/${cardsSlug}/${card.id}`}
+                      className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
+                    >
+                      <span>📋 {DETAIL_LABEL[lang] || DETAIL_LABEL.en}</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                    {reviewSlug && (
+                      <Link
+                        to={`/${lang}/${reviewsSlug}/${reviewSlug}`}
+                        className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
+                      >
+                        <span>⭐ {REVIEW_LABEL[lang] || REVIEW_LABEL.en}</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                    {card.brandId && (
+                      <Link
+                        to={`/${lang}/${brandsSlug}/${card.brandId}`}
+                        className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1"
+                      >
+                        <span>🏢 {BRAND_LABEL[lang] || BRAND_LABEL.en} {card.issuer}</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })()}
 
       <CardDetailDrawer card={detail} onClose={() => setDetail(null)} />
     </div>

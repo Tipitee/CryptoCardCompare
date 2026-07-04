@@ -27,6 +27,7 @@ import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { generateCardContent } from '../utils/cardContent';
+import AutoLinker from '../components/AutoLinker';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -80,6 +81,10 @@ const FAQ_SECTION_LABEL: Record<string, string> = {
   fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes',
   it: 'Domande frequenti', en: 'FAQ',
 };
+const COMPARISON_LABEL: Record<string, string> = {
+  fr: 'Analyse comparative', de: 'Vergleichende Analyse', es: 'Análisis comparativo',
+  it: 'Analisi comparativa', en: 'Comparative Analysis',
+};
 
 // Valid market code keys for restriction display
 const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
@@ -93,6 +98,15 @@ const CARD_REVIEW_SLUG: Record<string, string> = {
   'bitpanda': 'bitpanda-card',
   'okx': 'okx-card',
   'coinbase': 'coinbase-card',
+  'revolut': 'revolut-card',
+  'kraken': 'kraken-card',
+  'brighty': 'brighty-card',
+  'gnosis': 'gnosis-pay-card',
+  'ledger': 'ledger-card',
+  'trade-republic': 'trade-republic-card',
+  'plutus': 'plutus-card',
+  'deblock': 'deblock-card',
+  'bleap': 'bleap-card',
 };
 
 /**
@@ -166,11 +180,11 @@ export default function CardDetail() {
   const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free' };
   const CASHBACK_LABEL: Record<string, string> = { fr: 'Cashback', de: 'Cashback', es: 'Cashback', it: 'Cashback', en: 'Cashback' };
   const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
-    fr: (name, issuer, cb, fees) => `Avis complet sur la carte ${name} par ${issuer}. Cashback ${cb}%, ${FEES_LABEL.fr} ${fees === 0 ? FREE_LABEL.fr : fees + ' €/an'}.`,
-    de: (name, issuer, cb, fees) => `Vollständige Bewertung der ${name} von ${issuer}. Cashback ${cb}%, ${FEES_LABEL.de} ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'}.`,
-    es: (name, issuer, cb, fees) => `Análisis completo de la tarjeta ${name} de ${issuer}. Cashback ${cb}%, ${FEES_LABEL.es} ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}.`,
-    it: (name, issuer, cb, fees) => `Recensione completa della carta ${name} di ${issuer}. Cashback ${cb}%, ${FEES_LABEL.it} ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}.`,
-    en: (name, issuer, cb, fees) => `Full review of the ${name} by ${issuer}. Cashback ${cb}%, ${FEES_LABEL.en} ${fees === 0 ? FREE_LABEL.en : fees + ' €/year'}.`,
+    fr: (name, _issuer, cb, fees) => `${name} ${year} : cashback ${cb}%, frais ${fees === 0 ? FREE_LABEL.fr : fees + ' €/an'}. Avantages, inconvénients et notre verdict. Comparateur gratuit ✓`,
+    de: (name, _issuer, cb, fees) => `${name} ${year}: Cashback ${cb}%, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'} Jahresgebühr. Vor- und Nachteile, unser Fazit. Kostenloser Vergleich ✓`,
+    es: (name, _issuer, cb, fees) => `${name} ${year}: cashback ${cb}%, cuota ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}. Ventajas, inconvenientes y veredicto. Comparativa gratuita ✓`,
+    it: (name, _issuer, cb, fees) => `${name} ${year}: cashback ${cb}%, commissioni ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}. Pro, contro e verdetto. Confronto gratuito ✓`,
+    en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb}% cashback, ${fees === 0 ? FREE_LABEL.en : fees + ' €/year'} annual fee. Pros, cons and our verdict. Free comparison ✓`,
   };
   const seoTitle = card
     ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[lang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
@@ -495,7 +509,9 @@ export default function CardDetail() {
                     </h2>
                     <div className="card-surface p-6 rounded-2xl space-y-3">
                       {gen.intro.map((para, i) => (
-                        <p key={i} className="text-slate-300 leading-relaxed">{para}</p>
+                        <p key={i} className="text-slate-300 leading-relaxed">
+                          <AutoLinker text={para} lang={lang} />
+                        </p>
                       ))}
                     </div>
                   </section>
@@ -549,6 +565,59 @@ export default function CardDetail() {
                             </ul>
                           </div>
                         )}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Comparative analysis paragraph */}
+                  {gen.comparison && (
+                    <section>
+                      <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
+                        {COMPARISON_LABEL[lang] || 'Comparative Analysis'}
+                      </h2>
+                      <div className="card-surface p-6 rounded-2xl">
+                        <p className="text-slate-300 leading-relaxed">
+                          <AutoLinker text={gen.comparison} lang={lang} />
+                        </p>
+                        {/* Thematic links inline based on card properties */}
+                        {(() => {
+                          const thematicLinks: { theme: string; label: string }[] = [];
+                          if (card.annualFees === 0) thematicLinks.push({ theme: 'no-fees', label: { fr: 'cartes sans frais annuels', de: 'Karten ohne Jahresgebühr', es: 'tarjetas sin comisiones', it: 'carte senza commissioni', en: 'no annual fee cards' }[lang] ?? 'no-fee cards' });
+                          if (card.cashbackRate > 0) thematicLinks.push({ theme: 'cashback', label: { fr: 'meilleures cartes cashback', de: 'beste Cashback-Karten', es: 'mejores tarjetas cashback', it: 'migliori carte cashback', en: 'best cashback cards' }[lang] ?? 'cashback cards' });
+                          if (card.stakingRequired === 0) thematicLinks.push({ theme: 'no-staking', label: { fr: 'cartes sans staking', de: 'Karten ohne Staking', es: 'tarjetas sin staking', it: 'carte senza staking', en: 'no-staking cards' }[lang] ?? 'no-staking cards' });
+                          if (card.extras?.includes('virtual_only')) thematicLinks.push({ theme: 'virtual', label: { fr: 'cartes virtuelles', de: 'virtuelle Karten', es: 'tarjetas virtuales', it: 'carte virtuali', en: 'virtual cards' }[lang] ?? 'virtual cards' });
+                          if (card.extras?.some(e => ['lounge_access', 'travel_insurance'].includes(e))) thematicLinks.push({ theme: 'travel', label: { fr: 'cartes de voyage', de: 'Reisekarten', es: 'tarjetas de viaje', it: 'carte da viaggio', en: 'travel cards' }[lang] ?? 'travel cards' });
+
+                          const validLinks = thematicLinks
+                            .filter(({ theme }) => THEMATIC_ROUTES[theme]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]])
+                            .slice(0, 3);
+
+                          if (validLinks.length === 0) return null;
+                          const prefix: Record<string, string> = {
+                            fr: 'Voir aussi :',
+                            de: 'Siehe auch:',
+                            es: 'Ver también:',
+                            it: 'Vedi anche:',
+                            en: 'See also:',
+                          };
+                          return (
+                            <p className="mt-3 text-slate-500 text-sm leading-relaxed">
+                              {prefix[lang] ?? prefix.en}{' '}
+                              {validLinks.map(({ theme, label }, i) => {
+                                const slug = THEMATIC_ROUTES[theme]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]];
+                                return (
+                                  <span key={theme}>
+                                    {i > 0 && ', '}
+                                    <Link to={`/${lang}/${slug}`} className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">
+                                      {label}
+                                    </Link>
+                                  </span>
+                                );
+                              })}
+                              {'.'}
+                            </p>
+                          );
+                        })()}
                       </div>
                     </section>
                   )}

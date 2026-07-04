@@ -22,11 +22,11 @@ import { fmtEUR } from '../utils/format';
 
 const YEAR = new Date().getFullYear();
 const SIM_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Simulateur de Gains Cartes Crypto ${YEAR} | TopCryptoCards`, desc: `Simulez vos gains annuels avec une carte crypto selon vos dépenses mensuelles. Trouvez la carte la plus rentable pour vous.` },
-  de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Simulieren Sie Ihre jährlichen Gewinne mit einer Krypto-Karte basierend auf Ihren monatlichen Ausgaben.` },
-  es: { title: `Simulador de Ganancias Tarjetas Crypto ${YEAR} | TopCryptoCards`, desc: `Simula tus ganancias anuales con una tarjeta crypto según tus gastos mensuales.` },
-  it: { title: `Simulatore di Guadagni Carte Crypto ${YEAR} | TopCryptoCards`, desc: `Simula i tuoi guadagni annuali con una carta crypto in base alle tue spese mensili.` },
-  en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Simulate your annual earnings with a crypto card based on your monthly spending. Find the most profitable card for you.` },
+  fr: { title: `Simulateur de Gains Cartes Crypto ${YEAR} | TopCryptoCards`, desc: `Calculez vos gains annuels avec chaque carte crypto selon vos dépenses. Crypto.com, Nexo, Bybit, Binance comparés en temps réel. Gratuit ✓` },
+  de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Berechnen Sie Ihre jährlichen Gewinne mit jeder Krypto-Karte: Crypto.com, Nexo, Bybit, Binance. Ausgaben eingeben — Ergebnis sofort sehen. Kostenlos ✓` },
+  es: { title: `Simulador de Ganancias Tarjetas Crypto ${YEAR} | TopCryptoCards`, desc: `Calcula tus ganancias anuales con cada tarjeta crypto: Crypto.com, Nexo, Bybit, Binance. Introduce tus gastos, ve el resultado en segundos. Gratis ✓` },
+  it: { title: `Simulatore di Guadagni Carte Crypto ${YEAR} | TopCryptoCards`, desc: `Calcola i tuoi guadagni annuali con ogni carta crypto: Crypto.com, Nexo, Bybit, Binance. Inserisci le spese, vedi il risultato in secondi. Gratuito ✓` },
+  en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Calculate your annual earnings with each crypto card: Crypto.com, Nexo, Bybit, Binance. Enter your spending — see results instantly. Free ✓` },
 };
 
 type SimMode = 'base' | 'optimistic';

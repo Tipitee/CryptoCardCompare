@@ -17,11 +17,11 @@ import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 const REC_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Quiz — Quelle Carte Crypto pour Vous ? ${YEAR} | TopCryptoCards`, desc: `Répondez à 6 questions et obtenez une recommandation personnalisée de carte crypto adaptée à votre profil et vos habitudes.` },
-  de: { title: `Welche Krypto-Karte passt zu Ihnen? ${YEAR} | TopCryptoCards`, desc: `Beantworten Sie 6 Fragen und erhalten Sie eine personalisierte Krypto-Karten-Empfehlung.` },
-  es: { title: `Quiz — ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén una recomendación personalizada de tarjeta crypto.` },
-  it: { title: `Quiz — Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni una raccomandazione personalizzata di carta crypto.` },
-  en: { title: `Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and get a personalized crypto card recommendation tailored to your profile and spending habits.` },
+  fr: { title: `Quiz — Quelle Carte Crypto pour Vous ? ${YEAR} | TopCryptoCards`, desc: `Répondez à 6 questions et obtenez la meilleure carte crypto pour votre profil. Cashback, frais, staking — notre algo choisit pour vous. Gratuit ✓` },
+  de: { title: `Welche Krypto-Karte passt zu Ihnen? ${YEAR} | TopCryptoCards`, desc: `6 Fragen beantworten und sofort die beste Krypto-Karte für Ihr Profil erhalten. Cashback, Gebühren, Staking — unser Algorithmus wählt für Sie. Kostenlos ✓` },
+  es: { title: `Quiz — ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén al instante la mejor tarjeta crypto para tu perfil. Cashback, comisiones, staking — nuestro algoritmo elige por ti. Gratis ✓` },
+  it: { title: `Quiz — Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni subito la migliore carta crypto per il tuo profilo. Cashback, commissioni, staking — il nostro algoritmo sceglie per te. Gratuito ✓` },
+  en: { title: `Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and instantly get the best crypto card for your profile. Cashback, fees, staking — our algorithm picks for you. Free ✓` },
 };
 
 type StepDef<K extends keyof QuizAnswers> = {

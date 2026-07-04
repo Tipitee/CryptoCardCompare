@@ -15,6 +15,26 @@ const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 
+const YEAR = new Date().getFullYear();
+
+/** Fallback meta title when no i18n translation exists for this card+lang */
+const REVIEW_TITLE_FALLBACK: Record<string, (name: string) => string> = {
+  fr: (n) => `${n} Avis ${YEAR} — Cashback, Frais & Verdict | TopCryptoCards`,
+  de: (n) => `${n} Test ${YEAR} — Cashback, Gebühren & Fazit | TopCryptoCards`,
+  es: (n) => `${n} Opinión ${YEAR} — Cashback, Comisiones y Veredicto | TopCryptoCards`,
+  it: (n) => `${n} Recensione ${YEAR} — Cashback, Commissioni & Verdetto | TopCryptoCards`,
+  en: (n) => `${n} Review ${YEAR} — Cashback, Fees & Verdict | TopCryptoCards`,
+};
+
+/** Fallback meta description when no i18n translation exists */
+const REVIEW_DESC_FALLBACK: Record<string, (name: string) => string> = {
+  fr: (n) => `Avis complet ${n} ${YEAR} : cashback, frais annuels, staking, avantages et inconvénients. Notre test et verdict objectif.`,
+  de: (n) => `Vollständiger Test ${n} ${YEAR}: Cashback, Jahresgebühren, Staking, Vor- und Nachteile. Unser objektives Fazit.`,
+  es: (n) => `Reseña completa ${n} ${YEAR}: cashback, comisiones, staking, ventajas y desventajas. Nuestro test y veredicto.`,
+  it: (n) => `Recensione completa ${n} ${YEAR}: cashback, commissioni, staking, pro e contro. Il nostro test e verdetto.`,
+  en: (n) => `Full review of ${n} ${YEAR}: cashback, annual fees, staking, pros and cons. Our complete test and verdict.`,
+};
+
 const VIEW_CARD_LABEL: Record<string, string> = {
   fr: 'Voir la fiche complète', de: 'Vollständige Karte ansehen',
   es: 'Ver ficha completa', it: 'Vedi scheda completa', en: 'View full card details',
@@ -239,6 +259,40 @@ function RatingBar({ label, value, icon: Icon }: { label: string; value: number;
   );
 }
 
+const REVIEW_THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  cashback:     { fr: 'carte-crypto-cashback', de: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
+  'no-fees':    { fr: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
+  'no-staking': { fr: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
+  travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
+  best:         { fr: 'meilleure-carte-crypto', de: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
+  rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
+};
+const REVIEW_THEMATIC_LABEL: Record<string, Record<string, string>> = {
+  cashback:     { fr: 'Meilleures cartes cashback', de: 'Beste Cashback-Karten', es: 'Mejores tarjetas cashback', it: 'Migliori carte cashback', en: 'Best cashback cards' },
+  'no-fees':    { fr: 'Cartes sans frais', de: 'Karten ohne Gebühren', es: 'Tarjetas sin comisiones', it: 'Carte senza commissioni', en: 'No-fee cards' },
+  'no-staking': { fr: 'Cartes sans staking', de: 'Karten ohne Staking', es: 'Tarjetas sin staking', it: 'Carte senza staking', en: 'No-staking cards' },
+  travel:       { fr: 'Cartes pour voyager', de: 'Reisekarten', es: 'Tarjetas de viaje', it: 'Carte per viaggiare', en: 'Travel cards' },
+  best:         { fr: 'Meilleures cartes crypto', de: 'Beste Krypto-Karten', es: 'Mejores tarjetas cripto', it: 'Migliori carte cripto', en: 'Best crypto cards' },
+  rewards:      { fr: 'Cartes à récompenses', de: 'Prämienkarten', es: 'Tarjetas de recompensas', it: 'Carte con premi', en: 'Rewards cards' },
+};
+const REVIEW_THEMATIC_EMOJI: Record<string, string> = {
+  cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓', travel: '✈️', best: '🏆', rewards: '🎁',
+};
+function reviewToThemes(rb: Record<string, number>, keyStats: Record<string, string>, pros: string[]): string[] {
+  const themes: string[] = ['best'];
+  if (rb.cashback >= 3.5) themes.push('cashback');
+  const staking = (keyStats.stakingRequis ?? '').toLowerCase();
+  if (/\bnon\b|\bno\b|\bnein\b|nessun/.test(staking)) themes.push('no-staking');
+  const fees = (keyStats.fraisAnnuels ?? '').toLowerCase();
+  if (/0\s*€|gratuit|free|kostenlos|gratis/.test(fees)) themes.push('no-fees');
+  const prosText = pros.join(' ').toLowerCase();
+  if (/travel|voyage|reise|viaje|viaggio|abroad/.test(prosText)) themes.push('travel');
+  if (rb.cashback >= 4) themes.push('rewards');
+  return [...new Set(themes)].slice(0, 4);
+}
+const SIMULATOR_LABEL_R: Record<string, string> = { fr: 'Simuler mes gains', de: 'Gewinne simulieren', es: 'Simular mis ganancias', it: 'Simulare i guadagni', en: 'Simulate my earnings' };
+const THEMED_PAGES_LABEL: Record<string, string> = { fr: 'Pages thématiques', de: 'Themenseiten', es: 'Páginas temáticas', it: 'Pagine tematiche', en: 'Thematic pages' };
+
 function renderMarkdownLite(text: string): string {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -260,9 +314,23 @@ export default function ReviewPage() {
 
   const reviewSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
 
+  const cardName = review?.cardName ?? '';
+  const reviewMetaTitle =
+    i18n?.metaTitle ||
+    (lang !== 'fr' && review?.cardName
+      ? (REVIEW_TITLE_FALLBACK[lang] ?? REVIEW_TITLE_FALLBACK.en)(cardName)
+      : review?.metaTitle) ||
+    `${l.reviewWord} | TopCryptoCards`;
+  const reviewMetaDesc =
+    i18n?.metaDescription ||
+    (lang !== 'fr' && review?.cardName
+      ? (REVIEW_DESC_FALLBACK[lang] ?? REVIEW_DESC_FALLBACK.en)(cardName)
+      : review?.metaDescription) ||
+    '';
+
   useSeoMeta({
-    title: i18n?.metaTitle || review?.metaTitle || `${l.reviewWord} | TopCryptoCards`,
-    description: i18n?.metaDescription || review?.metaDescription || '',
+    title: reviewMetaTitle,
+    description: reviewMetaDesc,
     image: review?.realCardImage || undefined,
     type: 'article',
     lang,
@@ -315,7 +383,18 @@ export default function ReviewPage() {
     reviewBody: review.verdict,
     reviewRating: { '@type': 'Rating', ratingValue: review.globalRating, bestRating: 5, worstRating: 1 },
     author: { '@type': 'Organization', name: 'TopCryptoCards' },
-    itemReviewed: { '@type': 'Product', name: review.cardName, brand: { '@type': 'Brand', name: review.issuer } },
+    itemReviewed: {
+      '@type': 'Product',
+      name: review.cardName,
+      brand: { '@type': 'Brand', name: review.issuer },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: review.globalRating,
+        bestRating: 5,
+        worstRating: 1,
+        ratingCount: 1,
+      },
+    },
     datePublished: review.updatedAt,
     publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
   };
@@ -525,6 +604,32 @@ export default function ReviewPage() {
               </a>
             </div>
 
+            {/* ── Thematic pills ─────────────────────────────────────────── */}
+            {(() => {
+              const themes = reviewToThemes(review.ratingBreakdown, review.keyStats, review.pros ?? []);
+              if (themes.length === 0) return null;
+              return (
+                <div className="p-5 rounded-xl border border-bg-border bg-bg-card">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                    {THEMED_PAGES_LABEL[lang] ?? THEMED_PAGES_LABEL.en}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {themes.map(theme => {
+                      const slug = REVIEW_THEMATIC_SLUGS[theme]?.[lang] ?? REVIEW_THEMATIC_SLUGS[theme]?.en;
+                      const label = REVIEW_THEMATIC_LABEL[theme]?.[lang] ?? REVIEW_THEMATIC_LABEL[theme]?.en;
+                      const emoji = REVIEW_THEMATIC_EMOJI[theme];
+                      if (!slug || !label) return null;
+                      return (
+                        <Link key={theme} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-elevated border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                          <span>{emoji}</span>{label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
+
           </div>
 
           {/* Sidebar */}
@@ -602,8 +707,11 @@ export default function ReviewPage() {
               <div className="card-surface p-5 border-cyan-accent/20">
                 <h4 className="font-display font-bold text-white mb-2 text-sm">{l.compareCta}</h4>
                 <p className="text-slate-500 text-xs mb-3 leading-relaxed">{l.compareCtaDesc}</p>
-                <Link to={getRoute('compare')} className="btn-primary w-full text-sm flex justify-center">
+                <Link to={getRoute('compare')} className="btn-primary w-full text-sm flex justify-center mb-2">
                   {l.compareNow}
+                </Link>
+                <Link to={getRoute('simulator')} className="btn-ghost w-full text-sm flex justify-center border border-bg-border">
+                  🧮 {SIMULATOR_LABEL_R[lang] ?? SIMULATOR_LABEL_R.en}
                 </Link>
               </div>
             </div>
