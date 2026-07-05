@@ -24,6 +24,5 @@
 /risk-summary           /index.html  200
 
 # ── Everything else ────────────────────────────────────────────────────────
-# Prerendered pages are physical files — Netlify serves them before redirects.
-# Anything that reaches this rule does not exist: real HTTP 404.
-/*  /404.html  404
+# SPA fallback: serve index.html for all routes (React Router handles routing).
+/*  /index.html  200

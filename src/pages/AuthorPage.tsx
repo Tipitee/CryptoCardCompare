@@ -17,7 +17,7 @@ const BLOG_LABEL: Record<string, string> = {
   fr: 'Blog', de: 'Blog', es: 'Blog', it: 'Blog', en: 'Blog',
 };
 const READ_MORE_LABEL: Record<string, string> = {
-  fr: 'Lire l'article', de: 'Artikel lesen', es: 'Leer artículo', it: 'Leggi l'articolo', en: 'Read article',
+  fr: "Lire l'article", de: 'Artikel lesen', es: 'Leer artículo', it: "Leggi l'articolo", en: 'Read article',
 };
 const READ_DURATION_LABEL: Record<string, string> = {
   fr: 'min de lecture', de: 'Min. Lesezeit', es: 'min de lectura', it: 'min di lettura', en: 'min read',
@@ -29,7 +29,7 @@ const NOT_FOUND_LABEL: Record<string, string> = {
   fr: 'Auteur introuvable', de: 'Autor nicht gefunden', es: 'Autor no encontrado', it: 'Autore non trovato', en: 'Author not found',
 };
 const EXPERTISE_LABEL: Record<string, string> = {
-  fr: 'Domaine d'expertise', de: 'Fachgebiet', es: 'Área de experiencia', it: 'Area di competenza', en: 'Area of expertise',
+  fr: "Domaine d'expertise", de: 'Fachgebiet', es: 'Área de experiencia', it: 'Area di competenza', en: 'Area of expertise',
 };
 const EXPERTISE_VALUE: Record<string, string> = {
   fr: 'Cartes crypto · Fintech · Régulation MiCA',
