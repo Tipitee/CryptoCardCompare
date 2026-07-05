@@ -119,6 +119,19 @@ async function renderPath(page, path) {
   writeFileSync(join(outDir, 'index.html'), html);
 }
 
+// ── Make a fresh intercepted page ─────────────────────────────────────────
+async function newPage(browser) {
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1280, height: 900 });
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    const u = req.url();
+    if (u.startsWith(`http://localhost:${PORT}`) || u.includes('supabase.co')) req.continue();
+    else req.abort();
+  });
+  return page;
+}
+
 // ── Main ───────────────────────────────────────────────────────────────────
 const server = await serveDist();
 let paths = collectPaths();
@@ -130,15 +143,7 @@ const queue = [...paths];
 let done = 0, failed = 0;
 
 await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1280, height: 900 });
-  // Block analytics & external requests during prerender (faster, deterministic)
-  await page.setRequestInterception(true);
-  page.on('request', (req) => {
-    const u = req.url();
-    if (u.startsWith(`http://localhost:${PORT}`) || u.includes('supabase.co')) req.continue();
-    else req.abort();
-  });
+  let page = await newPage(browser);
   while (queue.length) {
     const path = queue.shift();
     try {
@@ -148,6 +153,9 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
     } catch (e) {
       failed++;
       console.error(`✗ ${path}: ${e.message.slice(0, 120)}`);
+      // Re-create the page so subsequent renders aren't affected by the broken state
+      try { await page.close(); } catch { /* ignore */ }
+      page = await newPage(browser);
     }
   }
   await page.close();
