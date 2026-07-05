@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "node scripts/prerender.mjs",
+    "postbuild": "node scripts/prerender.mjs || true",
     "prerender:test": "PRERENDER_LIMIT=25 node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",

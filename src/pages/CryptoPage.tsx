@@ -29,6 +29,27 @@ const FAQ_LABEL:     Record<string, string> = { fr: 'Questions fréquentes', de:
 const CARDS_LABEL:   Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting' };
 const SEE_ALSO:      Record<string, string> = { fr: 'Autres cryptomonnaies', de: 'Andere Kryptowährungen', es: 'Otras criptomonedas', it: 'Altre criptovalute', en: 'Other cryptocurrencies' };
 const COMPARE_CARDS: Record<string, string> = { fr: 'Comparer les cartes crypto', de: 'Krypto-Karten vergleichen', es: 'Comparar tarjetas crypto', it: 'Confronta le carte crypto', en: 'Compare crypto cards' };
+const COMPARE_WITH_LABEL: Record<string, string> = { fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons' };
+
+/* Comparison pairs editorially relevant to each crypto */
+const CRYPTO_PAIRS: Record<string, string[]> = {
+  btc:  ['coinbase-card-vs-nexo-card', 'kraken-krak-card-vs-nexo-card', 'binance-standard-vs-nexo-card', 'bybit-card-vs-nexo-card'],
+  eth:  ['coinbase-card-vs-nexo-card', 'bitpanda-card-vs-coinbase-card', 'bybit-card-vs-coinbase-card', 'deblock-card-vs-coinbase-card'],
+  bnb:  ['binance-card-vs-bybit-card', 'binance-standard-vs-nexo-card', 'binance-standard-vs-crypto-com-midnight-blue', 'binance-standard-vs-revolut-metal'],
+  sol:  ['bybit-card-vs-nexo-card', 'bybit-card-vs-okx-card', 'nexo-card-vs-okx-card', 'bybit-card-vs-crypto-com-midnight-blue'],
+  xrp:  ['kraken-krak-card-vs-nexo-card', 'nexo-card-vs-wirex-elite', 'nexo-card-vs-revolut-metal', 'crypto-com-midnight-blue-vs-kraken-krak-card'],
+  ada:  ['bitpanda-card-vs-nexo-card', 'binance-card-vs-bybit-card', 'bybit-card-vs-nexo-card', 'bitpanda-card-vs-coinbase-card'],
+  avax: ['bybit-card-vs-crypto-com-midnight-blue', 'coinbase-card-vs-crypto-com-midnight-blue', 'bybit-card-vs-nexo-card', 'nexo-card-vs-okx-card'],
+  doge: ['coinbase-card-vs-nexo-card', 'crypto-com-midnight-blue-vs-kraken-krak-card', 'bybit-card-vs-nexo-card', 'coinbase-card-vs-crypto-com-midnight-blue'],
+  usdt: ['nexo-card-vs-wirex-elite', 'nexo-card-vs-revolut-metal', 'deblock-card-vs-nexo-card', 'bybit-card-vs-wirex-elite'],
+  usdc: ['nexo-card-vs-wirex-elite', 'deblock-card-vs-nexo-card', 'deblock-card-vs-wirex-elite', 'nexo-card-vs-revolut-metal'],
+};
+
+function pairToLabel(slug: string): string {
+  return slug.split('-vs-').map(part =>
+    part.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  ).join(' vs ');
+}
 
 /* Thematic page slugs per language (mirrors Layout.tsx) */
 const THEMATIC_SLUGS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string }> = {
@@ -67,8 +88,7 @@ export default function CryptoPage() {
           (c: any) => !Array.isArray(c.markets) || c.markets.includes(lang)
         );
         setCards(filtered);
-      })
-      .catch(() => { /* column may not exist yet — silent fail */ });
+      });
   }, [sym, lang]); // eslint-disable-line
 
   const YEAR = new Date().getFullYear();
@@ -326,6 +346,33 @@ export default function CryptoPage() {
                 >
                   <span className="text-base leading-none">{g.icon}</span>
                   {g.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ── Internal linking: comparison pairs for this crypto ──────── */}
+      {(() => {
+        const pairs = CRYPTO_PAIRS[sym] ?? [];
+        if (pairs.length === 0) return null;
+        const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+        const compSeg = rt.comparisons ?? 'compare';
+        return (
+          <section className="mb-10">
+            <h2 className="text-lg font-semibold text-white mb-3">
+              {COMPARE_WITH_LABEL[lang] ?? COMPARE_WITH_LABEL.en}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {pairs.map(slug => (
+                <Link
+                  key={slug}
+                  to={`/${lang}/${compSeg}/${slug}`}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+                >
+                  <span className="shrink-0">⚖️</span>
+                  <span className="leading-tight">{pairToLabel(slug)}</span>
                 </Link>
               ))}
             </div>

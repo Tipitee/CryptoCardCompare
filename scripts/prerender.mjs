@@ -18,7 +18,19 @@
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
-import puppeteer from 'puppeteer';
+
+// Skip prerender if env var set or puppeteer not installed (e.g. Bolt/CI environments)
+if (process.env.SKIP_PRERENDER) {
+  console.log('Prerender skipped (SKIP_PRERENDER set).');
+  process.exit(0);
+}
+let puppeteer;
+try {
+  puppeteer = (await import('puppeteer')).default;
+} catch {
+  console.log('Prerender skipped: puppeteer not installed.');
+  process.exit(0);
+}
 
 const DIST = join(process.cwd(), 'dist');
 const ORIGIN = 'https://topcryptocards.eu';

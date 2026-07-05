@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { AlertTriangle, ArrowRight, Check, ExternalLink, Shield, Star, X } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Check, ExternalLink, Star, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import SmartCardImage from './SmartCardImage';
 import CryptoIcon from './CryptoIcon';
-import TrustBadge from './TrustBadge';
+
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
@@ -170,7 +170,8 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
           </section>
 
-          {false && card.trustScore !== undefined && (
+          {/* Trust score — hidden (enable when needed)
+          {card && card.trustScore !== undefined && (
             <section className="mb-6 p-4 rounded-xl bg-bg-elevated border border-bg-border">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
                 <Shield className="w-3.5 h-3.5" />
@@ -178,7 +179,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
               </h3>
               <TrustBadge card={card} variant="detail" />
             </section>
-          )}
+          )} */}
 
           <div className="flex flex-col gap-2">
             <button

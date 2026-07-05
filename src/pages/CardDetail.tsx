@@ -14,7 +14,7 @@ import type { CryptoCard } from '../types/card';
 import { fetchCardById, fetchCardArticle, fetchCardsByBrand } from '../lib/supabase';
 import SmartCardImage from '../components/SmartCardImage';
 import CryptoIcon from '../components/CryptoIcon';
-import TrustBadge from '../components/TrustBadge';
+
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
@@ -49,9 +49,6 @@ const SEE_ALL_TIERS_LABEL: Record<string, string> = {
   it: 'Vedi tutte le carte',
   en: 'See all cards',
 };
-const FREE_LABEL: Record<string, string> = {
-  fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free',
-};
 const RELATED_LABEL: Record<string, string> = {
   fr: 'Pages liées', de: 'Verwandte Seiten', es: 'Páginas relacionadas',
   it: 'Pagine correlate', en: 'Related pages',
@@ -85,6 +82,42 @@ const COMPARISON_LABEL: Record<string, string> = {
   fr: 'Analyse comparative', de: 'Vergleichende Analyse', es: 'Análisis comparativo',
   it: 'Analisi comparativa', en: 'Comparative Analysis',
 };
+
+// Editorial comparison pairs per card — used to build sidebar "Compare with..." links
+const EDITORIAL_PAIRS = [
+  'bybit-card-vs-nexo-card',
+  'crypto-com-midnight-blue-vs-nexo-card',
+  'crypto-com-ruby-steel-vs-nexo-card',
+  'nexo-card-vs-wirex-elite',
+  'binance-card-vs-bybit-card',
+  'bybit-card-vs-crypto-com-midnight-blue',
+  'coinbase-card-vs-nexo-card',
+  'binance-card-vs-nexo-card',
+  'bybit-card-vs-okx-card',
+  'bybit-card-vs-wirex-elite',
+  'bitpanda-card-vs-coinbase-card',
+  'deblock-card-vs-nexo-card',
+  'deblock-card-vs-coinbase-card',
+  'deblock-card-vs-wirex-elite',
+  'nexo-card-vs-revolut-metal',
+  'bybit-card-vs-revolut-metal',
+  'crypto-com-midnight-blue-vs-revolut-metal',
+  'binance-standard-vs-revolut-metal',
+  'kraken-krak-card-vs-nexo-card',
+  'nexo-card-vs-okx-card',
+  'bybit-card-vs-coinbase-card',
+  'bitpanda-card-vs-revolut-metal',
+];
+
+const COMPARE_WITH_LABEL: Record<string, string> = {
+  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons',
+};
+
+function pairToLabel(slug: string): string {
+  return slug.split('-vs-').map(part =>
+    part.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  ).join(' vs ');
+}
 
 // Valid market code keys for restriction display
 const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
@@ -129,11 +162,6 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   france:       { fr: 'cartes-crypto-france',          de: 'krypto-karten-deutschland',      es: 'tarjetas-crypto-espana',          it: 'carte-crypto-italia',          en: 'crypto-cards-europe' },
 };
 
-/** Formats an unknown extras key as readable text: self_custody → Self custody */
-function formatExtra(key: string): string {
-  return key.replace(/_/g, ' ').replace(/^\w/, c => c.toUpperCase());
-}
-
 export default function CardDetail() {
   const { id } = useParams<{ id: string }>();
   const { t } = useTranslation(['cards', 'common']);
@@ -176,9 +204,7 @@ export default function CardDetail() {
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
   const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review' };
-  const FEES_LABEL: Record<string, string> = { fr: 'frais', de: 'Gebühren', es: 'comisiones', it: 'commissioni', en: 'fees' };
   const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free' };
-  const CASHBACK_LABEL: Record<string, string> = { fr: 'Cashback', de: 'Cashback', es: 'Cashback', it: 'Cashback', en: 'Cashback' };
   const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
     fr: (name, _issuer, cb, fees) => `${name} ${year} : cashback ${cb}%, frais ${fees === 0 ? FREE_LABEL.fr : fees + ' €/an'}. Avantages, inconvénients et notre verdict. Comparateur gratuit ✓`,
     de: (name, _issuer, cb, fees) => `${name} ${year}: Cashback ${cb}%, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'} Jahresgebühr. Vor- und Nachteile, unser Fazit. Kostenloser Vergleich ✓`,
@@ -604,7 +630,7 @@ export default function CardDetail() {
                         {(() => {
                           const thematicLinks: { theme: string; label: string }[] = [];
                           if (card.annualFees === 0) thematicLinks.push({ theme: 'no-fees', label: { fr: 'cartes sans frais annuels', de: 'Karten ohne Jahresgebühr', es: 'tarjetas sin comisiones', it: 'carte senza commissioni', en: 'no annual fee cards' }[lang] ?? 'no-fee cards' });
-                          if (card.cashbackRate > 0) thematicLinks.push({ theme: 'cashback', label: { fr: 'meilleures cartes cashback', de: 'beste Cashback-Karten', es: 'mejores tarjetas cashback', it: 'migliori carte cashback', en: 'best cashback cards' }[lang] ?? 'cashback cards' });
+                          if (card.cashbackBase > 0) thematicLinks.push({ theme: 'cashback', label: { fr: 'meilleures cartes cashback', de: 'beste Cashback-Karten', es: 'mejores tarjetas cashback', it: 'migliori carte cashback', en: 'best cashback cards' }[lang] ?? 'cashback cards' });
                           if (card.stakingRequired === 0) thematicLinks.push({ theme: 'no-staking', label: { fr: 'cartes sans staking', de: 'Karten ohne Staking', es: 'tarjetas sin staking', it: 'carte senza staking', en: 'no-staking cards' }[lang] ?? 'no-staking cards' });
                           if (card.extras?.includes('virtual_only')) thematicLinks.push({ theme: 'virtual', label: { fr: 'cartes virtuelles', de: 'virtuelle Karten', es: 'tarjetas virtuales', it: 'carte virtuali', en: 'virtual cards' }[lang] ?? 'virtual cards' });
                           if (card.extras?.some(e => ['lounge_access', 'travel_insurance'].includes(e))) thematicLinks.push({ theme: 'travel', label: { fr: 'cartes de voyage', de: 'Reisekarten', es: 'tarjetas de viaje', it: 'carte da viaggio', en: 'travel cards' }[lang] ?? 'travel cards' });
@@ -700,15 +726,23 @@ export default function CardDetail() {
                   {t('cards:card_cryptos')}
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                  {card.cryptos.map((c) => (
-                    <div
-                      key={c}
-                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-bg-elevated border border-bg-border"
-                    >
-                      <CryptoIcon symbol={c} size={16} />
-                      <span className="text-sm text-slate-300 font-medium">{c}</span>
-                    </div>
-                  ))}
+                  {card.cryptos.map((c) => {
+                    const sym = c.toLowerCase();
+                    const hasCryptoPage = ['btc','eth','xrp','bnb','sol','ada','avax','doge','usdt','usdc'].includes(sym);
+                    const badge = (
+                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-bg-elevated border border-bg-border hover:border-cyan-accent/40 transition-colors">
+                        <CryptoIcon symbol={c} size={16} />
+                        <span className="text-sm text-slate-300 font-medium">{c}</span>
+                      </div>
+                    );
+                    return hasCryptoPage ? (
+                      <Link key={c} to={`/${lang}/cryptos/${sym}`} title={c}>
+                        {badge}
+                      </Link>
+                    ) : (
+                      <div key={c}>{badge}</div>
+                    );
+                  })}
                 </div>
               </section>
             )}
@@ -861,16 +895,44 @@ export default function CardDetail() {
               );
             })()}
 
-            {/* Trust score — hidden */}
-            {false && card.trustScore !== undefined && (
+            {/* Trust score — hidden (enable when needed)
+            {card && card.trustScore !== undefined && (
               <div className="p-5 rounded-2xl bg-bg-elevated border border-bg-border">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5" />
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">
                   {t('common:trust_score')}
                 </h3>
                 <TrustBadge card={card} variant="detail" />
               </div>
-            )}
+            )} */}
+
+            {/* Comparison pair links */}
+            {(() => {
+              const cardId = card.id;
+              const pairs = EDITORIAL_PAIRS.filter(pair => {
+                const [a, b] = pair.split('-vs-');
+                return a === cardId || b === cardId;
+              }).slice(0, 4);
+              if (pairs.length === 0) return null;
+              const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+              const compSeg = rt.comparisons ?? 'compare';
+              return (
+                <div className="p-5 rounded-2xl border border-bg-border bg-bg-elevated space-y-1">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                    {COMPARE_WITH_LABEL[lang] || 'Comparisons'}
+                  </h3>
+                  {pairs.map(slug => (
+                    <Link
+                      key={slug}
+                      to={`/${lang}/${compSeg}/${slug}`}
+                      className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-bg-border/50 text-sm text-slate-300 hover:text-cyan-accent transition-colors group"
+                    >
+                      <span className="text-base shrink-0">⚖️</span>
+                      <span className="flex-1 leading-tight">{pairToLabel(slug)}</span>
+                    </Link>
+                  ))}
+                </div>
+              );
+            })()}
 
             {/* CTA */}
             <div className="p-5 rounded-2xl border border-bg-border bg-bg-elevated">

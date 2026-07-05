@@ -17,28 +17,27 @@ export interface Author {
 }
 
 export const AUTHORS: Record<string, Author> = {
-  thomas: {
-    id: 'thomas',
-    name: 'Thomas Petit',
+  tipitee: {
+    id: 'tipitee',
+    name: 'Tipitee',
     urls: {
-      fr: '/fr/auteurs/thomas',
-      de: '/de/autoren/thomas',
-      es: '/es/autores/thomas',
-      it: '/it/autori/thomas',
-      en: '/en/authors/thomas',
+      fr: '/fr/auteurs/tipitee',
+      de: '/de/autoren/tipitee',
+      es: '/es/autores/tipitee',
+      it: '/it/autori/tipitee',
+      en: '/en/authors/tipitee',
     },
     bio: {
-      fr: "Analyste cartes crypto. Teste personnellement chaque carte comparée sur TopCryptoCards depuis 2024.",
-      de: "Krypto-Karten-Analyst. Testet seit 2024 persönlich jede auf TopCryptoCards verglichene Karte.",
-      es: "Analista de tarjetas cripto. Prueba personalmente cada tarjeta comparada en TopCryptoCards desde 2024.",
-      it: "Analista di carte crypto. Testa personalmente ogni carta confrontata su TopCryptoCards dal 2024.",
-      en: "Crypto card analyst. Personally tests every card compared on TopCryptoCards since 2024.",
+      fr: "Analyste cartes crypto (@about_crypto). Teste personnellement chaque carte comparée sur TopCryptoCards depuis 2024.",
+      de: "Krypto-Karten-Analyst (@about_crypto). Testet seit 2024 persönlich jede auf TopCryptoCards verglichene Karte.",
+      es: "Analista de tarjetas cripto (@about_crypto). Prueba personalmente cada tarjeta comparada en TopCryptoCards desde 2024.",
+      it: "Analista di carte crypto (@about_crypto). Testa personalmente ogni carta confrontata su TopCryptoCards dal 2024.",
+      en: "Crypto card analyst (@about_crypto). Personally tests every card compared on TopCryptoCards since 2024.",
     },
     sameAs: [
-      // 'https://www.linkedin.com/in/…',
-      // 'https://x.com/…',
+      'https://x.com/about_crypto',
     ],
-    avatar: '/authors/thomas.jpg',
+    avatar: '/authors/tipitee.png',
   },
 };
 

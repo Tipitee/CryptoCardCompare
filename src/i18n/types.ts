@@ -25,6 +25,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     comparisons:    'comparer',
     brands:         'marques',
     about:          'a-propos',
+    authors:        'auteurs',
   },
   de: {
     compare:        'vergleich',
@@ -38,6 +39,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     comparisons:    'vergleichen',
     brands:         'marken',
     about:          'ueber-uns',
+    authors:        'autoren',
   },
   es: {
     compare:        'comparar',
@@ -51,6 +53,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     comparisons:    'comparar',
     brands:         'marcas',
     about:          'sobre-nosotros',
+    authors:        'autores',
   },
   it: {
     compare:        'confronto',
@@ -64,6 +67,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     comparisons:    'confrontare',
     brands:         'marche',
     about:          'chi-siamo',
+    authors:        'autori',
   },
   en: {
     compare:        'compare',
@@ -77,5 +81,6 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     comparisons:    'compare',
     brands:         'brands',
     about:          'about',
+    authors:        'authors',
   },
 };

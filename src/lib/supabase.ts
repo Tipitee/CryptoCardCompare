@@ -122,7 +122,7 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   }
   const { data, error } = await query;
   if (error) throw error;
-  return (data as CardRow[]).map(rowToCard);
+  return (data as unknown as CardRow[]).map(rowToCard);
 }
 
 export async function fetchCardArticle(cardId: string, lang: string) {
@@ -144,7 +144,7 @@ export async function fetchCardsByBrand(brandId: string): Promise<CryptoCard[]> 
     .neq('status', 'discontinued')
     .order('tier_rank', { ascending: true });
   if (error) throw error;
-  return (data as CardRow[]).map(rowToCard);
+  return (data as unknown as CardRow[]).map(rowToCard);
 }
 
 export async function fetchCardById(id: string): Promise<CryptoCard | null> {
@@ -154,7 +154,7 @@ export async function fetchCardById(id: string): Promise<CryptoCard | null> {
     .eq('id', id)
     .maybeSingle();
   if (!data) return null;
-  return rowToCard(data as CardRow);
+  return rowToCard(data as unknown as CardRow);
 }
 
 export async function fetchFavorites(): Promise<string[]> {
@@ -275,7 +275,7 @@ export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
   return backfillHeroImages((data ?? []) as BlogPost[]);
 }
 
-export async function fetchAllPosts(adminSecret: string): Promise<BlogPost[]> {
+export async function fetchAllPosts(_adminSecret: string): Promise<BlogPost[]> {
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')

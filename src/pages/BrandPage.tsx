@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ExternalLink, Building2, Calendar, Shield, ChevronRight, CheckCircle2, CheckCircle, XCircle, Star } from 'lucide-react';
-import { fetchCardsByBrand } from '../lib/supabase';
+import { fetchCardsByBrand, fetchRelatedPosts } from '../lib/supabase';
+import type { BlogPost } from '../types/blog';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useLanguage } from '../hooks/useLanguage';
 import SmartCardImage from '../components/SmartCardImage';
@@ -276,6 +277,13 @@ const L = {
   },
 } as const;
 
+const BRAND_ARTICLES_TITLE: Record<string, string> = {
+  fr: 'Articles sur', de: 'Artikel über', es: 'Artículos sobre', it: 'Articoli su', en: 'Articles about',
+};
+const BRAND_ARTICLES_READ: Record<string, string> = {
+  fr: 'Lire l\'article', de: 'Artikel lesen', es: 'Leer artículo', it: 'Leggi articolo', en: 'Read article',
+};
+
 // ── Market flags ──────────────────────────────────────────────────────────────
 const MARKET_FLAG: Record<string, string> = {
   fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧',
@@ -345,6 +353,32 @@ function FeeBadge({ card, lang }: { card: CryptoCard; lang: string }) {
   return <span>{card.annualFees}{l.eur}{l.perYear}</span>;
 }
 
+/** Maps brand IDs to relevant comparison pair slugs (alphabetically normalized). */
+const BRAND_COMPARISONS: Record<string, string[]> = {
+  nexo:       ['nexo-card-vs-revolut-metal', 'bybit-card-vs-nexo-card', 'coinbase-card-vs-nexo-card', 'kraken-krak-card-vs-nexo-card'],
+  bybit:      ['bybit-card-vs-nexo-card', 'bybit-card-vs-revolut-metal', 'bybit-card-vs-coinbase-card', 'bybit-card-vs-okx-card'],
+  revolut:    ['nexo-card-vs-revolut-metal', 'bybit-card-vs-revolut-metal', 'binance-standard-vs-revolut-metal', 'crypto-com-midnight-blue-vs-revolut-metal'],
+  'crypto-com': ['crypto-com-midnight-blue-vs-nexo-card', 'crypto-com-midnight-blue-vs-revolut-metal', 'bybit-card-vs-crypto-com-midnight-blue'],
+  binance:    ['binance-card-vs-bybit-card', 'binance-card-vs-nexo-card', 'binance-standard-vs-revolut-metal'],
+  coinbase:   ['coinbase-card-vs-nexo-card', 'bybit-card-vs-coinbase-card', 'bitpanda-card-vs-coinbase-card'],
+  okx:        ['bybit-card-vs-okx-card', 'nexo-card-vs-okx-card'],
+  bitpanda:   ['bitpanda-card-vs-coinbase-card', 'bitpanda-card-vs-revolut-metal'],
+  kraken:     ['kraken-krak-card-vs-nexo-card'],
+  deblock:    ['deblock-card-vs-nexo-card', 'deblock-card-vs-coinbase-card', 'deblock-card-vs-wirex-elite'],
+  wirex:      ['nexo-card-vs-wirex-elite', 'bybit-card-vs-wirex-elite', 'deblock-card-vs-wirex-elite'],
+};
+
+/** Convert a comparison slug to a display label (card names are proper nouns, no i18n needed). */
+function brandCompSlugToLabel(slug: string): string {
+  return slug.split('-vs-').map((part) =>
+    part.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  ).join(' vs ');
+}
+
+const BRAND_COMP_TITLE: Record<string, string> = {
+  fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
+};
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function BrandPage() {
@@ -355,6 +389,7 @@ export default function BrandPage() {
   const [cards, setCards] = useState<CryptoCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [brandArticles, setBrandArticles] = useState<BlogPost[]>([]);
 
   const cardsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
@@ -367,6 +402,16 @@ export default function BrandPage() {
       .then(setCards)
       .finally(() => setLoading(false));
   }, [brandId]);
+
+  useEffect(() => {
+    if (!brandId) return;
+    // Search by brandId (e.g. 'crypto-com') + dot-version (e.g. 'crypto.com') + brand name
+    const brand = getBrandMeta(brandId);
+    const searchTags = [brandId, brandId.replace(/-/g, '.'), brand.displayName.toLowerCase()];
+    fetchRelatedPosts(searchTags, '', lang, 3)
+      .then(setBrandArticles)
+      .catch(() => setBrandArticles([]));
+  }, [brandId, lang]);
 
   const brand = getBrandMeta(brandId ?? '');
   const seo = brand.seo[lang] ?? brand.seo.en;
@@ -870,6 +915,55 @@ export default function BrandPage() {
               >
                 <span>{icon}</span>
                 {label}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── Comparison links ────────────────────────────────────────────────── */}
+      {(BRAND_COMPARISONS[brandId ?? ''] || []).length > 0 && (() => {
+        const compSeg = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare';
+        return (
+          <section>
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
+              {BRAND_COMP_TITLE[lang] || BRAND_COMP_TITLE.en}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {(BRAND_COMPARISONS[brandId ?? ''] || []).map((slug) => (
+                <Link
+                  key={slug}
+                  to={`/${lang}/${compSeg}/${slug}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-brand-accent hover:border-brand-accent/40 transition-all"
+                >
+                  <span>⚖️</span>
+                  {brandCompSlugToLabel(slug)}
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ── Blog articles ───────────────────────────────────────────────────── */}
+      {brandArticles.length > 0 && (
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
+            {BRAND_ARTICLES_TITLE[lang] || BRAND_ARTICLES_TITLE.en} {brand.displayName}
+          </h2>
+          <div className="space-y-2">
+            {brandArticles.map(article => (
+              <Link
+                key={article.id}
+                to={`/${lang}/blog/${article.slug}`}
+                className="flex items-center justify-between gap-3 px-4 py-3 card-surface hover:border-brand-accent/30 transition-colors group"
+              >
+                <span className="text-sm text-slate-300 group-hover:text-brand-accent transition-colors line-clamp-1">
+                  📰 {article.title}
+                </span>
+                <span className="shrink-0 text-xs text-slate-500 group-hover:text-brand-accent transition-colors">
+                  {BRAND_ARTICLES_READ[lang] || BRAND_ARTICLES_READ.en} →
+                </span>
               </Link>
             ))}
           </div>

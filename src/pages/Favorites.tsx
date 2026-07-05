@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Heart, Star, Trash2 } from 'lucide-react';
+import { ExternalLink, Heart, Trash2 } from 'lucide-react';
+import { THEMATIC_ROUTES } from '../config/routes';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
@@ -12,6 +13,64 @@ import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
+
+const FAV_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
+  fr: {
+    h2: 'Comment utiliser vos favoris ?',
+    body: `La liste de favoris vous permet de sauvegarder en un clic les cartes crypto qui vous intéressent, pour les retrouver facilement lors de votre prochaine visite. Utilisez le comparateur pour filtrer les cartes par cashback, frais ou staking, puis cliquez sur l'étoile pour ajouter une carte à vos favoris. Vous pouvez ensuite les comparer côte à côte ou simuler vos gains potentiels avec notre simulateur de cashback.`,
+    related: 'Explorer par thème',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Meilleures cartes' },
+      { key: 'cashback',   emoji: '💰', label: 'Cashback élevé' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sans frais annuels' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sans staking' },
+    ],
+  },
+  de: {
+    h2: 'Wie nutzen Sie Ihre Favoriten?',
+    body: `Die Favoritenliste ermöglicht es Ihnen, Krypto-Karten, die Sie interessieren, mit einem Klick zu speichern und sie bei Ihrem nächsten Besuch leicht wiederzufinden. Verwenden Sie den Vergleich, um Karten nach Cashback, Gebühren oder Staking zu filtern, und klicken Sie auf den Stern, um eine Karte zu Ihren Favoriten hinzuzufügen. Anschließend können Sie sie nebeneinander vergleichen oder Ihre potenziellen Gewinne mit unserem Cashback-Simulator berechnen.`,
+    related: 'Nach Typ erkunden',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Beste Karten' },
+      { key: 'cashback',   emoji: '💰', label: 'Hoher Cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Ohne Jahresgebühr' },
+      { key: 'no-staking', emoji: '🔓', label: 'Ohne Staking' },
+    ],
+  },
+  es: {
+    h2: '¿Cómo usar tus favoritos?',
+    body: `La lista de favoritos te permite guardar con un clic las tarjetas crypto que te interesan, para encontrarlas fácilmente en tu próxima visita. Usa el comparador para filtrar tarjetas por cashback, comisiones o staking, luego haz clic en la estrella para añadir una tarjeta a tus favoritos. A continuación puedes compararlas lado a lado o simular tus ganancias potenciales con nuestro simulador de cashback.`,
+    related: 'Explorar por tipo',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Mejores tarjetas' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sin comisiones' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sin staking' },
+    ],
+  },
+  it: {
+    h2: 'Come usare i tuoi preferiti?',
+    body: `La lista dei preferiti ti permette di salvare con un clic le carte crypto che ti interessano, per ritrovarle facilmente alla prossima visita. Usa il comparatore per filtrare le carte per cashback, costi o staking, poi clicca sulla stella per aggiungere una carta ai tuoi preferiti. Potrai quindi confrontarle fianco a fianco o simulare i tuoi guadagni potenziali con il nostro simulatore di cashback.`,
+    related: 'Esplora per tipo',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Migliori carte' },
+      { key: 'cashback',   emoji: '💰', label: 'Alto cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Senza costi annuali' },
+      { key: 'no-staking', emoji: '🔓', label: 'Senza staking' },
+    ],
+  },
+  en: {
+    h2: 'How to use your favorites?',
+    body: `The favorites list lets you save crypto cards you're interested in with a single click, so you can find them easily on your next visit. Use the comparison tool to filter cards by cashback, fees or staking, then click the star to add a card to your favorites. You can then compare them side by side or estimate your potential earnings with our cashback simulator.`,
+    related: 'Explore by type',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Best cards' },
+      { key: 'cashback',   emoji: '💰', label: 'High cashback' },
+      { key: 'no-fees',    emoji: '🆓', label: 'No annual fees' },
+      { key: 'no-staking', emoji: '🔓', label: 'No staking' },
+    ],
+  },
+};
 
 const BRAND_LABEL: Record<string, string> = {
   fr: 'Marque', de: 'Marke', es: 'Marca', it: 'Marchio', en: 'Brand',
@@ -139,17 +198,8 @@ export default function Favorites() {
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   const ui = UI[lang] || UI.en;
   const favSeo = FAV_SEO[lang] || FAV_SEO.en;
-  useSeoMeta({ title: favSeo.title, description: favSeo.desc, lang });
-
-  // Favorites is user-specific — noindex to preserve crawl budget
-  useEffect(() => {
-    const el = document.createElement('meta');
-    el.name = 'robots';
-    el.content = 'noindex, nofollow';
-    el.setAttribute('data-noindex-fav', 'true');
-    document.head.appendChild(el);
-    return () => { document.querySelectorAll('meta[data-noindex-fav]').forEach(m => m.remove()); };
-  }, []);
+  // noindex: user-specific page (localStorage), crawlers see empty state
+  useSeoMeta({ title: favSeo.title, description: favSeo.desc, lang, noindex: true });
 
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
@@ -287,6 +337,29 @@ export default function Favorites() {
           ))}
         </div>
       )}
+
+      {/* Bloc éditorial — internal links + UX hint */}
+      {(() => {
+        const ed = FAV_EDITORIAL[lang] ?? FAV_EDITORIAL.en;
+        return (
+          <div className="mt-14 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <div className="flex flex-wrap gap-2">
+              {ed.links.map(({ key, emoji, label }) => {
+                const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
+                if (!slug) return null;
+                return (
+                  <Link key={key} to={`/${lang}/${slug}`} className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-bg-border bg-bg-elevated text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span aria-hidden="true">{emoji}</span>{label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

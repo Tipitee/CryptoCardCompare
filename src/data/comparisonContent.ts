@@ -516,6 +516,546 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     ],
   },
 
+  // ─── Revolut Metal vs Nexo Card ──────────────────────────────────────────────
+  'nexo-card-vs-revolut-metal': {
+    fr_intro: `La Revolut Metal et la Nexo Card représentent deux philosophies opposées : la première est une néobanque européenne qui intègre la crypto comme fonctionnalité parmi d'autres, la seconde est une carte crypto-native pensée pour les détenteurs d'actifs numériques. La Revolut Metal facture 13,99 €/mois et offre jusqu'à 1 % de cashback en crypto sur les dépenses éligibles, en plus d'un accès aux lounges aéroportuaires et à une assurance voyage premium. La Nexo Card, elle, est entièrement gratuite (0 €/an) et reverse jusqu'à 2 % de cashback en BTC ou NEXO sans aucun staking requis. Les deux cartes sont disponibles en France et dans l'UE, mais s'adressent à des profils très différents.`,
+    fr_verdict: `Si vous utilisez déjà Revolut comme compte principal et souhaitez un seul produit pour tout gérer, la Revolut Metal est justifiée malgré son abonnement mensuel. En revanche, pour maximiser le cashback crypto sans frais fixes, la Nexo Card est imbattable : 2 % en BTC garanti, sans engagement. Notre note : Nexo Card 4,2/5 vs Revolut Metal 3,9/5 pour un usage crypto-first.`,
+    de_intro: `Die Revolut Metal und die Nexo Card vertreten zwei entgegengesetzte Philosophien: Die erste ist eine europäische Neobank, die Krypto als zusätzliche Funktion integriert, die zweite ist eine krypto-native Karte für Inhaber digitaler Assets. Die Revolut Metal kostet 13,99 €/Monat und bietet bis zu 1 % Cashback in Krypto auf berechtigte Ausgaben sowie Zugang zu Flughafenlounges und Premium-Reiseversicherung. Die Nexo Card ist vollständig kostenlos (0 €/Jahr) und zahlt bis zu 2 % Cashback in BTC oder NEXO ohne Staking. Beide Karten sind in Deutschland und der EU verfügbar, sprechen aber sehr unterschiedliche Profile an.`,
+    de_verdict: `Wenn Sie Revolut bereits als Hauptkonto nutzen und alles in einem Produkt verwalten möchten, ist die Revolut Metal trotz der monatlichen Gebühr gerechtfertigt. Wer jedoch Krypto-Cashback ohne Fixkosten maximieren will, findet in der Nexo Card die beste Option: 2 % in BTC garantiert, ohne Vertragsbindung. Unsere Bewertung: Nexo Card 4,2/5 vs. Revolut Metal 3,9/5 für krypto-first-Nutzung.`,
+    es_intro: `La Revolut Metal y la Nexo Card representan dos filosofías opuestas: la primera es un neobanco europeo que integra crypto como funcionalidad adicional, la segunda es una tarjeta crypto-nativa pensada para titulares de activos digitales. La Revolut Metal cuesta 13,99 €/mes y ofrece hasta un 1 % de cashback en crypto en gastos elegibles, además de acceso a salas VIP de aeropuertos y seguro de viaje premium. La Nexo Card es completamente gratuita (0 €/año) y devuelve hasta un 2 % de cashback en BTC o NEXO sin staking requerido. Ambas están disponibles en España y la UE.`,
+    es_verdict: `Si ya usas Revolut como cuenta principal y quieres un solo producto para gestionarlo todo, la Revolut Metal se justifica a pesar de la cuota mensual. Para maximizar el cashback crypto sin costes fijos, la Nexo Card es imbatible: 2 % en BTC garantizado, sin compromiso. Nuestra puntuación: Nexo Card 4,2/5 vs Revolut Metal 3,9/5 para uso crypto-first.`,
+    it_intro: `La Revolut Metal e la Nexo Card rappresentano due filosofie opposte: la prima è una neobank europea che integra il crypto come funzionalità aggiuntiva, la seconda è una carta crypto-nativa per i detentori di asset digitali. La Revolut Metal costa 13,99 €/mese e offre fino all'1 % di cashback in crypto sulle spese idonee, oltre all'accesso alle lounge aeroportuali e un'assicurazione viaggio premium. La Nexo Card è completamente gratuita (0 €/anno) e restituisce fino al 2 % di cashback in BTC o NEXO senza staking richiesto. Entrambe sono disponibili in Italia e nell'UE.`,
+    it_verdict: `Se usi già Revolut come conto principale e vuoi un unico prodotto per gestire tutto, la Revolut Metal è giustificata nonostante l'abbonamento mensile. Per massimizzare il cashback crypto senza costi fissi, la Nexo Card è imbattibile: 2 % in BTC garantito, senza vincoli. Il nostro punteggio: Nexo Card 4,2/5 vs Revolut Metal 3,9/5 per un uso crypto-first.`,
+    en_intro: `The Revolut Metal and Nexo Card represent two opposing philosophies: the first is a European neobank that integrates crypto as an additional feature, the second is a crypto-native card built for holders of digital assets. Revolut Metal costs €13.99/month and offers up to 1% cashback in crypto on eligible spending, plus airport lounge access and premium travel insurance. The Nexo Card is completely free (€0/year) and pays up to 2% cashback in BTC or NEXO with no staking required. Both are available across the EU.`,
+    en_verdict: `If you already use Revolut as your main account and want a single product to manage everything, Revolut Metal is justified despite the monthly fee. To maximize crypto cashback with no fixed costs, the Nexo Card is unbeatable: guaranteed 2% in BTC, no commitment. Our score: Nexo Card 4.2/5 vs Revolut Metal 3.9/5 for crypto-first use.`,
+    faq: [
+      { q: 'Revolut Metal ou Nexo Card : laquelle est la moins chère ?', a: 'La Nexo Card est entièrement gratuite (0 €/an). La Revolut Metal coûte 13,99 €/mois soit environ 168 €/an. Pour un usage purement crypto, la Nexo Card est donc bien plus économique.' },
+      { q: 'Laquelle offre le meilleur cashback crypto ?', a: 'La Nexo Card offre jusqu\'à 2 % en BTC sans conditions particulières. La Revolut Metal propose jusqu\'à 1 % en crypto. La Nexo Card est supérieure sur le cashback crypto pur.' },
+      { q: 'Revolut Metal est-elle disponible en France ?', a: 'Oui, Revolut Metal est disponible en France via l\'abonnement Metal de Revolut, qui inclut une carte Mastercard physique et des avantages bancaires complets.' },
+    ],
+    de_faq: [
+      { q: 'Revolut Metal oder Nexo Card: Welche ist günstiger?', a: 'Die Nexo Card ist vollständig kostenlos (0 €/Jahr). Die Revolut Metal kostet 13,99 €/Monat, also rund 168 €/Jahr. Für rein krypto-fokussierte Nutzung ist die Nexo Card deutlich wirtschaftlicher.' },
+      { q: 'Welche bietet das bessere Krypto-Cashback?', a: 'Die Nexo Card bietet bis zu 2 % in BTC ohne besondere Bedingungen. Die Revolut Metal bis zu 1 % in Krypto. Die Nexo Card ist beim reinen Krypto-Cashback überlegen.' },
+      { q: 'Ist die Revolut Metal in Deutschland verfügbar?', a: 'Ja, die Revolut Metal ist in Deutschland über das Metal-Abonnement von Revolut erhältlich, das eine physische Mastercard und umfassende Bankvorteile umfasst.' },
+    ],
+    es_faq: [
+      { q: 'Revolut Metal o Nexo Card: ¿cuál es más barata?', a: 'La Nexo Card es completamente gratuita (0 €/año). La Revolut Metal cuesta 13,99 €/mes, unos 168 €/año. Para un uso puramente crypto, la Nexo Card es mucho más económica.' },
+      { q: '¿Cuál ofrece mejor cashback en crypto?', a: 'La Nexo Card ofrece hasta el 2 % en BTC sin condiciones especiales. La Revolut Metal hasta el 1 % en crypto. La Nexo Card es superior en cashback crypto puro.' },
+      { q: '¿La Revolut Metal está disponible en España?', a: 'Sí, la Revolut Metal está disponible en España a través de la suscripción Metal de Revolut, que incluye una Mastercard física y ventajas bancarias completas.' },
+    ],
+    it_faq: [
+      { q: 'Revolut Metal o Nexo Card: quale è più economica?', a: 'La Nexo Card è completamente gratuita (0 €/anno). La Revolut Metal costa 13,99 €/mese, circa 168 €/anno. Per un uso puramente crypto, la Nexo Card è molto più conveniente.' },
+      { q: 'Quale offre il miglior cashback crypto?', a: 'La Nexo Card offre fino al 2 % in BTC senza condizioni particolari. La Revolut Metal fino all\'1 % in crypto. La Nexo Card è superiore nel cashback crypto puro.' },
+      { q: 'La Revolut Metal è disponibile in Italia?', a: 'Sì, la Revolut Metal è disponibile in Italia tramite l\'abbonamento Metal di Revolut, che include una Mastercard fisica e vantaggi bancari completi.' },
+    ],
+    en_faq: [
+      { q: 'Revolut Metal or Nexo Card: which is cheaper?', a: 'The Nexo Card is completely free (€0/year). Revolut Metal costs €13.99/month, roughly €168/year. For purely crypto-focused use, the Nexo Card is far more economical.' },
+      { q: 'Which offers better crypto cashback?', a: 'The Nexo Card offers up to 2% in BTC with no special conditions. Revolut Metal offers up to 1% in crypto. The Nexo Card is superior for pure crypto cashback.' },
+      { q: 'Is Revolut Metal available across the EU?', a: 'Yes, Revolut Metal is available across the EU via Revolut\'s Metal subscription, which includes a physical Mastercard and comprehensive banking benefits.' },
+    ],
+  },
+
+  // ─── Revolut Metal vs Bybit Card ─────────────────────────────────────────────
+  'bybit-card-vs-revolut-metal': {
+    fr_intro: `La Revolut Metal et la Bybit Card occupent des segments bien distincts du marché. Revolut Metal est un abonnement premium (13,99 €/mois) qui transforme votre compte bancaire en hub polyvalent : change de devises, assurance voyage, cashback jusqu'à 1 % en crypto. La Bybit Card est gratuite (0 €/an) et concentrée sur une chose : le cashback crypto, pouvant atteindre jusqu'à 10 % en MNT selon le volume mensuel de dépenses. Pour un utilisateur actif de Bybit souhaitant maximiser ses récompenses, la Bybit Card est clairement supérieure en rendement. Revolut Metal séduit ceux qui veulent un produit bancaire complet avec une touche crypto.`,
+    fr_verdict: `La Bybit Card gagne sur le cashback pur si vous dépensez régulièrement. La Revolut Metal vaut son abonnement si vous exploitez l'ensemble de ses fonctionnalités bancaires. Pour un usage crypto-first, nous recommandons la Bybit Card. Note : Bybit Card 4,0/5 vs Revolut Metal 3,9/5 (cashback crypto).`,
+    de_intro: `Revolut Metal und Bybit Card bedienen sehr unterschiedliche Segmente. Die Revolut Metal ist ein Premium-Abonnement (13,99 €/Monat), das Ihr Bankkonto in einen vielseitigen Hub verwandelt: Währungswechsel, Reiseversicherung, bis zu 1 % Cashback in Krypto. Die Bybit Card ist kostenlos (0 €/Jahr) und fokussiert auf Krypto-Cashback von bis zu 10 % in MNT je nach monatlichem Ausgabevolumen. Für aktive Bybit-Nutzer, die ihre Prämien maximieren wollen, ist die Bybit Card beim Ertrag klar überlegen.`,
+    de_verdict: `Die Bybit Card gewinnt beim reinen Cashback, wenn Sie regelmäßig ausgeben. Revolut Metal lohnt sich, wenn Sie alle Bankfunktionen nutzen. Für krypto-first-Nutzung empfehlen wir die Bybit Card. Bewertung: Bybit Card 4,0/5 vs. Revolut Metal 3,9/5 (Krypto-Cashback).`,
+    es_intro: `La Revolut Metal y la Bybit Card ocupan segmentos muy distintos. La Revolut Metal es una suscripción premium (13,99 €/mes) que convierte tu cuenta bancaria en un hub versátil: cambio de divisas, seguro de viaje, cashback de hasta el 1 % en crypto. La Bybit Card es gratuita (0 €/año) y se centra en el cashback crypto, pudiendo alcanzar hasta el 10 % en MNT según el volumen mensual de gasto. Para usuarios activos de Bybit que quieren maximizar recompensas, la Bybit Card es claramente superior en rendimiento.`,
+    es_verdict: `La Bybit Card gana en cashback puro si gastas regularmente. La Revolut Metal vale su suscripción si aprovechas todas sus funciones bancarias. Para uso crypto-first, recomendamos la Bybit Card. Puntuación: Bybit Card 4,0/5 vs Revolut Metal 3,9/5 (cashback crypto).`,
+    it_intro: `La Revolut Metal e la Bybit Card occupano segmenti molto diversi. La Revolut Metal è un abbonamento premium (13,99 €/mese) che trasforma il tuo conto bancario in un hub versatile: cambio valute, assicurazione viaggio, cashback fino all'1 % in crypto. La Bybit Card è gratuita (0 €/anno) e concentrata sul cashback crypto, che può raggiungere fino al 10 % in MNT in base al volume mensile di spesa. Per gli utenti attivi di Bybit che vogliono massimizzare i premi, la Bybit Card è chiaramente superiore in termini di rendimento.`,
+    it_verdict: `La Bybit Card vince sul cashback puro se si spende regolarmente. La Revolut Metal vale l'abbonamento se si sfruttano tutte le sue funzioni bancarie. Per un uso crypto-first, consigliamo la Bybit Card. Punteggio: Bybit Card 4,0/5 vs Revolut Metal 3,9/5 (cashback crypto).`,
+    en_intro: `Revolut Metal and the Bybit Card occupy very different market segments. Revolut Metal is a premium subscription (€13.99/month) that turns your bank account into a versatile hub: currency exchange, travel insurance, up to 1% cashback in crypto. The Bybit Card is free (€0/year) and focused on crypto cashback, reaching up to 10% in MNT based on monthly spending volume. For active Bybit users looking to maximize rewards, the Bybit Card clearly wins on yield. Revolut Metal appeals to those wanting a complete banking product with a crypto touch.`,
+    en_verdict: `The Bybit Card wins on pure cashback if you spend regularly. Revolut Metal is worth its subscription if you use all its banking features. For crypto-first use, we recommend the Bybit Card. Score: Bybit Card 4.0/5 vs Revolut Metal 3.9/5 (crypto cashback).`,
+    faq: [
+      { q: 'Bybit Card ou Revolut Metal : laquelle a le meilleur cashback ?', a: 'La Bybit Card peut atteindre jusqu\'à 10 % en MNT pour les gros dépensiers. Revolut Metal plafonne à 1 % en crypto. La Bybit Card est bien supérieure sur le cashback pur.' },
+      { q: 'La Revolut Metal vaut-elle son abonnement de 13,99 €/mois ?', a: 'Cela dépend de votre usage. Si vous profitez du change sans frais, des assurances voyages et du cashback, l\'abonnement se rentabilise. Pour le seul cashback crypto, la Bybit Card gratuite est plus avantageuse.' },
+      { q: 'La Bybit Card est-elle disponible en France ?', a: 'Oui. La Bybit Card est disponible en France et dans toute l\'UE via Mastercard.' },
+    ],
+    de_faq: [
+      { q: 'Bybit Card oder Revolut Metal: Welche hat das bessere Cashback?', a: 'Die Bybit Card kann bis zu 10 % in MNT für Vielausgeber erreichen. Die Revolut Metal begrenzt sich auf 1 % in Krypto. Die Bybit Card ist beim reinen Cashback deutlich überlegen.' },
+      { q: 'Lohnt sich das Abonnement der Revolut Metal von 13,99 €/Monat?', a: 'Das hängt von der Nutzung ab. Wenn Sie gebührenfreien Währungswechsel, Reiseversicherungen und Cashback nutzen, amortisiert sich das Abonnement. Für reines Krypto-Cashback ist die kostenlose Bybit Card vorteilhafter.' },
+      { q: 'Ist die Bybit Card in Deutschland verfügbar?', a: 'Ja. Die Bybit Card ist in Deutschland und in der gesamten EU über Mastercard verfügbar.' },
+    ],
+    es_faq: [
+      { q: 'Bybit Card o Revolut Metal: ¿cuál tiene mejor cashback?', a: 'La Bybit Card puede alcanzar hasta el 10 % en MNT para grandes gastadores. La Revolut Metal se limita al 1 % en crypto. La Bybit Card es muy superior en cashback puro.' },
+      { q: '¿Vale la pena la suscripción de 13,99 €/mes de Revolut Metal?', a: 'Depende del uso. Si aprovechas el cambio sin comisiones, los seguros de viaje y el cashback, la suscripción se rentabiliza. Para solo cashback crypto, la Bybit Card gratuita es más ventajosa.' },
+      { q: '¿La Bybit Card está disponible en España?', a: 'Sí. La Bybit Card está disponible en España y en toda la UE a través de Mastercard.' },
+    ],
+    it_faq: [
+      { q: 'Bybit Card o Revolut Metal: quale ha il miglior cashback?', a: 'La Bybit Card può raggiungere fino al 10 % in MNT per i grandi spenditori. La Revolut Metal si limita all\'1 % in crypto. La Bybit Card è nettamente superiore nel cashback puro.' },
+      { q: 'Vale la pena l\'abbonamento da 13,99 €/mese della Revolut Metal?', a: 'Dipende dall\'uso. Se sfrutti il cambio valuta senza commissioni, le assicurazioni viaggio e il cashback, l\'abbonamento si ripaga. Per il solo cashback crypto, la Bybit Card gratuita è più vantaggiosa.' },
+      { q: 'La Bybit Card è disponibile in Italia?', a: 'Sì. La Bybit Card è disponibile in Italia e in tutta l\'UE tramite Mastercard.' },
+    ],
+    en_faq: [
+      { q: 'Bybit Card or Revolut Metal: which has better cashback?', a: 'The Bybit Card can reach up to 10% in MNT for high spenders. Revolut Metal caps at 1% in crypto. The Bybit Card is far superior for pure cashback.' },
+      { q: 'Is Revolut Metal\'s €13.99/month subscription worth it?', a: 'It depends on your usage. If you use fee-free currency exchange, travel insurance, and cashback, the subscription pays off. For crypto cashback alone, the free Bybit Card is more advantageous.' },
+      { q: 'Is the Bybit Card available across the EU?', a: 'Yes. The Bybit Card is available across the EU via Mastercard.' },
+    ],
+  },
+
+  // ─── Revolut Metal vs Crypto.com Midnight Blue ───────────────────────────────
+  'crypto-com-midnight-blue-vs-revolut-metal': {
+    fr_intro: `La Revolut Metal et la Crypto.com Midnight Blue couvrent deux univers différents. Revolut Metal (13,99 €/mois) est la référence des néobanques premium : assurance voyage, change sans frais, cashback 1 % en crypto. La Midnight Blue est l'entrée de gamme de Crypto.com — entièrement gratuite (0 €/an) — et offre 1 % de cashback en CRO sans staking requis. Les deux cartes sont disponibles dans toute l'UE. La grande différence : Revolut Metal est un produit bancaire à part entière, tandis que la Midnight Blue est une carte crypto-native accessible sans engagement.`,
+    fr_verdict: `Pour un profil mixte (banque + crypto), Revolut Metal offre un écosystème plus complet. Pour le crypto pur à coût zéro, la Midnight Blue est solide. Note : ex æquo sur le cashback (1 % chacune), mais la Midnight Blue gagne sur le prix. Revolut Metal 3,8/5 vs Midnight Blue 3,6/5 (cashback crypto).`,
+    de_intro: `Revolut Metal und die Crypto.com Midnight Blue decken zwei verschiedene Bereiche ab. Revolut Metal (13,99 €/Monat) ist die Referenz unter den Premium-Neobanken: Reiseversicherung, gebührenfreier Währungswechsel, 1 % Cashback in Krypto. Die Midnight Blue ist das Einstiegsmodell von Crypto.com — völlig kostenlos (0 €/Jahr) — und bietet 1 % Cashback in CRO ohne Staking. Beide Karten sind in der gesamten EU verfügbar.`,
+    de_verdict: `Für ein gemischtes Profil (Bank + Krypto) bietet Revolut Metal ein vollständigeres Ökosystem. Für reines Krypto ohne Kosten ist die Midnight Blue solide. Beim Cashback stehen beide bei 1 %, aber die Midnight Blue punktet beim Preis. Revolut Metal 3,8/5 vs. Midnight Blue 3,6/5.`,
+    es_intro: `La Revolut Metal y la Crypto.com Midnight Blue cubren dos universos distintos. La Revolut Metal (13,99 €/mes) es la referencia entre los neobancos premium: seguro de viaje, cambio sin comisiones, cashback del 1 % en crypto. La Midnight Blue es la gama de entrada de Crypto.com — completamente gratuita (0 €/año) — y ofrece el 1 % de cashback en CRO sin staking requerido. Ambas están disponibles en toda la UE.`,
+    es_verdict: `Para un perfil mixto (banco + crypto), la Revolut Metal ofrece un ecosistema más completo. Para crypto puro a coste cero, la Midnight Blue es sólida. Empate en cashback (1 % cada una), pero la Midnight Blue gana en precio. Revolut Metal 3,8/5 vs Midnight Blue 3,6/5.`,
+    it_intro: `La Revolut Metal e la Crypto.com Midnight Blue coprono due universi diversi. La Revolut Metal (13,99 €/mese) è il riferimento tra i neobank premium: assicurazione viaggio, cambio senza commissioni, cashback dell'1 % in crypto. La Midnight Blue è l'entry level di Crypto.com — completamente gratuita (0 €/anno) — e offre l'1 % di cashback in CRO senza staking richiesto. Entrambe sono disponibili in tutta l'UE.`,
+    it_verdict: `Per un profilo misto (banca + crypto), la Revolut Metal offre un ecosistema più completo. Per il crypto puro a costo zero, la Midnight Blue è solida. Parità sul cashback (1 % ciascuna), ma la Midnight Blue vince sul prezzo. Revolut Metal 3,8/5 vs Midnight Blue 3,6/5.`,
+    en_intro: `Revolut Metal and the Crypto.com Midnight Blue cover two different worlds. Revolut Metal (€13.99/month) is the reference among premium neobanks: travel insurance, fee-free currency exchange, 1% cashback in crypto. The Midnight Blue is Crypto.com's entry-level card — completely free (€0/year) — offering 1% cashback in CRO with no staking required. Both are available across the EU.`,
+    en_verdict: `For a mixed profile (banking + crypto), Revolut Metal offers a more complete ecosystem. For pure crypto at zero cost, the Midnight Blue is solid. Tied on cashback (1% each), but the Midnight Blue wins on price. Revolut Metal 3.8/5 vs Midnight Blue 3.6/5.`,
+    faq: [
+      { q: 'Revolut Metal ou Crypto.com Midnight Blue : laquelle est la plus adaptée aux débutants ?', a: 'La Midnight Blue est plus simple à prendre en main : aucun abonnement, 1 % de cashback en CRO, disponible rapidement via l\'app Crypto.com. Revolut Metal demande un abonnement mais offre plus de fonctionnalités bancaires.' },
+      { q: 'Les deux cartes proposent-elles un cashback identique ?', a: 'Oui, les deux offrent 1 % de cashback — en CRO pour la Midnight Blue, en crypto au choix pour Revolut Metal. Le choix dépend donc de votre préférence entre CRO et d\'autres cryptos.' },
+      { q: 'Faut-il du staking pour la Crypto.com Midnight Blue ?', a: 'Non. La Midnight Blue ne requiert aucun staking. C\'est l\'un de ses atouts : le cashback CRO est accessible sans immobiliser de capital.' },
+    ],
+    de_faq: [
+      { q: 'Revolut Metal oder Crypto.com Midnight Blue: Welche eignet sich besser für Einsteiger?', a: 'Die Midnight Blue ist einfacher zu handhaben: kein Abonnement, 1 % Cashback in CRO, schnell über die Crypto.com-App verfügbar. Revolut Metal erfordert ein Abonnement, bietet aber mehr Bankfunktionen.' },
+      { q: 'Bieten beide Karten identisches Cashback?', a: 'Ja, beide bieten 1 % Cashback — in CRO für die Midnight Blue, in Krypto nach Wahl für Revolut Metal. Die Wahl hängt von der Präferenz zwischen CRO und anderen Kryptos ab.' },
+      { q: 'Ist Staking für die Crypto.com Midnight Blue erforderlich?', a: 'Nein. Die Midnight Blue erfordert kein Staking. Das ist einer ihrer Vorteile: Das CRO-Cashback ist zugänglich, ohne Kapital zu binden.' },
+    ],
+    es_faq: [
+      { q: 'Revolut Metal o Crypto.com Midnight Blue: ¿cuál es más adecuada para principiantes?', a: 'La Midnight Blue es más sencilla: sin suscripción, 1 % de cashback en CRO, disponible rápidamente a través de la app de Crypto.com. La Revolut Metal requiere suscripción pero ofrece más funciones bancarias.' },
+      { q: '¿Ambas tarjetas ofrecen el mismo cashback?', a: 'Sí, ambas ofrecen el 1 % de cashback — en CRO para la Midnight Blue, en crypto a elección para la Revolut Metal. La elección depende de tu preferencia entre CRO y otras criptos.' },
+      { q: '¿La Crypto.com Midnight Blue requiere staking?', a: 'No. La Midnight Blue no requiere staking. Ese es uno de sus puntos fuertes: el cashback en CRO es accesible sin inmovilizar capital.' },
+    ],
+    it_faq: [
+      { q: 'Revolut Metal o Crypto.com Midnight Blue: quale è più adatta ai principianti?', a: 'La Midnight Blue è più semplice: nessun abbonamento, 1 % di cashback in CRO, disponibile rapidamente tramite l\'app Crypto.com. La Revolut Metal richiede un abbonamento ma offre più funzioni bancarie.' },
+      { q: 'Entrambe le carte offrono lo stesso cashback?', a: 'Sì, entrambe offrono l\'1 % di cashback — in CRO per la Midnight Blue, in crypto a scelta per la Revolut Metal. La scelta dipende dalla preferenza tra CRO e altre criptovalute.' },
+      { q: 'La Crypto.com Midnight Blue richiede staking?', a: 'No. La Midnight Blue non richiede staking. È uno dei suoi punti di forza: il cashback in CRO è accessibile senza immobilizzare capitale.' },
+    ],
+    en_faq: [
+      { q: 'Revolut Metal or Crypto.com Midnight Blue: which is better for beginners?', a: 'The Midnight Blue is simpler to get started with: no subscription, 1% cashback in CRO, quickly available via the Crypto.com app. Revolut Metal requires a subscription but offers more banking features.' },
+      { q: 'Do both cards offer the same cashback?', a: 'Yes, both offer 1% cashback — in CRO for the Midnight Blue, in crypto of your choice for Revolut Metal. The choice depends on your preference between CRO and other cryptos.' },
+      { q: 'Does the Crypto.com Midnight Blue require staking?', a: 'No. The Midnight Blue requires no staking. This is one of its strengths: CRO cashback is accessible without locking up capital.' },
+    ],
+  },
+
+  // ─── Revolut Metal vs Binance Standard ───────────────────────────────────────
+  'binance-standard-vs-revolut-metal': {
+    fr_intro: `La Revolut Metal et la Binance Card (standard) sont deux produits complémentaires qui s'adressent à des profils différents. Revolut Metal est une néobanque premium (13,99 €/mois) avec assurance voyage, change multi-devises et cashback crypto. La Binance Card standard est gratuite (0 €/an) et offre du cashback en BNB sur les dépenses du quotidien, avec un niveau de cashback lié au solde BNB détenu. Les deux sont disponibles dans la majorité des pays de l'UE via Visa.`,
+    fr_verdict: `Si vous utilisez Binance activement et détenez des BNB, la Binance Card complète naturellement votre écosystème. Pour un compte bancaire full-features avec une couche crypto, Revolut Metal reste la référence. Note : Revolut Metal 3,8/5 vs Binance Card 3,5/5 pour la polyvalence bancaire.`,
+    de_intro: `Revolut Metal und die Binance Card (Standard) sprechen unterschiedliche Profile an. Revolut Metal ist eine Premium-Neobank (13,99 €/Monat) mit Reiseversicherung, Multi-Währungs-Wechsel und Krypto-Cashback. Die Binance Card Standard ist kostenlos (0 €/Jahr) und bietet Cashback in BNB auf alltägliche Ausgaben, abhängig vom gehaltenen BNB-Guthaben. Beide sind in den meisten EU-Ländern über Visa verfügbar.`,
+    de_verdict: `Wenn Sie Binance aktiv nutzen und BNB halten, ergänzt die Binance Card Ihr Ökosystem natürlich. Für ein vollwertiges Bankkonto mit Krypto-Ebene bleibt Revolut Metal die Referenz. Bewertung: Revolut Metal 3,8/5 vs. Binance Card 3,5/5 für Bankvielseitigkeit.`,
+    es_intro: `La Revolut Metal y la Binance Card (estándar) se dirigen a perfiles diferentes. La Revolut Metal es un neobanco premium (13,99 €/mes) con seguro de viaje, cambio multidivisa y cashback en crypto. La Binance Card estándar es gratuita (0 €/año) y ofrece cashback en BNB en gastos cotidianos, vinculado al saldo de BNB mantenido. Ambas están disponibles en la mayoría de países de la UE vía Visa.`,
+    es_verdict: `Si usas Binance activamente y tienes BNB, la Binance Card complementa naturalmente tu ecosistema. Para una cuenta bancaria completa con capa crypto, la Revolut Metal sigue siendo la referencia. Puntuación: Revolut Metal 3,8/5 vs Binance Card 3,5/5 para versatilidad bancaria.`,
+    it_intro: `La Revolut Metal e la Binance Card (standard) si rivolgono a profili diversi. La Revolut Metal è una neobank premium (13,99 €/mese) con assicurazione viaggio, cambio multivaluta e cashback in crypto. La Binance Card standard è gratuita (0 €/anno) e offre cashback in BNB sulle spese quotidiane, legato al saldo BNB detenuto. Entrambe sono disponibili nella maggior parte dei paesi UE tramite Visa.`,
+    it_verdict: `Se usi Binance attivamente e detieni BNB, la Binance Card si integra naturalmente nel tuo ecosistema. Per un conto bancario completo con livello crypto, la Revolut Metal rimane il riferimento. Punteggio: Revolut Metal 3,8/5 vs Binance Card 3,5/5 per versatilità bancaria.`,
+    en_intro: `Revolut Metal and the Binance Card (standard) target different profiles. Revolut Metal is a premium neobank (€13.99/month) with travel insurance, multi-currency exchange and crypto cashback. The Binance Standard Card is free (€0/year) and offers cashback in BNB on everyday spending, linked to the BNB balance held. Both are available in most EU countries via Visa.`,
+    en_verdict: `If you actively use Binance and hold BNB, the Binance Card naturally complements your ecosystem. For a full-featured bank account with a crypto layer, Revolut Metal remains the reference. Score: Revolut Metal 3.8/5 vs Binance Card 3.5/5 for banking versatility.`,
+    faq: [
+      { q: 'Binance Card ou Revolut Metal : laquelle a le plus de fonctionnalités bancaires ?', a: 'Revolut Metal dispose de plus de fonctionnalités bancaires : compte multi-devises, virement international, assurance voyage, carte de débit standard. La Binance Card est avant tout une carte de cashback en BNB.' },
+      { q: 'Faut-il détenir des BNB pour profiter du cashback de la Binance Card ?', a: 'Oui. Le niveau de cashback de la Binance Card est lié au solde BNB du compte. Plus vous détenez de BNB, plus le taux est élevé.' },
+      { q: 'La Binance Card est-elle disponible en France ?', a: 'Oui, la Binance Card est disponible en France via Visa. Vérifiez cependant les restrictions en vigueur selon les mises à jour réglementaires Binance en Europe.' },
+    ],
+    de_faq: [
+      { q: 'Binance Card oder Revolut Metal: Welche hat mehr Bankfunktionen?', a: 'Die Revolut Metal hat mehr Bankfunktionen: Multi-Währungs-Konto, internationale Überweisungen, Reiseversicherung, Standard-Debitkarte. Die Binance Card ist in erster Linie eine BNB-Cashback-Karte.' },
+      { q: 'Muss man BNB halten, um das Cashback der Binance Card zu nutzen?', a: 'Ja. Das Cashback-Niveau der Binance Card hängt vom BNB-Guthaben ab. Je mehr BNB Sie halten, desto höher ist der Cashback-Satz.' },
+      { q: 'Ist die Binance Card in Deutschland verfügbar?', a: 'Ja, die Binance Card ist in Deutschland über Visa verfügbar. Prüfen Sie jedoch die aktuellen regulatorischen Einschränkungen von Binance in Europa.' },
+    ],
+    es_faq: [
+      { q: 'Binance Card o Revolut Metal: ¿cuál tiene más funciones bancarias?', a: 'La Revolut Metal tiene más funciones bancarias: cuenta multidivisa, transferencias internacionales, seguro de viaje, tarjeta de débito estándar. La Binance Card es principalmente una tarjeta de cashback en BNB.' },
+      { q: '¿Hay que tener BNB para aprovechar el cashback de la Binance Card?', a: 'Sí. El nivel de cashback de la Binance Card está vinculado al saldo de BNB de la cuenta. Cuanto más BNB tengas, mayor es la tasa.' },
+      { q: '¿La Binance Card está disponible en España?', a: 'Sí, la Binance Card está disponible en España vía Visa. Verifica las restricciones regulatorias de Binance en Europa.' },
+    ],
+    it_faq: [
+      { q: 'Binance Card o Revolut Metal: quale ha più funzioni bancarie?', a: 'La Revolut Metal ha più funzioni bancarie: conto multivaluta, bonifici internazionali, assicurazione viaggio, carta di debito standard. La Binance Card è principalmente una carta cashback in BNB.' },
+      { q: 'Bisogna detenere BNB per sfruttare il cashback della Binance Card?', a: 'Sì. Il livello di cashback della Binance Card è legato al saldo BNB del conto. Più BNB si detengono, più alto è il tasso.' },
+      { q: 'La Binance Card è disponibile in Italia?', a: 'Sì, la Binance Card è disponibile in Italia tramite Visa. Verificare le eventuali restrizioni normative di Binance in Europa.' },
+    ],
+    en_faq: [
+      { q: 'Binance Card or Revolut Metal: which has more banking features?', a: 'Revolut Metal has more banking features: multi-currency account, international transfers, travel insurance, standard debit card. The Binance Card is primarily a BNB cashback card.' },
+      { q: 'Do you need to hold BNB to benefit from the Binance Card cashback?', a: 'Yes. The Binance Card cashback level is linked to the account\'s BNB balance. The more BNB you hold, the higher the cashback rate.' },
+      { q: 'Is the Binance Card available across the EU?', a: 'Yes, the Binance Card is available across the EU via Visa. Check the current regulatory restrictions for Binance in Europe.' },
+    ],
+  },
+
+  // ─── Kraken KRAK Card vs Nexo Card ───────────────────────────────────────────
+  'kraken-krak-card-vs-nexo-card': {
+    fr_intro: `La Kraken KRAK Card et la Nexo Card sont deux cartes crypto-natives destinées aux utilisateurs déjà familiers avec les exchanges centralisés. La KRAK Card offre du cashback en BTC avec des niveaux liés à l'activité Kraken, sans staking requis. La Nexo Card propose jusqu'à 2 % de cashback en BTC ou NEXO, également sans staking obligatoire. Les deux sont gratuites (0 €/an) et disponibles en Europe. Le choix dépend souvent de l'exchange que vous utilisez déjà.`,
+    fr_verdict: `Si vous êtes utilisateur de Kraken, la KRAK Card s'intègre naturellement à votre workflow. Pour un cashback en BTC sans conditions d'activité sur un exchange, la Nexo Card reste plus accessible. Note : Nexo Card 4,2/5 vs KRAK Card 3,8/5.`,
+    de_intro: `Die Kraken KRAK Card und die Nexo Card sind zwei krypto-native Karten für erfahrene Nutzer zentralisierter Börsen. Die KRAK Card bietet Cashback in BTC, abhängig von der Kraken-Aktivität, ohne Staking. Die Nexo Card bietet bis zu 2 % Cashback in BTC oder NEXO, ebenfalls ohne obligatorisches Staking. Beide sind kostenlos und in Europa verfügbar.`,
+    de_verdict: `Wenn Sie Kraken-Nutzer sind, integriert sich die KRAK Card natürlich in Ihren Workflow. Für BTC-Cashback ohne Aktivitätsbedingungen einer Börse ist die Nexo Card zugänglicher. Bewertung: Nexo Card 4,2/5 vs. KRAK Card 3,8/5.`,
+    es_intro: `La Kraken KRAK Card y la Nexo Card son dos tarjetas crypto-nativas para usuarios ya familiarizados con los exchanges centralizados. La KRAK Card ofrece cashback en BTC con niveles vinculados a la actividad en Kraken, sin staking requerido. La Nexo Card propone hasta el 2 % de cashback en BTC o NEXO, también sin staking obligatorio. Ambas son gratuitas y están disponibles en Europa.`,
+    es_verdict: `Si eres usuario de Kraken, la KRAK Card se integra naturalmente en tu flujo de trabajo. Para cashback en BTC sin condiciones de actividad en un exchange, la Nexo Card es más accesible. Puntuación: Nexo Card 4,2/5 vs KRAK Card 3,8/5.`,
+    it_intro: `La Kraken KRAK Card e la Nexo Card sono due carte crypto-native per utenti già familiari con gli exchange centralizzati. La KRAK Card offre cashback in BTC con livelli legati all'attività su Kraken, senza staking richiesto. La Nexo Card propone fino al 2 % di cashback in BTC o NEXO, anch'essa senza staking obbligatorio. Entrambe sono gratuite e disponibili in Europa.`,
+    it_verdict: `Se sei un utente di Kraken, la KRAK Card si integra naturalmente nel tuo flusso di lavoro. Per cashback in BTC senza condizioni di attività su un exchange, la Nexo Card è più accessibile. Punteggio: Nexo Card 4,2/5 vs KRAK Card 3,8/5.`,
+    en_intro: `The Kraken KRAK Card and Nexo Card are two crypto-native cards for users already familiar with centralized exchanges. The KRAK Card offers cashback in BTC with levels tied to Kraken activity, no staking required. The Nexo Card offers up to 2% cashback in BTC or NEXO, also with no mandatory staking. Both are free (€0/year) and available across Europe.`,
+    en_verdict: `If you're a Kraken user, the KRAK Card integrates naturally into your workflow. For BTC cashback without exchange activity conditions, the Nexo Card is more accessible. Score: Nexo Card 4.2/5 vs KRAK Card 3.8/5.`,
+    faq: [
+      { q: 'KRAK Card ou Nexo Card : laquelle offre le meilleur cashback en BTC ?', a: 'La Nexo Card offre jusqu\'à 2 % en BTC sans condition d\'activité particulière. Le cashback de la KRAK Card dépend de votre activité sur Kraken. Pour un cashback BTC prévisible, la Nexo Card est plus fiable.' },
+      { q: 'Faut-il être client de Kraken pour obtenir la KRAK Card ?', a: 'Oui. La KRAK Card est liée à un compte Kraken actif. Si vous utilisez déjà l\'exchange, c\'est une carte naturellement complémentaire.' },
+      { q: 'La Nexo Card nécessite-t-elle un compte Nexo ?', a: 'Oui. La Nexo Card est liée à un compte Nexo. Le cashback en NEXO ou BTC est versé directement sur votre portefeuille Nexo.' },
+    ],
+    de_faq: [
+      { q: 'KRAK Card oder Nexo Card: Welche bietet das bessere BTC-Cashback?', a: 'Die Nexo Card bietet bis zu 2 % in BTC ohne besondere Aktivitätsbedingung. Das Cashback der KRAK Card hängt von Ihrer Kraken-Aktivität ab. Für vorhersehbares BTC-Cashback ist die Nexo Card zuverlässiger.' },
+      { q: 'Muss man Kraken-Kunde sein, um die KRAK Card zu erhalten?', a: 'Ja. Die KRAK Card ist mit einem aktiven Kraken-Konto verknüpft. Wenn Sie die Börse bereits nutzen, ist es eine natürlich ergänzende Karte.' },
+      { q: 'Benötigt die Nexo Card ein Nexo-Konto?', a: 'Ja. Die Nexo Card ist mit einem Nexo-Konto verknüpft. Das Cashback in NEXO oder BTC wird direkt in Ihr Nexo-Wallet eingezahlt.' },
+    ],
+    es_faq: [
+      { q: 'KRAK Card o Nexo Card: ¿cuál ofrece mejor cashback en BTC?', a: 'La Nexo Card ofrece hasta el 2 % en BTC sin condición de actividad especial. El cashback de la KRAK Card depende de tu actividad en Kraken. Para cashback en BTC predecible, la Nexo Card es más fiable.' },
+      { q: '¿Hay que ser cliente de Kraken para obtener la KRAK Card?', a: 'Sí. La KRAK Card está vinculada a una cuenta activa de Kraken. Si ya usas el exchange, es una tarjeta que se complementa naturalmente.' },
+      { q: '¿La Nexo Card requiere una cuenta Nexo?', a: 'Sí. La Nexo Card está vinculada a una cuenta Nexo. El cashback en NEXO o BTC se abona directamente en tu cartera Nexo.' },
+    ],
+    it_faq: [
+      { q: 'KRAK Card o Nexo Card: quale offre il miglior cashback in BTC?', a: 'La Nexo Card offre fino al 2 % in BTC senza condizioni di attività particolari. Il cashback della KRAK Card dipende dall\'attività su Kraken. Per un cashback BTC prevedibile, la Nexo Card è più affidabile.' },
+      { q: 'Bisogna essere clienti di Kraken per ottenere la KRAK Card?', a: 'Sì. La KRAK Card è collegata a un conto Kraken attivo. Se si usa già l\'exchange, è una carta naturalmente complementare.' },
+      { q: 'La Nexo Card richiede un conto Nexo?', a: 'Sì. La Nexo Card è collegata a un conto Nexo. Il cashback in NEXO o BTC viene accreditato direttamente nel portafoglio Nexo.' },
+    ],
+    en_faq: [
+      { q: 'KRAK Card or Nexo Card: which offers better BTC cashback?', a: 'The Nexo Card offers up to 2% in BTC with no special activity conditions. The KRAK Card cashback depends on your Kraken activity. For predictable BTC cashback, the Nexo Card is more reliable.' },
+      { q: 'Do you need to be a Kraken customer to get the KRAK Card?', a: 'Yes. The KRAK Card is linked to an active Kraken account. If you already use the exchange, it\'s a naturally complementary card.' },
+      { q: 'Does the Nexo Card require a Nexo account?', a: 'Yes. The Nexo Card is linked to a Nexo account. Cashback in NEXO or BTC is paid directly into your Nexo wallet.' },
+    ],
+  },
+
+  // ─── OKX Card vs Nexo Card ───────────────────────────────────────────────────
+  'nexo-card-vs-okx-card': {
+    fr_intro: `La OKX Card et la Nexo Card sont deux cartes crypto gratuites (0 €/an) disponibles en Europe, mais avec des modèles de récompenses différents. OKX Card offre du cashback en OKB sur les dépenses, avec des niveaux qui peuvent être attractifs pour les utilisateurs actifs de l'exchange OKX. Nexo Card propose jusqu'à 2 % en BTC ou NEXO sans staking requis, ce qui la rend accessible à tout utilisateur crypto. Les deux ciblent les utilisateurs des exchanges respectifs.`,
+    fr_verdict: `Si vous utilisez OKX comme exchange principal, la OKX Card intègre naturellement vos récompenses. Pour un cashback en BTC sans dépendance à un exchange particulier, la Nexo Card est plus universelle. Note : Nexo Card 4,2/5 vs OKX Card 3,7/5.`,
+    de_intro: `Die OKX Card und die Nexo Card sind zwei kostenlose Krypto-Karten (0 €/Jahr) in Europa mit unterschiedlichen Belohnungsmodellen. Die OKX Card bietet Cashback in OKB auf Ausgaben, mit Stufen, die für aktive OKX-Nutzer attraktiv sein können. Die Nexo Card bietet bis zu 2 % in BTC oder NEXO ohne Staking, was sie für jeden Krypto-Nutzer zugänglich macht.`,
+    de_verdict: `Wenn Sie OKX als Hauptbörse nutzen, integriert die OKX Card Ihre Prämien natürlich. Für BTC-Cashback ohne Abhängigkeit von einer bestimmten Börse ist die Nexo Card universeller. Bewertung: Nexo Card 4,2/5 vs. OKX Card 3,7/5.`,
+    es_intro: `La OKX Card y la Nexo Card son dos tarjetas crypto gratuitas (0 €/año) disponibles en Europa, con modelos de recompensas diferentes. La OKX Card ofrece cashback en OKB en los gastos, con niveles atractivos para los usuarios activos del exchange OKX. La Nexo Card propone hasta el 2 % en BTC o NEXO sin staking requerido, haciéndola accesible a cualquier usuario crypto.`,
+    es_verdict: `Si usas OKX como exchange principal, la OKX Card integra naturalmente tus recompensas. Para cashback en BTC sin dependencia de un exchange en particular, la Nexo Card es más universal. Puntuación: Nexo Card 4,2/5 vs OKX Card 3,7/5.`,
+    it_intro: `La OKX Card e la Nexo Card sono due carte crypto gratuite (0 €/anno) disponibili in Europa, con modelli di ricompensa diversi. La OKX Card offre cashback in OKB sulle spese, con livelli che possono essere attraenti per gli utenti attivi dell'exchange OKX. La Nexo Card propone fino al 2 % in BTC o NEXO senza staking richiesto, rendendola accessibile a qualsiasi utente crypto.`,
+    it_verdict: `Se si usa OKX come exchange principale, la OKX Card integra naturalmente le ricompense. Per cashback in BTC senza dipendenza da un exchange specifico, la Nexo Card è più universale. Punteggio: Nexo Card 4,2/5 vs OKX Card 3,7/5.`,
+    en_intro: `The OKX Card and Nexo Card are two free (€0/year) crypto cards available in Europe, with different reward models. The OKX Card offers cashback in OKB on spending, with tiers that can be attractive for active OKX exchange users. The Nexo Card offers up to 2% in BTC or NEXO with no staking required, making it accessible to any crypto user.`,
+    en_verdict: `If you use OKX as your main exchange, the OKX Card naturally integrates your rewards. For BTC cashback without dependence on a specific exchange, the Nexo Card is more universal. Score: Nexo Card 4.2/5 vs OKX Card 3.7/5.`,
+    faq: [
+      { q: 'OKX Card ou Nexo Card : laquelle est la plus accessible sans exchange actif ?', a: 'La Nexo Card. Son cashback en BTC n\'est pas conditionné à une activité de trading particulière. La OKX Card est plus avantageuse si vous tradez régulièrement sur OKX.' },
+      { q: 'Les deux cartes sont-elles disponibles en France ?', a: 'Oui, les deux cartes sont disponibles en France et dans la plupart des pays de l\'UE.' },
+      { q: 'OKX Card offre-t-elle du cashback en BTC ?', a: 'Non. La OKX Card verse le cashback en OKB, le token natif d\'OKX. Si vous souhaitez du cashback en BTC, la Nexo Card est plus adaptée.' },
+    ],
+    de_faq: [
+      { q: 'OKX Card oder Nexo Card: Welche ist ohne aktive Börse zugänglicher?', a: 'Die Nexo Card. Ihr BTC-Cashback ist nicht an bestimmte Trading-Aktivitäten gebunden. Die OKX Card ist vorteilhafter, wenn Sie regelmäßig auf OKX handeln.' },
+      { q: 'Sind beide Karten in Deutschland verfügbar?', a: 'Ja, beide Karten sind in Deutschland und den meisten EU-Ländern verfügbar.' },
+      { q: 'Bietet die OKX Card Cashback in BTC?', a: 'Nein. Die OKX Card zahlt Cashback in OKB, dem nativen Token von OKX. Für Cashback in BTC ist die Nexo Card besser geeignet.' },
+    ],
+    es_faq: [
+      { q: 'OKX Card o Nexo Card: ¿cuál es más accesible sin un exchange activo?', a: 'La Nexo Card. Su cashback en BTC no está condicionado a ninguna actividad de trading específica. La OKX Card es más ventajosa si operas regularmente en OKX.' },
+      { q: '¿Ambas tarjetas están disponibles en España?', a: 'Sí, ambas tarjetas están disponibles en España y en la mayoría de países de la UE.' },
+      { q: '¿La OKX Card ofrece cashback en BTC?', a: 'No. La OKX Card paga el cashback en OKB, el token nativo de OKX. Si quieres cashback en BTC, la Nexo Card es más adecuada.' },
+    ],
+    it_faq: [
+      { q: 'OKX Card o Nexo Card: quale è più accessibile senza un exchange attivo?', a: 'La Nexo Card. Il suo cashback in BTC non è condizionato da attività di trading particolari. La OKX Card è più vantaggiosa se si fa trading regolarmente su OKX.' },
+      { q: 'Entrambe le carte sono disponibili in Italia?', a: 'Sì, entrambe le carte sono disponibili in Italia e nella maggior parte dei paesi UE.' },
+      { q: 'La OKX Card offre cashback in BTC?', a: 'No. La OKX Card paga il cashback in OKB, il token nativo di OKX. Per cashback in BTC, la Nexo Card è più adatta.' },
+    ],
+    en_faq: [
+      { q: 'OKX Card or Nexo Card: which is more accessible without an active exchange?', a: 'The Nexo Card. Its BTC cashback isn\'t conditional on specific trading activity. The OKX Card is more advantageous if you trade regularly on OKX.' },
+      { q: 'Are both cards available across the EU?', a: 'Yes, both cards are available across the EU.' },
+      { q: 'Does the OKX Card offer BTC cashback?', a: 'No. The OKX Card pays cashback in OKB, OKX\'s native token. For BTC cashback, the Nexo Card is more suitable.' },
+    ],
+  },
+
+  // ─── Coinbase Card vs Bybit Card ─────────────────────────────────────────────
+  'bybit-card-vs-coinbase-card': {
+    fr_intro: `La Coinbase Card et la Bybit Card illustrent deux approches du cashback crypto. La Coinbase Card, disponible en Europe, offre jusqu'à 4 % de récompenses en crypto (XLM, ETH ou d'autres tokens) selon le choix de l'utilisateur, sans staking. La Bybit Card offre jusqu'à 10 % en MNT selon le volume mensuel de dépenses, sans staking non plus. Les deux sont gratuites (0 €/an). La Coinbase Card séduit les débutants par sa simplicité ; la Bybit Card attire les dépensiers réguliers.`,
+    fr_verdict: `Pour un débutant qui veut du cashback simple en ETH ou BTC, la Coinbase Card est plus intuitive. Pour maximiser le cashback sur un volume de dépenses élevé, la Bybit Card est imbattable. Note : Coinbase Card 3,8/5 vs Bybit Card 4,0/5.`,
+    de_intro: `Die Coinbase Card und die Bybit Card zeigen zwei Ansätze für Krypto-Cashback. Die Coinbase Card bietet bis zu 4 % Belohnungen in Krypto (XLM, ETH oder anderen Token) ohne Staking. Die Bybit Card bietet bis zu 10 % in MNT je nach monatlichem Ausgabevolumen, ebenfalls ohne Staking. Beide sind kostenlos (0 €/Jahr). Die Coinbase Card überzeugt Einsteiger durch ihre Einfachheit; die Bybit Card zieht Vielausgeber an.`,
+    de_verdict: `Für Einsteiger, die einfaches Cashback in ETH oder BTC wollen, ist die Coinbase Card intuitiver. Für maximales Cashback bei hohem Ausgabevolumen ist die Bybit Card unschlagbar. Bewertung: Coinbase Card 3,8/5 vs. Bybit Card 4,0/5.`,
+    es_intro: `La Coinbase Card y la Bybit Card ilustran dos enfoques del cashback crypto. La Coinbase Card ofrece hasta el 4 % de recompensas en crypto (XLM, ETH u otros tokens) sin staking. La Bybit Card ofrece hasta el 10 % en MNT según el volumen mensual de gasto, también sin staking. Ambas son gratuitas (0 €/año). La Coinbase Card atrae a los principiantes por su sencillez; la Bybit Card atrae a los grandes gastadores.`,
+    es_verdict: `Para un principiante que quiere cashback sencillo en ETH o BTC, la Coinbase Card es más intuitiva. Para maximizar el cashback con un alto volumen de gasto, la Bybit Card es imbatible. Puntuación: Coinbase Card 3,8/5 vs Bybit Card 4,0/5.`,
+    it_intro: `La Coinbase Card e la Bybit Card illustrano due approcci al cashback crypto. La Coinbase Card offre fino al 4 % di premi in crypto (XLM, ETH o altri token) senza staking. La Bybit Card offre fino al 10 % in MNT in base al volume mensile di spesa, anch'essa senza staking. Entrambe sono gratuite (0 €/anno). La Coinbase Card attrae i principianti per la sua semplicità; la Bybit Card attrae i grandi spenditori.`,
+    it_verdict: `Per un principiante che vuole cashback semplice in ETH o BTC, la Coinbase Card è più intuitiva. Per massimizzare il cashback con un alto volume di spesa, la Bybit Card è imbattibile. Punteggio: Coinbase Card 3,8/5 vs Bybit Card 4,0/5.`,
+    en_intro: `The Coinbase Card and Bybit Card illustrate two crypto cashback approaches. The Coinbase Card offers up to 4% rewards in crypto (XLM, ETH or other tokens) with no staking. The Bybit Card offers up to 10% in MNT based on monthly spending volume, also with no staking. Both are free (€0/year). The Coinbase Card appeals to beginners through its simplicity; the Bybit Card draws regular high spenders.`,
+    en_verdict: `For a beginner wanting simple cashback in ETH or BTC, the Coinbase Card is more intuitive. To maximize cashback on high spending volume, the Bybit Card is unbeatable. Score: Coinbase Card 3.8/5 vs Bybit Card 4.0/5.`,
+    faq: [
+      { q: 'Coinbase Card ou Bybit Card : laquelle est la plus adaptée aux débutants ?', a: 'La Coinbase Card. Son interface et le choix flexible de crypto en cashback (ETH, BTC, XLM…) la rendent plus accessible aux nouveaux entrants dans l\'univers crypto.' },
+      { q: 'Bybit Card : le cashback à 10 % est-il accessible facilement ?', a: 'Le taux de 10 % en MNT est réservé aux plus gros dépensiers. Les paliers inférieurs restent attractifs dès un volume de dépenses modéré. Consultez les conditions Bybit actuelles.' },
+      { q: 'Coinbase Card est-elle disponible en France ?', a: 'Oui, la Coinbase Card est disponible en France et dans la plupart des pays de l\'UE.' },
+    ],
+    de_faq: [
+      { q: 'Coinbase Card oder Bybit Card: Welche eignet sich besser für Einsteiger?', a: 'Die Coinbase Card. Ihre Oberfläche und die flexible Wahl der Cashback-Krypto (ETH, BTC, XLM…) machen sie für Krypto-Neueinsteiger zugänglicher.' },
+      { q: 'Bybit Card: Ist das Cashback von 10 % leicht zugänglich?', a: 'Der Satz von 10 % in MNT ist den größten Ausgaben vorbehalten. Niedrigere Stufen bleiben bei moderatem Ausgabevolumen attraktiv. Aktuelle Bybit-Bedingungen prüfen.' },
+      { q: 'Ist die Coinbase Card in Deutschland verfügbar?', a: 'Ja, die Coinbase Card ist in Deutschland und den meisten EU-Ländern verfügbar.' },
+    ],
+    es_faq: [
+      { q: 'Coinbase Card o Bybit Card: ¿cuál es más adecuada para principiantes?', a: 'La Coinbase Card. Su interfaz y la elección flexible de crypto en cashback (ETH, BTC, XLM…) la hacen más accesible para los recién llegados al mundo crypto.' },
+      { q: 'Bybit Card: ¿es fácil acceder al cashback del 10 %?', a: 'La tasa del 10 % en MNT está reservada para los mayores gastadores. Los tramos inferiores siguen siendo atractivos con un volumen de gasto moderado. Consulta las condiciones actuales de Bybit.' },
+      { q: '¿La Coinbase Card está disponible en España?', a: 'Sí, la Coinbase Card está disponible en España y en la mayoría de países de la UE.' },
+    ],
+    it_faq: [
+      { q: 'Coinbase Card o Bybit Card: quale è più adatta ai principianti?', a: 'La Coinbase Card. La sua interfaccia e la scelta flessibile di crypto in cashback (ETH, BTC, XLM…) la rendono più accessibile ai nuovi utenti del mondo crypto.' },
+      { q: 'Bybit Card: il cashback del 10 % è facilmente accessibile?', a: 'Il tasso del 10 % in MNT è riservato ai maggiori spenditori. I livelli inferiori rimangono attraenti con un volume di spesa moderato. Verificare le condizioni Bybit aggiornate.' },
+      { q: 'La Coinbase Card è disponibile in Italia?', a: 'Sì, la Coinbase Card è disponibile in Italia e nella maggior parte dei paesi UE.' },
+    ],
+    en_faq: [
+      { q: 'Coinbase Card or Bybit Card: which is better for beginners?', a: 'The Coinbase Card. Its interface and flexible choice of cashback crypto (ETH, BTC, XLM…) make it more accessible for crypto newcomers.' },
+      { q: 'Bybit Card: is the 10% cashback easily accessible?', a: 'The 10% MNT rate is reserved for the highest spenders. Lower tiers remain attractive at moderate spending volumes. Check current Bybit conditions.' },
+      { q: 'Is the Coinbase Card available across the EU?', a: 'Yes, the Coinbase Card is available across the EU.' },
+    ],
+  },
+
+  // ─── Bitpanda Card vs Revolut Metal ──────────────────────────────────────────
+  'bitpanda-card-vs-revolut-metal': {
+    fr_intro: `La Bitpanda Card et la Revolut Metal ciblent toutes deux les utilisateurs européens, mais avec des positionnements très différents. La Bitpanda Card est gratuite (0 €/an) et offre du cashback en BEST (token Bitpanda) sur les dépenses, sans staking. Elle est particulièrement populaire en Allemagne et en Autriche, marchés historiques de Bitpanda. La Revolut Metal (13,99 €/mois) est plus polyvalente : cashback crypto, assurance voyage, change multi-devises, disponible dans toute l'UE.`,
+    fr_verdict: `Pour un utilisateur de Bitpanda en Allemagne ou en Autriche, la Bitpanda Card complète naturellement l'écosystème. Pour un produit bancaire complet avec une couche crypto, Revolut Metal est plus riche en fonctionnalités. Note : Revolut Metal 3,8/5 vs Bitpanda Card 3,5/5 pour la polyvalence.`,
+    de_intro: `Die Bitpanda Card und die Revolut Metal richten sich beide an europäische Nutzer, aber mit sehr unterschiedlichen Positionierungen. Die Bitpanda Card ist kostenlos (0 €/Jahr) und bietet Cashback in BEST (Bitpanda-Token) auf Ausgaben ohne Staking. Sie ist besonders in Deutschland und Österreich, den historischen Märkten von Bitpanda, beliebt. Die Revolut Metal (13,99 €/Monat) ist vielseitiger: Krypto-Cashback, Reiseversicherung, Multi-Währungs-Wechsel, in der gesamten EU verfügbar.`,
+    de_verdict: `Für Bitpanda-Nutzer in Deutschland oder Österreich ergänzt die Bitpanda Card das Ökosystem natürlich. Für ein vollständiges Bankprodukt mit Krypto-Ebene ist Revolut Metal funktionsreicher. Bewertung: Revolut Metal 3,8/5 vs. Bitpanda Card 3,5/5 für Vielseitigkeit.`,
+    es_intro: `La Bitpanda Card y la Revolut Metal se dirigen ambas a usuarios europeos, pero con posicionamientos muy diferentes. La Bitpanda Card es gratuita (0 €/año) y ofrece cashback en BEST (token Bitpanda) en los gastos sin staking. Es especialmente popular en Alemania y Austria, mercados históricos de Bitpanda. La Revolut Metal (13,99 €/mes) es más versátil: cashback crypto, seguro de viaje, cambio multidivisa, disponible en toda la UE.`,
+    es_verdict: `Para un usuario de Bitpanda en Alemania o Austria, la Bitpanda Card complementa naturalmente el ecosistema. Para un producto bancario completo con capa crypto, la Revolut Metal tiene más funciones. Puntuación: Revolut Metal 3,8/5 vs Bitpanda Card 3,5/5 para versatilidad.`,
+    it_intro: `La Bitpanda Card e la Revolut Metal si rivolgono entrambe agli utenti europei, ma con posizionamenti molto diversi. La Bitpanda Card è gratuita (0 €/anno) e offre cashback in BEST (token Bitpanda) sulle spese senza staking. È particolarmente popolare in Germania e Austria, mercati storici di Bitpanda. La Revolut Metal (13,99 €/mese) è più versatile: cashback crypto, assicurazione viaggio, cambio multivaluta, disponibile in tutta l'UE.`,
+    it_verdict: `Per un utente di Bitpanda in Germania o Austria, la Bitpanda Card si integra naturalmente nell'ecosistema. Per un prodotto bancario completo con livello crypto, la Revolut Metal è più ricca di funzionalità. Punteggio: Revolut Metal 3,8/5 vs Bitpanda Card 3,5/5 per versatilità.`,
+    en_intro: `The Bitpanda Card and Revolut Metal both target European users, but with very different positioning. The Bitpanda Card is free (€0/year) and offers cashback in BEST (Bitpanda token) on spending with no staking. It's especially popular in Germany and Austria, Bitpanda's historic markets. Revolut Metal (€13.99/month) is more versatile: crypto cashback, travel insurance, multi-currency exchange, available across the EU.`,
+    en_verdict: `For a Bitpanda user in Germany or Austria, the Bitpanda Card naturally complements the ecosystem. For a full-featured banking product with a crypto layer, Revolut Metal is richer in features. Score: Revolut Metal 3.8/5 vs Bitpanda Card 3.5/5 for versatility.`,
+    faq: [
+      { q: 'Bitpanda Card ou Revolut Metal : laquelle est disponible en Allemagne ?', a: 'Les deux. La Bitpanda Card est historiquement forte en Allemagne et en Autriche. Revolut Metal est disponible dans toute l\'UE, Allemagne incluse.' },
+      { q: 'Le cashback en BEST de la Bitpanda Card est-il intéressant ?', a: 'BEST est le token natif de Bitpanda. Son intérêt dépend de votre conviction sur ce token. Si vous utilisez déjà l\'écosystème Bitpanda, le cashback en BEST est un bonus naturel.' },
+      { q: 'Faut-il du staking pour la Bitpanda Card ?', a: 'Non. La Bitpanda Card ne requiert pas de staking pour bénéficier du cashback. C\'est un avantage par rapport aux cartes Crypto.com qui exigent souvent un dépôt de CRO.' },
+    ],
+    de_faq: [
+      { q: 'Bitpanda Card oder Revolut Metal: Welche ist in Deutschland verfügbar?', a: 'Beide. Die Bitpanda Card ist historisch stark in Deutschland und Österreich. Revolut Metal ist in der gesamten EU einschließlich Deutschland verfügbar.' },
+      { q: 'Ist das BEST-Cashback der Bitpanda Card attraktiv?', a: 'BEST ist Bitpandas nativer Token. Sein Wert hängt von Ihrer Überzeugung für diesen Token ab. Wenn Sie das Bitpanda-Ökosystem bereits nutzen, ist das BEST-Cashback ein natürlicher Bonus.' },
+      { q: 'Ist Staking für die Bitpanda Card erforderlich?', a: 'Nein. Die Bitpanda Card erfordert kein Staking für das Cashback. Das ist ein Vorteil gegenüber Crypto.com-Karten, die oft eine CRO-Einlage verlangen.' },
+    ],
+    es_faq: [
+      { q: 'Bitpanda Card o Revolut Metal: ¿cuál está disponible en Alemania?', a: 'Ambas. La Bitpanda Card es históricamente fuerte en Alemania y Austria. La Revolut Metal está disponible en toda la UE, incluida Alemania.' },
+      { q: '¿El cashback en BEST de la Bitpanda Card es interesante?', a: 'BEST es el token nativo de Bitpanda. Su interés depende de tu convicción sobre ese token. Si ya usas el ecosistema Bitpanda, el cashback en BEST es un bonus natural.' },
+      { q: '¿La Bitpanda Card requiere staking?', a: 'No. La Bitpanda Card no requiere staking para el cashback. Es una ventaja respecto a las tarjetas Crypto.com, que a menudo exigen un depósito de CRO.' },
+    ],
+    it_faq: [
+      { q: 'Bitpanda Card o Revolut Metal: quale è disponibile in Germania?', a: 'Entrambe. La Bitpanda Card è storicamente forte in Germania e Austria. La Revolut Metal è disponibile in tutta l\'UE, Germania compresa.' },
+      { q: 'Il cashback in BEST della Bitpanda Card è interessante?', a: 'BEST è il token nativo di Bitpanda. Il suo interesse dipende dalla fiducia in questo token. Se si usa già l\'ecosistema Bitpanda, il cashback in BEST è un bonus naturale.' },
+      { q: 'La Bitpanda Card richiede staking?', a: 'No. La Bitpanda Card non richiede staking per il cashback. È un vantaggio rispetto alle carte Crypto.com, che spesso richiedono un deposito di CRO.' },
+    ],
+    en_faq: [
+      { q: 'Bitpanda Card or Revolut Metal: which is available in Germany?', a: 'Both. The Bitpanda Card is historically strong in Germany and Austria. Revolut Metal is available across the EU, including Germany.' },
+      { q: 'Is the Bitpanda Card\'s BEST cashback worthwhile?', a: 'BEST is Bitpanda\'s native token. Its value depends on your conviction about that token. If you already use the Bitpanda ecosystem, BEST cashback is a natural bonus.' },
+      { q: 'Does the Bitpanda Card require staking?', a: 'No. The Bitpanda Card requires no staking for cashback. This is an advantage over Crypto.com cards, which often require a CRO deposit.' },
+    ],
+  },
+
+  'binance-standard-vs-crypto-com-midnight-blue': {
+    fr_intro: `La Binance Standard Card affronte ici la Crypto.com Midnight Blue, deux cartes entrée de gamme des plus grands exchanges. Toutes deux sont gratuites, sans staking requis, mais leurs modèles de récompenses divergent : la Binance Standard redistribue en BNB, tandis que la Midnight Blue offre 1% de cashback en CRO sans conditions. Si vous détenez déjà du BNB ou utilisez l'écosystème Binance, la Standard Card s'impose naturellement. Sinon, la Midnight Blue est plus neutre et accessible.`,
+    fr_verdict: `Pour un débutant sans engagement dans un écosystème particulier, la Crypto.com Midnight Blue offre un cashback plus prévisible. Pour un utilisateur Binance, la Standard Card s'intègre mieux. Aucune des deux n'est un choix premium, mais elles restent les meilleures options gratuites sur leurs exchanges respectifs.`,
+    de_intro: `Die Binance Standard Card trifft auf die Crypto.com Midnight Blue — zwei Einstiegskarten der größten Exchanges. Beide sind kostenlos, ohne Staking, aber mit unterschiedlichen Belohnungsmodellen: Binance Standard in BNB, Midnight Blue mit 1% CRO-Cashback. Für bestehende Binance-Nutzer ist die Standard Card die naheliegende Wahl.`,
+    de_verdict: `Für Einsteiger ohne Ökosystem-Bindung bietet die Midnight Blue vorhersehbareres Cashback. Für Binance-Nutzer ist die Standard Card die bessere Wahl. Keine ist Premium, aber beide sind die besten kostenlosen Optionen ihrer jeweiligen Plattformen.`,
+    es_intro: `La Binance Standard Card se enfrenta a la Crypto.com Midnight Blue, dos tarjetas de entrada de los mayores exchanges. Ambas son gratuitas, sin staking, pero con modelos de recompensas distintos: Binance en BNB, Midnight Blue con 1% cashback en CRO. Para usuarios de Binance, la Standard Card es la elección natural.`,
+    es_verdict: `Para principiantes sin compromiso con un ecosistema, la Midnight Blue ofrece cashback más predecible. Para usuarios de Binance, la Standard Card encaja mejor. Ninguna es premium, pero son las mejores opciones gratuitas en sus plataformas.`,
+    it_intro: `La Binance Standard Card affronta la Crypto.com Midnight Blue, due carte entry-level dei più grandi exchange. Entrambe gratuite, senza staking, ma con modelli di ricompense diversi: Binance in BNB, Midnight Blue con 1% cashback in CRO. Per gli utenti Binance, la Standard Card è la scelta naturale.`,
+    it_verdict: `Per i principianti senza impegno in un ecosistema, la Midnight Blue offre un cashback più prevedibile. Per gli utenti Binance, la Standard Card si adatta meglio. Nessuna delle due è premium, ma sono le migliori opzioni gratuite sulle rispettive piattaforme.`,
+    en_intro: `The Binance Standard Card faces the Crypto.com Midnight Blue — two entry-level cards from the largest exchanges. Both are free with no staking required, but their reward models differ: Binance Standard pays in BNB, while Midnight Blue offers 1% CRO cashback unconditionally. If you already hold BNB or use the Binance ecosystem, the Standard Card is the natural pick.`,
+    en_verdict: `For beginners without ecosystem commitment, the Crypto.com Midnight Blue offers more predictable cashback. For Binance users, the Standard Card integrates better. Neither is premium, but both are the best free options on their respective platforms.`,
+    faq: [
+      { q: 'La Binance Standard Card est-elle disponible en Europe ?', a: 'Oui, la Binance Card est disponible dans la plupart des pays européens. Vérifiez la disponibilité dans votre pays sur le site Binance.' },
+      { q: 'Faut-il staker du CRO pour la Crypto.com Midnight Blue ?', a: 'Non. La Midnight Blue est le seul niveau Crypto.com ne nécessitant aucun staking de CRO, ce qui la rend accessible immédiatement.' },
+      { q: 'Quelle carte offre le meilleur cashback entre les deux ?', a: 'La Crypto.com Midnight Blue offre 1% fixe en CRO. La Binance Standard offre un cashback variable en BNB selon les transactions. Pour un cashback stable, la Midnight Blue est plus fiable.' },
+    ],
+    de_faq: [
+      { q: 'Ist die Binance Standard Card in Europa verfügbar?', a: 'Ja, die Binance Card ist in den meisten europäischen Ländern verfügbar. Prüfen Sie die Verfügbarkeit in Ihrem Land auf der Binance-Website.' },
+      { q: 'Muss man CRO für die Crypto.com Midnight Blue staken?', a: 'Nein. Die Midnight Blue ist das einzige Crypto.com-Level, das kein CRO-Staking erfordert, was sie sofort zugänglich macht.' },
+      { q: 'Welche Karte bietet besseres Cashback?', a: 'Die Crypto.com Midnight Blue bietet feste 1% in CRO. Die Binance Standard bietet variables Cashback in BNB. Für stabiles Cashback ist die Midnight Blue zuverlässiger.' },
+    ],
+    es_faq: [
+      { q: '¿La Binance Standard Card está disponible en Europa?', a: 'Sí, la Binance Card está disponible en la mayoría de países europeos. Verifica la disponibilidad en tu país en el sitio de Binance.' },
+      { q: '¿Hay que hacer staking de CRO para la Midnight Blue?', a: 'No. La Midnight Blue es el único nivel de Crypto.com que no requiere staking de CRO, haciéndola accesible de inmediato.' },
+      { q: '¿Cuál ofrece mejor cashback?', a: 'La Crypto.com Midnight Blue ofrece 1% fijo en CRO. La Binance Standard ofrece cashback variable en BNB. Para cashback estable, la Midnight Blue es más fiable.' },
+    ],
+    it_faq: [
+      { q: 'La Binance Standard Card è disponibile in Europa?', a: 'Sì, la Binance Card è disponibile nella maggior parte dei paesi europei. Verifica la disponibilità nel tuo paese sul sito Binance.' },
+      { q: 'Bisogna fare staking di CRO per la Crypto.com Midnight Blue?', a: 'No. La Midnight Blue è l\'unico livello Crypto.com che non richiede staking di CRO, rendendola immediatamente accessibile.' },
+      { q: 'Quale carta offre il miglior cashback?', a: 'La Crypto.com Midnight Blue offre 1% fisso in CRO. La Binance Standard offre cashback variabile in BNB. Per un cashback stabile, la Midnight Blue è più affidabile.' },
+    ],
+    en_faq: [
+      { q: 'Is the Binance Standard Card available in Europe?', a: 'Yes, the Binance Card is available in most European countries. Check availability in your country on the Binance website.' },
+      { q: 'Do you need to stake CRO for the Crypto.com Midnight Blue?', a: 'No. The Midnight Blue is the only Crypto.com tier requiring no CRO staking, making it immediately accessible.' },
+      { q: 'Which card offers better cashback?', a: 'The Crypto.com Midnight Blue offers a fixed 1% in CRO. The Binance Standard offers variable BNB cashback. For stable cashback, the Midnight Blue is more reliable.' },
+    ],
+  },
+
+  'binance-standard-vs-nexo-card': {
+    fr_intro: `Binance Standard Card contre Nexo Card : deux cartes crypto sans frais annuels, mais avec des philosophies très différentes. La Binance Standard récompense en BNB, dans l'écosystème Binance. La Nexo Card offre 2% de cashback en BTC ou NEXO, sans staking requis, avec un compte crypto comme collatéral. Pour le cashback pur, Nexo est supérieure. Pour les utilisateurs déjà dans l'écosystème Binance, la Standard Card est plus naturelle.`,
+    fr_verdict: `La Nexo Card offre un cashback en BTC plus attractif et ne nécessite pas de staking. La Binance Standard est pertinente uniquement pour les utilisateurs actifs de l'exchange Binance. Pour la plupart des investisseurs crypto en Europe, Nexo est le meilleur choix entre les deux.`,
+    de_intro: `Binance Standard Card gegen Nexo Card: zwei Krypto-Karten ohne Jahresgebühr, aber mit sehr unterschiedlichen Philosophien. Binance Standard belohnt in BNB; Nexo bietet 2% Cashback in BTC oder NEXO ohne Staking-Pflicht. Für reines Cashback ist Nexo überlegen.`,
+    de_verdict: `Die Nexo Card bietet attraktiveres BTC-Cashback ohne Staking. Die Binance Standard ist nur für aktive Binance-Nutzer relevant. Für die meisten europäischen Krypto-Investoren ist Nexo die bessere Wahl.`,
+    es_intro: `Binance Standard Card vs Nexo Card: dos tarjetas sin cuota anual, pero con filosofías muy diferentes. Binance Standard recompensa en BNB; Nexo ofrece 2% cashback en BTC o NEXO sin staking. Para cashback puro, Nexo es superior.`,
+    es_verdict: `La Nexo Card ofrece cashback en BTC más atractivo sin staking. La Binance Standard solo es relevante para usuarios activos del exchange Binance. Para la mayoría de inversores crypto europeos, Nexo es la mejor elección.`,
+    it_intro: `Binance Standard Card contro Nexo Card: due carte senza quota annua, ma con filosofie molto diverse. Binance Standard ricompensa in BNB; Nexo offre 2% cashback in BTC o NEXO senza staking. Per il cashback puro, Nexo è superiore.`,
+    it_verdict: `La Nexo Card offre cashback in BTC più attraente senza staking. La Binance Standard è rilevante solo per gli utenti attivi dell\'exchange Binance. Per la maggior parte degli investitori crypto europei, Nexo è la scelta migliore.`,
+    en_intro: `Binance Standard Card vs Nexo Card: two no-annual-fee crypto cards with very different philosophies. Binance Standard rewards in BNB within the Binance ecosystem; Nexo Card offers 2% cashback in BTC or NEXO with no staking required. For pure cashback, Nexo is superior.`,
+    en_verdict: `The Nexo Card offers more attractive BTC cashback without staking. The Binance Standard is relevant only for active Binance exchange users. For most European crypto investors, Nexo is the better pick between the two.`,
+    faq: [
+      { q: 'La Nexo Card est-elle vraiment gratuite ?', a: 'Oui, la Nexo Card n\'a pas de frais annuels. Elle fonctionne avec des fonds crypto comme collatéral, mais sans obligation de bloquer du NEXO pour accéder au cashback de base.' },
+      { q: 'Le cashback Binance Standard est-il intéressant ?', a: 'Il dépend entièrement du cours du BNB. Si le BNB se déprécie, votre cashback perd de la valeur. Nexo offre l\'option BTC, plus stable et universellement reconnue.' },
+      { q: 'Peut-on avoir les deux cartes simultanément ?', a: 'Oui, techniquement. Mais il faut avoir des fonds sur les deux plateformes. Si vous devez choisir, Nexo est recommandée pour son cashback supérieur.' },
+    ],
+    de_faq: [
+      { q: 'Ist die Nexo Card wirklich kostenlos?', a: 'Ja, die Nexo Card hat keine Jahresgebühr. Sie funktioniert mit Krypto-Sicherheiten, erfordert aber kein NEXO-Staking für das Basis-Cashback.' },
+      { q: 'Ist das Cashback der Binance Standard attraktiv?', a: 'Es hängt vom BNB-Kurs ab. Wenn BNB fällt, verliert Ihr Cashback an Wert. Nexo bietet die BTC-Option, stabiler und universell anerkannt.' },
+      { q: 'Kann man beide Karten gleichzeitig haben?', a: 'Ja, technisch gesehen. Aber Sie benötigen Mittel auf beiden Plattformen. Falls Sie wählen müssen, wird Nexo wegen des besseren Cashbacks empfohlen.' },
+    ],
+    es_faq: [
+      { q: '¿La Nexo Card es realmente gratuita?', a: 'Sí, la Nexo Card no tiene cuota anual. Funciona con fondos crypto como garantía, pero sin obligación de bloquear NEXO para el cashback básico.' },
+      { q: '¿Es interesante el cashback de la Binance Standard?', a: 'Depende del precio del BNB. Si el BNB baja, tu cashback pierde valor. Nexo ofrece la opción BTC, más estable y universalmente reconocida.' },
+      { q: '¿Se pueden tener ambas tarjetas simultáneamente?', a: 'Sí, técnicamente. Pero hay que tener fondos en ambas plataformas. Si hay que elegir, Nexo es recomendada por su cashback superior.' },
+    ],
+    it_faq: [
+      { q: 'La Nexo Card è davvero gratuita?', a: 'Sì, la Nexo Card non ha quota annua. Funziona con fondi crypto come garanzia, ma senza obbligo di bloccare NEXO per il cashback base.' },
+      { q: 'Il cashback della Binance Standard è interessante?', a: 'Dipende dal prezzo del BNB. Se il BNB scende, il tuo cashback perde valore. Nexo offre l\'opzione BTC, più stabile e universalmente riconosciuta.' },
+      { q: 'Si possono avere entrambe le carte contemporaneamente?', a: 'Sì, tecnicamente. Ma occorre avere fondi su entrambe le piattaforme. Se si deve scegliere, Nexo è consigliata per il cashback superiore.' },
+    ],
+    en_faq: [
+      { q: 'Is the Nexo Card really free?', a: 'Yes, the Nexo Card has no annual fee. It works with crypto as collateral, but no NEXO staking is required to access basic cashback.' },
+      { q: 'Is the Binance Standard cashback worthwhile?', a: 'It depends entirely on the BNB price. If BNB depreciates, your cashback loses value. Nexo offers the BTC option, which is more stable and universally recognized.' },
+      { q: 'Can you have both cards simultaneously?', a: 'Yes, technically. But you need funds on both platforms. If you must choose, Nexo is recommended for its superior cashback.' },
+    ],
+  },
+
+  'bitpanda-card-vs-crypto-com-midnight-blue': {
+    fr_intro: `La Bitpanda Card affronte la Crypto.com Midnight Blue — deux cartes gratuites ciblant le marché européen. La Bitpanda Card est particulièrement forte en Autriche et Allemagne, avec un cashback en BEST token. La Midnight Blue offre 1% en CRO, accessible sans staking. Si vous utilisez déjà Bitpanda comme exchange principal, la Bitpanda Card est cohérente. Sinon, la Midnight Blue reste l'entrée de gamme Crypto.com la plus accessible.`,
+    fr_verdict: `Pour les utilisateurs de l'écosystème Bitpanda (notamment DACH), la Bitpanda Card est le choix naturel. Pour les autres, la Midnight Blue offre un cashback en CRO plus neutre et universellement disponible en Europe.`,
+    de_intro: `Die Bitpanda Card trifft auf die Crypto.com Midnight Blue — zwei kostenlose Karten für den europäischen Markt. Bitpanda ist besonders stark in Österreich und Deutschland, mit Cashback in BEST-Token. Die Midnight Blue bietet 1% in CRO ohne Staking. Für bestehende Bitpanda-Nutzer ist die Bitpanda Card die logische Wahl.`,
+    de_verdict: `Für Bitpanda-Ökosystem-Nutzer (besonders DACH) ist die Bitpanda Card die natürliche Wahl. Für andere bietet die Midnight Blue neutraleres CRO-Cashback, das in ganz Europa verfügbar ist.`,
+    es_intro: `La Bitpanda Card se enfrenta a la Crypto.com Midnight Blue — dos tarjetas gratuitas dirigidas al mercado europeo. Bitpanda es especialmente fuerte en Austria y Alemania, con cashback en token BEST. La Midnight Blue ofrece 1% en CRO sin staking. Para usuarios de Bitpanda, la Bitpanda Card es coherente.`,
+    es_verdict: `Para usuarios del ecosistema Bitpanda (especialmente DACH), la Bitpanda Card es la elección natural. Para los demás, la Midnight Blue ofrece cashback en CRO más neutro y disponible en toda Europa.`,
+    it_intro: `La Bitpanda Card affronta la Crypto.com Midnight Blue — due carte gratuite per il mercato europeo. Bitpanda è particolarmente forte in Austria e Germania, con cashback in token BEST. La Midnight Blue offre 1% in CRO senza staking. Per gli utenti Bitpanda, la Bitpanda Card è coerente.`,
+    it_verdict: `Per gli utenti dell\'ecosistema Bitpanda (specialmente DACH), la Bitpanda Card è la scelta naturale. Per gli altri, la Midnight Blue offre cashback in CRO più neutro e disponibile in tutta Europa.`,
+    en_intro: `The Bitpanda Card faces the Crypto.com Midnight Blue — two free cards targeting the European market. Bitpanda is particularly strong in Austria and Germany, with cashback in BEST token. The Midnight Blue offers 1% in CRO with no staking required. For existing Bitpanda users, the Bitpanda Card is the coherent choice.`,
+    en_verdict: `For Bitpanda ecosystem users (especially DACH), the Bitpanda Card is the natural choice. For others, the Midnight Blue offers more neutral CRO cashback available across Europe.`,
+    faq: [
+      { q: 'La Bitpanda Card est-elle disponible hors de l\'Autriche ?', a: 'Oui, la Bitpanda Card est disponible dans de nombreux pays européens, notamment en Allemagne, France et Espagne. Vérifiez la disponibilité dans votre pays sur le site Bitpanda.' },
+      { q: 'Quel cashback est le plus intéressant : BEST ou CRO ?', a: 'Les deux dépendent du cours du token. Le CRO est généralement plus liquide et mieux connu. Le BEST peut être plus attractif si vous croyez au projet Bitpanda.' },
+      { q: 'Ces deux cartes nécessitent-elles du staking ?', a: 'Non. La Bitpanda Card et la Midnight Blue sont toutes deux accessibles sans staking, ce qui les rend idéales pour les débutants.' },
+    ],
+    de_faq: [
+      { q: 'Ist die Bitpanda Card außerhalb Österreichs verfügbar?', a: 'Ja, die Bitpanda Card ist in vielen europäischen Ländern verfügbar, darunter Deutschland, Frankreich und Spanien.' },
+      { q: 'Welches Cashback ist besser: BEST oder CRO?', a: 'Beide hängen vom Token-Kurs ab. CRO ist generell liquider und bekannter. BEST kann attraktiver sein, wenn Sie an das Bitpanda-Projekt glauben.' },
+      { q: 'Erfordern beide Karten Staking?', a: 'Nein. Sowohl die Bitpanda Card als auch die Midnight Blue sind ohne Staking zugänglich, ideal für Einsteiger.' },
+    ],
+    es_faq: [
+      { q: '¿La Bitpanda Card está disponible fuera de Austria?', a: 'Sí, la Bitpanda Card está disponible en muchos países europeos, incluyendo Alemania, Francia y España.' },
+      { q: '¿Qué cashback es mejor: BEST o CRO?', a: 'Ambos dependen del precio del token. CRO es generalmente más líquido y conocido. BEST puede ser más atractivo si crees en el proyecto Bitpanda.' },
+      { q: '¿Ambas tarjetas requieren staking?', a: 'No. Tanto la Bitpanda Card como la Midnight Blue son accesibles sin staking, ideales para principiantes.' },
+    ],
+    it_faq: [
+      { q: 'La Bitpanda Card è disponibile fuori dall\'Austria?', a: 'Sì, la Bitpanda Card è disponibile in molti paesi europei, tra cui Germania, Francia e Spagna.' },
+      { q: 'Quale cashback è migliore: BEST o CRO?', a: 'Entrambi dipendono dal prezzo del token. CRO è generalmente più liquido e conosciuto. BEST può essere più attraente se si crede nel progetto Bitpanda.' },
+      { q: 'Entrambe le carte richiedono staking?', a: 'No. Sia la Bitpanda Card che la Midnight Blue sono accessibili senza staking, ideali per i principianti.' },
+    ],
+    en_faq: [
+      { q: 'Is the Bitpanda Card available outside Austria?', a: 'Yes, the Bitpanda Card is available in many European countries, including Germany, France and Spain. Check availability on the Bitpanda website.' },
+      { q: 'Which cashback is better: BEST or CRO?', a: 'Both depend on the token price. CRO is generally more liquid and widely known. BEST may be more attractive if you believe in the Bitpanda project.' },
+      { q: 'Do both cards require staking?', a: 'No. Both the Bitpanda Card and the Midnight Blue are accessible without staking, making them ideal for beginners.' },
+    ],
+  },
+
+  'bitpanda-card-vs-nexo-card': {
+    fr_intro: `Bitpanda Card contre Nexo Card : deux alternatives sérieuses à Crypto.com pour les Européens. La Bitpanda Card offre un cashback en BEST token sur l'exchange autrichien. La Nexo Card propose 2% en BTC ou NEXO sans frais ni staking requis. Pour le cashback maximal et la flexibilité, Nexo prend l'avantage. Pour les utilisateurs déjà présents sur Bitpanda, la Bitpanda Card est plus cohérente.`,
+    fr_verdict: `Si vous cherchez le meilleur cashback sans staking entre les deux, la Nexo Card gagne avec 2% en BTC. La Bitpanda Card est pertinente si vous utilisez déjà l'exchange et croyez au token BEST. Pour un investisseur crypto sans exchange de prédilection, Nexo est la recommandation.`,
+    de_intro: `Bitpanda Card gegen Nexo Card: zwei ernsthafte europäische Alternativen zu Crypto.com. Bitpanda bietet Cashback in BEST-Token; Nexo bietet 2% in BTC oder NEXO ohne Staking. Für maximales Cashback und Flexibilität hat Nexo die Nase vorn.`,
+    de_verdict: `Für das beste Cashback ohne Staking gewinnt die Nexo Card mit 2% in BTC. Die Bitpanda Card ist relevant, wenn Sie den Exchange bereits nutzen und an BEST glauben. Für Krypto-Investoren ohne bevorzugten Exchange ist Nexo die Empfehlung.`,
+    es_intro: `Bitpanda Card vs Nexo Card: dos alternativas serias a Crypto.com para los europeos. Bitpanda ofrece cashback en token BEST; Nexo propone 2% en BTC o NEXO sin staking. Para el cashback máximo y la flexibilidad, Nexo tiene ventaja.`,
+    es_verdict: `Si buscas el mejor cashback sin staking, la Nexo Card gana con 2% en BTC. La Bitpanda Card es relevante si ya usas el exchange y crees en el token BEST. Para inversores crypto sin exchange preferido, Nexo es la recomendación.`,
+    it_intro: `Bitpanda Card contro Nexo Card: due alternative serie a Crypto.com per gli europei. Bitpanda offre cashback in token BEST; Nexo propone 2% in BTC o NEXO senza staking. Per il cashback massimo e la flessibilità, Nexo ha il vantaggio.`,
+    it_verdict: `Per il miglior cashback senza staking, la Nexo Card vince con il 2% in BTC. La Bitpanda Card è rilevante se si usa già l\'exchange e si crede nel token BEST. Per gli investitori crypto senza exchange preferito, Nexo è la raccomandazione.`,
+    en_intro: `Bitpanda Card vs Nexo Card: two serious European alternatives to Crypto.com. Bitpanda offers cashback in BEST token on the Austrian exchange; Nexo proposes 2% in BTC or NEXO with no fees or staking required. For maximum cashback and flexibility, Nexo holds the advantage.`,
+    en_verdict: `For the best no-staking cashback between the two, the Nexo Card wins with 2% in BTC. The Bitpanda Card is relevant if you already use the exchange and believe in the BEST token. For crypto investors without a preferred exchange, Nexo is the recommendation.`,
+    faq: [
+      { q: 'La Bitpanda Card et la Nexo Card sont-elles disponibles en France ?', a: 'Oui, les deux cartes sont disponibles en France et dans l\'UE. Bitpanda est également présent dans de nombreux pays europé ens.' },
+      { q: 'Nexo Card nécessite-t-elle d\'avoir des fonds sur la plateforme ?', a: 'Oui, la Nexo Card fonctionne avec vos crypto comme collatéral. Il faut déposer des actifs sur Nexo pour utiliser la carte, mais pas de staking de NEXO pour le cashback de base.' },
+      { q: 'Laquelle convient mieux à un débutant ?', a: 'Les deux sont accessibles sans staking. La Nexo Card est légèrement plus simple et offre du cashback en BTC, plus universellement compris. La Bitpanda Card conviendra mieux aux utilisateurs de l\'exchange Bitpanda.' },
+    ],
+    de_faq: [
+      { q: 'Sind die Bitpanda Card und die Nexo Card in Deutschland verfügbar?', a: 'Ja, beide Karten sind in Deutschland und der EU verfügbar. Bitpanda ist in Deutschland besonders präsent.' },
+      { q: 'Erfordert die Nexo Card Mittel auf der Plattform?', a: 'Ja, die Nexo Card funktioniert mit Krypto als Sicherheit. Sie müssen Vermögenswerte auf Nexo einzahlen, aber kein NEXO staken für Basis-Cashback.' },
+      { q: 'Welche eignet sich besser für Einsteiger?', a: 'Beide sind ohne Staking zugänglich. Die Nexo Card ist etwas einfacher und bietet BTC-Cashback. Die Bitpanda Card eignet sich besser für Exchange-Nutzer.' },
+    ],
+    es_faq: [
+      { q: '¿La Bitpanda Card y la Nexo Card están disponibles en España?', a: 'Sí, ambas tarjetas están disponibles en España y la UE. Bitpanda tiene presencia en muchos países europeos.' },
+      { q: '¿La Nexo Card requiere fondos en la plataforma?', a: 'Sí, la Nexo Card funciona con crypto como garantía. Debes depositar activos en Nexo, pero no hacer staking de NEXO para el cashback básico.' },
+      { q: '¿Cuál es mejor para principiantes?', a: 'Ambas son accesibles sin staking. La Nexo Card es ligeramente más simple y ofrece cashback en BTC. La Bitpanda Card es mejor para usuarios del exchange Bitpanda.' },
+    ],
+    it_faq: [
+      { q: 'La Bitpanda Card e la Nexo Card sono disponibili in Italia?', a: 'Sì, entrambe le carte sono disponibili in Italia e nell\'UE. Bitpanda è presente in molti paesi europei.' },
+      { q: 'La Nexo Card richiede fondi sulla piattaforma?', a: 'Sì, la Nexo Card funziona con crypto come garanzia. Bisogna depositare asset su Nexo, ma non fare staking di NEXO per il cashback base.' },
+      { q: 'Quale è meglio per i principianti?', a: 'Entrambe sono accessibili senza staking. La Nexo Card è leggermente più semplice e offre cashback in BTC. La Bitpanda Card è meglio per gli utenti dell\'exchange Bitpanda.' },
+    ],
+    en_faq: [
+      { q: 'Are the Bitpanda Card and Nexo Card available in the UK?', a: 'The Nexo Card is available in the EU. Bitpanda availability varies — check the Bitpanda website for your country. Both are primarily EU-focused.' },
+      { q: 'Does the Nexo Card require funds on the platform?', a: 'Yes, the Nexo Card works with crypto as collateral. You need to deposit assets on Nexo to use the card, but no NEXO staking is required for basic cashback.' },
+      { q: 'Which is better for beginners?', a: 'Both are accessible without staking. The Nexo Card is slightly simpler and offers BTC cashback. The Bitpanda Card suits existing exchange users better.' },
+    ],
+  },
+
+  'coinbase-card-vs-crypto-com-midnight-blue': {
+    fr_intro: `Coinbase Card contre Crypto.com Midnight Blue : deux cartes gratuites et sans staking ciblant les investisseurs crypto débutants et intermédiaires. La Coinbase Card offre jusqu'à 4% de cashback en crypto au choix (BTC, ETH, XLM…). La Midnight Blue propose 1% fixe en CRO. Pour un cashback maximal, la Coinbase Card domine clairement. La Midnight Blue est plus simple mais moins généreuse.`,
+    fr_verdict: `La Coinbase Card gagne sur le cashback (jusqu'à 4% vs 1%), la diversité des cryptos récompensées et la réputation de Coinbase, exchange coté en bourse. La Midnight Blue reste une entrée de gamme Crypto.com correcte, mais est en retrait face à Coinbase pour les utilisateurs non engagés dans l'écosystème CRO.`,
+    de_intro: `Coinbase Card gegen Crypto.com Midnight Blue: zwei kostenlose Karten ohne Staking. Die Coinbase Card bietet bis zu 4% Cashback in Krypto der Wahl. Die Midnight Blue 1% fest in CRO. Für maximales Cashback dominiert die Coinbase Card klar.`,
+    de_verdict: `Die Coinbase Card gewinnt beim Cashback (bis zu 4% vs 1%), der Vielfalt der Belohnungskryptos und dem Ruf von Coinbase als börsennotiertem Exchange. Die Midnight Blue ist ein solides Einstiegsangebot, aber unterlegen.`,
+    es_intro: `Coinbase Card vs Crypto.com Midnight Blue: dos tarjetas gratuitas sin staking. La Coinbase Card ofrece hasta 4% cashback en crypto a elegir. La Midnight Blue 1% fijo en CRO. Para cashback máximo, la Coinbase Card domina claramente.`,
+    es_verdict: `La Coinbase Card gana en cashback (hasta 4% vs 1%), diversidad de cryptos recompensadas y reputación de Coinbase como exchange cotizado en bolsa. La Midnight Blue es una entrada de gama correcta, pero inferior frente a Coinbase.`,
+    it_intro: `Coinbase Card contro Crypto.com Midnight Blue: due carte gratuite senza staking. La Coinbase Card offre fino al 4% cashback in crypto a scelta. La Midnight Blue 1% fisso in CRO. Per il cashback massimo, la Coinbase Card domina chiaramente.`,
+    it_verdict: `La Coinbase Card vince sul cashback (fino al 4% vs 1%), la diversità delle crypto premiate e la reputazione di Coinbase come exchange quotato. La Midnight Blue è un buon entry-level, ma inferiore rispetto a Coinbase.`,
+    en_intro: `Coinbase Card vs Crypto.com Midnight Blue: two free cards with no staking targeting beginner and intermediate crypto investors. The Coinbase Card offers up to 4% cashback in your choice of crypto (BTC, ETH, XLM…). The Midnight Blue offers a flat 1% in CRO. For maximum cashback, the Coinbase Card clearly dominates.`,
+    en_verdict: `The Coinbase Card wins on cashback (up to 4% vs 1%), the diversity of reward cryptos, and Coinbase's reputation as a publicly listed exchange. The Midnight Blue remains a decent Crypto.com entry-level card but falls short compared to Coinbase for users not committed to the CRO ecosystem.`,
+    faq: [
+      { q: 'La Coinbase Card est-elle disponible en Europe ?', a: 'Oui, la Coinbase Card est disponible dans de nombreux pays européens, dont la France, l\'Allemagne et l\'Espagne. Vérifiez les disponibilités sur coinbase.com.' },
+      { q: 'Faut-il staker du CRO pour la Midnight Blue ?', a: 'Non. La Midnight Blue est le niveau d\'entrée Crypto.com, accessible sans staking de CRO. C\'est son principal avantage face aux autres niveaux de la gamme.' },
+      { q: 'Peut-on choisir le BTC comme cashback sur la Coinbase Card ?', a: 'Oui, la Coinbase Card permet de choisir parmi plusieurs cryptos pour le cashback, dont le BTC et l\'ETH. C\'est un avantage majeur par rapport au cashback fixe en CRO de la Midnight Blue.' },
+    ],
+    de_faq: [
+      { q: 'Ist die Coinbase Card in Europa verfügbar?', a: 'Ja, die Coinbase Card ist in vielen europäischen Ländern verfügbar, darunter Deutschland, Frankreich und Spanien.' },
+      { q: 'Muss man CRO für die Midnight Blue staken?', a: 'Nein. Die Midnight Blue ist das Einstiegs-Level von Crypto.com, ohne CRO-Staking zugänglich. Das ist ihr Hauptvorteil.' },
+      { q: 'Kann man BTC als Cashback auf der Coinbase Card wählen?', a: 'Ja, die Coinbase Card erlaubt die Wahl unter mehreren Kryptowährungen für Cashback, einschließlich BTC und ETH.' },
+    ],
+    es_faq: [
+      { q: '¿La Coinbase Card está disponible en Europa?', a: 'Sí, la Coinbase Card está disponible en muchos países europeos, incluyendo Francia, Alemania y España.' },
+      { q: '¿Hay que hacer staking de CRO para la Midnight Blue?', a: 'No. La Midnight Blue es el nivel de entrada de Crypto.com, accesible sin staking de CRO.' },
+      { q: '¿Se puede elegir BTC como cashback en la Coinbase Card?', a: 'Sí, la Coinbase Card permite elegir entre varias criptomonedas para el cashback, incluyendo BTC y ETH.' },
+    ],
+    it_faq: [
+      { q: 'La Coinbase Card è disponibile in Europa?', a: 'Sì, la Coinbase Card è disponibile in molti paesi europei, tra cui Francia, Germania e Spagna.' },
+      { q: 'Bisogna fare staking di CRO per la Midnight Blue?', a: 'No. La Midnight Blue è il livello entry-level di Crypto.com, accessibile senza staking di CRO.' },
+      { q: 'Si può scegliere BTC come cashback sulla Coinbase Card?', a: 'Sì, la Coinbase Card permette di scegliere tra diverse criptovalute per il cashback, tra cui BTC ed ETH.' },
+    ],
+    en_faq: [
+      { q: 'Is the Coinbase Card available in Europe?', a: 'Yes, the Coinbase Card is available in many European countries including France, Germany and Spain. Check coinbase.com for availability.' },
+      { q: 'Do you need to stake CRO for the Midnight Blue?', a: 'No. The Midnight Blue is Crypto.com\'s entry level, accessible without CRO staking. That is its main advantage over other tiers.' },
+      { q: 'Can you choose BTC as cashback on the Coinbase Card?', a: 'Yes, the Coinbase Card lets you choose from several cryptocurrencies for cashback, including BTC and ETH — a major advantage over the Midnight Blue\'s fixed CRO cashback.' },
+    ],
+  },
+
+  'crypto-com-midnight-blue-vs-kraken-krak-card': {
+    fr_intro: `Crypto.com Midnight Blue face à la Kraken KRAK Card : deux cartes sans frais annuels issues d'exchanges bien établis. La Midnight Blue offre 1% de cashback en CRO. La KRAK Card de Kraken propose jusqu'à 4% de cashback en BTC sans staking requis, ce qui en fait l'une des offres cashback les plus attractives du marché. Si le cashback est votre priorité, la KRAK Card l'emporte largement.`,
+    fr_verdict: `La Kraken KRAK Card est supérieure sur le cashback (4% BTC vs 1% CRO) sans staking. La Midnight Blue reste plus accessible si vous êtes déjà sur Crypto.com. Mais pour un investisseur cherchant la meilleure carte crypto gratuite, la KRAK Card est un choix difficile à battre en 2026.`,
+    de_intro: `Crypto.com Midnight Blue gegen die Kraken KRAK Card: zwei kostenlose Karten etablierter Exchanges. Die Midnight Blue bietet 1% CRO-Cashback. Die KRAK Card bietet bis zu 4% BTC-Cashback ohne Staking — eine der attraktivsten Angebote am Markt. Beim Cashback gewinnt die KRAK Card klar.`,
+    de_verdict: `Die Kraken KRAK Card ist beim Cashback überlegen (4% BTC vs 1% CRO) ohne Staking. Die Midnight Blue ist zugänglicher für bestehende Crypto.com-Nutzer. Für Investoren, die die beste kostenlose Krypto-Karte suchen, ist die KRAK Card 2026 schwer zu schlagen.`,
+    es_intro: `Crypto.com Midnight Blue vs Kraken KRAK Card: dos tarjetas gratuitas de exchanges establecidos. La Midnight Blue ofrece 1% cashback en CRO. La KRAK Card ofrece hasta 4% cashback en BTC sin staking — una de las ofertas más atractivas del mercado. En cashback, la KRAK Card gana claramente.`,
+    es_verdict: `La Kraken KRAK Card es superior en cashback (4% BTC vs 1% CRO) sin staking. La Midnight Blue es más accesible para usuarios de Crypto.com. Para inversores que buscan la mejor tarjeta crypto gratuita, la KRAK Card es difícil de superar en 2026.`,
+    it_intro: `Crypto.com Midnight Blue vs Kraken KRAK Card: due carte gratuite di exchange affermati. La Midnight Blue offre 1% cashback in CRO. La KRAK Card offre fino al 4% cashback in BTC senza staking — una delle offerte più attraenti del mercato. Sul cashback, la KRAK Card vince chiaramente.`,
+    it_verdict: `La Kraken KRAK Card è superiore sul cashback (4% BTC vs 1% CRO) senza staking. La Midnight Blue è più accessibile per gli utenti Crypto.com. Per gli investitori che cercano la migliore carta crypto gratuita, la KRAK Card è difficile da battere nel 2026.`,
+    en_intro: `Crypto.com Midnight Blue vs Kraken KRAK Card: two no-annual-fee cards from well-established exchanges. The Midnight Blue offers 1% cashback in CRO. The Kraken KRAK Card offers up to 4% cashback in BTC with no staking required — making it one of the most attractive cashback offers on the market. On cashback alone, the KRAK Card wins clearly.`,
+    en_verdict: `The Kraken KRAK Card is superior on cashback (4% BTC vs 1% CRO) without staking. The Midnight Blue remains more accessible if you're already on Crypto.com. But for investors seeking the best free crypto card in 2026, the KRAK Card is hard to beat.`,
+    faq: [
+      { q: 'La Kraken KRAK Card est-elle disponible en France ?', a: 'La KRAK Card de Kraken est disponible dans plusieurs pays européens. Vérifiez la disponibilité dans votre pays sur kraken.com, car le déploiement est progressif.' },
+      { q: 'Faut-il staker du CRO pour la Midnight Blue ?', a: 'Non. La Midnight Blue ne nécessite aucun staking de CRO. C\'est le niveau d\'entrée le plus accessible de Crypto.com.' },
+      { q: 'La KRAK Card est-elle vraiment sans frais annuels ?', a: 'Oui, la Kraken KRAK Card est proposée sans frais annuels. Son cashback de 4% en BTC sans staking en fait l\'une des meilleures offres de sa catégorie.' },
+    ],
+    de_faq: [
+      { q: 'Ist die Kraken KRAK Card in Deutschland verfügbar?', a: 'Die KRAK Card ist in mehreren europäischen Ländern verfügbar. Überprüfen Sie die Verfügbarkeit auf kraken.com, da der Rollout schrittweise erfolgt.' },
+      { q: 'Muss man CRO für die Midnight Blue staken?', a: 'Nein. Die Midnight Blue erfordert kein CRO-Staking. Es ist das zugänglichste Einstiegs-Level von Crypto.com.' },
+      { q: 'Ist die KRAK Card wirklich ohne Jahresgebühr?', a: 'Ja, die Kraken KRAK Card hat keine Jahresgebühr. Ihr 4% BTC-Cashback ohne Staking macht sie zu einem der besten Angebote ihrer Kategorie.' },
+    ],
+    es_faq: [
+      { q: '¿La Kraken KRAK Card está disponible en España?', a: 'La KRAK Card está disponible en varios países europeos. Verifica la disponibilidad en kraken.com, ya que el despliegue es progresivo.' },
+      { q: '¿Hay que hacer staking de CRO para la Midnight Blue?', a: 'No. La Midnight Blue no requiere staking de CRO. Es el nivel de entrada más accesible de Crypto.com.' },
+      { q: '¿La KRAK Card es realmente sin cuota anual?', a: 'Sí, la Kraken KRAK Card no tiene cuota anual. Su 4% cashback en BTC sin staking la hace una de las mejores ofertas de su categoría.' },
+    ],
+    it_faq: [
+      { q: 'La Kraken KRAK Card è disponibile in Italia?', a: 'La KRAK Card è disponibile in diversi paesi europei. Verifica la disponibilità su kraken.com, poiché il lancio è progressivo.' },
+      { q: 'Bisogna fare staking di CRO per la Midnight Blue?', a: 'No. La Midnight Blue non richiede staking di CRO. È il livello entry-level più accessibile di Crypto.com.' },
+      { q: 'La KRAK Card è davvero senza quota annua?', a: 'Sì, la Kraken KRAK Card non ha quota annua. Il suo 4% cashback in BTC senza staking la rende una delle migliori offerte della categoria.' },
+    ],
+    en_faq: [
+      { q: 'Is the Kraken KRAK Card available in Europe?', a: 'The KRAK Card is available in several European countries. Check kraken.com for availability in your country, as the rollout is gradual.' },
+      { q: 'Does the Midnight Blue require CRO staking?', a: 'No. The Midnight Blue requires no CRO staking. It is Crypto.com\'s most accessible entry-level tier.' },
+      { q: 'Is the KRAK Card truly free of annual fees?', a: 'Yes, the Kraken KRAK Card has no annual fee. Its 4% BTC cashback without staking makes it one of the best offers in its category.' },
+    ],
+  },
+
 };
 
 /**

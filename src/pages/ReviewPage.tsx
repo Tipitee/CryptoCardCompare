@@ -210,6 +210,42 @@ const L: Record<string, {
   },
 };
 
+// Editorial comparison pairs — used to surface specific pair links in sidebar
+const EDITORIAL_PAIRS_R = [
+  'bybit-card-vs-nexo-card',
+  'crypto-com-midnight-blue-vs-nexo-card',
+  'crypto-com-ruby-steel-vs-nexo-card',
+  'nexo-card-vs-wirex-elite',
+  'binance-card-vs-bybit-card',
+  'bybit-card-vs-crypto-com-midnight-blue',
+  'coinbase-card-vs-nexo-card',
+  'binance-card-vs-nexo-card',
+  'bybit-card-vs-okx-card',
+  'bybit-card-vs-wirex-elite',
+  'bitpanda-card-vs-coinbase-card',
+  'deblock-card-vs-nexo-card',
+  'deblock-card-vs-coinbase-card',
+  'deblock-card-vs-wirex-elite',
+  'nexo-card-vs-revolut-metal',
+  'bybit-card-vs-revolut-metal',
+  'crypto-com-midnight-blue-vs-revolut-metal',
+  'binance-standard-vs-revolut-metal',
+  'kraken-krak-card-vs-nexo-card',
+  'nexo-card-vs-okx-card',
+  'bybit-card-vs-coinbase-card',
+  'bitpanda-card-vs-revolut-metal',
+];
+
+const COMPARE_WITH_R: Record<string, string> = {
+  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons',
+};
+
+function pairToLabelR(slug: string): string {
+  return slug.split('-vs-').map(part =>
+    part.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  ).join(' vs ');
+}
+
 // Map issuer name → brand_id for "See all tiers" links
 const ISSUER_TO_BRAND: Record<string, string> = {
   'Crypto.com': 'crypto-com', 'Binance': 'binance', 'Bybit': 'bybit',
@@ -617,7 +653,7 @@ export default function ReviewPage() {
 
             {/* ── Thematic pills ─────────────────────────────────────────── */}
             {(() => {
-              const themes = reviewToThemes(review.ratingBreakdown, review.keyStats, review.pros ?? []);
+              const themes = reviewToThemes(review.ratingBreakdown as unknown as Record<string, number>, review.keyStats, review.pros ?? []);
               if (themes.length === 0) return null;
               return (
                 <div className="p-5 rounded-xl border border-bg-border bg-bg-card">
@@ -725,6 +761,35 @@ export default function ReviewPage() {
                   🧮 {SIMULATOR_LABEL_R[lang] ?? SIMULATOR_LABEL_R.en}
                 </Link>
               </div>
+
+              {/* Specific comparison pair links */}
+              {(() => {
+                const cardId = slug ?? '';
+                const pairs = EDITORIAL_PAIRS_R.filter(pair => {
+                  const [a, b] = pair.split('-vs-');
+                  return a === cardId || b === cardId;
+                }).slice(0, 4);
+                if (pairs.length === 0) return null;
+                const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+                const compSeg = rt.comparisons ?? 'compare';
+                return (
+                  <div className="card-surface p-5 space-y-1">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
+                      {COMPARE_WITH_R[lang] || 'Comparisons'}
+                    </h4>
+                    {pairs.map(pair => (
+                      <Link
+                        key={pair}
+                        to={`/${lang}/${compSeg}/${pair}`}
+                        className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-bg-border/50 text-sm text-slate-300 hover:text-cyan-accent transition-colors"
+                      >
+                        <span className="shrink-0">⚖️</span>
+                        <span className="leading-tight">{pairToLabelR(pair)}</span>
+                      </Link>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </aside>
         </div>

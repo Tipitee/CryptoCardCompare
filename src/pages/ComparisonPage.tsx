@@ -23,7 +23,8 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { getSpecificComparison } from '../data/comparisonContent';
-import { fetchCardById } from '../lib/supabase';
+import { fetchCardById, fetchRelatedPosts } from '../lib/supabase';
+import type { BlogPost } from '../types/blog';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import allowlist from '../../scripts/comparison-allowlist.json';
 
@@ -277,6 +278,7 @@ export default function ComparisonPage() {
   const [card2, setCard2] = useState<CryptoCard | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  const [compArticle, setCompArticle] = useState<BlogPost | null>(null);
 
   // Parse slug
   const vsIndex = (slug ?? '').indexOf('-vs-');
@@ -290,10 +292,22 @@ export default function ComparisonPage() {
     setNotFound(false);
     Promise.all([fetchCardById(id1), fetchCardById(id2)]).then(([c1, c2]) => {
       if (!c1 || !c2) setNotFound(true);
-      else { setCard1(c1); setCard2(c2); }
+      else {
+        setCard1(c1); setCard2(c2);
+        // Fetch blog article related to both brands
+        const tags = [
+          c1.issuer.toLowerCase(),
+          c2.issuer.toLowerCase(),
+          id1,
+          id2,
+        ];
+        fetchRelatedPosts(tags, '', lang, 1)
+          .then(posts => setCompArticle(posts[0] ?? null))
+          .catch(() => setCompArticle(null));
+      }
       setLoading(false);
     });
-  }, [id1, id2]);
+  }, [id1, id2, lang]);
 
   const rows = getRows(t);
   const genericBlocks = getSeoText(lang, card1, card2);
@@ -313,14 +327,14 @@ export default function ComparisonPage() {
     const langKey = lang as string;
     if (i === 0) {
       // Use lang-specific override first, then EN, then fall back to generic (avoid FR fallback for non-FR)
-      const intro = (specificContent as Record<string, string>)[`${langKey}_intro`]
-        ?? (langKey !== 'en' ? (specificContent as Record<string, string>)['en_intro'] : undefined)
+      const intro = (specificContent as unknown as Record<string, string>)[`${langKey}_intro`]
+        ?? (langKey !== 'en' ? (specificContent as unknown as Record<string, string>)['en_intro'] : undefined)
         ?? undefined;
       return intro ? { ...block, body: intro } : block;
     }
     if (i === genericBlocks.length - 1) {
-      const verdict = (specificContent as Record<string, string>)[`${langKey}_verdict`]
-        ?? (langKey !== 'en' ? (specificContent as Record<string, string>)['en_verdict'] : undefined)
+      const verdict = (specificContent as unknown as Record<string, string>)[`${langKey}_verdict`]
+        ?? (langKey !== 'en' ? (specificContent as unknown as Record<string, string>)['en_verdict'] : undefined)
         ?? undefined;
       return verdict ? { ...block, body: verdict } : block;
     }
@@ -347,6 +361,7 @@ export default function ComparisonPage() {
     description: card1 && card2
       ? comparisonSeo.desc(card1.name, card2.name)
       : '',
+    image: card1?.realCardImage || undefined,
     canonical: canonicalUrl,
     lang,
     noindex: !isIndexable,
@@ -845,10 +860,24 @@ export default function ComparisonPage() {
       {(() => {
         const ed = COMPARISON_EDITORIAL[lang] ?? COMPARISON_EDITORIAL.en;
         const slugs = COMP_THEMATIC_SLUGS[lang] ?? COMP_THEMATIC_SLUGS.en;
+        const readArticleLabel: Record<string, string> = {
+          fr: 'Lire notre article', de: 'Artikel lesen', es: 'Leer nuestro artículo', it: 'Leggi il nostro articolo', en: 'Read our article',
+        };
         return (
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+
+            {compArticle && (
+              <Link
+                to={`/${lang}/blog/${compArticle.slug}`}
+                className="inline-flex items-center gap-2 mb-8 px-4 py-2.5 rounded-lg border border-cyan-accent/30 bg-bg-elevated text-sm text-cyan-accent hover:bg-cyan-accent/10 transition-colors"
+              >
+                <span>📰</span>
+                {readArticleLabel[lang] ?? readArticleLabel.en}: {compArticle.title}
+              </Link>
+            )}
+
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ emoji, label, slug }) => {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
-import { Shield, BarChart3, RefreshCw, Star, BookOpen, Users } from 'lucide-react';
+import { Shield, BarChart3, RefreshCw, Star, BookOpen } from 'lucide-react';
 
 const BASE = 'https://topcryptocards.eu';
 
@@ -309,8 +309,6 @@ We cover more than 20 cards issued by regulated providers in Europe: Crypto.com,
   },
 };
 
-const CRITERION_ICONS = [BarChart3, Star, Shield, Users, RefreshCw, BookOpen];
-
 export default function About() {
   const lang = useLanguage();
   const c = ABOUT_CONTENT[lang] ?? ABOUT_CONTENT.en;
@@ -407,7 +405,6 @@ export default function About() {
         <h2 className="text-xl font-display font-bold text-white mb-6">{c.methodTitle}</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {c.criteria.map((crit, i) => {
-            const Icon = CRITERION_ICONS[i % CRITERION_ICONS.length];
             return (
               <div key={i} className="card-surface p-5">
                 <div className="flex items-center gap-3 mb-3">

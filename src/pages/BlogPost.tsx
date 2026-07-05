@@ -61,6 +61,39 @@ function tagsToThemes(tags: string[]): string[] {
 const RELATED_PAGES_LABEL: Record<string, string> = {
   fr: 'Pages liées', de: 'Verwandte Seiten', es: 'Páginas relacionadas', it: 'Pagine correlate', en: 'Related pages',
 };
+const MENTIONED_BRANDS_LABEL: Record<string, string> = {
+  fr: 'Cartes mentionnées', de: 'Erwähnte Karten', es: 'Tarjetas mencionadas', it: 'Carte menzionate', en: 'Mentioned cards',
+};
+const SEE_BRAND_LABEL: Record<string, string> = {
+  fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Info su', en: 'About',
+};
+const SEE_REVIEW_LABEL: Record<string, string> = {
+  fr: 'Avis', de: 'Bewertung', es: 'Reseña', it: 'Recensione', en: 'Review',
+};
+
+/** Static map: tag/title keyword → brand info */
+const BLOG_BRAND_MAP: Record<string, { brandId: string; reviewSlug: string; name: string }> = {
+  'crypto.com':     { brandId: 'crypto-com',    reviewSlug: 'crypto-com-card',      name: 'Crypto.com' },
+  'crypto-com':     { brandId: 'crypto-com',    reviewSlug: 'crypto-com-card',      name: 'Crypto.com' },
+  'nexo':           { brandId: 'nexo',           reviewSlug: 'nexo-card',            name: 'Nexo' },
+  'binance':        { brandId: 'binance',        reviewSlug: 'binance-card',         name: 'Binance' },
+  'kraken':         { brandId: 'kraken',         reviewSlug: 'kraken-card',          name: 'Kraken' },
+  'bybit':          { brandId: 'bybit',          reviewSlug: 'bybit-card',           name: 'Bybit' },
+  'wirex':          { brandId: 'wirex',          reviewSlug: 'wirex-card',           name: 'Wirex' },
+  'bitpanda':       { brandId: 'bitpanda',       reviewSlug: 'bitpanda-card',        name: 'Bitpanda' },
+  ' okx ':          { brandId: 'okx',            reviewSlug: 'okx-card',             name: 'OKX' },
+  'coinbase':       { brandId: 'coinbase',       reviewSlug: 'coinbase-card',        name: 'Coinbase' },
+  'revolut':        { brandId: 'revolut',        reviewSlug: 'revolut-card',         name: 'Revolut' },
+  'deblock':        { brandId: 'deblock',        reviewSlug: 'deblock-card',         name: 'Deblock' },
+  'bleap':          { brandId: 'bleap',          reviewSlug: 'bleap-card',           name: 'Bleap' },
+  'plutus':         { brandId: 'plutus',         reviewSlug: 'plutus-card',          name: 'Plutus' },
+  'trade republic': { brandId: 'trade-republic', reviewSlug: 'trade-republic-card',  name: 'Trade Republic' },
+  'trade-republic': { brandId: 'trade-republic', reviewSlug: 'trade-republic-card',  name: 'Trade Republic' },
+  'ledger':         { brandId: 'ledger',         reviewSlug: 'ledger-card',          name: 'Ledger' },
+  'metamask':       { brandId: 'metamask',       reviewSlug: 'metamask-card',        name: 'MetaMask' },
+  'brighty':        { brandId: 'brighty',        reviewSlug: 'brighty-card',         name: 'Brighty' },
+  'gnosis':         { brandId: 'gnosis',         reviewSlug: 'gnosis-pay-card',      name: 'Gnosis Pay' },
+};
 const SIMULATOR_LABEL: Record<string, string> = {
   fr: 'Simuler mes gains', de: 'Gewinne simulieren', es: 'Simular mis ganancias', it: 'Simulare i guadagni', en: 'Simulate my earnings',
 };
@@ -153,6 +186,26 @@ export default function BlogPost() {
   const excerpt = post?.excerpt ?? '';
   const readTime = estimateReadTime(post?.content ?? '');
   const renderedContent = renderMarkdown(post?.content ?? '');
+
+  const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+  const brandsSlug = rt.brands ?? 'brands';
+  const reviewsSlug = rt.reviews ?? 'reviews';
+
+  /** Brands detected in post title + tags — max 2 */
+  const mentionedBrands = (() => {
+    if (!post) return [];
+    const text = ` ${post.title} ${tags.join(' ')} `.toLowerCase();
+    const seen = new Set<string>();
+    const result: Array<{ brandId: string; reviewSlug: string; name: string }> = [];
+    for (const [keyword, info] of Object.entries(BLOG_BRAND_MAP)) {
+      if (text.includes(keyword) && !seen.has(info.brandId)) {
+        seen.add(info.brandId);
+        result.push(info);
+        if (result.length >= 2) break;
+      }
+    }
+    return result;
+  })();
 
   useSeoMeta({
     title: post?.meta_title || (post ? `${post.title} | TopCryptoCards` : 'TopCryptoCards'),
@@ -310,21 +363,21 @@ export default function BlogPost() {
           </h1>
 
           <div className="flex flex-wrap items-center gap-5 mt-4 text-sm text-slate-400">
-            {AUTHORS.thomas && (
+            {AUTHORS.tipitee && (
               <a
-                href={`https://topcryptocards.eu${AUTHORS.thomas.urls[lang] ?? AUTHORS.thomas.urls.en}`}
+                href={`https://topcryptocards.eu${AUTHORS.tipitee.urls[lang] ?? AUTHORS.tipitee.urls.en}`}
                 className="flex items-center gap-1.5 hover:text-white transition-colors"
                 rel="author"
               >
                 <img
-                  src={AUTHORS.thomas.avatar}
-                  alt={AUTHORS.thomas.name}
+                  src={AUTHORS.tipitee.avatar}
+                  alt={AUTHORS.tipitee.name}
                   width={20}
                   height={20}
                   className="rounded-full object-cover w-5 h-5"
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
                 />
-                <span>{AUTHORS.thomas.name}</span>
+                <span>{AUTHORS.tipitee.name}</span>
               </a>
             )}
             <span className="flex items-center gap-1.5">
@@ -416,40 +469,71 @@ export default function BlogPost() {
           </article>
 
           {/* Sidebar */}
-          {related.length > 0 && (
-            <aside className="lg:w-72 shrink-0">
-              <div className="lg:sticky lg:top-24">
-                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
-                  {t('blog_related')}
-                </h3>
-                <div className="space-y-4">
-                  {related.map(rel => (
-                    <RelatedCard
-                      key={rel.id}
-                      post={rel}
-                      blogRoute={getRoute('blog')}
-                      readDuration={t('blog_read_duration')}
-                    />
-                  ))}
-                </div>
+          <aside className="lg:w-72 shrink-0">
+            <div className="lg:sticky lg:top-24">
+              {related.length > 0 && (
+                <>
+                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                    {t('blog_related')}
+                  </h3>
+                  <div className="space-y-4">
+                    {related.map(rel => (
+                      <RelatedCard
+                        key={rel.id}
+                        post={rel}
+                        blogRoute={getRoute('blog')}
+                        readDuration={t('blog_read_duration')}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
 
-                <div className="mt-8 p-5 card-surface border-cyan-accent/20">
-                  <h4 className="font-display font-bold text-white mb-2 text-sm">
-                    {tCards('compare_title')}
+              {mentionedBrands.length > 0 && (
+                <div className="mt-8">
+                  <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">
+                    {MENTIONED_BRANDS_LABEL[lang] ?? MENTIONED_BRANDS_LABEL.en}
                   </h4>
-                  <p className="text-slate-500 text-xs mb-3 leading-relaxed">
-                    {t('blog_sidebar_compare_desc')}
-                  </p>
-                  <Link to={getRoute('compare')} className="btn-primary w-full text-sm">
-                    {t('blog_sidebar_compare_btn')}
-                  </Link>
-                  <Link to={getRoute('simulator')} className="btn-ghost w-full text-sm mt-2 border border-bg-border flex justify-center items-center gap-1.5">
-                    🧮 {SIMULATOR_LABEL[lang] || SIMULATOR_LABEL.en}
-                  </Link>
+                  <div className="space-y-2">
+                    {mentionedBrands.map(b => (
+                      <div key={b.brandId} className="card-surface p-3">
+                        <p className="font-semibold text-white text-sm mb-2">{b.name}</p>
+                        <div className="flex gap-2">
+                          <Link
+                            to={`/${lang}/${brandsSlug}/${b.brandId}`}
+                            className="flex-1 text-center text-xs px-2 py-1.5 rounded bg-bg-elevated border border-bg-border text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/30 transition-colors"
+                          >
+                            {SEE_BRAND_LABEL[lang] ?? SEE_BRAND_LABEL.en} {b.name}
+                          </Link>
+                          <Link
+                            to={`/${lang}/${reviewsSlug}/${b.reviewSlug}`}
+                            className="flex-1 text-center text-xs px-2 py-1.5 rounded bg-bg-elevated border border-bg-border text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/30 transition-colors"
+                          >
+                            {SEE_REVIEW_LABEL[lang] ?? SEE_REVIEW_LABEL.en}
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              )}
+
+              <div className="mt-8 p-5 card-surface border-cyan-accent/20">
+                <h4 className="font-display font-bold text-white mb-2 text-sm">
+                  {tCards('compare_title')}
+                </h4>
+                <p className="text-slate-500 text-xs mb-3 leading-relaxed">
+                  {t('blog_sidebar_compare_desc')}
+                </p>
+                <Link to={getRoute('compare')} className="btn-primary w-full text-sm">
+                  {t('blog_sidebar_compare_btn')}
+                </Link>
+                <Link to={getRoute('simulator')} className="btn-ghost w-full text-sm mt-2 border border-bg-border flex justify-center items-center gap-1.5">
+                  🧮 {SIMULATOR_LABEL[lang] || SIMULATOR_LABEL.en}
+                </Link>
               </div>
-            </aside>
-          )}
+            </div>
+          </aside>
         </div>
       </div>
     </div>

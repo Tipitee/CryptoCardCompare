@@ -766,6 +766,32 @@ export default function Home() {
         );
       })()}
 
+      {/* ── Hub links: Blog · Cryptos · Reviews ────────────────────────────── */}
+      {(() => {
+        const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+        const HUB_LINKS: Record<string, { blog: string; cryptos: string; reviews: string }> = {
+          fr: { blog: 'Blog crypto', cryptos: 'Guide cryptomonnaies', reviews: 'Avis cartes' },
+          de: { blog: 'Krypto-Blog', cryptos: 'Krypto-Guide', reviews: 'Kartenbewertungen' },
+          es: { blog: 'Blog cripto', cryptos: 'Guía criptomonedas', reviews: 'Reseñas tarjetas' },
+          it: { blog: 'Blog crypto', cryptos: 'Guida criptovalute', reviews: 'Recensioni carte' },
+          en: { blog: 'Crypto blog', cryptos: 'Crypto guide', reviews: 'Card reviews' },
+        };
+        const labels = HUB_LINKS[lang] ?? HUB_LINKS.en;
+        return (
+          <div className="container-app pb-4 flex flex-wrap justify-center gap-3">
+            <Link to={`/${lang}/blog`} className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>📰</span>{labels.blog}
+            </Link>
+            <Link to={`/${lang}/${rt.cryptos ?? 'cryptos'}`} className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>🪙</span>{labels.cryptos}
+            </Link>
+            <Link to={`/${lang}/${rt.reviews ?? 'reviews'}`} className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+              <span>📝</span>{labels.reviews}
+            </Link>
+          </div>
+        );
+      })()}
+
       <section className="container-app py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
           {t('home_help_title')}

@@ -32,6 +32,7 @@ const NotFound             = lazy(() => import('./pages/NotFound'));
 const BrandPage            = lazy(() => import('./pages/BrandPage'));
 const BrandList            = lazy(() => import('./pages/BrandList'));
 const About                = lazy(() => import('./pages/About'));
+const AuthorPage           = lazy(() => import('./pages/AuthorPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -185,6 +186,11 @@ export default function App() {
           {/* About / Methodology */}
           {allSlugs('about').map((slug) => (
             <Route key={`about-${slug}`} path={slug} element={<About />} />
+          ))}
+
+          {/* Author pages — /:lang/auteurs/:id, /de/autoren/:id, etc. */}
+          {allSlugs('authors').map((slug) => (
+            <Route key={`author-${slug}`} path={`${slug}/:id`} element={<AuthorPage />} />
           ))}
         </Route>
 
