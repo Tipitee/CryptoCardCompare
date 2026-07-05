@@ -1,0 +1,57 @@
+{
+  "fr": {
+    "slug": "methodologie",
+    "title": "Notre méthodologie — Comment nous testons les cartes crypto",
+    "metaDescription": "Comment TopCryptoCards évalue les cartes crypto : critères, tests réels, indépendance éditoriale et transparence sur l'affiliation.",
+    "body": [
+      "Chaque carte comparée sur TopCryptoCards est évaluée selon la même grille : frais réels (émission, recharge, retrait, taux de change), cashback effectif après conditions, exigences de staking, couverture géographique en Europe, et qualité de l'application.",
+      "Nous commandons et utilisons les cartes nous-mêmes lorsque c'est possible. Les données de frais sont vérifiées directement dans les conditions tarifaires officielles des émetteurs et re-vérifiées à chaque mise à jour de page (voir la date sur chaque fiche).",
+      "Certains liens sont affiliés : ils peuvent nous rémunérer, sans jamais influencer le classement. Notre classement est calculé sur les critères ci-dessus, pas sur les commissions. Voir notre page divulgation d'affiliation.",
+      "Une erreur ? Écrivez-nous et nous corrigeons sous 48 h."
+    ]
+  },
+  "de": {
+    "slug": "methodik",
+    "title": "Unsere Methodik — So testen wir Krypto-Karten",
+    "metaDescription": "So bewertet TopCryptoCards Krypto-Karten: Kriterien, echte Tests, redaktionelle Unabhängigkeit und Transparenz bei Affiliate-Links.",
+    "body": [
+      "Jede auf TopCryptoCards verglichene Karte wird nach demselben Raster bewertet: reale Gebühren (Ausgabe, Aufladung, Abhebung, Wechselkurs), effektives Cashback nach Bedingungen, Staking-Anforderungen, Verfügbarkeit in Europa und App-Qualität.",
+      "Wo möglich, bestellen und nutzen wir die Karten selbst. Gebührendaten werden direkt in den offiziellen Preisverzeichnissen der Anbieter geprüft und bei jeder Seitenaktualisierung erneut verifiziert (Datum auf jeder Kartenseite).",
+      "Einige Links sind Affiliate-Links: Sie können uns vergüten, beeinflussen das Ranking aber nie. Unser Ranking basiert auf den obigen Kriterien, nicht auf Provisionen. Siehe unsere Affiliate-Offenlegung.",
+      "Fehler gefunden? Schreiben Sie uns — wir korrigieren innerhalb von 48 Stunden."
+    ]
+  },
+  "es": {
+    "slug": "metodologia",
+    "title": "Nuestra metodología — Cómo probamos las tarjetas cripto",
+    "metaDescription": "Cómo evalúa TopCryptoCards las tarjetas cripto: criterios, pruebas reales, independencia editorial y transparencia de afiliación.",
+    "body": [
+      "Cada tarjeta comparada en TopCryptoCards se evalúa con la misma matriz: comisiones reales (emisión, recarga, retirada, tipo de cambio), cashback efectivo tras condiciones, requisitos de staking, cobertura en Europa y calidad de la app.",
+      "Pedimos y usamos las tarjetas nosotros mismos siempre que es posible. Los datos de comisiones se verifican en las tarifas oficiales de los emisores y se revisan en cada actualización de página (fecha visible en cada ficha).",
+      "Algunos enlaces son de afiliados: pueden remunerarnos, pero nunca influyen en la clasificación, que se calcula con los criterios anteriores, no con las comisiones. Consulta nuestra página de divulgación de afiliación.",
+      "¿Un error? Escríbenos y lo corregimos en 48 h."
+    ]
+  },
+  "it": {
+    "slug": "metodologia",
+    "title": "La nostra metodologia — Come testiamo le carte crypto",
+    "metaDescription": "Come TopCryptoCards valuta le carte crypto: criteri, test reali, indipendenza editoriale e trasparenza sull'affiliazione.",
+    "body": [
+      "Ogni carta confrontata su TopCryptoCards è valutata con la stessa griglia: costi reali (emissione, ricarica, prelievo, tasso di cambio), cashback effettivo dopo le condizioni, requisiti di staking, copertura in Europa e qualità dell'app.",
+      "Quando possibile ordiniamo e usiamo le carte personalmente. I dati sui costi sono verificati nei fogli informativi ufficiali degli emittenti e ricontrollati a ogni aggiornamento della pagina (data visibile su ogni scheda).",
+      "Alcuni link sono affiliati: possono remunerarci, ma non influenzano mai la classifica, calcolata sui criteri sopra, non sulle commissioni. Vedi la nostra pagina di divulgazione dell'affiliazione.",
+      "Trovato un errore? Scrivici: correggiamo entro 48 ore."
+    ]
+  },
+  "en": {
+    "slug": "methodology",
+    "title": "Our methodology — How we test crypto cards",
+    "metaDescription": "How TopCryptoCards rates crypto cards: criteria, hands-on testing, editorial independence and affiliate transparency.",
+    "body": [
+      "Every card compared on TopCryptoCards is scored against the same grid: real fees (issuance, top-up, withdrawal, FX rate), effective cashback after conditions, staking requirements, availability across Europe, and app quality.",
+      "We order and use the cards ourselves where possible. Fee data is verified directly in each issuer's official pricing documents and re-checked on every page update (see the date on each card page).",
+      "Some links are affiliate links: they may pay us, but they never influence rankings. Rankings are computed from the criteria above, not from commissions. See our affiliate disclosure page.",
+      "Spotted an error? Contact us and we'll fix it within 48 hours."
+    ]
+  }
+}

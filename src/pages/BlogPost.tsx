@@ -10,6 +10,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
+import { authorJsonLd, AUTHORS } from '../data/authors';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -176,7 +177,7 @@ export default function BlogPost() {
       dateModified: post.updated_at || post.created_at,
       inLanguage: post.lang ?? 'fr',
       ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
-      author: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://twitter.com/TopCryptoCards'] },
+      author: authorJsonLd('thomas', post.lang ?? lang) ?? { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu' },
       publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://twitter.com/TopCryptoCards'], logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png', width: 200, height: 60 } },
     };
     document.getElementById('schema-article')?.remove();
@@ -309,6 +310,23 @@ export default function BlogPost() {
           </h1>
 
           <div className="flex flex-wrap items-center gap-5 mt-4 text-sm text-slate-400">
+            {AUTHORS.thomas && (
+              <a
+                href={`https://topcryptocards.eu${AUTHORS.thomas.urls[lang] ?? AUTHORS.thomas.urls.en}`}
+                className="flex items-center gap-1.5 hover:text-white transition-colors"
+                rel="author"
+              >
+                <img
+                  src={AUTHORS.thomas.avatar}
+                  alt={AUTHORS.thomas.name}
+                  width={20}
+                  height={20}
+                  className="rounded-full object-cover w-5 h-5"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                />
+                <span>{AUTHORS.thomas.name}</span>
+              </a>
+            )}
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {formatDate(post.created_at, lang)}

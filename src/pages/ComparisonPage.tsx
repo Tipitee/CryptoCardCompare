@@ -25,6 +25,7 @@ import { trackAffiliateClick } from '../utils/analytics';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById } from '../lib/supabase';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import allowlist from '../../scripts/comparison-allowlist.json';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
 
@@ -337,6 +338,7 @@ export default function ComparisonPage() {
   const comparisonRt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
   const canonicalUrl = `https://topcryptocards.eu/${lang}/${comparisonRt.comparisons ?? 'compare'}/${canonicalSlug}`;
 
+  const isIndexable = (allowlist as string[]).includes(canonicalSlug);
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
     title: card1 && card2
@@ -347,6 +349,7 @@ export default function ComparisonPage() {
       : '',
     canonical: canonicalUrl,
     lang,
+    noindex: !isIndexable,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

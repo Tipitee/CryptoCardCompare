@@ -7,6 +7,7 @@ export interface SeoMetaOptions {
   type?: 'website' | 'article';
   canonical?: string; // override — defaults to current URL without query/hash
   lang?: string; // for og:locale
+  noindex?: boolean; // sets robots to "noindex, follow" when true
 }
 
 /**
@@ -15,7 +16,7 @@ export interface SeoMetaOptions {
  */
 const OG_LOCALE: Record<string, string> = { fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT', en: 'en_US' };
 
-export function useSeoMeta({ title, description, image, type = 'website', canonical, lang }: SeoMetaOptions) {
+export function useSeoMeta({ title, description, image, type = 'website', canonical, lang, noindex }: SeoMetaOptions) {
   useEffect(() => {
     const defaultImage = 'https://topcryptocards.eu/og-default.jpg';
     const ogImage = image || defaultImage;
@@ -67,6 +68,7 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
       upsertMeta('name',     'twitter:image',     ogImage),
       upsertMeta('name',     'twitter:site',      '@TopCryptoCards'),
       ...(lang ? [upsertMeta('property', 'og:locale', OG_LOCALE[lang] ?? 'en_US')] : []),
+      ...(noindex !== undefined ? [upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')] : []),
     ];
 
     // ── Cleanup ───────────────────────────────────────────────────────────────
@@ -87,5 +89,5 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
         }
       });
     };
-  }, [title, description, image, type, canonical, lang]);
+  }, [title, description, image, type, canonical, lang, noindex]);
 }
