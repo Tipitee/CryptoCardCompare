@@ -112,6 +112,13 @@ export default function App() {
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
 
+        {/* Affiliate disclosure — lang-prefixed standalone routes (own header/footer, no Layout) */}
+        <Route path="/:lang/affiliate-disclosure"      element={<AffiliateDisclosurePage />} />
+        <Route path="/:lang/divulgation-affilies"      element={<AffiliateDisclosurePage />} />
+        <Route path="/:lang/affiliate-offenlegung"     element={<AffiliateDisclosurePage />} />
+        <Route path="/:lang/divulgacion-afiliados"     element={<AffiliateDisclosurePage />} />
+        <Route path="/:lang/divulgazione-affiliati"    element={<AffiliateDisclosurePage />} />
+
         {/* Bare-path redirects: /compare → /en/compare, /comparer → /fr/comparer, etc. */}
         {Object.keys(SLUG_TO_KEY).map((slug) => (
           <Route key={slug} path={`/${slug}`} element={<BarePathRedirect slug={slug} />} />
