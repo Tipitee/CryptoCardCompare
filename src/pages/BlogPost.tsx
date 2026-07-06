@@ -11,6 +11,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import { authorJsonLd, AUTHORS } from '../data/authors';
+import { autoLinkHtml } from '../components/AutoLinker';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
@@ -185,10 +186,10 @@ export default function BlogPost() {
   const tags = post?.tags ?? [];
   const excerpt = post?.excerpt ?? '';
   const readTime = estimateReadTime(post?.content ?? '');
-  const renderedContent = renderMarkdown(post?.content ?? '');
-
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
   const brandsSlug = rt.brands ?? 'brands';
+
+  const renderedContent = autoLinkHtml(renderMarkdown(post?.content ?? ''), lang, brandsSlug);
   const reviewsSlug = rt.reviews ?? 'reviews';
 
   /** Brands detected in post title + tags — max 2 */

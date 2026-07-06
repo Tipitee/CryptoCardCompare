@@ -33,10 +33,11 @@ const BrandPage            = lazy(() => import('./pages/BrandPage'));
 const BrandList            = lazy(() => import('./pages/BrandList'));
 const About                = lazy(() => import('./pages/About'));
 const AuthorPage           = lazy(() => import('./pages/AuthorPage'));
+const VirtualVsPhysical    = lazy(() => import('./pages/VirtualVsPhysicalPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
-import { THEMATIC_ROUTES } from './config/routes';
+import { THEMATIC_ROUTES, VVP_SLUGS } from './config/routes';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -155,6 +156,11 @@ export default function App() {
               <Route key={slug} path={slug} element={<ThematicPage theme={theme} />} />
             ))
           )}
+
+          {/* Virtual vs Physical comparison page */}
+          {[...new Set(Object.values(VVP_SLUGS))].map((slug) => (
+            <Route key={`vvp-${slug}`} path={slug} element={<VirtualVsPhysical />} />
+          ))}
 
           {/* Crypto guide */}
           <Route path="cryptos" element={<CryptoList />} />

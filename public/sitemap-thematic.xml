@@ -635,4 +635,64 @@
     <priority>0.8</priority>
       <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cartes-crypto-france"/>
   </url>
+  <url>
+    <loc>https://topcryptocards.eu/fr/carte-crypto-physique</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/physische-krypto-karte</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/tarjeta-crypto-fisica</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/carta-crypto-fisica</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/physical-crypto-card</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-physique"/>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

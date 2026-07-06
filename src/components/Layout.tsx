@@ -9,7 +9,7 @@ import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
-import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS } from '../config/routes';
+import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS, VVP_SLUGS, VVP_NAV_LABELS } from '../config/routes';
 
 export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
@@ -46,6 +46,8 @@ export default function Layout() {
     { slug: THEMATIC_ROUTES['no-staking'][lang],   label: labels.noStaking },
     { slug: THEMATIC_ROUTES.france[lang],          label: labels.france },
     { slug: THEMATIC_ROUTES.virtual[lang],         label: labels.virtual },
+    { slug: THEMATIC_ROUTES.physical[lang],        label: labels.physical },
+    { slug: VVP_SLUGS[lang],                       label: VVP_NAV_LABELS[lang] ?? VVP_NAV_LABELS.en },
     { slug: THEMATIC_ROUTES.beginner[lang],        label: labels.beginner },
     { slug: THEMATIC_ROUTES['no-kyc'][lang],       label: labels.noKyc },
     { slug: THEMATIC_ROUTES['2026'][lang],         label: labels.year2026 },

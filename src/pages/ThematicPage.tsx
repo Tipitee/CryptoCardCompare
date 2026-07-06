@@ -100,6 +100,13 @@ const THEME_CONFIG: Record<string, Record<string, {
     it: { title:`Carta Crypto Premi ${YEAR} — Cashback e Premi | TopCryptoCards`, h1:`Carte Crypto con i Migliori Premi nel ${YEAR}`, description:`Carte crypto con i migliori premi ${YEAR}: cashback cripto, lounge VIP, Netflix incluso, Spotify rimborsato. Crypto.com, Nexo, Bybit confrontati. Gratuito ✓`, intro:`Le carte crypto premium offrono molto più di un semplice cashback: accesso alle lounge aeroportuali, abbonamenti inclusi (Netflix, Spotify), assicurazione viaggio e cashback in crypto su tutti gli acquisti. Questi premi possono valere diverse centinaia di euro all'anno in base all'utilizzo e al livello di staking.`, outro:`Valuta i vantaggi in termini di valore monetario reale prima di impegnarti in uno staking. Per la maggior parte degli utenti, Gnosis Pay e MetaMask Card offrono un ottimo rapporto premi/rischio senza alcuno staking.` },
     en: { title:`Crypto Card Rewards ${YEAR} — Cashback & Perks | TopCryptoCards`, h1:`Crypto Cards with the Best Rewards in ${YEAR}`, description:`Best crypto cards with rewards in ${YEAR}: crypto cashback, VIP airport lounges, Netflix included, Spotify reimbursed. Crypto.com, Nexo, Bybit compared. Free ✓`, intro:`Premium crypto cards offer much more than simple cashback: airport lounge access, included subscriptions (Netflix, Spotify), travel insurance, and crypto cashback on all your purchases. These rewards can be worth several hundred euros per year depending on your usage and staking tier.`, outro:`Evaluate the benefits in real monetary value before committing to a staking tier. For most users, Gnosis Pay and MetaMask Card offer an excellent rewards-to-risk profile with no staking required at all.` },
   },
+  physical: {
+    fr: { title:`Carte Crypto Physique ${YEAR} — Comparatif | TopCryptoCards`, h1:`Meilleures Cartes Crypto Physiques en ${YEAR}`, description:`Meilleures cartes crypto physiques ${YEAR} : livraison gratuite, retraits DAB, Visa/Mastercard acceptées partout. Crypto.com, Revolut, Nexo, Bybit comparées. Comparatif gratuit ✓`, intro:`Une carte crypto physique s'utilise comme n'importe quelle carte bancaire : paiements en magasin, retraits DAB, paiements sans contact dans la rue. À la différence d'une carte virtuelle, elle vous permet d'accéder à votre solde crypto dans tous les commerces physiques et de retirer des espèces n'importe où dans le monde. La plupart des cartes crypto physiques incluent également une version virtuelle — vous bénéficiez des deux usages avec un seul compte.`, outro:`Pour choisir votre carte crypto physique, évaluez d'abord vos besoins réels : fréquence des retraits DAB, pays d'utilisation et staking éventuel. Crypto.com et Bybit offrent les meilleures conditions pour les retraits à l'étranger. Nexo et Revolut sont idéales pour un usage quotidien en Europe sans staking. Toutes les cartes physiques listées ici sont des cartes Visa ou Mastercard, acceptées dans plus de 200 pays.` },
+    de: { title:`Physische Krypto Karte ${YEAR} — Vergleich | TopCryptoCards`, h1:`Beste Physische Krypto-Karten ${YEAR}`, description:`Beste physische Krypto-Karten ${YEAR}: kostenlose Lieferung, Geldautomaten-Abhebungen, Visa/Mastercard überall akzeptiert. Crypto.com, Revolut, Nexo, Bybit verglichen. Kostenlos ✓`, intro:`Eine physische Krypto-Karte funktioniert wie jede Bankkarte: Zahlungen im Geschäft, Geldautomaten-Abhebungen, kontaktlose Zahlungen unterwegs. Im Gegensatz zu einer virtuellen Karte ermöglicht sie Ihnen den Zugriff auf Ihr Krypto-Guthaben bei allen physischen Händlern und Bargeldabhebungen weltweit. Die meisten physischen Krypto-Karten enthalten auch eine virtuelle Version — Sie profitieren von beiden Verwendungen mit nur einem Konto.`, outro:`Bewerten Sie zunächst Ihre tatsächlichen Bedürfnisse: Häufigkeit der Geldautomaten-Abhebungen, Nutzungsland und mögliches Staking. Crypto.com und Bybit bieten die besten Konditionen für internationale Abhebungen. Nexo und Revolut sind ideal für den täglichen Einsatz in Deutschland ohne Staking-Verpflichtung. Alle hier aufgeführten physischen Karten sind Visa- oder Mastercard-Karten, die in über 200 Ländern akzeptiert werden.` },
+    es: { title:`Tarjeta Crypto Física ${YEAR} — Comparativa | TopCryptoCards`, h1:`Mejores Tarjetas Crypto Físicas en ${YEAR}`, description:`Mejores tarjetas crypto físicas en España ${YEAR}: entrega gratuita, retiradas en cajero, Visa/Mastercard aceptadas en todo el mundo. Crypto.com, Revolut, Nexo, Bybit. Gratis ✓`, intro:`Una tarjeta crypto física funciona como cualquier tarjeta bancaria: pagos en tienda, retiradas en cajero automático, pagos sin contacto en la calle. A diferencia de una tarjeta virtual, te permite acceder a tu saldo crypto en todos los comercios físicos y retirar efectivo en cualquier parte del mundo. La mayoría de las tarjetas crypto físicas incluyen también una versión virtual — disfrutas de ambos usos con una sola cuenta.`, outro:`Para elegir tu tarjeta crypto física, evalúa primero tus necesidades reales: frecuencia de retiradas en cajero, países de uso y posible staking. Crypto.com y Bybit ofrecen las mejores condiciones para retiradas en el extranjero. Nexo y Revolut son ideales para un uso cotidiano en España sin staking. Todas las tarjetas físicas listadas son Visa o Mastercard, aceptadas en más de 200 países.` },
+    it: { title:`Carta Crypto Fisica ${YEAR} — Confronto | TopCryptoCards`, h1:`Migliori Carte Crypto Fisiche nel ${YEAR}`, description:`Migliori carte crypto fisiche in Italia ${YEAR}: consegna gratuita, prelievi ATM, Visa/Mastercard accettate ovunque. Crypto.com, Revolut, Nexo, Bybit confrontati. Gratuito ✓`, intro:`Una carta crypto fisica funziona come qualsiasi carta bancaria: pagamenti in negozio, prelievi ATM, pagamenti contactless per strada. A differenza di una carta virtuale, ti permette di accedere al tuo saldo crypto in tutti i negozi fisici e di prelevare contante ovunque nel mondo. La maggior parte delle carte crypto fisiche include anche una versione virtuale — benefici di entrambi gli usi con un unico account.`, outro:`Per scegliere la tua carta crypto fisica, valuta prima le tue esigenze reali: frequenza dei prelievi ATM, paesi di utilizzo e possibile staking. Crypto.com e Bybit offrono le migliori condizioni per i prelievi all'estero. Nexo e Revolut sono ideali per un utilizzo quotidiano in Italia senza staking. Tutte le carte fisiche elencate sono Visa o Mastercard, accettate in oltre 200 paesi.` },
+    en: { title:`Physical Crypto Card ${YEAR} — Comparison | TopCryptoCards`, h1:`Best Physical Crypto Cards in ${YEAR}`, description:`Best physical crypto cards in Europe ${YEAR}: free delivery, ATM withdrawals, Visa/Mastercard accepted worldwide. Crypto.com, Revolut, Nexo, Bybit compared. Free ✓`, intro:`A physical crypto card works just like any bank card: in-store payments, ATM withdrawals, contactless payments anywhere. Unlike a virtual card, it lets you access your crypto balance at all physical merchants and withdraw cash anywhere in the world. Most physical crypto cards also include a virtual version — giving you both options with a single account.`, outro:`When choosing a physical crypto card, first assess your real needs: frequency of ATM withdrawals, countries of use, and any staking requirements. Crypto.com and Bybit offer the best conditions for international withdrawals. Nexo and Revolut are ideal for everyday use in Europe with no staking obligation. All physical cards listed here are Visa or Mastercard, accepted in over 200 countries.` },
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -349,12 +356,35 @@ const THEME_SECTIONS: Partial<Record<string, Partial<Record<string, { h2: string
       { h2: `Gnosis Pay and MetaMask Card: the closest crypto cards to the no-intermediary model`, p: `Gnosis Pay is the most advanced on-chain card: every payment is signed from your Gnosis Safe and settled in xDAI directly on the blockchain. No custodial account, no intermediary between your wallet and the payment terminal. MetaMask Card follows the same principle: your crypto stays in your wallet until the moment of payment, with the platform never acting as custodian. These two cards represent the frontier of crypto financial sovereignty in ${YEAR}.` },
     ],
   },
+  physical: {
+    fr: [
+      { h2: `Carte crypto physique vs virtuelle : quelles différences concrètes ?`, p: `La carte physique se distingue par trois avantages clés : l'accès aux retraits d'espèces (impossible avec une carte purement virtuelle), l'utilisation chez tous les commerçants acceptant Visa/Mastercard sans smartphone nécessaire, et une sécurité renforcée puisque votre numéro de carte virtuelle reste protégé. En revanche, la livraison prend 1 à 2 semaines selon votre pays, contre une activation instantanée pour la carte virtuelle. Les deux formats sont complémentaires : la plupart des émetteurs proposent les deux avec un seul compte, vous laissant choisir selon le contexte.` },
+      { h2: `Crypto.com, Revolut, Nexo, Bybit : meilleures cartes physiques ${YEAR}`, p: `Crypto.com offre une carte Visa physique disponible en 5 niveaux (Ruby, Jade, Indigo, Frosted Rose, Obsidian) avec un cashback de 1% à 8% selon le staking en CRO. Revolut propose une carte physique gratuite (niveau Standard) avec des avantages bancaires complets dès la version premium. Nexo fournit une carte Mastercard physique avec cashback en BTC ou NEXO, sans staking obligatoire. Bybit propose une carte Visa physique avec cashback en BIT et des plafonds de retraits DAB avantageux pour les voyageurs fréquents.` },
+    ],
+    de: [
+      { h2: `Physische vs. virtuelle Krypto-Karte: Was sind die konkreten Unterschiede?`, p: `Die physische Karte zeichnet sich durch drei Hauptvorteile aus: Zugang zu Bargeldabhebungen (unmöglich mit einer rein virtuellen Karte), Nutzung bei allen Visa/Mastercard-Händlern ohne Smartphone und erhöhte Sicherheit, da Ihre virtuelle Kartennummer geschützt bleibt. Die Lieferung dauert 1–2 Wochen, während eine virtuelle Karte sofort aktiviert wird. Beide Formate ergänzen sich: die meisten Emittenten bieten beide mit nur einem Konto an.` },
+      { h2: `Crypto.com, Revolut, Nexo, Bybit: Beste physische Krypto-Karten ${YEAR}`, p: `Crypto.com bietet eine physische Visa-Karte in 5 Stufen (Ruby, Jade, Indigo, Frosted Rose, Obsidian) mit 1% bis 8% Cashback je nach CRO-Staking. Revolut bietet eine kostenlose physische Karte (Standard) oder Premium-Stufen mit vollständigen Bankvorteilen. Nexo liefert eine physische Mastercard mit Cashback in BTC oder NEXO ohne Staking-Pflicht. Bybit bietet eine physische Visa-Karte mit BIT-Cashback und vorteilhaften ATM-Abhebungslimits für Reisende.` },
+    ],
+    es: [
+      { h2: `Tarjeta crypto física vs virtual: ¿cuáles son las diferencias concretas?`, p: `La tarjeta física se distingue por tres ventajas clave: acceso a retiradas de efectivo (imposible con una tarjeta puramente virtual), uso en todos los comercios que acepten Visa/Mastercard sin necesidad de smartphone, y mayor seguridad ya que el número de tu tarjeta virtual permanece protegido. La entrega tarda 1–2 semanas según el país, frente a una activación instantánea para la tarjeta virtual. Ambos formatos son complementarios: la mayoría de emisores ofrecen los dos con una sola cuenta.` },
+      { h2: `Crypto.com, Revolut, Nexo, Bybit: mejores tarjetas físicas ${YEAR}`, p: `Crypto.com ofrece una tarjeta Visa física disponible en 5 niveles (Ruby, Jade, Indigo, Frosted Rose, Obsidian) con cashback del 1% al 8% según el staking en CRO. Revolut propone una tarjeta física gratuita (nivel Standard) o premium con ventajas bancarias completas. Nexo proporciona una Mastercard física con cashback en BTC o NEXO sin staking obligatorio. Bybit ofrece una tarjeta Visa física con cashback en BIT y límites de retirada en cajero ventajosos para viajeros frecuentes.` },
+    ],
+    it: [
+      { h2: `Carta crypto fisica vs virtuale: quali sono le differenze concrete?`, p: `La carta fisica si distingue per tre vantaggi chiave: accesso ai prelievi di contante (impossibile con una carta puramente virtuale), utilizzo presso tutti i commercianti che accettano Visa/Mastercard senza smartphone necessario, e maggiore sicurezza poiché il numero della tua carta virtuale rimane protetto. La consegna richiede 1–2 settimane, contro un'attivazione istantanea per la carta virtuale. I due formati sono complementari: la maggior parte degli emittenti li offre entrambi con un unico account.` },
+      { h2: `Crypto.com, Revolut, Nexo, Bybit: migliori carte fisiche ${YEAR}`, p: `Crypto.com offre una carta Visa fisica disponibile in 5 livelli (Ruby, Jade, Indigo, Frosted Rose, Obsidian) con cashback dall'1% all'8% in base allo staking in CRO. Revolut propone una carta fisica gratuita (livello Standard) o premium con vantaggi bancari completi. Nexo fornisce una Mastercard fisica con cashback in BTC o NEXO senza staking obbligatorio. Bybit offre una carta Visa fisica con cashback in BIT e limiti di prelievo ATM vantaggiosi per i viaggiatori frequenti.` },
+    ],
+    en: [
+      { h2: `Physical vs virtual crypto card: what are the concrete differences?`, p: `A physical card stands out for three key advantages: access to cash withdrawals (impossible with a purely virtual card), use at all Visa/Mastercard merchants without needing a smartphone, and enhanced security since your virtual card number stays protected. The downside is delivery: 1–2 weeks depending on your country, versus instant activation for a virtual card. Both formats are complementary — most issuers offer both with a single account, letting you choose based on context.` },
+      { h2: `Crypto.com, Revolut, Nexo, Bybit: best physical cards in ${YEAR}`, p: `Crypto.com offers a physical Visa card in 5 tiers (Ruby, Jade, Indigo, Frosted Rose, Obsidian) with 1% to 8% cashback depending on CRO staking. Revolut provides a free physical card (Standard tier) or premium tiers with full banking benefits. Nexo delivers a physical Mastercard with cashback in BTC or NEXO and no mandatory staking. Bybit offers a physical Visa card with BIT cashback and advantageous ATM withdrawal limits for frequent travelers.` },
+    ],
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
    FAQ (5 Q&As per theme per language)
    ──────────────────────────────────────────────────────────────────────────── */
 const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
+
   best: {
     fr: [
       { q:`Quelle est la meilleure carte crypto en ${YEAR} ?`, a:`En ${YEAR}, les meilleures cartes crypto sont Crypto.com Obsidian (8% cashback), Gnosis Pay (2% sans staking) et MetaMask Card (1% avec self-custody). Le meilleur choix dépend de votre profil.` },
@@ -762,6 +792,43 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
       { q:'How do you maximize rewards with a crypto card?', a:'Use the card for all everyday spending, take advantage of subscription reimbursements, and choose a staking tier suited to your spending profile.' },
     ],
   },
+  physical: {
+    fr: [
+      { q:'Comment recevoir une carte crypto physique ?', a:"Après inscription et validation KYC, commandez votre carte depuis l'application. La livraison prend 5 à 15 jours ouvrés selon votre pays et le niveau de carte choisi. La carte Crypto.com est gratuite à partir du niveau Ruby Steel." },
+      { q:'La carte crypto physique fonctionne-t-elle à l\'étranger ?', a:"Oui, les cartes Visa et Mastercard sont acceptées dans plus de 200 pays. La plupart des cartes crypto n'appliquent pas de frais de change sur les dépenses en devise étrangère." },
+      { q:'Peut-on retirer des espèces avec une carte crypto physique ?', a:"Oui, c'est l'avantage principal par rapport à une carte virtuelle. Les plafonds de retrait DAB varient de 200€/mois (entrée de gamme) à illimités (niveau premium)." },
+      { q:'La carte physique est-elle plus sécurisée qu\'une carte virtuelle ?', a:"Les deux ont des atouts différents : la carte virtuelle ne peut pas être skimmée et génère des numéros uniques. La physique est sécurisée par le code PIN et peut être bloquée instantanément depuis l'app." },
+      { q:'Combien de temps prend la livraison d\'une carte crypto physique ?', a:"En France, comptez 5 à 10 jours ouvrés. Crypto.com, Nexo et Bybit offrent la livraison gratuite. Certains émetteurs facturent des frais de remplacement (5–10€) en cas de perte ou de vol." },
+    ],
+    de: [
+      { q:'Wie erhält man eine physische Krypto-Karte?', a:'Nach Registrierung und KYC-Verifizierung bestellen Sie Ihre physische Karte über die App. Die Lieferung dauert 5 bis 15 Werktage je nach Land und gewählter Kartenstufe.' },
+      { q:'Funktioniert die physische Krypto-Karte im Ausland?', a:'Ja, Visa- und Mastercard-Karten werden in über 200 Ländern akzeptiert. Die meisten Krypto-Karten berechnen keine Wechselgebühren bei Fremdwährungsausgaben.' },
+      { q:'Kann man mit einer physischen Krypto-Karte Bargeld abheben?', a:'Ja, das ist der Hauptvorteil gegenüber einer virtuellen Karte. Die ATM-Abhebungslimits reichen von 200€/Monat (Einstieg) bis unbegrenzt (Premium).' },
+      { q:'Ist die physische Karte sicherer als eine virtuelle?', a:'Beide haben unterschiedliche Vorteile: Die virtuelle Karte kann nicht geskimmt werden. Die physische wird durch PIN gesichert und kann sofort über die App gesperrt werden.' },
+      { q:'Wie lange dauert die Lieferung einer physischen Krypto-Karte?', a:'In Deutschland rechnen Sie mit 5 bis 10 Werktagen. Crypto.com, Nexo und Bybit bieten kostenlose Lieferung. Einige Emittenten berechnen Ersatzgebühren (5–10€) bei Verlust oder Diebstahl.' },
+    ],
+    es: [
+      { q:'¿Cómo recibir una tarjeta crypto física?', a:'Tras el registro y la validación KYC, pide tu tarjeta desde la aplicación. La entrega tarda 5 a 15 días hábiles según tu país y el nivel de tarjeta elegido.' },
+      { q:'¿La tarjeta crypto física funciona en el extranjero?', a:'Sí, las tarjetas Visa y Mastercard están aceptadas en más de 200 países. La mayoría no aplican comisiones de cambio sobre gastos en divisa extranjera.' },
+      { q:'¿Se puede retirar efectivo con una tarjeta crypto física?', a:"Sí, es la principal ventaja frente a una tarjeta virtual. Los límites de retirada en cajero varían de 200€/mes (entrada) a ilimitados (nivel premium)." },
+      { q:'¿Es la tarjeta física más segura que una virtual?', a:'Ambas tienen ventajas distintas: la virtual no puede ser skimmeada. La física está protegida por PIN y puede bloquearse instantáneamente desde la app.' },
+      { q:'¿Cuánto tarda la entrega de una tarjeta crypto física?', a:'En España, cuenta con 5 a 10 días hábiles. Crypto.com, Nexo y Bybit ofrecen entrega gratuita. Algunos emisores cobran tasas de reposición (5–10€) por pérdida o robo.' },
+    ],
+    it: [
+      { q:'Come ricevere una carta crypto fisica?', a:"Dopo la registrazione e la validazione KYC, ordina la tua carta dall'applicazione. La consegna richiede da 5 a 15 giorni lavorativi in base al paese e al livello di carta scelto." },
+      { q:'La carta crypto fisica funziona all\'estero?', a:'Sì, le carte Visa e Mastercard sono accettate in oltre 200 paesi. La maggior parte non applica commissioni di cambio sulle spese in valuta estera.' },
+      { q:'Si può prelevare contante con una carta crypto fisica?', a:"Sì, è il principale vantaggio rispetto a una carta virtuale. I limiti di prelievo ATM variano da 200€/mese (base) a illimitati (livello premium)." },
+      { q:'La carta fisica è più sicura di una virtuale?', a:"Entrambe hanno vantaggi diversi: la carta virtuale non può essere clonata fisicamente. La fisica è protetta da PIN e può essere bloccata istantaneamente dall'app." },
+      { q:'Quanto tempo richiede la consegna di una carta crypto fisica?', a:'In Italia, conta 5–10 giorni lavorativi. Crypto.com, Nexo e Bybit offrono consegna gratuita. Alcuni emittenti addebitano spese di sostituzione (5–10€) in caso di smarrimento o furto.' },
+    ],
+    en: [
+      { q:'How do you receive a physical crypto card?', a:'After registration and KYC validation, order your physical card from the app. Delivery takes 5 to 15 business days depending on your country and chosen card tier.' },
+      { q:'Does a physical crypto card work abroad?', a:'Yes, Visa and Mastercard are accepted in over 200 countries. Most crypto cards charge no foreign exchange fees on spending in foreign currencies.' },
+      { q:'Can you withdraw cash with a physical crypto card?', a:"Yes — that's the main advantage over a virtual card. ATM withdrawal limits range from €200/month (entry tier) to unlimited (premium tiers)." },
+      { q:'Is a physical card more secure than a virtual one?', a:'Both have different security advantages: virtual cards cannot be physically skimmed. Physical cards are secured by PIN and can be instantly blocked from the app.' },
+      { q:'How long does delivery of a physical crypto card take?', a:'In most of Europe, expect 5 to 10 business days. Crypto.com, Nexo and Bybit offer free delivery. Some issuers charge replacement fees (€5–10) for lost or stolen cards.' },
+    ],
+  },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -774,6 +841,7 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   'no-staking': (c) => (c.staking_required || 0) === 0,
   france:       () => true,
   virtual:      (c) => c.virtual_only === true,
+  physical:     (c) => c.virtual_only !== true,
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
   'no-kyc':     (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet'].includes(e)),
   '2026':       () => true,
@@ -787,6 +855,7 @@ const THEME_SORT: Record<string, (a: any, b: any) => number> = {
   'no-staking': (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   france:       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   virtual:      (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
+  physical:     (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   beginner:     (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   'no-kyc':     (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   '2026':       (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
@@ -810,6 +879,7 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   '2026':       { fr: 'carte-crypto-2026', de: 'krypto-karte-2026', es: 'tarjeta-cripto-2026', it: 'carta-cripto-2026', en: 'best-crypto-card-2026' },
   travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
   rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
+  physical:     { fr: 'carte-crypto-physique', de: 'physische-krypto-karte', es: 'tarjeta-crypto-fisica', it: 'carta-crypto-fisica', en: 'physical-crypto-card' },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -821,7 +891,8 @@ const RELATED_THEMES: Record<string, string[]> = {
   'no-fees':    ['cashback', 'beginner', 'no-staking', 'best'],
   'no-staking': ['no-fees', 'cashback', 'beginner', 'rewards'],
   france:       ['best', 'cashback', 'no-fees', 'virtual'],
-  virtual:      ['no-fees', 'best', 'cashback', 'beginner'],
+  virtual:      ['physical', 'no-fees', 'best', 'cashback'],
+  physical:     ['virtual', 'travel', 'cashback', 'rewards'],
   beginner:     ['no-fees', 'no-staking', 'best', 'no-kyc'],
   'no-kyc':     ['no-staking', 'beginner', 'no-fees', 'virtual'],
   '2026':       ['best', 'cashback', 'rewards', 'travel'],
@@ -830,7 +901,7 @@ const RELATED_THEMES: Record<string, string[]> = {
 };
 const THEME_EMOJI: Record<string, string> = {
   best: '⭐', cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓',
-  france: '🇪🇺', virtual: '📱', beginner: '🎯', 'no-kyc': '🔐',
+  france: '🇪🇺', virtual: '📱', physical: '💳', beginner: '🎯', 'no-kyc': '🔐',
   '2026': '🚀', travel: '✈️', rewards: '🎁',
 };
 const THEME_LABEL: Record<string, Record<string, string>> = {
@@ -840,6 +911,7 @@ const THEME_LABEL: Record<string, Record<string, string>> = {
   'no-staking': { fr:'Sans staking', de:'Ohne Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
   france:       { fr:'Disponible en France', de:'In Deutschland', es:'En España', it:'In Italia', en:'Available in EU' },
   virtual:      { fr:'Carte virtuelle', de:'Virtuelle Karte', es:'Tarjeta virtual', it:'Carta virtuale', en:'Virtual card' },
+  physical:     { fr:'Carte physique', de:'Physische Karte', es:'Tarjeta física', it:'Carta fisica', en:'Physical card' },
   beginner:     { fr:'Pour débutants', de:'Für Einsteiger', es:'Para principiantes', it:'Per principianti', en:'For beginners' },
   'no-kyc':     { fr:'Sans KYC', de:'Ohne KYC', es:'Sin KYC', it:'Senza KYC', en:'No KYC' },
   '2026':       { fr:'Meilleures 2026', de:'Beste 2026', es:'Mejores 2026', it:'Migliori 2026', en:'Best 2026' },
