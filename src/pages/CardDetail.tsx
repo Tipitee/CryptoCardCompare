@@ -27,7 +27,7 @@ import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { generateCardContent } from '../utils/cardContent';
-import AutoLinker from '../components/AutoLinker';
+import AutoLinker, { autoLinkHtml } from '../components/AutoLinker';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -397,7 +397,11 @@ export default function CardDetail() {
   const faqSep = '<div data-faq="v1"';
   const thematicIdx = content.indexOf(thematicSep);
   const faqIdx = content.indexOf(faqSep);
-  const articleBodyHtml = thematicIdx > 0 ? content.slice(0, thematicIdx) : content;
+  const rawArticleBodyHtml = thematicIdx > 0 ? content.slice(0, thematicIdx) : content;
+  const brandsSlugForAutoLink = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
+  const articleBodyHtml = rawArticleBodyHtml
+    ? autoLinkHtml(rawArticleBodyHtml, lang, brandsSlugForAutoLink)
+    : rawArticleBodyHtml;
   const injectedLinksHtml = thematicIdx > 0
     ? (faqIdx > 0 ? content.slice(thematicIdx, faqIdx) : content.slice(thematicIdx))
     : '';
