@@ -204,10 +204,6 @@ const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privac
   en: { copyright: 'No financial advice.', impressum: 'Impressum', privacy: 'Privacy', affiliate: 'Affiliate Disclosure', risk: 'Risk Summary' },
 };
 
-function Code({ children }: { children: string }) {
-  return <code className="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">{children}</code>;
-}
-
 export default function AffiliateDisclosurePage() {
   const lang = useDisclosureLang();
   const c = CONTENT[lang];

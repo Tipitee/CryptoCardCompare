@@ -361,12 +361,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
-  <url>
-    <loc>https://topcryptocards.eu/</loc>
-    <lastmod>2026-07-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
   <!-- Review list pages -->
   <url>
     <loc>https://topcryptocards.eu/fr/avis</loc>

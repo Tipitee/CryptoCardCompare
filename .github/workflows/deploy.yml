@@ -1,0 +1,71 @@
+name: Build, prerender & deploy to Netlify
+
+# Netlify's build timeout (15–30 min) can't fit a 1,000+ page Chrome prerender.
+# GitHub Actions has a 6-hour limit, so we build + prerender here and push the
+# finished dist/ to Netlify with the CLI. Netlify's own CI must be DISABLED
+# (Site configuration → Build & deploy → Build settings → Stop builds),
+# otherwise it will race this workflow with a non-prerendered deploy.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   NETLIFY_AUTH_TOKEN      — Netlify user settings → Applications → New access token
+#   NETLIFY_SITE_ID         — Netlify site → Site configuration → Site ID
+#   VITE_SUPABASE_URL       — same value as in .env
+#   VITE_SUPABASE_ANON_KEY  — same value as in .env (public anon key)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+  schedule:
+    # Nightly at 03:17 UTC: re-render so Supabase content changes (blog posts,
+    # card data) reach the static HTML without a code push.
+    - cron: '17 3 * * *'
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Kept out of package.json on purpose: Bolt's environment can't install
+      # puppeteer. --no-save keeps the lockfile untouched.
+      - name: Install puppeteer (CI only)
+        run: npm i --no-save puppeteer
+
+      - name: Build
+        run: npx vite build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: Prerender (~1,050 URLs; noindex compare pages are skipped)
+        run: node scripts/prerender.mjs
+        env:
+          PRERENDER_CONCURRENCY: 10
+
+      - name: Sanity-check prerender output
+        run: |
+          test -f dist/fr/index.html || (echo "::error::dist/fr/index.html missing" && exit 1)
+          test -f dist/404.html || (echo "::error::dist/404.html missing" && exit 1)
+          grep -q 'lang="fr"' dist/fr/index.html || (echo "::error::/fr not localized" && exit 1)
+          grep -q '404' dist/_redirects || (echo "::error::real-404 fallback not armed" && exit 1)
+          echo "Prerendered pages: $(find dist -name index.html | wc -l)"
+
+      - name: Deploy to Netlify (production)
+        run: npx netlify-cli@17 deploy --prod --dir=dist --message "GH Actions ${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

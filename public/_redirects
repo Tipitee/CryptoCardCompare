@@ -1,12 +1,13 @@
 # ── Server-side language routing for the root URL ─────────────────────────
 # Replaces the client-side JS redirect (crawler-safe, no flash).
-# x-default stays on /fr (primary market). Change /en below to /fr if you
-# want to keep that consistent — they must agree.
-/  /fr  302  Language=fr
-/  /de  302  Language=de
-/  /es  302  Language=es
-/  /it  302  Language=it
-/  /fr  302
+# x-default stays on /fr (primary market) — consistent with the final rule.
+# NOTE the "!" (forced): without it Netlify serves the physical /index.html
+# first and these rules NEVER fire (shadowing).
+/  /fr  302!  Language=fr
+/  /de  302!  Language=de
+/  /es  302!  Language=es
+/  /it  302!  Language=it
+/  /fr  302!
 
 # ── Admin/SPA-only routes (not prerendered, not in sitemaps) ──────────────
 /admin/*        /index.html  200
