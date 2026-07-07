@@ -60,8 +60,16 @@ jobs:
         run: |
           test -f dist/fr/index.html || (echo "::error::dist/fr/index.html missing" && exit 1)
           test -f dist/404.html || (echo "::error::dist/404.html missing" && exit 1)
-          grep -q 'lang="fr"' dist/fr/index.html || (echo "::error::/fr not localized" && exit 1)
+          grep -q 'lang="fr"' dist/fr/index.html || (echo "::error::/fr lang not fr" && exit 1)
           grep -q '404' dist/_redirects || (echo "::error::real-404 fallback not armed" && exit 1)
+          grep -q 'Meilleure Carte' dist/fr/index.html || (echo "::error::FR title still English — prerender did not capture React output" && exit 1)
+          grep -q 'Krypto' dist/de/index.html || (echo "::error::DE title still English — prerender did not capture React output" && exit 1)
+          echo "--- dist/fr/index.html <title>:"
+          grep -o '<title>[^<]*</title>' dist/fr/index.html || echo "(no title found)"
+          echo "--- dist/de/index.html <title>:"
+          grep -o '<title>[^<]*</title>' dist/de/index.html || echo "(no title found)"
+          echo "--- _redirects last line:"
+          tail -1 dist/_redirects
           echo "Prerendered pages: $(find dist -name index.html | wc -l)"
 
       - name: Deploy to Netlify (production)
