@@ -2,7 +2,10 @@
 remote_images = [ "https://pnrwskzladqibjqngxem.supabase.co/.*" ]
 
 [build]
-command = "npx vite build"
+# Build is handled by GitHub Actions (build + prerender + deploy via CLI).
+# ignore = "exit 0" tells Netlify CI to always skip its own build so it never
+# overwrites the prerendered HTML that GitHub Actions deployed.
+ignore = "exit 0"
 publish = "dist"
 
 # Cache immutable hashed assets aggressively
