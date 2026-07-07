@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp, ArrowUpDown, Check, ExternalLink, Plus, Star, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import type { CryptoCard } from '../types/card';
 import SmartCardImage from './SmartCardImage';
 import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
@@ -7,6 +8,14 @@ import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { useLanguage } from '../hooks/useLanguage';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+
+const SCROLL_HINT: Record<string, string> = {
+  fr: 'Faites défiler pour voir plus',
+  de: 'Wischen für mehr',
+  es: 'Desliza para ver más',
+  it: 'Scorri per vedere altro',
+  en: 'Scroll for more',
+};
 
 // ── i18n label maps ────────────────────────────────────────────────────────────
 const TH: Record<string, Record<string, string>> = {
@@ -82,13 +91,51 @@ export default function CompareTable({
     sortKey === key ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none';
   const th = (key: string) => TH[key]?.[lang] ?? TH[key]?.en ?? key;
 
+  // ── Scroll affordance ───────────────────────────────────────────────────────
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [hintDismissed, setHintDismissed] = useState(false);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const check = () => {
+      const scrollable = el.scrollWidth - el.clientWidth > 4;
+      setCanScrollRight(scrollable && el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+      if (el.scrollLeft > 10) setHintDismissed(true);
+    };
+    check();
+    el.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    return () => {
+      el.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+    };
+  }, [cards.length]);
+
   return (
-    <div className="card-surface overflow-x-auto scrollbar-thin">
+    <div className="relative">
+      {/* Right-edge gradient — visible only when more content to scroll */}
+      {canScrollRight && (
+        <div
+          className="absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-bg-card/90 to-transparent pointer-events-none z-30"
+          aria-hidden="true"
+        />
+      )}
+      {/* Mobile scroll hint — shown once until user scrolls */}
+      {canScrollRight && !hintDismissed && (
+        <div className="sm:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 bg-bg-elevated/90 backdrop-blur-sm text-slate-400 text-xs px-3 py-1.5 rounded-full border border-bg-border pointer-events-none animate-pulse">
+          <span>←</span>
+          <span>{SCROLL_HINT[lang] ?? SCROLL_HINT.en}</span>
+          <span>→</span>
+        </div>
+      )}
+    <div ref={scrollRef} className="card-surface overflow-x-auto scrollbar-thin">
       <table role="table" className="min-w-full text-sm">
         <thead>
           <tr className="border-b border-bg-border bg-bg-elevated/50">
             <ThCell
-              className="sticky left-0 z-10 bg-bg-elevated text-left min-w-[200px] sm:min-w-[300px]"
+              className="sticky left-0 z-10 bg-bg-elevated text-left min-w-[200px] sm:min-w-[300px] shadow-[4px_0_8px_rgba(0,0,0,0.4)]"
               ariaSort={ariaSort('name')}
               sortKey={sortKey}
               dir={sortDir}
@@ -165,6 +212,7 @@ export default function CompareTable({
           )}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }
@@ -253,7 +301,7 @@ function Row({
           : 'hover:bg-bg-elevated/40'
       }`}
     >
-      <td className={`sticky left-0 z-10 px-4 py-3 min-w-[200px] sm:min-w-[300px] ${
+      <td className={`sticky left-0 z-10 px-4 py-3 min-w-[200px] sm:min-w-[300px] shadow-[4px_0_8px_rgba(0,0,0,0.4)] ${
         quickSlot
           ? quickSlot === 'A'
             ? 'bg-cyan-accent/5'
