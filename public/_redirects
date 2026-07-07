@@ -24,6 +24,24 @@
 /affiliate-disclosure   /index.html  200
 /risk-summary           /index.html  200
 
-# ── Everything else ────────────────────────────────────────────────────────
-# SPA fallback: serve index.html for all routes (React Router handles routing).
-/*  /index.html  200
+# ── Favorites (user-specific, not indexed/prerendered) ────────────────────
+/fr/favoris     /index.html  200
+/de/favoriten   /index.html  200
+/es/favoritos   /index.html  200
+/it/preferiti   /index.html  200
+/en/favorites   /index.html  200
+
+# ── Non-allowlisted A-vs-B compare pages ──────────────────────────────────
+# Valid SPA routes for users, noindex for bots, NOT prerendered at scale.
+# Allowlisted pairs have physical files and are served before these rules.
+/fr/comparer/*     /index.html  200
+/de/vergleichen/*  /index.html  200
+/es/comparar/*     /index.html  200
+/it/confrontare/*  /index.html  200
+/en/compare/*      /index.html  200
+
+# ── Everything else: real 404 ──────────────────────────────────────────────
+# Physical prerendered files (dist/fr/index.html etc.) take priority over
+# redirect rules without "!" — so prerendered pages are served directly.
+# Unknown paths that have no physical file return a real HTTP 404.
+/*  /404.html  404
