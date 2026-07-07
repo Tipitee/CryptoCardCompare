@@ -1,4 +1,5 @@
 import { LANGUAGES, ROUTE_TRANSLATIONS, type Language, isValidLanguage } from './types';
+import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
 
 export function getLanguageFromPath(pathname: string): Language {
   const parts = pathname.split('/').filter(Boolean);
@@ -53,22 +54,34 @@ export function getEquivalentRoute(
     return `/${newLang}`;
   }
 
+  const slug = routeParts[0];
+
   const routeKey = Object.entries(ROUTE_TRANSLATIONS[currentLang]).find(
-    ([_, value]) => value === routeParts[0]
+    ([_, value]) => value === slug
   )?.[0] as keyof typeof ROUTE_TRANSLATIONS.fr | undefined;
 
-  if (!routeKey) {
-    return `/${newLang}`;
+  if (routeKey) {
+    const newRoute = getLocalizedRoute(routeKey, newLang);
+    if (routeParts.length === 1) return `/${newLang}/${newRoute}`;
+    const restOfPath = routeParts.slice(1).join('/');
+    return `/${newLang}/${newRoute}/${restOfPath}`;
   }
 
-  const newRoute = getLocalizedRoute(routeKey, newLang);
-
-  if (routeParts.length === 1) {
-    return `/${newLang}/${newRoute}`;
+  // Check thematic routes (e.g. carte-crypto-belgique → krypto-karte-belgien)
+  for (const slugsByLang of Object.values(THEMATIC_ROUTES)) {
+    if (slugsByLang[currentLang] === slug) {
+      const newSlug = slugsByLang[newLang];
+      if (newSlug) return `/${newLang}/${newSlug}`;
+      break;
+    }
   }
 
-  const restOfPath = routeParts.slice(1).join('/');
-  return `/${newLang}/${newRoute}/${restOfPath}`;
+  // Check Virtual vs Physical page slugs
+  if (VVP_SLUGS[currentLang] === slug) {
+    return `/${newLang}/${VVP_SLUGS[newLang]}`;
+  }
+
+  return `/${newLang}`;
 }
 
 export function initializeLanguage(): Language {
