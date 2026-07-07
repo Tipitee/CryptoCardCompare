@@ -23,6 +23,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
+import AffiliateButton from '../components/AffiliateButton';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
@@ -500,16 +501,7 @@ export default function CardDetail() {
                   <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                   {t('common:nav_favorites')}
                 </button>
-                <a
-                  href={getAffiliateLink(card)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_detail', lang)}
-                >
-                  {t('common:quiz_see_offer')}
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                <AffiliateButton card={card} lang={lang} label={t('common:quiz_see_offer')} source="card_detail" />
               </div>
             </div>
           </div>
@@ -943,16 +935,7 @@ export default function CardDetail() {
               <p className="text-sm text-slate-400 mb-4 leading-relaxed">
                 {t('common:card_detail_cta_desc')}
               </p>
-              <a
-                href={getAffiliateLink(card)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full"
-                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_detail', lang)}
-              >
-                {t('common:quiz_see_offer')}
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              <AffiliateButton card={card} lang={lang} label={t('common:quiz_see_offer')} source="card_detail" className="btn-primary w-full" />
             </div>
           </div>
         </div>

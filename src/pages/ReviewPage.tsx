@@ -553,17 +553,45 @@ export default function ReviewPage() {
           {/* Main content */}
           <div className="flex-1 min-w-0 max-w-3xl space-y-10">
 
-            {/* Key stats */}
-            {(lang === 'fr' || i18n) && (
-              <div className="grid grid-cols-2 gap-3">
-                {Object.entries(i18n?.keyStats ?? review.keyStats).map(([key, val]) => (
-                  <div key={key} className="card-surface p-4">
-                    <p className="text-xs text-slate-500 mb-1">{l.statsLabels[key] ?? key}</p>
-                    <p className="text-sm font-semibold text-white">{val}</p>
-                  </div>
-                ))}
-              </div>
-            )}
+            {/* Key-facts table — structured HTML for featured snippets + E-E-A-T */}
+            {(lang === 'fr' || i18n) && (() => {
+              const stats = i18n?.keyStats ?? review.keyStats;
+              const rows = Object.entries(stats);
+              if (!rows.length) return null;
+              return (
+                <div className="card-surface overflow-hidden">
+                  <table className="w-full text-sm">
+                    <caption className="sr-only">{review.cardName} — {l.recap}</caption>
+                    <thead>
+                      <tr className="border-b border-bg-border bg-bg-base">
+                        <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider w-1/2">
+                          {l.recap}
+                        </th>
+                        <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                          {review.cardName}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows.map(([key, val], i) => (
+                        <tr key={key} className={i % 2 === 0 ? 'bg-bg-base' : 'bg-bg-elevated'}>
+                          <td className="px-4 py-3 text-slate-400 font-medium">{l.statsLabels[key] ?? key}</td>
+                          <td className="px-4 py-3 font-semibold text-white">{val}</td>
+                        </tr>
+                      ))}
+                      <tr className={rows.length % 2 === 0 ? 'bg-bg-base' : 'bg-bg-elevated'}>
+                        <td className="px-4 py-3 text-slate-400 font-medium">{l.globalRating}</td>
+                        <td className="px-4 py-3 font-semibold text-white">{review.globalRating}/5</td>
+                      </tr>
+                      <tr className={(rows.length + 1) % 2 === 0 ? 'bg-bg-base' : 'bg-bg-elevated'}>
+                        <td className="px-4 py-3 text-slate-400 font-medium">{l.network}</td>
+                        <td className="px-4 py-3 font-semibold text-white">{review.network}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })()}
 
             {/* Rating breakdown */}
             <div className="card-surface p-6">

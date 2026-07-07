@@ -1239,10 +1239,18 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir toutes les cartes', de: 'Alle Karten', es: 'Ver tarjetas', it: 'Vedi carte', en: 'See all cards' };
 
   // ── SEO ───────────────────────────────────────────────────────────────────────
+  // Cannibalization fix: "2026" pages are year-specific variants of the "best" evergreen
+  // page. We tell Google the canonical is the "best" page so it consolidates ranking
+  // signals there instead of splitting them across both URLs.
+  const canonicalOverride = theme === '2026'
+    ? `https://topcryptocards.eu/${lang}/${THEMATIC_ROUTES.best[lang as keyof typeof THEMATIC_ROUTES.best]}`
+    : undefined;
+
   useSeoMeta({
     title: config?.title || 'TopCryptoCards',
     description: config?.description || '',
     lang,
+    canonical: canonicalOverride,
   });
 
   /* Hreflang */
@@ -1362,6 +1370,63 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       <div className="mb-8 max-w-3xl bg-cyan-500/5 border border-cyan-500/20 rounded-xl px-5 py-4">
         <p className="text-slate-300 leading-relaxed">{config.intro}</p>
       </div>
+
+      {/* Key-facts comparison table — top 3 cards, structured HTML for featured snippets */}
+      {!loading && filteredCards.length >= 2 && (() => {
+        const TOP = filteredCards.slice(0, 3);
+        const KEY_FACTS_LABELS: Record<string, string[]> = {
+          fr: ['Cashback', 'Frais annuels', 'Staking requis', 'Réseau', 'Trust Score'],
+          de: ['Cashback', 'Jahresgebühr', 'Staking erf.', 'Netzwerk', 'Trust Score'],
+          es: ['Cashback', 'Comisiones anuales', 'Staking req.', 'Red', 'Trust Score'],
+          it: ['Cashback', 'Commissioni annuali', 'Staking rich.', 'Rete', 'Trust Score'],
+          en: ['Cashback', 'Annual fees', 'Staking req.', 'Network', 'Trust Score'],
+        };
+        const labels = KEY_FACTS_LABELS[lang] ?? KEY_FACTS_LABELS.en;
+        const FREE_LABEL: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
+        const NO_STAKING_LABEL: Record<string, string> = { fr: 'Non requis', de: 'Nicht erf.', es: 'No requerido', it: 'Non richiesto', en: 'Not required' };
+        function fmtCashback(c: any): string {
+          const val = c.cashback_premium || c.cashback_base;
+          return val ? `${val}%` : '—';
+        }
+        function fmtFees(c: any): string {
+          return (c.annual_fees || 0) > 0 ? `${c.annual_fees} €/${({fr:'an',de:'Jahr',es:'año',it:'anno',en:'year'})[lang]??'year'}` : (FREE_LABEL[lang]??'Free');
+        }
+        function fmtStaking(c: any): string {
+          if (!c.staking_required || c.staking_required <= 0) return NO_STAKING_LABEL[lang] ?? 'Not required';
+          return `~€${Math.round(c.staking_required).toLocaleString()}`;
+        }
+        function getRow(c: any): string[] {
+          return [fmtCashback(c), fmtFees(c), fmtStaking(c), c.card_network ?? '—', c.trust_score != null ? `${c.trust_score.toFixed(1)}/10` : '—'];
+        }
+        return (
+          <div className="mb-8 overflow-x-auto">
+            <table className="w-full text-sm border border-bg-border rounded-xl overflow-hidden">
+              <thead>
+                <tr className="bg-bg-elevated border-b border-bg-border">
+                  <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider min-w-[120px]">
+                    {({ fr:'Critère', de:'Kriterium', es:'Criterio', it:'Criterio', en:'Criteria' })[lang]??'Criteria'}
+                  </th>
+                  {TOP.map((c: any, i: number) => (
+                    <th key={c.id} scope="col" className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                      <span className="text-cyan-400 mr-1">#{i + 1}</span>{c.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {labels.map((label, rowIdx) => (
+                  <tr key={label} className={rowIdx % 2 === 0 ? 'bg-bg-base' : 'bg-bg-elevated'}>
+                    <td className="px-4 py-3 text-slate-400 font-medium">{label}</td>
+                    {TOP.map((c: any) => (
+                      <td key={c.id} className="px-4 py-3 font-semibold text-white">{getRow(c)[rowIdx]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      })()}
 
       {/* Card grid */}
       {loading ? (

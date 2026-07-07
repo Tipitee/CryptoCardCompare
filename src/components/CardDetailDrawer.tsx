@@ -12,6 +12,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
+import AffiliateButton from './AffiliateButton';
 
 interface Props {
   card: CryptoCard | null;
@@ -203,16 +204,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                 <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
                 {t('common:nav_favorites')}
               </button>
-              <a
-                href={getAffiliateLink(card)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary flex-1"
-                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'card_drawer', currentLang)}
-              >
-                {t('common:quiz_see_offer')}
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              <AffiliateButton card={card} lang={currentLang} label={t('common:quiz_see_offer')} source="card_drawer" className="btn-primary flex-1" />
             </div>
           </div>
         </div>

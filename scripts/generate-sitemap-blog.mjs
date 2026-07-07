@@ -33,10 +33,12 @@ function loadEnv() {
 
 const env = loadEnv();
 const SUPABASE_URL  = env.VITE_SUPABASE_URL  || process.env.VITE_SUPABASE_URL;
-const SERVICE_KEY   = env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Service role key preferred (full access); anon key works for published=true rows
+const API_KEY = env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+             || env.VITE_SUPABASE_ANON_KEY    || process.env.VITE_SUPABASE_ANON_KEY;
 
-if (!SUPABASE_URL || !SERVICE_KEY) {
-  console.error('❌  VITE_SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY requis dans .env');
+if (!SUPABASE_URL || !API_KEY) {
+  console.error('❌  VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY (ou SUPABASE_SERVICE_ROLE_KEY) requis dans .env');
   process.exit(1);
 }
 
@@ -45,8 +47,8 @@ async function fetchAllPosts() {
   const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=lang,slug,topic_key,created_at&published=eq.true&order=lang,slug&limit=2000`;
   const res = await fetch(url, {
     headers: {
-      apikey: SERVICE_KEY,
-      Authorization: `Bearer ${SERVICE_KEY}`,
+      apikey: API_KEY,
+      Authorization: `Bearer ${API_KEY}`,
     },
   });
   if (!res.ok) {

@@ -21,13 +21,18 @@
     <meta property="og:image" content="https://topcryptocards.eu/og-default.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://topcryptocards.eu/og-default.jpg" />
-  <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGWKLHZTET"></script>
+  <!-- Google Analytics 4: deferred until after load to avoid competing with LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HGWKLHZTET');
+      window.addEventListener('load', function() {
+        gtag('js', new Date());
+        gtag('config', 'G-HGWKLHZTET');
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-HGWKLHZTET';
+        document.head.appendChild(s);
+      });
     </script>
   </head>
   <body>

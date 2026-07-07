@@ -22,6 +22,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
+import AffiliateButton from '../components/AffiliateButton';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById, fetchRelatedPosts } from '../lib/supabase';
 import type { BlogPost } from '../types/blog';
@@ -563,16 +564,7 @@ export default function ComparisonPage() {
                 {t('comparison_details')}
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
-              <a
-                href={getAffiliateLink(card)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost border border-bg-border text-xs"
-                onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'comparison', lang)}
-              >
-                {t('comparison_offer')}
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              <AffiliateButton card={card} lang={lang} label={t('comparison_offer')} source="comparison" className="btn-ghost border border-bg-border text-xs" />
               {card.brandId && (() => {
                 const bSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
                 return (

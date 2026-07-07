@@ -35,6 +35,23 @@ export default function Layout() {
   };
   const affiliateSlug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 
+  const METHODOLOGY_SLUGS: Record<string, string> = {
+    fr: 'methodologie',
+    de: 'methodik',
+    es: 'metodologia',
+    it: 'metodologia',
+    en: 'methodology',
+  };
+  const methodologySlug = METHODOLOGY_SLUGS[lang] ?? 'methodology';
+  const METHODOLOGY_LABELS: Record<string, string> = {
+    fr: 'Méthodologie',
+    de: 'Methodik',
+    es: 'Metodología',
+    it: 'Metodologia',
+    en: 'Methodology',
+  };
+  const methodologyLabel = METHODOLOGY_LABELS[lang] ?? 'Methodology';
+
   // Nav items — Home removed, logo acts as home link
   const navItems = [
     { key: 'compare',        label: t('nav_compare'),        icon: BarChart3 },
@@ -373,6 +390,12 @@ export default function Layout() {
                   </Link>
                 </li>
                 <li>
+                  <Link to={`/${lang}/${methodologySlug}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <FileText className="w-3.5 h-3.5" />
+                    {methodologyLabel}
+                  </Link>
+                </li>
+                <li>
                   <Link to="/risk-summary" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Shield className="w-3.5 h-3.5" />
                     {t('footer_risk')}
@@ -392,6 +415,7 @@ export default function Layout() {
               <Link to="/datenschutz" className="hover:text-slate-300 transition-colors">Datenschutz</Link>
               <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
               <Link to={`/${lang}/${affiliateSlug}`} className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
+              <Link to={`/${lang}/${methodologySlug}`} className="hover:text-slate-300 transition-colors">{methodologyLabel}</Link>
               <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">{t('footer_risk')}</Link>
             </div>
             <span>{t('footer_tagline')}</span>

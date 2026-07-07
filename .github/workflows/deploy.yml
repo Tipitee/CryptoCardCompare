@@ -45,6 +45,12 @@ jobs:
       - name: Install puppeteer (CI only)
         run: npm i --no-save puppeteer
 
+      - name: Regenerate sitemap-blog.xml (fetch live post list from Supabase)
+        run: node scripts/generate-sitemap-blog.mjs
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
       - name: Build
         run: npx vite build
         env:

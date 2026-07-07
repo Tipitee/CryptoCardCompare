@@ -20,6 +20,7 @@ const Impressum            = lazy(() => import('./pages/Impressum'));
 const Datenschutz          = lazy(() => import('./pages/Datenschutz'));
 const Privacy              = lazy(() => import('./pages/Privacy'));
 const AffiliateDisclosurePage = lazy(() => import('./pages/AffiliateDisclosurePage'));
+const MethodologyPage      = lazy(() => import('./pages/MethodologyPage'));
 const RiskSummary          = lazy(() => import('./pages/RiskSummary'));
 const CardDetail           = lazy(() => import('./pages/CardDetail'));
 const ThematicPage         = lazy(() => import('./pages/ThematicPage'));
@@ -118,6 +119,12 @@ export default function App() {
         <Route path="/:lang/affiliate-offenlegung"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgacion-afiliados"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgazione-affiliati"    element={<AffiliateDisclosurePage />} />
+
+        {/* Methodology — lang-prefixed standalone routes */}
+        <Route path="/:lang/methodology"               element={<MethodologyPage />} />
+        <Route path="/:lang/methodologie"              element={<MethodologyPage />} />
+        <Route path="/:lang/methodik"                  element={<MethodologyPage />} />
+        <Route path="/:lang/metodologia"               element={<MethodologyPage />} />
 
         {/* Bare-path redirects: /compare → /en/compare, /comparer → /fr/comparer, etc. */}
         {Object.keys(SLUG_TO_KEY).map((slug) => (
