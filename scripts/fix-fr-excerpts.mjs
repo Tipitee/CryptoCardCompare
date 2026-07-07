@@ -1,22 +1,20 @@
 #!/usr/bin/env node
 /**
  * fix-fr-excerpts.mjs
- * Identifies and fixes weak / missing excerpts on FR blog posts.
+ * Identifies and fixes weak / missing excerpts on blog posts (all languages).
  *
- * "Weak" = excerpt is null, empty, < 80 chars, OR matches generic openers
- * (e.g. "Dans cet article", "Cet article", "Découvrez", "Introduction").
+ * "Weak" = excerpt is null, empty, < 80 chars, OR matches generic openers per lang.
  *
  * Fix strategy: extract the first coherent sentence(s) from the markdown body
  * (skipping headings, code blocks, images, and markdown formatting) and trim
  * to 140-155 chars for SERP display.
  *
  * Usage:
- *   VITE_SUPABASE_URL=https://... SUPABASE_SERVICE_ROLE_KEY=sk-... node scripts/fix-fr-excerpts.mjs
- *   # Dry-run (no DB writes):
- *   DRY_RUN=1 VITE_SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... node scripts/fix-fr-excerpts.mjs
- *
- * Load from .env.local:
- *   export $(grep -v '^#' .env.local | xargs) && node scripts/fix-fr-excerpts.mjs
+ *   export $(grep -v '^#' .env.local | xargs)
+ *   DRY_RUN=1 node scripts/fix-fr-excerpts.mjs          # dry-run FR only (default)
+ *   LANG=all node scripts/fix-fr-excerpts.mjs            # all 5 languages
+ *   LANG=de node scripts/fix-fr-excerpts.mjs             # German only
+ *   LANG=fr TARGET_SLUG=mon-slug node scripts/fix-fr-excerpts.mjs  # single slug
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -25,6 +23,10 @@ const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const DRY_RUN = !!process.env.DRY_RUN;
 const TARGET = process.env.TARGET_SLUG; // optional: fix a single slug
+const LANG_ARG = process.env.LANG || 'fr'; // 'all' | 'fr' | 'de' | 'es' | 'it' | 'en'
+
+const ALL_LANGS = ['fr', 'de', 'es', 'it', 'en'];
+const LANGS_TO_PROCESS = LANG_ARG === 'all' ? ALL_LANGS : [LANG_ARG];
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error('❌  Missing env vars: VITE_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY');
@@ -34,26 +36,39 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ── Weak excerpt detection ────────────────────────────────────────────────────
-const WEAK_OPENERS = [
-  'dans cet article',
-  'cet article',
-  'introduction',
-  'découvrez',
-  'bienvenue',
-  'nous allons voir',
-  'ce guide',
-  'dans ce guide',
-  'sommaire',
-  'voici',
-  'dans ce tutoriel',
-  'ce tutoriel',
-  'dans cette page',
-];
+const WEAK_OPENERS_BY_LANG = {
+  fr: [
+    'dans cet article', 'cet article', 'introduction', 'découvrez', 'bienvenue',
+    'nous allons voir', 'ce guide', 'dans ce guide', 'sommaire', 'voici',
+    'dans ce tutoriel', 'ce tutoriel', 'dans cette page',
+  ],
+  de: [
+    'in diesem artikel', 'dieser artikel', 'einführung', 'entdecke', 'willkommen',
+    'wir werden sehen', 'dieser leitfaden', 'in diesem leitfaden', 'zusammenfassung',
+    'hier ist', 'in diesem tutorial', 'dieses tutorial', 'auf dieser seite',
+  ],
+  es: [
+    'en este artículo', 'este artículo', 'introducción', 'descubre', 'bienvenido',
+    'vamos a ver', 'esta guía', 'en esta guía', 'resumen', 'aquí',
+    'en este tutorial', 'este tutorial', 'en esta página',
+  ],
+  it: [
+    'in questo articolo', 'questo articolo', 'introduzione', 'scopri', 'benvenuto',
+    'vedremo', 'questa guida', 'in questa guida', 'sommario', 'ecco',
+    'in questo tutorial', 'questo tutorial', 'in questa pagina',
+  ],
+  en: [
+    'in this article', 'this article', 'introduction', 'discover', 'welcome',
+    'we will see', 'this guide', 'in this guide', 'summary', 'here is',
+    'in this tutorial', 'this tutorial', 'on this page',
+  ],
+};
 
-function isWeak(excerpt) {
+function isWeak(excerpt, lang) {
   if (!excerpt || excerpt.trim().length < 80) return true;
   const lower = excerpt.trim().toLowerCase();
-  return WEAK_OPENERS.some(op => lower.startsWith(op));
+  const openers = WEAK_OPENERS_BY_LANG[lang] ?? WEAK_OPENERS_BY_LANG['en'];
+  return openers.some(op => lower.startsWith(op));
 }
 
 // ── Extract excerpt from markdown content ─────────────────────────────────────
@@ -120,59 +135,68 @@ function extractExcerpt(content, title) {
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-const query = supabase
-  .from('blog_posts')
-  .select('id, slug, title, excerpt, content')
-  .eq('published', true)
-  .eq('lang', 'fr');
+console.log(`🌐  Languages: ${LANGS_TO_PROCESS.join(', ')}${DRY_RUN ? '  [DRY-RUN]' : ''}`);
 
-if (TARGET) query.eq('slug', TARGET);
+let totalFixed = 0;
+let totalSkipped = 0;
 
-const { data: posts, error } = await query.order('created_at', { ascending: false });
+for (const lang of LANGS_TO_PROCESS) {
+  let q = supabase
+    .from('blog_posts')
+    .select('id, slug, title, excerpt, content')
+    .eq('published', true)
+    .eq('lang', lang);
 
-if (error) { console.error('❌  Fetch error:', error.message); process.exit(1); }
+  if (TARGET) q = q.eq('slug', TARGET);
 
-console.log(`📋  Fetched ${posts.length} FR posts`);
+  const { data: posts, error } = await q.order('created_at', { ascending: false });
 
-const weak = posts.filter(p => isWeak(p.excerpt));
-console.log(`🔍  Weak excerpts: ${weak.length}`);
+  if (error) { console.error(`❌  [${lang}] Fetch error: ${error.message}`); continue; }
 
-if (weak.length === 0) {
-  console.log('✅  No weak excerpts found — nothing to do.');
-  process.exit(0);
-}
+  const weak = posts.filter(p => isWeak(p.excerpt, lang));
+  console.log(`\n[${lang.toUpperCase()}]  ${posts.length} posts fetched — ${weak.length} weak excerpts`);
 
-let fixed = 0;
-let skipped = 0;
-
-for (const post of weak) {
-  const newExcerpt = extractExcerpt(post.content, post.title);
-
-  if (!newExcerpt || newExcerpt.length < 40) {
-    console.log(`  ⚠️  ${post.slug} — could not extract a valid excerpt, skipping`);
-    skipped++;
+  if (weak.length === 0) {
+    console.log(`  ✅  All ${lang.toUpperCase()} excerpts are healthy.`);
     continue;
   }
 
-  console.log(`  ${DRY_RUN ? '🔵 [DRY]' : '✏️ '} ${post.slug}`);
-  console.log(`    OLD: ${(post.excerpt || '').slice(0, 80)}`);
-  console.log(`    NEW: ${newExcerpt}`);
+  let fixed = 0;
+  let skipped = 0;
 
-  if (!DRY_RUN) {
-    const { error: updateError } = await supabase
-      .from('blog_posts')
-      .update({ excerpt: newExcerpt })
-      .eq('id', post.id);
+  for (const post of weak) {
+    const newExcerpt = extractExcerpt(post.content, post.title);
 
-    if (updateError) {
-      console.error(`    ❌  Update failed: ${updateError.message}`);
+    if (!newExcerpt || newExcerpt.length < 40) {
+      console.log(`  ⚠️  ${post.slug} — could not extract a valid excerpt, skipping`);
       skipped++;
+      continue;
+    }
+
+    console.log(`  ${DRY_RUN ? '🔵 [DRY]' : '✏️ '} ${post.slug}`);
+    console.log(`    OLD: ${(post.excerpt || '').slice(0, 80)}`);
+    console.log(`    NEW: ${newExcerpt}`);
+
+    if (!DRY_RUN) {
+      const { error: updateError } = await supabase
+        .from('blog_posts')
+        .update({ excerpt: newExcerpt })
+        .eq('id', post.id);
+
+      if (updateError) {
+        console.error(`    ❌  Update failed: ${updateError.message}`);
+        skipped++;
+      } else {
+        fixed++;
+      }
     } else {
       fixed++;
     }
-  } else {
-    fixed++;
   }
+
+  console.log(`  → ${fixed} fixed, ${skipped} skipped`);
+  totalFixed += fixed;
+  totalSkipped += skipped;
 }
 
-console.log(`\n🎉  Done — ${fixed} fixed, ${skipped} skipped${DRY_RUN ? ' (dry-run, no DB writes)' : ''}`);
+console.log(`\n🎉  Total — ${totalFixed} fixed, ${totalSkipped} skipped${DRY_RUN ? ' (dry-run, no DB writes)' : ''}`);
