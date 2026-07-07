@@ -36,6 +36,7 @@ const BrandList            = lazy(() => import('./pages/BrandList'));
 const About                = lazy(() => import('./pages/About'));
 const AuthorPage           = lazy(() => import('./pages/AuthorPage'));
 const VirtualVsPhysical    = lazy(() => import('./pages/VirtualVsPhysicalPage'));
+const FeeIndexPage         = lazy(() => import('./pages/FeeIndexPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -218,6 +219,11 @@ export default function App() {
           {/* Author pages — /:lang/auteurs/:id, /de/autoren/:id, etc. */}
           {allSlugs('authors').map((slug) => (
             <Route key={`author-${slug}`} path={`${slug}/:id`} element={<AuthorPage />} />
+          ))}
+
+          {/* Fee Index — /:lang/frais-cartes-crypto, /en/crypto-card-fees, etc. */}
+          {allSlugs('feeIndex').map((slug) => (
+            <Route key={`fee-${slug}`} path={slug} element={<FeeIndexPage />} />
           ))}
         </Route>
 

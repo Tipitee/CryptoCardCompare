@@ -52,6 +52,16 @@ export default function Layout() {
   };
   const methodologyLabel = METHODOLOGY_LABELS[lang] ?? 'Methodology';
 
+  const FEE_INDEX_LABELS: Record<string, string> = {
+    fr: 'Index des frais',
+    de: 'Gebühren-Index',
+    es: 'Índice de tarifas',
+    it: 'Indice tariffe',
+    en: 'Fee Index',
+  };
+  const feeIndexSlug = ROUTE_TRANSLATIONS[lang]?.feeIndex ?? 'crypto-card-fees';
+  const feeIndexLabel = FEE_INDEX_LABELS[lang] ?? 'Fee Index';
+
   // Nav items — Home removed, logo acts as home link
   const navItems = [
     { key: 'compare',        label: t('nav_compare'),        icon: BarChart3 },
@@ -399,6 +409,12 @@ export default function Layout() {
                   <Link to="/risk-summary" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Shield className="w-3.5 h-3.5" />
                     {t('footer_risk')}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`/${lang}/${feeIndexSlug}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <BarChart3 className="w-3.5 h-3.5" />
+                    {feeIndexLabel}
                   </Link>
                 </li>
               </ul>

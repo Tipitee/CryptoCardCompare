@@ -26,6 +26,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     brands:         'marques',
     about:          'a-propos',
     authors:        'auteurs',
+    feeIndex:       'frais-cartes-crypto',
   },
   de: {
     compare:        'vergleich',
@@ -40,6 +41,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     brands:         'marken',
     about:          'ueber-uns',
     authors:        'autoren',
+    feeIndex:       'krypto-karten-gebuehren',
   },
   es: {
     compare:        'comparar',
@@ -54,6 +56,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     brands:         'marcas',
     about:          'sobre-nosotros',
     authors:        'autores',
+    feeIndex:       'tarifas-tarjetas-crypto',
   },
   it: {
     compare:        'confronto',
@@ -68,6 +71,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     brands:         'marche',
     about:          'chi-siamo',
     authors:        'autori',
+    feeIndex:       'tariffe-carte-crypto',
   },
   en: {
     compare:        'compare',
@@ -82,5 +86,6 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     brands:         'brands',
     about:          'about',
     authors:        'authors',
+    feeIndex:       'crypto-card-fees',
   },
 };
