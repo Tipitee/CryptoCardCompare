@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ExternalLink, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { CRYPTO_CONTENT } from '../data/cryptoContent';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -116,26 +117,7 @@ export default function CryptoPage() {
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-crypto]').forEach(el => el.remove());
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    langs.forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/cryptos/${sym}`);
-      el.setAttribute('data-hreflang-crypto', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/cryptos/${sym}`);
-    xd.setAttribute('data-hreflang-crypto', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-crypto]').forEach(el => el.remove()); };
-  }, [sym]);
+  useHreflang(l => `https://topcryptocards.eu/${l}/cryptos/${sym}`, [sym]);
 
   // ── Schema.org WebPage ───────────────────────────────────────────────────────
   useEffect(() => {

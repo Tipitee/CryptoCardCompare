@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import type { CryptoCard, QuizAnswers } from '../types/card';
 import { scoreCards } from '../utils/recommend';
 import SmartCardImage from '../components/SmartCardImage';
@@ -103,24 +104,7 @@ export default function Recommendation() {
   const recSeo = REC_SEO[lang] || REC_SEO.en;
   useSeoMeta({ title: recSeo.title, description: recSeo.desc, lang });
 
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
-    document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove());
-    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${SLUGS[l]}`);
-      el.setAttribute('data-hreflang-rec', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/recommandation`);
-    xd.setAttribute('data-hreflang-rec', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-rec]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${SLUGS[l as keyof typeof SLUGS] ?? 'recommendation'}`, []);
 
   // ── Schema.org WebPage (Quiz) ─────────────────────────────────────────────────
   useEffect(() => {

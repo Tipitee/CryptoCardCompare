@@ -20,6 +20,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import { fmtEUR, fmtPct } from '../utils/format';
 import { BRAND_CONFIG } from '../data/brandConfig';
 const YEAR = new Date().getFullYear();
@@ -163,24 +164,7 @@ export default function Home() {
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-home]').forEach(el => el.remove());
-    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}`);
-      el.setAttribute('data-hreflang-home', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr`);
-    xd.setAttribute('data-hreflang-home', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-home]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}`, []);
 
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';

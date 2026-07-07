@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
@@ -140,26 +141,7 @@ export default function Simulator() {
   const simSeo = SIM_SEO[lang] || SIM_SEO.en;
   useSeoMeta({ title: simSeo.title, description: simSeo.desc, lang });
 
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
-    document.querySelectorAll('link[data-hreflang-simulator]').forEach(el => el.remove());
-    Object.entries(SIM_SLUGS).forEach(([l, slug]) => {
-      const el = document.createElement('link');
-      el.setAttribute('rel', 'alternate');
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${slug}`);
-      el.setAttribute('data-hreflang-simulator', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.setAttribute('rel', 'alternate');
-    xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/simulateur`);
-    xd.setAttribute('data-hreflang-simulator', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-simulator]').forEach(el => el.remove()); };
-  }, [lang]);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${SIM_SLUGS[l as keyof typeof SIM_SLUGS] ?? 'simulator'}`, []);
 
   // ── Schema.org SoftwareApplication ───────────────────────────────────────────
   useEffect(() => {

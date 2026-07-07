@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Star, ExternalLink, CheckCircle, TrendingUp, ChevronRight } from 'lucide-react';
 import { CARD_REVIEWS } from '../data/cardReviews';
@@ -6,6 +6,7 @@ import { REVIEW_I18N } from '../data/cardReviewsI18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
@@ -161,25 +162,7 @@ export default function ReviewList() {
   useSeoMeta({ title: l.title, description: l.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-reviewlist]').forEach(el => el.remove());
-    const segs: Record<string, string> = { fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews' };
-    Object.entries(segs).forEach(([l, seg]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${seg}`);
-      el.setAttribute('data-hreflang-reviewlist', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/avis`);
-    xd.setAttribute('data-hreflang-reviewlist', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-reviewlist]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${{ fr: 'avis', de: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews' }[l as 'fr'|'de'|'es'|'it'|'en']}`, []);
 
   const sorted = [...CARD_REVIEWS].sort((a, b) => b.globalRating - a.globalRating);
 

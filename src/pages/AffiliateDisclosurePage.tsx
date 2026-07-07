@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHreflang } from '../hooks/useHreflang';
 import { Link, useParams } from 'react-router-dom';
 import { Coins, ExternalLink } from 'lucide-react';
 
@@ -220,18 +221,11 @@ export default function AffiliateDisclosurePage() {
   }, []);
 
   // Hreflang
-  React.useEffect(() => {
-    document.querySelectorAll('link[data-hreflang-aff]').forEach(el => el.remove());
-    const BASE = 'https://topcryptocards.eu';
-    Object.entries(SLUGS).forEach(([l, s]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.hreflang = l;
-      el.href = `${BASE}/${l}/${s}`;
-      el.setAttribute('data-hreflang-aff', 'true');
-      document.head.appendChild(el);
-    });
-    return () => { document.querySelectorAll('link[data-hreflang-aff]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(
+    Object.entries(SLUGS).map(([l, s]) => ({ lang: l, href: `https://topcryptocards.eu/${l}/${s}` })),
+    [],
+    { noXDefault: true },
+  );
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
 
@@ -284,22 +285,7 @@ export default function VirtualVsPhysicalPage() {
   useSeoMeta({ title: seo.title, description: seo.desc, lang });
 
   /* Hreflang */
-  useEffect(() => {
-    document.querySelectorAll('link[data-hreflang-vvp]').forEach(el => el.remove());
-    Object.entries(VVP_SLUGS).forEach(([l, slug]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.hreflang = l;
-      el.href = `${BASE}/${l}/${slug}`;
-      el.setAttribute('data-hreflang-vvp', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.hreflang = 'x-default';
-    xd.href = `${BASE}/fr/${VVP_SLUGS.fr}`;
-    xd.setAttribute('data-hreflang-vvp', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-vvp]').forEach(el => el.remove()); };
-  }, [lang]);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${VVP_SLUGS[l as keyof typeof VVP_SLUGS] ?? l}`, []);
 
   /* Schema.org */
   useEffect(() => {

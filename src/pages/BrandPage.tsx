@@ -5,6 +5,7 @@ import { fetchCardsByBrand, fetchRelatedPosts } from '../lib/supabase';
 import type { BlogPost } from '../types/blog';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useLanguage } from '../hooks/useLanguage';
+import { useHreflang } from '../hooks/useHreflang';
 import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
 import { getAffiliateLink } from '../utils/affiliateLink';
@@ -428,27 +429,7 @@ export default function BrandPage() {
   });
 
   // ── Hreflang ───────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!brandId) return;
-    document.querySelectorAll('link[data-hreflang-brand]').forEach(el => el.remove());
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    langs.forEach(l => {
-      const slug = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE_URL}/${l}/${slug}/${brandId}`);
-      el.setAttribute('data-hreflang-brand', 'true');
-      document.head.appendChild(el);
-    });
-    const xDefault = document.createElement('link');
-    xDefault.rel = 'alternate';
-    xDefault.setAttribute('hreflang', 'x-default');
-    xDefault.setAttribute('href', `${BASE_URL}/fr/${ROUTE_TRANSLATIONS.fr.brands}/${brandId}`);
-    xDefault.setAttribute('data-hreflang-brand', 'true');
-    document.head.appendChild(xDefault);
-    return () => { document.querySelectorAll('link[data-hreflang-brand]').forEach(el => el.remove()); };
-  }, [brandId]);
+  useHreflang(brandId ? l => `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands'}/${brandId}` : null, [brandId]);
 
   // ── Schema.org BreadcrumbList + FAQPage ───────────────────────────────────
   useEffect(() => {

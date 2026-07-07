@@ -19,6 +19,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
@@ -222,28 +223,10 @@ export default function CardDetail() {
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article', lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!card) return;
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-carddetail]').forEach(el => el.remove());
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    langs.forEach(l => {
-      const seg = CARD_SEGMENT[l] || 'cards';
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${seg}/${card.id}`);
-      el.setAttribute('data-hreflang-carddetail', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/${CARD_SEGMENT.fr}/${card.id}`);
-    xd.setAttribute('data-hreflang-carddetail', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-carddetail]').forEach(el => el.remove()); };
-  }, [card?.id, lang]);
+  useHreflang(
+    card ? l => `https://topcryptocards.eu/${l}/${CARD_SEGMENT[l as keyof typeof CARD_SEGMENT] || 'cards'}/${card.id}` : null,
+    [card?.id],
+  );
 
   // ── Schema.org FinancialProduct + AggregateRating ────────────────────────────
   useEffect(() => {

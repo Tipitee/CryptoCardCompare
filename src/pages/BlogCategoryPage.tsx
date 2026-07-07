@@ -7,6 +7,7 @@ import { estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES } from '../config/routes';
 
@@ -222,25 +223,10 @@ export default function BlogCategoryPage() {
   useSeoMeta({ title: metaTitle, description: metaDesc, lang });
 
   // Hreflang
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const tag = 'data-hreflang-blogcat';
-    document.querySelectorAll(`link[${tag}]`).forEach(el => el.remove());
-    const SLUGS: Record<string, string> = { fr: 'categorie', de: 'kategorie', es: 'categoria', it: 'categoria', en: 'category' };
-    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/blog/${SLUGS[l]}/${cat}`);
-      el.setAttribute(tag, 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/blog/categorie/${cat}`);
-    xd.setAttribute(tag, 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll(`link[${tag}]`).forEach(el => el.remove()); };
-  }, [lang, cat]);
+  useHreflang(
+    l => `https://topcryptocards.eu/${l}/blog/${BLOG_CAT_SLUG[l] ?? 'category'}/${cat}`,
+    [cat],
+  );
 
   // BreadcrumbList schema
   useEffect(() => {

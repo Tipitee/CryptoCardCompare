@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { ExternalLink, Heart, Trash2 } from 'lucide-react';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
+import { useHreflang } from '../hooks/useHreflang';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import SmartCardImage from '../components/SmartCardImage';
@@ -201,24 +202,7 @@ export default function Favorites() {
   // noindex: user-specific page (localStorage), crawlers see empty state
   useSeoMeta({ title: favSeo.title, description: favSeo.desc, lang, noindex: true });
 
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const SLUGS: Record<string, string> = { fr: 'favoris', de: 'favoriten', es: 'favoritos', it: 'preferiti', en: 'favorites' };
-    document.querySelectorAll('link[data-hreflang-favorites]').forEach(el => el.remove());
-    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${SLUGS[l]}`);
-      el.setAttribute('data-hreflang-favorites', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/favoris`);
-    xd.setAttribute('data-hreflang-favorites', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-favorites]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${SLUGS[l as keyof typeof SLUGS] ?? 'favorites'}`, []);
 
 
   const favCards = cards.filter((c) => favorites.includes(c.id));

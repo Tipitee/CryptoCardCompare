@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import {
   AlertTriangle,
@@ -131,25 +132,7 @@ export default function Compare() {
   useSeoMeta({ title: compareSeo.title, description: compareSeo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const RT = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
-    document.querySelectorAll('link[data-hreflang-compare]').forEach(el => el.remove());
-    Object.entries(RT).forEach(([l, seg]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${seg}`);
-      el.setAttribute('data-hreflang-compare', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/comparer`);
-    xd.setAttribute('data-hreflang-compare', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-compare]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => RT[l] ? `https://topcryptocards.eu/${l}/${RT[l]}` : null, []);
 
   // ── Schema.org WebApplication ─────────────────────────────────────────────────
   useEffect(() => {

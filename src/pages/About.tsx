@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { Shield, BarChart3, RefreshCw, Star, BookOpen } from 'lucide-react';
 
@@ -318,22 +319,7 @@ export default function About() {
   useSeoMeta({ title: seo.title, description: seo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    document.querySelectorAll('link[data-hreflang-about]').forEach(el => el.remove());
-    Object.entries(ABOUT_SLUGS).forEach(([l, slug]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate'; el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${slug}`);
-      el.setAttribute('data-hreflang-about', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/a-propos`);
-    xd.setAttribute('data-hreflang-about', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-about]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${ABOUT_SLUGS[l as keyof typeof ABOUT_SLUGS] ?? 'about'}`, []);
 
   // ── Schema.org AboutPage + Organization ──────────────────────────────────────
   useEffect(() => {

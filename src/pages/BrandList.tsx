@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
+import { useHreflang } from '../hooks/useHreflang';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useAppStore } from '../store/useAppStore';
 import SmartCardImage from '../components/SmartCardImage';
@@ -144,27 +145,7 @@ export default function BrandList() {
   }, [cards]);
 
   // Hreflang tags
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-brandlist]').forEach(el => el.remove());
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    langs.forEach(l => {
-      const slug = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${slug}`);
-      el.setAttribute('data-hreflang-brandlist', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/${ROUTE_TRANSLATIONS.fr.brands}`);
-    xd.setAttribute('data-hreflang-brandlist', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-brandlist]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands'}`, []);
 
   // Schema.org ItemList of brands
   useEffect(() => {

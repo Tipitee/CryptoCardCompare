@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import AutoLinker from '../components/AutoLinker';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -1254,30 +1255,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   });
 
   /* Hreflang */
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    const slugs = THEMATIC_SLUGS[theme];
-    if (!slugs) return;
-    document.querySelectorAll('link[data-hreflang-thematic]').forEach(el => el.remove());
-    langs.forEach(l => {
-      const slug = slugs[l];
-      if (!slug) return;
-      const el = document.createElement('link');
-      el.setAttribute('rel', 'alternate');
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${slug}`);
-      el.setAttribute('data-hreflang-thematic', 'true');
-      document.head.appendChild(el);
-    });
-    const xDefault = document.createElement('link');
-    xDefault.setAttribute('rel', 'alternate');
-    xDefault.setAttribute('hreflang', 'x-default');
-    xDefault.setAttribute('href', `${BASE}/fr/${slugs['fr']}`);
-    xDefault.setAttribute('data-hreflang-thematic', 'true');
-    document.head.appendChild(xDefault);
-    return () => { document.querySelectorAll('link[data-hreflang-thematic]').forEach(el => el.remove()); };
-  }, [theme, lang]);
+  useHreflang(
+    (() => { const slugs = THEMATIC_SLUGS[theme]; return slugs ? (l: string) => slugs[l] ? `https://topcryptocards.eu/${l}/${slugs[l]}` : null : null; })(),
+    [theme],
+  );
 
   /* Schema.org */
   useEffect(() => {

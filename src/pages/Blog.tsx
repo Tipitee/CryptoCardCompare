@@ -9,6 +9,7 @@ import { estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES } from '../config/routes';
 
@@ -109,24 +110,7 @@ export default function Blog() {
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-blog]').forEach(el => el.remove());
-    ['fr', 'de', 'es', 'it', 'en'].forEach(l => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/blog`);
-      el.setAttribute('data-hreflang-blog', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/blog`);
-    xd.setAttribute('data-hreflang-blog', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-blog]').forEach(el => el.remove()); };
-  }, []);
+  useHreflang(l => `https://topcryptocards.eu/${l}/blog`, []);
 
   useEffect(() => {
     setLoading(true);

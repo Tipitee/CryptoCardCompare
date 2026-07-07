@@ -8,6 +8,7 @@ import { renderMarkdown, estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import { authorJsonLd, AUTHORS } from '../data/authors';
@@ -266,29 +267,12 @@ export default function BlogPost() {
   }, [post, lang]);
 
   // ── Hreflang — uses topic_key variants for accurate cross-lang URLs ──────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-blogpost]').forEach(el => el.remove());
-    if (langVariants.length > 0) {
-      langVariants.forEach(({ lang: l, slug: s }) => {
-        const el = document.createElement('link');
-        el.rel = 'alternate';
-        el.setAttribute('hreflang', l);
-        el.setAttribute('href', `${BASE}/${l}/blog/${s}`);
-        el.setAttribute('data-hreflang-blogpost', 'true');
-        document.head.appendChild(el);
-      });
-      const frVariant = langVariants.find(v => v.lang === 'fr');
-      if (frVariant) {
-        const xd = document.createElement('link');
-        xd.rel = 'alternate'; xd.setAttribute('hreflang', 'x-default');
-        xd.setAttribute('href', `${BASE}/fr/blog/${frVariant.slug}`);
-        xd.setAttribute('data-hreflang-blogpost', 'true');
-        document.head.appendChild(xd);
-      }
-    }
-    return () => { document.querySelectorAll('link[data-hreflang-blogpost]').forEach(el => el.remove()); };
-  }, [langVariants]);
+  useHreflang(
+    langVariants.length > 0
+      ? langVariants.map(({ lang: l, slug: s }) => ({ lang: l, href: `https://topcryptocards.eu/${l}/blog/${s}` }))
+      : null,
+    [langVariants],
+  );
 
   if (loading) {
     return (

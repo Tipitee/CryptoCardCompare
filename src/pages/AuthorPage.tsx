@@ -6,6 +6,7 @@ import { fetchPublishedPosts } from '../lib/supabase';
 import type { BlogPost } from '../types/blog';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { estimateReadTime } from '../utils/markdown';
 import Breadcrumb from '../components/Breadcrumb';
@@ -69,26 +70,11 @@ export default function AuthorPage() {
   });
 
   // ── Hreflang ────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!author) return;
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-author]').forEach(el => el.remove());
-    Object.entries(author.urls).forEach(([l, path]) => {
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.hreflang = l;
-      el.href = `${BASE}${path}`;
-      el.setAttribute('data-hreflang-author', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.hreflang = 'x-default';
-    xd.href = `${BASE}${author.urls.en}`;
-    xd.setAttribute('data-hreflang-author', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-author]').forEach(el => el.remove()); };
-  }, [author]);
+  useHreflang(
+    author ? Object.entries(author.urls).map(([l, path]) => ({ lang: l, href: `https://topcryptocards.eu${path}` })) : null,
+    [author],
+    { xDefault: author ? `https://topcryptocards.eu${author.urls.en}` : undefined },
+  );
 
   // ── Schema.org Person ────────────────────────────────────────────────────────
   useEffect(() => {

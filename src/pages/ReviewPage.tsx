@@ -6,6 +6,7 @@ import { getReviewI18n } from '../data/cardReviewsI18n';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
@@ -373,28 +374,7 @@ export default function ReviewPage() {
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!review || !slug) return;
-    const BASE = 'https://topcryptocards.eu';
-    document.querySelectorAll('link[data-hreflang-review]').forEach(el => el.remove());
-    const langs = ['fr', 'de', 'es', 'it', 'en'];
-    langs.forEach(l => {
-      const seg = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
-      const el = document.createElement('link');
-      el.rel = 'alternate';
-      el.setAttribute('hreflang', l);
-      el.setAttribute('href', `${BASE}/${l}/${seg}/${slug}`);
-      el.setAttribute('data-hreflang-review', 'true');
-      document.head.appendChild(el);
-    });
-    const xd = document.createElement('link');
-    xd.rel = 'alternate';
-    xd.setAttribute('hreflang', 'x-default');
-    xd.setAttribute('href', `${BASE}/fr/${ROUTE_TRANSLATIONS.fr.reviews}/${slug}`);
-    xd.setAttribute('data-hreflang-review', 'true');
-    document.head.appendChild(xd);
-    return () => { document.querySelectorAll('link[data-hreflang-review]').forEach(el => el.remove()); };
-  }, [review, slug, lang]);
+  useHreflang(l => `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews'}/${slug}`, [slug]);
 
   if (!review) {
     return (
