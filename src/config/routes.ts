@@ -103,6 +103,20 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     it: 'carta-crypto-fisica',
     en: 'physical-crypto-card',
   },
+  belgium: {
+    fr: 'carte-crypto-belgique',
+    de: 'krypto-karte-belgien',
+    es: 'tarjeta-crypto-belgica',
+    it: 'carta-crypto-belgio',
+    en: 'crypto-card-belgium',
+  },
+  austria: {
+    fr: 'carte-crypto-autriche',
+    de: 'krypto-karte-oesterreich',
+    es: 'tarjeta-crypto-austria',
+    it: 'carta-crypto-austria',
+    en: 'crypto-card-austria',
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -124,14 +138,16 @@ export interface ThematicNavGroup {
   travel: string;
   rewards: string;
   physical: string;
+  belgium: string;
+  austria: string;
 }
 
 export const THEMATIC_NAV_LABELS: Record<Language, ThematicNavGroup> = {
-  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies', france: 'Cartes disponibles en France', virtual: 'Cartes virtuelles', beginner: 'Cartes pour débutants', noKyc: 'Cartes sans KYC', year2026: 'Meilleures cartes 2026', travel: 'Cartes voyage', rewards: 'Cartes avec récompenses', physical: 'Cartes physiques' },
-  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide', france: 'Karten in Deutschland', virtual: 'Virtuelle Karten', beginner: 'Karten für Einsteiger', noKyc: 'Karten ohne KYC', year2026: 'Beste Karten 2026', travel: 'Reise-Karten', rewards: 'Karten mit Prämien', physical: 'Physische Karten' },
-  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas', france: 'Tarjetas en España', virtual: 'Tarjetas virtuales', beginner: 'Tarjetas para principiantes', noKyc: 'Tarjetas sin KYC', year2026: 'Mejores tarjetas 2026', travel: 'Tarjetas de viaje', rewards: 'Tarjetas con recompensas', physical: 'Tarjetas físicas' },
-  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute', france: 'Carte in Italia', virtual: 'Carte virtuali', beginner: 'Carte per principianti', noKyc: 'Carte senza KYC', year2026: 'Migliori carte 2026', travel: 'Carte da viaggio', rewards: 'Carte con premi', physical: 'Carte fisiche' },
-  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide', france: 'Cards available in Europe', virtual: 'Virtual cards', beginner: 'Cards for beginners', noKyc: 'No-KYC cards', year2026: 'Best cards in 2026', travel: 'Travel cards', rewards: 'Rewards cards', physical: 'Physical cards' },
+  fr: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies', france: 'Cartes disponibles en France', virtual: 'Cartes virtuelles', beginner: 'Cartes pour débutants', noKyc: 'Cartes sans KYC', year2026: 'Meilleures cartes 2026', travel: 'Cartes voyage', rewards: 'Cartes avec récompenses', physical: 'Cartes physiques', belgium: 'Cartes crypto en Belgique', austria: 'Cartes crypto en Autriche' },
+  de: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide', france: 'Karten in Deutschland', virtual: 'Virtuelle Karten', beginner: 'Karten für Einsteiger', noKyc: 'Karten ohne KYC', year2026: 'Beste Karten 2026', travel: 'Reise-Karten', rewards: 'Karten mit Prämien', physical: 'Physische Karten', belgium: 'Krypto-Karten in Belgien', austria: 'Krypto-Karten in Österreich' },
+  es: { title: 'Guías', best: 'Mejores tarjetas crypto', cashback: 'Tarjetas con cashback', noFees: 'Tarjetas sin comisiones', noStaking: 'Tarjetas sin staking', cryptos: 'Guía Criptomonedas', france: 'Tarjetas en España', virtual: 'Tarjetas virtuales', beginner: 'Tarjetas para principiantes', noKyc: 'Tarjetas sin KYC', year2026: 'Mejores tarjetas 2026', travel: 'Tarjetas de viaje', rewards: 'Tarjetas con recompensas', physical: 'Tarjetas físicas', belgium: 'Tarjetas crypto en Bélgica', austria: 'Tarjetas crypto en Austria' },
+  it: { title: 'Guide', best: 'Migliori carte crypto', cashback: 'Carte con cashback', noFees: 'Carte senza costi', noStaking: 'Carte senza staking', cryptos: 'Guida Criptovalute', france: 'Carte in Italia', virtual: 'Carte virtuali', beginner: 'Carte per principianti', noKyc: 'Carte senza KYC', year2026: 'Migliori carte 2026', travel: 'Carte da viaggio', rewards: 'Carte con premi', physical: 'Carte fisiche', belgium: 'Carte crypto in Belgio', austria: 'Carte crypto in Austria' },
+  en: { title: 'Guides', best: 'Best crypto cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking cards', cryptos: 'Cryptocurrency Guide', france: 'Cards available in Europe', virtual: 'Virtual cards', beginner: 'Cards for beginners', noKyc: 'No-KYC cards', year2026: 'Best cards in 2026', travel: 'Travel cards', rewards: 'Rewards cards', physical: 'Physical cards', belgium: 'Crypto cards in Belgium', austria: 'Crypto cards in Austria' },
 };
 
 // ---------------------------------------------------------------------------

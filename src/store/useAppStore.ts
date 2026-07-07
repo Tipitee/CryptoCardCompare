@@ -12,6 +12,8 @@ interface AppState {
   cardsLoading: boolean;
   cardsError: string | null;
   currentMarket: string | undefined;
+  /** Country selected by the user via CountrySwitcher (persisted in localStorage). */
+  selectedMarket: string | undefined;
   favorites: string[];
   compareSelection: string[];
   quizAnswers: QuizAnswers;
@@ -26,6 +28,7 @@ interface AppState {
   resetQuiz: () => void;
   setSpending: (patch: Partial<SimulatorSpending>) => void;
   setStakingBudget: (v: number) => void;
+  setSelectedMarket: (market: string | undefined) => void;
 }
 
 const DEFAULT_SPENDING: SimulatorSpending = {
@@ -73,6 +76,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   cardsLoading: false,
   cardsError: null,
   currentMarket: undefined,
+  selectedMarket: undefined,
   favorites: [],
   compareSelection: [],
   quizAnswers: loadLocalQuiz(),
@@ -154,5 +158,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   setStakingBudget: (v) => {
     set({ stakingBudget: v });
     localStorage.setItem('ccc_staking_budget', String(v));
+  },
+
+  setSelectedMarket: (market) => {
+    set({ selectedMarket: market, cards: [], currentMarket: undefined });
   },
 }));

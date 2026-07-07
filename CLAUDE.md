@@ -124,6 +124,5 @@ One-off migration/generation scripts. **Not part of the app bundle.**
 
 ---
 
-## Pending tasks (as of June 2026)
-- `#134` — Submit new URLs in Google Search Console
-- `#135` — Blog articles for orphan themes (virtual, no-kyc, beginner, 2026) — 4 themes × 5 langs
+## Pending tasks (as of July 2026)
+Aucune tâche en attente. Le backlog est soldé.

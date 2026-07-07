@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
-import LanguageSwitcher from './LanguageSwitcher';
+import CountrySwitcher from './CountrySwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
@@ -15,6 +15,7 @@ export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
   const loadFavorites = useAppStore((s) => s.loadFavorites);
   const favorites = useAppStore((s) => s.favorites);
+  const selectedMarket = useAppStore((s) => s.selectedMarket);
   const [menuOpen, setMenuOpen] = useState(false);
   const [guidesOpen, setGuidesOpen] = useState(false);
   const guidesRef = useRef<HTMLDivElement>(null);
@@ -93,9 +94,10 @@ export default function Layout() {
   ];
 
   useEffect(() => {
-    loadCards(lang);
+    // Use selectedMarket when set (e.g. Belgique, Österreich); fall back to lang-based market
+    loadCards(selectedMarket ?? lang);
     loadFavorites();
-  }, [loadCards, loadFavorites, lang]);
+  }, [loadCards, loadFavorites, lang, selectedMarket]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -211,7 +213,7 @@ export default function Layout() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2 shrink-0">
-            <LanguageSwitcher />
+            <CountrySwitcher />
             <button
               className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
               onClick={() => setMenuOpen(true)}
@@ -298,7 +300,7 @@ export default function Layout() {
 
             {/* Panel footer */}
             <div className="shrink-0 px-4 py-4 border-t border-bg-border">
-              <LanguageSwitcher />
+              <CountrySwitcher />
             </div>
           </nav>
         </div>
