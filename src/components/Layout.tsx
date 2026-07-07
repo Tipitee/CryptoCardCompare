@@ -26,6 +26,14 @@ export default function Layout() {
   const labels = THEMATIC_NAV_LABELS[lang] ?? THEMATIC_NAV_LABELS.en;
   const reviewSlug = ROUTE_TRANSLATIONS[lang]?.reviews ?? 'reviews';
   const reviewLabel = REVIEW_NAV_LABELS[lang] ?? REVIEW_NAV_LABELS.en;
+  const AFFILIATE_SLUGS: Record<string, string> = {
+    fr: 'divulgation-affilies',
+    de: 'affiliate-offenlegung',
+    es: 'divulgacion-afiliados',
+    it: 'divulgazione-affiliati',
+    en: 'affiliate-disclosure',
+  };
+  const affiliateSlug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 
   // Nav items — Home removed, logo acts as home link
   const navItems = [
@@ -359,7 +367,7 @@ export default function Layout() {
                   </NavLink>
                 </li>
                 <li>
-                  <Link to={`/${lang}/affiliate-disclosure`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                  <Link to={`/${lang}/${affiliateSlug}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" />
                     {t('footer_affiliate')}
                   </Link>
@@ -383,7 +391,7 @@ export default function Layout() {
               <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>
               <Link to="/datenschutz" className="hover:text-slate-300 transition-colors">Datenschutz</Link>
               <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
-              <Link to={`/${lang}/affiliate-disclosure`} className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
+              <Link to={`/${lang}/${affiliateSlug}`} className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
               <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">{t('footer_risk')}</Link>
             </div>
             <span>{t('footer_tagline')}</span>
