@@ -89,6 +89,8 @@ export default function Layout() {
     { slug: THEMATIC_ROUTES['2026'][lang],         label: labels.year2026 },
     { slug: THEMATIC_ROUTES.travel[lang],          label: labels.travel },
     { slug: THEMATIC_ROUTES.rewards[lang],         label: labels.rewards },
+    { slug: THEMATIC_ROUTES.belgium[lang],         label: labels.belgium },
+    { slug: THEMATIC_ROUTES.austria[lang],         label: labels.austria },
     { slug: brandsSlug,                            label: brandsLabel[lang] ?? 'Card brands' },
     { slug: 'cryptos',                             label: labels.cryptos },
   ];
