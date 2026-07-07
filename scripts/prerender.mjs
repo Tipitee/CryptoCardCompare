@@ -115,10 +115,14 @@ function shouldNoindex(path) {
 // ── Render one path ────────────────────────────────────────────────────────
 async function renderPath(page, path) {
   await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
-  // Wait until the app injected its real title (differs from the shell title)
+  // Wait until React has replaced the shell title with the real localised one.
+  // The shell title is the hardcoded English fallback in index.html — we must
+  // wait until it changes, otherwise we capture before useEffect fires.
+  const SHELL_TITLE = 'TopCryptoCards — Compare Crypto Cards in Europe';
   await page.waitForFunction(
-    () => document.querySelector('h1') && document.title.length > 0,
-    { timeout: 15000 }
+    (shellTitle) => document.querySelector('h1') && document.title !== shellTitle,
+    { timeout: 15000 },
+    SHELL_TITLE
   ).catch(() => console.warn(`! slow render (kept anyway): ${path}`));
 
   let html = await page.evaluate(() => '<!DOCTYPE html>' + document.documentElement.outerHTML);
