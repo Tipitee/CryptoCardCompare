@@ -21,6 +21,7 @@ const Datenschutz          = lazy(() => import('./pages/Datenschutz'));
 const Privacy              = lazy(() => import('./pages/Privacy'));
 const AffiliateDisclosurePage = lazy(() => import('./pages/AffiliateDisclosurePage'));
 const MethodologyPage      = lazy(() => import('./pages/MethodologyPage'));
+const BlogCategoryPage     = lazy(() => import('./pages/BlogCategoryPage'));
 const RiskSummary          = lazy(() => import('./pages/RiskSummary'));
 const CardDetail           = lazy(() => import('./pages/CardDetail'));
 const ThematicPage         = lazy(() => import('./pages/ThematicPage'));
@@ -158,6 +159,12 @@ export default function App() {
           {/* Blog */}
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:slug" element={<BlogPost />} />
+
+          {/* Blog category hubs — /:lang/blog/{categorie|kategorie|categoria|category}/:category */}
+          <Route path="blog/categorie/:category"  element={<BlogCategoryPage />} />
+          <Route path="blog/kategorie/:category"  element={<BlogCategoryPage />} />
+          <Route path="blog/categoria/:category"  element={<BlogCategoryPage />} />
+          <Route path="blog/category/:category"   element={<BlogCategoryPage />} />
 
           {/* Card detail pages */}
           {allSlugs('cards').map((slug) => (

@@ -640,4 +640,158 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/virtual-vs-physical-crypto-card"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-virtuelle-vs-physique"/>
   </url>
+  <!-- Blog category hub pages (3 cats × 5 langs = 15 URLs) -->
+  <!-- card -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/blog/categorie/card</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/card"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/blog/kategorie/card</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/card"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/blog/categoria/card</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/card"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/blog/categoria/card</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/card"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/blog/category/card</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/card"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/card"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/card"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/card"/>
+  </url>
+  <!-- crypto -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/blog/categorie/crypto</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/crypto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/blog/kategorie/crypto</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/crypto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/blog/categoria/crypto</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/crypto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/blog/categoria/crypto</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/crypto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/blog/category/crypto</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/crypto"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/crypto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/crypto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/crypto"/>
+  </url>
+  <!-- guide -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/blog/categorie/guide</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/blog/kategorie/guide</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/blog/categoria/guide</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/blog/categoria/guide</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/blog/category/guide</loc>
+    <lastmod>2026-07-07</lastmod><changefreq>weekly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/blog/kategorie/guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/blog/categoria/guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/en/blog/category/guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/blog/categorie/guide"/>
+  </url>
 </urlset>

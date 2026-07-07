@@ -7,6 +7,7 @@ export interface BlogPost {
   content: string;
   image_hero: string | null;
   topic_key?: string | null;
+  category?: string | null;
   tags: string[];
   meta_title: string;
   meta_description: string;

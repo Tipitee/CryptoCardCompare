@@ -303,6 +303,30 @@ export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPo
   return result;
 }
 
+/** Fetch published posts filtered by category (card / crypto / guide). */
+export async function fetchPostsByCategory(lang: string, category: string): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('published', true)
+    .eq('lang', lang)
+    .eq('category', category)
+    .order('created_at', { ascending: false });
+  if (error) throw error;
+  // Fallback to French if no articles in requested language
+  if ((data ?? []).length === 0 && lang !== 'fr') {
+    const { data: frData } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('published', true)
+      .eq('lang', 'fr')
+      .eq('category', category)
+      .order('created_at', { ascending: false });
+    return backfillHeroImages((frData ?? []) as BlogPost[]);
+  }
+  return backfillHeroImages((data ?? []) as BlogPost[]);
+}
+
 /** Fetch all language variants of a post (for hreflang tags). */
 export async function fetchPostVariants(topicKey: string): Promise<{ lang: string; slug: string }[]> {
   if (!topicKey) return [];

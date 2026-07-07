@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Calendar, Clock, Search } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Layers, Search } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
+import { BLOG_CAT_SLUG } from './BlogCategoryPage';
 import { fetchPublishedPosts } from '../lib/supabase';
 import { estimateReadTime } from '../utils/markdown';
 import { useLanguage } from '../hooks/useLanguage';
@@ -324,10 +325,35 @@ export default function Blog() {
       {/* Bloc éditorial — thin content fix + thematic links */}
       {(() => {
         const ed = BLOG_EDITORIAL[lang] ?? BLOG_EDITORIAL.en;
+        const catSlug = BLOG_CAT_SLUG[lang] ?? 'category';
+        const catLinks: { key: string; emoji: string; label: Record<string, string> }[] = [
+          { key: 'card',   emoji: '💳', label: { fr: 'Cartes Crypto', de: 'Krypto-Karten', es: 'Tarjetas Crypto', it: 'Carte Crypto', en: 'Crypto Cards' } },
+          { key: 'crypto', emoji: '🪙', label: { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies' } },
+          { key: 'guide',  emoji: '📖', label: { fr: 'Guides & Tutoriels', de: 'Guides & Anleitungen', es: 'Guías & Tutoriales', it: 'Guide & Tutorial', en: 'Guides & Tutorials' } },
+        ];
+        const browseLabel: Record<string, string> = {
+          fr: 'Parcourir par catégorie', de: 'Nach Kategorie durchsuchen',
+          es: 'Explorar por categoría', it: 'Sfoglia per categoria', en: 'Browse by category',
+        };
         return (
           <div className="mt-16 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
+
+            {/* Category hubs */}
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+              <Layers className="w-3.5 h-3.5 inline mr-1.5" />{browseLabel[lang] ?? browseLabel.en}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {catLinks.map(({ key, emoji, label }) => (
+                <Link key={key} to={`/${lang}/blog/${catSlug}/${key}`}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-cyan-accent/20 bg-cyan-accent/5 text-sm text-cyan-accent hover:bg-cyan-accent/15 hover:border-cyan-accent/50 transition-all">
+                  <span aria-hidden="true">{emoji}</span>{label[lang] ?? label.en}
+                </Link>
+              ))}
+            </div>
+
+            {/* Thematic links */}
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
