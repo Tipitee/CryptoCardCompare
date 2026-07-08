@@ -584,8 +584,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "securite": "OKX is regulated in multiple jurisdictions and holds European licenses. The platform uses cold storage for 95% of funds and offers insurance coverage for custodied assets. The card includes 2FA, real-time notifications, and instant blocking.",
       "experience": "User experience in the OKX app is generally positive with a modern interface. The card is compatible with **Apple Pay** and **Google Pay**. Support is available primarily in English."
     },
-    "metaTitle": "OKX Card Review 2026 — Full Test, Cashback & Fees",
-    "metaDescription": "OKX Card review 2026: up to 3% cashback, supports 30+ cryptos, zero annual fees. Full test with pros, cons and verdict."
+    "metaTitle": "OKX Card Review 2026 — Cashback, Fees & Verdict | TopCryptoCards",
+    "metaDescription": "OKX Card review 2026: 1–3% cashback in OKB, 30+ cryptos, zero annual fees. Is it worth it? Independent verdict, pros, cons and full test ✓"
   },
   "coinbase-card__de": {
     "badge": "Kein Staking",

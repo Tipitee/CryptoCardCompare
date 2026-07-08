@@ -214,11 +214,11 @@ export default function CardDetail() {
   const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review' };
   const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free' };
   const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
-    fr: (name, _issuer, cb, fees) => `${name} ${year} : cashback ${cb}%, frais ${fees === 0 ? FREE_LABEL.fr : fees + ' €/an'}. Avantages, inconvénients et notre verdict. Comparateur gratuit ✓`,
-    de: (name, _issuer, cb, fees) => `${name} ${year}: Cashback ${cb}%, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'} Jahresgebühr. Vor- und Nachteile, unser Fazit. Kostenloser Vergleich ✓`,
-    es: (name, _issuer, cb, fees) => `${name} ${year}: cashback ${cb}%, cuota ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}. Ventajas, inconvenientes y veredicto. Comparativa gratuita ✓`,
-    it: (name, _issuer, cb, fees) => `${name} ${year}: cashback ${cb}%, commissioni ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}. Pro, contro e verdetto. Confronto gratuito ✓`,
-    en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb}% cashback, ${fees === 0 ? FREE_LABEL.en : fees + ' €/year'} annual fee. Pros, cons and our verdict. Free comparison ✓`,
+    fr: (name, _issuer, cb, fees) => `${name} ${year} : ${cb > 0 ? `${cb}% de cashback` : 'sans cashback'}, ${fees === 0 ? '0€/an' : fees + ' €/an'}. Avis complet, test indépendant, avantages et limites. Comparateur gratuit ✓`,
+    de: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% Cashback` : 'kein Cashback'}, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'}. Vollständige Bewertung, Vor- und Nachteile, unabhängiges Fazit ✓`,
+    es: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'sin cashback'}, ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}. Análisis completo, ventajas, inconvenientes y veredicto independiente ✓`,
+    it: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'senza cashback'}, ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}. Recensione completa, pro, contro e verdetto indipendente ✓`,
+    en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review — pros, cons, our verdict. Independent comparison ✓`,
   };
   const seoTitle = card
     ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[lang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
