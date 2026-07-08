@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHreflang } from '../hooks/useHreflang';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 import { Link, useParams } from 'react-router-dom';
 import { Coins, ExternalLink } from 'lucide-react';
 
@@ -205,6 +206,29 @@ const CONTENT: Record<Lang, Content> = {
   },
 };
 
+const SEO_META: Record<ContentLang, { title: string; description: string }> = {
+  fr: {
+    title: "Divulgation d'affiliation | TopCryptoCards",
+    description: "TopCryptoCards peut percevoir des commissions sur certains liens. Nos classements restent indépendants — aucune carte n'est favorisée en échange d'une commission.",
+  },
+  de: {
+    title: 'Affiliate-Offenlegung | TopCryptoCards',
+    description: 'TopCryptoCards verdient Affiliate-Provisionen auf einigen Links. Unsere Rankings sind unabhängig — keine Karte wird aufgrund einer Provision bevorzugt.',
+  },
+  es: {
+    title: 'Divulgación de afiliados | TopCryptoCards',
+    description: 'TopCryptoCards puede ganar comisiones en algunos enlaces. Nuestros rankings son independientes — ninguna tarjeta recibe un trato preferente por comisiones.',
+  },
+  it: {
+    title: 'Divulgazione affiliati | TopCryptoCards',
+    description: 'TopCryptoCards può guadagnare commissioni su alcuni link. Le classifiche restano indipendenti — nessuna carta è favorita in cambio di una commissione.',
+  },
+  en: {
+    title: 'Affiliate Disclosure | TopCryptoCards',
+    description: 'TopCryptoCards may earn commissions on some links. Our rankings remain independent — no card is favoured because of a commission.',
+  },
+};
+
 const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privacy: string; affiliate: string; risk: string }> = {
   fr: { copyright: 'Pas de conseil financier.', impressum: 'Mentions légales', privacy: 'Confidentialité', affiliate: 'Liens affiliés', risk: 'Avertissement risques' },
   be: { copyright: 'Pas de conseil financier.', impressum: 'Mentions légales', privacy: 'Confidentialité', affiliate: 'Liens affiliés', risk: 'Avertissement risques' },
@@ -221,15 +245,9 @@ export default function AffiliateDisclosurePage() {
   const c = CONTENT[cl];
   const f = FOOTER_LABELS[lang];
   const slug = SLUGS[lang];
+  const meta = SEO_META[cl];
 
-  React.useEffect(() => {
-    const el = document.createElement('meta');
-    el.name = 'robots';
-    el.content = 'noindex, nofollow';
-    el.setAttribute('data-legal-noindex', 'true');
-    document.head.appendChild(el);
-    return () => { document.querySelector('meta[data-legal-noindex]')?.remove(); };
-  }, []);
+  useSeoMeta({ title: meta.title, description: meta.description, lang });
 
   // Hreflang
   useHreflang(
