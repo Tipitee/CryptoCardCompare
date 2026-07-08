@@ -16,7 +16,7 @@ src/
 ├── components/       # Shared UI components (all actively used)
 ├── data/             # Static content — crypto pages, card reviews, A/B comparisons
 ├── hooks/            # useLanguage, useLocalizedRoute, useSeoMeta
-├── i18n/             # Translation system (5 langs: fr/de/es/it/en)
+├── i18n/             # Translation system (7 langs: fr/be/de/at/es/it/en)
 │   └── locales/      # JSON files per language: common.json, cards.json, blog.json
 ├── lib/              # supabase.ts client
 ├── pages/            # One file per route (see routing below)
@@ -36,7 +36,9 @@ scripts/              # One-off Node.js scripts used to seed/migrate Supabase da
 
 ## Routing
 
-The app is fully multilingual. Every user-facing route is prefixed with `/:lang` (fr/de/es/it/en).
+The app is fully multilingual. Every user-facing route is prefixed with `/:lang` (fr/be/de/at/es/it/en).
+
+**Market locales:** `be` = Belgium (French content, Belgian market filter); `at` = Austria (German content, Austrian market filter). These are NOT BCP 47 language codes — `useHreflang` maps them to `fr-BE` / `de-AT` via `HREFLANG_BCP47`. The `en` market = United Kingdom 🇬🇧 (maps to `en-GB`).
 
 **Pattern:** `/:lang/<localized-slug>` → component with `theme` or other prop
 
@@ -63,6 +65,7 @@ All routes are defined in `App.tsx`. The verbosity is intentional — each local
 | `CryptoPage.tsx` | Static crypto guide pages (BTC, ETH, SOL…) |
 | `ReviewPage.tsx` | Card review pages |
 | `AdminHeroImages.tsx` | Admin: generate/propagate blog hero images |
+| `ContactPage.tsx` | Contact page × 7 langs (E-E-A-T) |
 
 ---
 
@@ -79,6 +82,17 @@ All routes are defined in `App.tsx`. The verbosity is intentional — each local
 
 ### topic_key (blog_posts)
 Groups language variants of the same article. When a hero image is generated for a FR article, the Edge Function propagates it to all rows sharing the same `topic_key`. Assigned via SQL regex (see `scripts/add-topic-key.sql`).
+
+---
+
+## Key components
+
+| Component | Description |
+|-----------|-------------|
+| `IndependentNotice.tsx` | E-E-A-T trust signal: "Comparatif indépendant — commissions d'affiliation." Used on Home, Compare, ComparisonPage. Links to affiliate disclosure page. |
+| `AffiliateButton.tsx` | `rel="sponsored"` wrapper for affiliate CTA buttons |
+| `AutoLinker.tsx` | Auto-links brand names + crypto tokens in text content |
+| `CountrySwitcher.tsx` | Country+language selector (replaces old LanguageSwitcher) — switches URL lang prefix and market filter |
 
 ---
 
@@ -124,5 +138,25 @@ One-off migration/generation scripts. **Not part of the app bundle.**
 
 ---
 
+## SEO & E-E-A-T work done (July 2026)
+
+- BCP 47 hreflang fixed: `be`→`fr-BE`, `at`→`de-AT`, `en`→`en-GB` (in `useHreflang.ts`)
+- Home/Compare/ComparisonPage: `IndependentNotice` affiliate disclaimer added
+- ContactPage × 7 langs + footer link + sitemap entries
+- Security headers in `netlify.toml` (HSTS 2y, X-Frame-Options, Referrer-Policy, Permissions-Policy)
+- LCP preload: `<link rel="preload" as="image" href="/logo-small.png">` in index.html
+- GTM preconnect in index.html
+- Logo width/height attributes set in Layout.tsx
+- `public/llms.txt` created for AI/GEO readiness
+- `useSeoMeta` fallback changed to `en_GB` (not `en_US`)
+
 ## Pending tasks (as of July 2026)
-Aucune tâche en attente. Le backlog est soldé.
+
+**User-side (terminal):**
+- Run `scripts/fix-uk-markets.sql` in Supabase SQL Editor (removes Trade Republic, WhiteBIT, OKX, Bit2Me from 'en' UK market)
+- Commit + push pending changes:
+  ```bash
+  rm /Users/thomaspetit/CryptoCardCompare/.git/index.lock  # if exists
+  git add -A && git commit -m "SEO fixes: BCP47 hreflang, title, About be/at, footer contact"
+  git push
+  ```

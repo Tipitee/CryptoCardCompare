@@ -449,6 +449,9 @@ export default function Layout() {
               <Link to={`/${lang}/${affiliateSlug}`} className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
               <Link to={`/${lang}/${methodologySlug}`} className="hover:text-slate-300 transition-colors">{methodologyLabel}</Link>
               <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">{t('footer_risk')}</Link>
+              <Link to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.contact ?? 'contact'}`} className="hover:text-slate-300 transition-colors">
+                {({ fr: 'Contact', be: 'Contact', de: 'Kontakt', at: 'Kontakt', es: 'Contacto', it: 'Contatti', en: 'Contact' } as Record<string, string>)[lang] ?? 'Contact'}
+              </Link>
             </div>
             <span>{t('footer_tagline')}</span>
           </div>

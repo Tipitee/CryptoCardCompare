@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { Shield, BarChart3, RefreshCw, Star, BookOpen } from 'lucide-react';
 
 const BASE = 'https://topcryptocards.eu';
 
 const ABOUT_SLUGS: Record<string, string> = {
-  fr: 'a-propos', de: 'ueber-uns', es: 'sobre-nosotros', it: 'chi-siamo', en: 'about',
+  fr: 'a-propos', be: 'a-propos', de: 'ueber-uns', at: 'ueber-uns',
+  es: 'sobre-nosotros', it: 'chi-siamo', en: 'about',
 };
 
 const ABOUT_SEO: Record<string, { title: string; desc: string }> = {
@@ -312,8 +313,8 @@ We cover more than 20 cards issued by regulated providers in Europe: Crypto.com,
 
 export default function About() {
   const lang = useLanguage();
-  const c = ABOUT_CONTENT[lang] ?? ABOUT_CONTENT.en;
-  const seo = ABOUT_SEO[lang] ?? ABOUT_SEO.en;
+  const c = ABOUT_CONTENT[displayLang(lang)] ?? ABOUT_CONTENT.en;
+  const seo = ABOUT_SEO[displayLang(lang)] ?? ABOUT_SEO.en;
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
 
   useSeoMeta({ title: seo.title, description: seo.desc, lang });
