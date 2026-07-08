@@ -14,8 +14,8 @@ export interface SeoMetaOptions {
  * Sets <title>, meta description, OG tags, Twitter Cards, and canonical link.
  * Cleans up on unmount (restores previous values).
  */
-const OG_LOCALE: Record<string, string> = { fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT', en: 'en_US', be: 'fr_BE', at: 'de_AT' };
-const ALL_OG_LOCALES = ['fr_FR', 'fr_BE', 'de_DE', 'de_AT', 'es_ES', 'it_IT', 'en_US'];
+const OG_LOCALE: Record<string, string> = { fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT', en: 'en_GB', be: 'fr_BE', at: 'de_AT' };
+const ALL_OG_LOCALES = ['fr_FR', 'fr_BE', 'de_DE', 'de_AT', 'es_ES', 'it_IT', 'en_GB'];
 
 export function useSeoMeta({ title, description, image, type = 'website', canonical, lang, noindex }: SeoMetaOptions) {
   useEffect(() => {

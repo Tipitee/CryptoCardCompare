@@ -22,7 +22,7 @@ const COUNTRIES: CountryEntry[] = [
   { flag: '🇦🇹', label: 'Österreich',   lang: 'at', market: 'at' },
   { flag: '🇪🇸', label: 'España',       lang: 'es', market: 'es' },
   { flag: '🇮🇹', label: 'Italia',       lang: 'it', market: 'it' },
-  { flag: '🌐', label: 'English',       lang: 'en', market: undefined },
+  { flag: '🇬🇧', label: 'United Kingdom', lang: 'en', market: 'en' },
 ];
 
 /** Map market key → country entry (for lookup on init) */
