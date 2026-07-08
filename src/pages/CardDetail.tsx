@@ -115,6 +115,12 @@ const COMPARE_WITH_LABEL: Record<string, string> = {
   fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons',
 };
 
+// Propagate be→fr and at→de aliases for all CardDetail maps
+[CARD_SEGMENT, HOME_LABEL, OTHER_TIERS_LABEL, SEE_ALL_TIERS_LABEL,
+ RELATED_LABEL, REVIEW_LINK_LABEL, OVERVIEW_LABEL, FORWHO_LABEL,
+ PROS_LABEL, CONS_LABEL, FAQ_SECTION_LABEL, COMPARISON_LABEL, COMPARE_WITH_LABEL,
+].forEach(m => { if (!m.be && m.fr) m.be = m.fr; if (!m.at && m.de) m.at = m.de; });
+
 function pairToLabel(slug: string): string {
   return slug.split('-vs-').map(part =>
     part.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')

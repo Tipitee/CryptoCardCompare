@@ -58,6 +58,18 @@ i18next
         cards: enCards,
         blog: enBlog,
       },
+      // Belgium: French display content, Belgian market
+      be: {
+        common: frCommon,
+        cards: frCards,
+        blog: frBlog,
+      },
+      // Austria: German display content, Austrian market
+      at: {
+        common: deCommon,
+        cards: deCards,
+        blog: deBlog,
+      },
     },
     detection: {
       order: ['navigator'],

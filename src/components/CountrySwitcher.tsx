@@ -17,9 +17,9 @@ interface CountryEntry {
 
 const COUNTRIES: CountryEntry[] = [
   { flag: '🇫🇷', label: 'France',       lang: 'fr', market: 'fr' },
-  { flag: '🇧🇪', label: 'Belgique',     lang: 'fr', market: 'be' },
+  { flag: '🇧🇪', label: 'Belgique',     lang: 'be', market: 'be' },
   { flag: '🇩🇪', label: 'Deutschland',  lang: 'de', market: 'de' },
-  { flag: '🇦🇹', label: 'Österreich',   lang: 'de', market: 'at' },
+  { flag: '🇦🇹', label: 'Österreich',   lang: 'at', market: 'at' },
   { flag: '🇪🇸', label: 'España',       lang: 'es', market: 'es' },
   { flag: '🇮🇹', label: 'Italia',       lang: 'it', market: 'it' },
   { flag: '🌐', label: 'English',       lang: 'en', market: undefined },

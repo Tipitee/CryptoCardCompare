@@ -125,12 +125,25 @@ function buildBlogMetaDesc(post: { meta_description?: string | null; excerpt?: s
 }
 
 const DATE_LOCALES: Record<string, string> = {
-  fr: 'fr-FR',
-  de: 'de-DE',
+  fr: 'fr-FR', be: 'fr-BE',
+  de: 'de-DE', at: 'de-AT',
   es: 'es-ES',
   it: 'it-IT',
   en: 'en-GB',
 };
+
+// Propagate be→fr and at→de aliases for BlogPost maps
+[HOME_LABEL, BLOG_META_SUFFIX, RELATED_PAGES_LABEL, MENTIONED_BRANDS_LABEL,
+ SEE_BRAND_LABEL, SEE_REVIEW_LABEL, SIMULATOR_LABEL, REVIEWS_LABEL,
+].forEach(m => { if (!m.be && m.fr) m.be = m.fr; if (!m.at && m.de) m.at = m.de; });
+for (const theme of Object.keys(BLOG_THEMATIC_SLUGS)) {
+  if (BLOG_THEMATIC_SLUGS[theme].fr) BLOG_THEMATIC_SLUGS[theme].be = BLOG_THEMATIC_SLUGS[theme].fr;
+  if (BLOG_THEMATIC_SLUGS[theme].de) BLOG_THEMATIC_SLUGS[theme].at = BLOG_THEMATIC_SLUGS[theme].de;
+}
+for (const theme of Object.keys(BLOG_THEMATIC_LABEL)) {
+  if (BLOG_THEMATIC_LABEL[theme].fr) BLOG_THEMATIC_LABEL[theme].be = BLOG_THEMATIC_LABEL[theme].fr;
+  if (BLOG_THEMATIC_LABEL[theme].de) BLOG_THEMATIC_LABEL[theme].at = BLOG_THEMATIC_LABEL[theme].de;
+}
 
 function formatDate(iso: string, lang: string): string {
   return new Date(iso).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {

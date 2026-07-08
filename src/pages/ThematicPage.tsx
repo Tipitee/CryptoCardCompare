@@ -649,6 +649,19 @@ const THEME_SECTIONS: Partial<Record<string, Partial<Record<string, { h2: string
   },
 };
 
+// Propagate be→fr and at→de content aliases into THEME_CONFIG
+for (const theme of Object.keys(THEME_CONFIG)) {
+  if (THEME_CONFIG[theme].fr) THEME_CONFIG[theme].be = THEME_CONFIG[theme].fr;
+  if (THEME_CONFIG[theme].de) THEME_CONFIG[theme].at = THEME_CONFIG[theme].de;
+}
+
+// Propagate be→fr and at→de content aliases into THEME_SECTIONS
+for (const theme of Object.keys(THEME_SECTIONS)) {
+  const t = THEME_SECTIONS[theme] as Record<string, unknown>;
+  if (t && t.fr) t.be = t.fr;
+  if (t && t.de) t.at = t.de;
+}
+
 /* ────────────────────────────────────────────────────────────────────────────
    FAQ (5 Q&As per theme per language)
    ──────────────────────────────────────────────────────────────────────────── */
@@ -1100,6 +1113,12 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
   },
 };
 
+// Propagate be→fr and at→de content aliases into THEME_FAQ
+for (const theme of Object.keys(THEME_FAQ)) {
+  if (THEME_FAQ[theme].fr) THEME_FAQ[theme].be = THEME_FAQ[theme].fr;
+  if (THEME_FAQ[theme].de) THEME_FAQ[theme].at = THEME_FAQ[theme].de;
+}
+
 /* ────────────────────────────────────────────────────────────────────────────
    FILTERS / SORT / LIMIT
    ──────────────────────────────────────────────────────────────────────────── */
@@ -1146,20 +1165,20 @@ const THEME_LIMIT: Record<string, number> = { best: 15 };
    THEMATIC SLUGS (for hreflang)
    ──────────────────────────────────────────────────────────────────────────── */
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
-  best:         { fr: 'meilleure-carte-crypto', de: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
-  cashback:     { fr: 'carte-crypto-cashback', de: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
-  'no-fees':    { fr: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
-  'no-staking': { fr: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
-  france:       { fr: 'cartes-crypto-france', de: 'krypto-karten-deutschland', es: 'tarjetas-crypto-espana', it: 'carte-crypto-italia', en: 'crypto-cards-europe' },
-  virtual:      { fr: 'carte-crypto-virtuelle', de: 'virtuelle-krypto-karte', es: 'tarjeta-crypto-virtual', it: 'carta-crypto-virtuale', en: 'virtual-crypto-card' },
-  beginner:     { fr: 'cartes-crypto-debutant', de: 'krypto-karten-einsteiger', es: 'tarjetas-crypto-principiante', it: 'carte-crypto-principiante', en: 'beginner-crypto-cards' },
-  'no-kyc':     { fr: 'carte-crypto-sans-kyc', de: 'krypto-karte-ohne-kyc', es: 'tarjeta-crypto-sin-kyc', it: 'carta-cripto-senza-kyc', en: 'crypto-card-no-kyc' },
-  '2026':       { fr: 'carte-crypto-2026', de: 'krypto-karte-2026', es: 'tarjeta-cripto-2026', it: 'carta-cripto-2026', en: 'best-crypto-card-2026' },
-  travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
-  rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
-  physical:     { fr: 'carte-crypto-physique', de: 'physische-krypto-karte', es: 'tarjeta-crypto-fisica', it: 'carta-crypto-fisica', en: 'physical-crypto-card' },
-  belgium:      { fr: 'carte-crypto-belgique', de: 'krypto-karte-belgien', es: 'tarjeta-crypto-belgica', it: 'carta-crypto-belgio', en: 'crypto-card-belgium' },
-  austria:      { fr: 'carte-crypto-autriche', de: 'krypto-karte-oesterreich', es: 'tarjeta-crypto-austria', it: 'carta-crypto-austria', en: 'crypto-card-austria' },
+  best:         { fr: 'meilleure-carte-crypto', be: 'meilleure-carte-crypto', de: 'beste-krypto-karte', at: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
+  cashback:     { fr: 'carte-crypto-cashback', be: 'carte-crypto-cashback', de: 'krypto-karte-cashback', at: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
+  'no-fees':    { fr: 'carte-crypto-sans-frais', be: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', at: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
+  'no-staking': { fr: 'carte-crypto-sans-staking', be: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', at: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
+  france:       { fr: 'cartes-crypto-france', be: 'cartes-crypto-france', de: 'krypto-karten-deutschland', at: 'krypto-karten-deutschland', es: 'tarjetas-crypto-espana', it: 'carte-crypto-italia', en: 'crypto-cards-europe' },
+  virtual:      { fr: 'carte-crypto-virtuelle', be: 'carte-crypto-virtuelle', de: 'virtuelle-krypto-karte', at: 'virtuelle-krypto-karte', es: 'tarjeta-crypto-virtual', it: 'carta-crypto-virtuale', en: 'virtual-crypto-card' },
+  beginner:     { fr: 'cartes-crypto-debutant', be: 'cartes-crypto-debutant', de: 'krypto-karten-einsteiger', at: 'krypto-karten-einsteiger', es: 'tarjetas-crypto-principiante', it: 'carte-crypto-principiante', en: 'beginner-crypto-cards' },
+  'no-kyc':     { fr: 'carte-crypto-sans-kyc', be: 'carte-crypto-sans-kyc', de: 'krypto-karte-ohne-kyc', at: 'krypto-karte-ohne-kyc', es: 'tarjeta-crypto-sin-kyc', it: 'carta-cripto-senza-kyc', en: 'crypto-card-no-kyc' },
+  '2026':       { fr: 'carte-crypto-2026', be: 'carte-crypto-2026', de: 'krypto-karte-2026', at: 'krypto-karte-2026', es: 'tarjeta-cripto-2026', it: 'carta-cripto-2026', en: 'best-crypto-card-2026' },
+  travel:       { fr: 'carte-crypto-voyage', be: 'carte-crypto-voyage', de: 'krypto-karte-reise', at: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
+  rewards:      { fr: 'carte-crypto-recompenses', be: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', at: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
+  physical:     { fr: 'carte-crypto-physique', be: 'carte-crypto-physique', de: 'physische-krypto-karte', at: 'physische-krypto-karte', es: 'tarjeta-crypto-fisica', it: 'carta-crypto-fisica', en: 'physical-crypto-card' },
+  belgium:      { fr: 'carte-crypto-belgique', be: 'carte-crypto-belgique', de: 'krypto-karte-belgien', at: 'krypto-karte-belgien', es: 'tarjeta-crypto-belgica', it: 'carta-crypto-belgio', en: 'crypto-card-belgium' },
+  austria:      { fr: 'carte-crypto-autriche', be: 'carte-crypto-autriche', de: 'krypto-karte-oesterreich', at: 'krypto-karte-oesterreich', es: 'tarjeta-crypto-austria', it: 'carta-crypto-austria', en: 'crypto-card-austria' },
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -1202,8 +1221,13 @@ const THEME_LABEL: Record<string, Record<string, string>> = {
   belgium:      { fr:'Disponible en Belgique', de:'In Belgien', es:'En Bélgica', it:'In Belgio', en:'Available in Belgium' },
   austria:      { fr:'Disponible en Autriche', de:'In Österreich', es:'En Austria', it:'In Austria', en:'Available in Austria' },
 };
+// Propagate be→fr and at→de content aliases into THEME_LABEL
+for (const theme of Object.keys(THEME_LABEL)) {
+  if (THEME_LABEL[theme].fr) THEME_LABEL[theme].be = THEME_LABEL[theme].fr;
+  if (THEME_LABEL[theme].de) THEME_LABEL[theme].at = THEME_LABEL[theme].de;
+}
 const RELATED_TITLE: Record<string, string> = {
-  fr: 'Voir aussi', de: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also',
+  fr: 'Voir aussi', be: 'Voir aussi', de: 'Siehe auch', at: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also',
 };
 
 const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: string }[]>> = {
@@ -1286,12 +1310,18 @@ const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: str
   },
 };
 
+// Propagate be→fr and at→de content aliases into THEME_BLOG_LINKS
+for (const theme of Object.keys(THEME_BLOG_LINKS)) {
+  if (THEME_BLOG_LINKS[theme].fr) THEME_BLOG_LINKS[theme].be = THEME_BLOG_LINKS[theme].fr;
+  if (THEME_BLOG_LINKS[theme].de) THEME_BLOG_LINKS[theme].at = THEME_BLOG_LINKS[theme].de;
+}
+
 const READ_MORE_TITLE: Record<string, string> = {
-  fr: 'Lire aussi', de: 'Mehr lesen', es: 'Leer también', it: 'Leggi anche', en: 'Read more',
+  fr: 'Lire aussi', be: 'Lire aussi', de: 'Mehr lesen', at: 'Mehr lesen', es: 'Leer también', it: 'Leggi anche', en: 'Read more',
 };
 
 const POPULAR_COMPARISONS_TITLE: Record<string, string> = {
-  fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
+  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
 };
 
 /** Maps each theme to relevant card-vs-card comparison slugs (alphabetically normalized). */

@@ -25,11 +25,13 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { BRAND_CONFIG } from '../data/brandConfig';
 const YEAR = new Date().getFullYear();
 const COMPARE_PREFIX: Record<string, string> = {
-  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+  fr: 'comparer', be: 'comparer', de: 'vergleichen', at: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
 };
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Meilleure Carte Crypto France ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez +15 cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais, sans staking. Crypto.com, Nexo, Binance, Bybit et plus. Comparateur gratuit ✓` },
+  be: { title: `Meilleure Carte Crypto Belgique ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez +15 cartes crypto en Belgique ${YEAR} : jusqu'à 8 % cashback, sans frais, sans staking. Crypto.com, Nexo, Gnosis Pay, MetaMask Card. Comparateur gratuit ✓` },
   de: { title: `Beste Krypto Karte Deutschland ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten für Deutschland ${YEAR}: bis zu 8% Cashback, keine Jahresgebühr, kein Staking. Crypto.com, Nexo, Binance, Bybit u.v.m. Kostenlos ✓` },
+  at: { title: `Beste Krypto Karte Österreich ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten für Österreich ${YEAR}: bis zu 8% Cashback, keine Jahresgebühr, kein Staking. Bitpanda, Crypto.com, Nexo, Gnosis Pay. Kostenlos ✓` },
   es: { title: `Mejor Tarjeta Crypto España ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara +15 tarjetas crypto en España ${YEAR}: hasta 8% cashback, sin cuota anual, sin staking. Crypto.com, Nexo, Binance, Bybit y más. Comparativa gratuita ✓` },
   it: { title: `Miglior Carta Crypto Italia ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta +15 carte crypto in Italia ${YEAR}: fino all'8% cashback, senza quota annua, senza staking. Crypto.com, Nexo, Binance, Bybit e altri. Gratuito ✓` },
   en: { title: `Best Crypto Card Europe ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare +15 crypto cards in Europe ${YEAR}: up to 8% cashback, no annual fees, no staking required. Crypto.com, Nexo, Binance, Bybit & more. Free tool ✓` },
@@ -126,22 +128,25 @@ const THEME_GRID: Record<string, {
     ],
   },
 };
+// Propagate be→fr and at→de aliases into THEME_GRID
+if (THEME_GRID.fr && !THEME_GRID.be) THEME_GRID.be = THEME_GRID.fr;
+if (THEME_GRID.de && !THEME_GRID.at) THEME_GRID.at = THEME_GRID.de;
 import type { CryptoCard } from '../types/card';
 
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
 
 // ── Phase 3: brand-grouping labels ───────────────────────────────────────────
 const TIERS_LABEL: Record<string, string> = {
-  fr: 'cartes', de: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', be: 'cartes', de: 'Karten', at: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 const ABOUT_LABEL: Record<string, string> = {
-  fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About',
+  fr: 'À propos de', be: 'À propos de', de: 'Über', at: 'Über', es: 'Sobre', it: 'Su', en: 'About',
 };
 const UP_TO: Record<string, string> = {
-  fr: "Jusqu'à", de: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to',
+  fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to',
 };
 const FROM_LABEL: Record<string, string> = {
-  fr: 'Dès', de: 'Ab', es: 'Desde', it: 'Da', en: 'From',
+  fr: 'Dès', be: 'Dès', de: 'Ab', at: 'Ab', es: 'Desde', it: 'Da', en: 'From',
 };
 export default function Home() {
   const cards = useAppStore((s) => s.cards);
@@ -333,7 +338,7 @@ export default function Home() {
   const heroCards = cards.slice(0, 3);
   useEffect(() => {
     if (cards.length === 0) return;
-    const segment = { fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards' }[lang] || 'cards';
+    const segment = { fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards' }[lang] || 'cards';
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',

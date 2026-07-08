@@ -330,6 +330,22 @@ function reviewToThemes(rb: Record<string, number>, keyStats: Record<string, str
 const SIMULATOR_LABEL_R: Record<string, string> = { fr: 'Simuler mes gains', de: 'Gewinne simulieren', es: 'Simular mis ganancias', it: 'Simulare i guadagni', en: 'Simulate my earnings' };
 const THEMED_PAGES_LABEL: Record<string, string> = { fr: 'Pages thématiques', de: 'Themenseiten', es: 'Páginas temáticas', it: 'Pagine tematiche', en: 'Thematic pages' };
 
+// Propagate be→fr and at→de aliases
+L.be = L.fr; L.at = L.de;
+CARD_SEGMENT.be = CARD_SEGMENT.fr; CARD_SEGMENT.at = CARD_SEGMENT.de;
+DATE_LOCALE.be = 'fr-BE'; DATE_LOCALE.at = 'de-AT';
+[VIEW_CARD_LABEL, SEE_ALL_TIERS, COMPARE_WITH_R, SIMULATOR_LABEL_R, THEMED_PAGES_LABEL,
+ REVIEW_TITLE_FALLBACK as unknown as Record<string, unknown>, REVIEW_DESC_FALLBACK as unknown as Record<string, unknown>
+].forEach(m => { if (!m.be && m.fr) m.be = m.fr; if (!m.at && m.de) m.at = m.de; });
+for (const theme of Object.keys(REVIEW_THEMATIC_SLUGS)) {
+  if (REVIEW_THEMATIC_SLUGS[theme].fr) REVIEW_THEMATIC_SLUGS[theme].be = REVIEW_THEMATIC_SLUGS[theme].fr;
+  if (REVIEW_THEMATIC_SLUGS[theme].de) REVIEW_THEMATIC_SLUGS[theme].at = REVIEW_THEMATIC_SLUGS[theme].de;
+}
+for (const theme of Object.keys(REVIEW_THEMATIC_LABEL)) {
+  if (REVIEW_THEMATIC_LABEL[theme].fr) REVIEW_THEMATIC_LABEL[theme].be = REVIEW_THEMATIC_LABEL[theme].fr;
+  if (REVIEW_THEMATIC_LABEL[theme].de) REVIEW_THEMATIC_LABEL[theme].at = REVIEW_THEMATIC_LABEL[theme].de;
+}
+
 function renderMarkdownLite(text: string): string {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')

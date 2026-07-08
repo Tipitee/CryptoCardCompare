@@ -150,6 +150,20 @@ const COPY: Record<string, {
   },
 };
 
+// Propagate be→fr and at→de aliases into COPY
+COPY.be = {
+  ...COPY.fr,
+  title:       `Frais Cartes Crypto Belgique ${new Date().getFullYear()} — Comparatif | TopCryptoCards`,
+  h1:          `Index des Frais des Cartes Crypto en Belgique ${new Date().getFullYear()}`,
+  description: `Tableau complet des frais cartes crypto disponibles en Belgique : frais annuels, staking, cashback, retraits. Mis à jour ${new Date().getFullYear()}.`,
+};
+COPY.at = {
+  ...COPY.de,
+  title:       `Krypto-Karten Gebühren Österreich ${new Date().getFullYear()} — Vergleich | TopCryptoCards`,
+  h1:          `Gebühren-Index Krypto-Karten Österreich ${new Date().getFullYear()}`,
+  description: `Vollständige Gebührentabelle aller Krypto-Karten in Österreich: Jahresgebühren, Staking, Cashback, Abhebungen. Aktualisiert ${new Date().getFullYear()}.`,
+};
+
 type SortKey = 'name' | 'annualFees' | 'stakingRequired' | 'cashbackBase' | 'cashbackPremium';
 
 export default function FeeIndexPage() {
@@ -163,11 +177,11 @@ export default function FeeIndexPage() {
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
 
   useEffect(() => {
-    fetchCards()
+    fetchCards(lang)
       .then(setCards)
       .catch(() => setCards([]))
       .finally(() => setLoading(false));
-  }, []);
+  }, [lang]);
 
   /* ── SEO ───────────────────────────────────────────────────────────────────── */
   useSeoMeta({ title: c.title, description: c.description, lang });
@@ -232,7 +246,7 @@ export default function FeeIndexPage() {
   const compareSlug = rt.compare ?? 'compare';
 
   const breadcrumb = [
-    { label: ({ fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' } as Record<string,string>)[lang] ?? 'Home', href: `/${lang}` },
+    { label: ({ fr: 'Accueil', be: 'Accueil', de: 'Startseite', at: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' } as Record<string,string>)[lang] ?? 'Home', href: `/${lang}` },
     { label: c.h1 },
   ];
 
@@ -285,10 +299,9 @@ export default function FeeIndexPage() {
               </thead>
               <tbody>
                 {sorted.map((card) => {
-                  const markets: string[] = [];
-                  if (card.availableFrance) markets.push(c.fr);
-                  else if (card.availableEU) markets.push(c.eu);
-                  else markets.push(c.global);
+                  const markets = card.markets?.length
+                    ? card.markets.map(m => m === 'global' ? c.global : m.toUpperCase())
+                    : [c.global];
 
                   return (
                     <tr key={card.id} className="border-b border-bg-border hover:bg-bg-elevated/40 transition-colors">

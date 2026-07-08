@@ -1,4 +1,4 @@
-import { LANGUAGES, ROUTE_TRANSLATIONS, type Language, isValidLanguage } from './types';
+import { LANGUAGES, ROUTE_TRANSLATIONS, LOCALE_DISPLAY_LANG, type Language, isValidLanguage } from './types';
 import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
 
 export function getLanguageFromPath(pathname: string): Language {
@@ -56,12 +56,17 @@ export function getEquivalentRoute(
 
   const slug = routeParts[0];
 
-  const routeKey = Object.entries(ROUTE_TRANSLATIONS[currentLang]).find(
+  // Resolve display languages for both current and new (handles be→fr, at→de)
+  const currentDisplayLang = LOCALE_DISPLAY_LANG[currentLang] ?? currentLang;
+  const newDisplayLang = LOCALE_DISPLAY_LANG[newLang] ?? newLang;
+
+  const routeKey = Object.entries(ROUTE_TRANSLATIONS[currentDisplayLang] ?? ROUTE_TRANSLATIONS[currentLang] ?? {}).find(
     ([_, value]) => value === slug
   )?.[0] as keyof typeof ROUTE_TRANSLATIONS.fr | undefined;
 
   if (routeKey) {
-    const newRoute = getLocalizedRoute(routeKey, newLang);
+    const newRoute = (ROUTE_TRANSLATIONS[newLang] ?? ROUTE_TRANSLATIONS[newDisplayLang])?.[routeKey];
+    if (!newRoute) return `/${newLang}`;
     if (routeParts.length === 1) return `/${newLang}/${newRoute}`;
     const restOfPath = routeParts.slice(1).join('/');
     return `/${newLang}/${newRoute}/${restOfPath}`;
@@ -69,16 +74,18 @@ export function getEquivalentRoute(
 
   // Check thematic routes (e.g. carte-crypto-belgique → krypto-karte-belgien)
   for (const slugsByLang of Object.values(THEMATIC_ROUTES)) {
-    if (slugsByLang[currentLang] === slug) {
-      const newSlug = slugsByLang[newLang];
+    if (slugsByLang[currentLang] === slug || slugsByLang[currentDisplayLang] === slug) {
+      const newSlug = slugsByLang[newLang] ?? slugsByLang[newDisplayLang];
       if (newSlug) return `/${newLang}/${newSlug}`;
       break;
     }
   }
 
   // Check Virtual vs Physical page slugs
-  if (VVP_SLUGS[currentLang] === slug) {
-    return `/${newLang}/${VVP_SLUGS[newLang]}`;
+  const currentVvp = VVP_SLUGS[currentLang] ?? VVP_SLUGS[currentDisplayLang];
+  if (currentVvp === slug) {
+    const newVvp = VVP_SLUGS[newLang] ?? VVP_SLUGS[newDisplayLang];
+    if (newVvp) return `/${newLang}/${newVvp}`;
   }
 
   return `/${newLang}`;

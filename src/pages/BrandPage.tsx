@@ -15,7 +15,7 @@ import { getBrandMeta } from '../data/brandConfig';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
 import { REVIEW_I18N } from '../data/cardReviewsI18n';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import type { CryptoCard } from '../types/card';
 
@@ -350,7 +350,7 @@ function ratingColor(r: number) {
 }
 
 function FeeBadge({ card, lang }: { card: CryptoCard; lang: string }) {
-  const l = L[lang as keyof typeof L] ?? L.en;
+  const l = L[displayLang(lang) as keyof typeof L] ?? L.en;
   if (card.annualFees === 0) return <span className="text-green-400 font-medium">{l.free}</span>;
   return <span>{card.annualFees}{l.eur}{l.perYear}</span>;
 }
@@ -378,7 +378,7 @@ function brandCompSlugToLabel(slug: string): string {
 }
 
 const BRAND_COMP_TITLE: Record<string, string> = {
-  fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
+  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
 };
 
 // ── Main component ────────────────────────────────────────────────────────────
@@ -386,7 +386,7 @@ const BRAND_COMP_TITLE: Record<string, string> = {
 export default function BrandPage() {
   const { lang = 'fr', brandId } = useParams<{ lang: string; brandId: string }>();
   useLanguage(); // ensure lang is tracked
-  const l = L[lang as keyof typeof L] ?? L.en;
+  const l = L[displayLang(lang) as keyof typeof L] ?? L.en;
 
   const [cards, setCards] = useState<CryptoCard[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1089,9 +1089,9 @@ function CompareRow({
 import type { CardReview } from '../data/cardReviews';
 
 // ── Helpers for ReviewMiniCard keyStats (lang-aware, from numeric card data) ──
-const UP_TO: Record<string, string> = { fr: "Jusqu'à", de: 'Bis zu', es: 'Hasta', it: 'Fino al', en: 'Up to' };
-const FREE: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
-const PER_YEAR: Record<string, string> = { fr: '/an', de: '/Jahr', es: '/año', it: '/anno', en: '/year' };
+const UP_TO: Record<string, string> = { fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino al', en: 'Up to' };
+const FREE: Record<string, string> = { fr: 'Gratuit', be: 'Gratuit', de: 'Kostenlos', at: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
+const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at: '/Jahr', es: '/año', it: '/anno', en: '/year' };
 
 function fmtCashbackMax(card: CryptoCard, lang: string): string {
   const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
