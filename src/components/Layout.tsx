@@ -29,7 +29,9 @@ export default function Layout() {
   const reviewLabel = REVIEW_NAV_LABELS[lang] ?? REVIEW_NAV_LABELS.en;
   const AFFILIATE_SLUGS: Record<string, string> = {
     fr: 'divulgation-affilies',
+    be: 'divulgation-affilies',
     de: 'affiliate-offenlegung',
+    at: 'affiliate-offenlegung',
     es: 'divulgacion-afiliados',
     it: 'divulgazione-affiliati',
     en: 'affiliate-disclosure',
@@ -38,7 +40,9 @@ export default function Layout() {
 
   const METHODOLOGY_SLUGS: Record<string, string> = {
     fr: 'methodologie',
+    be: 'methodologie',
     de: 'methodik',
+    at: 'methodik',
     es: 'metodologia',
     it: 'metodologia',
     en: 'methodology',
@@ -46,7 +50,9 @@ export default function Layout() {
   const methodologySlug = METHODOLOGY_SLUGS[lang] ?? 'methodology';
   const METHODOLOGY_LABELS: Record<string, string> = {
     fr: 'Méthodologie',
+    be: 'Méthodologie',
     de: 'Methodik',
+    at: 'Methodik',
     es: 'Metodología',
     it: 'Metodologia',
     en: 'Methodology',

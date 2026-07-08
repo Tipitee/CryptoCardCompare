@@ -56,13 +56,15 @@ function buildComparison(card: CryptoCard, lang: 'fr' | 'de' | 'es' | 'it' | 'en
 
   switch (lang) {
     case 'fr':
+    case 'be':
       if (noStakingFree) return `Parmi les cartes crypto sans frais ni staking, la ${name} est à comparer avec Gnosis Pay, MetaMask Card et Brighty, qui ciblent le même profil avec des approches on-chain ou stablecoin différentes. Toutes offrent du cashback immédiat sans immobilisation de capital — l'idéal pour démarrer sans risque en ${YEAR}.`;
       if (highCashbackStaking) return `La ${name} s'adresse aux utilisateurs déjà engagés dans l'écosystème ${issuer}. Pour un cashback élevé sans staking, Nexo propose du cashback en BTC sans condition de blocage. Brighty et MetaMask Card conviennent quant à elles aux profils plus prudents qui préfèrent garder leurs actifs liquides.`;
       if (hasTravel) return `Pour les voyageurs fréquents, la ${name} est à comparer avec Crypto.com et Bybit, qui proposent des avantages similaires (lounges, assurance) à des niveaux de staking différents. Pour un profil voyage sans staking, Brighty et MetaMask Card offrent d'excellentes alternatives accessibles en ${YEAR}.`;
       if (virtualOnly) return `En tant que carte virtuelle, la ${name} est idéale pour les achats en ligne sécurisés. D'autres solutions virtuelles comme Brighty, les niveaux d'entrée de Crypto.com ou Wirex permettent une comparaison rapide selon tes besoins d'usage quotidien ou en ligne.`;
-      return `Pour trouver la carte qui correspond le mieux à ton profil, notre comparateur recense toutes les cartes crypto disponibles en France en ${YEAR}. Des alternatives comme Nexo, Gnosis Pay ou MetaMask Card méritent d'être mises côte à côte avec la ${name} selon ton niveau de dépenses et ta tolérance au risque.`;
+      return `Pour trouver la carte qui correspond le mieux à ton profil, notre comparateur recense toutes les cartes crypto disponibles en Europe en ${YEAR}. Des alternatives comme Nexo, Gnosis Pay ou MetaMask Card méritent d'être mises côte à côte avec la ${name} selon ton niveau de dépenses et ta tolérance au risque.`;
 
     case 'de':
+    case 'at':
       if (noStakingFree) return `Unter den kostenlosen Krypto-Karten ohne Staking ist die ${name} mit Gnosis Pay, MetaMask Card und Brighty zu vergleichen — alle sprechen dasselbe Profil mit unterschiedlichen On-Chain- oder Stablecoin-Ansätzen an. Alle bieten sofortigen Cashback ohne Kapitalsperre, ideal für einen risikofreien Einstieg ${YEAR}.`;
       if (highCashbackStaking) return `Die ${name} richtet sich an Nutzer, die bereits im ${issuer}-Ökosystem engagiert sind. Für hohen Cashback ohne Staking bietet Nexo BTC-Cashback ohne Sperrbedingungen. Brighty und MetaMask Card sind die bessere Wahl für konservativere Nutzer, die ihr Kapital liquide halten möchten.`;
       if (hasTravel) return `Für Vielreisende ist die ${name} mit Crypto.com und Bybit zu vergleichen, die ähnliche Reisevorteile bei unterschiedlichen Staking-Anforderungen bieten. Ohne Staking sind Brighty und MetaMask Card hervorragende Alternativen für Reisende, die ${YEAR} flexibel bleiben möchten.`;
@@ -794,10 +796,11 @@ function formatExtras(extras: string[], lang: string): string {
 
 export function generateCardContent(card: CryptoCard, lang: string): CardGeneratedContent {
   switch (lang) {
-    case 'de': return generateDE(card);
+    case 'de':
+    case 'at': return generateDE(card);
     case 'es': return generateES(card);
     case 'it': return generateIT(card);
     case 'en': return generateEN(card);
-    default:   return generateFR(card);
+    default:   return generateFR(card); // fr, be, and any unknown → French
   }
 }
