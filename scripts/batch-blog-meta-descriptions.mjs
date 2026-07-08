@@ -35,8 +35,8 @@ function truncateAtWord(text, maxLen) {
 
 function generateMetaDesc(title, excerpt, lang) {
   const suffix = lang === 'de'
-    ? ` — ${YEAR} ✓`
-    : ` — ${YEAR} ✓`;
+    ? ` — ${YEAR} | Kostenlos ✓`
+    : ` — ${YEAR} | Free ✓`;
 
   // Strategy 1: excerpt is good → truncate + suffix
   if (excerpt && excerpt.trim().length > 80) {

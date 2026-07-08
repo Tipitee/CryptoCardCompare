@@ -109,6 +109,8 @@ const EDITORIAL_PAIRS = [
   'nexo-card-vs-okx-card',
   'bybit-card-vs-coinbase-card',
   'bitpanda-card-vs-revolut-metal',
+  'gnosis-pay-card-vs-nexo-card',
+  'gnosis-pay-card-vs-metamask-card',
 ];
 
 const COMPARE_WITH_LABEL: Record<string, string> = {
@@ -143,6 +145,7 @@ const CARD_REVIEW_SLUG: Record<string, string> = {
   'kraken': 'kraken-card',
   'brighty': 'brighty-card',
   'gnosis': 'gnosis-pay-card',
+  'metamask': 'metamask-card',
   'ledger': 'ledger-card',
   'trade-republic': 'trade-republic-card',
   'plutus': 'plutus-card',

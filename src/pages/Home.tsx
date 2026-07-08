@@ -33,7 +33,7 @@ const HOME_SEO: Record<string, { title: string; desc: string }> = {
   de: { title: `Beste Krypto Karte Deutschland ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Deutschland ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, ohne Jahresgebühr, kein Staking. Gnosis Pay, Crypto.com, Nexo verglichen. Kostenlos ✓` },
   at: { title: `Beste Krypto Karte Österreich ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Österreich ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, kein Staking. Bitpanda, Crypto.com, Nexo, Gnosis Pay verglichen. Kostenlos ✓` },
   es: { title: `Tarjeta Criptomonedas España ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas de criptomonedas en España ${YEAR}: hasta 8% cashback en Bitcoin, sin cuota anual, sin staking. Gnosis Pay, Crypto.com, Nexo comparadas. Gratis ✓` },
-  it: { title: `Carta Criptovaluta Italia ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta 90+ carte criptovaluta in Italia ${YEAR}: carta bitcoin, fino all'8% cashback, senza quota annua, senza staking. Gnosis Pay, Crypto.com, Nexo comparate. Gratis ✓` },
+  it: { title: `Migliore Carta Crypto Italia ${YEAR} — Top 10 | TopCryptoCards`, desc: `Migliore carta crypto in Italia nel ${YEAR}: carta bitcoin, fino all'8% cashback, 0€/anno, senza staking. Crypto.com, Nexo, Gnosis Pay confrontate. Confronto gratuito ✓` },
   en: { title: `Best Crypto Card UK ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards in the UK ${YEAR}: bitcoin card, up to 8% cashback, no annual fees, no staking. Gnosis Pay, Crypto.com, Nexo compared. Free ✓` },
 };
 import SmartCardImage from '../components/SmartCardImage';

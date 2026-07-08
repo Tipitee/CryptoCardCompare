@@ -235,6 +235,8 @@ const EDITORIAL_PAIRS_R = [
   'nexo-card-vs-okx-card',
   'bybit-card-vs-coinbase-card',
   'bitpanda-card-vs-revolut-metal',
+  'gnosis-pay-card-vs-nexo-card',
+  'gnosis-pay-card-vs-metamask-card',
 ];
 
 const COMPARE_WITH_R: Record<string, string> = {
