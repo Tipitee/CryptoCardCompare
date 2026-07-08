@@ -117,8 +117,8 @@ const L: Record<string, {
     free: 'Gratuito', noBrand: 'Altre carte', discover: 'Scopri',
   },
   en: {
-    title: `All Crypto Card Brands ${YEAR} | TopCryptoCards`,
-    desc: `20+ crypto card brands in Europe ${YEAR} — Crypto.com, Nexo, Binance, Bybit, Wirex and more. Cashback, fees, staking compared. Free ✓`,
+    title: `All Crypto Card Brands ${YEAR} — Crypto.com, Nexo, Bybit`,
+    desc: `20+ crypto card brands in Europe ${YEAR} on one page: Crypto.com, Nexo, Bybit, Gnosis Pay, Binance and more. Cashback, fees & staking compared. Free ✓`,
     home: 'Home', h1: `Crypto card brands ${YEAR}`, sub: `All available brands in ${YEAR}`,
     tiers: 'cards', tier1: 'card', upTo: 'Up to', cashback: 'cashback',
     free: 'Free', noBrand: 'Other cards', discover: 'Discover',
