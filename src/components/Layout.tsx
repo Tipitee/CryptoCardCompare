@@ -97,6 +97,7 @@ export default function Layout() {
     { slug: THEMATIC_ROUTES.rewards[lang],         label: labels.rewards },
     { slug: THEMATIC_ROUTES.belgium[lang],         label: labels.belgium },
     { slug: THEMATIC_ROUTES.austria[lang],         label: labels.austria },
+    { slug: THEMATIC_ROUTES.iban[lang],            label: labels.iban },
     { slug: brandsSlug,                            label: brandsLabel[lang] ?? 'Card brands' },
     { slug: 'cryptos',                             label: labels.cryptos },
   ];
