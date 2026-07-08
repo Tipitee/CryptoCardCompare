@@ -1254,7 +1254,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     seo: {
       fr: {
         title: `Carte Krak (Kraken) ${YEAR} — 1% cashback cash | TopCryptoCards`,
-        description: `Tout sur la Krak Card de Kraken en ${YEAR} : 1% de cashback en cash, disponible en EU et UK.`,
+        description: `Avis Krak Card (Kraken) ${YEAR} : 1% cashback en cash (EUR/GBP), sans token propriétaire, sans frais annuels. Disponible en EU et UK. Verdict indépendant ✓`,
         intro: `Krak est la carte Visa de Kraken, l'une des plus anciennes exchanges crypto fondées en 2011. Elle offre 1% de cashback en cash (EUR ou GBP), sans token propriétaire.`,
         outro: `La Krak Card est idéale pour ceux qui préfèrent un cashback simple en cash plutôt qu'en token propriétaire. Disponible en UE et UK.`,
         rating: 3.8,
@@ -1366,7 +1366,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
       },
       en: {
         title: `Krak Card (Kraken) ${YEAR} — 1% Cash Cashback | TopCryptoCards`,
-        description: `Everything about the Krak Card by Kraken in ${YEAR}: 1% cash cashback, available in EU and UK.`,
+        description: `Krak Card review ${YEAR}: 1% cash cashback in EUR/GBP, no proprietary token, no annual fee. Available in EU & UK. Pros, cons & independent verdict ✓`,
         intro: `Krak is Kraken's Visa card, from one of the oldest crypto exchanges founded in 2011. It offers 1% cashback in cash (EUR or GBP), with no proprietary token required.`,
         outro: `The Krak Card is ideal for those who prefer simple cash cashback over proprietary tokens. Available across the EU and UK.`,
         rating: 3.8,
@@ -2184,7 +2184,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     seo: {
       fr: {
         title: `Carte Plutus ${YEAR} — 3-9% cashback PLU + Perks | TopCryptoCards`,
-        description: `Plutus Card en ${YEAR} : 3 à 9% de cashback en PLU selon le niveau, avec perks Netflix/Spotify/Amazon. À partir de 6,99€/mois.`,
+        description: `Avis Plutus Card ${YEAR} : 3-9% cashback en PLU, perks Netflix/Spotify/Amazon, Starter à 6,99€/mois. Vaut-il le coup ? Pros, cons et verdict indépendant ✓`,
         intro: `Plutus propose plusieurs tiers (Starter, Everyday, Premium, Hero...) avec un cashback en PLU allant de 3% à 9%. En plus du cashback, chaque tier inclut des "Perks" — des remboursements sur des abonnements comme Netflix, Spotify ou Amazon Prime.`,
         outro: `Plutus a abandonné le plan gratuit en 2026 — le Starter coûte désormais 6,99€/mois. Le cashback en PLU est soumis à la volatilité du token. À prendre en compte dans le calcul de rentabilité.`,
         rating: 3.7,
@@ -2296,7 +2296,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
       },
       en: {
         title: `Plutus Card ${YEAR} — 3-9% PLU Cashback + Perks | TopCryptoCards`,
-        description: `Plutus Card in ${YEAR}: 3-9% PLU cashback by tier, with perks (Netflix/Spotify/Amazon). From €6.99/month.`,
+        description: `Plutus Card review ${YEAR}: 3-9% PLU cashback per tier, Netflix/Spotify/Amazon perks, Starter from €6.99/month. Is it worth it? Pros, cons & independent verdict ✓`,
         intro: `Plutus offers multiple tiers (Starter, Everyday, Premium, Hero, and more) with PLU cashback from 3% to 9%. Each tier also includes "Perks" — credits for subscriptions like Netflix, Spotify, or Amazon Prime.`,
         outro: `Plutus dropped the free plan in 2026 — Starter now costs €6.99/month. PLU cashback is subject to token price volatility, which should factor into your profitability calculation.`,
         rating: 3.7,
