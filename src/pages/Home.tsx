@@ -128,9 +128,28 @@ const THEME_GRID: Record<string, {
     ],
   },
 };
-// Propagate be→fr and at→de aliases into THEME_GRID
-if (THEME_GRID.fr && !THEME_GRID.be) THEME_GRID.be = THEME_GRID.fr;
-if (THEME_GRID.de && !THEME_GRID.at) THEME_GRID.at = THEME_GRID.de;
+// BE: same as FR but with 'france' item replaced by 'belgium'
+if (THEME_GRID.fr && !THEME_GRID.be) {
+  THEME_GRID.be = {
+    title: THEME_GRID.fr.title,
+    items: THEME_GRID.fr.items.map(item =>
+      item.key === 'france'
+        ? { key: 'belgium', emoji: '🇧🇪', label: 'Disponibles en Belgique', desc: 'Toutes les cartes conformes et accessibles depuis la Belgique.' }
+        : item
+    ),
+  };
+}
+// AT: same as DE but with 'france' item replaced by 'austria'
+if (THEME_GRID.de && !THEME_GRID.at) {
+  THEME_GRID.at = {
+    title: THEME_GRID.de.title,
+    items: THEME_GRID.de.items.map(item =>
+      item.key === 'france'
+        ? { key: 'austria', emoji: '🇦🇹', label: 'In Österreich verfügbar', desc: 'Alle konformen Karten für den österreichischen Markt.' }
+        : item
+    ),
+  };
+}
 import type { CryptoCard } from '../types/card';
 
 type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
