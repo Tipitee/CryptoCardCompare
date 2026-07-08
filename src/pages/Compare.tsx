@@ -125,6 +125,8 @@ const QUICK_COMPARE_LABELS: Record<string, { title: string; hint: string; cardA:
   en: { title: 'Compare two cards in detail', hint: 'Click any card in the list to select it', cardA: 'Card A', cardB: 'Card B', btn: 'Compare', selectHint: 'or click a card below' },
 };
 
+const COMPARE_ROUTE: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+
 export default function Compare() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
@@ -132,12 +134,12 @@ export default function Compare() {
   useSeoMeta({ title: compareSeo.title, description: compareSeo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useHreflang(l => RT[l] ? `https://topcryptocards.eu/${l}/${RT[l]}` : null, []);
+  useHreflang(l => COMPARE_ROUTE[l] ? `https://topcryptocards.eu/${l}/${COMPARE_ROUTE[l]}` : null, []);
 
   // ── Schema.org WebApplication ─────────────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+    const RT: Record<string, string> = COMPARE_ROUTE;
     const seg = RT[lang] ?? 'compare';
     const schema = {
       '@context': 'https://schema.org',
