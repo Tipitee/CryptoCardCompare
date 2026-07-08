@@ -77,7 +77,7 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
     document.querySelectorAll('meta[property="og:locale:alternate"]').forEach(el => el.remove());
     const alternateEls: HTMLMetaElement[] = [];
     if (lang) {
-      const currentLocale = OG_LOCALE[lang] ?? 'en_US';
+      const currentLocale = OG_LOCALE[lang] ?? 'en_GB';
       ALL_OG_LOCALES.filter(l => l !== currentLocale).forEach(l => {
         const el = document.createElement('meta');
         el.setAttribute('property', 'og:locale:alternate');

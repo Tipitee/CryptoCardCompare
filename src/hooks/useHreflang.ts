@@ -27,6 +27,21 @@ export const HREFLANG_BASE = 'https://topcryptocards.eu';
 const LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
 const ATTR = 'data-hreflang';
 
+/**
+ * Maps URL path slugs to valid BCP 47 language tags for hreflang attributes.
+ * `be` and `at` are ISO 3166 country codes and NOT valid BCP 47 — must be mapped.
+ * `en` alone is generic English; we use `en-GB` since we target the UK market.
+ */
+const HREFLANG_BCP47: Record<string, string> = {
+  fr: 'fr',
+  be: 'fr-BE',
+  de: 'de',
+  at: 'de-AT',
+  es: 'es',
+  it: 'it',
+  en: 'en-GB',
+};
+
 export interface HreflangEntry {
   lang: string;
   href: string;
@@ -63,11 +78,11 @@ export function useHreflang(
 
     if (entries.length === 0) return;
 
-    // Inject alternate links
+    // Inject alternate links (using BCP 47 codes, not URL slugs)
     entries.forEach(({ lang, href }) => {
       const el = document.createElement('link');
       el.rel = 'alternate';
-      el.setAttribute('hreflang', lang);
+      el.setAttribute('hreflang', HREFLANG_BCP47[lang] ?? lang);
       el.setAttribute('href', href);
       el.setAttribute(ATTR, 'true');
       document.head.appendChild(el);

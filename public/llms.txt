@@ -1,0 +1,27 @@
+# TopCryptoCards
+
+> Independent comparison platform for cryptocurrency cards in Europe. Compare 90+ crypto cards: cashback rates, annual fees, staking requirements, and availability by country.
+
+## About
+
+TopCryptoCards is a free, independent comparison tool for crypto debit and credit cards available in Europe. The site covers France, Belgium, Germany, Austria, Spain, Italy, and the United Kingdom.
+
+The site is not affiliated with any card issuer. Affiliate links are disclosed on the affiliate disclosure page.
+
+## Content
+
+- Card comparisons: cashback, annual fees, staking requirements, card networks, virtual/physical availability
+- Brand reviews: Crypto.com, Nexo, Bybit, Revolut, Bitpanda, MetaMask Card, Gnosis Pay, Brighty, Bleap, and more
+- Country-specific card availability (MiCA-regulated markets)
+- Thematic guides: best cashback cards, no-fee cards, travel cards, no-staking cards, beginner cards
+- Blog articles on crypto card features, European regulations (MiCA), and market updates
+- Interactive comparison tool and savings simulator
+
+## Languages
+
+Available in: French (fr), Belgian French (be), German (de), Austrian German (at), Spanish (es), Italian (it), English / UK (en).
+
+## Contact
+
+- Website: https://topcryptocards.eu
+- Twitter/X: https://x.com/cryptocards_eu

@@ -28,13 +28,13 @@ const COMPARE_PREFIX: Record<string, string> = {
   fr: 'comparer', be: 'comparer', de: 'vergleichen', at: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
 };
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Meilleure Carte Crypto France ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez +15 cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais, sans staking. Crypto.com, Nexo, Binance, Bybit et plus. Comparateur gratuit ✓` },
-  be: { title: `Meilleure Carte Crypto Belgique ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez +15 cartes crypto en Belgique ${YEAR} : jusqu'à 8 % cashback, sans frais, sans staking. Crypto.com, Nexo, Gnosis Pay, MetaMask Card. Comparateur gratuit ✓` },
-  de: { title: `Beste Krypto Karte Deutschland ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten für Deutschland ${YEAR}: bis zu 8% Cashback, keine Jahresgebühr, kein Staking. Crypto.com, Nexo, Binance, Bybit u.v.m. Kostenlos ✓` },
-  at: { title: `Beste Krypto Karte Österreich ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten für Österreich ${YEAR}: bis zu 8% Cashback, keine Jahresgebühr, kein Staking. Bitpanda, Crypto.com, Nexo, Gnosis Pay. Kostenlos ✓` },
-  es: { title: `Mejor Tarjeta Crypto España ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara +15 tarjetas crypto en España ${YEAR}: hasta 8% cashback, sin cuota anual, sin staking. Crypto.com, Nexo, Binance, Bybit y más. Comparativa gratuita ✓` },
-  it: { title: `Miglior Carta Crypto Italia ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta +15 carte crypto in Italia ${YEAR}: fino all'8% cashback, senza quota annua, senza staking. Crypto.com, Nexo, Binance, Bybit e altri. Gratuito ✓` },
-  en: { title: `Best Crypto Card Europe ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare +15 crypto cards in Europe ${YEAR}: up to 8% cashback, no annual fees, no staking required. Crypto.com, Nexo, Binance, Bybit & more. Free tool ✓` },
+  fr: { title: `Meilleure Carte Crypto France ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais annuels. Crypto.com, Nexo, Bybit, Revolut. Comparateur gratuit ✓` },
+  be: { title: `Meilleure Carte Crypto Belgique ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en Belgique ${YEAR} : cashback, frais, staking. Crypto.com, Nexo, Bybit, Gnosis Pay. Comparateur gratuit ✓` },
+  de: { title: `Beste Krypto Karte Deutschland ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Deutschland ${YEAR}: bis zu 8% Cashback, ohne Jahresgebühr, kein Staking nötig. Crypto.com, Nexo, Bybit, Revolut. Kostenlos ✓` },
+  at: { title: `Beste Krypto Karte Österreich ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Österreich ${YEAR}: Cashback, Gebühren, Staking im Vergleich. Crypto.com, Nexo, Bybit, Bitpanda. Kostenlos ✓` },
+  es: { title: `Mejor Tarjeta Crypto España ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas crypto en España ${YEAR}: hasta 8% cashback, sin cuota anual, sin staking. Crypto.com, Nexo, Bybit, Revolut y más. Gratis ✓` },
+  it: { title: `Miglior Carta Crypto Italia ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta 90+ carte crypto in Italia ${YEAR}: fino all'8% cashback, senza quota annua, senza staking. Crypto.com, Nexo, Bybit, Revolut. Gratuito ✓` },
+  en: { title: `Best Crypto Card UK ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards in the UK ${YEAR}: up to 8% cashback, no annual fees, no staking required. Crypto.com, Nexo, Bybit, Revolut & more. Free ✓` },
 };
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
