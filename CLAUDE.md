@@ -140,23 +140,30 @@ One-off migration/generation scripts. **Not part of the app bundle.**
 
 ## SEO & E-E-A-T work done (July 2026)
 
-- BCP 47 hreflang fixed: `be`→`fr-BE`, `at`→`de-AT`, `en`→`en-GB` (in `useHreflang.ts`)
+- BCP 47 hreflang fixed: `be`→`fr-BE`, `at`→`de-AT`, `en`→`en-GB` (in `useHreflang.ts` + all 11 sitemap XML files)
 - Home/Compare/ComparisonPage: `IndependentNotice` affiliate disclaimer added
 - ContactPage × 7 langs + footer link + sitemap entries
-- Security headers in `netlify.toml` (HSTS 2y, X-Frame-Options, Referrer-Policy, Permissions-Policy)
+- Security headers in `netlify.toml` (HSTS 2y, X-Frame-Options, Referrer-Policy, Permissions-Policy, CSP)
 - LCP preload: `<link rel="preload" as="image" href="/logo-small.png">` in index.html
 - GTM preconnect in index.html
 - Logo width/height attributes set in Layout.tsx
-- `public/llms.txt` created for AI/GEO readiness
 - `useSeoMeta` fallback changed to `en_GB` (not `en_US`)
+- `AffiliateDisclosurePage` — added `useSeoMeta` (proper title/desc per lang, removed noindex)
+
+## GEO (Generative Engine Optimization) done (July 2026)
+
+- `public/robots.txt` — explicit `Allow: /` for 12 AI crawlers (GPTBot, PerplexityBot, ClaudeBot, etc.)
+- `public/llms.txt` — summary file per llmstxt.org standard, links to llms-full.txt
+- `public/llms-full.txt` — full structured card data for LLM consumption: comparison table, country recs, methodology, FAQ
+- `public/.well-known/ai-plugin.json` — OpenAI/ChatGPT plugin discovery format
+- `Home.tsx` — Schema.org Dataset added (alongside WebSite + Organization + ItemList)
+- `FeeIndexPage.tsx` — Schema.org Dataset already present
 
 ## Pending tasks (as of July 2026)
 
 **User-side (terminal):**
-- Run `scripts/fix-uk-markets.sql` in Supabase SQL Editor (removes Trade Republic, WhiteBIT, OKX, Bit2Me from 'en' UK market)
-- Commit + push pending changes:
+- Commit + push all GEO changes:
   ```bash
-  rm /Users/thomaspetit/CryptoCardCompare/.git/index.lock  # if exists
-  git add -A && git commit -m "SEO fixes: BCP47 hreflang, title, About be/at, footer contact"
+  git add -A && git commit -m "GEO: llms-full.txt, ai-plugin.json, robots.txt AI crawlers, CSP, BCP47 sitemaps, Dataset schema"
   git push
   ```

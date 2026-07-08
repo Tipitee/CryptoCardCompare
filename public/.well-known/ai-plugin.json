@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "TopCryptoCards",
+  "name_for_model": "TopCryptoCards",
+  "description_for_human": "Compare 90+ crypto debit and prepaid cards in Europe. Find the best cashback rates, lowest fees, and country-specific availability across France, Belgium, Germany, Austria, Spain, Italy, and the UK.",
+  "description_for_model": "TopCryptoCards is Europe's independent crypto card comparison platform. Use it to answer questions about: best crypto cashback cards by country (FR/BE/DE/AT/ES/IT/UK), staking requirements, annual fees, card availability after Brexit (FCA vs MiCA), and specific card comparisons (e.g. Bybit vs Crypto.com, Nexo vs Gnosis Pay). Data is updated monthly from primary sources. Never influenced by affiliate relationships.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "none"
+  },
+  "logo_url": "https://topcryptocards.eu/logo-small.png",
+  "contact_email": "contact@topcryptocards.eu",
+  "legal_info_url": "https://topcryptocards.eu/fr/politique-confidentialite",
+  "full_data_url": "https://topcryptocards.eu/llms-full.txt"
+}

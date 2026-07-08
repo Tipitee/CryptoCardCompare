@@ -223,11 +223,26 @@ export default function Home() {
       description: homeSeo.desc,
       sameAs: ['https://x.com/cryptocards_eu'],
     };
+    // Dataset schema for GEO / AI crawlers
+    const datasetSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      name: `TopCryptoCards — Crypto Card Comparison Dataset (${lang.toUpperCase()})`,
+      description: homeSeo.desc,
+      url: `${BASE}/${lang}`,
+      inLanguage: lang,
+      publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
+      license: 'https://creativecommons.org/licenses/by/4.0/',
+      dateModified: new Date().toISOString().split('T')[0],
+      variableMeasured: ['Cashback rate', 'Annual fees', 'Staking required', 'ATM withdrawal', 'Card network'],
+      isAccessibleForFree: true,
+      sameAs: `${BASE}/llms-full.txt`,
+    };
     document.getElementById('schema-org-home')?.remove();
     const el = document.createElement('script');
     el.id = 'schema-org-home';
     el.type = 'application/ld+json';
-    el.textContent = JSON.stringify([websiteSchema, orgSchema]);
+    el.textContent = JSON.stringify([websiteSchema, orgSchema, datasetSchema]);
     document.head.appendChild(el);
     return () => { document.getElementById('schema-org-home')?.remove(); };
   }, [lang, homeSeo.desc]);
