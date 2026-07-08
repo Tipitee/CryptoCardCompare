@@ -430,7 +430,7 @@ export default function ReviewPage() {
     },
     datePublished: review.updatedAt,
     dateModified: review.updatedAt,
-    publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://twitter.com/TopCryptoCards'], logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png', width: 200, height: 60 } },
+    publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: 'https://topcryptocards.eu', sameAs: ['https://x.com/cryptocards_eu'], logo: { '@type': 'ImageObject', url: 'https://topcryptocards.eu/logo.png', width: 200, height: 60 } },
   };
 
   const breakdownItems = [

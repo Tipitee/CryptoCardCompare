@@ -83,7 +83,7 @@ const COMPARE_EDITORIAL: Record<string, { h2: string; body: string; related: str
   },
   en: {
     h2: 'How to use our crypto card comparison tool?',
-    body: `Our comparison tool lets you filter and sort 15+ crypto cards by your criteria: cashback rate, annual fees, staking requirements, supported cryptocurrencies and country availability. Select up to two cards for a detailed side-by-side comparison, or use the filters to quickly identify cards that match your profile. Every card is assessed against verified, regularly updated data. Sorting by trust score helps you distinguish regulated and established issuers from newer entrants. To go further, check our individual reviews and our earnings simulator, which calculates your real cashback based on your monthly spending habits.`,
+    body: `Our comparison tool lets you filter and sort 90+ crypto cards by your criteria: cashback rate, annual fees, staking requirements, supported cryptocurrencies and country availability. Select up to two cards for a detailed side-by-side comparison, or use the filters to quickly identify cards that match your profile. Every card is assessed against verified, regularly updated data. Sorting by trust score helps you distinguish regulated and established issuers from newer entrants. To go further, check our individual reviews and our earnings simulator, which calculates your real cashback based on your monthly spending habits.`,
     related: 'Guides by card type',
     links: [
       { key: 'best',       emoji: '⭐', label: 'Best cards' },
@@ -96,11 +96,13 @@ const COMPARE_EDITORIAL: Record<string, { h2: string; body: string; related: str
 };
 
 const COMPARE_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Comparateur Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez +15 cartes crypto : cashback, frais annuels, staking. Crypto.com, Nexo, Binance, Bybit — filtrez en quelques secondes. Gratuit ✓` },
-  de: { title: `Krypto-Karten Vergleich ${YEAR} — Cashback | TopCryptoCards`, desc: `+15 Krypto-Karten vergleichen: Cashback, Jahresgebühren, Staking. Crypto.com, Nexo, Binance, Bybit und mehr — in Sekunden filtern. Kostenlos ✓` },
-  es: { title: `Comparador Crypto ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara +15 tarjetas crypto: cashback, comisiones, staking. Crypto.com, Nexo, Binance, Bybit y más — filtra en segundos. Gratis ✓` },
-  it: { title: `Comparatore Carte Crypto ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta +15 carte crypto: cashback, commissioni, staking. Crypto.com, Nexo, Binance, Bybit e altri — filtra in secondi. Gratuito ✓` },
-  en: { title: `Crypto Card Comparison ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare 15+ crypto cards: cashback rates, annual fees, staking. Crypto.com, Nexo, Binance, Bybit — filter in seconds. Free ✓` },
+  fr: { title: `Comparateur Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez 90+ cartes crypto : cashback, frais annuels, staking. Crypto.com, Nexo, Bybit, Revolut — filtrez en quelques secondes. Gratuit ✓` },
+  be: { title: `Comparateur Crypto ${YEAR} — Cashback & Frais | TopCryptoCards`, desc: `Comparez 90+ cartes crypto disponibles en Belgique : cashback, frais, staking. Crypto.com, Nexo, Bybit — filtrez en secondes. Gratuit ✓` },
+  de: { title: `Krypto-Karten Vergleich ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten vergleichen: Cashback, Jahresgebühren, Staking. Crypto.com, Nexo, Bybit, Revolut und mehr — in Sekunden filtern. Kostenlos ✓` },
+  at: { title: `Krypto-Karten Vergleich ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Österreich: Cashback, Gebühren, Staking. Crypto.com, Nexo, Bybit — in Sekunden filtern. Kostenlos ✓` },
+  es: { title: `Comparador Crypto ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas crypto: cashback, comisiones, staking. Crypto.com, Nexo, Bybit, Revolut y más — filtra en segundos. Gratis ✓` },
+  it: { title: `Comparatore Carte Crypto ${YEAR} — Cashback | TopCryptoCards`, desc: `Confronta 90+ carte crypto: cashback, commissioni, staking. Crypto.com, Nexo, Bybit, Revolut e altri — filtra in secondi. Gratuito ✓` },
+  en: { title: `Crypto Card Comparison ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards: cashback rates, annual fees, staking. Crypto.com, Nexo, Bybit, Revolut — filter in seconds. Free ✓` },
 };
 
 const ALL_CRYPTOS = [

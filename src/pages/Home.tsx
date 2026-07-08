@@ -220,7 +220,7 @@ export default function Home() {
         height: 60,
       },
       description: homeSeo.desc,
-      sameAs: ['https://twitter.com/TopCryptoCards'],
+      sameAs: ['https://x.com/cryptocards_eu'],
     };
     document.getElementById('schema-org-home')?.remove();
     const el = document.createElement('script');

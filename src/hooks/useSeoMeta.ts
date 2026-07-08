@@ -15,6 +15,7 @@ export interface SeoMetaOptions {
  * Cleans up on unmount (restores previous values).
  */
 const OG_LOCALE: Record<string, string> = { fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT', en: 'en_US', be: 'fr_BE', at: 'de_AT' };
+const ALL_OG_LOCALES = ['fr_FR', 'fr_BE', 'de_DE', 'de_AT', 'es_ES', 'it_IT', 'en_US'];
 
 export function useSeoMeta({ title, description, image, type = 'website', canonical, lang, noindex }: SeoMetaOptions) {
   useEffect(() => {
@@ -66,10 +67,25 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
       upsertMeta('name',     'twitter:title',     title),
       upsertMeta('name',     'twitter:description', description),
       upsertMeta('name',     'twitter:image',     ogImage),
-      upsertMeta('name',     'twitter:site',      '@TopCryptoCards'),
+      upsertMeta('name',     'twitter:site',      '@cryptocards_eu'),
       ...(lang ? [upsertMeta('property', 'og:locale', OG_LOCALE[lang] ?? 'en_US')] : []),
       ...(noindex !== undefined ? [upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')] : []),
     ];
+
+    // ── og:locale:alternate (multiple tags — managed separately) ──────────────
+    // Remove any pre-existing alternate tags, then create one per other locale.
+    document.querySelectorAll('meta[property="og:locale:alternate"]').forEach(el => el.remove());
+    const alternateEls: HTMLMetaElement[] = [];
+    if (lang) {
+      const currentLocale = OG_LOCALE[lang] ?? 'en_US';
+      ALL_OG_LOCALES.filter(l => l !== currentLocale).forEach(l => {
+        const el = document.createElement('meta');
+        el.setAttribute('property', 'og:locale:alternate');
+        el.setAttribute('content', l);
+        document.head.appendChild(el);
+        alternateEls.push(el);
+      });
+    }
 
     // ── Cleanup ───────────────────────────────────────────────────────────────
     return () => {
@@ -88,6 +104,8 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
           (el as HTMLMetaElement).setAttribute('content', prev);
         }
       });
+
+      alternateEls.forEach(el => el.parentNode?.removeChild(el));
     };
   }, [title, description, image, type, canonical, lang, noindex]);
 }
