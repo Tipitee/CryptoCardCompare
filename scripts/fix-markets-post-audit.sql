@@ -114,6 +114,20 @@ WHERE status != 'discontinued'
 
 
 -- ============================================================
+-- D) NO-KYC — Ajouter 'no_kyc' aux extras des cartes sans KYC
+-- ============================================================
+-- MetaMask Card (ConsenSys), Gnosis Pay, Ether.fi Cash : auto-custodial,
+-- pas de KYC nominatif côté émetteur crypto, vérification via wallet on-chain.
+-- Ces cartes apparaîtront sur les pages thématiques /no-kyc.
+
+UPDATE cards
+SET extras = array_append(extras, 'no_kyc')
+WHERE issuer IN ('ConsenSys', 'Gnosis', 'Ether.fi Cash')
+  AND status != 'discontinued'
+  AND NOT ('no_kyc' = ANY(extras));
+
+
+-- ============================================================
 -- VÉRIFICATIONS POST-CORRECTIONS
 -- ============================================================
 

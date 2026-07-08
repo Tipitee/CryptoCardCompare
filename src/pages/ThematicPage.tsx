@@ -1112,7 +1112,7 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   virtual:      (c) => c.virtual_only === true,
   physical:     (c) => c.virtual_only !== true,
   beginner:     (c) => (c.annual_fees || 0) === 0 && (c.staking_required || 0) === 0,
-  'no-kyc':     (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet'].includes(e)),
+  'no-kyc':     (c) => (Array.isArray(c.extras) && c.extras.some((e: string) => ['self_custody','hybrid_custody','web3_native','defi_native','exodus_wallet','no_kyc'].includes(e))) || ['gnosis', 'metamask', 'ether-fi'].includes(c.brand_id ?? ''),
   '2026':       () => true,
   travel:       () => true,
   rewards:      (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
@@ -1178,8 +1178,8 @@ const RELATED_THEMES: Record<string, string[]> = {
   '2026':       ['best', 'cashback', 'rewards', 'travel'],
   travel:       ['cashback', 'rewards', 'no-fees', '2026'],
   rewards:      ['cashback', 'travel', '2026', 'best'],
-  belgium:      ['best', 'cashback', 'no-fees', 'france'],
-  austria:      ['best', 'cashback', 'no-fees', 'france'],
+  belgium:      ['best', 'cashback', 'no-fees', 'virtual'],
+  austria:      ['best', 'cashback', 'no-fees', 'virtual'],
 };
 const THEME_EMOJI: Record<string, string> = {
   best: '⭐', cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓',
@@ -1658,6 +1658,54 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         </div>
       )}
 
+      {/* Prose cross-linking paragraph — entre la grille et les sections éditoriales */}
+      {!loading && filteredCards.length > 0 && (() => {
+        const CROSS_INTRO: Record<string, string> = {
+          fr: 'Sur le même sujet, consultez aussi nos guides sur',
+          de: 'Zum gleichen Thema empfehlen wir auch unsere Guides zu',
+          es: 'Sobre el mismo tema, consulta también nuestras guías sobre',
+          it: 'Sullo stesso argomento, consulta anche le nostre guide su',
+          en: 'On the same topic, explore our guides on',
+        };
+        const CROSS_AND: Record<string, string> = { fr: 'et', de: 'und', es: 'y', it: 'e', en: 'and' };
+        const SIM_INTRO: Record<string, string> = {
+          fr: 'Estimez vos gains avec notre',
+          de: 'Schätzen Sie Ihre Gewinne mit unserem',
+          es: 'Calcule sus ganancias con nuestra',
+          it: 'Stimate i vostri guadagni con il nostro',
+          en: 'Estimate your earnings with our',
+        };
+        const SIM_LABEL: Record<string, string> = { fr: 'simulateur de cashback', de: 'Cashback-Rechner', es: 'calculadora de cashback', it: 'simulatore di cashback', en: 'cashback calculator' };
+        const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+
+        const related = (RELATED_THEMES[theme] ?? [])
+          .filter(t2 => t2 !== theme && THEMATIC_SLUGS[t2]?.[lang] && THEME_CONFIG[t2]?.[lang]?.h1)
+          .slice(0, 3);
+        if (related.length === 0) return null;
+
+        return (
+          <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-3xl">
+            {CROSS_INTRO[lang] ?? CROSS_INTRO.en}{' '}
+            {related.map((t2, i) => {
+              const slug = THEMATIC_SLUGS[t2]?.[lang];
+              const label = THEME_CONFIG[t2]?.[lang]?.h1 ?? t2;
+              const isLast = i === related.length - 1;
+              const isSecondToLast = i === related.length - 2;
+              return (
+                <span key={t2}>
+                  <Link to={`/${lang}/${slug}`} className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">{label}</Link>
+                  {isSecondToLast ? ` ${CROSS_AND[lang] ?? 'and'} ` : isLast ? '. ' : ', '}
+                </span>
+              );
+            })}
+            {SIM_INTRO[lang] ?? SIM_INTRO.en}{' '}
+            <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">
+              {SIM_LABEL[lang] ?? SIM_LABEL.en}
+            </Link>.
+          </p>
+        );
+      })()}
+
       {/* Editorial depth sections (THEME_SECTIONS) */}
       {(() => {
         const sections = THEME_SECTIONS[theme]?.[lang] ?? THEME_SECTIONS[theme]?.['en'];
@@ -1674,6 +1722,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           virtual: ['no-staking', 'no-fees', 'beginner'],
           beginner: ['no-fees', 'no-staking', 'virtual'],
           '2026': ['best', 'cashback', 'no-staking'],
+          'no-kyc': ['beginner', 'no-staking', 'virtual'],
+          physical: ['virtual', 'travel', 'best'],
+          belgium: ['best', 'cashback', 'no-fees'],
+          austria: ['best', 'cashback', 'no-fees'],
+          france: ['best', 'cashback', 'no-staking'],
         };
         const RELATED_PREFIX: Record<string, string> = {
           fr: 'À explorer aussi :',
