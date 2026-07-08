@@ -22,6 +22,8 @@ const COPY: Record<string, {
   thNetwork: string; thMarkets: string; thDetails: string;
   free: string; yes: string; no: string; eu: string; fr: string; global: string;
   loading: string; compareLink: string; lastUpdated: string;
+  perYear: string;
+  bestLink: string; bestLabel: string; simLink: string; simLabel: string;
 }> = {
   fr: {
     title:       `Frais Cartes Crypto ${new Date().getFullYear()} — Tableau Comparatif Complet | TopCryptoCards`,
@@ -47,6 +49,11 @@ const COPY: Record<string, {
     loading:     'Chargement…',
     compareLink: 'Comparer les cartes en détail →',
     lastUpdated: `Données mises à jour en juillet ${new Date().getFullYear()}`,
+    perYear:     '/an',
+    bestLink:    'meilleure-carte-crypto',
+    bestLabel:   'Voir le classement des meilleures cartes crypto →',
+    simLink:     'simulateur',
+    simLabel:    'Simuler mon cashback annuel →',
   },
   de: {
     title:       `Krypto-Karten Gebühren ${new Date().getFullYear()} — Vollständiger Vergleich | TopCryptoCards`,
@@ -72,6 +79,11 @@ const COPY: Record<string, {
     loading:     'Laden…',
     compareLink: 'Karten im Detail vergleichen →',
     lastUpdated: `Daten aktualisiert Juli ${new Date().getFullYear()}`,
+    perYear:     '/Jahr',
+    bestLink:    'beste-krypto-karte',
+    bestLabel:   'Zum Ranking der besten Krypto-Karten →',
+    simLink:     'simulator',
+    simLabel:    'Meinen jährlichen Cashback simulieren →',
   },
   es: {
     title:       `Tarifas Tarjetas Crypto ${new Date().getFullYear()} — Comparativa Completa | TopCryptoCards`,
@@ -97,6 +109,11 @@ const COPY: Record<string, {
     loading:     'Cargando…',
     compareLink: 'Comparar tarjetas en detalle →',
     lastUpdated: `Datos actualizados julio ${new Date().getFullYear()}`,
+    perYear:     '/año',
+    bestLink:    'mejor-tarjeta-crypto',
+    bestLabel:   'Ver el ranking de las mejores tarjetas crypto →',
+    simLink:     'simulador',
+    simLabel:    'Simular mi cashback anual →',
   },
   it: {
     title:       `Tariffe Carte Crypto ${new Date().getFullYear()} — Confronto Completo | TopCryptoCards`,
@@ -122,6 +139,11 @@ const COPY: Record<string, {
     loading:     'Caricamento…',
     compareLink: 'Confronta le carte in dettaglio →',
     lastUpdated: `Dati aggiornati luglio ${new Date().getFullYear()}`,
+    perYear:     '/anno',
+    bestLink:    'migliore-carta-crypto',
+    bestLabel:   'Vedi il ranking delle migliori carte crypto →',
+    simLink:     'simulatore',
+    simLabel:    'Simula il mio cashback annuo →',
   },
   en: {
     title:       `Crypto Card Fees ${new Date().getFullYear()} — Complete Comparison Table | TopCryptoCards`,
@@ -147,21 +169,32 @@ const COPY: Record<string, {
     loading:     'Loading…',
     compareLink: 'Compare cards in detail →',
     lastUpdated: `Data updated July ${new Date().getFullYear()}`,
+    perYear:     '/year',
+    bestLink:    'best-crypto-card',
+    bestLabel:   'See the best crypto card ranking →',
+    simLink:     'simulator',
+    simLabel:    'Simulate my annual cashback →',
   },
 };
 
-// Propagate be→fr and at→de aliases into COPY
+// Propagate be→fr and at→de aliases into COPY (with country-specific overrides)
 COPY.be = {
   ...COPY.fr,
   title:       `Frais Cartes Crypto Belgique ${new Date().getFullYear()} — Comparatif | TopCryptoCards`,
   h1:          `Index des Frais des Cartes Crypto en Belgique ${new Date().getFullYear()}`,
   description: `Tableau complet des frais cartes crypto disponibles en Belgique : frais annuels, staking, cashback, retraits. Mis à jour ${new Date().getFullYear()}.`,
+  intro:       `Un index des frais de cartes crypto est un tableau de référence listant, pour chaque carte Visa ou Mastercard crypto disponible en Belgique, l'ensemble des coûts réels : frais annuels, montant de staking requis, taux de cashback de base et maximum, politique de retrait ATM et réseau de paiement. Ce tableau couvre uniquement les cartes accessibles depuis la Belgique et est mis à jour régulièrement à partir des données officielles des émetteurs.`,
+  bestLink:    'carte-crypto-belgique',
+  bestLabel:   'Voir les meilleures cartes crypto en Belgique →',
 };
 COPY.at = {
   ...COPY.de,
   title:       `Krypto-Karten Gebühren Österreich ${new Date().getFullYear()} — Vergleich | TopCryptoCards`,
   h1:          `Gebühren-Index Krypto-Karten Österreich ${new Date().getFullYear()}`,
   description: `Vollständige Gebührentabelle aller Krypto-Karten in Österreich: Jahresgebühren, Staking, Cashback, Abhebungen. Aktualisiert ${new Date().getFullYear()}.`,
+  intro:       `Ein Krypto-Karten-Gebührenindex ist eine Referenztabelle, die für jede in Österreich verfügbare Visa- oder Mastercard-Kryptokarte alle tatsächlichen Kosten auflistet: Jahresgebühren, erforderlicher Staking-Betrag, Basis- und maximale Cashback-Sätze, ATM-Abhebungsrichtlinie und Zahlungsnetzwerk. Diese Tabelle umfasst ausschließlich in Österreich verfügbare Karten und wird regelmäßig anhand offizieller Emittentendaten aktualisiert.`,
+  bestLink:    'krypto-karte-oesterreich',
+  bestLabel:   'Die besten Krypto-Karten in Österreich ansehen →',
 };
 
 type SortKey = 'name' | 'annualFees' | 'stakingRequired' | 'cashbackBase' | 'cashbackPremium';
@@ -319,7 +352,7 @@ export default function FeeIndexPage() {
                       <td className="px-4 py-3 text-center">
                         {card.annualFees === 0
                           ? <span className="text-green-accent font-semibold">{c.free}</span>
-                          : <span className="text-white font-semibold">{fmtEUR(card.annualFees)}/an</span>
+                          : <span className="text-white font-semibold">{fmtEUR(card.annualFees)}{c.perYear}</span>
                         }
                       </td>
                       {/* Staking */}
@@ -372,13 +405,25 @@ export default function FeeIndexPage() {
         <p className="mt-4 text-xs text-slate-500 leading-relaxed max-w-3xl">{c.note}</p>
         <p className="mt-1 text-xs text-slate-600">{c.lastUpdated}</p>
 
-        {/* CTA → Compare */}
-        <div className="mt-8">
+        {/* CTAs */}
+        <div className="mt-8 flex flex-col gap-3">
           <Link
             to={`/${lang}/${compareSlug}`}
             className="inline-flex items-center gap-2 text-cyan-accent hover:underline font-medium"
           >
             {c.compareLink}
+          </Link>
+          <Link
+            to={`/${lang}/${c.bestLink}`}
+            className="inline-flex items-center gap-2 text-cyan-accent hover:underline font-medium"
+          >
+            {c.bestLabel}
+          </Link>
+          <Link
+            to={`/${lang}/${c.simLink}`}
+            className="inline-flex items-center gap-2 text-cyan-accent hover:underline font-medium"
+          >
+            {c.simLabel}
           </Link>
         </div>
       </div>

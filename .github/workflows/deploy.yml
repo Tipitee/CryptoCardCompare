@@ -83,3 +83,6 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Ping IndexNow (notify Bing of updated URLs)
+        run: node scripts/indexnow.mjs
