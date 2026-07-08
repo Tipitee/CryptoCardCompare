@@ -3,8 +3,14 @@ import { useHreflang } from '../hooks/useHreflang';
 import { Link, useParams } from 'react-router-dom';
 import { Coins, ExternalLink } from 'lucide-react';
 
-const SUPPORTED_LANGS = ['fr', 'de', 'es', 'it', 'en'] as const;
+const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
+type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en';
+
+/** Maps URL lang (be/at) to the content variant to use */
+const CONTENT_LANG: Record<Lang, ContentLang> = {
+  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en',
+};
 
 function useDisclosureLang(): Lang {
   const { lang } = useParams<{ lang?: string }>();
@@ -14,7 +20,9 @@ function useDisclosureLang(): Lang {
 /* ── Slugs ───────────────────────────────────────────────────────────────── */
 const SLUGS: Record<Lang, string> = {
   fr: 'divulgation-affilies',
+  be: 'divulgation-affilies',
   de: 'affiliate-offenlegung',
+  at: 'affiliate-offenlegung',
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
@@ -199,7 +207,9 @@ const CONTENT: Record<Lang, Content> = {
 
 const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privacy: string; affiliate: string; risk: string }> = {
   fr: { copyright: 'Pas de conseil financier.', impressum: 'Mentions légales', privacy: 'Confidentialité', affiliate: 'Liens affiliés', risk: 'Avertissement risques' },
+  be: { copyright: 'Pas de conseil financier.', impressum: 'Mentions légales', privacy: 'Confidentialité', affiliate: 'Liens affiliés', risk: 'Avertissement risques' },
   de: { copyright: 'Kein Finanzberatung.', impressum: 'Impressum', privacy: 'Datenschutz', affiliate: 'Affiliate-Offenlegung', risk: 'Risikohinweis' },
+  at: { copyright: 'Kein Finanzberatung.', impressum: 'Impressum', privacy: 'Datenschutz', affiliate: 'Affiliate-Offenlegung', risk: 'Risikohinweis' },
   es: { copyright: 'Sin asesoramiento financiero.', impressum: 'Aviso legal', privacy: 'Privacidad', affiliate: 'Afiliados', risk: 'Resumen de riesgos' },
   it: { copyright: 'Nessun consiglio finanziario.', impressum: 'Note legali', privacy: 'Privacy', affiliate: 'Affiliati', risk: 'Riepilogo rischi' },
   en: { copyright: 'No financial advice.', impressum: 'Impressum', privacy: 'Privacy', affiliate: 'Affiliate Disclosure', risk: 'Risk Summary' },
@@ -207,7 +217,8 @@ const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privac
 
 export default function AffiliateDisclosurePage() {
   const lang = useDisclosureLang();
-  const c = CONTENT[lang];
+  const cl = CONTENT_LANG[lang];
+  const c = CONTENT[cl];
   const f = FOOTER_LABELS[lang];
   const slug = SLUGS[lang];
 

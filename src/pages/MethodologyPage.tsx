@@ -1,9 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { useHreflang } from '../hooks/useHreflang';
 
-const SUPPORTED_LANGS = ['fr', 'de', 'es', 'it', 'en'] as const;
+const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
+type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en';
+
+/** Maps URL lang (be/at) to the content variant to use */
+const CONTENT_LANG: Record<Lang, ContentLang> = {
+  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en',
+};
 
 function useMethodologyLang(): Lang {
   const { lang } = useParams<{ lang?: string }>();
@@ -13,7 +20,9 @@ function useMethodologyLang(): Lang {
 /* ── Slugs ───────────────────────────────────────────────────────────────── */
 export const METHODOLOGY_SLUGS: Record<Lang, string> = {
   fr: 'methodologie',
+  be: 'methodologie',
   de: 'methodik',
+  at: 'methodik',
   es: 'metodologia',
   it: 'metodologia',
   en: 'methodology',
@@ -284,7 +293,9 @@ const META: Record<Lang, { title: string; description: string }> = {
 
 const DISCLOSURE_SLUGS: Record<Lang, string> = {
   fr: 'divulgation-affilies',
+  be: 'divulgation-affilies',
   de: 'affiliate-offenlegung',
+  at: 'affiliate-offenlegung',
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
@@ -292,7 +303,9 @@ const DISCLOSURE_SLUGS: Record<Lang, string> = {
 
 const DISCLOSURE_LABEL: Record<Lang, string> = {
   fr: "notre page de divulgation des affiliés",
+  be: "notre page de divulgation des affiliés",
   de: "unsere Affiliate-Offenlegungsseite",
+  at: "unsere Affiliate-Offenlegungsseite",
   es: "nuestra página de divulgación de afiliados",
   it: "la nostra pagina di divulgazione degli affiliati",
   en: "our affiliate disclosure page",
@@ -301,10 +314,12 @@ const DISCLOSURE_LABEL: Record<Lang, string> = {
 /* ── Component ───────────────────────────────────────────────────────────── */
 const MethodologyPage: React.FC = () => {
   const lang = useMethodologyLang();
-  const c = CONTENT[lang];
-  const meta = META[lang];
+  const cl = CONTENT_LANG[lang];
+  const c = CONTENT[cl];
+  const meta = META[cl];
 
   useSeoMeta({ title: meta.title, description: meta.description, lang });
+  useHreflang(l => `https://topcryptocards.eu/${l}/${METHODOLOGY_SLUGS[l as Lang] ?? 'methodology'}`, []);
 
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
