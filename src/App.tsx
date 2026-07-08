@@ -34,6 +34,7 @@ const NotFound             = lazy(() => import('./pages/NotFound'));
 const BrandPage            = lazy(() => import('./pages/BrandPage'));
 const BrandList            = lazy(() => import('./pages/BrandList'));
 const About                = lazy(() => import('./pages/About'));
+const ContactPage          = lazy(() => import('./pages/ContactPage'));
 const AuthorPage           = lazy(() => import('./pages/AuthorPage'));
 const VirtualVsPhysical    = lazy(() => import('./pages/VirtualVsPhysicalPage'));
 const FeeIndexPage         = lazy(() => import('./pages/FeeIndexPage'));
@@ -214,6 +215,11 @@ export default function App() {
           {/* About / Methodology */}
           {allSlugs('about').map((slug) => (
             <Route key={`about-${slug}`} path={slug} element={<About />} />
+          ))}
+
+          {/* Contact */}
+          {allSlugs('contact').map((slug) => (
+            <Route key={`contact-${slug}`} path={slug} element={<ContactPage />} />
           ))}
 
           {/* Author pages — /:lang/auteurs/:id, /de/autoren/:id, etc. */}

@@ -28,6 +28,7 @@ import {
 } from '../lib/supabase';
 
 import { THEMATIC_ROUTES } from '../config/routes';
+import IndependentNotice from '../components/IndependentNotice';
 
 const YEAR = new Date().getFullYear();
 
@@ -550,6 +551,9 @@ export default function Compare() {
           <p className="text-slate-400 max-w-2xl">
             {t('compare_desc')}
           </p>
+          <div className="mt-2">
+            <IndependentNotice />
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <div className="inline-flex rounded-lg border border-bg-border bg-bg-elevated p-1">

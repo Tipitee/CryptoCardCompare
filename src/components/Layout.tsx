@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Sparkles, Menu, Shield, Star, TrendingUp, X, Building2 } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Mail, Sparkles, Menu, Shield, Star, TrendingUp, X, Building2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -401,6 +401,12 @@ export default function Layout() {
                   <NavLink to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.about ?? 'about'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Building2 className="w-3.5 h-3.5" />
                     {({ fr: 'À propos', de: 'Über uns', es: 'Sobre nosotros', it: 'Chi siamo', en: 'About' } as Record<string, string>)[lang] ?? 'About'}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.contact ?? 'contact'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5" />
+                    {({ fr: 'Contact', de: 'Kontakt', es: 'Contacto', it: 'Contatti', en: 'Contact' } as Record<string, string>)[lang] ?? 'Contact'}
                   </NavLink>
                 </li>
                 <li>

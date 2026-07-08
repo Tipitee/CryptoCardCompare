@@ -39,6 +39,7 @@ const HOME_SEO: Record<string, { title: string; desc: string }> = {
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
+import IndependentNotice from '../components/IndependentNotice';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
@@ -540,6 +541,9 @@ export default function Home() {
                 {t('home_seo_intro')}
               </p>
             )}
+            <div className="mt-2">
+              <IndependentNotice />
+            </div>
           </div>
           <div className="flex flex-wrap gap-2">
             {FILTERS.map((f) => (
