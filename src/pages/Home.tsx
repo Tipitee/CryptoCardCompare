@@ -145,6 +145,7 @@ const FROM_LABEL: Record<string, string> = {
 };
 export default function Home() {
   const cards = useAppStore((s) => s.cards);
+  const selectedMarket = useAppStore((s) => s.selectedMarket);
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
   const compareSelection = useAppStore((s) => s.compareSelection);
@@ -241,7 +242,7 @@ export default function Home() {
     })[0];
   // Slot 3: balanced pick — real base rate (cashbackNoStaking) minus fee drag.
   const topBalanced = [...cards]
-    .filter((c) => c.availableFrance && c.annualFees < 100)
+    .filter((c) => c.annualFees < 100)
     .sort((a, b) => {
       const scoreA = a.cashbackNoStaking - a.annualFees / 100;
       const scoreB = b.cashbackNoStaking - b.annualFees / 100;
@@ -317,7 +318,7 @@ export default function Home() {
         result = result.filter(({ hasNoStaking }) => hasNoStaking);
         break;
       case 'france':
-        result = result.filter(({ card }) => card.availableFrance);
+        result = result.filter(({ card }) => card.markets.includes(selectedMarket ?? lang));
         break;
     }
     if (minTrust > 0) {

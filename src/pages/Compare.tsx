@@ -329,7 +329,7 @@ export default function Compare() {
       if (c.cashbackBase < minCashback) return false;
       if (c.annualFees > maxFees) return false;
       if (c.stakingRequired > maxStaking) return false;
-      if (franceOnly && !c.availableFrance) return false;
+      if (franceOnly && !c.markets.includes(lang)) return false;
       if (freeWdOnly && !c.freeWithdrawals) return false;
       if (selectedCryptos.length > 0) {
         const hasAll = selectedCryptos.every((s) => c.cryptos.includes(s));

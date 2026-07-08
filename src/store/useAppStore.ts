@@ -94,7 +94,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     } catch (e) {
       set({
         cardsLoading: false,
-        cardsError: e instanceof Error ? e.message : 'Erreur de chargement',
+        cardsError: e instanceof Error ? e.message : 'Loading error',
       });
     }
   },
