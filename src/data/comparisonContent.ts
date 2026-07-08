@@ -1056,6 +1056,84 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     ],
   },
 
+  // ─── Gnosis Pay vs Nexo Card ─────────────────────────────────────────────────
+  'gnosis-pay-card-vs-nexo-card': {
+    fr_intro: `Gnosis Pay et la Nexo Card représentent deux visions très différentes de la carte crypto : la première est entièrement on-chain (self-custody, blockchain Gnosis), quand la seconde repose sur un modèle traditionnel de garde confiée. Toutes deux offrent 2 % de cashback sans staking requis — mais en des tokens très différents : GNO pour Gnosis Pay, BTC ou NEXO pour la Nexo Card. La grande différence : Gnosis Pay intègre un IBAN européen (compte SEPA on-chain), ce qui en fait bien plus qu'une simple carte.`,
+    fr_verdict: `Si vous privilégiez la souveraineté financière et l'intégration DeFi, Gnosis Pay est un choix unique en son genre : IBAN on-chain, 2 % en GNO, pas de garde tierce. Si vous voulez un cashback en BTC avec un écosystème plus établi (earn, prêts crypto), la Nexo Card reste difficile à battre. Note globale : Gnosis Pay 4,1/5 vs Nexo Card 4,2/5.`,
+    de_intro: `Gnosis Pay und die Nexo Card vertreten zwei sehr unterschiedliche Ansätze: Erstere ist vollständig on-chain (Self-Custody, Gnosis-Blockchain), während die Nexo Card auf einem traditionellen Verwahrungs-Modell basiert. Beide bieten 2 % Cashback ohne Staking-Pflicht — aber in verschiedenen Token: GNO bei Gnosis Pay, BTC oder NEXO bei der Nexo Card. Der große Unterschied: Gnosis Pay integriert eine europäische IBAN (on-chain SEPA-Konto).`,
+    de_verdict: `Wenn Sie finanzielle Souveränität und DeFi-Integration bevorzugen, ist Gnosis Pay einzigartig: On-Chain-IBAN, 2 % in GNO, keine Drittverwahrungs. Wer BTC-Cashback mit einem etablierteren Ökosystem (Earn, Krypto-Kredite) möchte, findet in der Nexo Card die bessere Wahl. Gesamtwertung: Gnosis Pay 4,1/5 vs. Nexo Card 4,2/5.`,
+    es_intro: `Gnosis Pay y la Nexo Card representan dos visiones muy diferentes de la tarjeta crypto: la primera es completamente on-chain (autocustodia, blockchain Gnosis), mientras que la Nexo Card se basa en un modelo de custodia tradicional. Ambas ofrecen un 2 % de cashback sin staking requerido, pero en tokens muy distintos: GNO para Gnosis Pay, BTC o NEXO para la Nexo Card. La gran diferencia: Gnosis Pay integra un IBAN europeo on-chain.`,
+    es_verdict: `Si priorizas la soberanía financiera y la integración DeFi, Gnosis Pay es única: IBAN on-chain, 2 % en GNO, sin custodia de terceros. Si quieres cashback en BTC con un ecosistema más consolidado (earn, préstamos crypto), la Nexo Card sigue siendo difícil de superar. Puntuación: Gnosis Pay 4,1/5 vs Nexo Card 4,2/5.`,
+    it_intro: `Gnosis Pay e la Nexo Card rappresentano due visioni molto diverse della carta crypto: la prima è completamente on-chain (self-custody, blockchain Gnosis), mentre la Nexo Card si basa su un modello di custodia tradizionale. Entrambe offrono il 2 % di cashback senza staking richiesto, ma in token molto diversi: GNO per Gnosis Pay, BTC o NEXO per la Nexo Card. La grande differenza: Gnosis Pay integra un IBAN europeo on-chain.`,
+    it_verdict: `Se si privilegia la sovranità finanziaria e l'integrazione DeFi, Gnosis Pay è unica: IBAN on-chain, 2 % in GNO, nessuna custodia di terzi. Chi vuole cashback in BTC con un ecosistema più consolidato (earn, prestiti crypto) troverà nella Nexo Card la scelta migliore. Punteggio: Gnosis Pay 4,1/5 vs Nexo Card 4,2/5.`,
+    en_intro: `Gnosis Pay and the Nexo Card represent two very different visions of the crypto card: Gnosis Pay is fully on-chain (self-custody, Gnosis blockchain), while the Nexo Card uses a traditional custodial model. Both offer 2% cashback with no staking required — but in very different tokens: GNO for Gnosis Pay, BTC or NEXO for the Nexo Card. The key differentiator: Gnosis Pay integrates a European IBAN (on-chain SEPA account), making it much more than just a card.`,
+    en_verdict: `If you prioritise financial sovereignty and DeFi integration, Gnosis Pay is in a class of its own: on-chain IBAN, 2% in GNO, no third-party custody. If you want BTC cashback with a more established ecosystem (earn, crypto loans), the Nexo Card remains hard to beat. Overall score: Gnosis Pay 4.1/5 vs Nexo Card 4.2/5.`,
+    faq: [
+      { q: 'Gnosis Pay ou Nexo Card : laquelle offre le meilleur cashback ?', a: 'Toutes deux offrent 2 % de cashback sans staking. Gnosis Pay le verse en GNO, la Nexo Card en BTC ou NEXO. Si vous préférez recevoir du Bitcoin, la Nexo Card est plus directe.' },
+      { q: 'Gnosis Pay est-elle vraiment en self-custody ?', a: 'Oui. Gnosis Pay fonctionne via un smart contract wallet sur la blockchain Gnosis. Vous gardez le contrôle de vos clés privées, contrairement aux cartes custodiales classiques.' },
+      { q: 'Qu\'est-ce que l\'IBAN on-chain de Gnosis Pay ?', a: 'Gnosis Pay intègre un IBAN européen directement lié à votre portefeuille on-chain. Vous pouvez recevoir des virements SEPA, convertir des euros en crypto et dépenser avec votre carte Mastercard, le tout sans intermédiaire bancaire traditionnel.' },
+    ],
+    de_faq: [
+      { q: 'Gnosis Pay oder Nexo Card: Welche bietet das bessere Cashback?', a: 'Beide bieten 2 % Cashback ohne Staking. Gnosis Pay zahlt in GNO, die Nexo Card in BTC oder NEXO. Wer lieber Bitcoin erhält, ist mit der Nexo Card besser bedient.' },
+      { q: 'Ist Gnosis Pay wirklich Self-Custody?', a: 'Ja. Gnosis Pay funktioniert über ein Smart-Contract-Wallet auf der Gnosis-Blockchain. Sie behalten die Kontrolle über Ihre privaten Schlüssel — anders als bei klassischen Custodial-Karten.' },
+      { q: 'Was ist die On-Chain-IBAN von Gnosis Pay?', a: 'Gnosis Pay integriert eine europäische IBAN direkt in Ihr On-Chain-Wallet. Sie können SEPA-Überweisungen empfangen, Euro in Krypto umwandeln und mit Ihrer Mastercard bezahlen — alles ohne traditionellen Bankzwischenhändler.' },
+    ],
+    es_faq: [
+      { q: 'Gnosis Pay o Nexo Card: ¿cuál ofrece el mejor cashback?', a: 'Ambas ofrecen un 2 % de cashback sin staking. Gnosis Pay lo paga en GNO, la Nexo Card en BTC o NEXO. Si prefieres recibir Bitcoin, la Nexo Card es más directa.' },
+      { q: '¿Gnosis Pay es realmente self-custody?', a: 'Sí. Gnosis Pay funciona a través de un smart contract wallet en la blockchain Gnosis. Mantienes el control de tus claves privadas, a diferencia de las tarjetas custodiales clásicas.' },
+      { q: '¿Qué es el IBAN on-chain de Gnosis Pay?', a: 'Gnosis Pay integra un IBAN europeo directamente vinculado a tu cartera on-chain. Puedes recibir transferencias SEPA, convertir euros en crypto y gastar con tu Mastercard, todo sin intermediario bancario tradicional.' },
+    ],
+    it_faq: [
+      { q: 'Gnosis Pay o Nexo Card: quale offre il miglior cashback?', a: 'Entrambe offrono il 2 % di cashback senza staking. Gnosis Pay lo paga in GNO, la Nexo Card in BTC o NEXO. Se preferisci ricevere Bitcoin, la Nexo Card è più diretta.' },
+      { q: 'Gnosis Pay è davvero self-custody?', a: 'Sì. Gnosis Pay funziona tramite un smart contract wallet sulla blockchain Gnosis. Mantieni il controllo delle tue chiavi private, a differenza delle carte custodiali classiche.' },
+      { q: "Cos'è l'IBAN on-chain di Gnosis Pay?", a: "Gnosis Pay integra un IBAN europeo direttamente collegato al tuo wallet on-chain. Puoi ricevere bonifici SEPA, convertire euro in crypto e spendere con la tua Mastercard, il tutto senza intermediari bancari tradizionali." },
+    ],
+    en_faq: [
+      { q: 'Gnosis Pay or Nexo Card: which has better cashback?', a: 'Both offer 2% cashback with no staking. Gnosis Pay pays in GNO, the Nexo Card in BTC or NEXO. If you prefer receiving Bitcoin, the Nexo Card is more straightforward.' },
+      { q: 'Is Gnosis Pay truly self-custody?', a: 'Yes. Gnosis Pay runs via a smart contract wallet on the Gnosis blockchain. You retain control of your private keys — unlike traditional custodial cards.' },
+      { q: "What is Gnosis Pay's on-chain IBAN?", a: 'Gnosis Pay integrates a European IBAN directly into your on-chain wallet. You can receive SEPA transfers, convert euros to crypto, and spend with your Mastercard — all without a traditional banking intermediary.' },
+    ],
+  },
+
+  // ─── Gnosis Pay vs MetaMask Card ─────────────────────────────────────────────
+  'gnosis-pay-card-vs-metamask-card': {
+    fr_intro: `Gnosis Pay et la MetaMask Card sont les deux seules cartes crypto entièrement en self-custody disponibles en Europe en 2026. Gnosis Pay fonctionne sur la blockchain Gnosis avec un IBAN on-chain intégré et 2 % de cashback en GNO. La MetaMask Card repose sur le wallet MetaMask (Ethereum et multi-chain) avec un cashback en ETH ou en crypto via votre portefeuille. Les deux cartes ciblent les utilisateurs DeFi-native qui ne veulent pas confier leurs fonds à un tiers.`,
+    fr_verdict: `Gnosis Pay est plus abouti côté paiements traditionnels (IBAN SEPA, virements reçus) et offre un cashback clair à 2 % en GNO. La MetaMask Card offre une intégration plus profonde avec l'écosystème Ethereum et multi-chain DeFi. Pour un usage quotidien avec des fonctionnalités bancaires, Gnosis Pay s'impose. Pour les utilisateurs hardcore DeFi sur Ethereum, la MetaMask Card est plus cohérente. Note : Gnosis Pay 4,1/5 vs MetaMask Card 3,9/5.`,
+    de_intro: `Gnosis Pay und die MetaMask Card sind die beiden einzigen vollständig selbstverwalteten Krypto-Karten, die 2026 in Europa erhältlich sind. Gnosis Pay läuft auf der Gnosis-Blockchain mit integrierter On-Chain-IBAN und 2 % Cashback in GNO. Die MetaMask Card basiert auf dem MetaMask-Wallet (Ethereum und Multi-Chain) mit Cashback in ETH oder Krypto über Ihr Wallet.`,
+    de_verdict: `Gnosis Pay ist bei traditionellen Zahlungsfunktionen ausgereifter (SEPA-IBAN, eingehende Überweisungen) und bietet klares 2 % GNO-Cashback. Die MetaMask Card bietet tiefere Integration mit dem Ethereum- und Multi-Chain-DeFi-Ökosystem. Für den Alltag mit Banking-Features ist Gnosis Pay führend. Für hardcore Ethereum-DeFi-Nutzer ist die MetaMask Card konsequenter. Wertung: Gnosis Pay 4,1/5 vs. MetaMask Card 3,9/5.`,
+    es_intro: `Gnosis Pay y la MetaMask Card son las dos únicas tarjetas crypto completamente en autocustodia disponibles en Europa en 2026. Gnosis Pay funciona en la blockchain Gnosis con un IBAN on-chain integrado y un 2 % de cashback en GNO. La MetaMask Card se basa en el wallet MetaMask (Ethereum y multi-chain) con cashback en ETH o crypto a través de tu cartera.`,
+    es_verdict: `Gnosis Pay está más desarrollada en pagos tradicionales (IBAN SEPA, transferencias recibidas) y ofrece un cashback claro del 2 % en GNO. La MetaMask Card ofrece una integración más profunda con el ecosistema DeFi de Ethereum y multi-chain. Para uso diario con funcionalidades bancarias, Gnosis Pay lidera. Para usuarios hardcore de DeFi en Ethereum, la MetaMask Card es más coherente. Puntuación: Gnosis Pay 4,1/5 vs MetaMask Card 3,9/5.`,
+    it_intro: `Gnosis Pay e la MetaMask Card sono le uniche due carte crypto completamente in self-custody disponibili in Europa nel 2026. Gnosis Pay funziona sulla blockchain Gnosis con un IBAN on-chain integrato e il 2 % di cashback in GNO. La MetaMask Card si basa sul wallet MetaMask (Ethereum e multi-chain) con cashback in ETH o crypto tramite il tuo portafoglio.`,
+    it_verdict: `Gnosis Pay è più matura sui pagamenti tradizionali (IBAN SEPA, bonifici in entrata) e offre un cashback chiaro del 2 % in GNO. La MetaMask Card offre un'integrazione più profonda con l'ecosistema DeFi di Ethereum e multi-chain. Per l'uso quotidiano con funzionalità bancarie, Gnosis Pay è in testa. Per gli utenti hardcore DeFi su Ethereum, la MetaMask Card è più coerente. Punteggio: Gnosis Pay 4,1/5 vs MetaMask Card 3,9/5.`,
+    en_intro: `Gnosis Pay and the MetaMask Card are the only two fully self-custody crypto cards available in Europe in 2026. Gnosis Pay runs on the Gnosis blockchain with an integrated on-chain IBAN and 2% cashback in GNO. The MetaMask Card is built on the MetaMask wallet (Ethereum and multi-chain) with cashback in ETH or crypto directly to your wallet. Both target DeFi-native users who don't want to trust a third party with their funds.`,
+    en_verdict: `Gnosis Pay is more mature on traditional payment features (SEPA IBAN, incoming bank transfers) and offers clear 2% GNO cashback. The MetaMask Card provides deeper integration with the Ethereum and multi-chain DeFi ecosystem. For everyday use with banking features, Gnosis Pay leads. For hardcore Ethereum DeFi users, the MetaMask Card is more coherent. Score: Gnosis Pay 4.1/5 vs MetaMask Card 3.9/5.`,
+    faq: [
+      { q: 'Gnosis Pay ou MetaMask Card : laquelle est la plus facile à utiliser au quotidien ?', a: 'Gnosis Pay est plus simple pour les paiements quotidiens grâce à son intégration IBAN et son app dédiée. La MetaMask Card nécessite une familiarité plus poussée avec les wallets Web3.' },
+      { q: 'La MetaMask Card est-elle disponible en France ?', a: 'La MetaMask Card est disponible dans plusieurs pays européens via Mastercard. Vérifiez la disponibilité actuelle sur metamask.io, car le déploiement est progressif.' },
+      { q: 'Les deux cartes sont-elles vraiment en self-custody ?', a: 'Oui. Gnosis Pay et la MetaMask Card fonctionnent toutes deux avec vos propres clés privées : vous gardez le contrôle de vos fonds à tout moment, sans intermédiaire custodial.' },
+    ],
+    de_faq: [
+      { q: 'Gnosis Pay oder MetaMask Card: Welche ist im Alltag einfacher zu nutzen?', a: 'Gnosis Pay ist für tägliche Zahlungen einfacher dank IBAN-Integration und dedizierter App. Die MetaMask Card erfordert mehr Vertrautheit mit Web3-Wallets.' },
+      { q: 'Ist die MetaMask Card in Deutschland verfügbar?', a: 'Die MetaMask Card ist in mehreren europäischen Ländern über Mastercard verfügbar. Überprüfen Sie die aktuelle Verfügbarkeit auf metamask.io, da der Rollout schrittweise erfolgt.' },
+      { q: 'Sind beide Karten wirklich Self-Custody?', a: 'Ja. Gnosis Pay und die MetaMask Card funktionieren beide mit Ihren eigenen privaten Schlüsseln: Sie behalten jederzeit die Kontrolle über Ihre Mittel, ohne Custodial-Intermediär.' },
+    ],
+    es_faq: [
+      { q: 'Gnosis Pay o MetaMask Card: ¿cuál es más fácil de usar en el día a día?', a: 'Gnosis Pay es más sencilla para pagos diarios gracias a su integración IBAN y app dedicada. La MetaMask Card requiere mayor familiaridad con los wallets Web3.' },
+      { q: '¿La MetaMask Card está disponible en España?', a: 'La MetaMask Card está disponible en varios países europeos a través de Mastercard. Consulta la disponibilidad actual en metamask.io, ya que el despliegue es progresivo.' },
+      { q: '¿Las dos tarjetas son realmente self-custody?', a: 'Sí. Gnosis Pay y la MetaMask Card funcionan con tus propias claves privadas: mantienes el control de tus fondos en todo momento, sin intermediario custodial.' },
+    ],
+    it_faq: [
+      { q: 'Gnosis Pay o MetaMask Card: quale è più facile da usare quotidianamente?', a: 'Gnosis Pay è più semplice per i pagamenti quotidiani grazie alla sua integrazione IBAN e all\'app dedicata. La MetaMask Card richiede maggiore familiarità con i wallet Web3.' },
+      { q: 'La MetaMask Card è disponibile in Italia?', a: 'La MetaMask Card è disponibile in diversi paesi europei tramite Mastercard. Verifica la disponibilità attuale su metamask.io, poiché il lancio è progressivo.' },
+      { q: 'Le due carte sono davvero self-custody?', a: 'Sì. Gnosis Pay e la MetaMask Card funzionano entrambe con le tue chiavi private: mantieni il controllo dei tuoi fondi in ogni momento, senza intermediari custodiali.' },
+    ],
+    en_faq: [
+      { q: 'Gnosis Pay or MetaMask Card: which is easier for everyday use?', a: 'Gnosis Pay is simpler for daily payments thanks to its IBAN integration and dedicated app. The MetaMask Card requires more familiarity with Web3 wallets.' },
+      { q: 'Is the MetaMask Card available in Europe?', a: 'The MetaMask Card is available in several European countries via Mastercard. Check current availability at metamask.io, as the rollout is gradual.' },
+      { q: 'Are both cards truly self-custody?', a: 'Yes. Both Gnosis Pay and the MetaMask Card run on your own private keys — you retain full control of your funds at all times, with no custodial intermediary.' },
+    ],
+  },
+
 };
 
 /**
