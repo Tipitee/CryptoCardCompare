@@ -133,7 +133,7 @@ async function renderPath(page, path) {
   // Force correct lang attribute from URL — BCP 47 mapping guards against
   // useEffect timing races and ensures prerendered HTML has valid lang codes.
   const pathLang = path.split('/')[1];
-  const BCP47_MAP: Record<string, string> = { be: 'fr-BE', at: 'de-AT', en: 'en-GB' };
+  const BCP47_MAP = { be: 'fr-BE', at: 'de-AT', en: 'en-GB' };
   const langAttr = BCP47_MAP[pathLang] ?? pathLang;
   if (['fr','be','de','at','es','it','en'].includes(pathLang)) {
     html = html.replace(/(<html[^>]*)\blang="[^"]*"/, `$1lang="${langAttr}"`);
