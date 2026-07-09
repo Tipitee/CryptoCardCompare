@@ -1263,6 +1263,55 @@ export const CARD_REVIEWS: CardReview[] = [
     metaTitle: 'WhiteBIT Nóva Card Avis 2026 — Jusqu\'à 10% Cashback WBT, Zéro Frais',
     metaDescription: 'Avis WhiteBIT Nóva Card 2026 : carte Visa avec cashback 1-10% en WBT, zéro frais annuels. Exchange européen depuis 2018. Disponible en France et UE.',
   },
+
+  // ─────────────────────────────────────────────────────── GATE ───
+  {
+    slug: 'gate-card',
+    cardName: 'Gate Card',
+    issuer: 'Gate.io',
+    network: 'Visa',
+    updatedAt: '2026-07-09',
+    globalRating: 3.6,
+    ratingBreakdown: {
+      cashback: 3.5,
+      frais: 4.5,
+      facilite: 3.5,
+      securite: 3.0,
+      support: 3.5,
+    },
+    badge: 'Exchange historique',
+    keyStats: {
+      cashbackMax: 'Cashback GT (variable)',
+      stakingRequis: 'Non',
+      fraisAnnuels: '0 €',
+      disponibilite: 'EEA + 180 pays',
+    },
+    pros: [
+      'Gate.io fondé en 2013 — l\'un des exchanges les plus anciens au monde',
+      'Zéro frais annuels',
+      'Plus de 1 600 cryptos disponibles sur Gate.io',
+      'Compatible Apple Pay et Google Pay',
+      'Acceptée dans plus de 180 pays via Visa',
+    ],
+    cons: [
+      'Gate.io non régulé en UE (pas de licence MiCA)',
+      'Basé aux Îles Caïmans — réglementation offshore',
+      'Taux de cashback variable et peu documenté publiquement',
+      'Fonds conservés sur l\'exchange (pas de self-custody)',
+      'Notoriété faible en France comparé à Binance ou Crypto.com',
+    ],
+    verdict: `La Gate Card est une option raisonnable pour les utilisateurs déjà actifs sur Gate.io qui souhaitent dépenser leurs cryptos dans la vie quotidienne. La longévité de la plateforme (depuis 2013) et l'absence de frais annuels sont des points positifs. Cependant, l'absence de réglementation européenne (MiCA) et la domiciliation aux Îles Caïmans sont des points de vigilance pour les résidents UE. Pour un exchange régulé, préférez Bybit (agrément AMF) ou Coinbase.`,
+    sections: {
+      presentation: `Gate.io a été fondé en 2013 à Hong Kong, ce qui en fait l'un des exchanges crypto les plus anciens au monde. La plateforme propose aujourd'hui plus de 1 600 paires de trading et figure régulièrement dans le top 10 des exchanges mondiaux par volume. La **Gate Card** est une carte Visa prépayée qui permet aux utilisateurs de Gate.io de dépenser directement leurs actifs dans la vie de tous les jours — dans tous les commerces acceptant Visa dans le monde. Elle est pensée comme une extension naturelle du compte Gate.io, sans nécessiter d'ouverture de compte supplémentaire.`,
+      cashback: `La Gate Card offre un cashback en **GT (Gate Token)**, le token natif de l'écosystème Gate.io. Le taux de cashback exact varie selon les campagnes promotionnelles et le niveau de compte — Gate.io ne communique pas de grille fixe publiquement, ce qui est un point de transparence à améliorer. Le cashback est crédité en GT directement sur le compte Gate.io de l'utilisateur. Pour maximiser ce cashback, il est conseillé de surveiller les offres en cours sur gate.io/card. En comparaison, Binance Card (jusqu'à 8% en BNB) et Bybit Card (jusqu'à 10% en BIT) offrent des grilles de cashback plus lisibles.`,
+      frais: `La Gate Card ne facture **aucun frais annuels**, ce qui est conforme au standard du marché. Les frais de change en devises étrangères sont généralement dans la norme Visa (1-1.5%). Les retraits aux DAB peuvent être soumis à des frais selon les conditions locales. La conversion des cryptos en euros lors du paiement se fait au taux spot Gate.io au moment de la transaction. Comparée aux cartes européennes traditionnelles, la Gate Card reste compétitive sur les frais.`,
+      securite: `Gate.io a été victime d'un hack en 2014 (avant le renforcement de ses systèmes) et a depuis considérablement amélioré sa sécurité, avec notamment un fonds de réserve de preuve de réserves (PoR) publié régulièrement. L'exchange utilise le cold storage pour la majorité de ses réserves et propose l'authentification à deux facteurs. Cependant, Gate.io n'est **pas réglementé dans l'UE** et ne dispose pas d'agrément MiCA — les fonds ne bénéficient pas des protections prévues par la directive européenne. La carte est émise via le réseau Visa, qui offre ses propres protections contre la fraude.`,
+      experience: `L'application Gate.io est disponible sur iOS et Android et est bien notée sur les stores. La gestion de la carte est intégrée dans l'application principale. L'interface est disponible en français, bien que certaines sections restent en anglais. La carte est compatible **Apple Pay** et **Google Pay**. Le support client est disponible via chat en direct 24h/24 et par email. La communauté Gate.io est active et internationale, avec une forte présence en Asie du Sud-Est.`,
+    },
+    affiliateLink: 'https://www.gate.io/card',
+    metaTitle: 'Gate Card Avis 2026 — Cashback GT, Zéro Frais | Avis Complet',
+    metaDescription: 'Avis Gate Card 2026 : carte Visa de Gate.io (depuis 2013), cashback en GT, zéro frais annuels. Non régulé UE. Disponible en France et dans l\'EEA.',
+  },
 ];
 
 // Helper : trouver un avis par slug

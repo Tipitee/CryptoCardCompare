@@ -311,6 +311,13 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'trade-republic': 'trade-republic-card',
   'ledger': 'ledger-card',
   'metamask': 'metamask-card',
+  'ether-fi': 'ether-fi-card',
+  'bitget': 'bitget-card',
+  'kucoin': 'kucard',
+  'young-platform': 'young-platform-card',
+  'bit2me': 'bit2me-card',
+  'whitebit': 'whitebit-card',
+  'gate': 'gate-card',
 };
 
 const REVIEW_LABEL: Record<string, string> = {
