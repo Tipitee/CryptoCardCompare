@@ -50,6 +50,17 @@
 /at/blog          /index.html  200
 /at/blog/*        /index.html  200
 
+# ── BE/AT routes — SPA safety net for pages not yet prerendered ──────────────
+# Reviews (sitemap-reviews-be/at.xml added → will be prerendered next deploy)
+/be/avis/*           /index.html  200
+/at/bewertungen/*    /index.html  200
+# Brands
+/be/marques/*        /index.html  200
+/at/marken/*         /index.html  200
+# Cryptos
+/be/cryptos/*        /index.html  200
+/at/cryptos/*        /index.html  200
+
 # ── Everything else: real 404 ──────────────────────────────────────────────
 # Physical prerendered files (dist/fr/index.html etc.) take priority over
 # redirect rules without "!" — so prerendered pages are served directly.
