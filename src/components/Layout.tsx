@@ -131,9 +131,10 @@ export default function Layout() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  // Sync <html lang> with current language
+  // Sync <html lang> with current language — BCP 47 mapping
+  const BCP47: Record<string, string> = { be: 'fr-BE', at: 'de-AT', en: 'en-GB' };
   useEffect(() => {
-    document.documentElement.lang = lang;
+    document.documentElement.lang = BCP47[lang] ?? lang;
   }, [lang]);
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>

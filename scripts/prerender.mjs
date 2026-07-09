@@ -130,10 +130,13 @@ async function renderPath(page, path) {
   // Make canonicals/hreflang absolute to production origin (rendered on localhost)
   html = html.replaceAll(`http://localhost:${PORT}`, ORIGIN);
 
-  // Force correct lang attribute from URL (guards against useEffect timing races)
+  // Force correct lang attribute from URL — BCP 47 mapping guards against
+  // useEffect timing races and ensures prerendered HTML has valid lang codes.
   const pathLang = path.split('/')[1];
-  if (['fr','de','es','it','en'].includes(pathLang)) {
-    html = html.replace(/(<html[^>]*)\blang="[^"]*"/, `$1lang="${pathLang}"`);
+  const BCP47_MAP: Record<string, string> = { be: 'fr-BE', at: 'de-AT', en: 'en-GB' };
+  const langAttr = BCP47_MAP[pathLang] ?? pathLang;
+  if (['fr','be','de','at','es','it','en'].includes(pathLang)) {
+    html = html.replace(/(<html[^>]*)\blang="[^"]*"/, `$1lang="${langAttr}"`);
   }
 
   // Inject noindex for non-allowlisted compare pairs
@@ -193,7 +196,7 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
 // ── 404 page (served by Netlify with real 404 status via _redirects) ──────
 try {
   const page = await browser.newPage();
-  await page.goto(`http://localhost:${PORT}/definitely-not-a-real-page-404`, { waitUntil: 'networkidle0' });
+  await page.goto(`http://localhost:${PORT}/fr/page-inexistante-xyz-404`, { waitUntil: 'networkidle0' });
   const html = await page.evaluate(() => '<!DOCTYPE html>' + document.documentElement.outerHTML);
   writeFileSync(join(DIST, '404.html'), html.replaceAll(`http://localhost:${PORT}`, ORIGIN));
   console.log('✓ dist/404.html written');

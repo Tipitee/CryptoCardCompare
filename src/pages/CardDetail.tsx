@@ -178,6 +178,8 @@ export default function CardDetail() {
   const { t } = useTranslation(['cards', 'common']);
   const { getRoute } = useLocalizedRoute();
   const lang = useLanguage();
+  // be → fr content, at → de content (no blog articles in be/at)
+  const contentLang = ({ be: 'fr', at: 'de' } as Record<string, string>)[lang] ?? lang;
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
 
@@ -201,7 +203,7 @@ export default function CardDetail() {
   }, [id]);
 
   useEffect(() => {
-    if (id && lang) fetchCardArticle(id, lang).then(setArticle);
+    if (id && contentLang) fetchCardArticle(id, contentLang).then(setArticle);
   }, [id, lang]);
 
   // Fetch other tiers from the same brand
@@ -224,10 +226,10 @@ export default function CardDetail() {
     en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review — pros, cons, our verdict. Independent comparison ✓`,
   };
   const seoTitle = card
-    ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[lang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
+    ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[contentLang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
     : 'TopCryptoCards';
   const seoDesc = card
-    ? (article?.meta_description || (DESC_TPL[lang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
+    ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
     : '';
   useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article', lang });
 

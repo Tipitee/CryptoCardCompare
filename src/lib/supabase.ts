@@ -11,6 +11,10 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 
 const SESSION_KEY = 'ccc_session_id';
 
+/** Map market codes to their content language (no blog articles in be/at) */
+const CONTENT_LANG: Record<string, string> = { be: 'fr', at: 'de' };
+const dbLang = (lang: string) => CONTENT_LANG[lang] ?? lang;
+
 export function getSessionId(): string {
   let sid = localStorage.getItem(SESSION_KEY);
   if (!sid) {
@@ -255,15 +259,16 @@ async function backfillHeroImages(posts: BlogPost[]): Promise<BlogPost[]> {
 }
 
 export async function fetchPublishedPosts(lang = 'fr'): Promise<BlogPost[]> {
+  const l = dbLang(lang);
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('published', true)
-    .eq('lang', lang)
+    .eq('lang', l)
     .order('created_at', { ascending: false });
   if (error) throw error;
   // Fallback to French if no articles exist in the requested language
-  if ((data ?? []).length === 0 && lang !== 'fr') {
+  if ((data ?? []).length === 0 && l !== 'fr') {
     const { data: frData } = await supabase
       .from('blog_posts')
       .select('*')
@@ -285,15 +290,16 @@ export async function fetchAllPosts(_adminSecret: string): Promise<BlogPost[]> {
 }
 
 export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPost | null> {
+  const l = dbLang(lang);
   const { data } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('slug', slug)
-    .eq('lang', lang)
+    .eq('lang', l)
     .eq('published', true)
     .maybeSingle();
   // Fallback to French if not found in requested language
-  const { data: finalData } = !data && lang !== 'fr'
+  const { data: finalData } = !data && l !== 'fr'
     ? await supabase.from('blog_posts').select('*').eq('slug', slug).eq('lang', 'fr').eq('published', true).maybeSingle()
     : { data };
   if (!finalData) return null;
@@ -305,16 +311,17 @@ export async function fetchPostBySlug(slug: string, lang = 'fr'): Promise<BlogPo
 
 /** Fetch published posts filtered by category (card / crypto / guide). */
 export async function fetchPostsByCategory(lang: string, category: string): Promise<BlogPost[]> {
+  const l = dbLang(lang);
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
     .eq('published', true)
-    .eq('lang', lang)
+    .eq('lang', l)
     .eq('category', category)
     .order('created_at', { ascending: false });
   if (error) throw error;
   // Fallback to French if no articles in requested language
-  if ((data ?? []).length === 0 && lang !== 'fr') {
+  if ((data ?? []).length === 0 && l !== 'fr') {
     const { data: frData } = await supabase
       .from('blog_posts')
       .select('*')
