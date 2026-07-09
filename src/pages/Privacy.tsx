@@ -20,12 +20,12 @@ function LegalLayout({ title, subtitle, children }: { title: string; subtitle?: 
 
       <main className="flex-1 container-app py-16 max-w-3xl">
         <h1 className="text-3xl font-bold text-white mb-2">{title}</h1>
-        {subtitle && <p className="text-slate-500 text-sm mb-10">{subtitle}</p>}
+        {subtitle && <p className="text-slate-400 text-sm mb-10">{subtitle}</p>}
         {children}
       </main>
 
       <footer className="border-t border-bg-border py-6">
-        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-500 justify-between items-center">
+        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-400 justify-between items-center">
           <span>© {new Date().getFullYear()} TopCryptoCards. No financial advice.</span>
           <div className="flex gap-4">
             <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>

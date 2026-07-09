@@ -273,7 +273,7 @@ export default function AffiliateDisclosurePage() {
 
       <main className="flex-1 container-app py-16 max-w-3xl">
         <h1 className="text-3xl font-bold text-white mb-2">{c.h1}</h1>
-        <p className="text-slate-500 text-sm mb-10">{c.lastUpdated}</p>
+        <p className="text-slate-400 text-sm mb-10">{c.lastUpdated}</p>
 
         <div className="space-y-10 text-slate-400 text-sm leading-relaxed">
 
@@ -318,15 +318,15 @@ export default function AffiliateDisclosurePage() {
             <h2 className="text-xl font-semibold text-white mb-4">{c.sections.networks.title}</h2>
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span><span className="text-slate-300">Impact Radius</span> — Impact Tech, Inc., Santa Barbara, CA, USA</span>
               </li>
               <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span><span className="text-slate-300">Awin</span> — Awin AG, Eichhornstraße 3, 10785 Berlin, Germany</span>
               </li>
               <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 <span>{lang === 'fr' ? 'Accords directs avec des prestataires de cartes' : lang === 'de' ? 'Direkte Vereinbarungen mit einzelnen Kartenanbietern' : lang === 'es' ? 'Acuerdos directos con proveedores de tarjetas' : lang === 'it' ? 'Accordi diretti con singoli fornitori di carte' : 'Direct arrangements with individual card providers'}</span>
               </li>
             </ul>
@@ -349,7 +349,7 @@ export default function AffiliateDisclosurePage() {
       </main>
 
       <footer className="border-t border-bg-border py-6">
-        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-500 justify-between items-center">
+        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-400 justify-between items-center">
           <span>© {new Date().getFullYear()} TopCryptoCards. {f.copyright}</span>
           <div className="flex gap-4">
             <Link to="/impressum" className="hover:text-slate-300 transition-colors">{f.impressum}</Link>

@@ -31,7 +31,7 @@ export default function IndependentNotice() {
   const slug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 
   return (
-    <p className="inline-flex items-center gap-1.5 text-xs text-slate-500">
+    <p className="inline-flex items-center gap-1.5 text-xs text-slate-400">
       <Info className="w-3 h-3 shrink-0 text-slate-600" />
       {copy.text}{' '}
       <Link

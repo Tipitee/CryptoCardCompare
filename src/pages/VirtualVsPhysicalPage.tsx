@@ -409,7 +409,7 @@ export default function VirtualVsPhysicalPage() {
 
       {/* See also */}
       <div className="container-app pb-4">
-        <p className="text-slate-500 text-sm font-medium uppercase tracking-wide mb-3">
+        <p className="text-slate-400 text-sm font-medium uppercase tracking-wide mb-3">
           {SEE_ALSO_TITLE[lang] ?? SEE_ALSO_TITLE.en}
         </p>
         <div className="flex flex-wrap gap-3">

@@ -51,7 +51,7 @@ export default function NotFound() {
       <h1 className="text-2xl font-bold text-white mb-2">{msg.title}</h1>
       <p className="text-slate-400 mb-10 max-w-sm">{msg.subtitle}</p>
 
-      <p className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wider">{msg.cta}</p>
+      <p className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">{msg.cta}</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg w-full">
         <Link

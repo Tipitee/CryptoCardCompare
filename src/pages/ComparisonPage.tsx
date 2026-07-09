@@ -438,7 +438,7 @@ export default function ComparisonPage() {
   if (loading || !card1 || !card2) {
     return (
       <div className="container-app py-20 text-center">
-        <div className="animate-pulse text-slate-500">{t('comparison_loading')}</div>
+        <div className="animate-pulse text-slate-400">{t('comparison_loading')}</div>
       </div>
     );
   }
@@ -487,7 +487,7 @@ export default function ComparisonPage() {
       {/* Page title */}
       <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
         {card1.name}{' '}
-        <span className="text-slate-500 font-normal">vs</span>{' '}
+        <span className="text-slate-400 font-normal">vs</span>{' '}
         {card2.name}
       </h1>
       <p className="text-slate-400 text-sm mb-3">
@@ -526,7 +526,7 @@ export default function ComparisonPage() {
 
             {/* Score */}
             <div className="w-full">
-              <div className="text-xs text-slate-500 mb-1.5 uppercase tracking-wider">
+              <div className="text-xs text-slate-400 mb-1.5 uppercase tracking-wider">
                 {t('comparison_score')}
               </div>
               <ScoreBar score={card === card1 ? score1 : score2} max={maxScore} />
@@ -605,7 +605,7 @@ export default function ComparisonPage() {
                       {val1}
                     </span>
                   </td>
-                  <td className="px-5 py-3 text-center text-slate-500 font-medium text-xs">{row.label}</td>
+                  <td className="px-5 py-3 text-center text-slate-400 font-medium text-xs">{row.label}</td>
                   <td className="px-5 py-3 text-center">
                     <span
                       className={`inline-flex items-center justify-center gap-1.5 font-semibold ${
@@ -638,7 +638,7 @@ export default function ComparisonPage() {
                   className="border-b border-bg-border/50 hover:bg-bg-elevated/20 transition-colors"
                 >
                   <td className="px-5 py-3 text-center">
-                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c1' ? 'text-white' : 'text-slate-500'}`}>
+                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c1' ? 'text-white' : 'text-slate-400'}`}>
                       {w === 'c1' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
                       {v1 ? (
                         <Check className="w-4 h-4 text-green-accent" />
@@ -647,9 +647,9 @@ export default function ComparisonPage() {
                       )}
                     </span>
                   </td>
-                  <td className="px-5 py-3 text-center text-slate-500 font-medium text-xs">{row.label}</td>
+                  <td className="px-5 py-3 text-center text-slate-400 font-medium text-xs">{row.label}</td>
                   <td className="px-5 py-3 text-center">
-                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c2' ? 'text-white' : 'text-slate-500'}`}>
+                    <span className={`inline-flex items-center justify-center gap-1 ${w === 'c2' ? 'text-white' : 'text-slate-400'}`}>
                       {w === 'c2' && <Award className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
                       {v2 ? (
                         <Check className="w-4 h-4 text-green-accent" />
@@ -854,7 +854,7 @@ export default function ComparisonPage() {
               </Link>
             )}
 
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ emoji, label, slug }) => {
                 const href = slugs[slug as keyof typeof slugs];

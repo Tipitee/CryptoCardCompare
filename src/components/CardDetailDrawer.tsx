@@ -216,7 +216,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
 function Stat({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
     <div className="p-3 rounded-lg bg-bg-elevated border border-bg-border">
-      <div className="text-[10px] text-slate-500 uppercase tracking-wider">{label}</div>
+      <div className="text-[10px] text-slate-400 uppercase tracking-wider">{label}</div>
       <div className={`text-base font-semibold ${highlight ? 'text-cyan-accent' : 'text-white'}`}>
         {value}
       </div>
@@ -230,7 +230,7 @@ function Pill({ ok, label }: { ok: boolean; label: string }) {
       className={`px-2.5 py-1.5 rounded-md flex items-center gap-1.5 border ${
         ok
           ? 'bg-green-accent/5 border-green-accent/30 text-green-accent'
-          : 'bg-bg-elevated border-bg-border text-slate-500'
+          : 'bg-bg-elevated border-bg-border text-slate-400'
       }`}
     >
       {ok ? <Check className="w-3 h-3" /> : <X className="w-3 h-3" />}

@@ -32,7 +32,7 @@ const content: Record<Language, { label: string; text: string; link: string }> =
 export default function AffiliateDisclosure({ lang = 'en' }: { lang?: Language }) {
   const t = content[lang] ?? content.en;
   return (
-    <div className="text-xs text-slate-500 border border-bg-border rounded-lg px-4 py-3 mb-6 bg-bg-elevated/50">
+    <div className="text-xs text-slate-400 border border-bg-border rounded-lg px-4 py-3 mb-6 bg-bg-elevated/50">
       <span className="font-semibold text-slate-400">{t.label}: </span>
       {t.text}{' '}
       <Link to="/affiliate-disclosure" className="underline hover:text-slate-300 transition-colors">

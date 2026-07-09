@@ -198,7 +198,7 @@ export default function RiskSummary() {
 
       <main className="flex-1 container-app py-16 max-w-3xl">
         <h1 className="text-3xl font-bold text-white mb-2">{c.title}</h1>
-        <p className="text-slate-500 text-sm mb-8">{c.readTime}</p>
+        <p className="text-slate-400 text-sm mb-8">{c.readTime}</p>
 
         <div className="flex gap-2 mb-10">
           <a href="#eu" className="px-3 py-1.5 text-xs rounded-lg bg-bg-elevated border border-bg-border text-slate-300 hover:border-cyan-accent/50 hover:text-white transition-colors">EU / DE / FR / ES / IT</a>
@@ -245,7 +245,7 @@ export default function RiskSummary() {
       </main>
 
       <footer className="border-t border-bg-border py-6">
-        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-500 justify-between items-center">
+        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-400 justify-between items-center">
           <span>© {new Date().getFullYear()} TopCryptoCards. {c.noAdvice}</span>
           <div className="flex gap-4">
             <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>

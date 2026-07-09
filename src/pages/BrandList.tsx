@@ -236,7 +236,7 @@ export default function BrandList() {
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-10">
 
       {/* Breadcrumb */}
-      <nav className="text-sm text-slate-500 flex items-center gap-2">
+      <nav className="text-sm text-slate-400 flex items-center gap-2">
         <Link to={`/${lang}`} className="hover:text-white">{l.home}</Link>
         <span>›</span>
         <span className="text-white">{l.h1}</span>
@@ -285,7 +285,7 @@ export default function BrandList() {
                 <h2 className="font-bold text-white group-hover:text-brand-accent transition-colors">
                   {displayName}
                 </h2>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-slate-400">
                   {brandCards.length} {brandCards.length === 1 ? l.tier1 : l.tiers}
                 </span>
               </div>
@@ -334,7 +334,7 @@ export default function BrandList() {
                   <div className="font-medium text-white group-hover:text-brand-accent transition-colors truncate">
                     {card.name}
                   </div>
-                  <div className="text-xs text-slate-500">{card.issuer}</div>
+                  <div className="text-xs text-slate-400">{card.issuer}</div>
                 </div>
               </Link>
             ))}
@@ -349,7 +349,7 @@ export default function BrandList() {
           <div className="border-t border-bg-border pt-10">
             <h2 className="text-xl font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
                 const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;

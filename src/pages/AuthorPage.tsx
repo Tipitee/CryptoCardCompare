@@ -134,7 +134,7 @@ export default function AuthorPage() {
               />
             ) : (
               <div className="w-24 h-24 rounded-full bg-bg-elevated flex items-center justify-center ring-2 ring-bg-border">
-                <User className="w-10 h-10 text-slate-500" />
+                <User className="w-10 h-10 text-slate-400" />
               </div>
             )}
           </div>
@@ -150,11 +150,11 @@ export default function AuthorPage() {
 
             <dl className="flex flex-wrap justify-center sm:justify-start gap-x-8 gap-y-2 text-sm mb-4">
               <div>
-                <dt className="text-slate-500 text-xs uppercase tracking-wide">{EXPERTISE_LABEL[lang] ?? EXPERTISE_LABEL.en}</dt>
+                <dt className="text-slate-400 text-xs uppercase tracking-wide">{EXPERTISE_LABEL[lang] ?? EXPERTISE_LABEL.en}</dt>
                 <dd className="text-slate-300 font-medium">{EXPERTISE_VALUE[lang] ?? EXPERTISE_VALUE.en}</dd>
               </div>
               <div>
-                <dt className="text-slate-500 text-xs uppercase tracking-wide">{SINCE_LABEL[lang] ?? SINCE_LABEL.en}</dt>
+                <dt className="text-slate-400 text-xs uppercase tracking-wide">{SINCE_LABEL[lang] ?? SINCE_LABEL.en}</dt>
                 <dd className="text-slate-300 font-medium">2024</dd>
               </div>
             </dl>
@@ -193,7 +193,7 @@ export default function AuthorPage() {
             ))}
           </div>
         ) : posts.length === 0 ? (
-          <p className="text-slate-500 text-sm">{BLOG_LABEL[lang]}: —</p>
+          <p className="text-slate-400 text-sm">{BLOG_LABEL[lang]}: —</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {posts.map(post => (
@@ -220,7 +220,7 @@ export default function AuthorPage() {
                   <p className="text-sm font-semibold text-white leading-snug group-hover:text-cyan-accent transition-colors line-clamp-2 mb-1">
                     {post.title}
                   </p>
-                  <p className="text-xs text-slate-500 flex items-center gap-1">
+                  <p className="text-xs text-slate-400 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {estimateReadTime(post.content)} {READ_DURATION_LABEL[lang] ?? READ_DURATION_LABEL.en}
                   </p>

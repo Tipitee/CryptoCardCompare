@@ -329,7 +329,7 @@ export default function BlogCategoryPage() {
         </div>
       ) : (
         <>
-          <p className="text-slate-500 text-sm mb-6">{posts.length} articles</p>
+          <p className="text-slate-400 text-sm mb-6">{posts.length} articles</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginated.map(post => (
               <ArticleCard
@@ -402,7 +402,7 @@ export default function BlogCategoryPage() {
 
       {/* Other categories */}
       <div className="mt-10">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{l.otherCategories}</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{l.otherCategories}</p>
         <div className="flex flex-wrap gap-2">
           {otherCats.map(c => {
             const cLabel = (CAT_LABEL[c] ?? CAT_LABEL.card)[lang] ?? (CAT_LABEL[c] ?? CAT_LABEL.card).en;
@@ -489,7 +489,7 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
           {post.excerpt}
         </p>
 
-        <div className="flex items-center gap-4 text-xs text-slate-500 mt-auto pt-3 border-t border-bg-border/50 group-hover:border-cyan-accent/30 transition-colors">
+        <div className="flex items-center gap-4 text-xs text-slate-400 mt-auto pt-3 border-t border-bg-border/50 group-hover:border-cyan-accent/30 transition-colors">
           <span className="flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5" />
             {formatDate(post.created_at, lang)}

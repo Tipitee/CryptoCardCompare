@@ -329,7 +329,7 @@ const MethodologyPage: React.FC = () => {
           <Link to={`/${lang}`} className="text-brand-accent font-bold text-lg tracking-tight hover:opacity-80 transition-opacity">
             TopCryptoCards
           </Link>
-          <span className="text-slate-500">/</span>
+          <span className="text-slate-400">/</span>
           <span className="text-text-secondary text-sm">{meta.title.split(' — ')[0]}</span>
         </div>
       </header>

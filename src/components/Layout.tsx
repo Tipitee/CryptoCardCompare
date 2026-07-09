@@ -292,7 +292,7 @@ export default function Layout() {
               </NavLink>
 
               {/* Guides section */}
-              <div className="mt-4 mb-2 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+              <div className="mt-4 mb-2 px-4 text-[11px] font-semibold uppercase tracking-widest text-slate-400">
                 {labels.title}
               </div>
               {thematicLinks.map((item) => (
@@ -302,7 +302,7 @@ export default function Layout() {
                   onClick={() => setMenuOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-bg-card active:bg-bg-card transition-colors min-h-[48px]"
                 >
-                  <TrendingUp className="w-4 h-4 shrink-0 text-slate-500" />
+                  <TrendingUp className="w-4 h-4 shrink-0 text-slate-400" />
                   {item.label}
                 </Link>
               ))}
@@ -436,13 +436,13 @@ export default function Layout() {
                   </Link>
                 </li>
               </ul>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 {t('footer_disclaimer')}
               </p>
             </div>
           </div>
 
-          <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-500">
+          <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-400">
             <span>© {new Date().getFullYear()} {t('footer_copyright')}</span>
             <div className="flex flex-wrap gap-3">
               <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>

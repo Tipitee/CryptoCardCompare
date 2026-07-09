@@ -265,7 +265,7 @@ export default function CryptoPage() {
                   >
                     <div className="min-w-0">
                       <div className="font-semibold text-white text-sm truncate group-hover:text-cyan-accent">{card.name}</div>
-                      <div className="text-xs text-slate-500">{card.issuer}</div>
+                      <div className="text-xs text-slate-400">{card.issuer}</div>
                       {(card.cashback_premium || card.cashback_base) > 0 && (
                         <div className="text-xs text-cyan-accent mt-0.5">
                           {((card.cashback_premium || card.cashback_base) * 100).toFixed(1)}% cashback
@@ -286,12 +286,12 @@ export default function CryptoPage() {
                   </Link>
                   {card.brand_id && (
                     <div className="px-4 pb-3 flex items-center gap-3 text-xs">
-                      <Link to={`/${lang}/${cardSlug}/${card.id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
+                      <Link to={`/${lang}/${cardSlug}/${card.id}`} className="text-slate-400 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
                         <ChevronRight className="w-3 h-3" />
                         {t('see_details')}
                       </Link>
                       <span className="text-slate-700">·</span>
-                      <Link to={`/${lang}/${brandsSlug}/${card.brand_id}`} className="text-slate-500 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
+                      <Link to={`/${lang}/${brandsSlug}/${card.brand_id}`} className="text-slate-400 hover:text-cyan-accent transition-colors flex items-center gap-0.5">
                         <ChevronRight className="w-3 h-3" />
                         {t('brand_page')}
                       </Link>

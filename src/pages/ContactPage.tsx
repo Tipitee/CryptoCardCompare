@@ -202,7 +202,7 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-cyan-accent" />
               </div>
               <span className="font-semibold text-white">{copy.emailLabel}</span>
-              <ExternalLink className="w-4 h-4 text-slate-500 ml-auto group-hover:text-cyan-accent transition-colors" />
+              <ExternalLink className="w-4 h-4 text-slate-400 ml-auto group-hover:text-cyan-accent transition-colors" />
             </div>
             <p className="text-sm text-slate-400">{copy.emailDesc}</p>
             <span className="text-sm font-medium text-cyan-accent">{CONTACT_EMAIL}</span>
@@ -220,7 +220,7 @@ export default function ContactPage() {
                 <Twitter className="w-5 h-5 text-cyan-accent" />
               </div>
               <span className="font-semibold text-white">{copy.twitterLabel}</span>
-              <ExternalLink className="w-4 h-4 text-slate-500 ml-auto group-hover:text-cyan-accent transition-colors" />
+              <ExternalLink className="w-4 h-4 text-slate-400 ml-auto group-hover:text-cyan-accent transition-colors" />
             </div>
             <p className="text-sm text-slate-400">{copy.twitterDesc}</p>
             <span className="text-sm font-medium text-cyan-accent">@cryptocards_eu</span>
@@ -244,7 +244,7 @@ export default function ContactPage() {
         </section>
 
         {/* Response time + disclaimer */}
-        <div className="space-y-4 text-sm text-slate-500 border-t border-bg-border pt-6">
+        <div className="space-y-4 text-sm text-slate-400 border-t border-bg-border pt-6">
           <p>⏱ {copy.responseTime}</p>
           <p>{copy.disclaimer}</p>
         </div>

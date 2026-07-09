@@ -361,7 +361,7 @@ export default function Recommendation() {
                 >
                   <div>
                     <div className="font-medium">{opt.label}</div>
-                    {opt.sub && <div className="text-xs text-slate-500 mt-0.5">{opt.sub}</div>}
+                    {opt.sub && <div className="text-xs text-slate-400 mt-0.5">{opt.sub}</div>}
                   </div>
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
@@ -435,7 +435,7 @@ export default function Recommendation() {
                     </button>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
-                        <span className="text-xs font-mono text-slate-500">#{i + 1}</span>
+                        <span className="text-xs font-mono text-slate-400">#{i + 1}</span>
                         {i === 0 && (
                           <span className="badge-best">
                             <Award className="w-3 h-3" /> {t('quiz_recommended_badge')}
@@ -455,7 +455,7 @@ export default function Recommendation() {
 
                 <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
                   <div>
-                    <div className="text-xs text-slate-500">{t('quiz_cashback_label')}</div>
+                    <div className="text-xs text-slate-400">{t('quiz_cashback_label')}</div>
                     <div className="text-white font-semibold">{fmtPct(r.effectiveCashback)}</div>
                     {r.card.cashbackPremium > r.effectiveCashback && (
                       <div className="text-xs text-amber-400/80 mt-0.5">
@@ -464,13 +464,13 @@ export default function Recommendation() {
                     )}
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500">{t('quiz_fees_label')}</div>
+                    <div className="text-xs text-slate-400">{t('quiz_fees_label')}</div>
                     <div className="text-white font-semibold">
                       {r.card.annualFees === 0 ? t('quiz_free') : fmtEUR(r.card.annualFees)}
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500">{t('quiz_staking_label')}</div>
+                    <div className="text-xs text-slate-400">{t('quiz_staking_label')}</div>
                     <div className="text-white font-semibold">
                       {r.card.stakingRequired === 0 ? t('quiz_none') : fmtEUR(r.card.stakingRequired)}
                     </div>
@@ -490,7 +490,7 @@ export default function Recommendation() {
                 {r.drawbacks.length > 0 && (
                   <div className="mt-2 space-y-1.5">
                     {r.drawbacks.map((d, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-sm text-slate-500">
+                      <div key={idx} className="flex items-start gap-2 text-sm text-slate-400">
                         <span className="w-4 h-4 shrink-0 mt-0.5 text-center">−</span>
                         <span>{d}</span>
                       </div>
@@ -548,7 +548,7 @@ export default function Recommendation() {
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
                 const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;

@@ -497,7 +497,7 @@ export default function Compare() {
                       onClick={() => loadSession(s.cardIds)}
                       className="card-surface p-3 text-left hover:border-cyan-accent/40 transition-colors"
                     >
-                      <div className="text-xs text-slate-500 mb-1">
+                      <div className="text-xs text-slate-400 mb-1">
                         {new Date(s.createdAt).toLocaleDateString(DATE_LOCALES[lang] ?? 'fr-FR', {
                           day: 'numeric',
                           month: 'short',
@@ -593,7 +593,7 @@ export default function Compare() {
           <ArrowRight className="w-3.5 h-3.5" />
           {qcLabels.title}
         </div>
-        <p className="text-xs text-slate-500 mb-4">{qcLabels.hint}</p>
+        <p className="text-xs text-slate-400 mb-4">{qcLabels.hint}</p>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           {/* Slot A */}
@@ -615,7 +615,7 @@ export default function Compare() {
             </select>
           </div>
 
-          <span className="text-slate-500 font-semibold text-sm hidden sm:block">VS</span>
+          <span className="text-slate-400 font-semibold text-sm hidden sm:block">VS</span>
 
           {/* Slot B */}
           <div className="flex-1 relative">
@@ -659,7 +659,7 @@ export default function Compare() {
               </span>
             )}
             {quickA && !quickB && (
-              <span className="text-slate-500 italic">{qcLabels.selectHint}</span>
+              <span className="text-slate-400 italic">{qcLabels.selectHint}</span>
             )}
             {quickB && (
               <span className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-accent/10 border border-green-accent/30 text-green-400">
@@ -807,7 +807,7 @@ export default function Compare() {
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
                 const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
@@ -849,7 +849,7 @@ function summaryStats(cards: { cashbackPremium: number; annualFees: number; stak
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="card-surface p-3">
-      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
+      <div className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
         {label}
       </div>
       <div className="text-lg font-display font-bold text-white mt-0.5">{value}</div>

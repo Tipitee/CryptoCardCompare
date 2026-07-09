@@ -96,7 +96,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           </div>
           <div>
             <div className="font-semibold text-white">{label}</div>
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-slate-400">
               {t('trust_explanation')}
             </div>
           </div>

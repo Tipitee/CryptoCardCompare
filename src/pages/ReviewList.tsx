@@ -213,7 +213,7 @@ export default function ReviewList() {
           {l.sub}
         </p>
         {/* Editorial intro — enrichit le contenu pour Google */}
-        <p className="text-slate-500 text-sm max-w-3xl mx-auto mt-4 leading-relaxed">
+        <p className="text-slate-400 text-sm max-w-3xl mx-auto mt-4 leading-relaxed">
           {REVIEW_EDITORIAL[lang] ?? REVIEW_EDITORIAL.en}
         </p>
       </div>
@@ -264,7 +264,7 @@ export default function ReviewList() {
                     <h2 className="font-display font-bold text-white group-hover:text-cyan-accent transition-colors text-lg leading-tight">
                       {review.cardName}
                     </h2>
-                    <p className="text-slate-500 text-xs mt-0.5">{review.issuer} · {review.network}</p>
+                    <p className="text-slate-400 text-xs mt-0.5">{review.issuer} · {review.network}</p>
                   </div>
                   <div className="shrink-0 text-right">
                     <div className={`text-2xl font-display font-bold ${RATING_COLOR(review.globalRating)}`}>
@@ -304,7 +304,7 @@ export default function ReviewList() {
 
                 {/* Footer */}
                 <div className="px-5 py-4 border-t border-bg-border flex items-center justify-between">
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-slate-400">
                     {l.updatedAt} {new Date(review.updatedAt).toLocaleDateString(
                       lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB',
                       { month: 'long', year: 'numeric' }
@@ -320,7 +320,7 @@ export default function ReviewList() {
               {brandId && (
                 <Link
                   to={`/${lang}/${brandsSlug}/${brandId}`}
-                  className="mt-1.5 flex items-center justify-center gap-1 text-xs text-slate-500 hover:text-cyan-accent transition-colors py-1"
+                  className="mt-1.5 flex items-center justify-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors py-1"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ChevronRight className="w-3 h-3" />

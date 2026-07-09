@@ -240,7 +240,7 @@ export default function CryptoList() {
               </div>
               <div>
                 <div className="font-bold text-white text-base group-hover:text-cyan-accent transition-colors">{crypto.name}</div>
-                <div className="text-xs text-slate-500 font-mono">{crypto.ticker}</div>
+                <div className="text-xs text-slate-400 font-mono">{crypto.ticker}</div>
               </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
@@ -261,7 +261,7 @@ export default function CryptoList() {
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ emoji, label, slug }) => {
                 const href = slugs[slug as keyof typeof slugs];

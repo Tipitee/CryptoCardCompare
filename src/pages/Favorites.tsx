@@ -263,23 +263,23 @@ export default function Favorites() {
 
               <dl className="grid grid-cols-2 gap-3 text-sm mb-4">
                 <div>
-                  <dt className="text-xs text-slate-500">{ui.cashback}</dt>
+                  <dt className="text-xs text-slate-400">{ui.cashback}</dt>
                   <dd className="text-white font-semibold">{fmtPct(c.cashbackPremium)}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate-500">{ui.fees}</dt>
+                  <dt className="text-xs text-slate-400">{ui.fees}</dt>
                   <dd className="text-white font-semibold">
                     {c.annualFees === 0 ? ui.free : fmtEUR(c.annualFees)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate-500">{ui.staking}</dt>
+                  <dt className="text-xs text-slate-400">{ui.staking}</dt>
                   <dd className="text-white font-semibold">
                     {c.stakingRequired === 0 ? ui.none_staking : fmtEUR(c.stakingRequired)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-slate-500">{ui.network}</dt>
+                  <dt className="text-xs text-slate-400">{ui.network}</dt>
                   <dd className="text-white font-semibold">{c.cardNetwork}</dd>
                 </div>
               </dl>
@@ -300,7 +300,7 @@ export default function Favorites() {
                   {c.brandId && (
                     <Link
                       to={`/${lang}/${brandsSlug}/${c.brandId}`}
-                      className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-cyan-accent transition-colors"
+                      className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors"
                     >
                       {BRAND_LABEL[lang] || BRAND_LABEL.en}
                     </Link>
@@ -329,7 +329,7 @@ export default function Favorites() {
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
                 const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;

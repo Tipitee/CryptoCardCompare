@@ -213,7 +213,7 @@ export default function CompareSideBySide({
                 className={`absolute top-3 left-3 p-2 rounded-lg transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center ${
                   isFav
                     ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
-                    : 'text-slate-500 hover:text-slate-300 hover:bg-bg-elevated'
+                    : 'text-slate-400 hover:text-slate-300 hover:bg-bg-elevated'
                 }`}
               >
                 <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
@@ -225,7 +225,7 @@ export default function CompareSideBySide({
               <div className="font-display font-bold text-white text-base leading-tight">
                 {card.name}
               </div>
-              <div className="text-xs text-slate-500 mt-0.5">{card.issuer}</div>
+              <div className="text-xs text-slate-400 mt-0.5">{card.issuer}</div>
               {card.badge && <span className="badge-accent mt-2">{translateBadge(card.badge, lang)}</span>}
 
               <Link

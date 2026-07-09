@@ -391,7 +391,7 @@ export default function Simulator() {
             {t('sim_mode_optimistic')}
           </button>
         </div>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-400">
           {simMode === 'base' ? t('sim_mode_info_base') : t('sim_mode_info_optimistic')}
         </p>
       </div>
@@ -408,7 +408,7 @@ export default function Simulator() {
                   <label className="flex justify-between text-sm text-slate-300 mb-1.5">
                     <span>
                       {cat.label}
-                      <span className="text-xs text-slate-500 ml-2">{cat.hint}</span>
+                      <span className="text-xs text-slate-400 ml-2">{cat.hint}</span>
                     </span>
                     <span className="font-mono text-cyan-accent">
                       {fmtEUR(spending[cat.key])}
@@ -446,7 +446,7 @@ export default function Simulator() {
               <label className="flex justify-between text-sm text-slate-300 mb-1.5">
                 <span>
                   {t('sim_staking_budget_label')}
-                  <span className="text-xs text-slate-500 ml-2">{t('sim_staking_budget_hint')}</span>
+                  <span className="text-xs text-slate-400 ml-2">{t('sim_staking_budget_hint')}</span>
                 </span>
                 <span className="font-mono text-amber-400">
                   {fmtEUR(stakingBudget)}
@@ -476,13 +476,13 @@ export default function Simulator() {
 
             <div className="mt-6 pt-6 border-t border-bg-border grid grid-cols-2 gap-4">
               <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide">{t('sim_monthly')}</div>
+                <div className="text-xs text-slate-400 uppercase tracking-wide">{t('sim_monthly')}</div>
                 <div className="text-2xl font-display font-bold text-white">
                   {fmtEUR(monthlyTotal)}
                 </div>
               </div>
               <div>
-                <div className="text-xs text-slate-500 uppercase tracking-wide">{t('sim_yearly')}</div>
+                <div className="text-xs text-slate-400 uppercase tracking-wide">{t('sim_yearly')}</div>
                 <div className="text-2xl font-display font-bold text-cyan-accent">
                   {fmtEUR(yearly)}
                 </div>
@@ -546,7 +546,7 @@ export default function Simulator() {
                     </div>
                   )}
                   {best.card.stakingRequired > 0 && best.stakingMet && (
-                    <div className="mt-2 text-xs text-slate-500">
+                    <div className="mt-2 text-xs text-slate-400">
                       {t('sim_best_staking')} {fmtEUR(best.card.stakingRequired)} {t('sim_best_staking_post')}
                     </div>
                   )}
@@ -638,7 +638,7 @@ export default function Simulator() {
                         >
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <span className="text-xs text-slate-500 font-mono w-5">#{i + 1}</span>
+                              <span className="text-xs text-slate-400 font-mono w-5">#{i + 1}</span>
                               <div>
                                 <div className="flex items-center gap-1.5 flex-wrap">
                                   <span className="font-medium text-white">{r.card.issuer}</span>
@@ -651,7 +651,7 @@ export default function Simulator() {
                                   )}
                                 </div>
                                 {simMode === 'base' && r.card.cashbackPremium > r.effectiveRate && (
-                                  <div className="mt-0.5 text-xs text-slate-500">
+                                  <div className="mt-0.5 text-xs text-slate-400">
                                     {t('sim_potential_prefix')}{' '}
                                     <span className="text-amber-400/80">{r.card.cashbackPremium}%</span>
                                     {' '}{t('sim_potential_suffix')}
@@ -662,7 +662,7 @@ export default function Simulator() {
                               {brandId && (
                                 <Link
                                   to={`/${lang}/${brandsSlug}/${brandId}`}
-                                  className="text-slate-500 hover:text-cyan-accent transition-colors"
+                                  className="text-slate-400 hover:text-cyan-accent transition-colors"
                                   title={t('see_all_tiers_tooltip')}
                                 >
                                   <ExternalLink className="w-3 h-3" />
@@ -693,7 +693,7 @@ export default function Simulator() {
 
                           <td className="px-4 py-3 text-right">
                             {r.card.stakingRequired === 0 ? (
-                              <span className="text-slate-500">—</span>
+                              <span className="text-slate-400">—</span>
                             ) : (
                               <span className={`inline-flex items-center gap-1 text-xs font-mono ${r.stakingMet ? 'text-green-accent' : 'text-amber-400'}`}>
                                 {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
@@ -710,7 +710,7 @@ export default function Simulator() {
                               {r.hasCustomRates ? '~' : ''}{r.effectiveRate.toFixed(1)}%
                             </span>
                             {r.ratePenalized && (
-                              <div className="text-xs text-slate-500">
+                              <div className="text-xs text-slate-400">
                                 ({r.card.cashbackBase}% {t('sim_rate_with_staking')})
                               </div>
                             )}
@@ -742,7 +742,7 @@ export default function Simulator() {
                                 </div>
                               </td>
                               <td className="px-4 py-2 hidden sm:table-cell">
-                                <span className="text-xs text-slate-500">{t2.card.tierLabel ?? '—'}</span>
+                                <span className="text-xs text-slate-400">{t2.card.tierLabel ?? '—'}</span>
                               </td>
                               <td className="px-4 py-2 text-right">
                                 {t2.card.stakingRequired === 0 ? (
@@ -778,7 +778,7 @@ export default function Simulator() {
             </div>
           </div>
 
-          <div className="flex items-start gap-2 text-xs text-slate-500 p-4">
+          <div className="flex items-start gap-2 text-xs text-slate-400 p-4">
             <Info className="w-4 h-4 shrink-0 mt-0.5" />
             <p>{t('sim_disclaimer')}</p>
           </div>
@@ -791,7 +791,7 @@ export default function Simulator() {
             <div className="mt-14 border-t border-bg-border pt-10">
               <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
               <div className="flex flex-wrap gap-2">
                 {ed.links.map(({ key, emoji, label }) => {
                   const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;

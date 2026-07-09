@@ -514,20 +514,20 @@ export default function Home() {
                   <SmartCardImage card={card} size="md" priority={idx === 0} />
                 </div>
                 <div className="font-display font-bold text-white text-lg">{card.name}</div>
-                <div className="text-xs text-slate-500 mb-4">{card.issuer}</div>
+                <div className="text-xs text-slate-400 mb-4">{card.issuer}</div>
                 <dl className="grid grid-cols-3 gap-2 text-xs">
                   <div>
-                    <dt className="text-slate-500">Cashback</dt>
+                    <dt className="text-slate-400">Cashback</dt>
                     <dd className="text-white font-semibold">{fmtPct(card.cashbackPremium)}</dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">{t('home_card_fees_label')}</dt>
+                    <dt className="text-slate-400">{t('home_card_fees_label')}</dt>
                     <dd className="text-white font-semibold">
                       {card.annualFees === 0 ? t('home_card_free') : fmtEUR(card.annualFees)}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">{t('home_card_staking')}</dt>
+                    <dt className="text-slate-400">{t('home_card_staking')}</dt>
                     <dd className="text-white font-semibold">
                       {card.stakingRequired === 0 ? t('compare_stat_none') : fmtEUR(card.stakingRequired)}
                     </dd>
@@ -552,7 +552,7 @@ export default function Home() {
               {t('home_all_desc')}
             </p>
             {t('home_seo_intro') && (
-              <p className="text-xs text-slate-500 mt-2 max-w-2xl leading-relaxed">
+              <p className="text-xs text-slate-400 mt-2 max-w-2xl leading-relaxed">
                 {t('home_seo_intro')}
               </p>
             )}
@@ -671,7 +671,7 @@ export default function Home() {
                     className={`p-2 rounded-lg transition-colors ${
                       isFav
                         ? 'text-green-accent bg-green-accent/10'
-                        : 'text-slate-500 hover:text-white bg-bg-elevated/70'
+                        : 'text-slate-400 hover:text-white bg-bg-elevated/70'
                     }`}
                   >
                     <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
@@ -697,7 +697,7 @@ export default function Home() {
                   {/* Stats */}
                   <dl className="grid grid-cols-3 gap-2 text-xs border-t border-bg-border pt-3">
                     <div>
-                      <dt className="text-slate-500">Cashback</dt>
+                      <dt className="text-slate-400">Cashback</dt>
                       <dd className="text-white font-semibold">
                         {maxCashback > 0
                           ? <><span className="text-slate-400 text-[10px]">{UP_TO[lang] ?? 'Up to'} </span>{fmtPct(maxCashback)}</>
@@ -705,7 +705,7 @@ export default function Home() {
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-slate-500">{t('home_card_fees')}</dt>
+                      <dt className="text-slate-400">{t('home_card_fees')}</dt>
                       <dd className="text-white font-semibold">
                         {minFees === 0
                           ? t('home_card_free')
@@ -713,7 +713,7 @@ export default function Home() {
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-slate-500">{t('home_card_staking')}</dt>
+                      <dt className="text-slate-400">{t('home_card_staking')}</dt>
                       <dd className="text-white font-semibold">
                         {card.stakingRequired === 0 ? t('home_card_staking_none') : fmtEUR(card.stakingRequired)}
                       </dd>
@@ -748,7 +748,7 @@ export default function Home() {
             );
           })}
           {filtered.length === 0 && (
-            <div className="col-span-full card-surface p-10 text-center text-slate-500">
+            <div className="col-span-full card-surface p-10 text-center text-slate-400">
               {t('home_no_results')}
             </div>
           )}
@@ -785,7 +785,7 @@ export default function Home() {
                   >
                     <span className="text-2xl mb-2 block" aria-hidden="true">{emoji}</span>
                     <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-cyan-accent transition-colors">{label}</h3>
-                    <p className="text-xs text-slate-500 leading-snug">{desc}</p>
+                    <p className="text-xs text-slate-400 leading-snug">{desc}</p>
                   </Link>
                 );
               })}

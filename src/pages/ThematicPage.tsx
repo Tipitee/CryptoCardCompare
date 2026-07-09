@@ -1808,7 +1808,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <h2 className="text-white font-semibold text-base group-hover/card:text-cyan-400 transition-colors">{card.name}</h2>
                   {card.card_network && (
-                    <span className="text-[10px] font-medium text-slate-500 shrink-0 mt-0.5 border border-slate-700 rounded px-1.5 py-0.5">
+                    <span className="text-[10px] font-medium text-slate-400 shrink-0 mt-0.5 border border-slate-700 rounded px-1.5 py-0.5">
                       {card.card_network}
                     </span>
                   )}
@@ -1839,7 +1839,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               {card.brand_id && (
                 <Link
                   to={`/${lang}/${brandsSlug}/${card.brand_id}`}
-                  className="mt-1.5 text-center text-xs text-slate-500 hover:text-cyan-accent transition-colors py-1"
+                  className="mt-1.5 text-center text-xs text-slate-400 hover:text-cyan-accent transition-colors py-1"
                 >
                   {SEE_TIERS_LABEL[lang] || 'See all tiers'} →
                 </Link>
@@ -1943,7 +1943,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               </div>
             ))}
             {relatedLinks.length > 0 && (
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <p className="text-slate-400 text-sm leading-relaxed">
                 {RELATED_PREFIX[lang] ?? RELATED_PREFIX.en}{' '}
                 {relatedLinks.map((t, i) => {
                   const slug = THEMATIC_ROUTES[t]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]];
@@ -1981,7 +1981,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
             <div className="font-semibold text-white group-hover:text-cyan-accent transition-colors text-sm">
               {t('crypto_guide_title')}
             </div>
-            <div className="text-xs text-slate-500 mt-0.5">
+            <div className="text-xs text-slate-400 mt-0.5">
               {t('crypto_guide_desc')}
             </div>
           </div>

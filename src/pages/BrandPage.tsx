@@ -935,7 +935,7 @@ export default function BrandPage() {
                 <span className="text-sm text-slate-300 group-hover:text-brand-accent transition-colors line-clamp-1">
                   📰 {article.title}
                 </span>
-                <span className="shrink-0 text-xs text-slate-500 group-hover:text-brand-accent transition-colors">
+                <span className="shrink-0 text-xs text-slate-400 group-hover:text-brand-accent transition-colors">
                   {BRAND_ARTICLES_READ[lang] || BRAND_ARTICLES_READ.en} →
                 </span>
               </Link>

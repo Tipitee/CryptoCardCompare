@@ -344,7 +344,7 @@ export default function FeeIndexPage() {
                           <SmartCardImage card={card} size="xs" />
                           <div>
                             <div className="font-semibold text-white text-sm leading-tight">{card.name}</div>
-                            <div className="text-xs text-slate-500">{card.issuer}</div>
+                            <div className="text-xs text-slate-400">{card.issuer}</div>
                           </div>
                         </div>
                       </td>
@@ -374,7 +374,7 @@ export default function FeeIndexPage() {
                       <td className="px-4 py-3 text-center">
                         {card.freeWithdrawals
                           ? <span className="text-green-accent">{c.yes}</span>
-                          : <span className="text-slate-500">{c.no}</span>
+                          : <span className="text-slate-400">{c.no}</span>
                         }
                       </td>
                       {/* Network */}
@@ -402,7 +402,7 @@ export default function FeeIndexPage() {
         )}
 
         {/* Note */}
-        <p className="mt-4 text-xs text-slate-500 leading-relaxed max-w-3xl">{c.note}</p>
+        <p className="mt-4 text-xs text-slate-400 leading-relaxed max-w-3xl">{c.note}</p>
         <p className="mt-1 text-xs text-slate-600">{c.lastUpdated}</p>
 
         {/* CTAs */}

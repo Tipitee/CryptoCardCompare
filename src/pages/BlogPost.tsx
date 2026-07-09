@@ -309,7 +309,7 @@ export default function BlogPost() {
       <div className="container-app py-24 text-center">
         <BookOpen className="w-14 h-14 text-slate-600 mx-auto mb-4" />
         <h1 className="text-3xl font-display font-bold text-white mb-2">{t('blog_not_found_title')}</h1>
-        <p className="text-slate-500 mb-8">{t('blog_not_found_desc')}</p>
+        <p className="text-slate-400 mb-8">{t('blog_not_found_desc')}</p>
         <Link to={getRoute('blog')} className="btn-primary">
           {t('blog_back_to_blog')}
         </Link>
@@ -520,7 +520,7 @@ export default function BlogPost() {
                 <h4 className="font-display font-bold text-white mb-2 text-sm">
                   {tCards('compare_title')}
                 </h4>
-                <p className="text-slate-500 text-xs mb-3 leading-relaxed">
+                <p className="text-slate-400 text-xs mb-3 leading-relaxed">
                   {t('blog_sidebar_compare_desc')}
                 </p>
                 <Link to={getRoute('compare')} className="btn-primary w-full text-sm">
@@ -568,7 +568,7 @@ function RelatedCard({ post, blogRoute, readDuration }: RelatedCardProps) {
         <p className="text-sm font-semibold text-white leading-snug group-hover:text-cyan-accent transition-colors line-clamp-2">
           {post.title}
         </p>
-        <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+        <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
           <Clock className="w-3 h-3" />
           {estimateReadTime(post.content)} {readDuration}
         </p>

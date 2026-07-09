@@ -212,7 +212,7 @@ export default function Blog() {
       {/* Search + Filters */}
       <div className="mb-8 space-y-4">
         <div className="relative max-w-lg mx-auto">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
             aria-label={t('blog_search_placeholder')}
@@ -246,7 +246,7 @@ export default function Blog() {
           <h3 className="text-xl font-display font-bold text-white mb-2">
             {posts.length === 0 ? t('blog_no_articles') : t('blog_no_results')}
           </h3>
-          <p className="text-slate-500 mb-6">
+          <p className="text-slate-400 mb-6">
             {posts.length === 0 ? t('blog_coming_soon') : t('blog_try_other')}
           </p>
           {search && (
@@ -325,7 +325,7 @@ export default function Blog() {
             <p className="text-slate-400 text-sm leading-relaxed max-w-3xl mb-8">{ed.body}</p>
 
             {/* Category hubs */}
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
               <Layers className="w-3.5 h-3.5 inline mr-1.5" />{browseLabel[lang] ?? browseLabel.en}
             </p>
             <div className="flex flex-wrap gap-2 mb-8">
@@ -338,7 +338,7 @@ export default function Blog() {
             </div>
 
             {/* Thematic links */}
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">{ed.related}</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">{ed.related}</p>
             <div className="flex flex-wrap gap-2">
               {ed.links.map(({ key, emoji, label }) => {
                 const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
@@ -416,7 +416,7 @@ function ArticleCard({ post, lang, blogRoute, readDuration }: ArticleCardProps) 
           {post.excerpt}
         </p>
 
-        <div className="flex items-center gap-4 text-xs text-slate-500 mt-auto pt-3 border-t border-bg-border/50 group-hover:border-cyan-accent/30 transition-colors">
+        <div className="flex items-center gap-4 text-xs text-slate-400 mt-auto pt-3 border-t border-bg-border/50 group-hover:border-cyan-accent/30 transition-colors">
           <span className="flex items-center gap-1">
             <Calendar className="w-3.5 h-3.5" />
             {formatDate(post.created_at, lang)}

@@ -399,7 +399,7 @@ export default function ReviewPage() {
       <div className="container-app py-24 text-center">
         <CreditCard className="w-14 h-14 text-slate-600 mx-auto mb-4" />
         <h1 className="text-3xl font-display font-bold text-white mb-2">{l.notFound}</h1>
-        <p className="text-slate-500 mb-8">{l.notFoundDesc}</p>
+        <p className="text-slate-400 mb-8">{l.notFoundDesc}</p>
         <Link to={`/${lang}/${reviewSlug}`} className="btn-primary">
           {l.allReviews}
         </Link>
@@ -501,7 +501,7 @@ export default function ReviewPage() {
                 </div>
                 <div>
                   <StarRating value={review.globalRating} />
-                  <p className="text-slate-500 text-xs mt-1">{l.globalRating}</p>
+                  <p className="text-slate-400 text-xs mt-1">{l.globalRating}</p>
                 </div>
               </div>
             </div>
@@ -661,7 +661,7 @@ export default function ReviewPage() {
                 <div className="text-4xl font-display font-bold text-cyan-accent">{review.globalRating.toFixed(1)}</div>
                 <div>
                   <StarRating value={review.globalRating} />
-                  <p className="text-slate-500 text-xs mt-0.5">{l.outOf5}</p>
+                  <p className="text-slate-400 text-xs mt-0.5">{l.outOf5}</p>
                 </div>
               </div>
               {(lang === 'fr' || i18n) && <p className="text-slate-300 leading-relaxed">{i18n?.verdict ?? review.verdict}</p>}
@@ -779,7 +779,7 @@ export default function ReviewPage() {
               {/* Compare CTA */}
               <div className="card-surface p-5 border-cyan-accent/20">
                 <h4 className="font-display font-bold text-white mb-2 text-sm">{l.compareCta}</h4>
-                <p className="text-slate-500 text-xs mb-3 leading-relaxed">{l.compareCtaDesc}</p>
+                <p className="text-slate-400 text-xs mb-3 leading-relaxed">{l.compareCtaDesc}</p>
                 <Link to={getRoute('compare')} className="btn-primary w-full text-sm flex justify-center mb-2">
                   {l.compareNow}
                 </Link>

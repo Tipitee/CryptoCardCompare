@@ -59,7 +59,7 @@ export default function Breadcrumb({ items }: Props) {
   if (items.length < 2) return null;
 
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-slate-500 flex-wrap">
+    <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-slate-400 flex-wrap">
       {items.map((item, i) => {
         const isLast = i === items.length - 1;
         return (

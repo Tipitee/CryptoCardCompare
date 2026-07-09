@@ -138,7 +138,7 @@ export default function Impressum() {
       </main>
 
       <footer className="border-t border-bg-border py-6">
-        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-500 justify-between items-center">
+        <div className="container-app flex flex-wrap gap-4 text-xs text-slate-400 justify-between items-center">
           <span>© {new Date().getFullYear()} TopCryptoCards. Keine Finanzberatung.</span>
           <div className="flex gap-4">
             <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>

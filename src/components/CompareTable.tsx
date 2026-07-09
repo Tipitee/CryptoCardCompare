@@ -205,7 +205,7 @@ export default function CompareTable({
           ))}
           {cards.length === 0 && (
             <tr>
-              <td colSpan={10} className="p-10 text-center text-slate-500">
+              <td colSpan={10} className="p-10 text-center text-slate-400">
                 {NO_CARDS[lang] ?? NO_CARDS.en}
               </td>
             </tr>
@@ -333,7 +333,7 @@ function Row({
                 {card.name}
                 {card.badge && <span className="badge-accent">{translateBadge(card.badge, lang)}</span>}
               </div>
-              <div className="text-xs text-slate-500">{card.issuer}</div>
+              <div className="text-xs text-slate-400">{card.issuer}</div>
             </div>
           </button>
         </div>
@@ -394,7 +394,7 @@ function Row({
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               inCompare
                 ? 'bg-cyan-accent text-bg-base'
-                : 'text-slate-500 hover:text-white hover:bg-bg-elevated'
+                : 'text-slate-400 hover:text-white hover:bg-bg-elevated'
             }`}
           >
             {inCompare ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -405,7 +405,7 @@ function Row({
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               isFav
                 ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
-                : 'text-slate-500 hover:text-slate-300 hover:bg-bg-elevated'
+                : 'text-slate-400 hover:text-slate-300 hover:bg-bg-elevated'
             }`}
           >
             <Star className="w-4 h-4" fill={isFav ? 'currentColor' : 'none'} />
