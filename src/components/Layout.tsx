@@ -157,7 +157,7 @@ export default function Layout() {
 
       {/* ── Skip to content (keyboard / screen reader) ── */}
       <a href="#main-content" className="skip-to-content">
-        {{ fr: 'Aller au contenu', de: 'Zum Inhalt', es: 'Ir al contenido', it: 'Vai al contenuto', en: 'Skip to content' }[lang] ?? 'Skip to content'}
+        {{ fr: 'Aller au contenu', be: 'Aller au contenu', de: 'Zum Inhalt', at: 'Zum Inhalt', es: 'Ir al contenido', it: 'Vai al contenuto', en: 'Skip to content' }[lang] ?? 'Skip to content'}
       </a>
 
       {/* ── Header ── */}
