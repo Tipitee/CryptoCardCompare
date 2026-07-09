@@ -10,6 +10,7 @@ import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS, VVP_SLUGS, VVP_NAV_LABELS } from '../config/routes';
+import { LEGAL_SLUGS, LEGAL_NAV_LABELS } from '../pages/LegalPage';
 
 export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
@@ -445,9 +446,7 @@ export default function Layout() {
           <div className="pt-6 border-t border-bg-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-slate-400">
             <span>© {new Date().getFullYear()} {t('footer_copyright')}</span>
             <div className="flex flex-wrap gap-3">
-              <Link to="/impressum" className="hover:text-slate-300 transition-colors">Impressum</Link>
-              <Link to="/datenschutz" className="hover:text-slate-300 transition-colors">Datenschutz</Link>
-              <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy</Link>
+              <Link to={`/${lang}/${LEGAL_SLUGS[lang as keyof typeof LEGAL_SLUGS] ?? 'legal-notice'}`} className="hover:text-slate-300 transition-colors">{LEGAL_NAV_LABELS[lang as keyof typeof LEGAL_NAV_LABELS] ?? 'Legal Notice'}</Link>
               <Link to={`/${lang}/${affiliateSlug}`} className="hover:text-slate-300 transition-colors">{t('footer_affiliate')}</Link>
               <Link to={`/${lang}/${methodologySlug}`} className="hover:text-slate-300 transition-colors">{methodologyLabel}</Link>
               <Link to="/risk-summary" className="hover:text-slate-300 transition-colors">{t('footer_risk')}</Link>

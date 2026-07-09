@@ -20,6 +20,7 @@ const Impressum            = lazy(() => import('./pages/Impressum'));
 const Datenschutz          = lazy(() => import('./pages/Datenschutz'));
 const Privacy              = lazy(() => import('./pages/Privacy'));
 const AffiliateDisclosurePage = lazy(() => import('./pages/AffiliateDisclosurePage'));
+const LegalPage            = lazy(() => import('./pages/LegalPage'));
 const MethodologyPage      = lazy(() => import('./pages/MethodologyPage'));
 const BlogCategoryPage     = lazy(() => import('./pages/BlogCategoryPage'));
 const RiskSummary          = lazy(() => import('./pages/RiskSummary'));
@@ -122,6 +123,13 @@ export default function App() {
         <Route path="/:lang/affiliate-offenlegung"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgacion-afiliados"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgazione-affiliati"    element={<AffiliateDisclosurePage />} />
+
+        {/* Legal pages — lang-prefixed (mentions légales + privacy, 7 langs) */}
+        <Route path="/:lang/legal-notice"              element={<LegalPage />} />
+        <Route path="/:lang/mentions-legales"          element={<LegalPage />} />
+        <Route path="/:lang/rechtliches"               element={<LegalPage />} />
+        <Route path="/:lang/aviso-legal"               element={<LegalPage />} />
+        <Route path="/:lang/avviso-legale"             element={<LegalPage />} />
 
         {/* Methodology — lang-prefixed standalone routes */}
         <Route path="/:lang/methodology"               element={<MethodologyPage />} />

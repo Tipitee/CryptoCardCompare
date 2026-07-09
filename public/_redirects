@@ -23,6 +23,14 @@
 /privacy                /index.html  200
 /affiliate-disclosure   /index.html  200
 /risk-summary           /index.html  200
+# Lang-prefixed legal pages (LegalPage.tsx — mentions légales + privacy × 7 langs)
+/fr/mentions-legales    /index.html  200
+/be/mentions-legales    /index.html  200
+/de/rechtliches         /index.html  200
+/at/rechtliches         /index.html  200
+/es/aviso-legal         /index.html  200
+/it/avviso-legale       /index.html  200
+/en/legal-notice        /index.html  200
 
 # ── Favorites (user-specific, not indexed/prerendered) ────────────────────
 /fr/favoris     /index.html  200
