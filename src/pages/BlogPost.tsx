@@ -307,7 +307,7 @@ export default function BlogPost() {
   if (notFound || !post) {
     return (
       <div className="container-app py-24 text-center">
-        <BookOpen className="w-14 h-14 text-slate-600 mx-auto mb-4" />
+        <BookOpen className="w-14 h-14 text-slate-500 mx-auto mb-4" />
         <h1 className="text-3xl font-display font-bold text-white mb-2">{t('blog_not_found_title')}</h1>
         <p className="text-slate-400 mb-8">{t('blog_not_found_desc')}</p>
         <Link to={getRoute('blog')} className="btn-primary">
@@ -561,7 +561,7 @@ function RelatedCard({ post, blogRoute, readDuration }: RelatedCardProps) {
         />
       ) : (
         <div className="w-16 h-16 rounded-lg bg-bg-elevated shrink-0 flex items-center justify-center">
-          <BookOpen className="w-6 h-6 text-slate-600" />
+          <BookOpen className="w-6 h-6 text-slate-500" />
         </div>
       )}
       <div className="min-w-0">

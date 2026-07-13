@@ -7,7 +7,6 @@ import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
 
-const BASE = 'https://topcryptocards.eu';
 const YEAR = new Date().getFullYear();
 
 /* ── SEO ─────────────────────────────────────────────────────────────────── */

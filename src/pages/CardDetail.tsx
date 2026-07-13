@@ -22,8 +22,6 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
-import { getAffiliateLink } from '../utils/affiliateLink';
-import { trackAffiliateClick } from '../utils/analytics';
 import AffiliateButton from '../components/AffiliateButton';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -180,6 +178,7 @@ export default function CardDetail() {
   const lang = useLanguage();
   // be → fr content, at → de content (no blog articles in be/at)
   const contentLang = ({ be: 'fr', at: 'de' } as Record<string, string>)[lang] ?? lang;
+  const dl = contentLang as 'fr' | 'de' | 'es' | 'it' | 'en';
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
 
@@ -253,8 +252,8 @@ export default function CardDetail() {
       image: card.realCardImage || '',
       provider: { '@type': 'Organization', name: card.issuer },
       feesAndCommissionsSpecification: card.annualFees > 0
-        ? `${card.annualFees} ${{ fr: '€/an', de: '€/Jahr', es: '€/año', it: '€/anno', en: '€/year' }[lang] ?? '€/year'}`
-        : ({ fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' }[lang] ?? 'Free'),
+        ? `${card.annualFees} ${{ fr: '€/an', de: '€/Jahr', es: '€/año', it: '€/anno', en: '€/year' }[dl] ?? '€/year'}`
+        : ({ fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' }[dl] ?? 'Free'),
       offers: {
         '@type': 'Offer',
         price: String(card.annualFees || 0),
@@ -352,7 +351,7 @@ export default function CardDetail() {
     }
     return (
       <div className="container-app py-24 text-center">
-        <Shield className="w-14 h-14 text-slate-600 mx-auto mb-4" />
+        <Shield className="w-14 h-14 text-slate-500 mx-auto mb-4" />
         <h1 className="text-3xl font-display font-bold text-white mb-2">
           {t('common:card_not_found_title')}
         </h1>
@@ -619,11 +618,11 @@ export default function CardDetail() {
                         {/* Thematic links inline based on card properties */}
                         {(() => {
                           const thematicLinks: { theme: string; label: string }[] = [];
-                          if (card.annualFees === 0) thematicLinks.push({ theme: 'no-fees', label: { fr: 'cartes sans frais annuels', de: 'Karten ohne Jahresgebühr', es: 'tarjetas sin comisiones', it: 'carte senza commissioni', en: 'no annual fee cards' }[lang] ?? 'no-fee cards' });
-                          if (card.cashbackBase > 0) thematicLinks.push({ theme: 'cashback', label: { fr: 'meilleures cartes cashback', de: 'beste Cashback-Karten', es: 'mejores tarjetas cashback', it: 'migliori carte cashback', en: 'best cashback cards' }[lang] ?? 'cashback cards' });
-                          if (card.stakingRequired === 0) thematicLinks.push({ theme: 'no-staking', label: { fr: 'cartes sans staking', de: 'Karten ohne Staking', es: 'tarjetas sin staking', it: 'carte senza staking', en: 'no-staking cards' }[lang] ?? 'no-staking cards' });
-                          if (card.extras?.includes('virtual_only')) thematicLinks.push({ theme: 'virtual', label: { fr: 'cartes virtuelles', de: 'virtuelle Karten', es: 'tarjetas virtuales', it: 'carte virtuali', en: 'virtual cards' }[lang] ?? 'virtual cards' });
-                          if (card.extras?.some(e => ['lounge_access', 'travel_insurance'].includes(e))) thematicLinks.push({ theme: 'travel', label: { fr: 'cartes de voyage', de: 'Reisekarten', es: 'tarjetas de viaje', it: 'carte da viaggio', en: 'travel cards' }[lang] ?? 'travel cards' });
+                          if (card.annualFees === 0) thematicLinks.push({ theme: 'no-fees', label: { fr: 'cartes sans frais annuels', de: 'Karten ohne Jahresgebühr', es: 'tarjetas sin comisiones', it: 'carte senza commissioni', en: 'no annual fee cards' }[dl] ?? 'no-fee cards' });
+                          if (card.cashbackBase > 0) thematicLinks.push({ theme: 'cashback', label: { fr: 'meilleures cartes cashback', de: 'beste Cashback-Karten', es: 'mejores tarjetas cashback', it: 'migliori carte cashback', en: 'best cashback cards' }[dl] ?? 'cashback cards' });
+                          if (card.stakingRequired === 0) thematicLinks.push({ theme: 'no-staking', label: { fr: 'cartes sans staking', de: 'Karten ohne Staking', es: 'tarjetas sin staking', it: 'carte senza staking', en: 'no-staking cards' }[dl] ?? 'no-staking cards' });
+                          if (card.extras?.includes('virtual_only')) thematicLinks.push({ theme: 'virtual', label: { fr: 'cartes virtuelles', de: 'virtuelle Karten', es: 'tarjetas virtuales', it: 'carte virtuali', en: 'virtual cards' }[dl] ?? 'virtual cards' });
+                          if (card.extras?.some(e => ['lounge_access', 'travel_insurance'].includes(e))) thematicLinks.push({ theme: 'travel', label: { fr: 'cartes de voyage', de: 'Reisekarten', es: 'tarjetas de viaje', it: 'carte da viaggio', en: 'travel cards' }[dl] ?? 'travel cards' });
 
                           const validLinks = thematicLinks
                             .filter(({ theme }) => THEMATIC_ROUTES[theme]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]])
@@ -811,11 +810,11 @@ export default function CardDetail() {
                               <span>
                                 {sibling.annualFees === 0
                                   ? FREE_LABEL[lang] || 'Free'
-                                  : `${sibling.annualFees}${{ fr: '€/an', de: '€/J.', es: '€/año', it: '€/anno', en: '€/yr' }[lang] ?? '€/yr'}`}
+                                  : `${sibling.annualFees}${{ fr: '€/an', de: '€/J.', es: '€/año', it: '€/anno', en: '€/yr' }[dl] ?? '€/yr'}`}
                               </span>
                             </div>
                           </div>
-                          <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-slate-400 shrink-0" />
+                          <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-slate-400 shrink-0" />
                         </Link>
                       );
                     })}
@@ -878,7 +877,7 @@ export default function CardDetail() {
                     >
                       <span className="text-base">{icon}</span>
                       <span className="flex-1 leading-tight">{label}</span>
-                      <Check className="w-3 h-3 text-slate-600 group-hover:text-cyan-accent transition-colors" />
+                      <Check className="w-3 h-3 text-slate-500 group-hover:text-cyan-accent transition-colors" />
                     </Link>
                   ))}
                 </div>

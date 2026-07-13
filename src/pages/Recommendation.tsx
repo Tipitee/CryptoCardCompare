@@ -17,6 +17,11 @@ import { saveQuizResult } from '../lib/supabase';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
+const SLUGS: Record<string, string> = {
+  fr: 'recommandation', be: 'recommandation', de: 'empfehlung', at: 'empfehlung',
+  es: 'recomendacion', it: 'raccomandazione', en: 'recommendation',
+};
+
 const YEAR = new Date().getFullYear();
 const REC_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Quiz — Quelle Carte Crypto pour Vous ? ${YEAR} | TopCryptoCards`, desc: `Répondez à 6 questions et obtenez la meilleure carte crypto pour votre profil. Cashback, frais, staking — notre algo choisit pour vous. Gratuit ✓` },

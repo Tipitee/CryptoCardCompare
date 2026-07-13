@@ -430,9 +430,10 @@ export default function LegalPage() {
   }, []);
 
   useSeoMeta({ title: seo.title, description: seo.desc });
-  useHreflang(Object.fromEntries(
-    (Object.entries(LEGAL_SLUGS) as [Lang, string][]).map(([l, slug]) => [l, `/${l}/${slug}`])
-  ) as Record<string, string>);
+  useHreflang(l => {
+    const slug = (LEGAL_SLUGS as Record<string, string>)[l];
+    return slug ? `https://topcryptocards.eu/${l}/${slug}` : null;
+  }, []);
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">

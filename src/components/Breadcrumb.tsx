@@ -64,7 +64,7 @@ export default function Breadcrumb({ items }: Props) {
         const isLast = i === items.length - 1;
         return (
           <span key={i} className="flex items-center gap-1">
-            {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />}
+            {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />}
             {i === 0 && <Home className="w-3.5 h-3.5 flex-shrink-0" />}
             {isLast || !item.href ? (
               <span className={isLast ? 'text-slate-300 truncate max-w-[200px]' : ''} aria-current={isLast ? 'page' : undefined}>

@@ -6,7 +6,6 @@ import {
   Award,
   Check,
   ChevronRight,
-  ExternalLink,
   Minus,
   Star,
   X,
@@ -21,8 +20,6 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
-import { getAffiliateLink } from '../utils/affiliateLink';
-import { trackAffiliateClick } from '../utils/analytics';
 import AffiliateButton from '../components/AffiliateButton';
 import IndependentNotice from '../components/IndependentNotice';
 import { getSpecificComparison } from '../data/comparisonContent';
@@ -643,7 +640,7 @@ export default function ComparisonPage() {
                       {v1 ? (
                         <Check className="w-4 h-4 text-green-accent" />
                       ) : (
-                        <X className="w-4 h-4 text-slate-600" />
+                        <X className="w-4 h-4 text-slate-500" />
                       )}
                     </span>
                   </td>
@@ -654,7 +651,7 @@ export default function ComparisonPage() {
                       {v2 ? (
                         <Check className="w-4 h-4 text-green-accent" />
                       ) : (
-                        <X className="w-4 h-4 text-slate-600" />
+                        <X className="w-4 h-4 text-slate-500" />
                       )}
                     </span>
                   </td>

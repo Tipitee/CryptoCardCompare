@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { AlertTriangle, ArrowRight, Check, ExternalLink, Star, X } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Check, Star, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import type { CryptoCard } from '../types/card';
@@ -10,8 +10,6 @@ import CryptoIcon from './CryptoIcon';
 import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
-import { getAffiliateLink } from '../utils/affiliateLink';
-import { trackAffiliateClick } from '../utils/analytics';
 import AffiliateButton from './AffiliateButton';
 
 interface Props {

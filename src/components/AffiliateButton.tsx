@@ -8,7 +8,7 @@ interface AffiliateButtonProps {
   lang: string;
   label: string;
   /** Where the click originates — used for analytics */
-  source: string;
+  source: Parameters<typeof trackAffiliateClick>[3];
   className?: string;
   showIcon?: boolean;
 }

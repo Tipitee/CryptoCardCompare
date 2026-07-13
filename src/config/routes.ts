@@ -192,7 +192,9 @@ export const VVP_NAV_LABELS: Record<Language, string> = {
 
 export const REVIEW_NAV_LABELS: Record<Language, string> = {
   fr: 'Avis',
+  be: 'Avis',
   de: 'Bewertungen',
+  at: 'Bewertungen',
   es: 'Opiniones',
   it: 'Recensioni',
   en: 'Reviews',

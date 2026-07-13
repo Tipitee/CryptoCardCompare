@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import type { Language } from '../i18n/types';
+import { contentLang, type ContentLang, type Language } from '../i18n/types';
 
 const CONSENT_KEY = 'cookie_consent';
 
-const translations: Record<Language, {
+const translations: Record<ContentLang, {
   title: string;
   body: string;
   accept: string;
@@ -56,7 +56,7 @@ const translations: Record<Language, {
 
 export default function CookieBanner({ lang = 'en' }: { lang?: Language }) {
   const [visible, setVisible] = useState(false);
-  const t = translations[lang] ?? translations.en;
+  const t = translations[contentLang(lang)];
 
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY);

@@ -403,7 +403,7 @@ export default function FeeIndexPage() {
 
         {/* Note */}
         <p className="mt-4 text-xs text-slate-400 leading-relaxed max-w-3xl">{c.note}</p>
-        <p className="mt-1 text-xs text-slate-600">{c.lastUpdated}</p>
+        <p className="mt-1 text-xs text-slate-500">{c.lastUpdated}</p>
 
         {/* CTAs */}
         <div className="mt-8 flex flex-col gap-3">

@@ -8,7 +8,7 @@ import CountrySwitcher from './CountrySwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, contentLang } from '../i18n/types';
 import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS, VVP_SLUGS, VVP_NAV_LABELS } from '../config/routes';
 import { LEGAL_SLUGS, LEGAL_NAV_LABELS } from '../pages/LegalPage';
 
@@ -158,7 +158,7 @@ export default function Layout() {
 
       {/* ── Skip to content (keyboard / screen reader) ── */}
       <a href="#main-content" className="skip-to-content">
-        {{ fr: 'Aller au contenu', be: 'Aller au contenu', de: 'Zum Inhalt', at: 'Zum Inhalt', es: 'Ir al contenido', it: 'Vai al contenuto', en: 'Skip to content' }[lang] ?? 'Skip to content'}
+        {{ fr: 'Aller au contenu', be: 'Aller au contenu', de: 'Zum Inhalt', at: 'Zum Inhalt', es: 'Ir al contenido', it: 'Vai al contenuto', en: 'Skip to content' }[contentLang(lang)] ?? 'Skip to content'}
       </a>
 
       {/* ── Header ── */}
@@ -228,7 +228,7 @@ export default function Layout() {
             <button
               className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
               onClick={() => setMenuOpen(true)}
-              aria-label={{ fr: 'Ouvrir le menu', de: 'Menü öffnen', es: 'Abrir menú', it: 'Apri menu', en: 'Open menu' }[lang] ?? 'Open menu'}
+              aria-label={{ fr: 'Ouvrir le menu', de: 'Menü öffnen', es: 'Abrir menú', it: 'Apri menu', en: 'Open menu' }[contentLang(lang)] ?? 'Open menu'}
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -258,7 +258,7 @@ export default function Layout() {
               <button
                 onClick={() => setMenuOpen(false)}
                 className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-bg-card transition-colors"
-                aria-label={{ fr: 'Fermer le menu', de: 'Menü schließen', es: 'Cerrar menú', it: 'Chiudi menu', en: 'Close menu' }[lang] ?? 'Close menu'}
+                aria-label={{ fr: 'Fermer le menu', de: 'Menü schließen', es: 'Cerrar menú', it: 'Chiudi menu', en: 'Close menu' }[contentLang(lang)] ?? 'Close menu'}
               >
                 <X className="w-5 h-5" />
               </button>

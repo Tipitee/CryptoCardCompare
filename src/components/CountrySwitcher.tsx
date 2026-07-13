@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
 import type { Language } from '../i18n/types';
-import { getEquivalentRoute, getSupportedLanguages } from '../i18n/utils';
+import { getEquivalentRoute } from '../i18n/utils';
 import { useAppStore } from '../store/useAppStore';
 
 /* ── Country definitions ────────────────────────────────────────────────────── */

@@ -2,7 +2,6 @@ import { Mail, Twitter, MessageCircle, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang, HREFLANG_BASE } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 const BASE = HREFLANG_BASE;
 const CONTACT_EMAIL = 'contact@topcryptocards.eu';

@@ -23,6 +23,11 @@ import { fmtEUR } from '../utils/format';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 const YEAR = new Date().getFullYear();
+const SIM_SLUGS: Record<string, string> = {
+  fr: 'simulateur', be: 'simulateur', de: 'simulator', at: 'simulator',
+  es: 'simulador', it: 'simulatore', en: 'simulator',
+};
+
 const SIM_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Simulateur de Gains Cartes Crypto ${YEAR} | TopCryptoCards`, desc: `Calculez vos gains annuels avec chaque carte crypto selon vos dépenses. Crypto.com, Nexo, Bybit, Binance comparés en temps réel. Gratuit ✓` },
   de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Berechnen Sie Ihre jährlichen Gewinne mit jeder Krypto-Karte: Crypto.com, Nexo, Bybit, Binance. Ausgaben eingeben — Ergebnis sofort sehen. Kostenlos ✓` },
@@ -737,7 +742,7 @@ export default function Simulator() {
                             >
                               <td className="pl-10 pr-4 py-2">
                                 <div className="flex items-center gap-1.5">
-                                  <span className="text-[10px] text-slate-600">↳</span>
+                                  <span className="text-[10px] text-slate-500">↳</span>
                                   <span className="text-xs">{t2.card.name}</span>
                                 </div>
                               </td>
@@ -746,7 +751,7 @@ export default function Simulator() {
                               </td>
                               <td className="px-4 py-2 text-right">
                                 {t2.card.stakingRequired === 0 ? (
-                                  <span className="text-slate-600 text-xs">—</span>
+                                  <span className="text-slate-500 text-xs">—</span>
                                 ) : (
                                   <span className={`text-xs font-mono ${t2.stakingMet ? 'text-green-accent/60' : 'text-amber-400/60'}`}>
                                     {!t2.stakingMet && <AlertTriangle className="w-2.5 h-2.5 inline mr-0.5" />}

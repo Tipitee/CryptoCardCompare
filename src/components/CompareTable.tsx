@@ -374,7 +374,7 @@ function Row({
         {card.availableFrance ? (
           <Check className="w-4 h-4 text-green-accent inline" />
         ) : (
-          <X className="w-4 h-4 text-slate-600 inline" />
+          <X className="w-4 h-4 text-slate-500 inline" />
         )}
       </td>
       <td className="px-4 py-3 whitespace-nowrap text-slate-300">{card.cardNetwork}</td>
@@ -382,7 +382,7 @@ function Row({
         {card.freeWithdrawals ? (
           <Check className="w-4 h-4 text-green-accent inline" />
         ) : (
-          <X className="w-4 h-4 text-slate-600 inline" />
+          <X className="w-4 h-4 text-slate-500 inline" />
         )}
       </td>
       <td className="px-4 py-3 whitespace-nowrap">

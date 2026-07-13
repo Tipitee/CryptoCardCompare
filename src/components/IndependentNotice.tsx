@@ -32,7 +32,7 @@ export default function IndependentNotice() {
 
   return (
     <p className="inline-flex items-center gap-1.5 text-xs text-slate-400">
-      <Info className="w-3 h-3 shrink-0 text-slate-600" />
+      <Info className="w-3 h-3 shrink-0 text-slate-500" />
       {copy.text}{' '}
       <Link
         to={`/${lang}/${slug}`}

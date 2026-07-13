@@ -16,7 +16,7 @@ function premiumScore(pct: number): number {
 }
 
 // ─── Localized strings ───────────────────────────────────────────────────────
-type Lang = 'fr' | 'de' | 'es' | 'it' | 'en';
+type Lang = 'fr' | 'be' | 'de' | 'at' | 'es' | 'it' | 'en';
 
 function getLabels(lang: string) {
   const l = (lang as Lang) in LABELS ? (lang as Lang) : 'en';

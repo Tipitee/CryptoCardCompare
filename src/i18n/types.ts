@@ -19,6 +19,14 @@ export function displayLang(lang: Language | string): Language {
   return (LOCALE_DISPLAY_LANG[lang as Language] ?? (isValidLanguage(lang) ? lang : 'fr')) as Language;
 }
 
+/** Languages that carry their own content (be/at reuse fr/de). */
+export type ContentLang = Exclude<Language, 'be' | 'at'>;
+
+/** Like displayLang but typed for indexing 5-language content records. */
+export function contentLang(lang: Language | string): ContentLang {
+  return displayLang(lang) as ContentLang;
+}
+
 export function isValidLanguage(lang: string): lang is Language {
   return lang in LANGUAGES;
 }

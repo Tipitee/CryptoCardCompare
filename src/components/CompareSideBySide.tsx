@@ -128,13 +128,13 @@ function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
       return v ? (
         <Check className="w-5 h-5 text-green-accent" />
       ) : (
-        <Minus className="w-5 h-5 text-slate-600" />
+        <Minus className="w-5 h-5 text-slate-500" />
       );
     case 'text':
       return <span className="font-medium">{v as string}</span>;
     case 'list': {
       const arr = v as string[];
-      if (arr.length === 0) return <span className="text-slate-600">—</span>;
+      if (arr.length === 0) return <span className="text-slate-500">—</span>;
       return (
         <div className="flex flex-wrap gap-1 justify-center">
           {arr.slice(0, 8).map((item) => (

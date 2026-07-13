@@ -48,8 +48,8 @@ VALUES (
   5.0,
   -- annual_fees
   0,
-  -- staking_required
-  false,
+  -- staking_required (numeric: 0 = non requis)
+  0,
   -- cryptos acceptées
   ARRAY['BTC', 'ETH', 'GT', 'USDT', 'USDC'],
   -- available_france
@@ -60,10 +60,10 @@ VALUES (
   'Visa',
   -- daily_limit (€)
   10000,
-  -- free_withdrawals (nb par mois)
-  2,
-  -- extras (features JSON)
-  '{"apple_pay": true, "google_pay": true, "virtual_card": true, "no_kyc": false}',
+  -- free_withdrawals (boolean)
+  true,
+  -- extras (text[])
+  ARRAY['apple_pay', 'google_pay', 'virtual_card'],
   -- affiliate_link
   'https://www.gate.io/card',
   -- badge
@@ -81,7 +81,7 @@ VALUES (
   -- virtual_only
   false,
   -- market_restrictions
-  NULL,
+  NULL::jsonb,
   -- trust_score (0–10) : -1.5 pour absence de régulation EU
   5,
   -- founded_year
@@ -93,7 +93,7 @@ VALUES (
   -- aum_tier : large exchange
   'large',
   -- trust_breakdown
-  '{"regulation": 1, "track_record": 3, "transparency": 2, "security": 2, "user_base": 3}'
+  '{"regulation": 1, "track_record": 3, "transparency": 2, "security": 2, "user_base": 3}'::jsonb
 )
 ON CONFLICT (id) DO UPDATE SET
   name              = EXCLUDED.name,

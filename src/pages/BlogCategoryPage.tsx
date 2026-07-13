@@ -321,7 +321,7 @@ export default function BlogCategoryPage() {
         </div>
       ) : posts.length === 0 ? (
         <div className="text-center py-24">
-          <BookOpen className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+          <BookOpen className="w-12 h-12 text-slate-500 mx-auto mb-4" />
           <p className="text-slate-400 text-lg mb-6">{l.noArticles}</p>
           <Link to={`/${lang}/blog`} className="btn-secondary inline-flex items-center gap-2">
             <ChevronRight className="w-4 h-4" />{l.allBlog}

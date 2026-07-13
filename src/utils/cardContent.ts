@@ -48,7 +48,7 @@ function hasCashback(card: CryptoCard): boolean {
 
 const YEAR = new Date().getFullYear();
 
-function buildComparison(card: CryptoCard, lang: 'fr' | 'de' | 'es' | 'it' | 'en'): string {
+function buildComparison(card: CryptoCard, lang: 'fr' | 'be' | 'de' | 'at' | 'es' | 'it' | 'en'): string {
   const { name, issuer, annualFees, stakingRequired, cashbackPremium, virtualOnly, extras } = card;
   const noStakingFree = stakingRequired === 0 && hasCashback(card) && annualFees === 0;
   const highCashbackStaking = stakingRequired > 0 && cashbackPremium >= 5;

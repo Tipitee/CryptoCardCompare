@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHreflang } from '../hooks/useHreflang';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { Link, useParams } from 'react-router-dom';
@@ -43,7 +42,7 @@ interface Content {
   };
 }
 
-const CONTENT: Record<Lang, Content> = {
+const CONTENT: Record<ContentLang, Content> = {
   fr: {
     h1: "Divulgation des liens d'affiliation",
     lastUpdated: 'Dernière mise à jour : juillet 2026',

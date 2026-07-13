@@ -44,7 +44,7 @@ interface Content {
   };
 }
 
-const CONTENT: Record<Lang, Content> = {
+const CONTENT: Record<ContentLang, Content> = {
   fr: {
     h1: 'Notre méthodologie de comparaison',
     intro: "TopCryptoCards évalue les cartes crypto selon des critères objectifs, vérifiés manuellement et mis à jour régulièrement. Cette page explique en détail comment nous sélectionnons, comparons et classons les cartes.",
@@ -283,7 +283,7 @@ const CONTENT: Record<Lang, Content> = {
 };
 
 /* ── Meta ─────────────────────────────────────────────────────────────────── */
-const META: Record<Lang, { title: string; description: string }> = {
+const META: Record<ContentLang, { title: string; description: string }> = {
   fr: { title: 'Méthodologie — TopCryptoCards', description: 'Découvrez comment TopCryptoCards évalue et classe les cartes crypto : critères, Trust Score, indépendance éditoriale.' },
   de: { title: 'Bewertungsmethodik — TopCryptoCards', description: 'Erfahren Sie, wie TopCryptoCards Krypto-Karten bewertet und rankt: Kriterien, Trust Score, redaktionelle Unabhängigkeit.' },
   es: { title: 'Metodología — TopCryptoCards', description: 'Descubra cómo TopCryptoCards evalúa y clasifica las tarjetas cripto: criterios, Trust Score, independencia editorial.' },

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import type { Language } from '../i18n/types';
+import { contentLang, type ContentLang, type Language } from '../i18n/types';
 
-const content: Record<Language, { label: string; text: string; link: string }> = {
+const content: Record<ContentLang, { label: string; text: string; link: string }> = {
   en: {
     label: 'Affiliate disclosure',
     text: 'This page may contain affiliate links. If you sign up via our links, we may earn a commission from the card provider. This does not affect our editorial rankings or assessments. Cards without affiliate relationships are listed equally.',
@@ -30,7 +30,7 @@ const content: Record<Language, { label: string; text: string; link: string }> =
 };
 
 export default function AffiliateDisclosure({ lang = 'en' }: { lang?: Language }) {
-  const t = content[lang] ?? content.en;
+  const t = content[contentLang(lang)];
   return (
     <div className="text-xs text-slate-400 border border-bg-border rounded-lg px-4 py-3 mb-6 bg-bg-elevated/50">
       <span className="font-semibold text-slate-400">{t.label}: </span>

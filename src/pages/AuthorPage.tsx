@@ -213,7 +213,7 @@ export default function AuthorPage() {
                   />
                 ) : (
                   <div className="w-full h-28 rounded-lg bg-bg-elevated flex items-center justify-center">
-                    <BookOpen className="w-8 h-8 text-slate-600" />
+                    <BookOpen className="w-8 h-8 text-slate-500" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0">

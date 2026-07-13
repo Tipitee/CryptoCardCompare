@@ -77,6 +77,11 @@ const BRAND_LABEL: Record<string, string> = {
   fr: 'Marque', de: 'Marke', es: 'Marca', it: 'Marchio', en: 'Brand',
 };
 
+const SLUGS: Record<string, string> = {
+  fr: 'favoris', be: 'favoris', de: 'favoriten', at: 'favoriten',
+  es: 'favoritos', it: 'preferiti', en: 'favorites',
+};
+
 const FAV_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Mes Cartes Crypto Favorites ${YEAR} | TopCryptoCards`, desc: 'Retrouvez toutes vos cartes crypto préférées en un seul endroit.' },
   de: { title: `Meine Lieblings-Krypto-Karten ${YEAR} | TopCryptoCards`, desc: 'Finden Sie alle Ihre bevorzugten Krypto-Karten an einem Ort.' },

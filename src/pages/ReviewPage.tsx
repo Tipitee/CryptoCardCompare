@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, ChevronRight, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
 import { getReviewBySlug, getRelatedReviews } from '../data/cardReviews';
@@ -397,7 +396,7 @@ export default function ReviewPage() {
   if (!review) {
     return (
       <div className="container-app py-24 text-center">
-        <CreditCard className="w-14 h-14 text-slate-600 mx-auto mb-4" />
+        <CreditCard className="w-14 h-14 text-slate-500 mx-auto mb-4" />
         <h1 className="text-3xl font-display font-bold text-white mb-2">{l.notFound}</h1>
         <p className="text-slate-400 mb-8">{l.notFoundDesc}</p>
         <Link to={`/${lang}/${reviewSlug}`} className="btn-primary">

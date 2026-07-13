@@ -8,8 +8,6 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useHreflang } from '../hooks/useHreflang';
 import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
-import { getAffiliateLink } from '../utils/affiliateLink';
-import { trackAffiliateClick } from '../utils/analytics';
 import AffiliateButton from '../components/AffiliateButton';
 import { getBrandMeta } from '../data/brandConfig';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
@@ -1160,7 +1158,7 @@ function ReviewMiniCard({
             {[1,2,3,4,5].map((i) => (
               <Star
                 key={i}
-                className={`w-3 h-3 ${i <= Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'}`}
+                className={`w-3 h-3 ${i <= Math.round(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-slate-500'}`}
               />
             ))}
           </div>

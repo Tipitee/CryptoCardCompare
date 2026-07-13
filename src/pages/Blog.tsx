@@ -1,3 +1,4 @@
+import { contentLang } from '../i18n/types';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -96,6 +97,7 @@ function formatDate(iso: string, lang: string): string {
 export default function Blog() {
   const { t } = useTranslation('blog');
   const lang = useLanguage();
+  const dl = contentLang(lang);
   const { getRoute } = useLocalizedRoute();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -192,7 +194,7 @@ export default function Blog() {
   return (
     <div className="container-app py-12 animate-fade-in">
       <Breadcrumb items={[
-        { label: { fr:'Accueil',de:'Startseite',es:'Inicio',it:'Home',en:'Home' }[lang] || 'Home', href: `/${lang}` },
+        { label: { fr:'Accueil',de:'Startseite',es:'Inicio',it:'Home',en:'Home' }[dl] || 'Home', href: `/${lang}` },
         { label: t('blog_header_badge') },
       ]} />
       {/* Header */}
@@ -242,7 +244,7 @@ export default function Blog() {
         </div>
       ) : paginated.length === 0 ? (
         <div className="text-center py-24">
-          <BookOpen className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+          <BookOpen className="w-12 h-12 text-slate-500 mx-auto mb-4" />
           <h3 className="text-xl font-display font-bold text-white mb-2">
             {posts.length === 0 ? t('blog_no_articles') : t('blog_no_results')}
           </h3>
