@@ -3,11 +3,9 @@
 # x-default stays on /fr (primary market) — consistent with the final rule.
 # NOTE the "!" (forced): without it Netlify serves the physical /index.html
 # first and these rules NEVER fire (shadowing).
-/  /fr  302!  Language=fr
-/  /de  302!  Language=de
-/  /es  302!  Language=es
-/  /it  302!  Language=it
-/  /fr  302!
+# Language detection is handled client-side by the SPA.
+# Cloudflare Pages does not support Netlify's Language= directive.
+/  /fr  302
 
 # ── Admin/SPA-only routes (not prerendered, not in sitemaps) ──────────────
 /admin/*        /index.html  200
