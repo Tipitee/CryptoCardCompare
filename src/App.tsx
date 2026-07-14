@@ -41,10 +41,12 @@ const VirtualVsPhysical    = lazy(() => import('./pages/VirtualVsPhysicalPage'))
 const FeeIndexPage              = lazy(() => import('./pages/FeeIndexPage'));
 const CashbackCalculatorPage   = lazy(() => import('./pages/CashbackCalculatorPage'));
 const FeeCalculatorPage        = lazy(() => import('./pages/FeeCalculatorPage'));
+const AlternativesPage         = lazy(() => import('./pages/AlternativesPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
 import { THEMATIC_ROUTES, VVP_SLUGS } from './config/routes';
+import { ALT_BRANDS } from './data/alternativesContent';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -251,6 +253,17 @@ export default function App() {
           {allSlugs('feeCalculator').map((slug) => (
             <Route key={`fee-calc-${slug}`} path={slug} element={<FeeCalculatorPage />} />
           ))}
+
+          {/* Alternatives pages — /:lang/{brand}-alternatives, etc. (10 brands × 7 langs) */}
+          {ALT_BRANDS.flatMap((brand) =>
+            [...new Set(Object.values(brand.slugs))].map((slug) => (
+              <Route
+                key={`alt-${brand.brandId}-${slug}`}
+                path={slug}
+                element={<AlternativesPage brand={brand.brandId} />}
+              />
+            ))
+          )}
         </Route>
 
         <Route path="*" element={<NotFound />} />

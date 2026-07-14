@@ -436,6 +436,18 @@ export default function Layout() {
                     {feeIndexLabel}
                   </Link>
                 </li>
+                <li>
+                  <Link to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.cashbackCalculator ?? 'crypto-card-cashback-calculator'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Calculator className="w-3.5 h-3.5" />
+                    {({ fr: 'Calculateur cashback', be: 'Calculateur cashback', de: 'Cashback-Rechner', at: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator' } as Record<string, string>)[lang] ?? 'Cashback Calculator'}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.feeCalculator ?? 'crypto-card-fee-calculator'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Calculator className="w-3.5 h-3.5" />
+                    {({ fr: 'Calculateur de frais', be: 'Calculateur de frais', de: 'Gebühren-Rechner', at: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' } as Record<string, string>)[lang] ?? 'Fee Calculator'}
+                  </Link>
+                </li>
               </ul>
               <p className="text-xs text-slate-400 leading-relaxed">
                 {t('footer_disclaimer')}

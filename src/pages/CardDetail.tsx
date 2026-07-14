@@ -865,6 +865,13 @@ export default function CardDetail() {
                 links.push({ to: `/${lang}/${THEMATIC_ROUTES.travel[lang as keyof typeof THEMATIC_ROUTES.travel] ?? 'crypto-card-travel'}`, icon: '✈️', label: t('common:travel_cards') });
               links.push({ to: `/${lang}/${THEMATIC_ROUTES['2026'][lang as keyof typeof THEMATIC_ROUTES['2026']] ?? 'best-crypto-card-2026'}`, icon: '🚀', label: t('common:cards_2026') });
 
+              // Calculator tools
+              const rt2 = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
+              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', be: 'Calculateur cashback', de: 'Cashback-Rechner', at: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator' };
+              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', be: 'Calculateur de frais', de: 'Gebühren-Rechner', at: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' };
+              links.push({ to: `/${lang}/${rt2.cashbackCalculator ?? 'crypto-card-cashback-calculator'}`, icon: '💰', label: CB_CALC_LABEL[lang] ?? 'Cashback Calculator' });
+              links.push({ to: `/${lang}/${rt2.feeCalculator ?? 'crypto-card-fee-calculator'}`, icon: '📊', label: FEE_CALC_LABEL[lang] ?? 'Fee Calculator' });
+
               if (links.length === 0) return null;
               return (
                 <div className="p-5 rounded-2xl border border-bg-border bg-bg-elevated space-y-1">

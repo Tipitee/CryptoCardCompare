@@ -10,6 +10,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import TrustBadge from '../components/TrustBadge';
 import AffiliateButton from '../components/AffiliateButton';
 import { getBrandMeta } from '../data/brandConfig';
+import { ALT_BRAND_MAP } from '../data/alternativesContent';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
 import { getReviewBySlug } from '../data/cardReviews';
 import { REVIEW_I18N } from '../data/cardReviewsI18n';
@@ -962,6 +963,27 @@ export default function BrandPage() {
             {REVIEW_LABEL[lang] || REVIEW_LABEL.en} →
           </Link>
         )}
+        {brandId && ALT_BRAND_MAP[brandId as keyof typeof ALT_BRAND_MAP] && (() => {
+          const altConfig = ALT_BRAND_MAP[brandId as keyof typeof ALT_BRAND_MAP];
+          const altSlug = altConfig.slugs[lang] ?? altConfig.slugs['fr'];
+          const ALT_LABEL: Record<string, string> = {
+            fr: `Alternatives à ${brand.displayName}`,
+            be: `Alternatives à ${brand.displayName}`,
+            de: `${brand.displayName} Alternativen`,
+            at: `${brand.displayName} Alternativen`,
+            es: `Alternativas a ${brand.displayName}`,
+            it: `Alternative a ${brand.displayName}`,
+            en: `${brand.displayName} Alternatives`,
+          };
+          return (
+            <Link
+              to={`/${lang}/${altSlug}`}
+              className="text-brand-accent hover:underline text-sm"
+            >
+              {ALT_LABEL[lang] ?? ALT_LABEL.en} →
+            </Link>
+          );
+        })()}
       </nav>
     </div>
   );

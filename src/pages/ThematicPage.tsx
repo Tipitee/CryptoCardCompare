@@ -2014,12 +2014,14 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                 </Link>
               );
             })}
-            {/* Simulator + Compare + ReviewList */}
+            {/* Simulator + Compare + ReviewList + Calculators */}
             {(() => {
               const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
               const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator' };
               const COMPARE_LABEL: Record<string, string> = { fr: 'Comparer les cartes', de: 'Karten vergleichen', es: 'Comparar tarjetas', it: 'Confronta le carte', en: 'Compare cards' };
               const REVIEWS_LABEL: Record<string, string> = { fr: 'Tous les avis', de: 'Alle Bewertungen', es: 'Todas las reseñas', it: 'Tutte le recensioni', en: 'All reviews' };
+              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', de: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator' };
+              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', de: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' };
               return (
                 <>
                   <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
@@ -2030,6 +2032,12 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                   </Link>
                   <Link to={`/${lang}/${rt.reviews ?? 'reviews'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
                     <span>⭐</span>{REVIEWS_LABEL[lang] ?? REVIEWS_LABEL.en}
+                  </Link>
+                  <Link to={`/${lang}/${rt.cashbackCalculator ?? 'crypto-card-cashback-calculator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span>💰</span>{CB_CALC_LABEL[lang] ?? CB_CALC_LABEL.en}
+                  </Link>
+                  <Link to={`/${lang}/${rt.feeCalculator ?? 'crypto-card-fee-calculator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
+                    <span>📊</span>{FEE_CALC_LABEL[lang] ?? FEE_CALC_LABEL.en}
                   </Link>
                 </>
               );
