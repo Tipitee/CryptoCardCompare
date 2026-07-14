@@ -84,7 +84,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         intro: `Revolut è una neobank versatile ma non offre cashback in criptovalute sugli acquisti quotidiani. Se cerchi una carta che premi ogni spesa in BTC o ETH, nel ${YEAR} esistono diverse alternative crypto-native in Europa.`,
         reason: `Revolut non offre cashback in cripto e i vantaggi premium richiedono un costoso abbonamento mensile.`,
         faq: [
-          ['Perché cercare un'alternativa a Revolut?', `Revolut non paga cashback in criptovaluta sugli acquisti quotidiani. Carte come Gnosis Pay, MetaMask Card o Nexo ricompensano ogni transazione direttamente in BTC, ETH o GNO.`],
+          ['Perché cercare un’alternativa a Revolut?', `Revolut non paga cashback in criptovaluta sugli acquisti quotidiani. Carte come Gnosis Pay, MetaMask Card o Nexo ricompensano ogni transazione direttamente in BTC, ETH o GNO.`],
           ['Qual è la migliore alternativa a Revolut per il cashback in cripto?', `Gnosis Pay offre 2% in GNO senza staking. MetaMask Card 1% in ETH. Nexo Card fino al 2% in BTC in base al ratio NEXO nel portafoglio.`],
           ['Le alternative a Revolut sono disponibili in Italia?', `Sì — tutte le carte elencate qui sono disponibili per i residenti italiani tramite fornitori regolamentati MiCA.`],
         ],
@@ -317,7 +317,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         faq: [
           ['Quale alternativa a Bybit Card è disponibile ovunque in Europa?', `Gnosis Pay e MetaMask Card sono disponibili in tutta l'UE. Nexo Card e Crypto.com sono anch'esse accessibili tramite MiCA.`],
           ['Bybit Card offre più cashback rispetto alle alternative?', `Bybit offre fino al 10% in BIT/USDT a seconda del tier. Alternative come Crypto.com (8%) o Nexo (2%) offrono tassi competitivi.`],
-          ['Esiste un'alternativa a Bybit senza staking?', `Sì — Gnosis Pay (2% GNO), MetaMask Card (1% ETH) e Brighty sono disponibili senza requisiti di staking.`],
+          ['Esiste un’alternativa a Bybit senza staking?', `Sì — Gnosis Pay (2% GNO), MetaMask Card (1% ETH) e Brighty sono disponibili senza requisiti di staking.`],
         ],
       },
       en: {
@@ -512,7 +512,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         faq: [
           ['Quelle alternative à Wirex offre le meilleur cashback crypto ?', `Gnosis Pay (2% GNO), MetaMask Card (1% ETH) et Nexo Card (2% BTC) offrent des taux compétitifs sans token propriétaire imposé.`],
           ['Wirex est-elle encore une bonne carte en ${YEAR} ?', `Wirex reste une option valide, notamment pour les marchés émergents où d'autres cartes ne sont pas disponibles. En Europe, les alternatives modernes offrent généralement de meilleurs avantages.`],
-          ['Y a-t-il des alternatives à Wirex disponibles dans toute l'Europe ?', `Oui — Gnosis Pay, MetaMask Card et Nexo Card sont toutes disponibles dans l'UE.`],
+          ['Y a-t-il des alternatives à Wirex disponibles dans toute l’Europe ?', `Oui — Gnosis Pay, MetaMask Card et Nexo Card sont toutes disponibles dans l'UE.`],
         ],
       },
       de: {
@@ -625,7 +625,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         faq: [
           ['Quale carta crypto è disponibile in Italia al posto di Coinbase Card?', `Gnosis Pay, MetaMask Card, Nexo Card, Brighty e Crypto.com sono disponibili in Italia con cashback crypto.`],
           ['Coinbase Card offre cashback in cripto?', `Sì, fino al 4% in XLM o 1% in BTC, ma solo per alcune valute e sotto condizioni.`],
-          ['Esiste un'alternativa a Coinbase Card senza restrizioni di valuta?', `Sì — MetaMask Card (1% ETH), Gnosis Pay (2% GNO) e Nexo (2% BTC) offrono cashback senza restrizioni di valuta.`],
+          ['Esiste un’alternativa a Coinbase Card senza restrizioni di valuta?', `Sì — MetaMask Card (1% ETH), Gnosis Pay (2% GNO) e Nexo (2% BTC) offrono cashback senza restrizioni di valuta.`],
         ],
       },
       en: {
@@ -702,7 +702,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         faq: [
           ['Quale carta crypto è più completa della Kraken Card?', `Crypto.com, Nexo Card e Gnosis Pay offrono ecosistemi più maturi con un comprovato track record di affidabilità.`],
           ['La Kraken Card è disponibile in Italia?', `La disponibilità di Kraken Card in Europa è ancora parziale. Verifica il sito ufficiale per il tuo paese.`],
-          ['Esiste un'alternativa a Kraken Card con più cashback?', `Sì — Crypto.com fino all'8%, Nexo Card fino al 2% BTC, Gnosis Pay 2% GNO.`],
+          ['Esiste un’alternativa a Kraken Card con più cashback?', `Sì — Crypto.com fino all'8%, Nexo Card fino al 2% BTC, Gnosis Pay 2% GNO.`],
         ],
       },
       en: {

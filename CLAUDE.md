@@ -64,6 +64,7 @@ All routes are defined in `App.tsx`. The verbosity is intentional — each local
 | `BlogPost.tsx` | Blog article (Markdown from Supabase `blog_posts`) |
 | `CryptoPage.tsx` | Static crypto guide pages (BTC, ETH, SOL…) |
 | `ReviewPage.tsx` | Card review pages |
+| `AlternativesPage.tsx` | "[Brand] alternatives" SEO pages × 10 brands × 7 langs |
 | `AdminHeroImages.tsx` | Admin: generate/propagate blog hero images |
 | `ContactPage.tsx` | Contact page × 7 langs (E-E-A-T) |
 
@@ -79,6 +80,7 @@ All routes are defined in `App.tsx`. The verbosity is intentional — each local
 - `src/data/cryptoContent.ts` — FR content for 10 crypto pages; imports translations from `cryptoContentTranslations.ts`
 - `src/data/cardReviews.ts` — structured review data for ~10 cards
 - `src/data/comparisonContent.ts` — specific A/B copy overrides for ComparisonPage
+- `src/data/alternativesContent.ts` — 10 brands × 5 content langs × slugs; exports `ALT_BRANDS`, `ALT_BRAND_MAP`, `ALT_ROUTES`. `ALT_BRAND_MAP` is used in BrandPage, ReviewPage, ComparisonPage for cross-links. `getEquivalentRoute` in `i18n/utils.ts` uses `ALT_BRANDS` for language switching.
 
 ### topic_key (blog_posts)
 Groups language variants of the same article. When a hero image is generated for a FR article, the Edge Function propagates it to all rows sharing the same `topic_key`. Assigned via SQL regex (see `scripts/add-topic-key.sql`).

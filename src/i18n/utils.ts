@@ -1,5 +1,6 @@
 import { LANGUAGES, ROUTE_TRANSLATIONS, LOCALE_DISPLAY_LANG, type Language, isValidLanguage } from './types';
 import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
+import { ALT_BRANDS } from '../data/alternativesContent';
 
 export function getLanguageFromPath(pathname: string): Language {
   const parts = pathname.split('/').filter(Boolean);
@@ -86,6 +87,16 @@ export function getEquivalentRoute(
   if (currentVvp === slug) {
     const newVvp = VVP_SLUGS[newLang] ?? VVP_SLUGS[newDisplayLang];
     if (newVvp) return `/${newLang}/${newVvp}`;
+  }
+
+  // Check alternatives pages (e.g. alternatives-revolut → revolut-alternativen)
+  for (const brand of ALT_BRANDS) {
+    const currentSlug = brand.slugs[currentLang] ?? brand.slugs[currentDisplayLang];
+    if (currentSlug === slug) {
+      const newSlug = brand.slugs[newLang] ?? brand.slugs[newDisplayLang];
+      if (newSlug) return `/${newLang}/${newSlug}`;
+      break;
+    }
   }
 
   return `/${newLang}`;

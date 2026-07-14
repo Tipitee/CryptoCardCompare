@@ -10,6 +10,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -537,6 +538,29 @@ export default function ReviewPage() {
                   >
                     {SEE_ALL_TIERS[lang] ?? SEE_ALL_TIERS.en}
                     <ChevronRight className="w-3.5 h-3.5 ml-1" />
+                  </Link>
+                );
+              })()}
+              {(() => {
+                const brandId = ISSUER_TO_BRAND[review.issuer] as AltBrandId | undefined;
+                const altConfig = brandId ? ALT_BRAND_MAP[brandId] : undefined;
+                if (!altConfig) return null;
+                const altSlug = altConfig.slugs[lang] ?? altConfig.slugs['fr'];
+                const ALT_LABEL: Record<string, string> = {
+                  fr: `Alternatives à ${altConfig.displayName}`,
+                  be: `Alternatives à ${altConfig.displayName}`,
+                  de: `${altConfig.displayName} Alternativen`,
+                  at: `${altConfig.displayName} Alternativen`,
+                  es: `Alternativas a ${altConfig.displayName}`,
+                  it: `Alternative a ${altConfig.displayName}`,
+                  en: `${altConfig.displayName} Alternatives`,
+                };
+                return (
+                  <Link
+                    to={`/${lang}/${altSlug}`}
+                    className="btn-ghost w-full justify-center flex text-sm border border-bg-border mt-2"
+                  >
+                    🔄 {ALT_LABEL[lang] ?? ALT_LABEL.en}
                   </Link>
                 );
               })()}

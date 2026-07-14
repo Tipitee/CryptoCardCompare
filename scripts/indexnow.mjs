@@ -108,6 +108,18 @@ const URLS = [
   `${BASE}/de/empfehlung`,
   `${BASE}/at/empfehlung`,
   `${BASE}/en/recommendation`,
+
+  // ── [Brand] alternatives pages ──────────────────────────────────────────────
+  `${BASE}/fr/alternatives-revolut`,   `${BASE}/be/alternatives-revolut`,   `${BASE}/de/revolut-alternativen`,   `${BASE}/at/revolut-alternativen`,   `${BASE}/es/alternativas-revolut`,   `${BASE}/it/alternative-revolut`,   `${BASE}/en/revolut-alternatives`,
+  `${BASE}/fr/alternatives-crypto-com`,`${BASE}/be/alternatives-crypto-com`,`${BASE}/de/crypto-com-alternativen`,`${BASE}/at/crypto-com-alternativen`,`${BASE}/es/alternativas-crypto-com`,`${BASE}/it/alternative-crypto-com`,`${BASE}/en/crypto-com-alternatives`,
+  `${BASE}/fr/alternatives-binance`,   `${BASE}/be/alternatives-binance`,   `${BASE}/de/binance-alternativen`,   `${BASE}/at/binance-alternativen`,   `${BASE}/es/alternativas-binance`,   `${BASE}/it/alternative-binance`,   `${BASE}/en/binance-card-alternatives`,
+  `${BASE}/fr/alternatives-bybit`,     `${BASE}/be/alternatives-bybit`,     `${BASE}/de/bybit-alternativen`,     `${BASE}/at/bybit-alternativen`,     `${BASE}/es/alternativas-bybit`,     `${BASE}/it/alternative-bybit`,     `${BASE}/en/bybit-card-alternatives`,
+  `${BASE}/fr/alternatives-nexo`,      `${BASE}/be/alternatives-nexo`,      `${BASE}/de/nexo-alternativen`,      `${BASE}/at/nexo-alternativen`,      `${BASE}/es/alternativas-nexo`,      `${BASE}/it/alternative-nexo`,      `${BASE}/en/nexo-card-alternatives`,
+  `${BASE}/fr/alternatives-bitpanda`,  `${BASE}/be/alternatives-bitpanda`,  `${BASE}/de/bitpanda-alternativen`,  `${BASE}/at/bitpanda-alternativen`,  `${BASE}/es/alternativas-bitpanda`,  `${BASE}/it/alternative-bitpanda`,  `${BASE}/en/bitpanda-alternatives`,
+  `${BASE}/fr/alternatives-wirex`,     `${BASE}/be/alternatives-wirex`,     `${BASE}/de/wirex-alternativen`,     `${BASE}/at/wirex-alternativen`,     `${BASE}/es/alternativas-wirex`,     `${BASE}/it/alternative-wirex`,     `${BASE}/en/wirex-alternatives`,
+  `${BASE}/fr/alternatives-coinbase`,  `${BASE}/be/alternatives-coinbase`,  `${BASE}/de/coinbase-alternativen`,  `${BASE}/at/coinbase-alternativen`,  `${BASE}/es/alternativas-coinbase`,  `${BASE}/it/alternative-coinbase`,  `${BASE}/en/coinbase-card-alternatives`,
+  `${BASE}/fr/alternatives-kraken`,    `${BASE}/be/alternatives-kraken`,    `${BASE}/de/kraken-alternativen`,    `${BASE}/at/kraken-alternativen`,    `${BASE}/es/alternativas-kraken`,    `${BASE}/it/alternative-kraken`,    `${BASE}/en/kraken-card-alternatives`,
+  `${BASE}/fr/alternatives-metamask`,  `${BASE}/be/alternatives-metamask`,  `${BASE}/de/metamask-alternativen`,  `${BASE}/at/metamask-alternativen`,  `${BASE}/es/alternativas-metamask`,  `${BASE}/it/alternative-metamask`,  `${BASE}/en/metamask-card-alternatives`,
 ];
 
 // ── Submit ────────────────────────────────────────────────────────────────────

@@ -16,6 +16,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import type { CryptoCard } from '../types/card';
+import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import Breadcrumb from '../components/Breadcrumb';
@@ -815,12 +816,26 @@ export default function ComparisonPage() {
                     {card.brandId && (
                       <Link
                         to={`/${lang}/${brandsSlug}/${card.brandId}`}
-                        className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1"
+                        className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
                       >
                         <span>🏢 {BRAND_LABEL[lang] || BRAND_LABEL.en} {card.issuer}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                     )}
+                    {card.brandId && ALT_BRAND_MAP[card.brandId as AltBrandId] && (() => {
+                      const altConfig = ALT_BRAND_MAP[card.brandId as AltBrandId];
+                      const altSlug = altConfig.slugs[lang] ?? altConfig.slugs['fr'];
+                      const ALT_CMP_LABEL: Record<string, string> = { fr: 'Alternatives', de: 'Alternativen', es: 'Alternativas', it: 'Alternative', en: 'Alternatives' };
+                      return (
+                        <Link
+                          to={`/${lang}/${altSlug}`}
+                          className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1"
+                        >
+                          <span>🔄 {ALT_CMP_LABEL[lang] ?? 'Alternatives'} {card.issuer}</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                      );
+                    })()}
                   </div>
                 </div>
               );
