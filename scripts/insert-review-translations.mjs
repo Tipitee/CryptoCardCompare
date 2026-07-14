@@ -275,7 +275,7 @@ let ok = 0, skip = 0;
 for (const p of POSTS) {
   const { data: existing } = await sb.from('blog_posts').select('id').eq('lang', p.lang).eq('slug', p.slug).maybeSingle();
   if (existing) { console.log(`↷ existe déjà: [${p.lang}] ${p.slug}`); skip++; continue; }
-  const row = { ...p, image_hero: HERO[p.topic_key] ?? null };
+  const row = { ...p, image_hero: HERO[p.topic_key] ?? null, published: true };
   if (DRY) { console.log(`[dry-run] insérerait [${p.lang}] ${p.slug} (${p.content.split(/\s+/).length} mots)`); ok++; continue; }
   const { error } = await sb.from('blog_posts').insert(row);
   if (error) console.error(`✗ [${p.lang}] ${p.slug}: ${error.message}`);
