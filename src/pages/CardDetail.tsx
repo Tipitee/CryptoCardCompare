@@ -843,8 +843,10 @@ export default function CardDetail() {
               const isBeginnerFriendly = noFees && noStaking;
 
               const links: Array<{ to: string; icon: string; label: string }> = [];
-              if (card.brandId)
-                links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: brandSiblings.length > 0 ? (SEE_ALL_TIERS_LABEL[lang] || 'See all tiers') : t('common:brand_page') });
+              // Only add brand link here if the "Other tiers" box above is NOT shown
+              // (to avoid the same link appearing twice in the sidebar)
+              if (card.brandId && brandSiblings.length === 0)
+                links.push({ to: `/${lang}/${brandsSlug}/${card.brandId}`, icon: '🏷️', label: t('common:brand_page') });
               if (reviewSlug)
                 links.push({ to: `/${lang}/${reviewsSlug}/${reviewSlug}`, icon: '⭐', label: REVIEW_LINK_LABEL[lang] || 'Full review' });
               if (hasCashback)

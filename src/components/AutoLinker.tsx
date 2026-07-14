@@ -94,18 +94,31 @@ const PATTERN = new RegExp(
  * Use this for article bodies rendered via renderMarkdown().
  */
 export function autoLinkHtml(html: string, lang: string, brandsSlug: string): string {
+  // Each URL is linked at most once per page
+  const seenHrefs = new Set<string>();
   // Split on existing <a>…</a> blocks — leave those intact, process the rest
   return html.replace(/(<a\b[^>]*>[\s\S]*?<\/a>)|([^<]+)/g, (_: string, insideAnchor: string, textNode: string) => {
-    if (insideAnchor) return insideAnchor;
+    if (insideAnchor) {
+      // Register existing anchor hrefs so they won't be re-linked
+      const m = insideAnchor.match(/href="([^"]+)"/);
+      if (m) seenHrefs.add(m[1]);
+      return insideAnchor;
+    }
     if (!textNode) return _;
     return textNode.replace(PATTERN, (match: string) => {
       const brand = BRAND_ENTITIES.find(([n]) => n === match);
       if (brand) {
-        return `<a href="/${lang}/${brandsSlug}/${brand[1]}" class="text-cyan-400 hover:text-cyan-300 underline-offset-2 hover:underline transition-colors">${match}</a>`;
+        const href = `/${lang}/${brandsSlug}/${brand[1]}`;
+        if (seenHrefs.has(href)) return match;
+        seenHrefs.add(href);
+        return `<a href="${href}" class="text-cyan-400 hover:text-cyan-300 underline-offset-2 hover:underline transition-colors">${match}</a>`;
       }
       const crypto = CRYPTO_ENTITIES.find(([n]) => n === match);
       if (crypto) {
-        return `<a href="/${lang}/cryptos/${crypto[1]}" class="text-cyan-400 hover:text-cyan-300 underline-offset-2 hover:underline transition-colors">${match}</a>`;
+        const href = `/${lang}/cryptos/${crypto[1]}`;
+        if (seenHrefs.has(href)) return match;
+        seenHrefs.add(href);
+        return `<a href="${href}" class="text-cyan-400 hover:text-cyan-300 underline-offset-2 hover:underline transition-colors">${match}</a>`;
       }
       return match;
     });
@@ -131,22 +144,30 @@ export default function AutoLinker({
   const brandsSlug = rt.brands ?? 'brands';
 
   const parts = text.split(PATTERN);
+  // Each URL is linked at most once per AutoLinker instance
+  const seenHrefs = new Set<string>();
 
   return (
     <span className={className}>
       {parts.map((part, i) => {
         const brand = BRAND_ENTITIES.find(([name]) => name === part);
         if (brand) {
+          const href = `/${lang}/${brandsSlug}/${brand[1]}`;
+          if (seenHrefs.has(href)) return <span key={i}>{part}</span>;
+          seenHrefs.add(href);
           return (
-            <Link key={i} to={`/${lang}/${brandsSlug}/${brand[1]}`} className={linkClassName}>
+            <Link key={i} to={href} className={linkClassName}>
               {part}
             </Link>
           );
         }
         const crypto = CRYPTO_ENTITIES.find(([name]) => name === part);
         if (crypto) {
+          const href = `/${lang}/cryptos/${crypto[1]}`;
+          if (seenHrefs.has(href)) return <span key={i}>{part}</span>;
+          seenHrefs.add(href);
           return (
-            <Link key={i} to={`/${lang}/cryptos/${crypto[1]}`} className={linkClassName}>
+            <Link key={i} to={href} className={linkClassName}>
               {part}
             </Link>
           );
