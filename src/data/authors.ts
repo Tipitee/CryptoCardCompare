@@ -36,6 +36,7 @@ export const AUTHORS: Record<string, Author> = {
     },
     sameAs: [
       'https://x.com/about_crypto',
+      'https://linkedin.com/company/topcryptocards',
     ],
     avatar: '/authors/tipitee.png',
   },

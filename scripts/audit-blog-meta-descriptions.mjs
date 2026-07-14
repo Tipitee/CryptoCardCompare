@@ -46,17 +46,27 @@ function classify(row) {
   return 'OK';
 }
 
+// Truncate at last word boundary before maxLen
+function truncateAtWord(str, maxLen = MAX_LEN) {
+  if (str.length <= maxLen) return str;
+  const cut = str.slice(0, maxLen - 3);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > maxLen * 0.6 ? cut.slice(0, lastSpace) : cut) + '...';
+}
+
 // Generate a simple meta description from title + excerpt
 function generateMeta(row) {
   const title = (row.title ?? '').trim();
   const excerpt = (row.excerpt ?? '').trim();
-  // Use excerpt if decent length, otherwise construct from title
+  const existing = (row.meta_description ?? '').trim();
+  // For TOO_LONG: just truncate the existing meta description at word boundary
+  if (existing.length > MAX_LEN) return truncateAtWord(existing);
+  // Use excerpt if decent length
   if (excerpt.length >= MIN_LEN && excerpt.length <= MAX_LEN) return excerpt;
-  if (excerpt.length > MAX_LEN) return excerpt.slice(0, 157) + '...';
-  // Combine title + truncated excerpt
+  if (excerpt.length > MAX_LEN) return truncateAtWord(excerpt);
+  // Combine title + excerpt
   const combined = excerpt ? `${title} — ${excerpt}` : title;
-  if (combined.length <= MAX_LEN) return combined;
-  return combined.slice(0, 157) + '...';
+  return truncateAtWord(combined);
 }
 
 console.log(`\n🔍 Auditing blog meta_descriptions for langs: ${LANGS.join(', ')}\n`);
@@ -100,12 +110,11 @@ if (FIX_MODE) {
   let fixCount = 0;
   for (const p of issues) {
     const status = classify(p);
-    if (status === 'TOO_LONG') continue; // manual review needed
     const newMeta = generateMeta(p).replace(/'/g, "''");
     sqlLines.push(`UPDATE blog_posts SET meta_description = '${newMeta}' WHERE id = '${p.id}'; -- [${p.lang}] ${p.slug}`);
     fixCount++;
   }
   const outPath = 'scripts/fix-blog-meta-descriptions.sql';
   writeFileSync(outPath, sqlLines.join('\n') + '\n');
-  console.log(`\n✅ SQL written to ${outPath} (${fixCount} fixes, ${issues.length - fixCount} TOO_LONG skipped — manual review needed)`);
+  console.log(`\n✅ SQL written to ${outPath} (${fixCount} fixes)`);
 }
