@@ -167,3 +167,10 @@ One-off migration/generation scripts. **Not part of the app bundle.**
   git add -A && git commit -m "GEO: llms-full.txt, ai-plugin.json, robots.txt AI crawlers, CSP, BCP47 sitemaps, Dataset schema"
   git push
   ```
+
+## SEO playbook reference
+
+The permanent SEO reference for this project is `docs/SEO-GUIDE-15-TACTICS.md`
+(15 high-reward tactics + 10 common mistakes + IndexNow/SSR notes).
+Consult it before any SEO decision. Current tactic-by-tactic status and plan:
+`SEO-AUDIT-V7-PLAN-BEST-WEBSITE.md`.
