@@ -46,7 +46,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'a-propos',
     contact:        'contact',
     authors:        'auteurs',
-    feeIndex:       'frais-cartes-crypto',
+    feeIndex:           'frais-cartes-crypto',
+    cashbackCalculator: 'calculateur-cashback-crypto',
+    feeCalculator:      'calculateur-frais-carte-crypto',
   },
   de: {
     compare:        'vergleich',
@@ -62,7 +64,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'ueber-uns',
     contact:        'kontakt',
     authors:        'autoren',
-    feeIndex:       'krypto-karten-gebuehren',
+    feeIndex:           'krypto-karten-gebuehren',
+    cashbackCalculator: 'cashback-rechner-krypto-karte',
+    feeCalculator:      'gebuehrenrechner-krypto-karte',
   },
   es: {
     compare:        'comparar',
@@ -78,7 +82,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'sobre-nosotros',
     contact:        'contacto',
     authors:        'autores',
-    feeIndex:       'tarifas-tarjetas-crypto',
+    feeIndex:           'tarifas-tarjetas-crypto',
+    cashbackCalculator: 'calculadora-cashback-tarjeta-crypto',
+    feeCalculator:      'calculadora-tarifas-tarjeta-crypto',
   },
   it: {
     compare:        'confronto',
@@ -94,7 +100,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'chi-siamo',
     contact:        'contatti',
     authors:        'autori',
-    feeIndex:       'tariffe-carte-crypto',
+    feeIndex:           'tariffe-carte-crypto',
+    cashbackCalculator: 'calcolatore-cashback-carta-crypto',
+    feeCalculator:      'calcolatore-costi-carta-crypto',
   },
   en: {
     compare:        'compare',
@@ -110,7 +118,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'about',
     contact:        'contact',
     authors:        'authors',
-    feeIndex:       'crypto-card-fees',
+    feeIndex:           'crypto-card-fees',
+    cashbackCalculator: 'crypto-card-cashback-calculator',
+    feeCalculator:      'crypto-card-fee-calculator',
   },
   // Belgium: French content + Belgian market — same slugs as /fr/
   be: {
@@ -127,7 +137,9 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'a-propos',
     contact:        'contact',
     authors:        'auteurs',
-    feeIndex:       'frais-cartes-crypto',
+    feeIndex:           'frais-cartes-crypto',
+    cashbackCalculator: 'calculateur-cashback-crypto',
+    feeCalculator:      'calculateur-frais-carte-crypto',
   },
   // Austria: German content + Austrian market — same slugs as /de/
   at: {
@@ -144,6 +156,8 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     about:          'ueber-uns',
     contact:        'kontakt',
     authors:        'autoren',
-    feeIndex:       'krypto-karten-gebuehren',
+    feeIndex:           'krypto-karten-gebuehren',
+    cashbackCalculator: 'cashback-rechner-krypto-karte',
+    feeCalculator:      'gebuehrenrechner-krypto-karte',
   },
 };

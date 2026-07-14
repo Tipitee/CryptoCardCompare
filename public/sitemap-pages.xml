@@ -1100,4 +1100,204 @@
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/brands"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/marques"/>
   </url>
+
+  <!-- Cashback Calculator -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/calculateur-cashback-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/be/calculateur-cashback-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/cashback-rechner-krypto-karte</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/at/cashback-rechner-krypto-karte</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/crypto-card-cashback-calculator</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-cashback-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/cashback-rechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-cashback-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-cashback-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-cashback-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-cashback-crypto"/>
+  </url>
+
+  <!-- Fee Calculator -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/calculateur-frais-carte-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/be/calculateur-frais-carte-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/calcolatore-costi-carta-crypto</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/crypto-card-fee-calculator</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/calculateur-frais-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/gebuehrenrechner-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/calculadora-tarifas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/calcolatore-costi-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fee-calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/calculateur-frais-carte-crypto"/>
+  </url>
 </urlset>

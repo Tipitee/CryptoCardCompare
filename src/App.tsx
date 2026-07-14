@@ -38,7 +38,9 @@ const About                = lazy(() => import('./pages/About'));
 const ContactPage          = lazy(() => import('./pages/ContactPage'));
 const AuthorPage           = lazy(() => import('./pages/AuthorPage'));
 const VirtualVsPhysical    = lazy(() => import('./pages/VirtualVsPhysicalPage'));
-const FeeIndexPage         = lazy(() => import('./pages/FeeIndexPage'));
+const FeeIndexPage              = lazy(() => import('./pages/FeeIndexPage'));
+const CashbackCalculatorPage   = lazy(() => import('./pages/CashbackCalculatorPage'));
+const FeeCalculatorPage        = lazy(() => import('./pages/FeeCalculatorPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -238,6 +240,16 @@ export default function App() {
           {/* Fee Index — /:lang/frais-cartes-crypto, /en/crypto-card-fees, etc. */}
           {allSlugs('feeIndex').map((slug) => (
             <Route key={`fee-${slug}`} path={slug} element={<FeeIndexPage />} />
+          ))}
+
+          {/* Cashback Calculator — /:lang/calculateur-cashback-crypto, etc. */}
+          {allSlugs('cashbackCalculator').map((slug) => (
+            <Route key={`cb-calc-${slug}`} path={slug} element={<CashbackCalculatorPage />} />
+          ))}
+
+          {/* Fee Calculator — /:lang/calculateur-frais-carte-crypto, etc. */}
+          {allSlugs('feeCalculator').map((slug) => (
+            <Route key={`fee-calc-${slug}`} path={slug} element={<FeeCalculatorPage />} />
           ))}
         </Route>
 

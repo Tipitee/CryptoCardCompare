@@ -199,6 +199,94 @@ COPY.at = {
 
 type SortKey = 'name' | 'annualFees' | 'stakingRequired' | 'cashbackBase' | 'cashbackPremium';
 
+/* ── Cite-this section (link-building for journalists/bloggers) ──────────── */
+const CITE_COPY: Record<string, {
+  heading: string;
+  apa: (url: string, year: number) => string;
+  embedCode: (url: string) => string;
+  copyApa: string;
+  copyEmbed: string;
+  copied: string;
+}> = {
+  fr: {
+    heading:   'Citer ces données',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Index des Frais des Cartes Crypto en Europe. Récupéré le ${new Date().toLocaleDateString('fr-FR')} sur ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Index Frais Cartes Crypto — TopCryptoCards"></iframe>`,
+    copyApa:   'Copier la citation APA',
+    copyEmbed: 'Copier le code iframe',
+    copied:    'Copié !',
+  },
+  de: {
+    heading:   'Diese Daten zitieren',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Gebühren-Index für Krypto-Karten in Europa. Abgerufen am ${new Date().toLocaleDateString('de-DE')} von ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Krypto-Karten Gebühren-Index — TopCryptoCards"></iframe>`,
+    copyApa:   'APA-Zitat kopieren',
+    copyEmbed: 'iframe-Code kopieren',
+    copied:    'Kopiert!',
+  },
+  es: {
+    heading:   'Citar estos datos',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Índice de Tarifas de Tarjetas Crypto en Europa. Recuperado el ${new Date().toLocaleDateString('es-ES')} de ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Índice Tarifas Tarjetas Crypto — TopCryptoCards"></iframe>`,
+    copyApa:   'Copiar cita APA',
+    copyEmbed: 'Copiar código iframe',
+    copied:    '¡Copiado!',
+  },
+  it: {
+    heading:   'Citare questi dati',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Indice delle Tariffe delle Carte Crypto in Europa. Recuperato il ${new Date().toLocaleDateString('it-IT')} da ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Indice Tariffe Carte Crypto — TopCryptoCards"></iframe>`,
+    copyApa:   'Copia citazione APA',
+    copyEmbed: 'Copia codice iframe',
+    copied:    'Copiato!',
+  },
+  en: {
+    heading:   'Cite this data',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Crypto Card Fee Index Europe. Retrieved ${new Date().toLocaleDateString('en-GB')} from ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Crypto Card Fee Index — TopCryptoCards"></iframe>`,
+    copyApa:   'Copy APA citation',
+    copyEmbed: 'Copy iframe code',
+    copied:    'Copied!',
+  },
+};
+CITE_COPY.be = CITE_COPY.fr;
+CITE_COPY.at = CITE_COPY.de;
+
+function CiteThis({ lang, title, url }: { lang: string; title: string; url: string }) {
+  const [copiedApa, setCopiedApa] = useState(false);
+  const [copiedEmbed, setCopiedEmbed] = useState(false);
+  const cc = CITE_COPY[lang] ?? CITE_COPY.en;
+  const year = new Date().getFullYear();
+  const apaText = cc.apa(url, year);
+  const embedText = cc.embedCode(url);
+
+  function copy(text: string, setter: (v: boolean) => void) {
+    navigator.clipboard.writeText(text).then(() => { setter(true); setTimeout(() => setter(false), 2000); });
+  }
+
+  return (
+    <div className="mt-10 border border-slate-700 rounded-xl p-6 bg-slate-800/40">
+      <h2 className="text-lg font-semibold text-slate-200 mb-4">{cc.heading}</h2>
+      <div className="space-y-4">
+        <div>
+          <p className="text-xs text-slate-400 mb-1 font-medium">APA</p>
+          <pre className="bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-300 whitespace-pre-wrap break-all">{apaText}</pre>
+          <button onClick={() => copy(apaText, setCopiedApa)} className="mt-2 px-3 py-1.5 bg-cyan-700 text-white text-xs rounded-lg hover:bg-cyan-600 transition-colors">
+            {copiedApa ? cc.copied : cc.copyApa}
+          </button>
+        </div>
+        <div>
+          <p className="text-xs text-slate-400 mb-1 font-medium">Embed</p>
+          <pre className="bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-300 whitespace-pre-wrap break-all">{embedText}</pre>
+          <button onClick={() => copy(embedText, setCopiedEmbed)} className="mt-2 px-3 py-1.5 bg-cyan-700 text-white text-xs rounded-lg hover:bg-cyan-600 transition-colors">
+            {copiedEmbed ? cc.copied : cc.copyEmbed}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FeeIndexPage() {
   const lang = useLanguage();
   const c = COPY[lang] ?? COPY.en;
@@ -426,6 +514,9 @@ export default function FeeIndexPage() {
             {c.simLabel}
           </Link>
         </div>
+
+        {/* ── Cite this data (link-building) ─────────────────────────────────── */}
+        <CiteThis lang={lang} title={c.h1} url={`${BASE}/${lang}/${rt.feeIndex ?? 'crypto-card-fees'}`} />
       </div>
     </div>
   );
