@@ -28,5 +28,8 @@
   "nexo-card-vs-revolut-metal",
   "nexo-card-vs-wirex-elite",
   "gnosis-pay-card-vs-nexo-card",
-  "gnosis-pay-card-vs-metamask-card"
+  "gnosis-pay-card-vs-metamask-card",
+  "gnosis-pay-card-vs-revolut-metal",
+  "metamask-card-vs-nexo-card",
+  "metamask-card-vs-revolut-metal"
 ]

@@ -1134,13 +1134,124 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     ],
   },
 
-};
+  // ─── Gnosis Pay vs Revolut Metal ─────────────────────────────────────────────
+  'gnosis-pay-card-vs-revolut-metal': {
+    fr_intro: `Gnosis Pay et Revolut Metal proposent toutes deux un IBAN européen et une carte Mastercard — mais leurs philosophies sont radicalement opposées. Revolut Metal est une néobanque traditionnelle centralisée (15 €/mois) avec un cashback de 1 % en crypto. Gnosis Pay est entièrement on-chain : self-custody, IBAN SEPA intégré à la blockchain Gnosis, et 2 % de cashback en GNO sans frais d'abonnement. Pour ceux qui veulent un seul compte qui combine crypto et banque, ces deux produits sont les candidats naturels à comparer en 2026.`,
+    fr_verdict: `Pour l'utilisateur crypto-native qui veut garder le contrôle de ses fonds, Gnosis Pay s'impose : 0 € d'abonnement, 2 % de cashback en GNO, IBAN on-chain. Pour l'utilisateur qui veut l'écosystème complet Revolut (multi-devises, trading actions, assurance voyage) avec un peu de crypto, la Metal reste pertinente à 15 €/mois. Note : Gnosis Pay 4,1/5 vs Revolut Metal 3,9/5 sur le rapport qualité/prix global.`,
+    de_intro: `Gnosis Pay und Revolut Metal bieten beide eine europäische IBAN und eine Mastercard — aber mit grundlegend verschiedenen Philosophien. Revolut Metal ist eine zentralisierte traditionelle Neobank (15 €/Monat) mit 1 % Krypto-Cashback. Gnosis Pay ist vollständig on-chain: Self-Custody, SEPA-IBAN direkt auf der Gnosis-Blockchain, und 2 % GNO-Cashback ohne Abonnementgebühr. Für alle, die ein einziges Konto für Krypto und Banking suchen, sind diese beiden Produkte die natürlichen Vergleichskandidaten 2026.`,
+    de_verdict: `Für den Krypto-nativen Nutzer, der die Kontrolle über seine Gelder behalten will, setzt Gnosis Pay sich durch: 0 € Abo, 2 % Cashback in GNO, On-Chain-IBAN. Für den Nutzer, der das vollständige Revolut-Ökosystem möchte (Multiwährung, Aktienhandel, Reiseversicherung) mit etwas Krypto, bleibt die Metal bei 15 €/Monat relevant. Wertung: Gnosis Pay 4,1/5 vs. Revolut Metal 3,9/5.`,
+    es_intro: `Gnosis Pay y Revolut Metal ofrecen ambas un IBAN europeo y una Mastercard, pero sus filosofías son radicalmente opuestas. Revolut Metal es una neobank centralizada tradicional (15 €/mes) con un 1 % de cashback en crypto. Gnosis Pay es completamente on-chain: autocustodia, IBAN SEPA integrado en la blockchain Gnosis, y un 2 % de cashback en GNO sin cuota de suscripción. Para quienes buscan una única cuenta que combine crypto y banca, estos dos productos son los candidatos naturales a comparar en 2026.`,
+    es_verdict: `Para el usuario crypto-nativo que quiere mantener el control de sus fondos, Gnosis Pay se impone: 0 € de suscripción, 2 % de cashback en GNO, IBAN on-chain. Para el usuario que quiere el ecosistema completo de Revolut (multidivisa, trading de acciones, seguro de viaje) con algo de crypto, la Metal sigue siendo relevante a 15 €/mes. Puntuación: Gnosis Pay 4,1/5 vs Revolut Metal 3,9/5.`,
+    it_intro: `Gnosis Pay e Revolut Metal offrono entrambe un IBAN europeo e una Mastercard, ma con filosofie radicalmente opposte. Revolut Metal è una neobank centralizzata tradizionale (15 €/mese) con cashback dell'1 % in crypto. Gnosis Pay è completamente on-chain: self-custody, IBAN SEPA integrato sulla blockchain Gnosis, e cashback del 2 % in GNO senza canone di abbonamento. Per chi cerca un unico conto che combini crypto e banca, questi due prodotti sono i candidati naturali al confronto nel 2026.`,
+    it_verdict: `Per l'utente crypto-nativo che vuole mantenere il controllo dei propri fondi, Gnosis Pay si impone: 0 € di abbonamento, 2 % di cashback in GNO, IBAN on-chain. Per l'utente che vuole l'ecosistema completo Revolut (multivaluta, trading azionario, assicurazione viaggio) con un po' di crypto, la Metal rimane rilevante a 15 €/mese. Punteggio: Gnosis Pay 4,1/5 vs Revolut Metal 3,9/5.`,
+    en_intro: `Gnosis Pay and Revolut Metal both offer a European IBAN and a Mastercard — but with radically different philosophies. Revolut Metal is a centralised traditional neobank (€15/month) with 1% crypto cashback. Gnosis Pay is fully on-chain: self-custody, SEPA IBAN built directly on the Gnosis blockchain, and 2% GNO cashback with no subscription fee. For users who want a single account combining crypto and banking, these two are the natural comparison in 2026.`,
+    en_verdict: `For the crypto-native user who wants to retain control of their funds, Gnosis Pay wins: €0 subscription, 2% cashback in GNO, on-chain IBAN. For the user who wants the full Revolut ecosystem (multi-currency, stock trading, travel insurance) with some crypto exposure, the Metal remains relevant at €15/month. Score: Gnosis Pay 4.1/5 vs Revolut Metal 3.9/5.`,
+    faq: [
+      { q: 'Gnosis Pay vs Revolut Metal : laquelle a le meilleur rapport qualité/prix ?', a: 'Gnosis Pay est gratuite (0 €/an) avec 2 % de cashback en GNO. Revolut Metal coûte 180 €/an pour 1 % de cashback en crypto. Sur le seul critère cashback, Gnosis Pay est nettement plus rentable.' },
+      { q: 'Gnosis Pay a-t-elle un vrai IBAN comme Revolut ?', a: 'Oui. Gnosis Pay propose un IBAN européen fonctionnel pour les virements SEPA entrants. La différence : il est on-chain, ce qui signifie que vos fonds restent dans votre wallet crypto plutôt que chez un dépositaire.' },
+      { q: 'Peut-on utiliser les deux cartes ensemble ?', a: 'Oui, beaucoup d\'utilisateurs combinent Revolut (pour la gestion multi-devises et les fonctions bancaires classiques) et Gnosis Pay (pour le cashback crypto et la DeFi). Les deux sont complémentaires.' },
+    ],
+    de_faq: [
+      { q: 'Gnosis Pay vs. Revolut Metal: Welche bietet das beste Preis-Leistungs-Verhältnis?', a: 'Gnosis Pay ist kostenlos (0 €/Jahr) mit 2 % GNO-Cashback. Revolut Metal kostet 180 €/Jahr für 1 % Krypto-Cashback. Beim reinen Cashback-Kriterium ist Gnosis Pay deutlich rentabler.' },
+      { q: 'Hat Gnosis Pay eine echte IBAN wie Revolut?', a: 'Ja. Gnosis Pay bietet eine funktionale europäische IBAN für eingehende SEPA-Überweisungen. Der Unterschied: Sie ist on-chain, was bedeutet, dass Ihre Gelder in Ihrem Krypto-Wallet verbleiben.' },
+      { q: 'Kann man beide Karten gleichzeitig nutzen?', a: 'Ja, viele Nutzer kombinieren Revolut (für Multiwährungs-Management) und Gnosis Pay (für Krypto-Cashback und DeFi). Beide ergänzen sich gut.' },
+    ],
+    es_faq: [
+      { q: 'Gnosis Pay vs Revolut Metal: ¿cuál ofrece mejor relación calidad-precio?', a: 'Gnosis Pay es gratuita (0 €/año) con un 2 % de cashback en GNO. Revolut Metal cuesta 180 €/año para un 1 % de cashback en crypto. Solo en el criterio de cashback, Gnosis Pay es claramente más rentable.' },
+      { q: '¿Gnosis Pay tiene un IBAN real como Revolut?', a: 'Sí. Gnosis Pay ofrece un IBAN europeo funcional para transferencias SEPA entrantes. La diferencia: es on-chain, lo que significa que tus fondos permanecen en tu wallet crypto.' },
+      { q: '¿Se pueden usar las dos tarjetas juntas?', a: 'Sí, muchos usuarios combinan Revolut (para gestión multidivisa) y Gnosis Pay (para cashback crypto y DeFi). Son complementarias.' },
+    ],
+    it_faq: [
+      { q: 'Gnosis Pay vs Revolut Metal: quale offre il miglior rapporto qualità-prezzo?', a: 'Gnosis Pay è gratuita (0 €/anno) con il 2 % di cashback in GNO. Revolut Metal costa 180 €/anno per l\'1 % di cashback in crypto. Solo sul criterio cashback, Gnosis Pay è nettamente più conveniente.' },
+      { q: 'Gnosis Pay ha un IBAN reale come Revolut?', a: 'Sì. Gnosis Pay offre un IBAN europeo funzionale per i bonifici SEPA in entrata. La differenza: è on-chain, il che significa che i tuoi fondi rimangono nel tuo wallet crypto.' },
+      { q: 'Si possono usare entrambe le carte insieme?', a: 'Sì, molti utenti combinano Revolut (per la gestione multivaluta) e Gnosis Pay (per il cashback crypto e la DeFi). Sono complementari.' },
+    ],
+    en_faq: [
+      { q: 'Gnosis Pay vs Revolut Metal: which offers better value?', a: 'Gnosis Pay is free (€0/year) with 2% cashback in GNO. Revolut Metal costs €180/year for 1% crypto cashback. On the cashback criterion alone, Gnosis Pay is clearly more profitable.' },
+      { q: 'Does Gnosis Pay have a real IBAN like Revolut?', a: 'Yes. Gnosis Pay provides a functional European IBAN for incoming SEPA transfers. The difference: it is on-chain, meaning your funds remain in your crypto wallet rather than with a custodian.' },
+      { q: 'Can you use both cards at the same time?', a: 'Yes, many users combine Revolut (for multi-currency management and traditional banking features) and Gnosis Pay (for crypto cashback and DeFi). They complement each other well.' },
+    ],
+  },
 
-/**
- * Get specific comparison content for a pair of card IDs.
- * Returns null if no specific content exists (fall back to generic).
- */
-export function getSpecificComparison(id1: string, id2: string): ComparisonSpecific | null {
+  // ─── MetaMask Card vs Nexo Card ──────────────────────────────────────────────
+  'metamask-card-vs-nexo-card': {
+    fr_intro: `MetaMask Card et Nexo Card sont toutes deux des cartes sans staking, sans frais annuels, et offrant du cashback crypto — mais sur des modèles diamétralement opposés. MetaMask Card est en self-custody : votre wallet Ethereum reste le vôtre, le cashback est versé en ETH ou en stablecoin directement on-chain. La Nexo Card est custodiale : Nexo gère vos fonds, le cashback est versé en BTC (jusqu'à 2 %) ou en NEXO. L'une est pour les puristes DeFi, l'autre pour ceux qui veulent la simplicité avec un cashback fiable en Bitcoin.`,
+    fr_verdict: `Si vous êtes développeur ou utilisateur avancé DeFi sur Ethereum, la MetaMask Card est la plus cohérente : vos fonds restent dans votre wallet, votre cashback s'accumule on-chain. Pour l'utilisateur qui veut 2 % de cashback garanti en BTC avec une interface simple, la Nexo Card est le choix le plus mature. Note : Nexo Card 4,2/5 vs MetaMask Card 3,9/5.`,
+    de_intro: `MetaMask Card und Nexo Card sind beide Karten ohne Staking, ohne Jahresgebühr und mit Krypto-Cashback — aber auf grundlegend entgegengesetzten Modellen. MetaMask Card ist Self-Custody: Ihr Ethereum-Wallet bleibt Ihres, Cashback wird in ETH oder Stablecoin direkt on-chain ausgezahlt. Die Nexo Card ist Custodial: Nexo verwaltet Ihre Gelder, Cashback wird in BTC (bis zu 2 %) oder NEXO ausgezahlt.`,
+    de_verdict: `Wenn Sie DeFi-Entwickler oder fortgeschrittener Ethereum-Nutzer sind, ist die MetaMask Card am konsequentesten: Ihre Gelder bleiben in Ihrem Wallet, Cashback akkumuliert sich on-chain. Für Nutzer, die 2 % garantierten BTC-Cashback mit einfacher Bedienung wünschen, ist die Nexo Card die ausgereiftere Wahl. Wertung: Nexo Card 4,2/5 vs. MetaMask Card 3,9/5.`,
+    es_intro: `MetaMask Card y Nexo Card son ambas tarjetas sin staking, sin cuota anual y con cashback crypto, pero en modelos diametralmente opuestos. MetaMask Card es self-custody: tu wallet Ethereum sigue siendo tuyo, el cashback se paga en ETH o stablecoin directamente on-chain. La Nexo Card es custodial: Nexo gestiona tus fondos, el cashback se paga en BTC (hasta un 2 %) o en NEXO.`,
+    es_verdict: `Si eres desarrollador o usuario avanzado de DeFi en Ethereum, la MetaMask Card es la más coherente: tus fondos permanecen en tu wallet, el cashback se acumula on-chain. Para el usuario que quiere un 2 % de cashback garantizado en BTC con una interfaz sencilla, la Nexo Card es la elección más madura. Puntuación: Nexo Card 4,2/5 vs MetaMask Card 3,9/5.`,
+    it_intro: `MetaMask Card e Nexo Card sono entrambe carte senza staking, senza costi annuali e con cashback crypto, ma su modelli diametralmente opposti. MetaMask Card è in self-custody: il tuo wallet Ethereum rimane tuo, il cashback viene erogato in ETH o stablecoin direttamente on-chain. La Nexo Card è custodiale: Nexo gestisce i tuoi fondi, il cashback viene erogato in BTC (fino al 2 %) o in NEXO.`,
+    it_verdict: `Se sei uno sviluppatore o utente avanzato DeFi su Ethereum, la MetaMask Card è la più coerente: i tuoi fondi rimangono nel tuo wallet, il cashback si accumula on-chain. Per l'utente che vuole il 2 % di cashback garantito in BTC con un'interfaccia semplice, la Nexo Card è la scelta più matura. Punteggio: Nexo Card 4,2/5 vs MetaMask Card 3,9/5.`,
+    en_intro: `MetaMask Card and Nexo Card are both no-staking, no-annual-fee cards with crypto cashback — but on diametrically opposite models. MetaMask Card is self-custody: your Ethereum wallet stays yours, cashback is paid in ETH or stablecoin directly on-chain. The Nexo Card is custodial: Nexo manages your funds, cashback is paid in BTC (up to 2%) or NEXO. One is for DeFi purists, the other for users who want simplicity with reliable Bitcoin cashback.`,
+    en_verdict: `If you're a developer or advanced DeFi user on Ethereum, the MetaMask Card is the most coherent choice: your funds stay in your wallet, cashback accumulates on-chain. For the user who wants guaranteed 2% BTC cashback with a simple interface, the Nexo Card is the more mature product. Score: Nexo Card 4.2/5 vs MetaMask Card 3.9/5.`,
+    faq: [
+      { q: 'MetaMask Card ou Nexo Card : laquelle est la plus sûre ?', a: 'La MetaMask Card, en self-custody, vous donne le contrôle total de vos clés privées. La Nexo Card est custodiale mais Nexo est régulé dans plusieurs pays de l\'UE et a une forte réputation de liquidité. "Pas vos clés, pas vos cryptos" avantage MetaMask ; pour la facilité et le cashback en BTC, Nexo est plus fiable pour la plupart des utilisateurs.' },
+      { q: 'La MetaMask Card propose-t-elle un cashback en ETH ?', a: 'Oui. La MetaMask Card propose un cashback en ETH ou en stablecoin selon le mode choisi. Le cashback est crédité directement dans votre wallet MetaMask, on-chain.' },
+      { q: 'Faut-il du staking pour les deux cartes ?', a: 'Non. Ni la MetaMask Card ni la Nexo Card n\'exigent de staking pour obtenir leur cashback de base. C\'est l\'un de leurs principaux avantages communs.' },
+    ],
+    de_faq: [
+      { q: 'MetaMask Card oder Nexo Card: Welche ist sicherer?', a: 'Die MetaMask Card (Self-Custody) gibt Ihnen volle Kontrolle über Ihre privaten Schlüssel. Die Nexo Card ist Custodial, aber Nexo ist in mehreren EU-Ländern reguliert. "Nicht Ihre Schlüssel, nicht Ihre Krypto" begünstigt MetaMask; für Einfachheit und BTC-Cashback ist Nexo für die meisten Nutzer die zuverlässigere Wahl.' },
+      { q: 'Bietet die MetaMask Card ETH-Cashback?', a: 'Ja. Die MetaMask Card bietet Cashback in ETH oder Stablecoin je nach gewähltem Modus. Cashback wird direkt in Ihr MetaMask-Wallet gutgeschrieben, on-chain.' },
+      { q: 'Ist Staking für beide Karten erforderlich?', a: 'Nein. Weder die MetaMask Card noch die Nexo Card verlangen Staking für ihren Basis-Cashback. Das ist einer ihrer gemeinsamen Hauptvorteile.' },
+    ],
+    es_faq: [
+      { q: 'MetaMask Card o Nexo Card: ¿cuál es más segura?', a: 'La MetaMask Card (self-custody) te da control total sobre tus claves privadas. La Nexo Card es custodial, pero Nexo está regulada en varios países de la UE. "Sin tus claves, sin tus cryptos" favorece a MetaMask; para simplicidad y cashback en BTC, Nexo es más fiable para la mayoría.' },
+      { q: '¿La MetaMask Card ofrece cashback en ETH?', a: 'Sí. La MetaMask Card ofrece cashback en ETH o stablecoin según el modo elegido. El cashback se acredita directamente en tu wallet MetaMask, on-chain.' },
+      { q: '¿Se necesita staking para las dos tarjetas?', a: 'No. Ni la MetaMask Card ni la Nexo Card exigen staking para su cashback base. Es una de sus principales ventajas comunes.' },
+    ],
+    it_faq: [
+      { q: 'MetaMask Card o Nexo Card: quale è più sicura?', a: 'La MetaMask Card (self-custody) ti dà il controllo totale sulle tue chiavi private. La Nexo Card è custodiale ma Nexo è regolamentata in diversi paesi UE. "Non le tue chiavi, non le tue crypto" avvantaggia MetaMask; per semplicità e cashback in BTC, Nexo è più affidabile per la maggior parte degli utenti.' },
+      { q: 'La MetaMask Card offre cashback in ETH?', a: 'Sì. La MetaMask Card offre cashback in ETH o stablecoin in base alla modalità scelta. Il cashback viene accreditato direttamente nel tuo wallet MetaMask, on-chain.' },
+      { q: 'È necessario lo staking per entrambe le carte?', a: 'No. Né la MetaMask Card né la Nexo Card richiedono staking per il loro cashback base. È uno dei loro principali vantaggi comuni.' },
+    ],
+    en_faq: [
+      { q: 'MetaMask Card or Nexo Card: which is safer?', a: 'The MetaMask Card (self-custody) gives you full control over your private keys. The Nexo Card is custodial but Nexo is regulated in several EU countries. "Not your keys, not your crypto" favours MetaMask; for simplicity and BTC cashback, Nexo is the more reliable choice for most users.' },
+      { q: 'Does MetaMask Card offer ETH cashback?', a: 'Yes. MetaMask Card offers cashback in ETH or stablecoin depending on the mode selected. Cashback is credited directly to your MetaMask wallet, on-chain.' },
+      { q: 'Is staking required for either card?', a: 'No. Neither MetaMask Card nor Nexo Card requires staking for their base cashback. This is one of their key shared advantages over premium staking-based cards.' },
+    ],
+  },
+
+  // ─── MetaMask Card vs Revolut Metal ──────────────────────────────────────────
+  'metamask-card-vs-revolut-metal': {
+    fr_intro: `MetaMask Card et Revolut Metal incarnent deux visions opposées de la carte de paiement moderne. Revolut Metal est une néobanque premium (15 €/mois) avec une offre complète : multi-devises, trading d'actions, assurance voyage, et 1 % de cashback en crypto. MetaMask Card est une carte Web3 en self-custody : aucun frais d'abonnement, cashback en ETH on-chain, et aucun intermédiaire bancaire. Pour les utilisateurs qui ont déjà MetaMask, la transition est naturelle. Pour les autres, Revolut Metal offre un écosystème plus familier.`,
+    fr_verdict: `Si vous utilisez Revolut comme banque principale et voulez juste ajouter un peu de crypto, la Metal s'impose. Si vous êtes un utilisateur Ethereum actif qui veut une carte directement connectée à votre wallet sans intermédiaire, la MetaMask Card est plus cohérente — et gratuite. Note : Revolut Metal 3,9/5 vs MetaMask Card 3,9/5 (profils très différents).`,
+    de_intro: `MetaMask Card und Revolut Metal verkörpern zwei gegensätzliche Visionen der modernen Zahlungskarte. Revolut Metal ist eine Premium-Neobank (15 €/Monat) mit vollständigem Angebot: Multi-Währung, Aktienhandel, Reiseversicherung und 1 % Krypto-Cashback. MetaMask Card ist eine Web3-Karte in Self-Custody: keine Abonnementgebühr, ETH-Cashback on-chain, kein Bankzwischenhändler.`,
+    de_verdict: `Wer Revolut als Hauptbank nutzt und nur etwas Krypto hinzufügen möchte, sollte zur Metal greifen. Für aktive Ethereum-Nutzer, die eine Karte direkt an ihr Wallet ohne Intermediär wollen, ist die MetaMask Card kohärenter — und kostenlos. Wertung: Revolut Metal 3,9/5 vs. MetaMask Card 3,9/5 (sehr unterschiedliche Profile).`,
+    es_intro: `MetaMask Card y Revolut Metal encarnan dos visiones opuestas de la tarjeta de pago moderna. Revolut Metal es una neobank premium (15 €/mes) con oferta completa: multidivisa, trading de acciones, seguro de viaje y 1 % de cashback en crypto. MetaMask Card es una tarjeta Web3 en autocustodia: sin cuota de suscripción, cashback en ETH on-chain, sin intermediario bancario.`,
+    es_verdict: `Si usas Revolut como banco principal y solo quieres añadir algo de crypto, la Metal es la opción. Si eres usuario activo de Ethereum y quieres una tarjeta conectada directamente a tu wallet sin intermediarios, la MetaMask Card es más coherente — y gratuita. Puntuación: Revolut Metal 3,9/5 vs MetaMask Card 3,9/5 (perfiles muy diferentes).`,
+    it_intro: `MetaMask Card e Revolut Metal incarnano due visioni opposte della carta di pagamento moderna. Revolut Metal è una neobank premium (15 €/mese) con un'offerta completa: multivaluta, trading azionario, assicurazione viaggio e cashback dell'1 % in crypto. MetaMask Card è una carta Web3 in self-custody: nessuna quota di abbonamento, cashback in ETH on-chain, nessun intermediario bancario.`,
+    it_verdict: `Se usi Revolut come banca principale e vuoi solo aggiungere un po' di crypto, la Metal si impone. Se sei un utente Ethereum attivo che vuole una carta direttamente connessa al tuo wallet senza intermediari, la MetaMask Card è più coerente — e gratuita. Punteggio: Revolut Metal 3,9/5 vs MetaMask Card 3,9/5 (profili molto diversi).`,
+    en_intro: `MetaMask Card and Revolut Metal represent two opposing visions of the modern payment card. Revolut Metal is a premium neobank (€15/month) with a complete offering: multi-currency, stock trading, travel insurance, and 1% crypto cashback. MetaMask Card is a self-custody Web3 card: no subscription fee, ETH cashback on-chain, and no banking intermediary. For existing MetaMask users, the transition is natural. For others, Revolut Metal offers a more familiar ecosystem.`,
+    en_verdict: `If you use Revolut as your main bank and just want to add some crypto exposure, the Metal is the natural choice. If you're an active Ethereum user who wants a card connected directly to your wallet without any intermediary, the MetaMask Card is more coherent — and free. Score: Revolut Metal 3.9/5 vs MetaMask Card 3.9/5 (very different target profiles).`,
+    faq: [
+      { q: 'MetaMask Card est-elle disponible en Europe comme Revolut ?', a: 'La MetaMask Card est disponible dans plusieurs pays européens via Mastercard, avec un déploiement progressif. Revolut est disponible dans toute l\'UE. Vérifiez la disponibilité actuelle sur metamask.io.' },
+      { q: 'La MetaMask Card peut-elle remplacer Revolut comme compte principal ?', a: 'Non. MetaMask Card n\'a pas d\'IBAN natif ni de gestion multi-devises comme Revolut. C\'est une carte de dépenses liée à votre wallet crypto Ethereum, pas un substitut complet à un compte bancaire.' },
+      { q: 'Laquelle est gratuite entre MetaMask Card et Revolut Metal ?', a: 'MetaMask Card est gratuite (0 €/an). Revolut Metal coûte 180 €/an (15 €/mois). Revolut propose un plan gratuit avec fonctions limitées, mais sans accès aux fonctions Metal.' },
+    ],
+    de_faq: [
+      { q: 'Ist die MetaMask Card in Europa wie Revolut verfügbar?', a: 'Die MetaMask Card ist in mehreren europäischen Ländern über Mastercard verfügbar, mit schrittweisem Rollout. Revolut ist in der gesamten EU verfügbar. Aktuelle Verfügbarkeit auf metamask.io prüfen.' },
+      { q: 'Kann die MetaMask Card Revolut als Hauptkonto ersetzen?', a: 'Nein. MetaMask Card hat keine native IBAN oder Multiwährungs-Verwaltung wie Revolut. Es ist eine Ausgabenkarte, die mit Ihrem Ethereum-Krypto-Wallet verknüpft ist, kein vollständiger Bankkontoersatz.' },
+      { q: 'Welche ist kostenlos — MetaMask Card oder Revolut Metal?', a: 'MetaMask Card ist kostenlos (0 €/Jahr). Revolut Metal kostet 180 €/Jahr (15 €/Monat). Revolut bietet einen kostenlosen Plan mit eingeschränkten Funktionen, aber ohne Zugang zu Metal-Features.' },
+    ],
+    es_faq: [
+      { q: '¿La MetaMask Card está disponible en Europa como Revolut?', a: 'La MetaMask Card está disponible en varios países europeos a través de Mastercard, con despliegue progresivo. Revolut está disponible en toda la UE. Verifica la disponibilidad actual en metamask.io.' },
+      { q: '¿Puede la MetaMask Card reemplazar a Revolut como cuenta principal?', a: 'No. MetaMask Card no tiene IBAN nativo ni gestión multidivisa como Revolut. Es una tarjeta de gastos vinculada a tu wallet crypto Ethereum, no un sustituto completo de una cuenta bancaria.' },
+      { q: '¿Cuál es gratuita entre MetaMask Card y Revolut Metal?', a: 'MetaMask Card es gratuita (0 €/año). Revolut Metal cuesta 180 €/año (15 €/mes). Revolut ofrece un plan gratuito con funciones limitadas, pero sin acceso a las funciones Metal.' },
+    ],
+    it_faq: [
+      { q: 'La MetaMask Card è disponibile in Europa come Revolut?', a: 'La MetaMask Card è disponibile in diversi paesi europei tramite Mastercard, con lancio progressivo. Revolut è disponibile in tutta la UE. Verifica la disponibilità attuale su metamask.io.' },
+      { q: 'La MetaMask Card può sostituire Revolut come conto principale?', a: 'No. MetaMask Card non ha IBAN nativo né gestione multivaluta come Revolut. È una carta di spesa collegata al tuo wallet crypto Ethereum, non un sostituto completo di un conto bancario.' },
+      { q: 'Quale è gratuita tra MetaMask Card e Revolut Metal?', a: 'MetaMask Card è gratuita (0 €/anno). Revolut Metal costa 180 €/anno (15 €/mese). Revolut offre un piano gratuito con funzioni limitate, ma senza accesso alle funzioni Metal.' },
+    ],
+    en_faq: [
+      { q: 'Is MetaMask Card available in Europe like Revolut?', a: 'MetaMask Card is available in several European countries via Mastercard, with a gradual rollout. Revolut is available across the entire EU. Check current availability at metamask.io.' },
+      { q: 'Can MetaMask Card replace Revolut as a main account?', a: 'No. MetaMask Card does not have a native IBAN or multi-currency management like Revolut. It is a spending card linked to your Ethereum crypto wallet, not a full bank account replacement.' },
+      { q: 'Which is free — MetaMask Card or Revolut Metal?', a: 'MetaMask Card is free (€0/year). Revolut Metal costs €180/year (€15/month). Revolut offers a free plan with limited features, but without access to Metal-tier features.' },
+    ],
+  },
+
+};
   const key = normalizePairKey(id1, id2);
   return COMPARISONS[key] ?? null;
 }
