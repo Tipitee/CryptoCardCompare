@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Mail, Sparkles, Menu, Shield, Star, TrendingUp, X, Building2 } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, ChevronDown, FileText, Heart, Mail, Sparkles, Menu, Shield, Star, TrendingUp, X, Building2, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
@@ -446,6 +446,12 @@ export default function Layout() {
                   <Link to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.feeCalculator ?? 'crypto-card-fee-calculator'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
                     <Calculator className="w-3.5 h-3.5" />
                     {({ fr: 'Calculateur de frais', be: 'Calculateur de frais', de: 'Gebühren-Rechner', at: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' } as Record<string, string>)[lang] ?? 'Fee Calculator'}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={`/${lang}/${ROUTE_TRANSLATIONS[lang]?.tools ?? 'crypto-card-tools'}`} className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5" />
+                    {({ fr: 'Tous les outils', be: 'Tous les outils', de: 'Alle Tools', at: 'Alle Tools', es: 'Todas las herramientas', it: 'Tutti gli strumenti', en: 'All Tools' } as Record<string, string>)[lang] ?? 'All Tools'}
                   </Link>
                 </li>
               </ul>

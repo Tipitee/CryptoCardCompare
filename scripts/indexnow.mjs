@@ -120,6 +120,9 @@ const URLS = [
   `${BASE}/fr/alternatives-coinbase`,  `${BASE}/be/alternatives-coinbase`,  `${BASE}/de/coinbase-alternativen`,  `${BASE}/at/coinbase-alternativen`,  `${BASE}/es/alternativas-coinbase`,  `${BASE}/it/alternative-coinbase`,  `${BASE}/en/coinbase-card-alternatives`,
   `${BASE}/fr/alternatives-kraken`,    `${BASE}/be/alternatives-kraken`,    `${BASE}/de/kraken-alternativen`,    `${BASE}/at/kraken-alternativen`,    `${BASE}/es/alternativas-kraken`,    `${BASE}/it/alternative-kraken`,    `${BASE}/en/kraken-card-alternatives`,
   `${BASE}/fr/alternatives-metamask`,  `${BASE}/be/alternatives-metamask`,  `${BASE}/de/metamask-alternativen`,  `${BASE}/at/metamask-alternativen`,  `${BASE}/es/alternativas-metamask`,  `${BASE}/it/alternative-metamask`,  `${BASE}/en/metamask-card-alternatives`,
+
+  // ── Tools hub ───────────────────────────────────────────────────────────────
+  `${BASE}/fr/outils-carte-crypto`, `${BASE}/be/outils-carte-crypto`, `${BASE}/de/krypto-karte-tools`, `${BASE}/at/krypto-karte-tools`, `${BASE}/es/herramientas-tarjeta-crypto`, `${BASE}/it/strumenti-carta-crypto`, `${BASE}/en/crypto-card-tools`,
 ];
 
 // ── Submit ────────────────────────────────────────────────────────────────────

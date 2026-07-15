@@ -811,6 +811,24 @@ export default function Simulator() {
             </div>
           );
         })()}
+
+        {/* Widget promo */}
+        {(() => {
+          const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.fr;
+          const label: Record<string, string> = {
+            fr: 'Intégrez ce simulateur sur votre site →', be: 'Intégrez ce simulateur sur votre site →',
+            de: 'Diesen Simulator auf Ihrer Website einbetten →', at: 'Diesen Simulator auf Ihrer Website einbetten →',
+            es: 'Integra esta herramienta en tu web →', it: 'Integra questo strumento sul tuo sito →',
+            en: 'Embed this tool on your website →',
+          };
+          return (
+            <div className="mt-10 p-4 rounded-xl border border-bg-border bg-bg-elevated/50 text-center">
+              <Link to={`/${lang}/${rt.tools ?? 'crypto-card-tools'}`} className="text-sm text-cyan-accent hover:underline inline-flex items-center gap-1.5">
+                💡 {label[lang] ?? label.en}
+              </Link>
+            </div>
+          );
+        })()}
       </div>
     </div>
   );

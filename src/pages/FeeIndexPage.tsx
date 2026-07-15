@@ -517,6 +517,18 @@ export default function FeeIndexPage() {
 
         {/* ── Cite this data (link-building) ─────────────────────────────────── */}
         <CiteThis lang={lang} title={c.h1} url={`${BASE}/${lang}/${rt.feeIndex ?? 'crypto-card-fees'}`} />
+
+        {/* Widget promo */}
+        <div className="mt-8 p-4 rounded-xl border border-gray-200 bg-gray-50 text-center">
+          <Link to={`/${lang}/${rt.tools ?? 'crypto-card-tools'}`} className="text-sm text-cyan-600 hover:underline inline-flex items-center gap-1.5">
+            💡 {({
+              fr: 'Intégrez cet index sur votre site →', be: 'Intégrez cet index sur votre site →',
+              de: 'Diesen Index auf Ihrer Website einbetten →', at: 'Diesen Index auf Ihrer Website einbetten →',
+              es: 'Integra este índice en tu web →', it: 'Integra questo indice sul tuo sito →',
+              en: 'Embed this fee index on your website →',
+            } as Record<string, string>)[lang] ?? 'Embed this fee index on your website →'}
+          </Link>
+        </div>
       </div>
     </div>
   );
