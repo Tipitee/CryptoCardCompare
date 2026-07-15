@@ -2280,4 +2280,104 @@
     <xhtml:link rel="alternate" hreflang="en-GB"  href="https://topcryptocards.eu/en/metamask-card-alternatives"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/alternatives-metamask"/>
   </url>
+
+  <!-- Tools hub -->
+  <url>
+    <loc>https://topcryptocards.eu/fr/outils-carte-crypto</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/be/outils-carte-crypto</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/de/krypto-karte-tools</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/at/krypto-karte-tools</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/es/herramientas-tarjeta-crypto</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/it/strumenti-carta-crypto</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/en/crypto-card-tools</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/outils-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karte-tools"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/herramientas-tarjeta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/strumenti-carta-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
+  </url>
 </urlset>

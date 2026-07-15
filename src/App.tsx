@@ -42,6 +42,7 @@ const FeeIndexPage              = lazy(() => import('./pages/FeeIndexPage'));
 const CashbackCalculatorPage   = lazy(() => import('./pages/CashbackCalculatorPage'));
 const FeeCalculatorPage        = lazy(() => import('./pages/FeeCalculatorPage'));
 const AlternativesPage         = lazy(() => import('./pages/AlternativesPage'));
+const ToolsPage                = lazy(() => import('./pages/ToolsPage'));
 
 import { ROUTE_TRANSLATIONS } from './i18n/types';
 import { initializeLanguage } from './i18n/utils';
@@ -252,6 +253,11 @@ export default function App() {
           {/* Fee Calculator — /:lang/calculateur-frais-carte-crypto, etc. */}
           {allSlugs('feeCalculator').map((slug) => (
             <Route key={`fee-calc-${slug}`} path={slug} element={<FeeCalculatorPage />} />
+          ))}
+
+          {/* Tools hub — /:lang/outils-carte-crypto, /krypto-karte-tools, etc. */}
+          {allSlugs('tools').map((slug) => (
+            <Route key={`tools-${slug}`} path={slug} element={<ToolsPage />} />
           ))}
 
           {/* Alternatives pages — /:lang/{brand}-alternatives, etc. (10 brands × 7 langs) */}
