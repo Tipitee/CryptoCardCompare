@@ -28,6 +28,7 @@ import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { generateCardContent } from '../utils/cardContent';
 import AutoLinker, { autoLinkHtml } from '../components/AutoLinker';
+import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
@@ -864,6 +865,19 @@ export default function CardDetail() {
               if (!isVirtual)
                 links.push({ to: `/${lang}/${THEMATIC_ROUTES.travel[lang as keyof typeof THEMATIC_ROUTES.travel] ?? 'crypto-card-travel'}`, icon: '✈️', label: t('common:travel_cards') });
               links.push({ to: `/${lang}/${THEMATIC_ROUTES['2026'][lang as keyof typeof THEMATIC_ROUTES['2026']] ?? 'best-crypto-card-2026'}`, icon: '🚀', label: t('common:cards_2026') });
+
+              // Alternatives link
+              if (card.brandId && ALT_BRAND_MAP[card.brandId as AltBrandId]) {
+                const altConfig = ALT_BRAND_MAP[card.brandId as AltBrandId];
+                const altSlug = altConfig.slugs[lang] ?? altConfig.slugs['fr'];
+                const ALT_CD_LABEL: Record<string, string> = {
+                  fr: `Alternatives à ${altConfig.displayName}`, be: `Alternatives à ${altConfig.displayName}`,
+                  de: `${altConfig.displayName} Alternativen`, at: `${altConfig.displayName} Alternativen`,
+                  es: `Alternativas a ${altConfig.displayName}`, it: `Alternative a ${altConfig.displayName}`,
+                  en: `${altConfig.displayName} Alternatives`,
+                };
+                links.push({ to: `/${lang}/${altSlug}`, icon: '🔄', label: ALT_CD_LABEL[lang] ?? `${altConfig.displayName} Alternatives` });
+              }
 
               // Calculator tools
               const rt2 = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;

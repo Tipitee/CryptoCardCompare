@@ -504,7 +504,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
     },
     copy: {
       fr: {
-        title: `Alternatives Wirex ${YEAR} — Cartes Crypto avec Meilleur Cashback`,
+        title: `Alternatives Wirex ${YEAR} — Meilleures Cartes Crypto`,
         h1: `Meilleures Alternatives à Wirex en ${YEAR}`,
         description: `Wirex est l'une des premières cartes crypto mais ses récompenses sont limitées. Découvrez les alternatives avec plus de cashback en ${YEAR}.`,
         intro: `Wirex est l'une des pionnières des cartes crypto (lancée en 2014), mais les nouvelles cartes DeFi-natives offrent des taux de cashback plus élevés et plus de flexibilité. En ${YEAR}, plusieurs alternatives surpassent Wirex sur le cashback pur.`,

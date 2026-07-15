@@ -15,7 +15,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import { useLanguage } from '../hooks/useLanguage';
 import { contentLang, ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
-import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
+import { ALT_BRANDS, ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
 const BASE = 'https://topcryptocards.eu';
 
@@ -87,6 +87,30 @@ const FAQ_LABEL: Record<string, string> = {
   de: 'Häufige Fragen', at: 'Häufige Fragen',
   es: 'Preguntas frecuentes', it: 'Domande frequenti',
   en: 'Frequently Asked Questions',
+};
+const HOW_TO_LABEL: Record<string, string> = {
+  fr: 'Comment choisir la meilleure alternative ?',
+  be: 'Comment choisir la meilleure alternative ?',
+  de: 'Wie wählt man die beste Alternative?',
+  at: 'Wie wählt man die beste Alternative?',
+  es: '¿Cómo elegir la mejor alternativa?',
+  it: 'Come scegliere la migliore alternativa?',
+  en: 'How to choose the best alternative?',
+};
+const HOW_TO_BODY: Record<string, string> = {
+  fr: 'Trois critères sont déterminants : (1) le taux de cashback crypto — comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels — certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking — bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
+  be: 'Trois critères sont déterminants : (1) le taux de cashback crypto — comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels — certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking — bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
+  de: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate — vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren — einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen — gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
+  at: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate — vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren — einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen — gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
+  es: 'Tres criterios son determinantes: (1) tasa de cashback en cripto — compara la tasa base sin staking y la tasa máxima accesible; (2) comisiones anuales — algunas tarjetas son completamente gratuitas, otras cobran hasta 400 €/año; (3) requisitos de staking — bloquear tokens en tu cartera representa un coste de oportunidad que debes incluir en tu cálculo de rendimiento real.',
+  it: 'Tre criteri sono determinanti: (1) tasso di cashback cripto — confronta il tasso base senza staking e il tasso massimo raggiungibile; (2) commissioni annuali — alcune carte sono completamente gratuite, altre costano fino a 400 €/anno; (3) requisiti di staking — bloccare token nel tuo portafoglio rappresenta un costo opportunità da includere nel calcolo del rendimento reale.',
+  en: 'Three criteria are decisive: (1) crypto cashback rate — compare the base rate without staking and the maximum accessible rate; (2) annual fees — some cards are entirely free, others charge up to €400/year; (3) staking requirements — locking tokens in your wallet represents an opportunity cost you must factor into your real yield calculation.',
+};
+const OTHER_ALTS_LABEL: Record<string, string> = {
+  fr: 'Autres comparatifs d\'alternatives', be: 'Autres comparatifs d\'alternatives',
+  de: 'Weitere Alternativen-Vergleiche', at: 'Weitere Alternativen-Vergleiche',
+  es: 'Otros comparativos de alternativas', it: 'Altri confronti di alternative',
+  en: 'Other alternatives comparisons',
 };
 
 /* ── Component ──────────────────────────────────────────────────────────────── */
@@ -307,6 +331,46 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
           💰 {lang === 'de' || lang === 'at' ? 'Cashback-Karten' : lang === 'es' ? 'Tarjetas cashback' : lang === 'it' ? 'Carte cashback' : lang === 'en' ? 'Cashback cards' : 'Cartes cashback'}
         </Link>
       </div>
+
+      {/* How to choose */}
+      <div className="mb-10 p-5 rounded-2xl border border-bg-border bg-bg-card">
+        <h2 className="text-lg font-semibold text-white mb-3">
+          {HOW_TO_LABEL[lang] ?? HOW_TO_LABEL.en}
+        </h2>
+        <p className="text-slate-300 text-sm leading-relaxed">
+          {HOW_TO_BODY[lang] ?? HOW_TO_BODY.en}
+        </p>
+      </div>
+
+      {/* Cross-links to other alternatives pages */}
+      {(() => {
+        const others = ALT_BRANDS.filter(b => b.brandId !== brand);
+        if (others.length === 0) return null;
+        const altSlugFn = (b: typeof others[0]) => b.slugs[lang] ?? b.slugs['fr'];
+        const ALT_PREFIX: Record<string, string> = {
+          fr: 'Alternatives', be: 'Alternatives',
+          de: 'Alternativen', at: 'Alternativen',
+          es: 'Alternativas', it: 'Alternative', en: 'Alternatives',
+        };
+        return (
+          <div className="mb-10">
+            <h2 className="text-base font-semibold text-slate-300 mb-3">
+              {OTHER_ALTS_LABEL[lang] ?? OTHER_ALTS_LABEL.en}
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {others.map(b => (
+                <Link
+                  key={b.brandId}
+                  to={`/${lang}/${altSlugFn(b)}`}
+                  className="px-3 py-1.5 rounded-lg bg-bg-elevated border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
+                >
+                  {ALT_PREFIX[lang] ?? 'Alternatives'} {b.displayName}
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* FAQ */}
       {copy.faq.length > 0 && (
