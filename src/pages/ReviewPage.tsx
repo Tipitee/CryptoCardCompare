@@ -254,7 +254,10 @@ const ISSUER_TO_BRAND: Record<string, string> = {
   'Crypto.com': 'crypto-com', 'Binance': 'binance', 'Bybit': 'bybit',
   'OKX': 'okx', 'Coinbase': 'coinbase', 'Nexo': 'nexo', 'Bitpanda': 'bitpanda',
   'Wirex': 'wirex', 'Ledger (Baanx)': 'ledger', 'Revolut': 'revolut',
-  'Bleap': 'bleap', 'Plutus': 'plutus', 'Gnosis': 'gnosis', 'Trade Republic': 'trade-republic',
+  'Bleap': 'bleap', 'Plutus': 'plutus', 'Trade Republic': 'trade-republic',
+  'Kraken': 'kraken', 'MetaMask': 'metamask',
+  'Gnosis Pay': 'gnosis-pay', 'Gnosis': 'gnosis-pay',
+  'Deblock': 'deblock', 'Brighty': 'brighty',
 };
 const SEE_ALL_TIERS: Record<string, string> = {
   fr: 'Voir toutes les cartes', de: 'Alle Karten ansehen',
