@@ -127,6 +127,22 @@ const URLS = [
   `${BASE}/fr/alternatives-brighty`,   `${BASE}/be/alternatives-brighty`,   `${BASE}/de/brighty-alternativen`,   `${BASE}/at/brighty-alternativen`,   `${BASE}/es/alternativas-brighty`,   `${BASE}/it/alternative-brighty`,   `${BASE}/en/brighty-alternatives`,
   `${BASE}/fr/alternatives-bleap`,     `${BASE}/be/alternatives-bleap`,     `${BASE}/de/bleap-alternativen`,     `${BASE}/at/bleap-alternativen`,     `${BASE}/es/alternativas-bleap`,     `${BASE}/it/alternative-bleap`,     `${BASE}/en/bleap-alternatives`,
 
+  // ── Blog posts refreshed (FAQ blocks added July 2026) ───────────────────────
+  `${BASE}/en/blog/gnosis-pay-review-2026`,
+  `${BASE}/en/blog/gnosis-pay-review-2026-self-custody-crypto-card-2-percent-cashback-eure`,
+  `${BASE}/en/blog/gnosis-pay-vs-metamask-card-self-custody`,
+  `${BASE}/fr/blog/avis-gnosis-pay-2026`,
+  `${BASE}/fr/blog/gnosis-pay-avis-2026`,
+  `${BASE}/fr/blog/gnosis-pay-vs-metamask-card-self-custody`,
+  `${BASE}/de/blog/gnosis-pay-vs-metamask-card-self-custody`,
+  `${BASE}/es/blog/gnosis-pay-vs-metamask-card-self-custody`,
+  `${BASE}/it/blog/gnosis-pay-vs-metamask-card-self-custody`,
+  `${BASE}/it/blog/confronto-bitpanda-card-vs-okx-card-2026`,
+  `${BASE}/it/blog/confronto-coinbase-card-vs-okx-card-2026`,
+  `${BASE}/it/blog/confronto-crypto-com-midnight-blue-vs-okx-card-2026`,
+  `${BASE}/it/blog/confronto-crypto-com-ruby-steel-vs-okx-card-2026`,
+  `${BASE}/it/blog/confronto-okx-card-vs-wirex-elite-2026`,
+
   // ── Tools hub ───────────────────────────────────────────────────────────────
   `${BASE}/fr/outils-carte-crypto`, `${BASE}/be/outils-carte-crypto`, `${BASE}/de/krypto-karte-tools`, `${BASE}/at/krypto-karte-tools`, `${BASE}/es/herramientas-tarjeta-crypto`, `${BASE}/it/strumenti-carta-crypto`, `${BASE}/en/crypto-card-tools`,
 ];

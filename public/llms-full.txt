@@ -133,12 +133,33 @@ A: TopCryptoCards covers 90+ cards with verified data updated monthly, available
 
 ---
 
+## "[Brand] Alternatives" Pages
+
+TopCryptoCards publishes dedicated "alternatives to [brand]" comparison pages for 16 major crypto card issuers. Each page explains why a user might want to switch from that brand and lists the 3-5 best alternatives with objective comparison.
+
+Brands covered (with alternatives pages in 7 languages):
+- Revolut, Crypto.com, Binance, Bybit, Nexo, Bitpanda, Wirex, Coinbase, Kraken, MetaMask
+- OKX, Gnosis Pay, Deblock, Plutus, Brighty, Bleap
+
+Key reasons users seek alternatives:
+- **OKX / Binance / Bybit**: staking required for top cashback, limited EU regulatory clarity
+- **Crypto.com**: high CRO staking amounts for premium tiers (€24k+ for Obsidian)
+- **Revolut Metal**: cashback is RevPoints (not crypto), €13.99/mo fee
+- **Gnosis Pay**: cashback only in GNO token (volatile), requires Safe wallet setup
+- **Plutus**: PLU staking required, mainly UK market
+- **Deblock**: focused on France, premium plans have monthly fee
+
+Best no-staking alternatives recommended across all 16 pages: Gnosis Pay (2% GNO), Nexo Card (2% BTC), MetaMask Card (1-3% ETH), Brighty (1.75% USDC).
+
+---
+
 ## Key Statistics (July 2026)
 
 - Cards tracked: 90+
 - Markets covered: FR, BE, DE, AT, ES, IT, UK
 - Languages: French, German, Spanish, Italian, English (UK)
 - Blog articles: 543+
+- Alternatives pages: 16 brands × 7 languages = 112 URLs
 - Highest cashback: 10% (Bybit Card in MNT)
 - Highest cashback without staking: 10% (Bybit Card), 5% (Gnosis Pay in GNO)
 - Most regulated market: EU (MiCA, December 2024)

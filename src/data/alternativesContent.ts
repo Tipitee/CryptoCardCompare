@@ -513,7 +513,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         faq: [
           ['Quelle alternative à Wirex offre le meilleur cashback crypto ?', `Gnosis Pay (2% GNO), MetaMask Card (1% ETH) et Nexo Card (2% BTC) offrent des taux compétitifs sans token propriétaire imposé.`],
           ['Wirex est-elle encore une bonne carte en ${YEAR} ?', `Wirex reste une option valide, notamment pour les marchés émergents où d'autres cartes ne sont pas disponibles. En Europe, les alternatives modernes offrent généralement de meilleurs avantages.`],
-          ['Y a-t-il des alternatives à Wirex disponibles dans toute l’Europe ?', `Oui — Gnosis Pay, MetaMask Card et Nexo Card sont toutes disponibles dans l'UE.`],
+          ["Y a-t-il des alternatives à Wirex disponibles dans toute l’Europe ?", `Oui — Gnosis Pay, MetaMask Card et Nexo Card sont toutes disponibles dans l’UE.`],
         ],
       },
       de: {
@@ -817,7 +817,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         reason: `Le cashback maximal de la OKX Card nécessite du staking OKB, exposant l'utilisateur à la volatilité d'un token d'exchange propriétaire.`,
         faq: [
           ['Quelle alternative à OKX Card offre du cashback sans staking ?', `Gnosis Pay (2% en GNO), MetaMask Card (1% en ETH) et Nexo Card (jusqu'à 2% en BTC) offrent toutes du cashback sans staking requis.`],
-          ['OKX Card est-elle disponible dans toute l'Europe ?', `OKX Card est disponible dans plusieurs pays européens mais son déploiement est limité en raison des exigences MiCA. Vérifiez la disponibilité sur le site OKX.`],
+          ["OKX Card est-elle disponible dans toute l'Europe ?", `OKX Card est disponible dans plusieurs pays européens mais son déploiement est limité en raison des exigences MiCA. Vérifiez la disponibilité sur le site OKX.`],
           ['Les alternatives à OKX Card ont-elles des frais annuels ?', `Gnosis Pay, MetaMask Card et Brighty sont disponibles sans frais annuels d'abonnement.`],
         ],
       },
@@ -891,7 +891,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         reason: `Gnosis Pay nécessite un Safe wallet on-chain et le cashback est uniquement en GNO, ce qui expose à la volatilité de ce token.`,
         faq: [
           ['Quelle alternative à Gnosis Pay offre du cashback sans staking ?', `MetaMask Card (1-3% en ETH), Nexo Card (2% en BTC) et Brighty (1.75% en USDC) offrent toutes du cashback sans staking, chacune dans un token différent.`],
-          ['Gnosis Pay est-elle disponible dans toute l'Europe ?', `Oui, Gnosis Pay est disponible dans tous les pays de l'UE via son émetteur régulé MiCA — l'une des plus accessibles en Europe.`],
+          ["Gnosis Pay est-elle disponible dans toute l'Europe ?", `Oui, Gnosis Pay est disponible dans tous les pays de l'UE via son émetteur régulé MiCA — l'une des plus accessibles en Europe.`],
           ['Différence entre Gnosis Pay et MetaMask Card ?', `Gnosis Pay se règle sur la Gnosis Chain (xDAI) avec 2% en GNO. MetaMask Card débite votre wallet Ethereum avec 1-3% en ETH. Les deux sont on-chain sans staking.`],
         ],
       },
@@ -1113,7 +1113,7 @@ export const ALT_BRANDS: AltBrandConfig[] = [
         reason: `Le cashback de Brighty est plafonné à 1.75% en USDC (stablecoin). Pour un cashback plus élevé ou dans des cryptos à plus fort potentiel comme BTC ou ETH, des alternatives existent.`,
         faq: [
           ['Quelle alternative à Brighty offre un cashback plus élevé ?', `Gnosis Pay offre 2% en GNO, Nexo Card 2% en BTC et MetaMask Card jusqu'à 3% en ETH selon le volume — toutes sans staking.`],
-          ['Brighty est-elle disponible dans toute l'Europe ?', `Oui, Brighty est disponible dans l'UE avec un IBAN européen inclus — l'une des rares cartes crypto à proposer les deux.`],
+          ["Brighty est-elle disponible dans toute l'Europe ?", `Oui, Brighty est disponible dans l'UE avec un IBAN européen inclus — l'une des rares cartes crypto à proposer les deux.`],
           ['Différence entre Brighty et Gnosis Pay ?', `Brighty offre 1.75% en USDC (stablecoin, sans volatilité). Gnosis Pay offre 2% en GNO (crypto volatile). Brighty est plus sécurisée côté cashback ; Gnosis Pay offre un meilleur taux.`],
         ],
       },
