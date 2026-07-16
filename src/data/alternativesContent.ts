@@ -5,7 +5,8 @@
 
 export type AltBrandId =
   | 'revolut' | 'crypto-com' | 'binance' | 'bybit' | 'nexo'
-  | 'bitpanda' | 'wirex' | 'coinbase' | 'kraken' | 'metamask';
+  | 'bitpanda' | 'wirex' | 'coinbase' | 'kraken' | 'metamask'
+  | 'okx' | 'gnosis-pay' | 'deblock' | 'plutus' | 'brighty' | 'bleap';
 
 export type AltCopy = {
   title: string;        // ≤60 chars SEO title
@@ -792,6 +793,450 @@ export const ALT_BRANDS: AltBrandConfig[] = [
           ['Which card offers more cashback than MetaMask Card?', `Gnosis Pay offers 2% in GNO. Nexo Card offers up to 2% in BTC. Crypto.com up to 8% in CRO depending on staking.`],
           ['MetaMask Card vs Gnosis Pay: which to choose?', `For cashback with no staking, Gnosis Pay (2% GNO) beats MetaMask Card (1% ETH) on rate. MetaMask Card is better if you don't want GNO exposure.`],
           ['Are there MetaMask Card alternatives with BTC cashback?', `Yes — Nexo Card offers up to 2% in BTC depending on your NEXO portfolio ratio.`],
+        ],
+      },
+    },
+  },
+
+  // ─── OKX ───────────────────────────────────────────────────────────────────
+  {
+    brandId: 'okx',
+    displayName: 'OKX',
+    slugs: {
+      fr: 'alternatives-okx', be: 'alternatives-okx',
+      de: 'okx-alternativen',  at: 'okx-alternativen',
+      es: 'alternativas-okx',  it: 'alternative-okx',
+      en: 'okx-card-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à OKX Card ${YEAR} — Sans Staking OKB`,
+        h1: `Les Meilleures Alternatives à OKX Card en ${YEAR}`,
+        description: `OKX Card requiert du staking OKB pour ses meilleurs taux. Découvrez 5 alternatives avec cashback crypto sans immobilisation de capital.`,
+        intro: `La OKX Card offre jusqu'à 3% de cashback en OKB mais les tiers supérieurs nécessitent de staker le token natif d'OKX, vous exposant à sa volatilité. Si vous souhaitez du cashback crypto sans contrainte de staking, plusieurs alternatives européennes existent en ${YEAR}.`,
+        reason: `Le cashback maximal de la OKX Card nécessite du staking OKB, exposant l'utilisateur à la volatilité d'un token d'exchange propriétaire.`,
+        faq: [
+          ['Quelle alternative à OKX Card offre du cashback sans staking ?', `Gnosis Pay (2% en GNO), MetaMask Card (1% en ETH) et Nexo Card (jusqu'à 2% en BTC) offrent toutes du cashback sans staking requis.`],
+          ['OKX Card est-elle disponible dans toute l'Europe ?', `OKX Card est disponible dans plusieurs pays européens mais son déploiement est limité en raison des exigences MiCA. Vérifiez la disponibilité sur le site OKX.`],
+          ['Les alternatives à OKX Card ont-elles des frais annuels ?', `Gnosis Pay, MetaMask Card et Brighty sont disponibles sans frais annuels d'abonnement.`],
+        ],
+      },
+      de: {
+        title: `OKX Alternativen ${YEAR} — Ohne OKB-Staking`,
+        h1: `Beste OKX Card Alternativen in ${YEAR}`,
+        description: `OKX Card verlangt OKB-Staking für die besten Cashback-Raten. Entdecken Sie 5 Alternativen mit Krypto-Cashback ohne Kapitalimmobilisierung.`,
+        intro: `Die OKX Card bietet bis zu 3% Cashback in OKB, aber die höheren Stufen erfordern das Staking von OKB-Token, was Sie der Volatilität dieses Exchange-Tokens aussetzt. Wer Krypto-Cashback ohne Staking-Pflicht sucht, findet ${YEAR} in Europa mehrere Alternativen.`,
+        reason: `Der maximale Cashback der OKX Card erfordert OKB-Staking, was Nutzer der Volatilität eines proprietären Exchange-Tokens aussetzt.`,
+        faq: [
+          ['Welche OKX Card-Alternative bietet Cashback ohne Staking?', `Gnosis Pay (2% in GNO), MetaMask Card (1% in ETH) und Nexo Card (bis 2% in BTC) bieten alle Cashback ohne Staking-Anforderung.`],
+          ['Ist OKX Card in ganz Europa verfügbar?', `OKX Card ist in mehreren europäischen Ländern verfügbar, aber die Einführung ist aufgrund der MiCA-Anforderungen eingeschränkt.`],
+          ['Haben OKX Card-Alternativen Jahresgebühren?', `Gnosis Pay, MetaMask Card und Brighty sind alle ohne Jahresgebühr erhältlich.`],
+        ],
+      },
+      es: {
+        title: `Alternativas OKX Card ${YEAR} — Sin Staking OKB`,
+        h1: `Las Mejores Alternativas a OKX Card en ${YEAR}`,
+        description: `OKX Card requiere staking de OKB para sus mejores tasas. Descubre 5 alternativas con cashback en cripto sin inmovilización de capital.`,
+        intro: `La OKX Card ofrece hasta 3% de cashback en OKB pero los niveles superiores requieren hacer staking del token nativo de OKX, exponiéndote a su volatilidad. Si buscas cashback en cripto sin requisitos de staking, varias alternativas europeas están disponibles en ${YEAR}.`,
+        reason: `El cashback máximo de OKX Card requiere staking de OKB, exponiendo al usuario a la volatilidad de un token de exchange propietario.`,
+        faq: [
+          ['¿Qué alternativa a OKX Card ofrece cashback sin staking?', `Gnosis Pay (2% en GNO), MetaMask Card (1% en ETH) y Nexo Card (hasta 2% en BTC) ofrecen cashback sin requisito de staking.`],
+          ['¿OKX Card está disponible en toda Europa?', `OKX Card está disponible en varios países europeos pero su despliegue es limitado debido a los requisitos MiCA.`],
+          ['¿Las alternativas a OKX Card tienen comisiones anuales?', `Gnosis Pay, MetaMask Card y Brighty están disponibles sin comisiones anuales de suscripción.`],
+        ],
+      },
+      it: {
+        title: `Alternative OKX Card ${YEAR} — Senza Staking OKB`,
+        h1: `Le Migliori Alternative a OKX Card nel ${YEAR}`,
+        description: `OKX Card richiede staking di OKB per i migliori tassi. Scopri 5 alternative con cashback in cripto senza immobilizzazione di capitale.`,
+        intro: `La OKX Card offre fino al 3% di cashback in OKB, ma i livelli superiori richiedono lo staking del token nativo di OKX, esponendoti alla sua volatilità. Se cerchi cashback in cripto senza vincoli di staking, nel ${YEAR} esistono diverse alternative europee.`,
+        reason: `Il cashback massimo di OKX Card richiede staking di OKB, esponendo l'utente alla volatilità di un token di exchange proprietario.`,
+        faq: [
+          ['Quale alternativa a OKX Card offre cashback senza staking?', `Gnosis Pay (2% in GNO), MetaMask Card (1% in ETH) e Nexo Card (fino al 2% in BTC) offrono cashback senza requisiti di staking.`],
+          ['OKX Card è disponibile in tutta Europa?', `OKX Card è disponibile in diversi paesi europei ma il suo deployment è limitato a causa dei requisiti MiCA.`],
+          ['Le alternative a OKX Card hanno commissioni annuali?', `Gnosis Pay, MetaMask Card e Brighty sono disponibili senza commissioni annuali di abbonamento.`],
+        ],
+      },
+      en: {
+        title: `OKX Card Alternatives ${YEAR} — No OKB Staking`,
+        h1: `The Best OKX Card Alternatives in ${YEAR}`,
+        description: `OKX Card requires OKB staking for top cashback rates. Discover 5 alternatives with crypto cashback and no capital lock-up required.`,
+        intro: `OKX Card offers up to 3% cashback in OKB but higher tiers require staking OKX's native token, exposing you to its price volatility. If you want crypto cashback without staking requirements, several European alternatives are available in ${YEAR}.`,
+        reason: `OKX Card's maximum cashback requires OKB staking, exposing users to the volatility of a proprietary exchange token.`,
+        faq: [
+          ['Which OKX Card alternative offers cashback without staking?', `Gnosis Pay (2% in GNO), MetaMask Card (1% in ETH) and Nexo Card (up to 2% in BTC) all offer cashback with no staking requirement.`],
+          ['Is OKX Card available across Europe?', `OKX Card is available in several European countries but its rollout is limited due to MiCA requirements. Check availability on the OKX website.`],
+          ['Do OKX Card alternatives have annual fees?', `Gnosis Pay, MetaMask Card and Brighty are all available with no annual subscription fee.`],
+        ],
+      },
+    },
+  },
+
+  // ─── GNOSIS PAY ────────────────────────────────────────────────────────────
+  {
+    brandId: 'gnosis-pay',
+    displayName: 'Gnosis Pay',
+    slugs: {
+      fr: 'alternatives-gnosis-pay', be: 'alternatives-gnosis-pay',
+      de: 'gnosis-pay-alternativen',  at: 'gnosis-pay-alternativen',
+      es: 'alternativas-gnosis-pay',  it: 'alternative-gnosis-pay',
+      en: 'gnosis-pay-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à Gnosis Pay ${YEAR} — Cartes On-Chain`,
+        h1: `Meilleures Alternatives à Gnosis Pay en ${YEAR}`,
+        description: `Gnosis Pay est la seule carte on-chain en Europe. Découvrez les alternatives avec cashback crypto et différentes approches de garde des actifs.`,
+        intro: `Gnosis Pay est une carte crypto unique : elle se règle directement sur la Gnosis Chain avec 2% de cashback en GNO sans staking. Si vous cherchez une alternative avec un cashback dans d'autres tokens ou une garde d'actifs différente, voici les meilleures options en ${YEAR}.`,
+        reason: `Gnosis Pay nécessite un Safe wallet on-chain et le cashback est uniquement en GNO, ce qui expose à la volatilité de ce token.`,
+        faq: [
+          ['Quelle alternative à Gnosis Pay offre du cashback sans staking ?', `MetaMask Card (1-3% en ETH), Nexo Card (2% en BTC) et Brighty (1.75% en USDC) offrent toutes du cashback sans staking, chacune dans un token différent.`],
+          ['Gnosis Pay est-elle disponible dans toute l'Europe ?', `Oui, Gnosis Pay est disponible dans tous les pays de l'UE via son émetteur régulé MiCA — l'une des plus accessibles en Europe.`],
+          ['Différence entre Gnosis Pay et MetaMask Card ?', `Gnosis Pay se règle sur la Gnosis Chain (xDAI) avec 2% en GNO. MetaMask Card débite votre wallet Ethereum avec 1-3% en ETH. Les deux sont on-chain sans staking.`],
+        ],
+      },
+      de: {
+        title: `Gnosis Pay Alternativen ${YEAR} — On-Chain Karten`,
+        h1: `Beste Gnosis Pay Alternativen in ${YEAR}`,
+        description: `Gnosis Pay ist die einzige On-Chain-Karte in Europa. Entdecken Sie Alternativen mit Krypto-Cashback und verschiedenen Asset-Verwahrungsansätzen.`,
+        intro: `Gnosis Pay ist eine einzigartige Krypto-Karte: Sie wird direkt auf der Gnosis Chain mit 2% GNO-Cashback ohne Staking abgerechnet. Wer eine Alternative mit Cashback in anderen Token oder anderer Asset-Verwahrung sucht, findet hier ${YEAR} die besten Optionen.`,
+        reason: `Gnosis Pay erfordert ein On-Chain Safe Wallet und das Cashback ist ausschließlich in GNO, was ein GNO-Volatilitätsrisiko mit sich bringt.`,
+        faq: [
+          ['Welche Gnosis Pay-Alternative bietet Cashback ohne Staking?', `MetaMask Card (1-3% in ETH), Nexo Card (2% in BTC) und Brighty (1,75% in USDC) bieten alle Cashback ohne Staking, jeweils in unterschiedlichen Token.`],
+          ['Ist Gnosis Pay in ganz Europa verfügbar?', `Ja, Gnosis Pay ist in allen EU-Ländern über seinen MiCA-regulierten Emittenten verfügbar — eine der zugänglichsten Krypto-Karten Europas.`],
+          ['Unterschied zwischen Gnosis Pay und MetaMask Card?', `Gnosis Pay wird auf der Gnosis Chain (xDAI) mit 2% in GNO abgerechnet. MetaMask Card belastet Ihr Ethereum-Wallet mit 1-3% in ETH. Beide sind On-Chain-Karten ohne Staking.`],
+        ],
+      },
+      es: {
+        title: `Alternativas Gnosis Pay ${YEAR} — Tarjetas On-Chain`,
+        h1: `Las Mejores Alternativas a Gnosis Pay en ${YEAR}`,
+        description: `Gnosis Pay es la única tarjeta on-chain de Europa. Descubre alternativas con cashback en cripto y diferentes enfoques de custodia de activos.`,
+        intro: `Gnosis Pay es una tarjeta crypto única: se liquida directamente en Gnosis Chain con 2% de cashback en GNO sin staking. Si buscas una alternativa con cashback en otros tokens o custodia de activos diferente, aquí están las mejores opciones para ${YEAR}.`,
+        reason: `Gnosis Pay requiere un Safe wallet on-chain y el cashback es solo en GNO, lo que expone a la volatilidad de este token.`,
+        faq: [
+          ['¿Qué alternativa a Gnosis Pay ofrece cashback sin staking?', `MetaMask Card (1-3% en ETH), Nexo Card (2% en BTC) y Brighty (1,75% en USDC) ofrecen cashback sin staking, cada una en un token diferente.`],
+          ['¿Gnosis Pay está disponible en toda Europa?', `Sí, Gnosis Pay está disponible en todos los países de la UE a través de su emisor regulado MiCA.`],
+          ['¿Diferencia entre Gnosis Pay y MetaMask Card?', `Gnosis Pay se liquida en Gnosis Chain (xDAI) con 2% en GNO. MetaMask Card debita tu wallet Ethereum con 1-3% en ETH. Ambas son on-chain sin staking.`],
+        ],
+      },
+      it: {
+        title: `Alternative Gnosis Pay ${YEAR} — Carte On-Chain`,
+        h1: `Le Migliori Alternative a Gnosis Pay nel ${YEAR}`,
+        description: `Gnosis Pay è l'unica carta on-chain in Europa. Scopri alternative con cashback in cripto e diversi approcci alla custodia degli asset.`,
+        intro: `Gnosis Pay è una carta crypto unica: si regola direttamente sulla Gnosis Chain con 2% di cashback in GNO senza staking. Se cerchi un'alternativa con cashback in altri token o diversa custodia degli asset, ecco le migliori opzioni nel ${YEAR}.`,
+        reason: `Gnosis Pay richiede un Safe wallet on-chain e il cashback è solo in GNO, esponendo alla volatilità di questo token.`,
+        faq: [
+          ['Quale alternativa a Gnosis Pay offre cashback senza staking?', `MetaMask Card (1-3% in ETH), Nexo Card (2% in BTC) e Brighty (1,75% in USDC) offrono cashback senza staking, ciascuna in token diversi.`],
+          ['Gnosis Pay è disponibile in tutta Europa?', `Sì, Gnosis Pay è disponibile in tutti i paesi UE tramite il suo emittente regolamentato MiCA.`],
+          ['Differenza tra Gnosis Pay e MetaMask Card?', `Gnosis Pay si regola sulla Gnosis Chain (xDAI) con 2% in GNO. MetaMask Card addebita il tuo wallet Ethereum con 1-3% in ETH. Entrambe sono on-chain senza staking.`],
+        ],
+      },
+      en: {
+        title: `Gnosis Pay Alternatives ${YEAR} — On-Chain Cards`,
+        h1: `The Best Gnosis Pay Alternatives in ${YEAR}`,
+        description: `Gnosis Pay is Europe's only on-chain card. Discover alternatives with crypto cashback and different approaches to asset custody.`,
+        intro: `Gnosis Pay is a unique crypto card: it settles directly on the Gnosis Chain with 2% GNO cashback and no staking. If you want an alternative with cashback in different tokens or a different custody model, here are the best options for ${YEAR}.`,
+        reason: `Gnosis Pay requires an on-chain Safe wallet and cashback is exclusively in GNO, exposing users to GNO price volatility.`,
+        faq: [
+          ['Which Gnosis Pay alternative offers cashback without staking?', `MetaMask Card (1-3% in ETH), Nexo Card (2% in BTC) and Brighty (1.75% in USDC) all offer cashback without staking, each in a different token.`],
+          ['Is Gnosis Pay available across Europe?', `Yes, Gnosis Pay is available in all EU countries through its MiCA-regulated issuer — one of the most accessible crypto cards in Europe.`],
+          ['What is the difference between Gnosis Pay and MetaMask Card?', `Gnosis Pay settles on-chain on Gnosis Chain (xDAI) with 2% in GNO. MetaMask Card debits your Ethereum wallet with 1-3% in ETH. Both are no-staking on-chain cards.`],
+        ],
+      },
+    },
+  },
+
+  // ─── DEBLOCK ───────────────────────────────────────────────────────────────
+  {
+    brandId: 'deblock',
+    displayName: 'Deblock',
+    slugs: {
+      fr: 'alternatives-deblock', be: 'alternatives-deblock',
+      de: 'deblock-alternativen',  at: 'deblock-alternativen',
+      es: 'alternativas-deblock',  it: 'alternative-deblock',
+      en: 'deblock-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à Deblock ${YEAR} — Cartes Crypto EU`,
+        h1: `Meilleures Alternatives à Deblock en ${YEAR}`,
+        description: `Deblock est centrée sur la France. Découvrez les alternatives avec cashback BTC/ETH disponibles dans toute l'Europe en ${YEAR}.`,
+        intro: `Deblock est une néobanque française crypto-native proposant du cashback en BTC ou ETH. Si vous résidez hors de France ou souhaitez une carte avec une couverture européenne plus large ou sans abonnement premium, plusieurs alternatives offrent des avantages similaires en ${YEAR}.`,
+        reason: `Deblock est principalement disponible en France et les plans premium ont un coût mensuel. Des alternatives pan-européennes offrent un cashback crypto sans abonnement.`,
+        faq: [
+          ['Quelle alternative à Deblock propose du cashback en BTC sans abonnement ?', `Nexo Card offre 2% de cashback en BTC sans frais mensuels. Gnosis Pay offre 2% en GNO sans abonnement.`],
+          ['Les alternatives à Deblock sont-elles disponibles partout en Europe ?', `Oui — Gnosis Pay, MetaMask Card et Brighty sont disponibles dans tous les pays de l'UE, contrairement à Deblock qui se concentre sur la France.`],
+          ['Deblock vaut-il mieux que Brighty pour le cashback crypto ?', `Les deux sont des cartes sans staking. Deblock propose du cashback en BTC/ETH ; Brighty propose 1.75% en USDC. Les deux sont d'excellentes options pour les résidents français.`],
+        ],
+      },
+      de: {
+        title: `Deblock Alternativen ${YEAR} — Krypto-Karten Europa`,
+        h1: `Beste Deblock Alternativen in ${YEAR}`,
+        description: `Deblock ist hauptsächlich in Frankreich verfügbar. Entdecken Sie europäische Alternativen mit BTC/ETH-Cashback ohne monatliches Abonnement.`,
+        intro: `Deblock ist eine französische Krypto-Neobank mit Cashback in BTC oder ETH. Wer außerhalb Frankreichs wohnt oder eine in ganz Europa verfügbare Karte ohne Premium-Abo sucht, findet hier ${YEAR} die besten Alternativen.`,
+        reason: `Deblock ist hauptsächlich für den französischen Markt verfügbar, und Premium-Pläne erfordern ein monatliches Abonnement.`,
+        faq: [
+          ['Welche Deblock-Alternative bietet BTC-Cashback ohne Abonnement?', `Nexo Card bietet 2% Cashback in BTC ohne monatliche Gebühren. Gnosis Pay bietet 2% in GNO ohne Abonnement.`],
+          ['Sind Deblock-Alternativen in ganz Europa verfügbar?', `Ja — Gnosis Pay, MetaMask Card und Brighty sind in allen EU-Ländern verfügbar, im Gegensatz zu Deblock, das sich auf Frankreich konzentriert.`],
+          ['Ist Deblock besser als Brighty für Krypto-Cashback?', `Beide sind Karten ohne Staking. Deblock bietet Cashback in BTC/ETH; Brighty 1,75% in USDC. Beide sind für Frankreich-Residenten hervorragende Optionen.`],
+        ],
+      },
+      es: {
+        title: `Alternativas a Deblock ${YEAR} — Cripto Europa`,
+        h1: `Las Mejores Alternativas a Deblock en ${YEAR}`,
+        description: `Deblock es principalmente para Francia. Descubre alternativas con cashback en BTC/ETH disponibles en toda Europa sin suscripción mensual.`,
+        intro: `Deblock es un neobanco crypto francés con cashback en BTC o ETH. Si vives fuera de Francia o buscas una tarjeta disponible en más países europeos sin abonarte a un plan premium, varias alternativas ofrecen ventajas similares en ${YEAR}.`,
+        reason: `Deblock está disponible principalmente en Francia y los planes premium tienen un coste mensual.`,
+        faq: [
+          ['¿Qué alternativa a Deblock ofrece cashback en BTC sin suscripción?', `Nexo Card ofrece 2% de cashback en BTC sin comisiones mensuales. Gnosis Pay ofrece 2% en GNO sin suscripción.`],
+          ['¿Las alternativas a Deblock están disponibles en toda Europa?', `Sí — Gnosis Pay, MetaMask Card y Brighty están disponibles en todos los países de la UE, a diferencia de Deblock que se centra en Francia.`],
+          ['¿Es Deblock mejor que Brighty para el cashback crypto?', `Ambas son tarjetas sin staking. Deblock ofrece cashback en BTC/ETH; Brighty 1,75% en USDC. Ambas son excelentes opciones para residentes en Francia.`],
+        ],
+      },
+      it: {
+        title: `Alternative Deblock ${YEAR} — Carte Crypto Europa`,
+        h1: `Le Migliori Alternative a Deblock nel ${YEAR}`,
+        description: `Deblock è per la Francia. Alternative con cashback BTC/ETH disponibili in tutta Europa senza abbonamento mensile.`,
+        intro: `Deblock è una neobank crypto francese con cashback in BTC o ETH. Se risiedi fuori dalla Francia o cerchi una carta con copertura europea più ampia senza abbonamento premium, nel ${YEAR} esistono diverse alternative valide.`,
+        reason: `Deblock è principalmente disponibile per il mercato francese e i piani premium prevedono un abbonamento mensile.`,
+        faq: [
+          ['Quale alternativa a Deblock offre cashback in BTC senza abbonamento?', `Nexo Card offre il 2% di cashback in BTC senza commissioni mensili. Gnosis Pay offre il 2% in GNO senza abbonamento.`],
+          ['Le alternative a Deblock sono disponibili in tutta Europa?', `Sì — Gnosis Pay, MetaMask Card e Brighty sono disponibili in tutti i paesi UE, a differenza di Deblock che si concentra sulla Francia.`],
+          ['Deblock è migliore di Brighty per il cashback cripto?', `Entrambe sono carte senza staking. Deblock offre cashback in BTC/ETH; Brighty 1,75% in USDC. Entrambe sono ottime opzioni per i residenti in Francia.`],
+        ],
+      },
+      en: {
+        title: `Deblock Alternatives ${YEAR} — European Crypto Cards`,
+        h1: `The Best Deblock Alternatives in ${YEAR}`,
+        description: `Deblock focuses on France. Discover alternatives with BTC/ETH cashback available across Europe without monthly subscription fees.`,
+        intro: `Deblock is a French crypto-native neobank offering cashback in BTC or ETH. If you live outside France or want a card available across more European countries without a premium subscription, several alternatives offer similar benefits in ${YEAR}.`,
+        reason: `Deblock is mainly available in France and premium plans require a monthly subscription fee.`,
+        faq: [
+          ['Which Deblock alternative offers BTC cashback without a subscription?', `Nexo Card offers 2% cashback in BTC with no monthly fees. Gnosis Pay offers 2% in GNO with no subscription.`],
+          ['Are Deblock alternatives available across Europe?', `Yes — Gnosis Pay, MetaMask Card and Brighty are available in all EU countries, unlike Deblock which focuses on France.`],
+          ['Is Deblock better than Brighty for crypto cashback?', `Both are no-staking cards. Deblock offers cashback in BTC/ETH; Brighty offers 1.75% in USDC. Both are excellent options for French residents.`],
+        ],
+      },
+    },
+  },
+
+  // ─── PLUTUS ────────────────────────────────────────────────────────────────
+  {
+    brandId: 'plutus',
+    displayName: 'Plutus',
+    slugs: {
+      fr: 'alternatives-plutus', be: 'alternatives-plutus',
+      de: 'plutus-alternativen',  at: 'plutus-alternativen',
+      es: 'alternativas-plutus',  it: 'alternative-plutus',
+      en: 'plutus-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à Plutus ${YEAR} — Cartes Crypto EU`,
+        h1: `Meilleures Alternatives à Plutus en ${YEAR}`,
+        description: `Plutus Card offre du cashback en PLU avec staking et est surtout disponible au Royaume-Uni. Découvrez les alternatives européennes sans staking.`,
+        intro: `Plutus est une carte crypto britannique proposant du cashback en PLU (son token natif) avec des exigences de staking. Si vous cherchez une carte disponible en France ou dans l'UE avec du cashback sans staking, plusieurs alternatives pertinentes existent en ${YEAR}.`,
+        reason: `Plutus nécessite du staking de PLU, est principalement disponible au Royaume-Uni, et le cashback en PLU expose à la volatilité de ce token.`,
+        faq: [
+          ['Quelle alternative à Plutus est disponible en France ?', `Gnosis Pay, MetaMask Card, Brighty et Nexo Card sont toutes disponibles en France et dans l'UE, offrant du cashback crypto sans staking requis.`],
+          ['Plutus est-elle disponible en France ?', `Plutus est principalement disponible au Royaume-Uni. Sa disponibilité dans l'UE est limitée — vérifiez sur le site Plutus pour votre pays.`],
+          ['Quelle carte ressemble le plus à Plutus sans le staking PLU ?', `Brighty est la plus similaire : carte crypto EU avec cashback sans staking. MetaMask Card est aussi une excellente alternative on-chain.`],
+        ],
+      },
+      de: {
+        title: `Plutus Alternativen ${YEAR} — Krypto-Karten EU`,
+        h1: `Beste Plutus Alternativen in ${YEAR}`,
+        description: `Plutus Card bietet PLU-Cashback mit Staking-Pflicht und ist hauptsächlich in Großbritannien verfügbar. Europäische Alternativen ohne Staking.`,
+        intro: `Plutus ist eine britische Krypto-Karte mit Cashback in PLU (dem nativen Token) mit Staking-Anforderungen. Wer eine in Deutschland oder der EU verfügbare Karte ohne Staking sucht, findet hier ${YEAR} die besten Alternativen.`,
+        reason: `Plutus erfordert PLU-Staking für maximale Vorteile, ist hauptsächlich in Großbritannien verfügbar, und das PLU-Cashback setzt Nutzer der Token-Volatilität aus.`,
+        faq: [
+          ['Welche Plutus-Alternative ist in Deutschland verfügbar?', `Gnosis Pay, MetaMask Card, Brighty und Nexo Card sind alle in Deutschland und der EU verfügbar mit Krypto-Cashback ohne Staking.`],
+          ['Ist Plutus in Deutschland verfügbar?', `Plutus ist hauptsächlich im Vereinigten Königreich verfügbar. Die EU-Verfügbarkeit ist eingeschränkt — prüfen Sie die Plutus-Website für Ihr Land.`],
+          ['Welche Karte ähnelt Plutus am meisten ohne PLU-Staking?', `Brighty ist am ähnlichsten: EU-Krypto-Karte mit Cashback ohne Staking. MetaMask Card ist ebenfalls eine gute On-Chain-Alternative.`],
+        ],
+      },
+      es: {
+        title: `Alternativas a Plutus ${YEAR} — Tarjetas Crypto EU`,
+        h1: `Las Mejores Alternativas a Plutus en ${YEAR}`,
+        description: `Plutus Card ofrece cashback en PLU con staking requerido y está principalmente en el Reino Unido. Descubre alternativas europeas sin staking.`,
+        intro: `Plutus es una tarjeta crypto británica con cashback en PLU con requisitos de staking. Si buscas una tarjeta disponible en España o en la UE con cashback sin staking, en ${YEAR} existen varias alternativas relevantes.`,
+        reason: `Plutus requiere staking de PLU, está principalmente en el Reino Unido, y el cashback en PLU expone a la volatilidad del token.`,
+        faq: [
+          ['¿Qué alternativa a Plutus está disponible en España?', `Gnosis Pay, MetaMask Card, Brighty y Nexo Card están disponibles en España y en la UE, ofreciendo cashback en cripto sin staking.`],
+          ['¿Plutus está disponible en España?', `Plutus está principalmente en el Reino Unido. Su disponibilidad en la UE es limitada — verifica en el sitio de Plutus para tu país.`],
+          ['¿Qué tarjeta se parece más a Plutus sin el staking de PLU?', `Brighty es la más similar: tarjeta crypto EU con cashback sin staking. MetaMask Card es también una buena alternativa on-chain.`],
+        ],
+      },
+      it: {
+        title: `Alternative Plutus ${YEAR} — Carte Crypto EU`,
+        h1: `Le Migliori Alternative a Plutus nel ${YEAR}`,
+        description: `Plutus Card offre cashback in PLU con staking obbligatorio ed è principalmente nel Regno Unito. Scopri alternative europee senza staking.`,
+        intro: `Plutus è una carta crypto britannica con cashback in PLU con requisiti di staking. Se cerchi una carta disponibile in Italia o nell'UE con cashback senza staking, nel ${YEAR} esistono diverse alternative valide.`,
+        reason: `Plutus richiede lo staking di PLU, è principalmente nel Regno Unito, e il cashback in PLU espone alla volatilità del token.`,
+        faq: [
+          ['Quale alternativa a Plutus è disponibile in Italia?', `Gnosis Pay, MetaMask Card, Brighty e Nexo Card sono tutte disponibili in Italia e nell'UE con cashback cripto senza staking.`],
+          ['Plutus è disponibile in Italia?', `Plutus è principalmente nel Regno Unito. La disponibilità nell'UE è limitata — verifica sul sito Plutus per il tuo paese.`],
+          ['Quale carta assomiglia di più a Plutus senza lo staking PLU?', `Brighty è la più simile: carta crypto EU con cashback senza staking. MetaMask Card è anche una buona alternativa on-chain.`],
+        ],
+      },
+      en: {
+        title: `Plutus Alternatives ${YEAR} — EU Crypto Cards`,
+        h1: `The Best Plutus Alternatives in ${YEAR}`,
+        description: `Plutus Card offers PLU cashback with staking requirements and is mainly UK-based. Discover European alternatives with no staking needed.`,
+        intro: `Plutus is a UK-based crypto card offering cashback in PLU with staking requirements. If you want a card available in the EU with no staking, several alternatives stand out in ${YEAR}.`,
+        reason: `Plutus requires PLU staking for maximum benefits, is mainly UK-based, and PLU cashback exposes users to token price volatility.`,
+        faq: [
+          ['Which Plutus alternative is available across Europe?', `Gnosis Pay, MetaMask Card, Brighty and Nexo Card are all available in EU countries with crypto cashback and no staking requirements.`],
+          ['Is Plutus available in Europe?', `Plutus is mainly available in the UK. EU availability is limited — check the Plutus website for your country.`],
+          ['Which card is most similar to Plutus without PLU staking?', `Brighty is the closest: an EU crypto card with cashback and no staking. MetaMask Card is also a good on-chain alternative.`],
+        ],
+      },
+    },
+  },
+
+  // ─── BRIGHTY ───────────────────────────────────────────────────────────────
+  {
+    brandId: 'brighty',
+    displayName: 'Brighty',
+    slugs: {
+      fr: 'alternatives-brighty', be: 'alternatives-brighty',
+      de: 'brighty-alternativen',  at: 'brighty-alternativen',
+      es: 'alternativas-brighty',  it: 'alternative-brighty',
+      en: 'brighty-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à Brighty ${YEAR} — Cartes Crypto EU`,
+        h1: `Meilleures Alternatives à Brighty App en ${YEAR}`,
+        description: `Brighty offre 1.75% de cashback en USDC sans staking. Découvrez les alternatives avec des taux plus élevés ou un cashback en BTC et ETH.`,
+        intro: `Brighty est une carte crypto suisse proposant 1.75% de cashback en USDC sans staking ni frais annuels. Si vous souhaitez un cashback plus élevé ou préférez accumuler du BTC ou de l'ETH plutôt que du USDC, voici les meilleures alternatives en ${YEAR}.`,
+        reason: `Le cashback de Brighty est plafonné à 1.75% en USDC (stablecoin). Pour un cashback plus élevé ou dans des cryptos à plus fort potentiel comme BTC ou ETH, des alternatives existent.`,
+        faq: [
+          ['Quelle alternative à Brighty offre un cashback plus élevé ?', `Gnosis Pay offre 2% en GNO, Nexo Card 2% en BTC et MetaMask Card jusqu'à 3% en ETH selon le volume — toutes sans staking.`],
+          ['Brighty est-elle disponible dans toute l'Europe ?', `Oui, Brighty est disponible dans l'UE avec un IBAN européen inclus — l'une des rares cartes crypto à proposer les deux.`],
+          ['Différence entre Brighty et Gnosis Pay ?', `Brighty offre 1.75% en USDC (stablecoin, sans volatilité). Gnosis Pay offre 2% en GNO (crypto volatile). Brighty est plus sécurisée côté cashback ; Gnosis Pay offre un meilleur taux.`],
+        ],
+      },
+      de: {
+        title: `Brighty Alternativen ${YEAR} — EU Krypto-Karten`,
+        h1: `Beste Brighty App Alternativen in ${YEAR}`,
+        description: `Brighty bietet 1,75% Cashback in USDC ohne Staking. Entdecken Sie Alternativen mit höheren Raten oder Cashback in BTC und ETH.`,
+        intro: `Brighty ist eine Schweizer Krypto-Karte mit 1,75% USDC-Cashback ohne Staking und ohne Jahresgebühr. Wer höheres Cashback oder Belohnungen in BTC oder ETH statt USDC bevorzugt, findet ${YEAR} hier die besten Alternativen.`,
+        reason: `Das Brighty-Cashback ist auf 1,75% in USDC begrenzt. Für höheres Cashback oder Kryptos mit mehr Potenzial wie BTC oder ETH gibt es bessere Alternativen.`,
+        faq: [
+          ['Welche Brighty-Alternative bietet höheres Cashback?', `Gnosis Pay bietet 2% in GNO, Nexo Card 2% in BTC und MetaMask Card bis zu 3% in ETH je nach Volumen — alle ohne Staking.`],
+          ['Ist Brighty in ganz Europa verfügbar?', `Ja, Brighty ist in der EU verfügbar und eine der wenigen Krypto-Karten mit europäischer IBAN und USDC-Cashback.`],
+          ['Unterschied zwischen Brighty und Gnosis Pay?', `Brighty bietet 1,75% in USDC (Stablecoin, keine Volatilität). Gnosis Pay bietet 2% in GNO (volatile Krypto). Brighty ist beim Cashback sicherer; Gnosis Pay bietet eine bessere Rate.`],
+        ],
+      },
+      es: {
+        title: `Alternativas a Brighty ${YEAR} — Tarjetas Crypto EU`,
+        h1: `Las Mejores Alternativas a Brighty App en ${YEAR}`,
+        description: `Brighty ofrece 1,75% de cashback en USDC sin staking. Descubre alternativas con tasas más altas o cashback en BTC y ETH.`,
+        intro: `Brighty es una tarjeta crypto suiza con 1,75% de cashback en USDC sin staking ni comisiones anuales. Si quieres un cashback más alto o prefieres acumular BTC o ETH en lugar de USDC, aquí están las mejores alternativas para ${YEAR}.`,
+        reason: `El cashback de Brighty está limitado al 1,75% en USDC (stablecoin). Para cashback más alto o en criptos con mayor potencial como BTC o ETH, existen mejores alternativas.`,
+        faq: [
+          ['¿Qué alternativa a Brighty ofrece mayor cashback?', `Gnosis Pay ofrece 2% en GNO, Nexo Card 2% en BTC y MetaMask Card hasta 3% en ETH según el volumen — todas sin staking.`],
+          ['¿Brighty está disponible en toda Europa?', `Sí, Brighty está disponible en la UE con IBAN europeo incluido — una de las pocas tarjetas cripto que combina los dos.`],
+          ['¿Diferencia entre Brighty y Gnosis Pay?', `Brighty ofrece 1,75% en USDC (stablecoin, sin volatilidad). Gnosis Pay ofrece 2% en GNO (cripto volátil). Brighty es más segura en el cashback; Gnosis Pay ofrece mejor tasa.`],
+        ],
+      },
+      it: {
+        title: `Alternative Brighty ${YEAR} — Carte Crypto EU`,
+        h1: `Le Migliori Alternative a Brighty App nel ${YEAR}`,
+        description: `Brighty offre 1,75% di cashback in USDC senza staking. Scopri alternative con tassi più alti o cashback in BTC e ETH.`,
+        intro: `Brighty è una carta crypto svizzera con 1,75% di cashback in USDC senza staking né commissioni annuali. Se vuoi un cashback più alto o preferisci accumulare BTC o ETH invece di USDC, ecco le migliori alternative nel ${YEAR}.`,
+        reason: `Il cashback di Brighty è limitato all'1,75% in USDC (stablecoin). Per un cashback più alto o in criptovalute con maggiore potenziale come BTC o ETH, esistono alternative migliori.`,
+        faq: [
+          ['Quale alternativa a Brighty offre cashback più alto?', `Gnosis Pay offre il 2% in GNO, Nexo Card il 2% in BTC e MetaMask Card fino al 3% in ETH in base al volume — tutte senza staking.`],
+          ['Brighty è disponibile in tutta Europa?', `Sì, Brighty è disponibile nell'UE con IBAN europeo incluso — una delle poche carte crypto che combina entrambi.`],
+          ['Differenza tra Brighty e Gnosis Pay?', `Brighty offre 1,75% in USDC (stablecoin, senza volatilità). Gnosis Pay offre il 2% in GNO (cripto volatile). Brighty è più sicura sul cashback; Gnosis Pay offre un tasso migliore.`],
+        ],
+      },
+      en: {
+        title: `Brighty Alternatives ${YEAR} — EU Crypto Cards`,
+        h1: `The Best Brighty App Alternatives in ${YEAR}`,
+        description: `Brighty offers 1.75% cashback in USDC with no staking. Discover alternatives with higher rates or cashback in BTC and ETH.`,
+        intro: `Brighty is a Swiss crypto card offering 1.75% cashback in USDC with no staking and no annual fees. If you want higher cashback or prefer accumulating BTC or ETH instead of USDC, here are the best alternatives for ${YEAR}.`,
+        reason: `Brighty's cashback is capped at 1.75% in USDC (stablecoin). For higher cashback or in higher-potential cryptos like BTC or ETH, better alternatives exist.`,
+        faq: [
+          ['Which Brighty alternative offers higher cashback?', `Gnosis Pay offers 2% in GNO, Nexo Card 2% in BTC and MetaMask Card up to 3% in ETH by volume — all without staking.`],
+          ['Is Brighty available across Europe?', `Yes, Brighty is available in the EU with a European IBAN included — one of the few crypto cards combining both.`],
+          ['What is the difference between Brighty and Gnosis Pay?', `Brighty offers 1.75% in USDC (stablecoin, no volatility). Gnosis Pay offers 2% in GNO (volatile crypto). Brighty is safer on cashback value; Gnosis Pay offers a better rate.`],
+        ],
+      },
+    },
+  },
+
+  // ─── BLEAP ─────────────────────────────────────────────────────────────────
+  {
+    brandId: 'bleap',
+    displayName: 'Bleap',
+    slugs: {
+      fr: 'alternatives-bleap', be: 'alternatives-bleap',
+      de: 'bleap-alternativen',  at: 'bleap-alternativen',
+      es: 'alternativas-bleap',  it: 'alternative-bleap',
+      en: 'bleap-alternatives',
+    },
+    copy: {
+      fr: {
+        title: `Alternatives à Bleap ${YEAR} — Cartes Crypto EU`,
+        h1: `Meilleures Alternatives à Bleap en ${YEAR}`,
+        description: `Bleap est une néobanque crypto émergente. Découvrez les alternatives plus établies avec cashback crypto dans toute l'Europe en ${YEAR}.`,
+        intro: `Bleap est une néobanque crypto émergente proposant des services financiers Web3. Si vous cherchez une alternative plus établie avec un track-record plus long ou une disponibilité plus large en Europe, voici les meilleures options en ${YEAR}.`,
+        reason: `Bleap est une startup relativement récente avec une disponibilité limitée. Des alternatives plus établies comme Gnosis Pay, MetaMask Card ou Brighty offrent plus de garanties.`,
+        faq: [
+          ['Quelle alternative à Bleap est disponible en France ?', `Gnosis Pay, MetaMask Card, Brighty et Nexo Card sont toutes disponibles en France avec du cashback crypto et des émetteurs régulés MiCA.`],
+          ['Bleap est-elle fiable ?', `Bleap est une startup crypto prometteuse mais moins établie que Gnosis Pay ou MetaMask Card. Pour plus de sécurité, les alternatives listées ici sont des choix éprouvés.`],
+          ['Quelle carte est la meilleure alternative à Bleap pour les débutants ?', `Brighty est idéale : interface simple, cashback en USDC sans staking, IBAN européen inclus.`],
+        ],
+      },
+      de: {
+        title: `Bleap Alternativen ${YEAR} — Krypto-Karten EU`,
+        h1: `Beste Bleap Alternativen in ${YEAR}`,
+        description: `Bleap ist eine aufstrebende Krypto-Neobank. Entdecken Sie etabliertere Alternativen mit Krypto-Cashback in ganz Europa für ${YEAR}.`,
+        intro: `Bleap ist eine aufstrebende Krypto-Neobank mit Web3-Finanzdienstleistungen. Wer eine etabliertere Alternative mit längerem Track-Record und breiterer europäischer Verfügbarkeit sucht, findet hier ${YEAR} die besten Optionen.`,
+        reason: `Bleap ist ein relativ neues Startup mit begrenzter Verfügbarkeit. Etabliertere Alternativen wie Gnosis Pay, MetaMask Card oder Brighty bieten mehr Sicherheit.`,
+        faq: [
+          ['Welche Bleap-Alternative ist in Deutschland verfügbar?', `Gnosis Pay, MetaMask Card, Brighty und Nexo Card sind alle in Deutschland mit Krypto-Cashback und MiCA-regulierten Emittenten verfügbar.`],
+          ['Ist Bleap vertrauenswürdig?', `Bleap ist ein vielversprechendes Startup, aber weniger etabliert als Gnosis Pay oder MetaMask Card. Die hier gelisteten Alternativen sind bewährte Optionen.`],
+          ['Welche Karte ist die beste Bleap-Alternative für Anfänger?', `Brighty ist ideal: einfache Benutzeroberfläche, USDC-Cashback ohne Staking, europäische IBAN inklusive.`],
+        ],
+      },
+      es: {
+        title: `Alternativas a Bleap ${YEAR} — Tarjetas Crypto EU`,
+        h1: `Las Mejores Alternativas a Bleap en ${YEAR}`,
+        description: `Bleap es un neobank cripto emergente. Descubre alternativas más establecidas con cashback cripto en toda Europa en ${YEAR}.`,
+        intro: `Bleap es un neobank cripto emergente que ofrece servicios financieros Web3. Si buscas una alternativa más establecida con mayor trayectoria o disponibilidad más amplia en Europa, aquí están las mejores opciones para ${YEAR}.`,
+        reason: `Bleap es una startup relativamente nueva con disponibilidad limitada. Alternativas más establecidas como Gnosis Pay, MetaMask Card o Brighty ofrecen más garantías.`,
+        faq: [
+          ['¿Qué alternativa a Bleap está disponible en España?', `Gnosis Pay, MetaMask Card, Brighty y Nexo Card están todas disponibles en España con cashback cripto y emisores regulados por MiCA.`],
+          ['¿Es Bleap fiable?', `Bleap es una startup prometedora pero menos establecida que Gnosis Pay o MetaMask Card. Las alternativas listadas aquí son opciones contrastadas.`],
+          ['¿Qué tarjeta es la mejor alternativa a Bleap para principiantes?', `Brighty es ideal: interfaz sencilla, cashback en USDC sin staking, IBAN europeo incluido.`],
+        ],
+      },
+      it: {
+        title: `Alternative Bleap ${YEAR} — Carte Crypto EU`,
+        h1: `Le Migliori Alternative a Bleap nel ${YEAR}`,
+        description: `Bleap è una neobank cripto emergente. Scopri alternative più affermate con cashback cripto in tutta Europa nel ${YEAR}.`,
+        intro: `Bleap è una neobank cripto emergente che offre servizi finanziari Web3. Se cerchi un'alternativa più affermata con un track record più lungo o disponibilità più ampia in Europa, ecco le migliori opzioni nel ${YEAR}.`,
+        reason: `Bleap è una startup relativamente nuova con disponibilità limitata. Alternative più affermate come Gnosis Pay, MetaMask Card o Brighty offrono maggiori garanzie.`,
+        faq: [
+          ['Quale alternativa a Bleap è disponibile in Italia?', `Gnosis Pay, MetaMask Card, Brighty e Nexo Card sono tutte disponibili in Italia con cashback cripto ed emittenti regolamentati MiCA.`],
+          ['Bleap è affidabile?', `Bleap è una startup promettente ma meno affermata di Gnosis Pay o MetaMask Card. Le alternative elencate qui sono scelte collaudate.`],
+          ['Quale carta è la migliore alternativa a Bleap per i principianti?', `Brighty è ideale: interfaccia semplice, cashback in USDC senza staking, IBAN europeo incluso.`],
+        ],
+      },
+      en: {
+        title: `Bleap Alternatives ${YEAR} — EU Crypto Cards`,
+        h1: `The Best Bleap Alternatives in ${YEAR}`,
+        description: `Bleap is an emerging crypto neobank. Discover more established alternatives with crypto cashback available across Europe in ${YEAR}.`,
+        intro: `Bleap is an emerging crypto neobank offering Web3 financial services. If you want a more established alternative with a longer track record or wider European availability, here are the best options for ${YEAR}.`,
+        reason: `Bleap is a relatively new startup with limited availability. More established alternatives like Gnosis Pay, MetaMask Card or Brighty offer more guarantees.`,
+        faq: [
+          ['Which Bleap alternative is available across Europe?', `Gnosis Pay, MetaMask Card, Brighty and Nexo Card are all available across EU countries with crypto cashback and MiCA-regulated issuers.`],
+          ['Is Bleap trustworthy?', `Bleap is a promising startup but less established than Gnosis Pay or MetaMask Card. The alternatives listed here are proven choices.`],
+          ['Which card is the best Bleap alternative for beginners?', `Brighty is ideal: simple interface, USDC cashback with no staking, and a European IBAN included.`],
         ],
       },
     },
