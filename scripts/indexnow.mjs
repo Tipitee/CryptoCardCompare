@@ -127,6 +127,17 @@ const URLS = [
   `${BASE}/fr/alternatives-brighty`,   `${BASE}/be/alternatives-brighty`,   `${BASE}/de/brighty-alternativen`,   `${BASE}/at/brighty-alternativen`,   `${BASE}/es/alternativas-brighty`,   `${BASE}/it/alternative-brighty`,   `${BASE}/en/brighty-alternatives`,
   `${BASE}/fr/alternatives-bleap`,     `${BASE}/be/alternatives-bleap`,     `${BASE}/de/bleap-alternativen`,     `${BASE}/at/bleap-alternativen`,     `${BASE}/es/alternativas-bleap`,     `${BASE}/it/alternative-bleap`,     `${BASE}/en/bleap-alternatives`,
 
+  // ── New comparison pairs (July 2026) ────────────────────────────────────────
+  `${BASE}/fr/comparer/bleap-card-vs-brighty-card`,   `${BASE}/be/comparer/bleap-card-vs-brighty-card`,   `${BASE}/de/vergleichen/bleap-card-vs-brighty-card`,   `${BASE}/at/vergleichen/bleap-card-vs-brighty-card`,   `${BASE}/en/compare/bleap-card-vs-brighty-card`,
+  `${BASE}/fr/comparer/bleap-card-vs-nexo-card`,      `${BASE}/be/comparer/bleap-card-vs-nexo-card`,      `${BASE}/de/vergleichen/bleap-card-vs-nexo-card`,      `${BASE}/at/vergleichen/bleap-card-vs-nexo-card`,      `${BASE}/en/compare/bleap-card-vs-nexo-card`,
+  `${BASE}/fr/comparer/bleap-card-vs-revolut-metal`,  `${BASE}/be/comparer/bleap-card-vs-revolut-metal`,  `${BASE}/de/vergleichen/bleap-card-vs-revolut-metal`,  `${BASE}/at/vergleichen/bleap-card-vs-revolut-metal`,  `${BASE}/en/compare/bleap-card-vs-revolut-metal`,
+  `${BASE}/fr/comparer/brighty-card-vs-gnosis-pay-card`,`${BASE}/be/comparer/brighty-card-vs-gnosis-pay-card`,`${BASE}/de/vergleichen/brighty-card-vs-gnosis-pay-card`,`${BASE}/at/vergleichen/brighty-card-vs-gnosis-pay-card`,`${BASE}/en/compare/brighty-card-vs-gnosis-pay-card`,
+  `${BASE}/fr/comparer/brighty-card-vs-nexo-card`,    `${BASE}/be/comparer/brighty-card-vs-nexo-card`,    `${BASE}/de/vergleichen/brighty-card-vs-nexo-card`,    `${BASE}/at/vergleichen/brighty-card-vs-nexo-card`,    `${BASE}/en/compare/brighty-card-vs-nexo-card`,
+  `${BASE}/fr/comparer/brighty-card-vs-revolut-metal`,`${BASE}/be/comparer/brighty-card-vs-revolut-metal`,`${BASE}/de/vergleichen/brighty-card-vs-revolut-metal`,`${BASE}/at/vergleichen/brighty-card-vs-revolut-metal`,`${BASE}/en/compare/brighty-card-vs-revolut-metal`,
+  `${BASE}/fr/comparer/crypto-com-midnight-blue-vs-okx-card`,`${BASE}/be/comparer/crypto-com-midnight-blue-vs-okx-card`,`${BASE}/de/vergleichen/crypto-com-midnight-blue-vs-okx-card`,`${BASE}/at/vergleichen/crypto-com-midnight-blue-vs-okx-card`,`${BASE}/en/compare/crypto-com-midnight-blue-vs-okx-card`,
+  `${BASE}/fr/comparer/nexo-card-vs-plutus-card`,     `${BASE}/be/comparer/nexo-card-vs-plutus-card`,     `${BASE}/de/vergleichen/nexo-card-vs-plutus-card`,     `${BASE}/at/vergleichen/nexo-card-vs-plutus-card`,     `${BASE}/en/compare/nexo-card-vs-plutus-card`,
+  `${BASE}/fr/comparer/plutus-card-vs-revolut-metal`, `${BASE}/be/comparer/plutus-card-vs-revolut-metal`, `${BASE}/de/vergleichen/plutus-card-vs-revolut-metal`, `${BASE}/at/vergleichen/plutus-card-vs-revolut-metal`, `${BASE}/en/compare/plutus-card-vs-revolut-metal`,
+
   // ── Blog posts refreshed (FAQ blocks added July 2026) ───────────────────────
   `${BASE}/en/blog/gnosis-pay-review-2026`,
   `${BASE}/en/blog/gnosis-pay-review-2026-self-custody-crypto-card-2-percent-cashback-eure`,

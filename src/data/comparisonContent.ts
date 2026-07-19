@@ -1251,6 +1251,357 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     ],
   },
 
+  // ─── Bleap Card vs Brighty Card ───────────────────────────────────────────────
+  'bleap-card-vs-brighty-card': {
+    fr_intro: `Bleap Card et Brighty Card sont deux cartes crypto sans staking disponibles en France et dans toute l'UE. Toutes deux sont gratuites (0 € de frais annuels) et offrent du cashback sans immobilisation de capital. La principale différence : Bleap offre 2 % de cashback en Bitcoin, quand Brighty verse 1,75 % en USDC (stablecoin). Brighty inclut également un IBAN européen, ce qui en fait une solution bancaire plus complète.`,
+    fr_verdict: `Pour les accumulateurs de Bitcoin, Bleap Card est le meilleur choix avec 2 % en BTC sans condition. Pour ceux qui préfèrent un cashback stable sans volatilité et un IBAN européen intégré, Brighty Card est plus polyvalente. Les deux cartes sont excellentes pour les utilisateurs européens. Note : Bleap Card 4,0/5 vs Brighty Card 3,9/5.`,
+    de_intro: `Bleap Card und Brighty Card sind zwei Krypto-Karten ohne Staking-Anforderungen, die in Deutschland und der gesamten EU verfügbar sind. Beide sind kostenlos (0 € Jahresgebühr) und bieten Cashback ohne Kapitalblockierung. Der Hauptunterschied: Bleap bietet 2 % Cashback in Bitcoin, während Brighty 1,75 % in USDC (Stablecoin) zahlt. Brighty enthält auch eine europäische IBAN.`,
+    de_verdict: `Für Bitcoin-Akkumulatoren ist die Bleap Card die bessere Wahl mit 2 % in BTC ohne Bedingungen. Wer stabiles Cashback ohne Volatilität und eine integrierte europäische IBAN bevorzugt, findet in der Brighty Card eine vielseitigere Lösung. Bewertung: Bleap Card 4,0/5 vs. Brighty Card 3,9/5.`,
+    es_intro: `Bleap Card y Brighty Card son dos tarjetas crypto sin staking disponibles en España y toda la UE. Ambas son gratuitas (0 € anuales) y ofrecen cashback sin inmovilizar capital. La diferencia clave: Bleap ofrece un 2 % de cashback en Bitcoin, mientras que Brighty paga un 1,75 % en USDC (stablecoin). Brighty también incluye un IBAN europeo.`,
+    es_verdict: `Para acumuladores de Bitcoin, la Bleap Card es la mejor opción con un 2 % en BTC sin condiciones. Para quienes prefieren un cashback estable sin volatilidad y un IBAN europeo integrado, la Brighty Card es más versátil. Puntuación: Bleap Card 4,0/5 vs Brighty Card 3,9/5.`,
+    it_intro: `Bleap Card e Brighty Card sono due carte crypto senza staking disponibili in Italia e in tutta la UE. Entrambe sono gratuite (0 € annuali) e offrono cashback senza immobilizzare capitale. La differenza principale: Bleap offre il 2 % di cashback in Bitcoin, mentre Brighty paga l'1,75 % in USDC (stablecoin). Brighty include anche un IBAN europeo.`,
+    it_verdict: `Per gli accumulatori di Bitcoin, la Bleap Card è la scelta migliore con il 2 % in BTC senza condizioni. Per chi preferisce un cashback stabile senza volatilità e un IBAN europeo integrato, la Brighty Card è più versatile. Punteggio: Bleap Card 4,0/5 vs Brighty Card 3,9/5.`,
+    en_intro: `Bleap Card and Brighty Card are two no-staking crypto cards available across the EU and UK. Both are free (€0 annual fees) and offer cashback without locking up capital. The key difference: Bleap gives 2% cashback in Bitcoin, while Brighty pays 1.75% in USDC (stablecoin). Brighty also includes a European IBAN, making it a more complete banking solution.`,
+    en_verdict: `For Bitcoin accumulators, Bleap Card is the better pick with 2% in BTC and no conditions. For those who prefer stable cashback without crypto volatility and want an integrated European IBAN, Brighty Card is more versatile. Both are excellent choices for EU and UK users. Score: Bleap Card 4.0/5 vs Brighty Card 3.9/5.`,
+    faq: [
+      { q: 'Bleap Card ou Brighty Card : laquelle offre le meilleur cashback ?', a: 'Bleap Card offre 2 % en BTC, contre 1,75 % en USDC pour Brighty. En taux brut, Bleap est légèrement supérieur. Mais le USDC de Brighty n\'est pas soumis à la volatilité du Bitcoin.' },
+      { q: 'Brighty Card a-t-elle un IBAN ?', a: 'Oui. Brighty inclut un IBAN européen, ce qui la positionne comme une néobanque crypto complète. Bleap est une carte de cashback sans compte courant associé.' },
+      { q: 'Les deux cartes sont-elles disponibles en France ?', a: 'Oui. Bleap Card et Brighty Card sont toutes deux disponibles en France et dans l\'ensemble de l\'UE.' },
+    ],
+    de_faq: [
+      { q: 'Bleap Card oder Brighty Card: Welche bietet das bessere Cashback?', a: 'Bleap Card bietet 2 % in BTC, Brighty 1,75 % in USDC. Brutto ist Bleap leicht überlegen. Aber USDC von Brighty ist nicht der Bitcoin-Volatilität ausgesetzt.' },
+      { q: 'Hat Brighty Card eine IBAN?', a: 'Ja. Brighty enthält eine europäische IBAN und positioniert sich als vollständige Krypto-Neobank. Bleap ist eine Cashback-Karte ohne zugehöriges Girokonto.' },
+      { q: 'Sind beide Karten in Deutschland verfügbar?', a: 'Ja. Bleap Card und Brighty Card sind beide in Deutschland und der gesamten EU verfügbar.' },
+    ],
+    es_faq: [
+      { q: 'Bleap Card o Brighty Card: ¿cuál ofrece mejor cashback?', a: 'Bleap Card ofrece el 2 % en BTC, Brighty el 1,75 % en USDC. En tasa bruta, Bleap es ligeramente superior. Pero el USDC de Brighty no está sujeto a la volatilidad del Bitcoin.' },
+      { q: '¿Brighty Card tiene IBAN?', a: 'Sí. Brighty incluye un IBAN europeo, posicionándose como un neobanco crypto completo. Bleap es una tarjeta de cashback sin cuenta corriente asociada.' },
+      { q: '¿Están disponibles ambas tarjetas en España?', a: 'Sí. Bleap Card y Brighty Card están disponibles en España y en toda la UE.' },
+    ],
+    it_faq: [
+      { q: 'Bleap Card o Brighty Card: quale offre il cashback migliore?', a: 'Bleap Card offre il 2 % in BTC, Brighty l\'1,75 % in USDC. In termini di tasso lordo, Bleap è leggermente superiore. Ma l\'USDC di Brighty non è soggetto alla volatilità di Bitcoin.' },
+      { q: 'Brighty Card ha un IBAN?', a: 'Sì. Brighty include un IBAN europeo, posizionandosi come una neobank crypto completa. Bleap è una carta cashback senza conto corrente associato.' },
+      { q: 'Entrambe le carte sono disponibili in Italia?', a: 'Sì. Bleap Card e Brighty Card sono entrambe disponibili in Italia e in tutta la UE.' },
+    ],
+    en_faq: [
+      { q: 'Bleap Card or Brighty Card: which has the better cashback?', a: 'Bleap Card offers 2% in BTC, Brighty 1.75% in USDC. Gross rate-wise, Bleap is slightly higher. But Brighty\'s USDC is not subject to Bitcoin price volatility.' },
+      { q: 'Does Brighty Card have an IBAN?', a: 'Yes. Brighty includes a European IBAN, positioning it as a full crypto neobank. Bleap is a cashback card without an associated current account.' },
+      { q: 'Are both cards available in the UK?', a: 'Yes. Bleap Card and Brighty Card are both available in the UK and across the EU.' },
+    ],
+  },
+
+  // ─── Bleap Card vs Nexo Card ───────────────────────────────────────────────────
+  'bleap-card-vs-nexo-card': {
+    fr_intro: `Bleap Card et Nexo Card partagent une caractéristique rare : toutes deux offrent du cashback en Bitcoin sans staking requis. Bleap verse 2 % en BTC sur chaque achat. Nexo propose jusqu'à 2 % en BTC ou NEXO, avec un mécanisme de ligne de crédit crypto en coulisses. Les deux cartes sont gratuites et disponibles dans toute l'UE.`,
+    fr_verdict: `Si vous voulez accumuler du Bitcoin simplement, les deux cartes offrent des conditions comparables. Nexo apporte en plus une ligne de crédit et un écosystème DeFi intégré. Bleap est plus épurée — idéale pour qui ne veut qu'une carte cashback BTC sans friction. Note : Bleap Card 4,0/5 vs Nexo Card 4,2/5.`,
+    de_intro: `Bleap Card und Nexo Card teilen eine seltene Eigenschaft: Beide bieten Bitcoin-Cashback ohne Staking. Bleap zahlt 2 % in BTC auf jeden Kauf. Nexo bietet bis zu 2 % in BTC oder NEXO, mit einem Krypto-Kreditrahmen im Hintergrund. Beide Karten sind kostenlos und in der gesamten EU verfügbar.`,
+    de_verdict: `Wer Bitcoin einfach ansammeln möchte, findet in beiden Karten vergleichbare Konditionen. Nexo bietet zusätzlich eine Kreditlinie und ein integriertes DeFi-Ökosystem. Bleap ist schlanker — ideal für alle, die nur eine reibungslose BTC-Cashback-Karte wünschen. Bewertung: Bleap Card 4,0/5 vs. Nexo Card 4,2/5.`,
+    es_intro: `Bleap Card y Nexo Card comparten una característica poco común: ambas ofrecen cashback en Bitcoin sin staking requerido. Bleap paga el 2 % en BTC en cada compra. Nexo ofrece hasta el 2 % en BTC o NEXO, con una línea de crédito crypto detrás. Ambas tarjetas son gratuitas y están disponibles en toda la UE.`,
+    es_verdict: `Si quieres acumular Bitcoin de forma sencilla, ambas ofrecen condiciones comparables. Nexo además aporta una línea de crédito y un ecosistema DeFi integrado. Bleap es más sencilla — ideal para quien solo quiere una tarjeta cashback BTC sin fricciones. Puntuación: Bleap Card 4,0/5 vs Nexo Card 4,2/5.`,
+    it_intro: `Bleap Card e Nexo Card condividono una caratteristica rara: entrambe offrono cashback in Bitcoin senza staking richiesto. Bleap paga il 2 % in BTC su ogni acquisto. Nexo offre fino al 2 % in BTC o NEXO, con una linea di credito crypto in background. Entrambe sono gratuite e disponibili in tutta la UE.`,
+    it_verdict: `Per chi vuole accumulare Bitcoin in modo semplice, entrambe le carte offrono condizioni comparabili. Nexo aggiunge una linea di credito e un ecosistema DeFi integrato. Bleap è più essenziale — ideale per chi vuole solo una carta cashback BTC senza complessità. Punteggio: Bleap Card 4,0/5 vs Nexo Card 4,2/5.`,
+    en_intro: `Bleap Card and Nexo Card share a rare quality: both offer Bitcoin cashback with no staking required. Bleap pays 2% in BTC on every purchase. Nexo offers up to 2% in BTC or NEXO, backed by a crypto credit line mechanism. Both cards are free and available across the EU and UK.`,
+    en_verdict: `If you want to accumulate Bitcoin simply, both cards offer comparable terms. Nexo adds a credit line and integrated DeFi ecosystem on top. Bleap is leaner — ideal for those who just want a no-fuss BTC cashback card. Score: Bleap Card 4.0/5 vs Nexo Card 4.2/5.`,
+    faq: [
+      { q: 'Bleap ou Nexo Card : laquelle accumule le plus de Bitcoin ?', a: 'Les deux offrent jusqu\'à 2 % en BTC sans staking. Sur le cashback pur, elles sont équivalentes. Nexo permet aussi de choisir le NEXO token au lieu du BTC.' },
+      { q: 'La Nexo Card est-elle plus sûre que Bleap ?', a: 'Nexo est une plateforme établie depuis 2017 avec une réputation solide en Europe. Bleap est plus récente mais régulée. Les deux sont conformes MiCA.' },
+      { q: 'Y a-t-il des frais pour l\'une ou l\'autre ?', a: 'Non, Bleap Card et Nexo Card sont toutes deux gratuites (0 € de frais annuels). La Nexo Card fonctionne sur une ligne de crédit crypto, pas sur un solde débité.' },
+    ],
+    de_faq: [
+      { q: 'Bleap oder Nexo Card: Welche sammelt mehr Bitcoin?', a: 'Beide bieten bis zu 2 % in BTC ohne Staking. Beim reinen Cashback sind sie gleichwertig. Nexo ermöglicht auch die Wahl des NEXO-Tokens statt BTC.' },
+      { q: 'Ist die Nexo Card sicherer als Bleap?', a: 'Nexo ist eine seit 2017 etablierte Plattform mit gutem Ruf in Europa. Bleap ist jünger, aber reguliert. Beide sind MiCA-konform.' },
+      { q: 'Fallen bei einer der beiden Gebühren an?', a: 'Nein, Bleap Card und Nexo Card sind beide kostenlos (0 € Jahresgebühr). Die Nexo Card funktioniert über eine Krypto-Kreditlinie, nicht über ein Debitkonto.' },
+    ],
+    es_faq: [
+      { q: 'Bleap o Nexo Card: ¿cuál acumula más Bitcoin?', a: 'Ambas ofrecen hasta el 2 % en BTC sin staking. En cashback puro, son equivalentes. Nexo también permite elegir el token NEXO en lugar de BTC.' },
+      { q: '¿Es la Nexo Card más segura que Bleap?', a: 'Nexo es una plataforma establecida desde 2017 con buena reputación en Europa. Bleap es más reciente pero regulada. Ambas cumplen con MiCA.' },
+      { q: '¿Alguna de las dos tiene comisiones?', a: 'No, Bleap Card y Nexo Card son ambas gratuitas (0 € anuales). La Nexo Card funciona mediante una línea de crédito crypto, no un saldo debitado.' },
+    ],
+    it_faq: [
+      { q: 'Bleap o Nexo Card: quale accumula più Bitcoin?', a: 'Entrambe offrono fino al 2 % in BTC senza staking. Sul cashback puro sono equivalenti. Nexo permette anche di scegliere il token NEXO al posto di BTC.' },
+      { q: 'La Nexo Card è più sicura di Bleap?', a: 'Nexo è una piattaforma consolidata dal 2017 con buona reputazione in Europa. Bleap è più recente ma regolamentata. Entrambe sono conformi a MiCA.' },
+      { q: 'Ci sono commissioni per una delle due?', a: 'No, Bleap Card e Nexo Card sono entrambe gratuite (0 € annuali). La Nexo Card funziona tramite una linea di credito crypto, non un saldo addebitato.' },
+    ],
+    en_faq: [
+      { q: 'Bleap or Nexo Card: which accumulates more Bitcoin?', a: 'Both offer up to 2% in BTC with no staking. On pure cashback, they\'re equivalent. Nexo also lets you choose NEXO token instead of BTC.' },
+      { q: 'Is Nexo Card safer than Bleap?', a: 'Nexo is an established platform since 2017 with a solid European reputation. Bleap is newer but regulated. Both are MiCA-compliant.' },
+      { q: 'Are there fees for either card?', a: 'No, both Bleap Card and Nexo Card are free (€0 annual fees). The Nexo Card works on a crypto credit line, not a debited balance.' },
+    ],
+  },
+
+  // ─── Bleap Card vs Revolut Metal ──────────────────────────────────────────────
+  'bleap-card-vs-revolut-metal': {
+    fr_intro: `Bleap Card et Revolut Metal représentent deux visions très différentes de la carte premium. Bleap offre 2 % de cashback en Bitcoin sans frais annuels et sans staking. Revolut Metal propose des RevPoints (non-crypto), l'accès aux lounges d'aéroport et des assurances voyage pour 13,99 €/mois. Si vous recherchez du cashback crypto, Bleap est sans comparaison ; si vous voulez une carte bancaire complète avec avantages voyage, Revolut Metal l'emporte.`,
+    fr_verdict: `Pour les accumulateurs de Bitcoin, Bleap Card gagne haut la main : 2 % en BTC, 0 € de frais. Revolut Metal s'impose pour ceux qui voyagent beaucoup et veulent une carte tout-en-un avec assurances et lounges. Les deux profils sont mutuellement exclusifs. Note : Bleap Card 4,0/5 vs Revolut Metal 3,7/5 (profil crypto).`,
+    de_intro: `Bleap Card und Revolut Metal verkörpern zwei sehr unterschiedliche Vorstellungen von einer Premium-Karte. Bleap bietet 2 % Cashback in Bitcoin ohne Jahresgebühr und ohne Staking. Revolut Metal bietet RevPoints (kein Krypto), Lounge-Zugang und Reiseversicherung für 13,99 €/Monat. Für Krypto-Cashback ist Bleap unschlagbar; für eine vollständige Bankkarte mit Reisevorteilen führt Revolut Metal.`,
+    de_verdict: `Für Bitcoin-Akkumulatoren gewinnt Bleap Card klar: 2 % in BTC, 0 € Gebühren. Revolut Metal überzeugt Vielreisende, die eine All-in-One-Karte mit Versicherungen und Lounges suchen. Bewertung: Bleap Card 4,0/5 vs. Revolut Metal 3,7/5 (Krypto-Profil).`,
+    es_intro: `Bleap Card y Revolut Metal representan dos visiones muy diferentes de la tarjeta premium. Bleap ofrece un 2 % de cashback en Bitcoin sin comisiones anuales y sin staking. Revolut Metal ofrece RevPoints (sin crypto), acceso a lounges y seguros de viaje por 13,99 €/mes. Para cashback crypto, Bleap no tiene rival; para una tarjeta bancaria completa con ventajas de viaje, gana Revolut Metal.`,
+    es_verdict: `Para acumuladores de Bitcoin, Bleap Card gana claramente: 2 % en BTC, 0 € de comisiones. Revolut Metal se impone para viajeros frecuentes que quieren una tarjeta todo en uno con seguros y lounges. Puntuación: Bleap Card 4,0/5 vs Revolut Metal 3,7/5 (perfil crypto).`,
+    it_intro: `Bleap Card e Revolut Metal rappresentano due visioni molto diverse della carta premium. Bleap offre il 2 % di cashback in Bitcoin senza commissioni annuali e senza staking. Revolut Metal offre RevPoints (non crypto), accesso alle lounge e assicurazioni viaggio per 13,99 €/mese. Per cashback crypto, Bleap è imbattibile; per una carta bancaria completa con vantaggi viaggio, vince Revolut Metal.`,
+    it_verdict: `Per gli accumulatori di Bitcoin, Bleap Card vince chiaramente: 2 % in BTC, 0 € di commissioni. Revolut Metal si impone per i grandi viaggiatori che vogliono una carta all-in-one con assicurazioni e lounge. Punteggio: Bleap Card 4,0/5 vs Revolut Metal 3,7/5 (profilo crypto).`,
+    en_intro: `Bleap Card and Revolut Metal represent two very different visions of a premium card. Bleap offers 2% cashback in Bitcoin with no annual fees and no staking. Revolut Metal provides RevPoints (not crypto), airport lounge access and travel insurance for €13.99/month. For crypto cashback, Bleap wins hands-down; for a full-featured bank card with travel perks, Revolut Metal takes it.`,
+    en_verdict: `For Bitcoin accumulators, Bleap Card wins clearly: 2% in BTC, €0 in fees. Revolut Metal wins for frequent travellers wanting an all-in-one card with insurances and lounges. The two profiles are mutually exclusive. Score: Bleap Card 4.0/5 vs Revolut Metal 3.7/5 (crypto profile).`,
+    faq: [
+      { q: 'Bleap Card ou Revolut Metal : laquelle est gratuite ?', a: 'Bleap Card est entièrement gratuite (0 €/an). Revolut Metal coûte 13,99 €/mois (167,88 €/an). Pour un profil crypto, Bleap est bien plus économique.' },
+      { q: 'Revolut Metal offre-t-elle du cashback en Bitcoin ?', a: 'Non. Revolut Metal verse des RevPoints (programme de fidélité Revolut), non convertibles directement en Bitcoin. Pour du cashback BTC, Bleap Card est la meilleure option.' },
+      { q: 'Bleap Card offre-t-elle des avantages voyage ?', a: 'Non. Bleap est centrée sur le cashback BTC. Pour des avantages voyage (lounges, assurance), Revolut Metal est plus adaptée.' },
+    ],
+    de_faq: [
+      { q: 'Bleap Card oder Revolut Metal: Welche ist kostenlos?', a: 'Bleap Card ist vollständig kostenlos (0 €/Jahr). Revolut Metal kostet 13,99 €/Monat (167,88 €/Jahr). Für ein Krypto-Profil ist Bleap deutlich wirtschaftlicher.' },
+      { q: 'Bietet Revolut Metal Bitcoin-Cashback?', a: 'Nein. Revolut Metal zahlt RevPoints (Revoluts Treueprogramm), die nicht direkt in Bitcoin umgewandelt werden können. Für BTC-Cashback ist Bleap Card die bessere Option.' },
+      { q: 'Bietet Bleap Card Reisevorteile?', a: 'Nein. Bleap konzentriert sich auf BTC-Cashback. Für Reisevorteile (Lounges, Versicherung) ist Revolut Metal besser geeignet.' },
+    ],
+    es_faq: [
+      { q: 'Bleap Card o Revolut Metal: ¿cuál es gratuita?', a: 'Bleap Card es completamente gratuita (0 €/año). Revolut Metal cuesta 13,99 €/mes (167,88 €/año). Para un perfil crypto, Bleap es mucho más económica.' },
+      { q: '¿Revolut Metal ofrece cashback en Bitcoin?', a: 'No. Revolut Metal paga RevPoints (programa de fidelidad Revolut), no convertibles directamente en Bitcoin. Para cashback en BTC, Bleap Card es la mejor opción.' },
+      { q: '¿Bleap Card ofrece ventajas de viaje?', a: 'No. Bleap se centra en el cashback en BTC. Para ventajas de viaje (lounges, seguros), Revolut Metal es más adecuada.' },
+    ],
+    it_faq: [
+      { q: 'Bleap Card o Revolut Metal: quale è gratuita?', a: 'Bleap Card è completamente gratuita (0 €/anno). Revolut Metal costa 13,99 €/mese (167,88 €/anno). Per un profilo crypto, Bleap è molto più economica.' },
+      { q: 'Revolut Metal offre cashback in Bitcoin?', a: 'No. Revolut Metal paga RevPoints (programma fedeltà Revolut), non convertibili direttamente in Bitcoin. Per cashback in BTC, Bleap Card è l\'opzione migliore.' },
+      { q: 'Bleap Card offre vantaggi viaggio?', a: 'No. Bleap è focalizzata sul cashback in BTC. Per vantaggi viaggio (lounge, assicurazioni), Revolut Metal è più adatta.' },
+    ],
+    en_faq: [
+      { q: 'Bleap Card or Revolut Metal: which is free?', a: 'Bleap Card is completely free (€0/year). Revolut Metal costs €13.99/month (€167.88/year). For a crypto profile, Bleap is far more economical.' },
+      { q: 'Does Revolut Metal offer Bitcoin cashback?', a: 'No. Revolut Metal pays RevPoints (Revolut\'s loyalty programme), not directly convertible to Bitcoin. For BTC cashback, Bleap Card is the best option.' },
+      { q: 'Does Bleap Card offer travel perks?', a: 'No. Bleap is focused on BTC cashback. For travel perks (lounges, insurance), Revolut Metal is more appropriate.' },
+    ],
+  },
+
+  // ─── Brighty Card vs Gnosis Pay Card ──────────────────────────────────────────
+  'brighty-card-vs-gnosis-pay-card': {
+    fr_intro: `Brighty Card et Gnosis Pay Card sont toutes deux des cartes sans staking disponibles en Europe, mais avec des philosophies différentes. Brighty offre 1,75 % en USDC (stablecoin) avec un IBAN européen intégré et une UX orientée grand public. Gnosis Pay offre 2 % en GNO sur une blockchain on-chain (Gnosis Chain / xDAI), avec self-custody des fonds. Si vous voulez de la stabilité et un compte courant, choisissez Brighty. Si vous voulez du DeFi et de l'auto-garde, choisissez Gnosis Pay.`,
+    fr_verdict: `Gnosis Pay l'emporte sur le taux de cashback (2 % GNO vs 1,75 % USDC) et la décentralisation. Brighty l'emporte sur la simplicité d'usage et la stabilité du cashback en USDC. Notre recommandation : Brighty pour les utilisateurs qui veulent une carte crypto facile avec IBAN ; Gnosis Pay pour les utilisateurs DeFi. Note : Gnosis Pay 4,1/5 vs Brighty Card 3,9/5.`,
+    de_intro: `Brighty Card und Gnosis Pay Card sind beide Staking-freie Karten in Europa, aber mit unterschiedlichen Philosophien. Brighty bietet 1,75 % in USDC (Stablecoin) mit integrierter europäischer IBAN und verbraucherfreundlicher UX. Gnosis Pay bietet 2 % in GNO auf einer On-Chain-Blockchain (Gnosis Chain/xDAI) mit Self-Custody. Für Stabilität und Girokonto: Brighty. Für DeFi und Selbstverwahrung: Gnosis Pay.`,
+    de_verdict: `Gnosis Pay gewinnt beim Cashback-Satz (2 % GNO vs. 1,75 % USDC) und Dezentralisierung. Brighty gewinnt bei Benutzerfreundlichkeit und Cashback-Stabilität in USDC. Bewertung: Gnosis Pay 4,1/5 vs. Brighty Card 3,9/5.`,
+    es_intro: `Brighty Card y Gnosis Pay Card son dos tarjetas sin staking disponibles en Europa, pero con filosofías diferentes. Brighty ofrece el 1,75 % en USDC (stablecoin) con un IBAN europeo integrado y una UX orientada al gran público. Gnosis Pay ofrece el 2 % en GNO en una blockchain on-chain (Gnosis Chain/xDAI) con autocustodia. Para estabilidad y cuenta corriente: Brighty. Para DeFi y autocustodia: Gnosis Pay.`,
+    es_verdict: `Gnosis Pay supera en tasa de cashback (2 % GNO vs 1,75 % USDC) y descentralización. Brighty supera en simplicidad de uso y estabilidad del cashback en USDC. Puntuación: Gnosis Pay 4,1/5 vs Brighty Card 3,9/5.`,
+    it_intro: `Brighty Card e Gnosis Pay Card sono entrambe carte senza staking disponibili in Europa, ma con filosofie diverse. Brighty offre l'1,75 % in USDC (stablecoin) con IBAN europeo integrato e UX orientata al grande pubblico. Gnosis Pay offre il 2 % in GNO su blockchain on-chain (Gnosis Chain/xDAI) con self-custody dei fondi. Per stabilità e conto corrente: Brighty. Per DeFi e auto-custodia: Gnosis Pay.`,
+    it_verdict: `Gnosis Pay vince sul tasso di cashback (2 % GNO vs 1,75 % USDC) e sulla decentralizzazione. Brighty vince sulla semplicità d'uso e sulla stabilità del cashback in USDC. Punteggio: Gnosis Pay 4,1/5 vs Brighty Card 3,9/5.`,
+    en_intro: `Brighty Card and Gnosis Pay Card are both no-staking cards available in Europe, but with different philosophies. Brighty offers 1.75% in USDC (stablecoin) with an integrated European IBAN and a mainstream-friendly UX. Gnosis Pay offers 2% in GNO on an on-chain blockchain (Gnosis Chain/xDAI) with self-custody of funds. For stability and a current account: Brighty. For DeFi and self-custody: Gnosis Pay.`,
+    en_verdict: `Gnosis Pay wins on cashback rate (2% GNO vs 1.75% USDC) and decentralisation. Brighty wins on ease of use and cashback stability in USDC. Our recommendation: Brighty for users wanting an easy crypto card with IBAN; Gnosis Pay for DeFi users. Score: Gnosis Pay 4.1/5 vs Brighty Card 3.9/5.`,
+    faq: [
+      { q: 'Brighty Card ou Gnosis Pay : laquelle est plus facile à utiliser ?', a: 'Brighty est plus accessible pour les débutants — interface simple, IBAN européen, onboarding classique. Gnosis Pay nécessite un wallet Safe et une compréhension de la Gnosis Chain.' },
+      { q: 'Gnosis Pay offre-t-elle un IBAN ?', a: 'Non. Gnosis Pay est une carte de dépense on-chain sans IBAN traditionnel. Brighty inclut un IBAN européen pour les virements bancaires classiques.' },
+      { q: 'Quelle carte est la plus décentralisée ?', a: 'Gnosis Pay — les fonds restent dans votre wallet Safe on-chain, sans dépositaire central. Brighty utilise une infrastructure bancaire traditionnelle régulée.' },
+    ],
+    de_faq: [
+      { q: 'Brighty Card oder Gnosis Pay: Welche ist einfacher zu nutzen?', a: 'Brighty ist zugänglicher für Einsteiger — einfache Oberfläche, europäische IBAN, klassisches Onboarding. Gnosis Pay erfordert ein Safe-Wallet und Verständnis der Gnosis Chain.' },
+      { q: 'Hat Gnosis Pay eine IBAN?', a: 'Nein. Gnosis Pay ist eine On-Chain-Zahlungskarte ohne traditionelle IBAN. Brighty enthält eine europäische IBAN für klassische Banküberweisungen.' },
+      { q: 'Welche Karte ist dezentraler?', a: 'Gnosis Pay — die Gelder verbleiben in Ihrem Safe-Wallet On-Chain, ohne zentralen Verwahrsteller. Brighty nutzt regulierte traditionelle Bankinfrastruktur.' },
+    ],
+    es_faq: [
+      { q: 'Brighty Card o Gnosis Pay: ¿cuál es más fácil de usar?', a: 'Brighty es más accesible para principiantes — interfaz simple, IBAN europeo, onboarding clásico. Gnosis Pay requiere una wallet Safe y comprensión de la Gnosis Chain.' },
+      { q: '¿Gnosis Pay tiene IBAN?', a: 'No. Gnosis Pay es una tarjeta de pago on-chain sin IBAN tradicional. Brighty incluye un IBAN europeo para transferencias bancarias clásicas.' },
+      { q: '¿Qué tarjeta es más descentralizada?', a: 'Gnosis Pay — los fondos permanecen en tu wallet Safe on-chain, sin custodio central. Brighty usa infraestructura bancaria regulada tradicional.' },
+    ],
+    it_faq: [
+      { q: 'Brighty Card o Gnosis Pay: quale è più facile da usare?', a: 'Brighty è più accessibile per i principianti — interfaccia semplice, IBAN europeo, onboarding classico. Gnosis Pay richiede un wallet Safe e la comprensione della Gnosis Chain.' },
+      { q: 'Gnosis Pay ha un IBAN?', a: 'No. Gnosis Pay è una carta di pagamento on-chain senza IBAN tradizionale. Brighty include un IBAN europeo per bonifici bancari classici.' },
+      { q: 'Quale carta è più decentralizzata?', a: 'Gnosis Pay — i fondi rimangono nel tuo wallet Safe on-chain, senza custode centrale. Brighty utilizza un\'infrastruttura bancaria regolamentata tradizionale.' },
+    ],
+    en_faq: [
+      { q: 'Brighty Card or Gnosis Pay: which is easier to use?', a: 'Brighty is more accessible for beginners — simple interface, European IBAN, classic onboarding. Gnosis Pay requires a Safe wallet and understanding of the Gnosis Chain.' },
+      { q: 'Does Gnosis Pay have an IBAN?', a: 'No. Gnosis Pay is an on-chain spending card without a traditional IBAN. Brighty includes a European IBAN for classic bank transfers.' },
+      { q: 'Which card is more decentralised?', a: 'Gnosis Pay — funds stay in your Safe wallet on-chain with no central custodian. Brighty uses regulated traditional banking infrastructure.' },
+    ],
+  },
+
+  // ─── Brighty Card vs Nexo Card ────────────────────────────────────────────────
+  'brighty-card-vs-nexo-card': {
+    fr_intro: `Brighty Card et Nexo Card sont deux cartes sans staking disponibles dans toute l'UE et au Royaume-Uni. Brighty offre 1,75 % de cashback en USDC (stablecoin) avec un IBAN européen. Nexo propose jusqu'à 2 % en BTC ou NEXO, via une ligne de crédit crypto. Les deux cartes sont gratuites, mais le mécanisme sous-jacent est très différent : Brighty est un néobanque ; Nexo est une plateforme de prêt crypto.`,
+    fr_verdict: `La Nexo Card offre un taux légèrement supérieur (2 % vs 1,75 %) et permet de choisir entre BTC et NEXO. Brighty gagne sur la stabilité (cashback en USDC) et l'IBAN européen. Pour un utilisateur cherchant la simplicité bancaire avec cashback stable, Brighty est idéale. Pour maximiser le cashback, Nexo l'emporte. Note : Nexo Card 4,2/5 vs Brighty Card 3,9/5.`,
+    de_intro: `Brighty Card und Nexo Card sind zwei staking-freie Karten, die in der gesamten EU und im Vereinigten Königreich verfügbar sind. Brighty bietet 1,75 % Cashback in USDC (Stablecoin) mit europäischer IBAN. Nexo bietet bis zu 2 % in BTC oder NEXO über eine Krypto-Kreditlinie. Beide Karten sind kostenlos, aber der zugrundeliegende Mechanismus unterscheidet sich stark.`,
+    de_verdict: `Die Nexo Card bietet einen etwas höheren Satz (2 % vs. 1,75 %) und ermöglicht die Wahl zwischen BTC und NEXO. Brighty punktet mit Stabilität (USDC-Cashback) und europäischer IBAN. Bewertung: Nexo Card 4,2/5 vs. Brighty Card 3,9/5.`,
+    es_intro: `Brighty Card y Nexo Card son dos tarjetas sin staking disponibles en toda la UE y el Reino Unido. Brighty ofrece el 1,75 % de cashback en USDC (stablecoin) con IBAN europeo. Nexo ofrece hasta el 2 % en BTC o NEXO, mediante una línea de crédito crypto. Ambas son gratuitas, pero el mecanismo subyacente es muy diferente.`,
+    es_verdict: `La Nexo Card ofrece una tasa ligeramente superior (2 % vs 1,75 %) y permite elegir entre BTC y NEXO. Brighty gana en estabilidad (cashback en USDC) y IBAN europeo. Puntuación: Nexo Card 4,2/5 vs Brighty Card 3,9/5.`,
+    it_intro: `Brighty Card e Nexo Card sono due carte senza staking disponibili in tutta la UE e nel Regno Unito. Brighty offre l'1,75 % di cashback in USDC (stablecoin) con IBAN europeo. Nexo offre fino al 2 % in BTC o NEXO tramite una linea di credito crypto. Entrambe sono gratuite, ma il meccanismo sottostante è molto diverso.`,
+    it_verdict: `La Nexo Card offre un tasso leggermente superiore (2 % vs 1,75 %) e permette di scegliere tra BTC e NEXO. Brighty vince sulla stabilità (cashback in USDC) e sull'IBAN europeo. Punteggio: Nexo Card 4,2/5 vs Brighty Card 3,9/5.`,
+    en_intro: `Brighty Card and Nexo Card are two no-staking cards available across the EU and UK. Brighty offers 1.75% cashback in USDC (stablecoin) with a European IBAN. Nexo offers up to 2% in BTC or NEXO via a crypto credit line. Both cards are free, but the underlying mechanism is very different: Brighty is a neobank; Nexo is a crypto lending platform.`,
+    en_verdict: `The Nexo Card offers a slightly higher rate (2% vs 1.75%) and lets you choose between BTC and NEXO. Brighty wins on stability (USDC cashback) and the European IBAN. For users seeking banking simplicity with stable cashback, Brighty is ideal. To maximise cashback, Nexo wins. Score: Nexo Card 4.2/5 vs Brighty Card 3.9/5.`,
+    faq: [
+      { q: 'Brighty ou Nexo Card : laquelle offre le plus de cashback ?', a: 'Nexo Card offre jusqu\'à 2 % en BTC ou NEXO, contre 1,75 % en USDC pour Brighty. Nexo est légèrement supérieure en taux, mais Brighty est plus stable (USDC).' },
+      { q: 'La Brighty Card inclut-elle un IBAN ?', a: 'Oui. Brighty fournit un IBAN européen pour recevoir des virements et gérer ses finances. La Nexo Card n\'est pas une néobanque — elle fonctionne comme une carte de crédit crypto.' },
+      { q: 'Nexo Card et Brighty sont-elles disponibles au Royaume-Uni ?', a: 'Oui, les deux sont disponibles au Royaume-Uni. Nexo est régulée FCA ; Brighty opère également au Royaume-Uni avec son agrément européen.' },
+    ],
+    de_faq: [
+      { q: 'Brighty oder Nexo Card: Welche bietet mehr Cashback?', a: 'Nexo Card bietet bis zu 2 % in BTC oder NEXO, gegenüber 1,75 % in USDC für Brighty. Nexo ist beim Satz leicht überlegen, aber Brighty ist stabiler (USDC).' },
+      { q: 'Hat die Brighty Card eine IBAN?', a: 'Ja. Brighty bietet eine europäische IBAN für Überweisungen und Finanzverwaltung. Die Nexo Card ist keine Neobank — sie funktioniert wie eine Krypto-Kreditkarte.' },
+      { q: 'Sind Nexo Card und Brighty im Vereinigten Königreich verfügbar?', a: 'Ja, beide sind im Vereinigten Königreich verfügbar. Nexo ist FCA-reguliert; Brighty ist ebenfalls im UK tätig.' },
+    ],
+    es_faq: [
+      { q: 'Brighty o Nexo Card: ¿cuál ofrece más cashback?', a: 'Nexo Card ofrece hasta el 2 % en BTC o NEXO, frente al 1,75 % en USDC de Brighty. Nexo es ligeramente superior en tasa, pero Brighty es más estable (USDC).' },
+      { q: '¿Brighty Card incluye IBAN?', a: 'Sí. Brighty proporciona un IBAN europeo para recibir transferencias y gestionar finanzas. La Nexo Card no es un neobanco — funciona como una tarjeta de crédito crypto.' },
+      { q: '¿Nexo Card y Brighty están disponibles en el Reino Unido?', a: 'Sí, ambas están disponibles en el Reino Unido. Nexo está regulada por la FCA; Brighty también opera en el Reino Unido.' },
+    ],
+    it_faq: [
+      { q: 'Brighty o Nexo Card: quale offre più cashback?', a: 'Nexo Card offre fino al 2 % in BTC o NEXO, contro l\'1,75 % in USDC di Brighty. Nexo è leggermente superiore nel tasso, ma Brighty è più stabile (USDC).' },
+      { q: 'Brighty Card include un IBAN?', a: 'Sì. Brighty fornisce un IBAN europeo per ricevere bonifici e gestire le finanze. La Nexo Card non è una neobank — funziona come una carta di credito crypto.' },
+      { q: 'Nexo Card e Brighty sono disponibili nel Regno Unito?', a: 'Sì, entrambe sono disponibili nel Regno Unito. Nexo è regolata FCA; Brighty opera anch\'essa nel Regno Unito.' },
+    ],
+    en_faq: [
+      { q: 'Brighty or Nexo Card: which offers more cashback?', a: 'Nexo Card offers up to 2% in BTC or NEXO, versus 1.75% in USDC for Brighty. Nexo is slightly higher in rate, but Brighty is more stable (USDC).' },
+      { q: 'Does Brighty Card include an IBAN?', a: 'Yes. Brighty provides a European IBAN for receiving transfers and managing finances. The Nexo Card is not a neobank — it works like a crypto credit card.' },
+      { q: 'Are Nexo Card and Brighty available in the UK?', a: 'Yes, both are available in the UK. Nexo is FCA-regulated; Brighty also operates in the UK.' },
+    ],
+  },
+
+  // ─── Brighty Card vs Revolut Metal ────────────────────────────────────────────
+  'brighty-card-vs-revolut-metal': {
+    fr_intro: `Brighty Card et Revolut Metal s'adressent à des profils très différents. Brighty est une néobanque crypto avec 1,75 % de cashback en USDC, un IBAN européen et 0 € de frais. Revolut Metal est une carte premium bancaire avec RevPoints, lounge access et assurances voyage pour 13,99 €/mois. Si le cashback crypto est votre priorité, Brighty gagne. Si vous cherchez un package bancaire complet avec avantages travel, Revolut Metal l'emporte.`,
+    fr_verdict: `Brighty Card est la gagnante pour les utilisateurs crypto cherchant un cashback stable en USDC sans frais. Revolut Metal s'impose pour les voyageurs fréquents qui veulent un compte bancaire complet. Les deux se complètent plus qu'ils ne s'affrontent. Note : Brighty Card 3,9/5 vs Revolut Metal 3,7/5 (profil crypto).`,
+    de_intro: `Brighty Card und Revolut Metal richten sich an sehr unterschiedliche Profile. Brighty ist eine Krypto-Neobank mit 1,75 % Cashback in USDC, europäischer IBAN und 0 € Gebühren. Revolut Metal ist eine Premium-Bankkarte mit RevPoints, Lounge-Zugang und Reiseversicherung für 13,99 €/Monat.`,
+    de_verdict: `Brighty Card gewinnt für Krypto-Nutzer, die stabiles Cashback in USDC ohne Gebühren suchen. Revolut Metal überzeugt Vielreisende mit einem vollständigen Bankkonto-Paket. Bewertung: Brighty Card 3,9/5 vs. Revolut Metal 3,7/5 (Krypto-Profil).`,
+    es_intro: `Brighty Card y Revolut Metal se dirigen a perfiles muy diferentes. Brighty es un neobanco crypto con el 1,75 % de cashback en USDC, IBAN europeo y 0 € de comisiones. Revolut Metal es una tarjeta bancaria premium con RevPoints, acceso a lounges y seguros de viaje por 13,99 €/mes.`,
+    es_verdict: `Brighty Card gana para usuarios crypto que buscan cashback estable en USDC sin comisiones. Revolut Metal se impone para viajeros frecuentes con un paquete bancario completo. Puntuación: Brighty Card 3,9/5 vs Revolut Metal 3,7/5 (perfil crypto).`,
+    it_intro: `Brighty Card e Revolut Metal si rivolgono a profili molto diversi. Brighty è una neobank crypto con l'1,75 % di cashback in USDC, IBAN europeo e 0 € di commissioni. Revolut Metal è una carta bancaria premium con RevPoints, accesso alle lounge e assicurazioni viaggio per 13,99 €/mese.`,
+    it_verdict: `Brighty Card vince per gli utenti crypto che cercano cashback stabile in USDC senza commissioni. Revolut Metal si impone per i grandi viaggiatori con un pacchetto bancario completo. Punteggio: Brighty Card 3,9/5 vs Revolut Metal 3,7/5 (profilo crypto).`,
+    en_intro: `Brighty Card and Revolut Metal target very different profiles. Brighty is a crypto neobank with 1.75% cashback in USDC, a European IBAN and €0 fees. Revolut Metal is a premium bank card with RevPoints, lounge access and travel insurance for €13.99/month. If crypto cashback is your priority, Brighty wins. If you want a complete banking package with travel perks, Revolut Metal wins.`,
+    en_verdict: `Brighty Card wins for crypto users seeking stable USDC cashback with no fees. Revolut Metal wins for frequent travellers wanting a complete bank account package. The two complement each other more than they compete. Score: Brighty Card 3.9/5 vs Revolut Metal 3.7/5 (crypto profile).`,
+    faq: [
+      { q: 'Brighty Card ou Revolut Metal : laquelle choisir en 2026 ?', a: 'Si vous voulez du cashback en stablecoin sans frais : Brighty Card. Si vous voyagez souvent et voulez des assurances et lounges : Revolut Metal.' },
+      { q: 'Revolut Metal offre-t-elle du cashback en USDC ?', a: 'Non. Revolut Metal verse des RevPoints, non convertibles en crypto. Pour du cashback USDC, Brighty Card est la seule option de ce type avec IBAN.' },
+      { q: 'Brighty est-elle une vraie néobanque ?', a: 'Oui. Brighty propose un IBAN européen, des virements SEPA et une carte Visa. C\'est un compte courant crypto complet, pas seulement une carte de cashback.' },
+    ],
+    de_faq: [
+      { q: 'Brighty Card oder Revolut Metal: Welche für 2026 wählen?', a: 'Wenn Sie stabiles Cashback in Stablecoin ohne Gebühren wollen: Brighty Card. Wenn Sie oft reisen und Versicherungen sowie Lounges wünschen: Revolut Metal.' },
+      { q: 'Bietet Revolut Metal USDC-Cashback?', a: 'Nein. Revolut Metal zahlt RevPoints, die nicht in Krypto umgewandelt werden können. Für USDC-Cashback ist Brighty Card die einzige Option mit IBAN.' },
+      { q: 'Ist Brighty eine echte Neobank?', a: 'Ja. Brighty bietet eine europäische IBAN, SEPA-Überweisungen und eine Visa-Karte. Es ist ein vollständiges Krypto-Girokonto, nicht nur eine Cashback-Karte.' },
+    ],
+    es_faq: [
+      { q: 'Brighty Card o Revolut Metal: ¿cuál elegir en 2026?', a: 'Si quieres cashback en stablecoin sin comisiones: Brighty Card. Si viajas con frecuencia y quieres seguros y lounges: Revolut Metal.' },
+      { q: '¿Revolut Metal ofrece cashback en USDC?', a: 'No. Revolut Metal paga RevPoints, no convertibles en crypto. Para cashback en USDC, Brighty Card es la única opción de este tipo con IBAN.' },
+      { q: '¿Brighty es un neobanco de verdad?', a: 'Sí. Brighty ofrece un IBAN europeo, transferencias SEPA y una tarjeta Visa. Es una cuenta corriente crypto completa, no solo una tarjeta cashback.' },
+    ],
+    it_faq: [
+      { q: 'Brighty Card o Revolut Metal: quale scegliere nel 2026?', a: 'Se vuoi cashback in stablecoin senza commissioni: Brighty Card. Se viaggi spesso e vuoi assicurazioni e lounge: Revolut Metal.' },
+      { q: 'Revolut Metal offre cashback in USDC?', a: 'No. Revolut Metal paga RevPoints, non convertibili in crypto. Per cashback in USDC, Brighty Card è l\'unica opzione di questo tipo con IBAN.' },
+      { q: 'Brighty è una vera neobank?', a: 'Sì. Brighty offre un IBAN europeo, bonifici SEPA e una carta Visa. È un conto corrente crypto completo, non solo una carta cashback.' },
+    ],
+    en_faq: [
+      { q: 'Brighty Card or Revolut Metal: which to choose in 2026?', a: 'If you want stable stablecoin cashback with no fees: Brighty Card. If you travel often and want insurance and lounges: Revolut Metal.' },
+      { q: 'Does Revolut Metal offer USDC cashback?', a: 'No. Revolut Metal pays RevPoints, not convertible to crypto. For USDC cashback, Brighty Card is the only option of this type with an IBAN.' },
+      { q: 'Is Brighty a real neobank?', a: 'Yes. Brighty provides a European IBAN, SEPA transfers and a Visa card. It is a complete crypto current account, not just a cashback card.' },
+    ],
+  },
+
+  // ─── Crypto.com Midnight Blue vs OKX Card ────────────────────────────────────
+  'crypto-com-midnight-blue-vs-okx-card': {
+    fr_intro: `La Crypto.com Midnight Blue et la OKX Card sont deux cartes d'entrée de gamme issues de grands exchanges. Les deux sont gratuites (0 € de frais annuels) et offrent du cashback en token natif : 1 % en CRO pour la Midnight Blue sans staking, 1 % en OKB pour OKX au tier de base (jusqu'à 3 % avec staking OKB). La Crypto.com Midnight Blue est accessible dans toute l'UE ; la disponibilité OKX varie selon les pays en raison de MiCA.`,
+    fr_verdict: `Pour un cashback sans staking, les deux cartes proposent environ 1 %. OKX Card monte jusqu'à 3 % avec staking OKB, ce qui la rend plus intéressante pour les utilisateurs OKX actifs. Crypto.com Midnight Blue est plus largement disponible en Europe et s'appuie sur un écosystème plus mature. Note : Crypto.com Midnight Blue 3,8/5 vs OKX Card 3,8/5 au même niveau.`,
+    de_intro: `Die Crypto.com Midnight Blue und die OKX Card sind zwei Einstiegskarten von großen Exchanges. Beide sind kostenlos (0 € Jahresgebühr) und bieten Cashback im nativen Token: 1 % in CRO für die Midnight Blue ohne Staking, 1 % in OKB für OKX auf Basislevel (bis zu 3 % mit OKB-Staking). Die Crypto.com Midnight Blue ist in der gesamten EU verfügbar; OKX-Verfügbarkeit variiert je nach Land.`,
+    de_verdict: `Für Cashback ohne Staking bieten beide Karten rund 1 %. OKX Card steigt mit OKB-Staking auf bis zu 3 %, was sie für aktive OKX-Nutzer attraktiver macht. Crypto.com Midnight Blue ist breiter in Europa verfügbar. Bewertung: Crypto.com Midnight Blue 3,8/5 vs. OKX Card 3,8/5.`,
+    es_intro: `La Crypto.com Midnight Blue y la OKX Card son dos tarjetas de nivel de entrada de grandes exchanges. Ambas son gratuitas (0 € anuales) y ofrecen cashback en token nativo: el 1 % en CRO para Midnight Blue sin staking, el 1 % en OKB para OKX en el nivel base (hasta el 3 % con staking OKB). La disponibilidad de OKX varía según el país por MiCA.`,
+    es_verdict: `Para cashback sin staking, ambas ofrecen alrededor del 1 %. OKX Card sube hasta el 3 % con staking OKB. Crypto.com Midnight Blue está más ampliamente disponible en Europa. Puntuación: Crypto.com Midnight Blue 3,8/5 vs OKX Card 3,8/5.`,
+    it_intro: `La Crypto.com Midnight Blue e la OKX Card sono due carte entry-level di grandi exchange. Entrambe sono gratuite (0 € annuali) e offrono cashback in token nativo: 1 % in CRO per la Midnight Blue senza staking, 1 % in OKB per OKX al livello base (fino al 3 % con staking OKB). La disponibilità OKX varia per paese a causa di MiCA.`,
+    it_verdict: `Per cashback senza staking, entrambe offrono circa il 1 %. OKX Card sale fino al 3 % con staking OKB. Crypto.com Midnight Blue è più ampiamente disponibile in Europa. Punteggio: Crypto.com Midnight Blue 3,8/5 vs OKX Card 3,8/5.`,
+    en_intro: `The Crypto.com Midnight Blue and OKX Card are two entry-level cards from major exchanges. Both are free (€0 annual fees) and offer cashback in native tokens: 1% in CRO for the Midnight Blue with no staking, 1% in OKB for OKX at the base tier (up to 3% with OKB staking). Crypto.com Midnight Blue is available across the EU; OKX availability varies by country due to MiCA.`,
+    en_verdict: `For no-staking cashback, both cards offer around 1%. OKX Card scales to 3% with OKB staking, making it more attractive for active OKX traders. Crypto.com Midnight Blue is more widely available in Europe and has a more mature ecosystem. Score: Crypto.com Midnight Blue 3.8/5 vs OKX Card 3.8/5 — neck and neck.`,
+    faq: [
+      { q: 'Crypto.com Midnight Blue ou OKX Card : laquelle a plus de cashback ?', a: 'Au niveau de base sans staking, les deux offrent 1 %. OKX Card monte jusqu\'à 3 % avec staking OKB, contre 1 % maximum pour la Midnight Blue (sans staking CRO requis).' },
+      { q: 'La OKX Card est-elle disponible en France ?', a: 'OKX Card est disponible en France mais la disponibilité peut varier selon l\'avancée de la conformité MiCA d\'OKX. Vérifiez le site officiel OKX.' },
+      { q: 'Laquelle est meilleure pour débutants ?', a: 'Crypto.com Midnight Blue est plus accessible aux débutants grâce à l\'écosystème mature de Crypto.com (app, exchange, staking). OKX convient mieux aux traders déjà familiers avec la plateforme.' },
+    ],
+    de_faq: [
+      { q: 'Crypto.com Midnight Blue oder OKX Card: Welche hat mehr Cashback?', a: 'Auf Basislevel ohne Staking bieten beide 1 %. OKX Card steigt mit OKB-Staking auf bis zu 3 %, während Midnight Blue bei 1 % bleibt (kein CRO-Staking nötig).' },
+      { q: 'Ist die OKX Card in Deutschland verfügbar?', a: 'OKX Card ist in Deutschland verfügbar, aber die Verfügbarkeit kann je nach MiCA-Compliance-Fortschritt von OKX variieren. Prüfen Sie die offizielle OKX-Website.' },
+      { q: 'Welche ist besser für Einsteiger?', a: 'Crypto.com Midnight Blue ist dank des ausgereiften Ökosystems von Crypto.com (App, Exchange, Staking) zugänglicher für Einsteiger. OKX passt besser zu Tradern, die bereits mit der Plattform vertraut sind.' },
+    ],
+    es_faq: [
+      { q: 'Crypto.com Midnight Blue o OKX Card: ¿cuál tiene más cashback?', a: 'En el nivel base sin staking, ambas ofrecen el 1 %. OKX Card sube hasta el 3 % con staking OKB, mientras que Midnight Blue se queda en el 1 % (sin staking CRO).' },
+      { q: '¿La OKX Card está disponible en España?', a: 'OKX Card está disponible en España, pero la disponibilidad puede variar según el avance de la conformidad MiCA de OKX. Consulta el sitio oficial de OKX.' },
+      { q: '¿Cuál es mejor para principiantes?', a: 'Crypto.com Midnight Blue es más accesible para principiantes gracias al ecosistema maduro de Crypto.com. OKX es más adecuada para traders familiarizados con la plataforma.' },
+    ],
+    it_faq: [
+      { q: 'Crypto.com Midnight Blue o OKX Card: quale ha più cashback?', a: 'Al livello base senza staking, entrambe offrono il 1 %. OKX Card sale fino al 3 % con staking OKB, mentre Midnight Blue rimane all\'1 % (senza staking CRO richiesto).' },
+      { q: 'La OKX Card è disponibile in Italia?', a: 'OKX Card è disponibile in Italia, ma la disponibilità può variare in base ai progressi della conformità MiCA di OKX. Verifica il sito ufficiale OKX.' },
+      { q: 'Quale è migliore per principianti?', a: 'Crypto.com Midnight Blue è più accessibile per i principianti grazie all\'ecosistema maturo di Crypto.com. OKX è più adatta ai trader già familiari con la piattaforma.' },
+    ],
+    en_faq: [
+      { q: 'Crypto.com Midnight Blue or OKX Card: which has more cashback?', a: 'At the base level with no staking, both offer 1%. OKX Card scales to 3% with OKB staking, while Midnight Blue stays at 1% (no CRO staking required).' },
+      { q: 'Is OKX Card available in the UK?', a: 'OKX Card availability in the UK is limited — OKX does not hold FCA authorisation as of 2026. For UK users, Crypto.com Midnight Blue (FCA-registered) is the safer option.' },
+      { q: 'Which is better for beginners?', a: 'Crypto.com Midnight Blue is more accessible for beginners thanks to Crypto.com\'s mature ecosystem. OKX Card suits traders already familiar with the OKX platform.' },
+    ],
+  },
+
+  // ─── Nexo Card vs Plutus Card ─────────────────────────────────────────────────
+  'nexo-card-vs-plutus-card': {
+    fr_intro: `Nexo Card et Plutus Card représentent deux philosophies opposées du cashback crypto. La Nexo Card offre jusqu'à 2 % en BTC sans staking — simple, prévisible, sans risque de token. La Plutus Card offre jusqu'à 9 % en PLU mais nécessite du staking PLU et est surtout centrée sur le marché britannique. Plutus inclut aussi des perks : Netflix, Spotify et autres abonnements remboursés selon le tier.`,
+    fr_verdict: `Pour la simplicité et la disponibilité UE, la Nexo Card s'impose : 2 % en BTC sans staking, disponible partout. Pour les utilisateurs britanniques qui veulent maximiser les perks et les rewards, Plutus Card peut être plus rentable — mais avec le risque de fluctuation du PLU. Note : Nexo Card 4,2/5 vs Plutus Card 3,8/5 (profil UE).`,
+    de_intro: `Nexo Card und Plutus Card verkörpern zwei entgegengesetzte Cashback-Philosophien. Die Nexo Card bietet bis zu 2 % in BTC ohne Staking — einfach, vorhersehbar, ohne Token-Risiko. Die Plutus Card bietet bis zu 9 % in PLU, erfordert aber PLU-Staking und ist hauptsächlich auf den britischen Markt ausgerichtet. Plutus beinhaltet auch Perks: Netflix, Spotify und andere erstattete Abonnements je nach Stufe.`,
+    de_verdict: `Für Einfachheit und EU-Verfügbarkeit setzt sich die Nexo Card durch: 2 % in BTC ohne Staking, überall verfügbar. Für britische Nutzer, die Perks und Rewards maximieren wollen, kann die Plutus Card rentabler sein — aber mit PLU-Kursrisiko. Bewertung: Nexo Card 4,2/5 vs. Plutus Card 3,8/5 (EU-Profil).`,
+    es_intro: `Nexo Card y Plutus Card representan dos filosofías opuestas del cashback crypto. La Nexo Card ofrece hasta el 2 % en BTC sin staking — simple, predecible, sin riesgo de token. La Plutus Card ofrece hasta el 9 % en PLU pero requiere staking PLU y está principalmente orientada al mercado británico. Plutus también incluye perks: Netflix, Spotify y otras suscripciones reembolsadas según el tier.`,
+    es_verdict: `Para simplicidad y disponibilidad en la UE, la Nexo Card se impone: 2 % en BTC sin staking, disponible en todas partes. Para usuarios del Reino Unido que quieren maximizar perks y recompensas, Plutus Card puede ser más rentable — pero con el riesgo de fluctuación del PLU. Puntuación: Nexo Card 4,2/5 vs Plutus Card 3,8/5 (perfil UE).`,
+    it_intro: `Nexo Card e Plutus Card rappresentano due filosofie opposte del cashback crypto. La Nexo Card offre fino al 2 % in BTC senza staking — semplice, prevedibile, senza rischio di token. La Plutus Card offre fino al 9 % in PLU ma richiede staking PLU ed è principalmente orientata al mercato britannico. Plutus include anche perk: Netflix, Spotify e altri abbonamenti rimborsati in base al tier.`,
+    it_verdict: `Per semplicità e disponibilità nell\'UE, la Nexo Card si impone: 2 % in BTC senza staking, disponibile ovunque. Per gli utenti britannici che vogliono massimizzare perk e premi, Plutus Card può essere più redditizia — ma con il rischio di fluttuazione del PLU. Punteggio: Nexo Card 4,2/5 vs Plutus Card 3,8/5 (profilo UE).`,
+    en_intro: `Nexo Card and Plutus Card represent two opposite cashback philosophies. The Nexo Card offers up to 2% in BTC with no staking — simple, predictable, no token risk. The Plutus Card offers up to 9% in PLU but requires PLU staking and is primarily focused on the UK market. Plutus also includes perks: Netflix, Spotify and other subscription reimbursements depending on tier.`,
+    en_verdict: `For simplicity and EU availability, the Nexo Card wins: 2% in BTC with no staking, available everywhere. For UK users wanting to maximise perks and rewards, Plutus Card can be more profitable — but with PLU price fluctuation risk. Score: Nexo Card 4.2/5 vs Plutus Card 3.8/5 (EU profile).`,
+    faq: [
+      { q: 'Nexo Card ou Plutus Card : laquelle offre plus de cashback ?', a: 'Plutus peut atteindre 9 % en PLU au niveau maximum de staking. Nexo offre 2 % en BTC sans staking. Plutus est plus élevée en théorie, mais le PLU est volatil et le staking est requis.' },
+      { q: 'Plutus Card est-elle disponible dans toute l\'UE ?', a: 'Plutus est principalement axée sur le Royaume-Uni. Sa disponibilité dans les pays de l\'UE est plus limitée. La Nexo Card est disponible dans toute l\'UE et au Royaume-Uni.' },
+      { q: 'Plutus Card rembourse-t-elle Netflix et Spotify ?', a: 'Oui. Plutus offre des remboursements mensuels pour Netflix, Spotify et d\'autres services selon votre niveau de staking PLU — similaire aux avantages de Revolut Metal.' },
+    ],
+    de_faq: [
+      { q: 'Nexo Card oder Plutus Card: Welche bietet mehr Cashback?', a: 'Plutus kann beim maximalen Staking-Level bis zu 9 % in PLU erreichen. Nexo bietet 2 % in BTC ohne Staking. Plutus ist theoretisch höher, aber PLU ist volatil und Staking ist erforderlich.' },
+      { q: 'Ist die Plutus Card in der gesamten EU verfügbar?', a: 'Plutus ist hauptsächlich auf das Vereinigte Königreich ausgerichtet. Die Verfügbarkeit in EU-Ländern ist begrenzter. Die Nexo Card ist in der gesamten EU und im Vereinigten Königreich verfügbar.' },
+      { q: 'Erstattet Plutus Card Netflix und Spotify?', a: 'Ja. Plutus bietet monatliche Erstattungen für Netflix, Spotify und andere Dienste je nach PLU-Staking-Level — ähnlich wie Revolut Metal.' },
+    ],
+    es_faq: [
+      { q: 'Nexo Card o Plutus Card: ¿cuál ofrece más cashback?', a: 'Plutus puede alcanzar el 9 % en PLU con el nivel máximo de staking. Nexo ofrece el 2 % en BTC sin staking. Plutus es más alta en teoría, pero el PLU es volátil y el staking es obligatorio.' },
+      { q: '¿Plutus Card está disponible en toda la UE?', a: 'Plutus está principalmente orientada al Reino Unido. Su disponibilidad en países de la UE es más limitada. La Nexo Card está disponible en toda la UE y el Reino Unido.' },
+      { q: '¿Plutus Card reembolsa Netflix y Spotify?', a: 'Sí. Plutus ofrece reembolsos mensuales para Netflix, Spotify y otros servicios según tu nivel de staking PLU — similar a los beneficios de Revolut Metal.' },
+    ],
+    it_faq: [
+      { q: 'Nexo Card o Plutus Card: quale offre più cashback?', a: 'Plutus può raggiungere il 9 % in PLU al livello massimo di staking. Nexo offre il 2 % in BTC senza staking. Plutus è teoricamente più alta, ma PLU è volatile e lo staking è richiesto.' },
+      { q: 'Plutus Card è disponibile in tutta la UE?', a: 'Plutus è principalmente orientata al mercato britannico. La disponibilità nei paesi UE è più limitata. La Nexo Card è disponibile in tutta la UE e nel Regno Unito.' },
+      { q: 'Plutus Card rimborsa Netflix e Spotify?', a: 'Sì. Plutus offre rimborsi mensili per Netflix, Spotify e altri servizi in base al livello di staking PLU — simile ai vantaggi di Revolut Metal.' },
+    ],
+    en_faq: [
+      { q: 'Nexo Card or Plutus Card: which offers more cashback?', a: 'Plutus can reach 9% in PLU at max staking level. Nexo offers 2% in BTC with no staking. Plutus is higher in theory, but PLU is volatile and staking is required.' },
+      { q: 'Is Plutus Card available across the EU?', a: 'Plutus is primarily focused on the UK market. Its availability in EU countries is more limited. Nexo Card is available across the EU and UK.' },
+      { q: 'Does Plutus Card reimburse Netflix and Spotify?', a: 'Yes. Plutus offers monthly reimbursements for Netflix, Spotify and other services depending on your PLU staking level — similar to Revolut Metal perks.' },
+    ],
+  },
+
+  // ─── Plutus Card vs Revolut Metal ─────────────────────────────────────────────
+  'plutus-card-vs-revolut-metal': {
+    fr_intro: `Plutus Card et Revolut Metal sont deux cartes premium axées sur les perks et les récompenses. Revolut Metal offre RevPoints, lounge access et assurances voyage pour 13,99 €/mois. Plutus offre jusqu'à 9 % en PLU + remboursements Netflix/Spotify selon le niveau de staking PLU. Les deux s'adressent aux utilisateurs qui dépensent régulièrement et veulent maximiser leurs avantages mensuels.`,
+    fr_verdict: `Pour les utilisateurs crypto, Plutus gagne sur le cashback théorique (jusqu'à 9 % PLU) et les perks similaires. Pour ceux qui veulent un écosystème bancaire stable sans exposition crypto, Revolut Metal est plus sûr. Note : Plutus Card 3,8/5 vs Revolut Metal 3,7/5 — match serré selon votre profil.`,
+    de_intro: `Plutus Card und Revolut Metal sind zwei Premium-Karten mit Fokus auf Perks und Rewards. Revolut Metal bietet RevPoints, Lounge-Zugang und Reiseversicherung für 13,99 €/Monat. Plutus bietet bis zu 9 % in PLU sowie Netflix/Spotify-Erstattungen je nach PLU-Staking-Level. Beide richten sich an Nutzer, die regelmäßig ausgeben und monatliche Vorteile maximieren wollen.`,
+    de_verdict: `Für Krypto-Nutzer punktet Plutus beim theoretischen Cashback (bis zu 9 % PLU) und ähnlichen Perks. Für ein stabiles Banken-Ökosystem ohne Krypto-Exposition ist Revolut Metal sicherer. Bewertung: Plutus Card 3,8/5 vs. Revolut Metal 3,7/5.`,
+    es_intro: `Plutus Card y Revolut Metal son dos tarjetas premium centradas en los perks y las recompensas. Revolut Metal ofrece RevPoints, acceso a lounges y seguros de viaje por 13,99 €/mes. Plutus ofrece hasta el 9 % en PLU más reembolsos de Netflix/Spotify según el nivel de staking PLU.`,
+    es_verdict: `Para usuarios crypto, Plutus gana en cashback teórico (hasta el 9 % PLU) y perks similares. Para quienes quieren un ecosistema bancario estable sin exposición crypto, Revolut Metal es más seguro. Puntuación: Plutus Card 3,8/5 vs Revolut Metal 3,7/5.`,
+    it_intro: `Plutus Card e Revolut Metal sono due carte premium focalizzate su perk e premi. Revolut Metal offre RevPoints, accesso alle lounge e assicurazioni viaggio per 13,99 €/mese. Plutus offre fino al 9 % in PLU più rimborsi Netflix/Spotify in base al livello di staking PLU.`,
+    it_verdict: `Per gli utenti crypto, Plutus vince sul cashback teorico (fino al 9 % PLU) e perk simili. Per chi vuole un ecosistema bancario stabile senza esposizione crypto, Revolut Metal è più sicuro. Punteggio: Plutus Card 3,8/5 vs Revolut Metal 3,7/5.`,
+    en_intro: `Plutus Card and Revolut Metal are two premium cards focused on perks and rewards. Revolut Metal offers RevPoints, lounge access and travel insurance for €13.99/month. Plutus offers up to 9% in PLU plus Netflix/Spotify reimbursements depending on PLU staking level. Both target regular spenders wanting to maximise their monthly perks.`,
+    en_verdict: `For crypto users, Plutus wins on theoretical cashback (up to 9% PLU) and similar perks. For those wanting a stable banking ecosystem without crypto exposure, Revolut Metal is safer. Score: Plutus Card 3.8/5 vs Revolut Metal 3.7/5 — tight match depending on your profile.`,
+    faq: [
+      { q: 'Plutus ou Revolut Metal : laquelle offre plus d\'avantages ?', a: 'Plutus offre jusqu\'à 9 % de cashback en PLU + remboursements Netflix/Spotify. Revolut Metal offre lounge access, assurances voyage et RevPoints. Plutus est meilleure pour le cashback crypto ; Revolut pour le package bancaire premium.' },
+      { q: 'La Plutus Card est-elle moins chère que Revolut Metal ?', a: 'Plutus a un plan gratuit (cashback réduit) et des plans premium payants. Revolut Metal coûte 13,99 €/mois. Selon votre niveau de staking PLU, Plutus peut revenir moins cher.' },
+      { q: 'Revolut Metal offre-t-elle du crypto cashback ?', a: 'Non. Revolut Metal verse des RevPoints (programme Revolut), non convertibles en crypto. Pour du cashback crypto comme PLU ou BTC, Plutus Card ou Nexo Card sont plus adaptées.' },
+    ],
+    de_faq: [
+      { q: 'Plutus oder Revolut Metal: Welche bietet mehr Vorteile?', a: 'Plutus bietet bis zu 9 % Cashback in PLU und Netflix/Spotify-Erstattungen. Revolut Metal bietet Lounge-Zugang, Reiseversicherungen und RevPoints. Plutus ist besser für Krypto-Cashback; Revolut für das Premium-Bankpaket.' },
+      { q: 'Ist die Plutus Card günstiger als Revolut Metal?', a: 'Plutus hat einen kostenlosen Tarif (reduziertes Cashback) und kostenpflichtige Premium-Tarife. Revolut Metal kostet 13,99 €/Monat. Je nach PLU-Staking-Level kann Plutus günstiger kommen.' },
+      { q: 'Bietet Revolut Metal Krypto-Cashback?', a: 'Nein. Revolut Metal zahlt RevPoints (Revolut-Programm), nicht in Krypto umwandelbar. Für Krypto-Cashback wie PLU oder BTC sind Plutus Card oder Nexo Card besser geeignet.' },
+    ],
+    es_faq: [
+      { q: 'Plutus o Revolut Metal: ¿cuál ofrece más ventajas?', a: 'Plutus ofrece hasta el 9 % de cashback en PLU más reembolsos de Netflix/Spotify. Revolut Metal ofrece acceso a lounges, seguros de viaje y RevPoints. Plutus es mejor para cashback crypto; Revolut para el paquete bancario premium.' },
+      { q: '¿Es Plutus Card más barata que Revolut Metal?', a: 'Plutus tiene un plan gratuito (cashback reducido) y planes premium de pago. Revolut Metal cuesta 13,99 €/mes. Según tu nivel de staking PLU, Plutus puede salir más barata.' },
+      { q: '¿Revolut Metal ofrece cashback crypto?', a: 'No. Revolut Metal paga RevPoints (programa Revolut), no convertibles en crypto. Para cashback crypto como PLU o BTC, Plutus Card o Nexo Card son más adecuadas.' },
+    ],
+    it_faq: [
+      { q: 'Plutus o Revolut Metal: quale offre più vantaggi?', a: 'Plutus offre fino al 9 % di cashback in PLU più rimborsi Netflix/Spotify. Revolut Metal offre accesso alle lounge, assicurazioni viaggio e RevPoints. Plutus è migliore per il cashback crypto; Revolut per il pacchetto bancario premium.' },
+      { q: 'Plutus Card costa meno di Revolut Metal?', a: 'Plutus ha un piano gratuito (cashback ridotto) e piani premium a pagamento. Revolut Metal costa 13,99 €/mese. A seconda del livello di staking PLU, Plutus può costare meno.' },
+      { q: 'Revolut Metal offre cashback crypto?', a: 'No. Revolut Metal paga RevPoints (programma Revolut), non convertibili in crypto. Per cashback crypto come PLU o BTC, Plutus Card o Nexo Card sono più adatte.' },
+    ],
+    en_faq: [
+      { q: 'Plutus or Revolut Metal: which offers more perks?', a: 'Plutus offers up to 9% cashback in PLU plus Netflix/Spotify reimbursements. Revolut Metal offers lounge access, travel insurance and RevPoints. Plutus is better for crypto cashback; Revolut for the premium banking package.' },
+      { q: 'Is Plutus Card cheaper than Revolut Metal?', a: 'Plutus has a free plan (reduced cashback) and paid premium plans. Revolut Metal costs €13.99/month. Depending on your PLU staking level, Plutus can work out cheaper.' },
+      { q: 'Does Revolut Metal offer crypto cashback?', a: 'No. Revolut Metal pays RevPoints (Revolut programme), not convertible to crypto. For crypto cashback like PLU or BTC, Plutus Card or Nexo Card are more suitable.' },
+    ],
+  },
+
 };
 
 export function getSpecificComparison(id1: string, id2: string): ComparisonContent | null {

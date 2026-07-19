@@ -31,5 +31,14 @@
   "gnosis-pay-card-vs-metamask-card",
   "gnosis-pay-card-vs-revolut-metal",
   "metamask-card-vs-nexo-card",
-  "metamask-card-vs-revolut-metal"
+  "metamask-card-vs-revolut-metal",
+  "bleap-card-vs-brighty-card",
+  "bleap-card-vs-nexo-card",
+  "bleap-card-vs-revolut-metal",
+  "brighty-card-vs-gnosis-pay-card",
+  "brighty-card-vs-nexo-card",
+  "brighty-card-vs-revolut-metal",
+  "crypto-com-midnight-blue-vs-okx-card",
+  "nexo-card-vs-plutus-card",
+  "plutus-card-vs-revolut-metal"
 ]
