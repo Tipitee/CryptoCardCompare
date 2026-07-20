@@ -176,3 +176,13 @@ The permanent SEO reference for this project is `docs/SEO-GUIDE-15-TACTICS.md`
 (15 high-reward tactics + 10 common mistakes + IndexNow/SSR notes).
 Consult it before any SEO decision. Current tactic-by-tactic status and plan:
 `SEO-AUDIT-V7-PLAN-BEST-WEBSITE.md`.
+
+## AI SEO operating system (seo/)
+
+The `seo/` folder is the operating system for all SEO/AI-visibility work
+(adapted from the Amadora "7 Configs" guide, pre-filled for this project).
+Read `seo/your-site/*` at the start of any SEO session. Shortcuts defined in
+`seo/settings.json`: `/audit`, `/schema`, `/visibility`, `/perception`,
+`/gap`, `/brief`, `/report`, `/refresh` — when the user types one, run the
+corresponding playbook file. Always segment analyses by market
+(fr/be/de/at/es/it/en). Every report ends with ONE action sized < 4 h.

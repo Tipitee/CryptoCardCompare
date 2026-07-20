@@ -1,0 +1,26 @@
+query,market,intent
+"Quelle est la meilleure carte crypto en 2026 ?",fr,commercial
+"Quelle carte crypto a le meilleur cashback sans staking ?",fr,commercial
+"Est-ce que la carte Crypto.com vaut le coup ?",fr,transactional
+"Crypto.com ou Nexo, laquelle choisir ?",fr,transactional
+"Quelle carte crypto fonctionne en France avec un IBAN ?",fr,commercial
+"Les cashbacks crypto sont-ils imposables en France ?",fr,informational
+"Quelle carte crypto pour un débutant qui n'a jamais eu de crypto ?",fr,commercial
+"Welche Krypto-Karte ist die beste in Deutschland?",de,commercial
+"Ist die Bitpanda Card empfehlenswert?",de,transactional
+"Welche Krypto-Karte hat keine Jahresgebühr?",de,commercial
+"Muss ich Krypto-Cashback in Deutschland versteuern?",de,informational
+"Welche Krypto-Karte funktioniert in Österreich?",at,commercial
+"What is the best crypto card in Europe right now?",en,commercial
+"What's the best crypto debit card with cashback and no staking?",en,commercial
+"Is the Crypto.com Visa card worth it in 2026?",en,transactional
+"Which crypto cards work in the UK?",en,commercial
+"Best alternatives to the Binance card in Europe?",en,commercial
+"¿Cuál es la mejor tarjeta cripto en España?",es,commercial
+"¿La tarjeta de Crypto.com merece la pena?",es,transactional
+"Qual è la migliore carta crypto in Italia?",it,commercial
+"La carta Nexo conviene nel 2026?",it,transactional
+"Quelle carte crypto est disponible en Belgique ?",be,commercial
+"Which crypto card is best for travel in Europe?",en,commercial
+"Can I get a crypto card without KYC?",en,commercial
+"Which crypto card gives cashback on Netflix and Spotify?",en,commercial

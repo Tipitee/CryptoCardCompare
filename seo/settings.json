@@ -1,0 +1,29 @@
+{
+  "site": "topcryptocards.eu",
+  "markets": ["fr", "be", "de", "at", "es", "it", "en"],
+  "primary_market": "fr",
+  "thresholds": {
+    "decline_flag_pct": 20,
+    "money_page_decline_flag_pct": 0,
+    "ai_visibility_alert_drop_points": 5,
+    "page2_min_impressions": 100,
+    "title_max_chars": 60,
+    "meta_description_max_chars": 155
+  },
+  "shortcuts": {
+    "/audit": "run seo/technical-seo/site-audit.md",
+    "/schema": "run seo/technical-seo/schema.md on the money pages in seo/your-site/overview.md",
+    "/visibility": "run seo/ai-visibility/citations.md and log to seo/competitors/share-of-voice.csv",
+    "/perception": "run seo/ai-visibility/perception.md",
+    "/gap": "run seo/content-strategy/content-gap.md against public/sitemap-*.xml",
+    "/brief": "run seo/content-strategy/content-briefs.md on the top item of the latest content-gap output",
+    "/report": "run seo/reporting/weekly-report.md on fresh seo/gsc-data/ exports and update the dashboard",
+    "/refresh": "pick the top page-2 prisoner from the latest weekly report and produce its refresh brief"
+  },
+  "output_rules": [
+    "every report ends with ONE recommended action sized under 4 hours",
+    "never smooth over declines; money pages flagged at any decline",
+    "segment everything by market (fr/be/de/at/es/it/en)",
+    "all data claims dated; verify against Supabase or GSC, never guess"
+  ]
+}

@@ -1,0 +1,33 @@
+keyword,market,tier,intent
+meilleure carte crypto,fr,priority,commercial
+carte crypto cashback,fr,priority,commercial
+carte crypto sans frais,fr,priority,commercial
+carte crypto avec iban,fr,priority,commercial
+crypto.com carte avis,fr,priority,transactional
+nexo card avis,fr,priority,transactional
+beste krypto karte,de,priority,commercial
+bitcoin karte,de,priority,commercial
+bitpanda card test,de,priority,transactional
+krypto karte cashback,de,priority,commercial
+best crypto card europe,en,priority,commercial
+best crypto card uk,en,priority,commercial
+crypto cashback card,en,priority,commercial
+mejor tarjeta cripto,es,priority,commercial
+tarjeta crypto cashback,es,priority,commercial
+miglior carta crypto,it,priority,commercial
+carta crypto cashback,it,priority,commercial
+carte crypto belgique,be,priority,commercial
+krypto karte österreich,at,priority,commercial
+crypto.com vs nexo,multi,priority,transactional
+carte crypto sans staking,fr,secondary,commercial
+carte crypto voyage,fr,secondary,commercial
+carte crypto débutant,fr,secondary,informational
+gnosis pay avis,fr,secondary,transactional
+crypto card no kyc,en,secondary,commercial
+virtual crypto card,en,secondary,commercial
+krypto karte ohne gebühren,de,secondary,commercial
+carte crypto fiscalité,fr,secondary,informational
+prix bitcoin,any,ignore,news
+acheter crypto,any,ignore,transactional-wrong-product
+meilleur exchange crypto,any,ignore,adjacent-category
+cours ethereum,any,ignore,news
