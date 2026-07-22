@@ -61,7 +61,7 @@ export default function AuthorPage() {
 
   useSeoMeta({
     title: author
-      ? `${author.name} — TopCryptoCards`
+      ? `${author.name}, TopCryptoCards`
       : (NOT_FOUND_LABEL[lang] ?? NOT_FOUND_LABEL.en),
     description: author
       ? (author.bio[lang] ?? author.bio.en)
@@ -193,7 +193,7 @@ export default function AuthorPage() {
             ))}
           </div>
         ) : posts.length === 0 ? (
-          <p className="text-slate-400 text-sm">{BLOG_LABEL[lang]}: —</p>
+          <p className="text-slate-400 text-sm">{BLOG_LABEL[lang]}:,</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {posts.map(post => (

@@ -115,14 +115,14 @@ export default function CompareTable({
 
   return (
     <div className="relative">
-      {/* Right-edge gradient — visible only when more content to scroll */}
+      {/* Right-edge gradient, visible only when more content to scroll */}
       {canScrollRight && (
         <div
           className="absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-bg-card/90 to-transparent pointer-events-none z-30"
           aria-hidden="true"
         />
       )}
-      {/* Mobile scroll hint — shown once until user scrolls */}
+      {/* Mobile scroll hint, shown once until user scrolls */}
       {canScrollRight && !hintDismissed && (
         <div className="sm:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 bg-bg-elevated/90 backdrop-blur-sm text-slate-400 text-xs px-3 py-1.5 rounded-full border border-bg-border pointer-events-none animate-pulse">
           <span>←</span>

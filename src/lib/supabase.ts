@@ -27,7 +27,7 @@ export function getSessionId(): string {
   return sid;
 }
 
-// All columns selected when fetching card rows — kept as a constant to avoid
+// All columns selected when fetching card rows, kept as a constant to avoid
 // duplication between fetchCards and fetchCardById.
 const CARD_COLUMNS =
   'id, name, issuer, cashback_base, cashback_no_staking, cashback_premium, ' +

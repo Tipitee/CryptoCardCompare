@@ -317,7 +317,7 @@ export default function AdminHeroImages() {
         <div className="mb-8 p-4 bg-cyan-accent/10 border border-cyan-accent/30 rounded-xl flex gap-3 items-start">
           <Info className="w-4 h-4 text-cyan-accent mt-0.5 shrink-0" />
           <p className="text-sm text-slate-300">
-            Les articles sont <span className="font-semibold text-cyan-accent">regroupés par sujet</span> — générer une image pour un groupe la partage automatiquement avec toutes les langues (FR · DE · ES · IT · EN). Chaque génération prend environ 15–30 secondes via <span className="font-semibold text-cyan-accent">Together AI</span> (FLUX).
+            Les articles sont <span className="font-semibold text-cyan-accent">regroupés par sujet</span>, générer une image pour un groupe la partage automatiquement avec toutes les langues (FR · DE · ES · IT · EN). Chaque génération prend environ 15–30 secondes via <span className="font-semibold text-cyan-accent">Together AI</span> (FLUX).
           </p>
         </div>
 

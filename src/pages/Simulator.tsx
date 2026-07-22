@@ -30,16 +30,16 @@ const SIM_SLUGS: Record<string, string> = {
 
 const SIM_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Simulateur de Gains Cartes Crypto ${YEAR} | TopCryptoCards`, desc: `Calculez vos gains annuels avec chaque carte crypto selon vos dépenses. Crypto.com, Nexo, Bybit, Binance comparés en temps réel. Gratuit ✓` },
-  de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Berechnen Sie Ihre jährlichen Gewinne mit jeder Krypto-Karte: Crypto.com, Nexo, Bybit, Binance. Ausgaben eingeben — Ergebnis sofort sehen. Kostenlos ✓` },
+  de: { title: `Krypto Karten Gewinn-Simulator ${YEAR} | TopCryptoCards`, desc: `Berechnen Sie Ihre jährlichen Gewinne mit jeder Krypto-Karte: Crypto.com, Nexo, Bybit, Binance. Ausgaben eingeben, Ergebnis sofort sehen. Kostenlos ✓` },
   es: { title: `Simulador de Ganancias Tarjetas Crypto ${YEAR} | TopCryptoCards`, desc: `Calcula tus ganancias anuales con cada tarjeta crypto: Crypto.com, Nexo, Bybit, Binance. Introduce tus gastos, ve el resultado en segundos. Gratis ✓` },
   it: { title: `Simulatore di Guadagni Carte Crypto ${YEAR} | TopCryptoCards`, desc: `Calcola i tuoi guadagni annuali con ogni carta crypto: Crypto.com, Nexo, Bybit, Binance. Inserisci le spese, vedi il risultato in secondi. Gratuito ✓` },
-  en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Calculate your annual earnings with each crypto card: Crypto.com, Nexo, Bybit, Binance. Enter your spending — see results instantly. Free ✓` },
+  en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Calculate your annual earnings with each crypto card: Crypto.com, Nexo, Bybit, Binance. Enter your spending, see results instantly. Free ✓` },
 };
 
 const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
   fr: {
     h2: 'Comment utiliser notre simulateur de gains crypto ?',
-    body: `Notre simulateur de cashback crypto vous permet de comparer en temps réel les gains annuels de plus de 20 cartes crypto selon vos habitudes de dépenses. Renseignez vos dépenses mensuelles par catégorie — alimentation, transport, voyages, restaurants, abonnements — et l'outil calcule automatiquement les récompenses nettes en tenant compte des frais annuels et des exigences de staking. Deux modes sont disponibles : "Base" (conditions standard sans staking) et "Optimiste" (avec staking activé pour débloquer les meilleurs taux). Les résultats sont triés par gain net annuel estimé, ce qui vous évite les comparaisons laborieuses. Retrouvez aussi nos avis complets et notre comparateur pour affiner votre choix.`,
+    body: `Notre simulateur de cashback crypto vous permet de comparer en temps réel les gains annuels de plus de 20 cartes crypto selon vos habitudes de dépenses. Renseignez vos dépenses mensuelles par catégorie, alimentation, transport, voyages, restaurants, abonnements, et l'outil calcule automatiquement les récompenses nettes en tenant compte des frais annuels et des exigences de staking. Deux modes sont disponibles : "Base" (conditions standard sans staking) et "Optimiste" (avec staking activé pour débloquer les meilleurs taux). Les résultats sont triés par gain net annuel estimé, ce qui vous évite les comparaisons laborieuses. Retrouvez aussi nos avis complets et notre comparateur pour affiner votre choix.`,
     related: 'Guides thématiques',
     links: [
       { key: 'best', emoji: '🏆', label: 'Meilleures cartes crypto' },
@@ -51,7 +51,7 @@ const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string;
   },
   de: {
     h2: 'Wie nutzen Sie unseren Krypto-Gewinn-Simulator?',
-    body: `Unser Krypto-Cashback-Simulator vergleicht in Echtzeit die jährlichen Gewinne von über 20 Krypto-Karten basierend auf Ihren Ausgabengewohnheiten. Geben Sie Ihre monatlichen Ausgaben nach Kategorien ein — Lebensmittel, Transport, Reisen, Restaurants, Abonnements — und das Tool berechnet automatisch die Nettorewards unter Berücksichtigung von Jahresgebühren und Staking-Anforderungen. Zwei Modi stehen zur Verfügung: "Basis" (Standardbedingungen ohne Staking) und "Optimistisch" (mit aktiviertem Staking für die besten Tarife). Die Ergebnisse werden nach geschätztem jährlichem Nettogewinn sortiert. Nutzen Sie auch unsere vollständigen Bewertungen und den Vergleich, um Ihre Wahl zu verfeinern.`,
+    body: `Unser Krypto-Cashback-Simulator vergleicht in Echtzeit die jährlichen Gewinne von über 20 Krypto-Karten basierend auf Ihren Ausgabengewohnheiten. Geben Sie Ihre monatlichen Ausgaben nach Kategorien ein, Lebensmittel, Transport, Reisen, Restaurants, Abonnements, und das Tool berechnet automatisch die Nettorewards unter Berücksichtigung von Jahresgebühren und Staking-Anforderungen. Zwei Modi stehen zur Verfügung: "Basis" (Standardbedingungen ohne Staking) und "Optimistisch" (mit aktiviertem Staking für die besten Tarife). Die Ergebnisse werden nach geschätztem jährlichem Nettogewinn sortiert. Nutzen Sie auch unsere vollständigen Bewertungen und den Vergleich, um Ihre Wahl zu verfeinern.`,
     related: 'Thematische Guides',
     links: [
       { key: 'best', emoji: '🏆', label: 'Beste Krypto-Karten' },
@@ -63,7 +63,7 @@ const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string;
   },
   es: {
     h2: '¿Cómo usar nuestro simulador de ganancias crypto?',
-    body: `Nuestro simulador de cashback crypto compara en tiempo real las ganancias anuales de más de 20 tarjetas crypto según tus hábitos de gasto. Introduce tus gastos mensuales por categoría — alimentación, transporte, viajes, restaurantes, suscripciones — y la herramienta calcula automáticamente las recompensas netas teniendo en cuenta las comisiones anuales y los requisitos de staking. Hay dos modos disponibles: "Base" (condiciones estándar sin staking) y "Optimista" (con staking activado para desbloquear las mejores tasas). Los resultados se ordenan por ganancia neta anual estimada. Consulta también nuestros análisis completos y el comparador para afinar tu elección.`,
+    body: `Nuestro simulador de cashback crypto compara en tiempo real las ganancias anuales de más de 20 tarjetas crypto según tus hábitos de gasto. Introduce tus gastos mensuales por categoría, alimentación, transporte, viajes, restaurantes, suscripciones, y la herramienta calcula automáticamente las recompensas netas teniendo en cuenta las comisiones anuales y los requisitos de staking. Hay dos modos disponibles: "Base" (condiciones estándar sin staking) y "Optimista" (con staking activado para desbloquear las mejores tasas). Los resultados se ordenan por ganancia neta anual estimada. Consulta también nuestros análisis completos y el comparador para afinar tu elección.`,
     related: 'Guías temáticas',
     links: [
       { key: 'best', emoji: '🏆', label: 'Mejores tarjetas crypto' },
@@ -75,7 +75,7 @@ const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string;
   },
   it: {
     h2: 'Come usare il nostro simulatore di guadagni crypto?',
-    body: `Il nostro simulatore di cashback crypto confronta in tempo reale i guadagni annuali di oltre 20 carte crypto in base alle tue abitudini di spesa. Inserisci le tue spese mensili per categoria — alimentari, trasporti, viaggi, ristoranti, abbonamenti — e lo strumento calcola automaticamente i premi netti tenendo conto delle commissioni annuali e dei requisiti di staking. Sono disponibili due modalità: "Base" (condizioni standard senza staking) e "Ottimistica" (con staking attivato per sbloccare le tariffe migliori). I risultati sono ordinati per guadagno netto annuale stimato. Consulta anche le nostre recensioni complete e il comparatore per affinare la tua scelta.`,
+    body: `Il nostro simulatore di cashback crypto confronta in tempo reale i guadagni annuali di oltre 20 carte crypto in base alle tue abitudini di spesa. Inserisci le tue spese mensili per categoria, alimentari, trasporti, viaggi, ristoranti, abbonamenti, e lo strumento calcola automaticamente i premi netti tenendo conto delle commissioni annuali e dei requisiti di staking. Sono disponibili due modalità: "Base" (condizioni standard senza staking) e "Ottimistica" (con staking attivato per sbloccare le tariffe migliori). I risultati sono ordinati per guadagno netto annuale stimato. Consulta anche le nostre recensioni complete e il comparatore per affinare la tua scelta.`,
     related: 'Guide tematiche',
     links: [
       { key: 'best', emoji: '🏆', label: 'Migliori carte crypto' },
@@ -87,7 +87,7 @@ const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string;
   },
   en: {
     h2: 'How to use our crypto earnings simulator?',
-    body: `Our crypto cashback simulator compares in real time the annual earnings of over 20 crypto cards based on your spending habits. Enter your monthly spending by category — groceries, transport, travel, restaurants, subscriptions — and the tool automatically calculates net rewards taking into account annual fees and staking requirements. Two modes are available: "Base" (standard conditions without staking) and "Optimistic" (with staking enabled to unlock the best rates). Results are sorted by estimated annual net gain, saving you tedious manual comparisons. Also check our full reviews and comparison tool to narrow down your choice.`,
+    body: `Our crypto cashback simulator compares in real time the annual earnings of over 20 crypto cards based on your spending habits. Enter your monthly spending by category, groceries, transport, travel, restaurants, subscriptions, and the tool automatically calculates net rewards taking into account annual fees and staking requirements. Two modes are available: "Base" (standard conditions without staking) and "Optimistic" (with staking enabled to unlock the best rates). Results are sorted by estimated annual net gain, saving you tedious manual comparisons. Also check our full reviews and comparison tool to narrow down your choice.`,
     related: 'Thematic guides',
     links: [
       { key: 'best', emoji: '🏆', label: 'Best crypto cards' },
@@ -698,7 +698,7 @@ export default function Simulator() {
 
                           <td className="px-4 py-3 text-right">
                             {r.card.stakingRequired === 0 ? (
-                              <span className="text-slate-400">—</span>
+                              <span className="text-slate-400">,</span>
                             ) : (
                               <span className={`inline-flex items-center gap-1 text-xs font-mono ${r.stakingMet ? 'text-green-accent' : 'text-amber-400'}`}>
                                 {!r.stakingMet && <AlertTriangle className="w-3 h-3" />}
@@ -725,7 +725,7 @@ export default function Simulator() {
                             {fmtEUR(r.rewards)}
                           </td>
                           <td className="px-4 py-3 text-right font-mono text-slate-400 hidden md:table-cell">
-                            {r.card.annualFees === 0 ? '—' : fmtEUR(r.card.annualFees)}
+                            {r.card.annualFees === 0 ? ',' : fmtEUR(r.card.annualFees)}
                           </td>
                           <td className="px-4 py-3 text-right font-mono font-semibold text-green-accent">
                             {fmtEUR(r.net)}
@@ -747,11 +747,11 @@ export default function Simulator() {
                                 </div>
                               </td>
                               <td className="px-4 py-2 hidden sm:table-cell">
-                                <span className="text-xs text-slate-400">{t2.card.tierLabel ?? '—'}</span>
+                                <span className="text-xs text-slate-400">{t2.card.tierLabel ?? ','}</span>
                               </td>
                               <td className="px-4 py-2 text-right">
                                 {t2.card.stakingRequired === 0 ? (
-                                  <span className="text-slate-500 text-xs">—</span>
+                                  <span className="text-slate-500 text-xs">,</span>
                                 ) : (
                                   <span className={`text-xs font-mono ${t2.stakingMet ? 'text-green-accent/60' : 'text-amber-400/60'}`}>
                                     {!t2.stakingMet && <AlertTriangle className="w-2.5 h-2.5 inline mr-0.5" />}
@@ -768,7 +768,7 @@ export default function Simulator() {
                                 {fmtEUR(t2.rewards)}
                               </td>
                               <td className="px-4 py-2 text-right text-xs font-mono hidden md:table-cell">
-                                {t2.card.annualFees === 0 ? '—' : fmtEUR(t2.card.annualFees)}
+                                {t2.card.annualFees === 0 ? ',' : fmtEUR(t2.card.annualFees)}
                               </td>
                               <td className="px-4 py-2 text-right text-xs font-mono text-slate-300">
                                 {fmtEUR(t2.net)}
@@ -789,7 +789,7 @@ export default function Simulator() {
           </div>
         </section>
 
-        {/* Bloc éditorial — thin content fix + internal links */}
+        {/* Bloc éditorial, thin content fix + internal links */}
         {(() => {
           const ed = SIM_EDITORIAL[lang] ?? SIM_EDITORIAL.en;
           return (

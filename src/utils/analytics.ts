@@ -1,6 +1,6 @@
 /**
  * GA4 event tracking via gtag.js (already loaded in index.html)
- * No GTM needed — fires directly to G-HGWKLHZTET
+ * No GTM needed, fires directly to G-HGWKLHZTET
  */
 
 declare global {

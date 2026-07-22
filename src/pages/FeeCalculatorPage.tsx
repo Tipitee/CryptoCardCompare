@@ -1,5 +1,5 @@
 /**
- * Fee Calculator — "Is a paid tier worth it?" tool page
+ * Fee Calculator, "Is a paid tier worth it?" tool page
  * URL: /:lang/calculateur-frais-carte-crypto (etc.)
  * Purpose: ROI / break-even analysis for staking-gated or paid cards
  */
@@ -31,7 +31,7 @@ const COPY: Record<string, {
   faqTitle: string; faqs: { q: string; a: string }[];
 }> = {
   fr: {
-    title:         `Calculateur Frais Carte Crypto ${YEAR} — Ça Vaut le Coup ? | TopCryptoCards`,
+    title:         `Calculateur Frais Carte Crypto ${YEAR}, Ça Vaut le Coup ? | TopCryptoCards`,
     h1:            `Calculateur Frais Carte Crypto ${YEAR}`,
     desc:          `Calculez si les frais ou le staking d'une carte crypto valent le coup selon vos dépenses ${YEAR}. Seuil de rentabilité en quelques secondes. Gratuit ✓`,
     intro:         `Vous envisagez une carte avec des frais ou du staking ? Entrez vos dépenses mensuelles et voyez immédiatement à partir de quel seuil chaque carte devient rentable par rapport à une carte gratuite à 1 % de cashback.`,
@@ -64,11 +64,11 @@ const COPY: Record<string, {
       { q: 'Comment calculez-vous le seuil de rentabilité ?', a: `Seuil de rentabilité (mois) = coût annuel ÷ (cashback supplémentaire mensuel). Le cashback supplémentaire est la différence entre le taux de la carte premium et une carte gratuite à 1 %, multipliée par vos dépenses mensuelles. Par exemple, si une carte premium offre 3 % au lieu de 1 %, avec 1 000 €/mois de dépenses : gain extra = 20 €/mois, et si son coût est de 180 €/an, le seuil de rentabilité est de 9 mois.` },
       { q: 'Faut-il inclure la valeur du token staké dans le calcul ?', a: `Non, ce calculateur est volontairement conservateur : il ne prend pas en compte la plus-value potentielle (ni la moins-value) du token de staking. Si le token s'apprécie, la rentabilité réelle est meilleure. Si le token se déprécie, le coût effectif du staking augmente.` },
       { q: 'Quelle est la carte gratuite de référence ?', a: `La référence est une carte avec 0 € de frais et 1 % de cashback (ex. MetaMask Card, Crypto.com Midnight Blue, Revolut Standard). Ce choix représente ce que vous obtenez sans aucun engagement financier.` },
-      { q: 'Revolut Metal vaut-il le coup ?', a: `À 15 €/mois (180 €/an) et 1 % de cashback, Revolut Metal n'offre pas plus de cashback qu'une carte gratuite à 1 % — l'avantage différenciant est l'assurance voyage, le lounge, la concierge, pas le cashback. Pour le cashback pur, une carte gratuite à 2 % (Gnosis Pay, Nexo) est meilleure.` },
+      { q: 'Revolut Metal vaut-il le coup ?', a: `À 15 €/mois (180 €/an) et 1 % de cashback, Revolut Metal n'offre pas plus de cashback qu'une carte gratuite à 1 %, l'avantage différenciant est l'assurance voyage, le lounge, la concierge, pas le cashback. Pour le cashback pur, une carte gratuite à 2 % (Gnosis Pay, Nexo) est meilleure.` },
     ],
   },
   de: {
-    title:         `Gebührenrechner Krypto-Karte ${YEAR} — Lohnt sich das? | TopCryptoCards`,
+    title:         `Gebührenrechner Krypto-Karte ${YEAR}, Lohnt sich das? | TopCryptoCards`,
     h1:            `Krypto-Karte Gebührenrechner ${YEAR}`,
     desc:          `Berechnen Sie, ob die Gebühren oder das Staking einer Krypto-Karte sich in ${YEAR} lohnen. Rentabilitätsschwelle in Sekunden. Kostenlos ✓`,
     intro:         `Planen Sie eine Karte mit Gebühren oder Staking? Geben Sie Ihre monatlichen Ausgaben ein und sehen Sie sofort, ab welcher Schwelle jede Karte im Vergleich zu einer kostenlosen Karte mit 1 % Cashback rentabel wird.`,
@@ -101,11 +101,11 @@ const COPY: Record<string, {
       { q: 'Wie wird die Rentabilitätsschwelle berechnet?', a: `Rentabilitätsschwelle (Monate) = Jahreskosten ÷ (monatliches Extra-Cashback). Das Extra-Cashback ist die Differenz zwischen dem Premium-Cashback-Satz und 1 % (Basis), multipliziert mit den monatlichen Ausgaben.` },
       { q: 'Sollte der Token-Wert beim Staking berücksichtigt werden?', a: `Dieser Rechner ist bewusst konservativ und berücksichtigt keine potenziellen Kurs-gewinne oder -verluste des Staking-Tokens. In der Realität kann die tatsächliche Rentabilität je nach Token-Performance höher oder niedriger ausfallen.` },
       { q: 'Was ist die Referenzkarte?', a: `Die Referenz ist eine Karte mit 0 € Jahresgebühr und 1 % Cashback (z.B. MetaMask Card, Crypto.com Midnight Blue). Dies repräsentiert das, was Sie ohne finanzielles Engagement erhalten.` },
-      { q: 'Lohnt sich Crypto.com Jade Green (2.000 € Staking)?', a: `Bei 2.000 € Staking und 3 % statt 1 % Cashback: Extra-Cashback = 2 % × monatliche Ausgaben. Bei 1.000 €/Monat = 20 €/Monat Extra. Rentabilitätsschwelle = 2.000 € ÷ (20 × 12) = 8,3 Jahre — nur bei Token-Kursstabilität.` },
+      { q: 'Lohnt sich Crypto.com Jade Green (2.000 € Staking)?', a: `Bei 2.000 € Staking und 3 % statt 1 % Cashback: Extra-Cashback = 2 % × monatliche Ausgaben. Bei 1.000 €/Monat = 20 €/Monat Extra. Rentabilitätsschwelle = 2.000 € ÷ (20 × 12) = 8,3 Jahre, nur bei Token-Kursstabilität.` },
     ],
   },
   es: {
-    title:         `Calculadora Tarifas Tarjeta Crypto ${YEAR} — ¿Vale la Pena? | TopCryptoCards`,
+    title:         `Calculadora Tarifas Tarjeta Crypto ${YEAR}, ¿Vale la Pena? | TopCryptoCards`,
     h1:            `Calculadora de Tarifas de Tarjeta Crypto ${YEAR}`,
     desc:          `Calcula si las comisiones o el staking de una tarjeta crypto valen la pena según tus gastos en ${YEAR}. Umbral de rentabilidad en segundos. Gratis ✓`,
     intro:         `¿Estás considerando una tarjeta con tarifas o staking? Introduce tus gastos mensuales y ve inmediatamente a partir de qué umbral cada tarjeta se vuelve rentable respecto a una tarjeta gratuita con 1 % de cashback.`,
@@ -142,7 +142,7 @@ const COPY: Record<string, {
     ],
   },
   it: {
-    title:         `Calcolatore Costi Carta Crypto ${YEAR} — Vale la Pena? | TopCryptoCards`,
+    title:         `Calcolatore Costi Carta Crypto ${YEAR}, Vale la Pena? | TopCryptoCards`,
     h1:            `Calcolatore Costi Carta Crypto ${YEAR}`,
     desc:          `Calcola se le commissioni o lo staking di una carta crypto valgono la pena in base alle tue spese nel ${YEAR}. Soglia di redditività in pochi secondi. Gratuito ✓`,
     intro:         `Stai valutando una carta con commissioni o staking? Inserisci le tue spese mensili e vedi immediatamente da quale soglia ogni carta diventa redditizia rispetto a una carta gratuita con 1 % di cashback.`,
@@ -179,7 +179,7 @@ const COPY: Record<string, {
     ],
   },
   en: {
-    title:         `Crypto Card Fee Calculator ${YEAR} — Is It Worth It? | TopCryptoCards`,
+    title:         `Crypto Card Fee Calculator ${YEAR}, Is It Worth It? | TopCryptoCards`,
     h1:            `Crypto Card Fee Calculator ${YEAR}`,
     desc:          `Calculate whether a crypto card's fees or staking requirement are worth it based on your spending in ${YEAR}. Break-even analysis in seconds. Free ✓`,
     intro:         `Considering a card with annual fees or a staking requirement? Enter your monthly spending and instantly see at what threshold each card becomes profitable compared to a free 1% cashback card.`,
@@ -209,7 +209,7 @@ const COPY: Record<string, {
     embedCopied:   'Copied!',
     faqTitle:      'Frequently asked questions',
     faqs: [
-      { q: 'How is the break-even point calculated?', a: `Break-even (months) = annual cost ÷ (monthly extra cashback). Extra cashback = (premium cashback rate − 1%) × monthly spending. For example: Revolut Metal costs €180/year but offers the same 1% cashback as a free card — extra cashback = 0, break-even = never.` },
+      { q: 'How is the break-even point calculated?', a: `Break-even (months) = annual cost ÷ (monthly extra cashback). Extra cashback = (premium cashback rate − 1%) × monthly spending. For example: Revolut Metal costs €180/year but offers the same 1% cashback as a free card, extra cashback = 0, break-even = never.` },
       { q: 'Should I include the staking token value?', a: `This calculator is deliberately conservative and does not factor in potential token price gains or losses. If the staking token appreciates, the actual ROI is better. If it depreciates, the effective staking cost is higher.` },
       { q: 'What is the baseline free card?', a: `The baseline is a card with €0 annual fee and 1% cashback (e.g. MetaMask Card, Crypto.com Midnight Blue). This represents what you get with zero financial commitment.` },
       { q: 'Is Crypto.com Jade Green worth it?', a: `At €2,000 staking and 3% vs 1% cashback: extra cashback = 2% × monthly spend. At €1,000/month that's €20/month extra. Break-even = €2,000 ÷ (€20 × 12) = 8.3 years. Worth it only if CRO holds its value long-term.` },
@@ -239,7 +239,7 @@ const CARDS: CardEntry[] = [
   { name: 'Gnosis Pay',                 type: 'free',    annualCost: 0,     cashbackRate: 2,    token: 'GNO',  cardId: 'gnosis-pay-card' },
   // Paid (subscription)
   { name: 'Revolut Metal',              type: 'paid',    annualCost: 180,   cashbackRate: 1,    cardId: 'revolut-metal' },
-  // Staking tiers — opportunity cost = staking_amount × 5% (rough DeFi yield)
+  // Staking tiers, opportunity cost = staking_amount × 5% (rough DeFi yield)
   { name: 'Crypto.com Ruby Steel (2%)', type: 'staking', annualCost: 200 * 0.05, cashbackRate: 2, token: 'CRO', cardId: 'crypto-com-ruby-steel' },
   { name: 'Crypto.com Jade Green (3%)', type: 'staking', annualCost: 2000 * 0.05, cashbackRate: 3, token: 'CRO', cardId: 'crypto-com-jade-green' },
   { name: 'Crypto.com Icy White (5%)',  type: 'staking', annualCost: 20000 * 0.05, cashbackRate: 5, token: 'CRO', cardId: 'crypto-com-icy-white' },
@@ -279,7 +279,7 @@ export default function FeeCalculatorPage() {
 
   const results = useMemo(() => {
     return CARDS
-      .filter(c => c.type !== 'free') // only paid/staking — those need ROI analysis
+      .filter(c => c.type !== 'free') // only paid/staking, those need ROI analysis
       .map(c => {
         const extraMonthly = spend * ((c.cashbackRate - FREE_RATE) / 100);
         const extraAnnual = extraMonthly * 12;
@@ -312,7 +312,7 @@ export default function FeeCalculatorPage() {
   const bestSlug = THEMATIC_ROUTES.best?.[lang as keyof typeof THEMATIC_ROUTES.best] ?? 'meilleure-carte-crypto';
   const simSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.simulator ?? 'simulateur';
   const cbSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator ?? 'calculateur-cashback-crypto';
-  const embedCode = `<iframe src="${BASE}/${lang}/${slug}" width="100%" height="600" frameborder="0" title="Crypto Card Fee Calculator — TopCryptoCards"></iframe>`;
+  const embedCode = `<iframe src="${BASE}/${lang}/${slug}" width="100%" height="600" frameborder="0" title="Crypto Card Fee Calculator, TopCryptoCards"></iframe>`;
 
   function handleCopy() {
     navigator.clipboard.writeText(embedCode).then(() => {
@@ -339,7 +339,7 @@ export default function FeeCalculatorPage() {
       {/* Spend slider */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6 shadow-sm">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          {copy.labelSpend} — <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
+          {copy.labelSpend}, <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
         </label>
         <input
           type="range" min={100} max={5000} step={100} value={spend}
@@ -355,7 +355,7 @@ export default function FeeCalculatorPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 flex items-start gap-3">
         <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
         <div className="text-sm text-blue-800">
-          <strong>{copy.labelFreeRef}</strong> — {spend} € × 1 % × 12 = <strong>{Math.round(freeMonthly * 12)} €/an</strong>
+          <strong>{copy.labelFreeRef}</strong>, {spend} € × 1 % × 12 = <strong>{Math.round(freeMonthly * 12)} €/an</strong>
         </div>
       </div>
 

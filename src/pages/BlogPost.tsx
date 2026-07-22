@@ -105,11 +105,11 @@ const REVIEWS_LABEL: Record<string, string> = {
 
 /** Suffix used when title-based fallback meta desc is generated */
 const BLOG_META_SUFFIX: Record<string, string> = {
-  fr: '— Analyse complète sur TopCryptoCards.',
-  de: '— Vollständige Analyse auf TopCryptoCards.',
-  es: '— Análisis completo en TopCryptoCards.',
-  it: '— Analisi completa su TopCryptoCards.',
-  en: '— Full analysis on TopCryptoCards.',
+  fr: ', Analyse complète sur TopCryptoCards.',
+  de: ', Vollständige Analyse auf TopCryptoCards.',
+  es: ', Análisis completo en TopCryptoCards.',
+  it: ', Analisi completa su TopCryptoCards.',
+  en: ', Full analysis on TopCryptoCards.',
 };
 
 function buildBlogMetaDesc(post: { meta_description?: string | null; excerpt?: string | null; title: string } | null, lang: string): string {
@@ -196,7 +196,7 @@ export default function BlogPost() {
       .finally(() => setLoading(false));
   }, [slug, lang]);
 
-  // Hooks must always be called — before any early returns
+  // Hooks must always be called, before any early returns
   const tags = post?.tags ?? [];
   const excerpt = post?.excerpt ?? '';
   const readTime = estimateReadTime(post?.content ?? '');
@@ -206,7 +206,7 @@ export default function BlogPost() {
   const renderedContent = autoLinkHtml(renderMarkdown(post?.content ?? ''), lang, brandsSlug);
   const reviewsSlug = rt.reviews ?? 'reviews';
 
-  /** Brands detected in post title + tags — max 2 */
+  /** Brands detected in post title + tags, max 2 */
   const mentionedBrands = (() => {
     if (!post) return [];
     const text = ` ${post.title} ${tags.join(' ')} `.toLowerCase();
@@ -279,7 +279,7 @@ export default function BlogPost() {
     return () => { document.getElementById('schema-blogpost-breadcrumb')?.remove(); };
   }, [post, lang]);
 
-  // ── Hreflang — uses topic_key variants for accurate cross-lang URLs ──────────
+  // ── Hreflang, uses topic_key variants for accurate cross-lang URLs ──────────
   useHreflang(
     langVariants.length > 0
       ? langVariants.map(({ lang: l, slug: s }) => ({ lang: l, href: `https://topcryptocards.eu/${l}/blog/${s}` }))

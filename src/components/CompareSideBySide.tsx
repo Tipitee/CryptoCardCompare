@@ -121,7 +121,7 @@ function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
     case 'number_eur':
       return (
         <span className="font-mono font-semibold">
-          {(v as number) === 0 ? '—' : fmtEUR(v as number)}
+          {(v as number) === 0 ? ',' : fmtEUR(v as number)}
         </span>
       );
     case 'bool':
@@ -134,7 +134,7 @@ function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
       return <span className="font-medium">{v as string}</span>;
     case 'list': {
       const arr = v as string[];
-      if (arr.length === 0) return <span className="text-slate-500">—</span>;
+      if (arr.length === 0) return <span className="text-slate-500">,</span>;
       return (
         <div className="flex flex-wrap gap-1 justify-center">
           {arr.slice(0, 8).map((item) => (

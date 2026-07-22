@@ -20,11 +20,11 @@ const YEAR = new Date().getFullYear();
 
 /** Fallback meta title when no i18n translation exists for this card+lang */
 const REVIEW_TITLE_FALLBACK: Record<string, (name: string) => string> = {
-  fr: (n) => `${n} Avis ${YEAR} — Cashback, Frais & Verdict | TopCryptoCards`,
-  de: (n) => `${n} Test ${YEAR} — Cashback, Gebühren & Fazit | TopCryptoCards`,
-  es: (n) => `${n} Opinión ${YEAR} — Cashback, Comisiones y Veredicto | TopCryptoCards`,
-  it: (n) => `${n} Recensione ${YEAR} — Cashback, Commissioni & Verdetto | TopCryptoCards`,
-  en: (n) => `${n} Review ${YEAR} — Cashback, Fees & Verdict | TopCryptoCards`,
+  fr: (n) => `${n} Avis ${YEAR}, Cashback, Frais & Verdict | TopCryptoCards`,
+  de: (n) => `${n} Test ${YEAR}, Cashback, Gebühren & Fazit | TopCryptoCards`,
+  es: (n) => `${n} Opinión ${YEAR}, Cashback, Comisiones y Veredicto | TopCryptoCards`,
+  it: (n) => `${n} Recensione ${YEAR}, Cashback, Commissioni & Verdetto | TopCryptoCards`,
+  en: (n) => `${n} Review ${YEAR}, Cashback, Fees & Verdict | TopCryptoCards`,
 };
 
 /** Fallback meta description when no i18n translation exists */
@@ -211,7 +211,7 @@ const L: Record<string, {
   },
 };
 
-// Editorial comparison pairs — used to surface specific pair links in sidebar
+// Editorial comparison pairs, used to surface specific pair links in sidebar
 const EDITORIAL_PAIRS_R = [
   'bybit-card-vs-nexo-card',
   'crypto-com-midnight-blue-vs-nexo-card',
@@ -492,7 +492,7 @@ export default function ReviewPage() {
                 </span>
               )}
               <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
-                {review.cardName} — {l.reviewWord} {new Date(review.updatedAt).getFullYear()}
+                {review.cardName}, {l.reviewWord} {new Date(review.updatedAt).getFullYear()}
               </h1>
               <p className="text-slate-400 text-sm mb-4">
                 {l.updatedOn} {new Date(review.updatedAt).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })} · {l.network} {review.network}
@@ -577,7 +577,7 @@ export default function ReviewPage() {
           {/* Main content */}
           <div className="flex-1 min-w-0 max-w-3xl space-y-10">
 
-            {/* Key-facts table — structured HTML for featured snippets + E-E-A-T */}
+            {/* Key-facts table, structured HTML for featured snippets + E-E-A-T */}
             {(lang === 'fr' || i18n) && (() => {
               const stats = i18n?.keyStats ?? review.keyStats;
               const rows = Object.entries(stats);
@@ -585,7 +585,7 @@ export default function ReviewPage() {
               return (
                 <div className="card-surface overflow-hidden">
                   <table className="w-full text-sm">
-                    <caption className="sr-only">{review.cardName} — {l.recap}</caption>
+                    <caption className="sr-only">{review.cardName}, {l.recap}</caption>
                     <thead>
                       <tr className="border-b border-bg-border bg-bg-base">
                         <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider w-1/2">
@@ -753,13 +753,13 @@ export default function ReviewPage() {
                         ? i18n.keyStats.cashbackMax.split(' ').slice(0, 3).join(' ')
                         : lang === 'fr'
                           ? review.keyStats.cashbackMax.split(' ').slice(0, 3).join(' ')
-                          : '—'}
+                          : ','}
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-400">{l.annualFees}</span>
                     <span className="font-semibold text-white">
-                      {i18n?.keyStats.fraisAnnuels ?? (lang === 'fr' ? review.keyStats.fraisAnnuels : '—')}
+                      {i18n?.keyStats.fraisAnnuels ?? (lang === 'fr' ? review.keyStats.fraisAnnuels : ',')}
                     </span>
                   </div>
                 </div>

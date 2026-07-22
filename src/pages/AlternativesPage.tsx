@@ -1,5 +1,5 @@
 /**
- * AlternativesPage — "[Brand] alternatives" SEO page
+ * AlternativesPage, "[Brand] alternatives" SEO page
  * Shows top alternatives to a given crypto card brand.
  * Route: /:lang/{brand-specific-slug}
  * Content: alternativesContent.ts
@@ -98,13 +98,13 @@ const HOW_TO_LABEL: Record<string, string> = {
   en: 'How to choose the best alternative?',
 };
 const HOW_TO_BODY: Record<string, string> = {
-  fr: 'Trois critères sont déterminants : (1) le taux de cashback crypto — comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels — certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking — bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
-  be: 'Trois critères sont déterminants : (1) le taux de cashback crypto — comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels — certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking — bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
-  de: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate — vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren — einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen — gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
-  at: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate — vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren — einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen — gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
-  es: 'Tres criterios son determinantes: (1) tasa de cashback en cripto — compara la tasa base sin staking y la tasa máxima accesible; (2) comisiones anuales — algunas tarjetas son completamente gratuitas, otras cobran hasta 400 €/año; (3) requisitos de staking — bloquear tokens en tu cartera representa un coste de oportunidad que debes incluir en tu cálculo de rendimiento real.',
-  it: 'Tre criteri sono determinanti: (1) tasso di cashback cripto — confronta il tasso base senza staking e il tasso massimo raggiungibile; (2) commissioni annuali — alcune carte sono completamente gratuite, altre costano fino a 400 €/anno; (3) requisiti di staking — bloccare token nel tuo portafoglio rappresenta un costo opportunità da includere nel calcolo del rendimento reale.',
-  en: 'Three criteria are decisive: (1) crypto cashback rate — compare the base rate without staking and the maximum accessible rate; (2) annual fees — some cards are entirely free, others charge up to €400/year; (3) staking requirements — locking tokens in your wallet represents an opportunity cost you must factor into your real yield calculation.',
+  fr: 'Trois critères sont déterminants : (1) le taux de cashback crypto, comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels, certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking, bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
+  be: 'Trois critères sont déterminants : (1) le taux de cashback crypto, comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels, certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking, bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
+  de: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate, vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren, einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen, gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
+  at: 'Drei Kriterien sind entscheidend: (1) Krypto-Cashback-Rate, vergleichen Sie die Basisrate ohne Staking und die maximal erreichbare Rate; (2) Jahresgebühren, einige Karten sind völlig kostenlos, andere kosten bis zu 400 €/Jahr; (3) Staking-Anforderungen, gesperrte Token im Wallet bedeuten Opportunitätskosten, die in Ihre Renditeberechnung einfließen müssen.',
+  es: 'Tres criterios son determinantes: (1) tasa de cashback en cripto, compara la tasa base sin staking y la tasa máxima accesible; (2) comisiones anuales, algunas tarjetas son completamente gratuitas, otras cobran hasta 400 €/año; (3) requisitos de staking, bloquear tokens en tu cartera representa un coste de oportunidad que debes incluir en tu cálculo de rendimiento real.',
+  it: 'Tre criteri sono determinanti: (1) tasso di cashback cripto, confronta il tasso base senza staking e il tasso massimo raggiungibile; (2) commissioni annuali, alcune carte sono completamente gratuite, altre costano fino a 400 €/anno; (3) requisiti di staking, bloccare token nel tuo portafoglio rappresenta un costo opportunità da includere nel calcolo del rendimento reale.',
+  en: 'Three criteria are decisive: (1) crypto cashback rate, compare the base rate without staking and the maximum accessible rate; (2) annual fees, some cards are entirely free, others charge up to €400/year; (3) staking requirements, locking tokens in your wallet represents an opportunity cost you must factor into your real yield calculation.',
 };
 const OTHER_ALTS_LABEL: Record<string, string> = {
   fr: 'Autres comparatifs d\'alternatives', be: 'Autres comparatifs d\'alternatives',
@@ -179,7 +179,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
     { label: `${ALTERNATIVES_LABEL[lang] ?? 'Alternatives'} ${altBrand.displayName}` },
   ];
 
-  // Schema.org — ItemList + FAQPage
+  // Schema.org, ItemList + FAQPage
   const schemaItemList = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -248,7 +248,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
               ? `${card.cashback_base}–${card.cashback_premium}%`
               : card.cashback_base
                 ? `${card.cashback_base}%`
-                : '—';
+                : ',';
             return (
               <Link
                 key={card.id}

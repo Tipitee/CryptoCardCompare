@@ -48,7 +48,7 @@ export function getEquivalentRoute(
     return `/${newLang}`;
   }
 
-  // parts[0] is always the current lang prefix — skip it
+  // parts[0] is always the current lang prefix, skip it
   const routeParts = parts.slice(1);
 
   if (routeParts.length === 0) {

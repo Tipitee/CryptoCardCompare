@@ -94,11 +94,11 @@ export default function CryptoPage() {
 
   const YEAR = new Date().getFullYear();
   const CRYPTO_TITLE_FALLBACK: Record<string, (name: string) => string> = {
-    fr: (n) => `${n} et cartes crypto — Cashback & Guide ${YEAR} | TopCryptoCards`,
-    de: (n) => `${n} Krypto-Karte — Cashback & Ratgeber ${YEAR} | TopCryptoCards`,
-    es: (n) => `${n} y tarjetas crypto — Cashback & Guía ${YEAR} | TopCryptoCards`,
-    it: (n) => `${n} e carte crypto — Cashback & Guida ${YEAR} | TopCryptoCards`,
-    en: (n) => `${n} Crypto Card — Cashback & Guide ${YEAR} | TopCryptoCards`,
+    fr: (n) => `${n} et cartes crypto, Cashback & Guide ${YEAR} | TopCryptoCards`,
+    de: (n) => `${n} Krypto-Karte, Cashback & Ratgeber ${YEAR} | TopCryptoCards`,
+    es: (n) => `${n} y tarjetas crypto, Cashback & Guía ${YEAR} | TopCryptoCards`,
+    it: (n) => `${n} e carte crypto, Cashback & Guida ${YEAR} | TopCryptoCards`,
+    en: (n) => `${n} Crypto Card, Cashback & Guide ${YEAR} | TopCryptoCards`,
   };
   const CRYPTO_DESC_FALLBACK: Record<string, (name: string) => string> = {
     fr: (n) => `Quelles cartes crypto acceptent le ${n} en ${YEAR} ? Cashback, frais, staking : comparatif complet des meilleures cartes. Gratuit ✓`,

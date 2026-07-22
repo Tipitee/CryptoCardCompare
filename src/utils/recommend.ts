@@ -127,7 +127,7 @@ const LABELS: Record<Lang, {
     noAnnualFees:    'No annual fee',
     noStaking:       'No staking required',
     freeAtm:         'Free ATM withdrawals',
-    easyToUse:       'Easy to use — no staking, no fees',
+    easyToUse:       'Easy to use, no staking, no fees',
     travelPerks:     'Travel perks included',
     profitability:   (net) => `Positive ROI for your budget (~€${net} net/year)`,
     stakingRequired: (amt) => `€${amt} staking required for maximum cashback`,
@@ -178,7 +178,7 @@ export function scoreCards(cards: CryptoCard[], a: QuizAnswers, lang = 'fr'): Sc
 
     let score = 40;
 
-    // Premium potential with diminishing returns — avoids saturation at 100
+    // Premium potential with diminishing returns, avoids saturation at 100
     const premiumW = a.priority === 'cashback' ? 1.5 : 0.75;
     score += premiumScore(c.cashbackPremium) * premiumW;
     if (c.cashbackPremium >= 3) reasons.push(lbl.highCashback(c.cashbackPremium));

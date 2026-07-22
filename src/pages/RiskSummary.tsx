@@ -36,7 +36,7 @@ const CONTENT: Record<string, {
     ukWarningText: 'Don\'t invest unless you\'re prepared to lose all the money you invest. Crypto is a high-risk investment and you are unlikely to be protected if something goes wrong.',
     ukSections: [
       { h: 'You could lose all the money you invest', p: ['Cryptoassets are highly volatile. The value of crypto tokens can fall sharply, and you may lose all of the money you put in. Past performance does not predict future returns.', 'This applies equally to cryptoassets you receive as cashback on a crypto card. Your real return may be significantly lower than the headline cashback rate suggests.'] },
-      { h: 'You are unlikely to get your money back if something goes wrong', p: ['Most crypto products are not regulated in the UK in the same way as banks. The FSCS does not protect cryptoasset investments. Some issuers hold an FCA EMI registration, which covers fiat balances only — not cryptoasset cashback or staking.'] },
+      { h: 'You are unlikely to get your money back if something goes wrong', p: ['Most crypto products are not regulated in the UK in the same way as banks. The FSCS does not protect cryptoasset investments. Some issuers hold an FCA EMI registration, which covers fiat balances only, not cryptoasset cashback or staking.'] },
       { h: 'You may not be able to sell or convert when you want to', p: 'Some cashback tokens have low trading volume or limited liquidity. Cards requiring staking lock your capital for a fixed period.' },
       { h: 'Crypto products are complex', p: 'Crypto cards combine a payment card, a cryptoasset, a rewards programme, and sometimes a staking arrangement. Don\'t apply for a product you don\'t fully understand.' },
       { h: 'Don\'t put all your eggs in one basket', p: 'Only commit money you can afford to lose entirely. The FCA recommends holding no more than 10% of your investable assets in cryptoassets.' },
@@ -144,7 +144,7 @@ const CONTENT: Record<string, {
     ukWarningText: 'Don\'t invest unless you\'re prepared to lose all the money you invest. Crypto is a high-risk investment and you are unlikely to be protected if something goes wrong.',
     ukSections: [
       { h: 'You could lose all the money you invest', p: ['Cryptoassets are highly volatile. The value of crypto tokens can fall sharply, and you may lose all of the money you put in.', 'This applies equally to cashback received on a crypto card. Your real return may be significantly lower than the headline cashback rate suggests.'] },
-      { h: 'You are unlikely to get your money back if something goes wrong', p: 'The FSCS does not protect cryptoasset investments. Some issuers hold an FCA EMI registration which covers fiat balances only — not cryptoasset cashback or staking.' },
+      { h: 'You are unlikely to get your money back if something goes wrong', p: 'The FSCS does not protect cryptoasset investments. Some issuers hold an FCA EMI registration which covers fiat balances only, not cryptoasset cashback or staking.' },
       { h: 'You may not be able to sell or convert when you want to', p: 'Some cashback tokens have low trading volume. Cards requiring staking lock your capital for a fixed period.' },
       { h: 'Crypto products are complex', p: 'Don\'t apply for a product you don\'t fully understand.' },
       { h: 'Don\'t put all your eggs in one basket', p: 'The FCA recommends holding no more than 10% of your investable assets in cryptoassets.' },

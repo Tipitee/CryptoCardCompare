@@ -28,13 +28,13 @@ const COMPARE_PREFIX: Record<string, string> = {
   fr: 'comparer', be: 'comparer', de: 'vergleichen', at: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
 };
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
-  fr: { title: `Meilleure Carte Crypto France ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais annuels. Crypto.com, Nexo, Bybit, Revolut. Comparateur gratuit ✓` },
-  be: { title: `Meilleure Carte Crypto Belgique ${YEAR} — Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en Belgique ${YEAR} : cashback, frais, staking. Crypto.com, Nexo, Bybit, Gnosis Pay. Comparateur gratuit ✓` },
-  de: { title: `Beste Krypto Karte Deutschland ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Deutschland ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, ohne Jahresgebühr, kein Staking. Gnosis Pay, Crypto.com, Nexo verglichen. Kostenlos ✓` },
-  at: { title: `Beste Krypto Karte Österreich ${YEAR} — Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Österreich ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, kein Staking. Bitpanda, Crypto.com, Nexo, Gnosis Pay verglichen. Kostenlos ✓` },
-  es: { title: `Tarjeta Criptomonedas España ${YEAR} — Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas de criptomonedas en España ${YEAR}: hasta 8% cashback en Bitcoin, sin cuota anual, sin staking. Gnosis Pay, Crypto.com, Nexo comparadas. Gratis ✓` },
-  it: { title: `Migliore Carta Crypto Italia ${YEAR} — Top 10 | TopCryptoCards`, desc: `Migliore carta crypto in Italia nel ${YEAR}: carta bitcoin, fino all'8% cashback, 0€/anno, senza staking. Crypto.com, Nexo, Gnosis Pay confrontate. Confronto gratuito ✓` },
-  en: { title: `Best Crypto Card UK ${YEAR} — Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards in the UK ${YEAR}: bitcoin card, up to 8% cashback, no annual fees, no staking. Gnosis Pay, Crypto.com, Nexo compared. Free ✓` },
+  fr: { title: `Meilleure Carte Crypto France ${YEAR}, Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais annuels. Crypto.com, Nexo, Bybit, Revolut. Comparateur gratuit ✓` },
+  be: { title: `Meilleure Carte Crypto Belgique ${YEAR}, Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en Belgique ${YEAR} : cashback, frais, staking. Crypto.com, Nexo, Bybit, Gnosis Pay. Comparateur gratuit ✓` },
+  de: { title: `Beste Krypto Karte Deutschland ${YEAR}, Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Deutschland ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, ohne Jahresgebühr, kein Staking. Gnosis Pay, Crypto.com, Nexo verglichen. Kostenlos ✓` },
+  at: { title: `Beste Krypto Karte Österreich ${YEAR}, Cashback | TopCryptoCards`, desc: `90+ Krypto-Karten für Österreich ${YEAR}: Bitcoin Karte, bis zu 8% Cashback, kein Staking. Bitpanda, Crypto.com, Nexo, Gnosis Pay verglichen. Kostenlos ✓` },
+  es: { title: `Tarjeta Criptomonedas España ${YEAR}, Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas de criptomonedas en España ${YEAR}: hasta 8% cashback en Bitcoin, sin cuota anual, sin staking. Gnosis Pay, Crypto.com, Nexo comparadas. Gratis ✓` },
+  it: { title: `Migliore Carta Crypto Italia ${YEAR}, Top 10 | TopCryptoCards`, desc: `Migliore carta crypto in Italia nel ${YEAR}: carta bitcoin, fino all'8% cashback, 0€/anno, senza staking. Crypto.com, Nexo, Gnosis Pay confrontate. Confronto gratuito ✓` },
+  en: { title: `Best Crypto Card UK ${YEAR}, Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards in the UK ${YEAR}: bitcoin card, up to 8% cashback, no annual fees, no staking. Gnosis Pay, Crypto.com, Nexo compared. Free ✓` },
 };
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
@@ -43,7 +43,7 @@ import IndependentNotice from '../components/IndependentNotice';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
-// Section "Explorer par type de carte" — 11 thèmes × 5 langues
+// Section "Explorer par type de carte", 11 thèmes × 5 langues
 const THEME_GRID: Record<string, {
   title: string;
   items: { key: string; emoji: string; label: string; desc: string }[];
@@ -53,12 +53,12 @@ const THEME_GRID: Record<string, {
     items: [
       { key: 'best',       emoji: '⭐', label: 'Meilleures cartes',        desc: 'Notre classement des meilleures cartes crypto du marché en 2026.' },
       { key: 'cashback',   emoji: '💰', label: 'Cashback élevé',            desc: 'Jusqu\'à 8 % de cashback en crypto sur vos dépenses quotidiennes.' },
-      { key: 'no-fees',    emoji: '🆓', label: 'Sans frais annuels',        desc: 'MetaMask, Gnosis Pay, Brighty — gratuites et sans engagement.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sans frais annuels',        desc: 'MetaMask, Gnosis Pay, Brighty, gratuites et sans engagement.' },
       { key: 'no-staking', emoji: '🔓', label: 'Sans staking requis',       desc: 'Gagnez du cashback sans immobiliser de capital.' },
       { key: 'travel',     emoji: '✈️', label: 'Voyage & étranger',         desc: '0 % de frais de change et retraits DAB gratuits à l\'international.' },
-      { key: 'rewards',    emoji: '🎁', label: 'Avantages & récompenses',   desc: 'Lounge aéroport, Netflix, Airbnb — les cartes les plus généreuses.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Avantages & récompenses',   desc: 'Lounge aéroport, Netflix, Airbnb, les cartes les plus généreuses.' },
       { key: 'virtual',    emoji: '💳', label: 'Cartes virtuelles',         desc: 'Activables en moins de 5 minutes, compatible Apple Pay & Google Pay.' },
-      { key: 'beginner',   emoji: '🌱', label: 'Pour les débutants',        desc: 'Inscription simple, zéro condition — idéal pour commencer.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Pour les débutants',        desc: 'Inscription simple, zéro condition, idéal pour commencer.' },
       { key: '2026',       emoji: '🚀', label: 'Meilleures en 2026',        desc: 'Les cartes qui dominent le marché cette année.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'Sans KYC strict',          desc: 'Moins de vérifications, plus de rapidité d\'accès.' },
       { key: 'france',     emoji: '🇫🇷', label: 'Disponibles en France',   desc: 'Toutes les cartes conformes et accessibles depuis la France.' },
@@ -69,12 +69,12 @@ const THEME_GRID: Record<string, {
     items: [
       { key: 'best',       emoji: '⭐', label: 'Beste Karten',              desc: 'Unser Ranking der besten Krypto-Karten 2026.' },
       { key: 'cashback',   emoji: '💰', label: 'Hoher Cashback',            desc: 'Bis zu 8 % Cashback in Krypto auf Alltagsausgaben.' },
-      { key: 'no-fees',    emoji: '🆓', label: 'Ohne Jahresgebühr',         desc: 'MetaMask, Gnosis Pay, Brighty — kostenlos und unverbindlich.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Ohne Jahresgebühr',         desc: 'MetaMask, Gnosis Pay, Brighty, kostenlos und unverbindlich.' },
       { key: 'no-staking', emoji: '🔓', label: 'Ohne Staking',              desc: 'Cashback ohne Kapitalbindung durch Staking.' },
       { key: 'travel',     emoji: '✈️', label: 'Reise & Ausland',           desc: '0 % Wechselgebühren und kostenlose Geldautomaten-Abhebungen weltweit.' },
-      { key: 'rewards',    emoji: '🎁', label: 'Prämien & Vorteile',        desc: 'Flughafen-Lounge, Netflix, Airbnb — die großzügigsten Karten.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Prämien & Vorteile',        desc: 'Flughafen-Lounge, Netflix, Airbnb, die großzügigsten Karten.' },
       { key: 'virtual',    emoji: '💳', label: 'Virtuelle Karten',          desc: 'In unter 5 Minuten aktivierbar, mit Apple Pay & Google Pay.' },
-      { key: 'beginner',   emoji: '🌱', label: 'Für Einsteiger',            desc: 'Einfache Registrierung, keine Bedingungen — ideal zum Starten.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Für Einsteiger',            desc: 'Einfache Registrierung, keine Bedingungen, ideal zum Starten.' },
       { key: '2026',       emoji: '🚀', label: 'Beste 2026',                desc: 'Die Karten, die den Markt dieses Jahr dominieren.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'Ohne strenges KYC',        desc: 'Weniger Prüfungen, schnellerer Zugang.' },
       { key: 'france',     emoji: '🇩🇪', label: 'In Deutschland verfügbar', desc: 'Alle konformen Karten für den deutschen Markt.' },
@@ -85,12 +85,12 @@ const THEME_GRID: Record<string, {
     items: [
       { key: 'best',       emoji: '⭐', label: 'Mejores tarjetas',          desc: 'Nuestro ranking de las mejores tarjetas crypto de 2026.' },
       { key: 'cashback',   emoji: '💰', label: 'Alto cashback',             desc: 'Hasta un 8 % de cashback en crypto en tus gastos diarios.' },
-      { key: 'no-fees',    emoji: '🆓', label: 'Sin comisiones anuales',    desc: 'MetaMask, Gnosis Pay, Brighty — gratuitas y sin compromiso.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sin comisiones anuales',    desc: 'MetaMask, Gnosis Pay, Brighty, gratuitas y sin compromiso.' },
       { key: 'no-staking', emoji: '🔓', label: 'Sin staking requerido',     desc: 'Gana cashback sin inmovilizar capital.' },
       { key: 'travel',     emoji: '✈️', label: 'Viaje & extranjero',        desc: '0 % de comisiones de cambio y retiros gratuitos en cajeros.' },
-      { key: 'rewards',    emoji: '🎁', label: 'Ventajas & recompensas',    desc: 'Sala VIP, Netflix, Airbnb — las tarjetas más generosas.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Ventajas & recompensas',    desc: 'Sala VIP, Netflix, Airbnb, las tarjetas más generosas.' },
       { key: 'virtual',    emoji: '💳', label: 'Tarjetas virtuales',        desc: 'Activables en menos de 5 minutos, compatible con Apple Pay.' },
-      { key: 'beginner',   emoji: '🌱', label: 'Para principiantes',        desc: 'Registro sencillo, sin condiciones — ideal para empezar.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Para principiantes',        desc: 'Registro sencillo, sin condiciones, ideal para empezar.' },
       { key: '2026',       emoji: '🚀', label: 'Mejores en 2026',           desc: 'Las tarjetas que dominan el mercado este año.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'Sin KYC estricto',         desc: 'Menos verificaciones, acceso más rápido.' },
       { key: 'france',     emoji: '🇪🇸', label: 'Disponibles en España',   desc: 'Todas las tarjetas conformes y accesibles desde España.' },
@@ -101,12 +101,12 @@ const THEME_GRID: Record<string, {
     items: [
       { key: 'best',       emoji: '⭐', label: 'Migliori carte',            desc: 'La nostra classifica delle migliori carte crypto del 2026.' },
       { key: 'cashback',   emoji: '💰', label: 'Alto cashback',             desc: 'Fino all\'8 % di cashback in crypto sulle spese quotidiane.' },
-      { key: 'no-fees',    emoji: '🆓', label: 'Senza costi annuali',       desc: 'MetaMask, Gnosis Pay, Brighty — gratuite e senza impegno.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Senza costi annuali',       desc: 'MetaMask, Gnosis Pay, Brighty, gratuite e senza impegno.' },
       { key: 'no-staking', emoji: '🔓', label: 'Senza staking richiesto',   desc: 'Guadagna cashback senza immobilizzare capitale.' },
       { key: 'travel',     emoji: '✈️', label: 'Viaggio & estero',          desc: '0 % di commissioni di cambio e prelievi ATM gratuiti.' },
-      { key: 'rewards',    emoji: '🎁', label: 'Vantaggi & premi',          desc: 'Lounge aeroporto, Netflix, Airbnb — le carte più generose.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Vantaggi & premi',          desc: 'Lounge aeroporto, Netflix, Airbnb, le carte più generose.' },
       { key: 'virtual',    emoji: '💳', label: 'Carte virtuali',            desc: 'Attivabili in meno di 5 minuti, compatibili con Apple Pay.' },
-      { key: 'beginner',   emoji: '🌱', label: 'Per principianti',          desc: 'Registrazione semplice, nessuna condizione — ideale per iniziare.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Per principianti',          desc: 'Registrazione semplice, nessuna condizione, ideale per iniziare.' },
       { key: '2026',       emoji: '🚀', label: 'Migliori nel 2026',         desc: 'Le carte che dominano il mercato quest\'anno.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'Senza KYC rigido',         desc: 'Meno verifiche, accesso più rapido.' },
       { key: 'france',     emoji: '🇮🇹', label: 'Disponibili in Italia',   desc: 'Tutte le carte conformi e accessibili dall\'Italia.' },
@@ -117,12 +117,12 @@ const THEME_GRID: Record<string, {
     items: [
       { key: 'best',       emoji: '⭐', label: 'Best cards',                desc: 'Our ranking of the best crypto cards on the market in 2026.' },
       { key: 'cashback',   emoji: '💰', label: 'High cashback',             desc: 'Up to 8% cashback in crypto on your everyday spending.' },
-      { key: 'no-fees',    emoji: '🆓', label: 'No annual fees',            desc: 'MetaMask, Gnosis Pay, Brighty — free and commitment-free.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'No annual fees',            desc: 'MetaMask, Gnosis Pay, Brighty, free and commitment-free.' },
       { key: 'no-staking', emoji: '🔓', label: 'No staking required',       desc: 'Earn cashback without locking up capital.' },
       { key: 'travel',     emoji: '✈️', label: 'Travel & abroad',           desc: '0% foreign exchange fees and free ATM withdrawals worldwide.' },
-      { key: 'rewards',    emoji: '🎁', label: 'Rewards & perks',           desc: 'Airport lounge, Netflix, Airbnb — the most generous cards.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Rewards & perks',           desc: 'Airport lounge, Netflix, Airbnb, the most generous cards.' },
       { key: 'virtual',    emoji: '💳', label: 'Virtual cards',             desc: 'Activated in under 5 minutes, compatible with Apple Pay.' },
-      { key: 'beginner',   emoji: '🌱', label: 'For beginners',             desc: 'Simple sign-up, no conditions — perfect to start.' },
+      { key: 'beginner',   emoji: '🌱', label: 'For beginners',             desc: 'Simple sign-up, no conditions, perfect to start.' },
       { key: '2026',       emoji: '🚀', label: 'Best in 2026',              desc: 'The cards dominating the market this year.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'No strict KYC',            desc: 'Fewer checks, faster access.' },
       { key: 'france',     emoji: '🇬🇧', label: 'Available in Europe',     desc: 'All compliant cards accessible across Europe.' },
@@ -227,11 +227,12 @@ export default function Home() {
     const datasetSchema = {
       '@context': 'https://schema.org',
       '@type': 'Dataset',
-      name: `TopCryptoCards — Crypto Card Comparison Dataset (${lang.toUpperCase()})`,
+      name: `TopCryptoCards, Crypto Card Comparison Dataset (${lang.toUpperCase()})`,
       description: homeSeo.desc,
       url: `${BASE}/${lang}`,
       inLanguage: lang,
       publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
+      creator: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
       license: 'https://creativecommons.org/licenses/by/4.0/',
       dateModified: new Date().toISOString().split('T')[0],
       variableMeasured: ['Cashback rate', 'Annual fees', 'Staking required', 'ATM withdrawal', 'Card network'],
@@ -272,7 +273,7 @@ export default function Home() {
       if (Math.abs(diff) > 0.001) return diff;
       return a.stakingRequired - b.stakingRequired;
     })[0];
-  // Slot 2: best no-staking / no-fees card — sorted by real base rate, then premium
+  // Slot 2: best no-staking / no-fees card, sorted by real base rate, then premium
   const topNoFees = [...cards]
     .filter((c) => c.annualFees === 0 && c.stakingRequired === 0)
     .sort((a, b) => {
@@ -280,7 +281,7 @@ export default function Home() {
       if (Math.abs(diff) > 0.001) return diff;
       return b.cashbackPremium - a.cashbackPremium;
     })[0];
-  // Slot 3: balanced pick — real base rate (cashbackNoStaking) minus fee drag.
+  // Slot 3: balanced pick, real base rate (cashbackNoStaking) minus fee drag.
   const topBalanced = [...cards]
     .filter((c) => c.annualFees < 100)
     .sort((a, b) => {
@@ -430,7 +431,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          {/* Hero card stack — desktop only. No priority/eager loading: the
+          {/* Hero card stack, desktop only. No priority/eager loading: the
               container is hidden on mobile so we must not pre-load these images
               on mobile. On desktop they are visible and load normally (lazy but
               immediately in-viewport). The real LCP on desktop is heroCards[0]
@@ -639,7 +640,7 @@ export default function Home() {
                     : 'hover:border-cyan-accent/40 hover:shadow-glow'
                 }`}
               >
-                {/* Tier badge — top left, absolute so it doesn't affect layout */}
+                {/* Tier badge, top left, absolute so it doesn't affect layout */}
                 {isMultiTier && (
                   <Link
                     to={`/${lang}/${brandsSlug}/${brandId}`}
@@ -651,7 +652,7 @@ export default function Home() {
                   </Link>
                 )}
 
-                {/* Fav + Compare — top right, absolute */}
+                {/* Fav + Compare, top right, absolute */}
                 <div className="absolute top-3 right-3 z-10 flex gap-1.5">
                   <button
                     onClick={(e) => { e.stopPropagation(); toggleCompare(card.id); }}
@@ -678,10 +679,10 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* ── Clickable card body — flex-1 so it fills the card ── */}
+                {/* ── Clickable card body, flex-1 so it fills the card ── */}
                 {/* pt-8 reserves space for the absolute-positioned badges above the image, same for every card */}
                 <button onClick={() => setDetail(card)} className="w-full text-left flex flex-col flex-1 pt-8">
-                  {/* Image — natural size (size="md" = w-72 h-44), centered */}
+                  {/* Image, natural size (size="md" = w-72 h-44), centered */}
                   <div className="flex justify-center mb-4">
                     <SmartCardImage card={card} size="md" />
                   </div>
@@ -701,7 +702,7 @@ export default function Home() {
                       <dd className="text-white font-semibold">
                         {maxCashback > 0
                           ? <><span className="text-slate-400 text-[10px]">{UP_TO[lang] ?? 'Up to'} </span>{fmtPct(maxCashback)}</>
-                          : '—'}
+                          : ','}
                       </dd>
                     </div>
                     <div>
@@ -720,16 +721,16 @@ export default function Home() {
                     </div>
                   </dl>
 
-                  {/* Spacer — pushes trust badge to the bottom of the button area */}
+                  {/* Spacer, pushes trust badge to the bottom of the button area */}
                   <div className="flex-1" />
 
-                  {/* Trust badge — pinned to bottom, always same position across cards */}
+                  {/* Trust badge, pinned to bottom, always same position across cards */}
                   <div className="mt-3 pt-3 border-t border-bg-border flex justify-end min-h-[2rem] items-center">
                     {card.trustScore !== undefined && <TrustBadge card={card} />}
                   </div>
                 </button>
 
-                {/* CTA — pinned at card bottom, same height whether present or not */}
+                {/* CTA, pinned at card bottom, same height whether present or not */}
                 <div className="mt-2 h-8 flex items-center">
                   {brandId && (
                     <Link
@@ -765,7 +766,7 @@ export default function Home() {
           </div>
         )}
       </section>
-      {/* Section "Explorer par type de carte" — internal links to all thematic pages */}
+      {/* Section "Explorer par type de carte", internal links to all thematic pages */}
       {(() => {
         const grid = THEME_GRID[lang] ?? THEME_GRID.en;
         return (

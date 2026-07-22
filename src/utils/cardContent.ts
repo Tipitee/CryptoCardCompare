@@ -2,7 +2,7 @@
  * cardContent.ts
  *
  * Generates rich textual content for card detail pages that have no Supabase article.
- * All content is derived from real card data — each card produces unique copy.
+ * All content is derived from real card data, each card produces unique copy.
  * FR is the primary language (high-quality editorial tone); other langs are localized equivalents.
  */
 
@@ -57,7 +57,7 @@ function buildComparison(card: CryptoCard, lang: 'fr' | 'be' | 'de' | 'at' | 'es
   switch (lang) {
     case 'fr':
     case 'be':
-      if (noStakingFree) return `Parmi les cartes crypto sans frais ni staking, la ${name} est à comparer avec Gnosis Pay, MetaMask Card et Brighty, qui ciblent le même profil avec des approches on-chain ou stablecoin différentes. Toutes offrent du cashback immédiat sans immobilisation de capital — l'idéal pour démarrer sans risque en ${YEAR}.`;
+      if (noStakingFree) return `Parmi les cartes crypto sans frais ni staking, la ${name} est à comparer avec Gnosis Pay, MetaMask Card et Brighty, qui ciblent le même profil avec des approches on-chain ou stablecoin différentes. Toutes offrent du cashback immédiat sans immobilisation de capital, l'idéal pour démarrer sans risque en ${YEAR}.`;
       if (highCashbackStaking) return `La ${name} s'adresse aux utilisateurs déjà engagés dans l'écosystème ${issuer}. Pour un cashback élevé sans staking, Nexo propose du cashback en BTC sans condition de blocage. Brighty et MetaMask Card conviennent quant à elles aux profils plus prudents qui préfèrent garder leurs actifs liquides.`;
       if (hasTravel) return `Pour les voyageurs fréquents, la ${name} est à comparer avec Crypto.com et Bybit, qui proposent des avantages similaires (lounges, assurance) à des niveaux de staking différents. Pour un profil voyage sans staking, Brighty et MetaMask Card offrent d'excellentes alternatives accessibles en ${YEAR}.`;
       if (virtualOnly) return `En tant que carte virtuelle, la ${name} est idéale pour les achats en ligne sécurisés. D'autres solutions virtuelles comme Brighty, les niveaux d'entrée de Crypto.com ou Wirex permettent une comparaison rapide selon tes besoins d'usage quotidien ou en ligne.`;
@@ -65,21 +65,21 @@ function buildComparison(card: CryptoCard, lang: 'fr' | 'be' | 'de' | 'at' | 'es
 
     case 'de':
     case 'at':
-      if (noStakingFree) return `Unter den kostenlosen Krypto-Karten ohne Staking ist die ${name} mit Gnosis Pay, MetaMask Card und Brighty zu vergleichen — alle sprechen dasselbe Profil mit unterschiedlichen On-Chain- oder Stablecoin-Ansätzen an. Alle bieten sofortigen Cashback ohne Kapitalsperre, ideal für einen risikofreien Einstieg ${YEAR}.`;
+      if (noStakingFree) return `Unter den kostenlosen Krypto-Karten ohne Staking ist die ${name} mit Gnosis Pay, MetaMask Card und Brighty zu vergleichen, alle sprechen dasselbe Profil mit unterschiedlichen On-Chain- oder Stablecoin-Ansätzen an. Alle bieten sofortigen Cashback ohne Kapitalsperre, ideal für einen risikofreien Einstieg ${YEAR}.`;
       if (highCashbackStaking) return `Die ${name} richtet sich an Nutzer, die bereits im ${issuer}-Ökosystem engagiert sind. Für hohen Cashback ohne Staking bietet Nexo BTC-Cashback ohne Sperrbedingungen. Brighty und MetaMask Card sind die bessere Wahl für konservativere Nutzer, die ihr Kapital liquide halten möchten.`;
       if (hasTravel) return `Für Vielreisende ist die ${name} mit Crypto.com und Bybit zu vergleichen, die ähnliche Reisevorteile bei unterschiedlichen Staking-Anforderungen bieten. Ohne Staking sind Brighty und MetaMask Card hervorragende Alternativen für Reisende, die ${YEAR} flexibel bleiben möchten.`;
       if (virtualOnly) return `Als virtuelle Karte ist die ${name} ideal für sichere Online-Einkäufe. Weitere virtuelle Lösungen wie Brighty, Einstiegsstufen von Crypto.com oder Wirex ermöglichen einen schnellen Vergleich nach Ihren täglichen oder Online-Nutzungsanforderungen.`;
       return `Um die passende Karte für Ihr Profil zu finden, listet unser Vergleichsrechner alle in Deutschland verfügbaren Krypto-Karten ${YEAR} auf. Alternativen wie Nexo, Gnosis Pay oder MetaMask Card sollten neben der ${name} je nach Ausgabenniveau und Risikobereitschaft berücksichtigt werden.`;
 
     case 'es':
-      if (noStakingFree) return `Entre las tarjetas crypto sin comisiones ni staking, la ${name} merece compararse con Gnosis Pay, MetaMask Card y Brighty, que apuntan al mismo perfil con enfoques on-chain o stablecoin distintos. Todas ofrecen cashback inmediato sin inmovilización de capital — ideal para empezar sin riesgo en ${YEAR}.`;
+      if (noStakingFree) return `Entre las tarjetas crypto sin comisiones ni staking, la ${name} merece compararse con Gnosis Pay, MetaMask Card y Brighty, que apuntan al mismo perfil con enfoques on-chain o stablecoin distintos. Todas ofrecen cashback inmediato sin inmovilización de capital, ideal para empezar sin riesgo en ${YEAR}.`;
       if (highCashbackStaking) return `La ${name} está dirigida a usuarios ya comprometidos con el ecosistema ${issuer}. Para un cashback alto sin staking, Nexo ofrece cashback en BTC sin condiciones de bloqueo. Brighty y MetaMask Card son la mejor opción para perfiles más conservadores que prefieren mantener sus activos líquidos.`;
       if (hasTravel) return `Para viajeros frecuentes, la ${name} merece compararse con Crypto.com y Bybit, que ofrecen ventajas similares con distintos requisitos de staking. Sin staking, Brighty y MetaMask Card son excelentes alternativas para viajeros que quieren flexibilidad en ${YEAR}.`;
       if (virtualOnly) return `Como tarjeta virtual, la ${name} es ideal para compras online seguras. Otras soluciones virtuales como Brighty, los niveles básicos de Crypto.com o Wirex permiten una comparación rápida según tus necesidades de uso diario o en línea.`;
       return `Para encontrar la tarjeta que mejor se adapte a tu perfil, nuestro comparador recoge todas las tarjetas crypto disponibles en España en ${YEAR}. Alternativas como Nexo, Gnosis Pay o MetaMask Card merecen confrontarse con la ${name} según tu nivel de gasto y tolerancia al riesgo.`;
 
     case 'it':
-      if (noStakingFree) return `Tra le carte crypto senza commissioni né staking, la ${name} merita di essere confrontata con Gnosis Pay, MetaMask Card e Brighty, che puntano allo stesso profilo con approcci on-chain o stablecoin diversi. Tutte offrono cashback immediato senza immobilizzazione di capitale — ideale per iniziare senza rischi nel ${YEAR}.`;
+      if (noStakingFree) return `Tra le carte crypto senza commissioni né staking, la ${name} merita di essere confrontata con Gnosis Pay, MetaMask Card e Brighty, che puntano allo stesso profilo con approcci on-chain o stablecoin diversi. Tutte offrono cashback immediato senza immobilizzazione di capitale, ideale per iniziare senza rischi nel ${YEAR}.`;
       if (highCashbackStaking) return `La ${name} si rivolge agli utenti già impegnati nell'ecosistema ${issuer}. Per un cashback elevato senza staking, Nexo offre cashback in BTC senza condizioni di blocco. Brighty e MetaMask Card sono la scelta migliore per i profili più prudenti che preferiscono mantenere i propri asset liquidi.`;
       if (hasTravel) return `Per i grandi viaggiatori, la ${name} merita di essere confrontata con Crypto.com e Bybit, che offrono vantaggi simili con requisiti di staking diversi. Senza staking, Brighty e MetaMask Card sono ottime alternative per i viaggiatori che vogliono flessibilità nel ${YEAR}.`;
       if (virtualOnly) return `Come carta virtuale, la ${name} è ideale per gli acquisti online sicuri. Altre soluzioni virtuali come Brighty, i livelli base di Crypto.com o Wirex permettono un confronto rapido in base alle tue esigenze di utilizzo quotidiano o online.`;
@@ -87,7 +87,7 @@ function buildComparison(card: CryptoCard, lang: 'fr' | 'be' | 'de' | 'at' | 'es
 
     case 'en':
     default:
-      if (noStakingFree) return `Among free crypto cards with no staking requirement, the ${name} is worth comparing with Gnosis Pay, MetaMask Card and Brighty — all targeting the same profile with different on-chain or stablecoin approaches. Each offers immediate cashback without capital lockup, making them ideal zero-risk entry points in ${YEAR}.`;
+      if (noStakingFree) return `Among free crypto cards with no staking requirement, the ${name} is worth comparing with Gnosis Pay, MetaMask Card and Brighty, all targeting the same profile with different on-chain or stablecoin approaches. Each offers immediate cashback without capital lockup, making them ideal zero-risk entry points in ${YEAR}.`;
       if (highCashbackStaking) return `The ${name} targets users already committed to the ${issuer} ecosystem. For high cashback without staking, Nexo offers BTC cashback with no lock-up conditions. Brighty and MetaMask Card are the better fit for more conservative users who prefer to keep their assets liquid.`;
       if (hasTravel) return `For frequent travellers, the ${name} is worth comparing with Crypto.com and Bybit, which offer similar travel benefits at different staking tiers. For a no-staking travel profile, Brighty and MetaMask Card offer excellent accessible alternatives in ${YEAR}.`;
       if (virtualOnly) return `As a virtual card, the ${name} is ideal for secure online purchases. Other virtual options such as Brighty, entry-level tiers from Crypto.com or Wirex enable a quick comparison based on your daily or online usage requirements.`;
@@ -118,9 +118,9 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
   if (cashbackPremium > 0 && stakingRequired > 0 && cashbackBase > 0) {
     cbSentence = `Elle offre un cashback de ${cashbackBase}% sur toutes tes dépenses, pouvant grimper jusqu'à ${cashbackPremium}% pour les utilisateurs qui s'engagent à staker au moins ${fmtEur(stakingRequired)} en tokens natifs.`;
   } else if (cashbackPremium > 0 && stakingRequired > 0 && cashbackBase === 0) {
-    cbSentence = `Son cashback de ${cashbackPremium}% est réservé aux utilisateurs ayant staké ${fmtEur(stakingRequired)} — sans staking, la carte reste utilisable mais sans remboursement sur les achats.`;
+    cbSentence = `Son cashback de ${cashbackPremium}% est réservé aux utilisateurs ayant staké ${fmtEur(stakingRequired)}, sans staking, la carte reste utilisable mais sans remboursement sur les achats.`;
   } else if (cashbackNoStaking > 0 && stakingRequired === 0) {
-    cbSentence = `Elle reverse ${cashbackNoStaking}% de cashback en cryptomonnaies sur tes achats du quotidien, sans exiger le moindre staking — un avantage rare dans ce secteur.`;
+    cbSentence = `Elle reverse ${cashbackNoStaking}% de cashback en cryptomonnaies sur tes achats du quotidien, sans exiger le moindre staking, un avantage rare dans ce secteur.`;
   } else if (cashbackBase > 0) {
     cbSentence = `Elle propose un cashback de ${cashbackBase}% remboursé en cryptomonnaies, directement crédité sur ton portefeuille après chaque achat.`;
   } else {
@@ -140,7 +140,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
   if (availableFrance) {
     availSentence = `Elle est disponible en France et dans l'ensemble de l'Union européenne.`;
   } else if (availableEU) {
-    availSentence = `Elle est accessible dans certains pays européens, mais n'est pas encore disponible en France — à surveiller pour une prochaine ouverture.`;
+    availSentence = `Elle est accessible dans certains pays européens, mais n'est pas encore disponible en France, à surveiller pour une prochaine ouverture.`;
   } else {
     availSentence = `Sa zone de disponibilité reste limitée géographiquement ; il est recommandé de vérifier l'éligibilité selon ton pays de résidence avant toute demande.`;
   }
@@ -186,7 +186,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
 
   // ── Pros
   const pros: string[] = [];
-  if (annualFees === 0) pros.push('Aucun frais annuel — carte entièrement gratuite');
+  if (annualFees === 0) pros.push('Aucun frais annuel, carte entièrement gratuite');
   if (stakingRequired === 0 && hasCashback(card)) pros.push('Cashback disponible sans staking requis');
   if (cashbackPremium >= 3) pros.push(`Cashback premium attractif jusqu'à ${cashbackPremium}%`);
   else if (cashbackBase > 0) pros.push(`Cashback de ${cashbackBase}% sur tous les achats`);
@@ -229,7 +229,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
   } else {
     faq.push({
       q: `La ${name} propose-t-elle du cashback ?`,
-      a: `La ${name} ne dispose pas de programme de cashback classique. Elle se distingue plutôt par ses autres fonctionnalités — comme${extras.length > 0 ? ' ' + formatExtras(extras, 'fr') : ' sa disponibilité et sa facilité d\'utilisation'}.`,
+      a: `La ${name} ne dispose pas de programme de cashback classique. Elle se distingue plutôt par ses autres fonctionnalités, comme${extras.length > 0 ? ' ' + formatExtras(extras, 'fr') : ' sa disponibilité et sa facilité d\'utilisation'}.`,
     });
   }
 
@@ -248,7 +248,7 @@ function generateFR(card: CryptoCard): CardGeneratedContent {
     q: `Faut-il staker des cryptos pour utiliser la ${name} ?`,
     a: stakingRequired > 0
       ? `Pour profiter du cashback premium de ${cashbackPremium}%, la ${name} exige de bloquer ${fmtEur(stakingRequired)} en tokens natifs d'${issuer}. Ces tokens sont déposés sur ton compte et restent généralement restituables, mais peuvent être soumis à une période de blocage. Sans staking, la carte reste utilisable pour tes paiements${cashbackBase > 0 ? `, avec un cashback réduit de ${cashbackBase}%` : ', mais sans remboursement sur tes achats'}.`
-      : `Non, la ${name} ne nécessite aucun staking. Tu peux profiter de toutes ses fonctionnalités — y compris le cashback — sans avoir à bloquer la moindre cryptomonnaie. C'est l'un de ses atouts majeurs pour les utilisateurs qui préfèrent garder leurs actifs liquides.`,
+      : `Non, la ${name} ne nécessite aucun staking. Tu peux profiter de toutes ses fonctionnalités, y compris le cashback, sans avoir à bloquer la moindre cryptomonnaie. C'est l'un de ses atouts majeurs pour les utilisateurs qui préfèrent garder leurs actifs liquides.`,
   });
 
   // Q4 : frais
@@ -300,7 +300,7 @@ function generateDE(card: CryptoCard): CardGeneratedContent {
   if (cashbackPremium > 0 && stakingRequired > 0 && cashbackBase > 0) {
     cbSentence = `Sie bietet ${cashbackBase}% Cashback auf alle Einkäufe, der auf bis zu ${cashbackPremium}% steigt, wenn mindestens ${stakingRequired} € in nativen Token gestakt werden.`;
   } else if (cashbackPremium > 0 && stakingRequired > 0) {
-    cbSentence = `Das ${cashbackPremium}% Cashback ist nur für Nutzer verfügbar, die mindestens ${stakingRequired} € gestakt haben — ohne Staking gibt es kein Cashback.`;
+    cbSentence = `Das ${cashbackPremium}% Cashback ist nur für Nutzer verfügbar, die mindestens ${stakingRequired} € gestakt haben, ohne Staking gibt es kein Cashback.`;
   } else if (cashbackNoStaking > 0 && stakingRequired === 0) {
     cbSentence = `Sie gibt ${cashbackNoStaking}% Cashback in Kryptowährungen zurück, ohne jegliche Staking-Anforderungen.`;
   } else if (cashbackBase > 0) {
@@ -315,7 +315,7 @@ function generateDE(card: CryptoCard): CardGeneratedContent {
 
   const availSentence = availableEU
     ? `Sie ist in Deutschland und der gesamten EU verfügbar.`
-    : `Die geografische Verfügbarkeit ist begrenzt — bitte auf der offiziellen Website prüfen.`;
+    : `Die geografische Verfügbarkeit ist begrenzt, bitte auf der offiziellen Website prüfen.`;
 
   const p2 = [cbSentence, feesSentence, availSentence].join(' ');
 
@@ -381,7 +381,7 @@ function generateDE(card: CryptoCard): CardGeneratedContent {
     {
       q: `Welche Jahresgebühren hat die ${name}?`,
       a: annualFees === 0
-        ? `Die ${name} ist kostenlos — keine Jahresgebühren, kein Abonnement.`
+        ? `Die ${name} ist kostenlos, keine Jahresgebühren, kein Abonnement.`
         : `Die ${name} kostet ${annualFees} €/Jahr. Bei regelmäßiger Nutzung amortisieren sich diese Kosten durch das Cashback schnell.`,
     },
     {
@@ -496,7 +496,7 @@ function generateES(card: CryptoCard): CardGeneratedContent {
     {
       q: `¿Cuáles son las tarifas anuales de la ${name}?`,
       a: annualFees === 0
-        ? `La ${name} es completamente gratuita — sin cuota anual ni suscripción mensual.`
+        ? `La ${name} es completamente gratuita, sin cuota anual ni suscripción mensual.`
         : `La ${name} tiene una cuota de ${annualFees} €/año. Con un uso regular, el cashback puede compensar fácilmente este coste.`,
     },
     {
@@ -611,7 +611,7 @@ function generateIT(card: CryptoCard): CardGeneratedContent {
     {
       q: `Quali sono i costi annuali della ${name}?`,
       a: annualFees === 0
-        ? `La ${name} è completamente gratuita — nessun costo annuale né abbonamento.`
+        ? `La ${name} è completamente gratuita, nessun costo annuale né abbonamento.`
         : `La ${name} costa ${annualFees} €/anno. Con un utilizzo regolare, il cashback può compensare facilmente questo costo.`,
     },
     {
@@ -645,9 +645,9 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
   if (cashbackPremium > 0 && stakingRequired > 0 && cashbackBase > 0) {
     cbSentence = `It offers a base cashback of ${cashbackBase}%, rising to ${cashbackPremium}% for users who stake at least €${stakingRequired} in native tokens.`;
   } else if (cashbackPremium > 0 && stakingRequired > 0) {
-    cbSentence = `Its ${cashbackPremium}% cashback is available only to users staking at least €${stakingRequired} — without staking, no cashback applies.`;
+    cbSentence = `Its ${cashbackPremium}% cashback is available only to users staking at least €${stakingRequired}, without staking, no cashback applies.`;
   } else if (cashbackNoStaking > 0 && stakingRequired === 0) {
-    cbSentence = `It returns ${cashbackNoStaking}% cashback in crypto on all purchases, with no staking required — a genuine differentiator in this space.`;
+    cbSentence = `It returns ${cashbackNoStaking}% cashback in crypto on all purchases, with no staking required, a genuine differentiator in this space.`;
   } else if (cashbackBase > 0) {
     cbSentence = `It offers ${cashbackBase}% cashback in cryptocurrency on everyday spending.`;
   } else {
@@ -660,7 +660,7 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
 
   const availSentence = availableEU
     ? `It is available across the European Union.`
-    : `Geographic availability is limited — check eligibility on ${issuer}'s official website.`;
+    : `Geographic availability is limited, check eligibility on ${issuer}'s official website.`;
 
   const p2 = [cbSentence, feesSentence, availSentence].join(' ');
 
@@ -726,7 +726,7 @@ function generateEN(card: CryptoCard): CardGeneratedContent {
     {
       q: `What are the annual fees for the ${name}?`,
       a: annualFees === 0
-        ? `The ${name} is completely free — no annual fee, no monthly subscription.`
+        ? `The ${name} is completely free, no annual fee, no monthly subscription.`
         : `The ${name} costs €${annualFees}/year. With regular use, cashback earnings can quickly offset this cost.`,
     },
     {

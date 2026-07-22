@@ -127,7 +127,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     feeCalculator:      'crypto-card-fee-calculator',
     tools:              'crypto-card-tools',
   },
-  // Belgium: French content + Belgian market — same slugs as /fr/
+  // Belgium: French content + Belgian market, same slugs as /fr/
   be: {
     compare:        'comparer',
     simulator:      'simulateur',
@@ -147,7 +147,7 @@ export const ROUTE_TRANSLATIONS: Record<Language, Record<string, string>> = {
     feeCalculator:      'calculateur-frais-carte-crypto',
     tools:              'outils-carte-crypto',
   },
-  // Austria: German content + Austrian market — same slugs as /de/
+  // Austria: German content + Austrian market, same slugs as /de/
   at: {
     compare:        'vergleich',
     simulator:      'simulator',

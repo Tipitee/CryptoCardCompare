@@ -42,7 +42,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
   const isFav = favorites.includes(card.id);
 
   const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
-  // Only show restriction for the CURRENT market — FR restriction on DE page is irrelevant
+  // Only show restriction for the CURRENT market, FR restriction on DE page is irrelevant
   const restrictionEntries = Object.entries(card.marketRestrictions)
     .filter(([k, v]) => k === currentLang && VALID_MARKET_KEYS.has(k) && typeof v === 'string' && v.length > 0);
   const localNote: string | undefined =
@@ -108,7 +108,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
                   className="flex items-start gap-2 px-3 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs"
                 >
                   <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                  <span><span className="font-semibold uppercase">{market}</span> — {translateRestriction(reason, currentLang)}</span>
+                  <span><span className="font-semibold uppercase">{market}</span>, {translateRestriction(reason, currentLang)}</span>
                 </div>
               ))}
             </div>
@@ -169,7 +169,7 @@ export default function CardDetailDrawer({ card, onClose }: Props) {
             <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
           </section>
 
-          {/* Trust score — hidden (enable when needed)
+          {/* Trust score, hidden (enable when needed)
           {card && card.trustScore !== undefined && (
             <section className="mb-6 p-4 rounded-xl bg-bg-elevated border border-bg-border">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">

@@ -6,7 +6,7 @@ import Layout from './components/Layout';
 // Home chargé en eager (page d'atterrissage principale)
 import Home from './pages/Home';
 
-// Toutes les autres pages en lazy — réduit le bundle initial significativement
+// Toutes les autres pages en lazy, réduit le bundle initial significativement
 const Compare              = lazy(() => import('./pages/Compare'));
 const Simulator            = lazy(() => import('./pages/Simulator'));
 const Recommendation       = lazy(() => import('./pages/Recommendation'));
@@ -122,21 +122,21 @@ export default function App() {
         <Route path="/affiliate-disclosure" element={<AffiliateDisclosurePage />} />
         <Route path="/risk-summary" element={<RiskSummary />} />
 
-        {/* Affiliate disclosure — lang-prefixed standalone routes (own header/footer, no Layout) */}
+        {/* Affiliate disclosure, lang-prefixed standalone routes (own header/footer, no Layout) */}
         <Route path="/:lang/affiliate-disclosure"      element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgation-affilies"      element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/affiliate-offenlegung"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgacion-afiliados"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgazione-affiliati"    element={<AffiliateDisclosurePage />} />
 
-        {/* Legal pages — lang-prefixed (mentions légales + privacy, 7 langs) */}
+        {/* Legal pages, lang-prefixed (mentions légales + privacy, 7 langs) */}
         <Route path="/:lang/legal-notice"              element={<LegalPage />} />
         <Route path="/:lang/mentions-legales"          element={<LegalPage />} />
         <Route path="/:lang/rechtliches"               element={<LegalPage />} />
         <Route path="/:lang/aviso-legal"               element={<LegalPage />} />
         <Route path="/:lang/avviso-legale"             element={<LegalPage />} />
 
-        {/* Methodology — lang-prefixed standalone routes */}
+        {/* Methodology, lang-prefixed standalone routes */}
         <Route path="/:lang/methodology"               element={<MethodologyPage />} />
         <Route path="/:lang/methodologie"              element={<MethodologyPage />} />
         <Route path="/:lang/methodik"                  element={<MethodologyPage />} />
@@ -175,7 +175,7 @@ export default function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:slug" element={<BlogPost />} />
 
-          {/* Blog category hubs — /:lang/blog/{categorie|kategorie|categoria|category}/:category */}
+          {/* Blog category hubs, /:lang/blog/{categorie|kategorie|categoria|category}/:category */}
           <Route path="blog/categorie/:category"  element={<BlogCategoryPage />} />
           <Route path="blog/kategorie/:category"  element={<BlogCategoryPage />} />
           <Route path="blog/categoria/:category"  element={<BlogCategoryPage />} />
@@ -186,7 +186,7 @@ export default function App() {
             <Route key={slug} path={`${slug}/:id`} element={<CardDetail />} />
           ))}
 
-          {/* Thematic SEO pages — generated from THEMATIC_ROUTES config */}
+          {/* Thematic SEO pages, generated from THEMATIC_ROUTES config */}
           {Object.entries(THEMATIC_ROUTES).flatMap(([theme, slugs]) =>
             [...new Set(Object.values(slugs))].map((slug) => (
               <Route key={slug} path={slug} element={<ThematicPage theme={theme} />} />
@@ -215,12 +215,12 @@ export default function App() {
             ]
           ))}
 
-          {/* Brand list — /:lang/marques, /de/marken, etc. */}
+          {/* Brand list, /:lang/marques, /de/marken, etc. */}
           {allSlugs('brands').map((slug) => (
             <Route key={`brands-list-${slug}`} path={slug} element={<BrandList />} />
           ))}
 
-          {/* Brand pages — /:lang/marques/:brandId, /de/marken/:brandId, etc. */}
+          {/* Brand pages, /:lang/marques/:brandId, /de/marken/:brandId, etc. */}
           {allSlugs('brands').map((slug) => (
             <Route key={`brand-${slug}`} path={`${slug}/:brandId`} element={<BrandPage />} />
           ))}
@@ -235,32 +235,32 @@ export default function App() {
             <Route key={`contact-${slug}`} path={slug} element={<ContactPage />} />
           ))}
 
-          {/* Author pages — /:lang/auteurs/:id, /de/autoren/:id, etc. */}
+          {/* Author pages, /:lang/auteurs/:id, /de/autoren/:id, etc. */}
           {allSlugs('authors').map((slug) => (
             <Route key={`author-${slug}`} path={`${slug}/:id`} element={<AuthorPage />} />
           ))}
 
-          {/* Fee Index — /:lang/frais-cartes-crypto, /en/crypto-card-fees, etc. */}
+          {/* Fee Index, /:lang/frais-cartes-crypto, /en/crypto-card-fees, etc. */}
           {allSlugs('feeIndex').map((slug) => (
             <Route key={`fee-${slug}`} path={slug} element={<FeeIndexPage />} />
           ))}
 
-          {/* Cashback Calculator — /:lang/calculateur-cashback-crypto, etc. */}
+          {/* Cashback Calculator, /:lang/calculateur-cashback-crypto, etc. */}
           {allSlugs('cashbackCalculator').map((slug) => (
             <Route key={`cb-calc-${slug}`} path={slug} element={<CashbackCalculatorPage />} />
           ))}
 
-          {/* Fee Calculator — /:lang/calculateur-frais-carte-crypto, etc. */}
+          {/* Fee Calculator, /:lang/calculateur-frais-carte-crypto, etc. */}
           {allSlugs('feeCalculator').map((slug) => (
             <Route key={`fee-calc-${slug}`} path={slug} element={<FeeCalculatorPage />} />
           ))}
 
-          {/* Tools hub — /:lang/outils-carte-crypto, /krypto-karte-tools, etc. */}
+          {/* Tools hub, /:lang/outils-carte-crypto, /krypto-karte-tools, etc. */}
           {allSlugs('tools').map((slug) => (
             <Route key={`tools-${slug}`} path={slug} element={<ToolsPage />} />
           ))}
 
-          {/* Alternatives pages — /:lang/{brand}-alternatives, etc. (10 brands × 7 langs) */}
+          {/* Alternatives pages, /:lang/{brand}-alternatives, etc. (10 brands × 7 langs) */}
           {ALT_BRANDS.flatMap((brand) =>
             [...new Set(Object.values(brand.slugs))].map((slug) => (
               <Route

@@ -70,7 +70,7 @@ export default function Layout() {
   const feeIndexSlug = ROUTE_TRANSLATIONS[lang]?.feeIndex ?? 'crypto-card-fees';
   const feeIndexLabel = FEE_INDEX_LABELS[lang] ?? 'Fee Index';
 
-  // Nav items — Home removed, logo acts as home link
+  // Nav items, Home removed, logo acts as home link
   const navItems = [
     { key: 'compare',        label: t('nav_compare'),        icon: BarChart3 },
     { key: 'simulator',      label: t('nav_simulator'),      icon: Calculator },
@@ -132,7 +132,7 @@ export default function Layout() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  // Sync <html lang> with current language — BCP 47 mapping
+  // Sync <html lang> with current language, BCP 47 mapping
   const BCP47: Record<string, string> = { be: 'fr-BE', at: 'de-AT', en: 'en-GB' };
   useEffect(() => {
     document.documentElement.lang = BCP47[lang] ?? lang;
@@ -165,7 +165,7 @@ export default function Layout() {
       <header className="sticky top-0 z-40 border-b border-bg-border bg-bg/80 backdrop-blur-lg">
         <div className="container-app flex items-center justify-between h-16">
 
-          {/* Brand — logo + text, links to home */}
+          {/* Brand, logo + text, links to home */}
           <NavLink to={getRoute('')} className="flex items-center gap-2.5 shrink-0">
             <img src="/logo-small.png" alt="TopCryptoCards" className="h-10 w-auto" width="40" height="40" loading="eager" fetchPriority="high" />
             <span className="font-display font-bold text-white text-lg tracking-tight leading-none">

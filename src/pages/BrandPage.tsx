@@ -428,7 +428,7 @@ export default function BrandPage() {
 
   const brandOgImage = cards.find(c => c.realCardImage)?.realCardImage || undefined;
   useSeoMeta({
-    title: seo.title || `${brand.displayName} — TopCryptoCards`,
+    title: seo.title || `${brand.displayName}, TopCryptoCards`,
     description: seo.description || '',
     image: brandOgImage,
     lang,
@@ -482,7 +482,7 @@ export default function BrandPage() {
       ],
     };
 
-    // Organization — brand entity
+    // Organization, brand entity
     const orgSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -778,7 +778,7 @@ export default function BrandPage() {
                     <div className="font-bold text-brand-accent">
                       {Math.max(c.cashbackBase, c.cashbackNoStaking, c.cashbackPremium) > 0
                         ? `${Math.max(c.cashbackBase, c.cashbackNoStaking, c.cashbackPremium)}%`
-                        : '—'}
+                        : ','}
                     </div>
                   )}
                 </CompareRow>
@@ -822,7 +822,7 @@ export default function BrandPage() {
       {seo.outro && (
         <section className="bg-bg-card rounded-xl p-6 border border-border-card">
           <h2 className="text-lg font-bold text-text-primary mb-3">
-            {l.verdictTitle} — {brand.displayName}
+            {l.verdictTitle}, {brand.displayName}
           </h2>
           <p className="text-text-secondary leading-relaxed">{seo.outro}</p>
         </section>
@@ -860,14 +860,14 @@ export default function BrandPage() {
         <section className="bg-bg-card border border-brand-accent/20 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="text-text-primary font-semibold text-base">
-              {REVIEW_LABEL[lang] || REVIEW_LABEL.en} — {brand.displayName}
+              {REVIEW_LABEL[lang] || REVIEW_LABEL.en}, {brand.displayName}
             </p>
             <p className="text-text-secondary text-sm mt-0.5">
-              {lang === 'fr' && 'Cashback, frais, sécurité, expérience utilisateur — tout est détaillé.'}
-              {lang === 'de' && 'Cashback, Gebühren, Sicherheit, Nutzererfahrung — alles im Detail.'}
-              {lang === 'es' && 'Cashback, comisiones, seguridad, experiencia de usuario — todo en detalle.'}
-              {lang === 'it' && 'Cashback, commissioni, sicurezza, esperienza utente — tutto nel dettaglio.'}
-              {lang === 'en' && 'Cashback, fees, security, user experience — everything covered in depth.'}
+              {lang === 'fr' && 'Cashback, frais, sécurité, expérience utilisateur, tout est détaillé.'}
+              {lang === 'de' && 'Cashback, Gebühren, Sicherheit, Nutzererfahrung, alles im Detail.'}
+              {lang === 'es' && 'Cashback, comisiones, seguridad, experiencia de usuario, todo en detalle.'}
+              {lang === 'it' && 'Cashback, commissioni, sicurezza, esperienza utente, tutto nel dettaglio.'}
+              {lang === 'en' && 'Cashback, fees, security, user experience, everything covered in depth.'}
             </p>
           </div>
           <Link
@@ -1028,7 +1028,7 @@ function TierCard({
         <Stat label={l.cashback}>
           {maxCashback > 0
             ? <span className="text-brand-accent font-bold">{maxCashback}%</span>
-            : <span className="text-text-secondary">—</span>}
+            : <span className="text-text-secondary">,</span>}
         </Stat>
         <Stat label={l.fees}>
           <FeeBadge card={card} lang={lang} />
@@ -1122,7 +1122,7 @@ const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at
 
 function fmtCashbackMax(card: CryptoCard, lang: string): string {
   const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
-  if (!pct) return '—';
+  if (!pct) return ',';
   const upTo = UP_TO[lang] ?? UP_TO.en;
   return `${upTo} ${pct} %`;
 }
@@ -1148,8 +1148,8 @@ function ReviewMiniCard({
   const updatedLabel = new Date(review.updatedAt).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
 
   // Use numeric card data for keyStats when available (avoids FR-only strings)
-  const cashbackDisplay = primaryCard ? fmtCashbackMax(primaryCard, lang) : (lang === 'fr' ? review.keyStats.cashbackMax : '—');
-  const feesDisplay = primaryCard ? fmtAnnualFees(primaryCard, lang) : (lang === 'fr' ? review.keyStats.fraisAnnuels : '—');
+  const cashbackDisplay = primaryCard ? fmtCashbackMax(primaryCard, lang) : (lang === 'fr' ? review.keyStats.cashbackMax : ',');
+  const feesDisplay = primaryCard ? fmtAnnualFees(primaryCard, lang) : (lang === 'fr' ? review.keyStats.fraisAnnuels : ',');
   const stakingBool = primaryCard
     ? (primaryCard.stakingRequired ?? 0) > 0
     : review.keyStats.stakingRequis.toLowerCase().includes('aucun') || review.keyStats.stakingRequis.toLowerCase().includes('non') ? false : true;
@@ -1187,7 +1187,7 @@ function ReviewMiniCard({
         </div>
       </div>
 
-      {/* Key stats — computed from numeric card data (language-agnostic) */}
+      {/* Key stats, computed from numeric card data (language-agnostic) */}
       <div className="p-5 flex-1 space-y-2">
         <div className="flex items-center justify-between text-sm">
           <span className="text-text-secondary">{l.cashbackLabel}</span>
@@ -1205,7 +1205,7 @@ function ReviewMiniCard({
         </div>
       </div>
 
-      {/* Top pros — use seo.pros if available (multilingual), else review.pros as fallback */}
+      {/* Top pros, use seo.pros if available (multilingual), else review.pros as fallback */}
       <div className="px-5 pb-4">
         <div className="space-y-1">
           {(seo.pros ?? review.pros ?? []).slice(0, 2).map((pro, i) => (

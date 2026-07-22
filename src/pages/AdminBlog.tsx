@@ -764,14 +764,14 @@ function BulkImportModal({
                   <div className="p-4 border-t border-bg-border space-y-2">
                     <p className="text-xs text-slate-500">
                       Collez ici votre stratégie éditoriale, les règles d'or, le ton, les consignes SEO globales.
-                      Ce texte sera transmis à Claude pour <strong className="text-slate-400">chaque article</strong> — il n'est jamais découpé en blocs.
+                      Ce texte sera transmis à Claude pour <strong className="text-slate-400">chaque article</strong>, il n'est jamais découpé en blocs.
                     </p>
                     <textarea
                       value={context}
                       onChange={e => setContext(e.target.value)}
                       className="input-field w-full resize-none font-mono text-sm leading-relaxed"
                       rows={8}
-                      placeholder={"Plan Éditorial SEO — CryptoCardCompare\n\nStratégie éditoriale\nCe plan est structuré en 4 couches...\n\nRègles d'or pour chaque article\n• Intégrer un lien vers le comparateur...\n• Ajouter un bloc FAQ structuré..."}
+                      placeholder={"Plan Éditorial SEO, CryptoCardCompare\n\nStratégie éditoriale\nCe plan est structuré en 4 couches...\n\nRègles d'or pour chaque article\n• Intégrer un lien vers le comparateur...\n• Ajouter un bloc FAQ structuré..."}
                     />
                   </div>
                 )}
@@ -840,7 +840,7 @@ function BulkImportModal({
                 <div className="flex items-start gap-2 p-3 bg-amber-500/5 border border-amber-500/20 rounded-lg">
                   <span className="text-amber-400 text-xs mt-0.5">★</span>
                   <p className="text-xs text-amber-300/80">
-                    Contexte global transmis à Claude pour chaque article — <strong>{context.length} caractères</strong> de stratégie éditoriale.
+                    Contexte global transmis à Claude pour chaque article, <strong>{context.length} caractères</strong> de stratégie éditoriale.
                   </p>
                 </div>
               )}
@@ -863,7 +863,7 @@ function BulkImportModal({
               </div>
               <p className="text-xs text-slate-500 border border-bg-border rounded-lg p-3 bg-bg-elevated">
                 Durée estimée : <strong className="text-slate-300">~{Math.ceil(blocks.length * 0.5)} minute{blocks.length > 2 ? 's' : ''}</strong> pour {blocks.length} articles.
-                Les articles seront sauvegardés en <strong className="text-slate-300">brouillon</strong> — vous les publierez un par un.
+                Les articles seront sauvegardés en <strong className="text-slate-300">brouillon</strong>, vous les publierez un par un.
               </p>
               {error && <p className="text-red-400 text-sm">{error}</p>}
             </>
@@ -944,7 +944,7 @@ function BulkImportModal({
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-white font-medium">
-                        Article {r.index + 1}{r.title ? ` — ${r.title}` : ''}
+                        Article {r.index + 1}{r.title ? `, ${r.title}` : ''}
                       </p>
                       {r.status === 'error' && (
                         <p className="text-xs text-red-400 mt-0.5">{r.error}</p>

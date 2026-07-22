@@ -5,7 +5,7 @@ export interface SeoMetaOptions {
   description: string;
   image?: string;
   type?: 'website' | 'article';
-  canonical?: string; // override — defaults to current URL without query/hash
+  canonical?: string; // override, defaults to current URL without query/hash
   lang?: string; // for og:locale
   noindex?: boolean; // sets robots to "noindex, follow" when true
 }
@@ -72,7 +72,7 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
       ...(noindex !== undefined ? [upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')] : []),
     ];
 
-    // ── og:locale:alternate (multiple tags — managed separately) ──────────────
+    // ── og:locale:alternate (multiple tags, managed separately) ──────────────
     // Remove any pre-existing alternate tags, then create one per other locale.
     document.querySelectorAll('meta[property="og:locale:alternate"]').forEach(el => el.remove());
     const alternateEls: HTMLMetaElement[] = [];

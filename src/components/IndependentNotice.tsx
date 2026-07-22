@@ -1,5 +1,5 @@
 /**
- * IndependentNotice — small E-E-A-T trust signal shown on card-listing pages.
+ * IndependentNotice, small E-E-A-T trust signal shown on card-listing pages.
  * Satisfies Google's YMYL transparency requirement: site is independent and
  * may earn affiliate commissions, with a link to the full disclosure page.
  */
@@ -8,13 +8,13 @@ import { Info } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 
 const COPY: Record<string, { text: string; linkLabel: string }> = {
-  fr: { text: 'Comparatif indépendant — nous pouvons percevoir des commissions d\'affiliation.', linkLabel: 'En savoir plus' },
-  be: { text: 'Comparatif indépendant — nous pouvons percevoir des commissions d\'affiliation.', linkLabel: 'En savoir plus' },
-  de: { text: 'Unabhängiger Vergleich — wir können Affiliate-Provisionen erhalten.', linkLabel: 'Mehr erfahren' },
-  at: { text: 'Unabhängiger Vergleich — wir können Affiliate-Provisionen erhalten.', linkLabel: 'Mehr erfahren' },
-  es: { text: 'Comparador independiente — podemos recibir comisiones de afiliados.', linkLabel: 'Más información' },
-  it: { text: 'Comparatore indipendente — potremmo ricevere commissioni di affiliazione.', linkLabel: 'Scopri di più' },
-  en: { text: 'Independent comparison — we may earn affiliate commissions.', linkLabel: 'Learn more' },
+  fr: { text: 'Comparatif indépendant, nous pouvons percevoir des commissions d\'affiliation.', linkLabel: 'En savoir plus' },
+  be: { text: 'Comparatif indépendant, nous pouvons percevoir des commissions d\'affiliation.', linkLabel: 'En savoir plus' },
+  de: { text: 'Unabhängiger Vergleich, wir können Affiliate-Provisionen erhalten.', linkLabel: 'Mehr erfahren' },
+  at: { text: 'Unabhängiger Vergleich, wir können Affiliate-Provisionen erhalten.', linkLabel: 'Mehr erfahren' },
+  es: { text: 'Comparador independiente, podemos recibir comisiones de afiliados.', linkLabel: 'Más información' },
+  it: { text: 'Comparatore indipendente, potremmo ricevere commissioni di affiliazione.', linkLabel: 'Scopri di più' },
+  en: { text: 'Independent comparison, we may earn affiliate commissions.', linkLabel: 'Learn more' },
 };
 
 const AFFILIATE_SLUGS: Record<string, string> = {

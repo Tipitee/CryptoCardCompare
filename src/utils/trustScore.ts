@@ -16,7 +16,7 @@ const AUM_SCORES: Record<string, number> = {
 
 /**
  * Compute the effective trust score for a card.
- * Mirrors the logic in TrustBadge — MUST stay in sync.
+ * Mirrors the logic in TrustBadge, MUST stay in sync.
  * Uses trustBreakdown if available, falls back to raw trustScore.
  */
 export function computeTrustScore(card: CryptoCard): number {

@@ -28,7 +28,7 @@ export function translateBadge(badge: string, lang: string): string {
 // ── Market restriction text translations (values stored in FR in DB) ──────────
 const RESTRICTION_TRANSLATIONS: Record<string, Record<string, string>> = {
   'Non disponible':                    { de: 'Nicht verfügbar',              es: 'No disponible',               it: 'Non disponibile',           en: 'Not available' },
-  'Non disponible — restrictions AMF': { de: 'Nicht verfügbar — AMF-Auflagen', es: 'No disponible — normativa AMF', it: 'Non disponibile — restrizioni AMF', en: 'Not available — AMF restrictions' },
+  'Non disponible, restrictions AMF': { de: 'Nicht verfügbar, AMF-Auflagen', es: 'No disponible, normativa AMF', it: 'Non disponibile, restrizioni AMF', en: 'Not available, AMF restrictions' },
   'Service limité':                    { de: 'Eingeschränkter Service',       es: 'Servicio limitado',           it: 'Servizio limitato',         en: 'Limited service' },
   'Cashback réduit':                   { de: 'Reduzierter Cashback',          es: 'Cashback reducido',           it: 'Cashback ridotto',          en: 'Reduced cashback' },
   'Pas de cashback':                   { de: 'Kein Cashback',                 es: 'Sin cashback',                it: 'Nessun cashback',           en: 'No cashback' },

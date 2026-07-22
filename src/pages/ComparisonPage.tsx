@@ -33,11 +33,11 @@ import allowlist from '../../scripts/comparison-allowlist.json';
 
 const YEAR = new Date().getFullYear();
 const COMPARISON_SEO: Record<string, { suffix: string; desc: (n1: string, n2: string) => string }> = {
-  fr: { suffix: `Comparatif ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2} : cashback, frais, staking — notre comparatif complet ${YEAR}. Découvrez quelle carte vous rapporte le plus. Comparateur gratuit ✓` },
-  de: { suffix: `Vergleich ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: Cashback, Jahresgebühren, Staking — unser vollständiger Vergleich ${YEAR}. Welche Krypto-Karte lohnt sich mehr? Kostenlos ✓` },
-  es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, comisiones, staking — comparativa completa ${YEAR}. Descubre qué tarjeta crypto te da más. Gratis ✓` },
-  it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, commissioni, staking — confronto completo ${YEAR}. Scopri quale carta crypto conviene di più. Gratuito ✓` },
-  en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, fees, staking — full comparison ${YEAR}. Find out which crypto card earns you more. Free tool ✓` },
+  fr: { suffix: `Comparatif ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2} : cashback, frais, staking, notre comparatif complet ${YEAR}. Découvrez quelle carte vous rapporte le plus. Comparateur gratuit ✓` },
+  de: { suffix: `Vergleich ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: Cashback, Jahresgebühren, Staking, unser vollständiger Vergleich ${YEAR}. Welche Krypto-Karte lohnt sich mehr? Kostenlos ✓` },
+  es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, comisiones, staking, comparativa completa ${YEAR}. Descubre qué tarjeta crypto te da más. Gratis ✓` },
+  it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, commissioni, staking, confronto completo ${YEAR}. Scopri quale carta crypto conviene di più. Gratuito ✓` },
+  en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, fees, staking, full comparison ${YEAR}. Find out which crypto card earns you more. Free tool ✓` },
 };
 
 type SeoBlock = { heading: string; body: string };
@@ -58,7 +58,7 @@ function getSeoText(
       },
       {
         heading: `Cashback et récompenses : avantage ${n1} ou ${n2} ?`,
-        body: `Le cashback est souvent le premier critère de sélection d'une carte crypto. ${n1} et ${n2} proposent toutes deux des niveaux de récompenses variables selon le montant de tokens stakés. En règle générale, plus le staking est élevé, plus le taux de cashback est intéressant — parfois jusqu'à 5 % ou plus. Il convient de calculer si le rendement supplémentaire justifie l'immobilisation d'un capital important, en tenant compte de la volatilité des cryptoactifs.`,
+        body: `Le cashback est souvent le premier critère de sélection d'une carte crypto. ${n1} et ${n2} proposent toutes deux des niveaux de récompenses variables selon le montant de tokens stakés. En règle générale, plus le staking est élevé, plus le taux de cashback est intéressant, parfois jusqu'à 5 % ou plus. Il convient de calculer si le rendement supplémentaire justifie l'immobilisation d'un capital important, en tenant compte de la volatilité des cryptoactifs.`,
       },
       {
         heading: `Frais, staking et conditions d'utilisation`,
@@ -76,7 +76,7 @@ function getSeoText(
       },
       {
         heading: `Cashback und Prämien: Vorteil ${n1} oder ${n2}?`,
-        body: `Cashback ist oft das wichtigste Auswahlkriterium für eine Krypto-Karte. Sowohl ${n1} als auch ${n2} bieten variable Prämien je nach gestakten Token-Beträgen. Als Faustregel gilt: Je höher das Staking, desto besser die Cashback-Rate — manchmal bis zu 5 % oder mehr. Sie sollten berechnen, ob die zusätzliche Rendite die Kapitalimmobilisierung rechtfertigt, unter Berücksichtigung der Volatilität von Krypto-Assets.`,
+        body: `Cashback ist oft das wichtigste Auswahlkriterium für eine Krypto-Karte. Sowohl ${n1} als auch ${n2} bieten variable Prämien je nach gestakten Token-Beträgen. Als Faustregel gilt: Je höher das Staking, desto besser die Cashback-Rate, manchmal bis zu 5 % oder mehr. Sie sollten berechnen, ob die zusätzliche Rendite die Kapitalimmobilisierung rechtfertigt, unter Berücksichtigung der Volatilität von Krypto-Assets.`,
       },
       {
         heading: `Gebühren, Staking und Nutzungsbedingungen`,
@@ -130,7 +130,7 @@ function getSeoText(
       },
       {
         heading: `Cashback and rewards: advantage ${n1} or ${n2}?`,
-        body: `Cashback is often the primary selection criterion for a crypto card. Both ${n1} and ${n2} offer variable reward levels depending on staked token amounts. As a general rule, the higher the staking, the better the cashback rate — sometimes up to 5% or more. It's worth calculating whether the extra return justifies locking up capital, taking into account the volatility of crypto assets.`,
+        body: `Cashback is often the primary selection criterion for a crypto card. Both ${n1} and ${n2} offer variable reward levels depending on staked token amounts. As a general rule, the higher the staking, the better the cashback rate, sometimes up to 5% or more. It's worth calculating whether the extra return justifies locking up capital, taking into account the volatility of crypto assets.`,
       },
       {
         heading: `Fees, staking requirements and conditions`,
@@ -286,7 +286,7 @@ export default function ComparisonPage() {
   const id1 = vsIndex > -1 ? (slug ?? '').slice(0, vsIndex) : '';
   const id2 = vsIndex > -1 ? (slug ?? '').slice(vsIndex + 4) : '';
 
-  // Fetch both cards directly — avoids depending on the market-filtered store
+  // Fetch both cards directly, avoids depending on the market-filtered store
   useEffect(() => {
     if (!id1 || !id2) { setNotFound(true); setLoading(false); return; }
     setLoading(true);
@@ -357,7 +357,7 @@ export default function ComparisonPage() {
   const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
   useSeoMeta({
     title: card1 && card2
-      ? `${card1.name} vs ${card2.name} — ${comparisonSeo.suffix}`
+      ? `${card1.name} vs ${card2.name}, ${comparisonSeo.suffix}`
       : `TopCryptoCards`,
     description: card1 && card2
       ? comparisonSeo.desc(card1.name, card2.name)
@@ -844,7 +844,7 @@ export default function ComparisonPage() {
         );
       })()}
 
-      {/* Bloc éditorial — enrichissement contenu + liens thématiques */}
+      {/* Bloc éditorial, enrichissement contenu + liens thématiques */}
       {(() => {
         const ed = COMPARISON_EDITORIAL[lang] ?? COMPARISON_EDITORIAL.en;
         const slugs = COMP_THEMATIC_SLUGS[lang] ?? COMP_THEMATIC_SLUGS.en;

@@ -1,5 +1,5 @@
 /**
- * AutoLinker — replaces known brand/card names AND crypto token names in plain text
+ * AutoLinker, replaces known brand/card names AND crypto token names in plain text
  * with <Link> components.
  *
  * Brand names   → /${lang}/${brandsSlug}/${brandId}   e.g. /fr/marques/crypto-com
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
 
 // ── Brand entities ──────────────────────────────────────────────────────────
-// [displayName, brandId] — longest/most specific first
+// [displayName, brandId], longest/most specific first
 const BRAND_ENTITIES: [string, string][] = [
   ['Gnosis Pay',          'gnosis'],
   ['MetaMask Card',       'metamask'],
@@ -45,7 +45,7 @@ const BRAND_ENTITIES: [string, string][] = [
 ];
 
 // ── Crypto entities ─────────────────────────────────────────────────────────
-// [displayName, symbol] — full names first, then tickers (uppercase, word-boundary protected)
+// [displayName, symbol], full names first, then tickers (uppercase, word-boundary protected)
 const CRYPTO_ENTITIES: [string, string][] = [
   ['USD Coin',  'usdc'],
   ['Dogecoin',  'doge'],
@@ -56,7 +56,7 @@ const CRYPTO_ENTITIES: [string, string][] = [
   ['Solana',    'sol'],
   ['Tether',    'usdt'],
   ['Ripple',    'xrp'],
-  // Uppercase tickers — word-boundary protected in the regex below
+  // Uppercase tickers, word-boundary protected in the regex below
   ['USDC', 'usdc'],
   ['USDT', 'usdt'],
   ['AVAX', 'avax'],
@@ -96,7 +96,7 @@ const PATTERN = new RegExp(
 export function autoLinkHtml(html: string, lang: string, brandsSlug: string): string {
   // Each URL is linked at most once per page
   const seenHrefs = new Set<string>();
-  // Split on existing <a>…</a> blocks — leave those intact, process the rest
+  // Split on existing <a>…</a> blocks, leave those intact, process the rest
   return html.replace(/(<a\b[^>]*>[\s\S]*?<\/a>)|([^<]+)/g, (_: string, insideAnchor: string, textNode: string) => {
     if (insideAnchor) {
       // Register existing anchor hrefs so they won't be re-linked

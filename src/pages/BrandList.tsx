@@ -1,5 +1,5 @@
 /**
- * BrandList — /:lang/marques | /de/marken | /es/marcas | /it/marche | /en/brands
+ * BrandList, /:lang/marques | /de/marken | /es/marcas | /it/marche | /en/brands
  * Shows all known brands with their card count, best cashback and a link to BrandPage.
  */
 import { useEffect, useMemo, useState } from 'react';
@@ -19,7 +19,7 @@ const YEAR = new Date().getFullYear();
 const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
   fr: {
     h2: 'Toutes les marques de cartes crypto disponibles en Europe',
-    body: `Cette page recense toutes les marques de cartes crypto accessibles depuis la France, l'Allemagne, l'Espagne, l'Italie et d'autres pays européens en ${YEAR}. Chaque marque propose une gamme de cartes avec des niveaux de cashback, des frais annuels et des exigences de staking différents. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — chaque émetteur a ses forces selon votre profil : voyageur, investisseur actif, débutant, ou utilisateur quotidien. Comparez directement via notre outil ou consultez nos avis détaillés par carte.`,
+    body: `Cette page recense toutes les marques de cartes crypto accessibles depuis la France, l'Allemagne, l'Espagne, l'Italie et d'autres pays européens en ${YEAR}. Chaque marque propose une gamme de cartes avec des niveaux de cashback, des frais annuels et des exigences de staking différents. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic, chaque émetteur a ses forces selon votre profil : voyageur, investisseur actif, débutant, ou utilisateur quotidien. Comparez directement via notre outil ou consultez nos avis détaillés par carte.`,
     related: 'Guides thématiques',
     links: [
       { key: 'best', emoji: '🏆', label: 'Meilleures cartes' },
@@ -31,7 +31,7 @@ const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: s
   },
   de: {
     h2: 'Alle Krypto-Karten-Marken in Europa',
-    body: `Diese Seite listet alle Krypto-Karten-Marken auf, die von Frankreich, Deutschland, Spanien, Italien und anderen europäischen Ländern aus zugänglich sind. Jede Marke bietet eine Palette von Karten mit unterschiedlichen Cashback-Stufen, Jahresgebühren und Staking-Anforderungen. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — jeder Anbieter hat seine Stärken je nach Ihrem Profil: Reisender, aktiver Investor, Einsteiger oder täglicher Nutzer. Vergleichen Sie direkt über unser Tool oder lesen Sie unsere detaillierten Kartenbewertungen.`,
+    body: `Diese Seite listet alle Krypto-Karten-Marken auf, die von Frankreich, Deutschland, Spanien, Italien und anderen europäischen Ländern aus zugänglich sind. Jede Marke bietet eine Palette von Karten mit unterschiedlichen Cashback-Stufen, Jahresgebühren und Staking-Anforderungen. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic, jeder Anbieter hat seine Stärken je nach Ihrem Profil: Reisender, aktiver Investor, Einsteiger oder täglicher Nutzer. Vergleichen Sie direkt über unser Tool oder lesen Sie unsere detaillierten Kartenbewertungen.`,
     related: 'Thematische Ratgeber',
     links: [
       { key: 'best', emoji: '🏆', label: 'Beste Karten' },
@@ -43,7 +43,7 @@ const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: s
   },
   es: {
     h2: 'Todas las marcas de tarjetas crypto disponibles en Europa',
-    body: `Esta página enumera todas las marcas de tarjetas crypto accesibles desde Francia, Alemania, España, Italia y otros países europeos en ${YEAR}. Cada marca ofrece una gama de tarjetas con diferentes niveles de cashback, comisiones anuales y requisitos de staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — cada emisor tiene sus puntos fuertes según tu perfil: viajero, inversor activo, principiante o usuario cotidiano. Compara directamente con nuestra herramienta o consulta nuestros análisis detallados por tarjeta.`,
+    body: `Esta página enumera todas las marcas de tarjetas crypto accesibles desde Francia, Alemania, España, Italia y otros países europeos en ${YEAR}. Cada marca ofrece una gama de tarjetas con diferentes niveles de cashback, comisiones anuales y requisitos de staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic, cada emisor tiene sus puntos fuertes según tu perfil: viajero, inversor activo, principiante o usuario cotidiano. Compara directamente con nuestra herramienta o consulta nuestros análisis detallados por tarjeta.`,
     related: 'Guías temáticas',
     links: [
       { key: 'best', emoji: '🏆', label: 'Mejores tarjetas' },
@@ -55,7 +55,7 @@ const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: s
   },
   it: {
     h2: 'Tutti i brand di carte crypto disponibili in Europa',
-    body: `Questa pagina elenca tutti i brand di carte crypto accessibili da Francia, Germania, Spagna, Italia e altri paesi europei nel ${YEAR}. Ogni brand offre una gamma di carte con diversi livelli di cashback, commissioni annuali e requisiti di staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — ogni emittente ha i suoi punti di forza a seconda del tuo profilo: viaggiatore, investitore attivo, principiante o utente quotidiano. Confronta direttamente con il nostro strumento o consulta le nostre recensioni dettagliate per carta.`,
+    body: `Questa pagina elenca tutti i brand di carte crypto accessibili da Francia, Germania, Spagna, Italia e altri paesi europei nel ${YEAR}. Ogni brand offre una gamma di carte con diversi livelli di cashback, commissioni annuali e requisiti di staking. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic, ogni emittente ha i suoi punti di forza a seconda del tuo profilo: viaggiatore, investitore attivo, principiante o utente quotidiano. Confronta direttamente con il nostro strumento o consulta le nostre recensioni dettagliate per carta.`,
     related: 'Guide tematiche',
     links: [
       { key: 'best', emoji: '🏆', label: 'Migliori carte' },
@@ -67,7 +67,7 @@ const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: s
   },
   en: {
     h2: 'All crypto card brands available in Europe',
-    body: `This page lists all crypto card brands accessible from France, Germany, Spain, Italy and other European countries in ${YEAR}. Each brand offers a range of cards with different cashback levels, annual fees and staking requirements. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic — each issuer has its strengths depending on your profile: traveller, active investor, beginner, or daily user. Compare directly with our tool or check our detailed per-card reviews.`,
+    body: `This page lists all crypto card brands accessible from France, Germany, Spain, Italy and other European countries in ${YEAR}. Each brand offers a range of cards with different cashback levels, annual fees and staking requirements. Crypto.com, Nexo, Bybit, Binance, OKX, Gnosis Pay, MetaMask, Wirex, Trade Republic, each issuer has its strengths depending on your profile: traveller, active investor, beginner, or daily user. Compare directly with our tool or check our detailed per-card reviews.`,
     related: 'Thematic guides',
     links: [
       { key: 'best', emoji: '🏆', label: 'Best cards' },
@@ -90,34 +90,34 @@ const L: Record<string, {
 }> = {
   fr: {
     title: `Toutes les marques de cartes crypto ${YEAR} | TopCryptoCards`,
-    desc: `+20 marques de cartes crypto en Europe ${YEAR} — Crypto.com, Nexo, Binance, Bybit, Wirex et plus. Cashback, frais, staking comparés. Gratuit ✓`,
+    desc: `+20 marques de cartes crypto en Europe ${YEAR}, Crypto.com, Nexo, Binance, Bybit, Wirex et plus. Cashback, frais, staking comparés. Gratuit ✓`,
     home: 'Accueil', h1: `Marques de cartes crypto ${YEAR}`, sub: `Toutes les marques disponibles en ${YEAR}`,
     tiers: 'cartes', tier1: 'carte', upTo: "Jusqu'à", cashback: 'cashback',
     free: 'Gratuit', noBrand: 'Autres cartes', discover: 'Découvrir',
   },
   de: {
     title: `Alle Krypto-Karten-Marken ${YEAR} | TopCryptoCards`,
-    desc: `+20 Krypto-Karten-Marken in Europa ${YEAR} — Crypto.com, Nexo, Binance, Bybit, Wirex und mehr. Cashback, Gebühren, Staking verglichen. Kostenlos ✓`,
+    desc: `+20 Krypto-Karten-Marken in Europa ${YEAR}, Crypto.com, Nexo, Binance, Bybit, Wirex und mehr. Cashback, Gebühren, Staking verglichen. Kostenlos ✓`,
     home: 'Startseite', h1: `Krypto-Karten-Marken ${YEAR}`, sub: `Alle verfügbaren Marken ${YEAR}`,
     tiers: 'Karten', tier1: 'Karte', upTo: 'Bis zu', cashback: 'Cashback',
     free: 'Kostenlos', noBrand: 'Weitere Karten', discover: 'Entdecken',
   },
   es: {
     title: `Todas las marcas de tarjetas crypto ${YEAR} | TopCryptoCards`,
-    desc: `+20 marcas de tarjetas crypto en Europa ${YEAR} — Crypto.com, Nexo, Binance, Bybit, Wirex y más. Cashback, comisiones, staking comparados. Gratis ✓`,
+    desc: `+20 marcas de tarjetas crypto en Europa ${YEAR}, Crypto.com, Nexo, Binance, Bybit, Wirex y más. Cashback, comisiones, staking comparados. Gratis ✓`,
     home: 'Inicio', h1: `Marcas de tarjetas crypto ${YEAR}`, sub: `Todas las marcas disponibles en ${YEAR}`,
     tiers: 'tarjetas', tier1: 'tarjeta', upTo: 'Hasta', cashback: 'cashback',
     free: 'Gratis', noBrand: 'Otras tarjetas', discover: 'Descubrir',
   },
   it: {
     title: `Tutti i marchi di carte crypto ${YEAR} | TopCryptoCards`,
-    desc: `+20 marchi di carte crypto in Europa ${YEAR} — Crypto.com, Nexo, Binance, Bybit, Wirex e altri. Cashback, commissioni, staking confrontati. Gratuito ✓`,
+    desc: `+20 marchi di carte crypto in Europa ${YEAR}, Crypto.com, Nexo, Binance, Bybit, Wirex e altri. Cashback, commissioni, staking confrontati. Gratuito ✓`,
     home: 'Home', h1: `Marchi di carte crypto ${YEAR}`, sub: `Tutti i marchi disponibili nel ${YEAR}`,
     tiers: 'carte', tier1: 'carta', upTo: 'Fino a', cashback: 'cashback',
     free: 'Gratuito', noBrand: 'Altre carte', discover: 'Scopri',
   },
   en: {
-    title: `All Crypto Card Brands ${YEAR} — Crypto.com, Nexo, Bybit`,
+    title: `All Crypto Card Brands ${YEAR}, Crypto.com, Nexo, Bybit`,
     desc: `20+ crypto card brands in Europe ${YEAR} on one page: Crypto.com, Nexo, Bybit, Gnosis Pay, Binance and more. Cashback, fees & staking compared. Free ✓`,
     home: 'Home', h1: `Crypto card brands ${YEAR}`, sub: `All available brands in ${YEAR}`,
     tiers: 'cards', tier1: 'card', upTo: 'Up to', cashback: 'cashback',
@@ -318,7 +318,7 @@ export default function BrandList() {
         })}
       </section>
 
-      {/* Singles section — cards with no brand */}
+      {/* Singles section, cards with no brand */}
       {singles.length > 0 && (
         <section>
           <h2 className="text-lg font-bold text-white mb-4">{l.noBrand}</h2>
@@ -342,7 +342,7 @@ export default function BrandList() {
         </section>
       )}
 
-      {/* Bloc éditorial — thin content fix + thematic links */}
+      {/* Bloc éditorial, thin content fix + thematic links */}
       {(() => {
         const ed = BRANDLIST_EDITORIAL[lang] ?? BRANDLIST_EDITORIAL.en;
         return (

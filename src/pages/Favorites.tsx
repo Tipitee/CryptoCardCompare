@@ -327,7 +327,7 @@ export default function Favorites() {
         </div>
       )}
 
-      {/* Bloc éditorial — internal links + UX hint */}
+      {/* Bloc éditorial, internal links + UX hint */}
       {(() => {
         const ed = FAV_EDITORIAL[lang] ?? FAV_EDITORIAL.en;
         return (

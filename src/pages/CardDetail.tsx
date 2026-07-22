@@ -84,7 +84,7 @@ const COMPARISON_LABEL: Record<string, string> = {
   it: 'Analisi comparativa', en: 'Comparative Analysis',
 };
 
-// Editorial comparison pairs per card — used to build sidebar "Compare with..." links
+// Editorial comparison pairs per card, used to build sidebar "Compare with..." links
 const EDITORIAL_PAIRS = [
   'bybit-card-vs-nexo-card',
   'crypto-com-midnight-blue-vs-nexo-card',
@@ -223,10 +223,10 @@ export default function CardDetail() {
     de: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% Cashback` : 'kein Cashback'}, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'}. Vollständige Bewertung, Vor- und Nachteile, unabhängiges Fazit ✓`,
     es: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'sin cashback'}, ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}. Análisis completo, ventajas, inconvenientes y veredicto independiente ✓`,
     it: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'senza cashback'}, ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}. Recensione completa, pro, contro e verdetto indipendente ✓`,
-    en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review — pros, cons, our verdict. Independent comparison ✓`,
+    en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review, pros, cons, our verdict. Independent comparison ✓`,
   };
   const seoTitle = card
-    ? (article?.meta_title || `${card.name} — ${REVIEW_WORD[contentLang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
+    ? (article?.meta_title || `${card.name}, ${REVIEW_WORD[contentLang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
     : 'TopCryptoCards';
   const seoDesc = card
     ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
@@ -279,7 +279,7 @@ export default function CardDetail() {
     };
   }, [card, article, lang, seoDesc]);
 
-  // ── Schema.org FAQPage — uses generateCardContent for rich 5-question FAQ ───
+  // ── Schema.org FAQPage, uses generateCardContent for rich 5-question FAQ ───
   useEffect(() => {
     if (!card) return;
 
@@ -474,7 +474,7 @@ export default function CardDetail() {
                     >
                       <AlertTriangle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                       <span>
-                        <span className="font-semibold uppercase">{market}</span> — {translateRestriction(reason, lang)}
+                        <span className="font-semibold uppercase">{market}</span>, {translateRestriction(reason, lang)}
                       </span>
                     </div>
                   ))}
@@ -662,7 +662,7 @@ export default function CardDetail() {
               );
             })()}
 
-            {/* Article body (pure content, no links, no FAQ) — Supabase articles */}
+            {/* Article body (pure content, no links, no FAQ), Supabase articles */}
             <style>{`
               .card-article h2 { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 2rem 0 0.75rem; }
               .card-article h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
@@ -737,7 +737,7 @@ export default function CardDetail() {
               </section>
             )}
 
-            {/* Thematic + comparison links — after card detail sections */}
+            {/* Thematic + comparison links, after card detail sections */}
             {injectedLinksHtml && (
               <div
                 className="card-surface card-article p-6"
@@ -745,7 +745,7 @@ export default function CardDetail() {
               />
             )}
 
-            {/* FAQ — Generated (no article) */}
+            {/* FAQ, Generated (no article) */}
             {!articleBodyHtml && (() => {
               const { faq } = generateCardContent(card, lang);
               return (
@@ -770,7 +770,7 @@ export default function CardDetail() {
               );
             })()}
 
-            {/* FAQ — from Supabase article */}
+            {/* FAQ, from Supabase article */}
             {articleFaqHtml && (
               <div
                 className="card-surface card-article p-6"
@@ -907,7 +907,7 @@ export default function CardDetail() {
               );
             })()}
 
-            {/* Trust score — hidden (enable when needed)
+            {/* Trust score, hidden (enable when needed)
             {card && card.trustScore !== undefined && (
               <div className="p-5 rounded-2xl bg-bg-elevated border border-bg-border">
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">

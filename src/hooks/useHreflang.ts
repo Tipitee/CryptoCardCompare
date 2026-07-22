@@ -1,25 +1,25 @@
 /**
- * useHreflang — injects <link rel="alternate" hreflang="…"> tags into <head>
+ * useHreflang, injects <link rel="alternate" hreflang="…"> tags into <head>
  * and removes them on unmount.
  *
- * Usage — builder function (most common):
+ * Usage, builder function (most common):
  *   useHreflang(l => `https://topcryptocards.eu/${l}/blog`, []);
  *
- * Usage — with null guard (some langs have no URL):
+ * Usage, with null guard (some langs have no URL):
  *   useHreflang(l => slugs[l] ? `https://topcryptocards.eu/${l}/${slugs[l]}` : null, [theme]);
  *
- * Usage — explicit entries (DB-driven variant slugs):
+ * Usage, explicit entries (DB-driven variant slugs):
  *   useHreflang(
  *     variants.map(v => ({ lang: v.lang, href: `https://topcryptocards.eu/${v.lang}/blog/${v.slug}` })),
  *     [variants],
  *   );
  *
- * Usage — skip entirely (guard condition not met):
+ * Usage, skip entirely (guard condition not met):
  *   useHreflang(null, []);
  *
  * Options:
- *   xDefault   — override the x-default href (default: FR entry href)
- *   noXDefault — omit the x-default link entirely
+ *   xDefault  , override the x-default href (default: FR entry href)
+ *   noXDefault, omit the x-default link entirely
  */
 import { useEffect } from 'react';
 
@@ -29,7 +29,7 @@ const ATTR = 'data-hreflang';
 
 /**
  * Maps URL path slugs to valid BCP 47 language tags for hreflang attributes.
- * `be` and `at` are ISO 3166 country codes and NOT valid BCP 47 — must be mapped.
+ * `be` and `at` are ISO 3166 country codes and NOT valid BCP 47, must be mapped.
  * `en` alone is generic English; we use `en-GB` since we target the UK market.
  */
 const HREFLANG_BCP47: Record<string, string> = {

@@ -26,7 +26,7 @@ const COPY: Record<string, {
   bestLink: string; bestLabel: string; simLink: string; simLabel: string;
 }> = {
   fr: {
-    title:       `Frais Cartes Crypto ${new Date().getFullYear()} — Tableau Comparatif Complet | TopCryptoCards`,
+    title:       `Frais Cartes Crypto ${new Date().getFullYear()}, Tableau Comparatif Complet | TopCryptoCards`,
     h1:          `Index des Frais des Cartes Crypto en ${new Date().getFullYear()}`,
     description: `Tableau complet des frais de toutes les cartes crypto disponibles en Europe : frais annuels, staking requis, cashback, retraits. Mis à jour ${new Date().getFullYear()}.`,
     intro:       `Un index des frais de cartes crypto est un tableau de référence listant, pour chaque carte Visa ou Mastercard crypto disponible en Europe, l'ensemble des coûts réels : frais annuels, montant de staking requis, taux de cashback de base et maximum, politique de retrait ATM et réseau de paiement. Ce tableau est mis à jour régulièrement à partir des données officielles des émetteurs.`,
@@ -56,7 +56,7 @@ const COPY: Record<string, {
     simLabel:    'Simuler mon cashback annuel →',
   },
   de: {
-    title:       `Krypto-Karten Gebühren ${new Date().getFullYear()} — Vollständiger Vergleich | TopCryptoCards`,
+    title:       `Krypto-Karten Gebühren ${new Date().getFullYear()}, Vollständiger Vergleich | TopCryptoCards`,
     h1:          `Gebühren-Index Krypto-Karten ${new Date().getFullYear()}`,
     description: `Vollständige Gebührentabelle aller Krypto-Karten in Europa: Jahresgebühren, Staking, Cashback, Abhebungen. Aktualisiert ${new Date().getFullYear()}.`,
     intro:       `Ein Krypto-Karten-Gebührenindex ist eine Referenztabelle, die für jede in Europa verfügbare Visa- oder Mastercard-Kryptokarte alle tatsächlichen Kosten auflistet: Jahresgebühren, erforderlicher Staking-Betrag, Basis- und maximale Cashback-Sätze, ATM-Abhebungsrichtlinie und Zahlungsnetzwerk. Diese Tabelle wird regelmäßig anhand offizieller Emittentendaten aktualisiert.`,
@@ -86,7 +86,7 @@ const COPY: Record<string, {
     simLabel:    'Meinen jährlichen Cashback simulieren →',
   },
   es: {
-    title:       `Tarifas Tarjetas Crypto ${new Date().getFullYear()} — Comparativa Completa | TopCryptoCards`,
+    title:       `Tarifas Tarjetas Crypto ${new Date().getFullYear()}, Comparativa Completa | TopCryptoCards`,
     h1:          `Índice de Tarifas de Tarjetas Crypto en ${new Date().getFullYear()}`,
     description: `Tabla completa de tarifas de todas las tarjetas crypto disponibles en Europa: cuota anual, staking, cashback, retiradas. Actualizado ${new Date().getFullYear()}.`,
     intro:       `Un índice de tarifas de tarjetas crypto es una tabla de referencia que lista, para cada tarjeta Visa o Mastercard crypto disponible en Europa, todos los costes reales: cuota anual, importe de staking requerido, tasas de cashback base y máxima, política de retirada en cajeros y red de pago. Esta tabla se actualiza regularmente con datos oficiales de los emisores.`,
@@ -116,7 +116,7 @@ const COPY: Record<string, {
     simLabel:    'Simular mi cashback anual →',
   },
   it: {
-    title:       `Tariffe Carte Crypto ${new Date().getFullYear()} — Confronto Completo | TopCryptoCards`,
+    title:       `Tariffe Carte Crypto ${new Date().getFullYear()}, Confronto Completo | TopCryptoCards`,
     h1:          `Indice delle Tariffe delle Carte Crypto nel ${new Date().getFullYear()}`,
     description: `Tabella completa delle tariffe di tutte le carte crypto disponibili in Europa: quota annua, staking, cashback, prelievi. Aggiornato ${new Date().getFullYear()}.`,
     intro:       `Un indice delle tariffe delle carte crypto è una tabella di riferimento che elenca, per ogni carta Visa o Mastercard crypto disponibile in Europa, tutti i costi reali: quota annua, importo di staking richiesto, tassi di cashback base e massimo, politica di prelievo ATM e rete di pagamento. Questa tabella viene aggiornata regolarmente con i dati ufficiali degli emittenti.`,
@@ -146,7 +146,7 @@ const COPY: Record<string, {
     simLabel:    'Simula il mio cashback annuo →',
   },
   en: {
-    title:       `Crypto Card Fees ${new Date().getFullYear()} — Complete Comparison Table | TopCryptoCards`,
+    title:       `Crypto Card Fees ${new Date().getFullYear()}, Complete Comparison Table | TopCryptoCards`,
     h1:          `Crypto Card Fee Index ${new Date().getFullYear()}`,
     description: `Complete fee table for all crypto cards available in Europe: annual fees, staking requirements, cashback rates, ATM withdrawals. Updated ${new Date().getFullYear()}.`,
     intro:       `A crypto card fee index is a reference table listing, for every Visa or Mastercard crypto card available in Europe, all the real costs: annual fees, required staking amount, base and maximum cashback rates, ATM withdrawal policy, and payment network. This table is updated regularly from official issuer data.`,
@@ -180,7 +180,7 @@ const COPY: Record<string, {
 // Propagate be→fr and at→de aliases into COPY (with country-specific overrides)
 COPY.be = {
   ...COPY.fr,
-  title:       `Frais Cartes Crypto Belgique ${new Date().getFullYear()} — Comparatif | TopCryptoCards`,
+  title:       `Frais Cartes Crypto Belgique ${new Date().getFullYear()}, Comparatif | TopCryptoCards`,
   h1:          `Index des Frais des Cartes Crypto en Belgique ${new Date().getFullYear()}`,
   description: `Tableau complet des frais cartes crypto disponibles en Belgique : frais annuels, staking, cashback, retraits. Mis à jour ${new Date().getFullYear()}.`,
   intro:       `Un index des frais de cartes crypto est un tableau de référence listant, pour chaque carte Visa ou Mastercard crypto disponible en Belgique, l'ensemble des coûts réels : frais annuels, montant de staking requis, taux de cashback de base et maximum, politique de retrait ATM et réseau de paiement. Ce tableau couvre uniquement les cartes accessibles depuis la Belgique et est mis à jour régulièrement à partir des données officielles des émetteurs.`,
@@ -189,7 +189,7 @@ COPY.be = {
 };
 COPY.at = {
   ...COPY.de,
-  title:       `Krypto-Karten Gebühren Österreich ${new Date().getFullYear()} — Vergleich | TopCryptoCards`,
+  title:       `Krypto-Karten Gebühren Österreich ${new Date().getFullYear()}, Vergleich | TopCryptoCards`,
   h1:          `Gebühren-Index Krypto-Karten Österreich ${new Date().getFullYear()}`,
   description: `Vollständige Gebührentabelle aller Krypto-Karten in Österreich: Jahresgebühren, Staking, Cashback, Abhebungen. Aktualisiert ${new Date().getFullYear()}.`,
   intro:       `Ein Krypto-Karten-Gebührenindex ist eine Referenztabelle, die für jede in Österreich verfügbare Visa- oder Mastercard-Kryptokarte alle tatsächlichen Kosten auflistet: Jahresgebühren, erforderlicher Staking-Betrag, Basis- und maximale Cashback-Sätze, ATM-Abhebungsrichtlinie und Zahlungsnetzwerk. Diese Tabelle umfasst ausschließlich in Österreich verfügbare Karten und wird regelmäßig anhand offizieller Emittentendaten aktualisiert.`,
@@ -211,7 +211,7 @@ const CITE_COPY: Record<string, {
   fr: {
     heading:   'Citer ces données',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Index des Frais des Cartes Crypto en Europe. Récupéré le ${new Date().toLocaleDateString('fr-FR')} sur ${url}`,
-    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Index Frais Cartes Crypto — TopCryptoCards"></iframe>`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Index Frais Cartes Crypto, TopCryptoCards"></iframe>`,
     copyApa:   'Copier la citation APA',
     copyEmbed: 'Copier le code iframe',
     copied:    'Copié !',
@@ -219,7 +219,7 @@ const CITE_COPY: Record<string, {
   de: {
     heading:   'Diese Daten zitieren',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Gebühren-Index für Krypto-Karten in Europa. Abgerufen am ${new Date().toLocaleDateString('de-DE')} von ${url}`,
-    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Krypto-Karten Gebühren-Index — TopCryptoCards"></iframe>`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Krypto-Karten Gebühren-Index, TopCryptoCards"></iframe>`,
     copyApa:   'APA-Zitat kopieren',
     copyEmbed: 'iframe-Code kopieren',
     copied:    'Kopiert!',
@@ -227,7 +227,7 @@ const CITE_COPY: Record<string, {
   es: {
     heading:   'Citar estos datos',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Índice de Tarifas de Tarjetas Crypto en Europa. Recuperado el ${new Date().toLocaleDateString('es-ES')} de ${url}`,
-    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Índice Tarifas Tarjetas Crypto — TopCryptoCards"></iframe>`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Índice Tarifas Tarjetas Crypto, TopCryptoCards"></iframe>`,
     copyApa:   'Copiar cita APA',
     copyEmbed: 'Copiar código iframe',
     copied:    '¡Copiado!',
@@ -235,7 +235,7 @@ const CITE_COPY: Record<string, {
   it: {
     heading:   'Citare questi dati',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Indice delle Tariffe delle Carte Crypto in Europa. Recuperato il ${new Date().toLocaleDateString('it-IT')} da ${url}`,
-    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Indice Tariffe Carte Crypto — TopCryptoCards"></iframe>`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Indice Tariffe Carte Crypto, TopCryptoCards"></iframe>`,
     copyApa:   'Copia citazione APA',
     copyEmbed: 'Copia codice iframe',
     copied:    'Copiato!',
@@ -243,7 +243,7 @@ const CITE_COPY: Record<string, {
   en: {
     heading:   'Cite this data',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Crypto Card Fee Index Europe. Retrieved ${new Date().toLocaleDateString('en-GB')} from ${url}`,
-    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Crypto Card Fee Index — TopCryptoCards"></iframe>`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Crypto Card Fee Index, TopCryptoCards"></iframe>`,
     copyApa:   'Copy APA citation',
     copyEmbed: 'Copy iframe code',
     copied:    'Copied!',
@@ -426,7 +426,7 @@ export default function FeeIndexPage() {
 
                   return (
                     <tr key={card.id} className="border-b border-bg-border hover:bg-bg-elevated/40 transition-colors">
-                      {/* Name — sticky */}
+                      {/* Name, sticky */}
                       <td className="sticky left-0 z-10 bg-bg-card px-4 py-3 shadow-[4px_0_8px_rgba(0,0,0,0.4)]">
                         <div className="flex items-center gap-2">
                           <SmartCardImage card={card} size="xs" />
@@ -446,17 +446,17 @@ export default function FeeIndexPage() {
                       {/* Staking */}
                       <td className="px-4 py-3 text-center">
                         {card.stakingRequired === 0
-                          ? <span className="text-green-accent font-semibold">—</span>
+                          ? <span className="text-green-accent font-semibold">,</span>
                           : <span className="text-amber-400 font-semibold">{fmtEUR(card.stakingRequired)}</span>
                         }
                       </td>
                       {/* Cashback base */}
                       <td className="px-4 py-3 text-center font-semibold text-cyan-accent">
-                        {card.cashbackBase > 0 ? fmtPct(card.cashbackBase) : '—'}
+                        {card.cashbackBase > 0 ? fmtPct(card.cashbackBase) : ','}
                       </td>
                       {/* Cashback max */}
                       <td className="px-4 py-3 text-center font-semibold text-cyan-accent">
-                        {card.cashbackPremium > 0 ? fmtPct(card.cashbackPremium) : '—'}
+                        {card.cashbackPremium > 0 ? fmtPct(card.cashbackPremium) : ','}
                       </td>
                       {/* Free withdrawals */}
                       <td className="px-4 py-3 text-center">

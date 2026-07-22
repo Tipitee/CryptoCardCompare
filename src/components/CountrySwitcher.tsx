@@ -89,7 +89,7 @@ export default function CountrySwitcher() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={`${current.label} — changer de pays`}
+        aria-label={`${current.label}, changer de pays`}
         className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
       >
         <span className="text-base">{current.flag}</span>

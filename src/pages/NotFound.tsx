@@ -35,7 +35,7 @@ export default function NotFound() {
   const msg = MESSAGES[lang] || MESSAGES.en;
   const links = LINKS[lang] || LINKS.en;
 
-  useSeoMeta({ title: `404 — ${msg.title} | TopCryptoCards`, description: msg.subtitle });
+  useSeoMeta({ title: `404, ${msg.title} | TopCryptoCards`, description: msg.subtitle });
 
   // Inject noindex so soft-404s don't pollute the index
   useEffect(() => {

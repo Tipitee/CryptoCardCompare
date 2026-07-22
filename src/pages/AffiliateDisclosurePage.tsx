@@ -51,7 +51,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Nos relations commerciales',
         p1: `TopCryptoCards perçoit des commissions d'affiliation sur certaines cartes référencées sur ce site. Lorsque vous souscrivez à une carte via un lien contenant <code>/go/</code> dans l'URL, nous pouvons recevoir un paiement de l'émetteur de la carte ou de son réseau d'affiliation. Le montant varie selon le prestataire et correspond généralement à un forfait fixe par inscription validée.`,
         p2: `Les cartes pour lesquelles nous avons une relation d'affiliation sont accessibles via <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Les cartes sans relation d'affiliation renvoient directement vers le site de l'émetteur. Il s'agit notamment (au juillet 2026) de : Coinbase, Binance, Gemini, MetaMask, EtherFi, et d'autres. Elles apparaissent sur ce site parce qu'elles sont pertinentes pour les utilisateurs — pas parce que nous en tirons un revenu.`,
+        p3: `Les cartes sans relation d'affiliation renvoient directement vers le site de l'émetteur. Il s'agit notamment (au juillet 2026) de : Coinbase, Binance, Gemini, MetaMask, EtherFi, et d'autres. Elles apparaissent sur ce site parce qu'elles sont pertinentes pour les utilisateurs, pas parce que nous en tirons un revenu.`,
       },
       notAffected: {
         title: "Ce que les relations d'affiliation n'influencent PAS",
@@ -83,7 +83,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Unsere Geschäftsbeziehungen',
         p1: `TopCryptoCards verdient Affiliate-Provisionen von einigen der auf dieser Website gelisteten Karten. Wenn Sie sich über einen Link mit <code>/go/</code> in der URL für eine Karte anmelden, erhalten wir möglicherweise eine Zahlung vom Kartenemittenten oder dessen Affiliate-Netzwerk. Der Betrag variiert je nach Anbieter und ist in der Regel eine feste Gebühr pro verifizierter Anmeldung.`,
         p2: `Karten, mit denen wir eine Affiliate-Beziehung haben, sind über <code>/go/&lt;card-slug&gt;/</code> verlinkt.`,
-        p3: `Karten ohne Affiliate-Beziehung verlinken direkt auf die Website des Emittenten. Dazu gehören (Stand Juli 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi und andere. Sie erscheinen auf dieser Website, weil sie für Nutzer relevant sind — nicht weil wir davon profitieren.`,
+        p3: `Karten ohne Affiliate-Beziehung verlinken direkt auf die Website des Emittenten. Dazu gehören (Stand Juli 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi und andere. Sie erscheinen auf dieser Website, weil sie für Nutzer relevant sind, nicht weil wir davon profitieren.`,
       },
       notAffected: {
         title: 'Was Affiliate-Beziehungen NICHT beeinflussen',
@@ -179,7 +179,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Our commercial relationships',
         p1: `TopCryptoCards earns affiliate commission from some of the cards listed on this site. When you sign up for a card via a link marked with <code>/go/</code> in the URL, we may receive a payment from the card issuer or its affiliate network. The amount varies by provider and is typically a fixed fee per verified sign-up.`,
         p2: `Cards we currently have an affiliate relationship with are linked via <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Cards we do not have an affiliate relationship with are linked directly to the issuer's website. These include (as of July 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, and several others. They appear on this site because they are relevant to users — not because we earn from them.`,
+        p3: `Cards we do not have an affiliate relationship with are linked directly to the issuer's website. These include (as of July 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, and several others. They appear on this site because they are relevant to users, not because we earn from them.`,
       },
       notAffected: {
         title: 'What affiliate relationships do NOT affect',
@@ -208,23 +208,23 @@ const CONTENT: Record<ContentLang, Content> = {
 const SEO_META: Record<ContentLang, { title: string; description: string }> = {
   fr: {
     title: "Divulgation d'affiliation | TopCryptoCards",
-    description: "TopCryptoCards peut percevoir des commissions sur certains liens. Nos classements restent indépendants — aucune carte n'est favorisée en échange d'une commission.",
+    description: "TopCryptoCards peut percevoir des commissions sur certains liens. Nos classements restent indépendants, aucune carte n'est favorisée en échange d'une commission.",
   },
   de: {
     title: 'Affiliate-Offenlegung | TopCryptoCards',
-    description: 'TopCryptoCards verdient Affiliate-Provisionen auf einigen Links. Unsere Rankings sind unabhängig — keine Karte wird aufgrund einer Provision bevorzugt.',
+    description: 'TopCryptoCards verdient Affiliate-Provisionen auf einigen Links. Unsere Rankings sind unabhängig, keine Karte wird aufgrund einer Provision bevorzugt.',
   },
   es: {
     title: 'Divulgación de afiliados | TopCryptoCards',
-    description: 'TopCryptoCards puede ganar comisiones en algunos enlaces. Nuestros rankings son independientes — ninguna tarjeta recibe un trato preferente por comisiones.',
+    description: 'TopCryptoCards puede ganar comisiones en algunos enlaces. Nuestros rankings son independientes, ninguna tarjeta recibe un trato preferente por comisiones.',
   },
   it: {
     title: 'Divulgazione affiliati | TopCryptoCards',
-    description: 'TopCryptoCards può guadagnare commissioni su alcuni link. Le classifiche restano indipendenti — nessuna carta è favorita in cambio di una commissione.',
+    description: 'TopCryptoCards può guadagnare commissioni su alcuni link. Le classifiche restano indipendenti, nessuna carta è favorita in cambio di una commissione.',
   },
   en: {
     title: 'Affiliate Disclosure | TopCryptoCards',
-    description: 'TopCryptoCards may earn commissions on some links. Our rankings remain independent — no card is favoured because of a commission.',
+    description: 'TopCryptoCards may earn commissions on some links. Our rankings remain independent, no card is favoured because of a commission.',
   },
 };
 
@@ -318,11 +318,11 @@ export default function AffiliateDisclosurePage() {
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span><span className="text-slate-300">Impact Radius</span> — Impact Tech, Inc., Santa Barbara, CA, USA</span>
+                <span><span className="text-slate-300">Impact Radius</span>, Impact Tech, Inc., Santa Barbara, CA, USA</span>
               </li>
               <li className="flex items-center gap-2">
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span><span className="text-slate-300">Awin</span> — Awin AG, Eichhornstraße 3, 10785 Berlin, Germany</span>
+                <span><span className="text-slate-300">Awin</span>, Awin AG, Eichhornstraße 3, 10785 Berlin, Germany</span>
               </li>
               <li className="flex items-center gap-2">
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />

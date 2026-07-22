@@ -75,25 +75,25 @@ const CAT_DESC: Record<CategoryKey, Record<string, string>> = {
 
 const CAT_META_TITLE: Record<CategoryKey, Record<string, string>> = {
   card: {
-    fr: `Articles Cartes Crypto ${new Date().getFullYear()} — Guides & Comparatifs | TopCryptoCards`,
-    de: `Krypto-Karten Artikel ${new Date().getFullYear()} — Guides & Vergleiche | TopCryptoCards`,
-    es: `Artículos Tarjetas Crypto ${new Date().getFullYear()} — Guías & Comparativas | TopCryptoCards`,
-    it: `Articoli Carte Crypto ${new Date().getFullYear()} — Guide & Confronti | TopCryptoCards`,
-    en: `Crypto Card Articles ${new Date().getFullYear()} — Guides & Comparisons | TopCryptoCards`,
+    fr: `Articles Cartes Crypto ${new Date().getFullYear()}, Guides & Comparatifs | TopCryptoCards`,
+    de: `Krypto-Karten Artikel ${new Date().getFullYear()}, Guides & Vergleiche | TopCryptoCards`,
+    es: `Artículos Tarjetas Crypto ${new Date().getFullYear()}, Guías & Comparativas | TopCryptoCards`,
+    it: `Articoli Carte Crypto ${new Date().getFullYear()}, Guide & Confronti | TopCryptoCards`,
+    en: `Crypto Card Articles ${new Date().getFullYear()}, Guides & Comparisons | TopCryptoCards`,
   },
   crypto: {
-    fr: `Guides Cryptomonnaies ${new Date().getFullYear()} — Bitcoin, ETH, SOL & Plus | TopCryptoCards`,
-    de: `Kryptowährungs-Guides ${new Date().getFullYear()} — Bitcoin, ETH, SOL & Mehr | TopCryptoCards`,
-    es: `Guías Criptomonedas ${new Date().getFullYear()} — Bitcoin, ETH, SOL & Más | TopCryptoCards`,
-    it: `Guide Criptovalute ${new Date().getFullYear()} — Bitcoin, ETH, SOL & Altro | TopCryptoCards`,
-    en: `Cryptocurrency Guides ${new Date().getFullYear()} — Bitcoin, ETH, SOL & More | TopCryptoCards`,
+    fr: `Guides Cryptomonnaies ${new Date().getFullYear()}, Bitcoin, ETH, SOL & Plus | TopCryptoCards`,
+    de: `Kryptowährungs-Guides ${new Date().getFullYear()}, Bitcoin, ETH, SOL & Mehr | TopCryptoCards`,
+    es: `Guías Criptomonedas ${new Date().getFullYear()}, Bitcoin, ETH, SOL & Más | TopCryptoCards`,
+    it: `Guide Criptovalute ${new Date().getFullYear()}, Bitcoin, ETH, SOL & Altro | TopCryptoCards`,
+    en: `Cryptocurrency Guides ${new Date().getFullYear()}, Bitcoin, ETH, SOL & More | TopCryptoCards`,
   },
   guide: {
-    fr: `Guides Cartes Crypto ${new Date().getFullYear()} — Staking, Cashback, MiCA | TopCryptoCards`,
-    de: `Krypto-Karten Guides ${new Date().getFullYear()} — Staking, Cashback, MiCA | TopCryptoCards`,
-    es: `Guías Tarjetas Crypto ${new Date().getFullYear()} — Staking, Cashback, MiCA | TopCryptoCards`,
-    it: `Guide Carte Crypto ${new Date().getFullYear()} — Staking, Cashback, MiCA | TopCryptoCards`,
-    en: `Crypto Card Guides ${new Date().getFullYear()} — Staking, Cashback, MiCA | TopCryptoCards`,
+    fr: `Guides Cartes Crypto ${new Date().getFullYear()}, Staking, Cashback, MiCA | TopCryptoCards`,
+    de: `Krypto-Karten Guides ${new Date().getFullYear()}, Staking, Cashback, MiCA | TopCryptoCards`,
+    es: `Guías Tarjetas Crypto ${new Date().getFullYear()}, Staking, Cashback, MiCA | TopCryptoCards`,
+    it: `Guide Carte Crypto ${new Date().getFullYear()}, Staking, Cashback, MiCA | TopCryptoCards`,
+    en: `Crypto Card Guides ${new Date().getFullYear()}, Staking, Cashback, MiCA | TopCryptoCards`,
   },
 };
 

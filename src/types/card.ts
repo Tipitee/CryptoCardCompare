@@ -45,7 +45,7 @@ export interface CryptoCard {
     aum?: string;
   };
   // Brand / tier grouping (Phase 1)
-  brandId?: string;       // e.g. 'crypto-com' — groups all tiers of a brand
+  brandId?: string;       // e.g. 'crypto-com', groups all tiers of a brand
   tierRank?: number;      // 1 = entry, 2 = mid, 3+ = premium
   tierLabel?: string;     // e.g. 'Midnight Blue', 'Ruby Steel', 'Obsidian'
 }

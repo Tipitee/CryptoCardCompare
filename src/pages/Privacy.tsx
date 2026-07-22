@@ -69,13 +69,13 @@ export default function Privacy() {
 
           <h3 className="text-base font-semibold text-slate-200 mb-2">2.1 Website access logs</h3>
           <p className="mb-3">When you visit our website, the hosting provider automatically records: IP address (anonymised), date and time of access, requested file URL, referrer URL, browser type, and ISP name.</p>
-          <p className="mb-3"><span className="text-slate-300 font-medium">Legal basis:</span> Art. 6(1)(f) GDPR — legitimate interest in providing a secure and functional website.</p>
+          <p className="mb-3"><span className="text-slate-300 font-medium">Legal basis:</span> Art. 6(1)(f) GDPR, legitimate interest in providing a secure and functional website.</p>
           <p>Data is deleted automatically after a maximum of 7 days.</p>
 
           <h3 className="text-base font-semibold text-slate-200 mt-6 mb-2">2.2 Email newsletter / notifications</h3>
           <p className="mb-3">If you sign up for email updates, we collect: your email address, date and time of sign-up, and IP address at sign-up (for double opt-in verification).</p>
           <p className="mb-3"><span className="text-slate-300 font-medium">Double opt-in:</span> Your address is only stored after you click the confirmation link in our verification email.</p>
-          <p className="mb-3"><span className="text-slate-300 font-medium">Legal basis:</span> Art. 6(1)(a) GDPR — your consent.</p>
+          <p className="mb-3"><span className="text-slate-300 font-medium">Legal basis:</span> Art. 6(1)(a) GDPR, your consent.</p>
           <p><span className="text-slate-300 font-medium">Unsubscribe:</span> You may unsubscribe at any time via the unsubscribe link in any email, or by emailing <a href="mailto:hello@cryptocardcompare.io" className="text-cyan-accent hover:underline">hello@cryptocardcompare.io</a>.</p>
 
           <h3 className="text-base font-semibold text-slate-200 mt-6 mb-2">2.3 Affiliate links and redirects</h3>

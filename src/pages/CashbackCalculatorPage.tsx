@@ -1,5 +1,5 @@
 /**
- * Cashback Calculator — standalone tool page
+ * Cashback Calculator, standalone tool page
  * URL: /:lang/calculateur-cashback-crypto (etc.)
  * Purpose: earn backlinks from bloggers embedding this tool
  */
@@ -26,7 +26,7 @@ const COPY: Record<string, {
   faqTitle: string; faqs: { q: string; a: string }[];
 }> = {
   fr: {
-    title:        `Calculateur Cashback Carte Crypto ${YEAR} — Combien gagnez-vous ? | TopCryptoCards`,
+    title:        `Calculateur Cashback Carte Crypto ${YEAR}, Combien gagnez-vous ? | TopCryptoCards`,
     h1:           `Calculateur Cashback Carte Crypto ${YEAR}`,
     desc:         `Calculez votre cashback annuel avec chaque carte crypto en ${YEAR}. Entrez vos dépenses mensuelles, comparez les gains instantanément. Gratuit ✓`,
     intro:        `Entrez votre dépense mensuelle totale et découvrez combien chaque carte crypto vous rapporte par an en cashback. Les résultats sont triés du meilleur au moins bon. Aucune inscription requise.`,
@@ -54,7 +54,7 @@ const COPY: Record<string, {
     ],
   },
   de: {
-    title:        `Cashback Rechner Krypto-Karte ${YEAR} — Wie viel verdienen Sie? | TopCryptoCards`,
+    title:        `Cashback Rechner Krypto-Karte ${YEAR}, Wie viel verdienen Sie? | TopCryptoCards`,
     h1:           `Krypto-Karte Cashback-Rechner ${YEAR}`,
     desc:         `Berechnen Sie Ihr jährliches Cashback mit jeder Krypto-Karte in ${YEAR}. Monatliche Ausgaben eingeben, Gewinne sofort vergleichen. Kostenlos ✓`,
     intro:        `Geben Sie Ihre monatlichen Gesamtausgaben ein und entdecken Sie, wie viel Ihnen jede Krypto-Karte pro Jahr an Cashback einbringt. Keine Anmeldung erforderlich.`,
@@ -82,7 +82,7 @@ const COPY: Record<string, {
     ],
   },
   es: {
-    title:        `Calculadora Cashback Tarjeta Crypto ${YEAR} — ¿Cuánto ganas? | TopCryptoCards`,
+    title:        `Calculadora Cashback Tarjeta Crypto ${YEAR}, ¿Cuánto ganas? | TopCryptoCards`,
     h1:           `Calculadora de Cashback para Tarjeta Crypto ${YEAR}`,
     desc:         `Calcula tu cashback anual con cada tarjeta crypto en ${YEAR}. Introduce tus gastos mensuales y compara las ganancias al instante. Gratis ✓`,
     intro:        `Introduce tu gasto mensual total y descubre cuánto te reporta cada tarjeta crypto al año en cashback. Resultados ordenados de mayor a menor. Sin registro.`,
@@ -110,7 +110,7 @@ const COPY: Record<string, {
     ],
   },
   it: {
-    title:        `Calcolatore Cashback Carta Crypto ${YEAR} — Quanto guadagni? | TopCryptoCards`,
+    title:        `Calcolatore Cashback Carta Crypto ${YEAR}, Quanto guadagni? | TopCryptoCards`,
     h1:           `Calcolatore Cashback Carta Crypto ${YEAR}`,
     desc:         `Calcola il tuo cashback annuale con ogni carta crypto nel ${YEAR}. Inserisci le spese mensili e confronta i guadagni istantaneamente. Gratuito ✓`,
     intro:        `Inserisci la tua spesa mensile totale e scopri quanto ti rende ogni carta crypto all'anno in cashback. Risultati ordinati dal migliore al peggiore. Nessuna registrazione richiesta.`,
@@ -138,7 +138,7 @@ const COPY: Record<string, {
     ],
   },
   en: {
-    title:        `Crypto Card Cashback Calculator ${YEAR} — How Much Do You Earn? | TopCryptoCards`,
+    title:        `Crypto Card Cashback Calculator ${YEAR}, How Much Do You Earn? | TopCryptoCards`,
     h1:           `Crypto Card Cashback Calculator ${YEAR}`,
     desc:         `Calculate your annual cashback with every crypto card in ${YEAR}. Enter your monthly spending and compare earnings instantly. Free ✓`,
     intro:        `Enter your total monthly spending and see how much each crypto card earns you in cashback per year. Results sorted best to worst. No signup required.`,
@@ -171,7 +171,7 @@ const COPY: Record<string, {
 COPY.be = COPY.fr;
 COPY.at = COPY.de;
 
-/* ── Card data (no Supabase needed — fast, embeddable) ────────────────────── */
+/* ── Card data (no Supabase needed, fast, embeddable) ────────────────────── */
 interface CardRow {
   name: string;
   brand: string;
@@ -246,7 +246,7 @@ export default function CashbackCalculatorPage() {
   const bestSlug = THEMATIC_ROUTES.best?.[lang as keyof typeof THEMATIC_ROUTES.best] ?? 'meilleure-carte-crypto';
   const feeSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.feeIndex ?? 'frais-cartes-crypto';
 
-  const embedCode = `<iframe src="https://topcryptocards.eu/${lang}/${ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator ?? 'calculateur-cashback-crypto'}" width="100%" height="600" frameborder="0" title="Cashback Calculator — TopCryptoCards"></iframe>`;
+  const embedCode = `<iframe src="https://topcryptocards.eu/${lang}/${ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator ?? 'calculateur-cashback-crypto'}" width="100%" height="600" frameborder="0" title="Cashback Calculator, TopCryptoCards"></iframe>`;
 
   function handleCopy() {
     navigator.clipboard.writeText(embedCode).then(() => {
@@ -275,7 +275,7 @@ export default function CashbackCalculatorPage() {
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-end">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              {copy.labelSpend} — <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
+              {copy.labelSpend}, <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
             </label>
             <input
               type="range"
@@ -377,7 +377,7 @@ export default function CashbackCalculatorPage() {
           </button>
         </div>
         <p className="mt-3 text-xs text-gray-400">
-          Source: <a href="https://topcryptocards.eu" className="underline">TopCryptoCards.eu</a> — <a href={`/${lang}/${feeSlug}`} className="underline">{copy.colAnnual.toLowerCase()}</a>
+          Source: <a href="https://topcryptocards.eu" className="underline">TopCryptoCards.eu</a>, <a href={`/${lang}/${feeSlug}`} className="underline">{copy.colAnnual.toLowerCase()}</a>
         </p>
       </div>
 

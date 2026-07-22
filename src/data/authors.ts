@@ -1,5 +1,5 @@
 /**
- * E-E-A-T author data — referenced from Article JSON-LD and visible bylines.
+ * E-E-A-T author data, referenced from Article JSON-LD and visible bylines.
  * Fill in real details; Google's quality raters and systems look for a real,
  * verifiable person behind YMYL finance content.
  */

@@ -13,24 +13,24 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Alles über Bitcoin 2026: Funktionsweise, Geschichte, Halving, Lightning Network und wie man BTC mit einer Krypto-Karte ausgibt. Aktueller Leitfaden.',
       h1: 'Bitcoin (BTC): Der vollständige Guide 2026',
       intro: `<p><strong>Bitcoin (BTC)</strong> ist die erste und bekannteste Kryptowährung der Welt, erschaffen 2009 von der mysteriösen Person oder Gruppe namens <strong>Satoshi Nakamoto</strong>. In weniger als 15 Jahren hat sich Bitcoin von einem kryptografischen Experiment zu einem anerkannten Finanzwert entwickelt, der von institutionellen Investoren, Unternehmen und souveränen Staaten gehalten wird.</p>
-<p>Mit einer mathematisch auf <strong>21 Millionen Einheiten</strong> begrenzten Gesamtmenge gilt Bitcoin als „digitales Gold" — ein deflationäres Wertaufbewahrungsmittel, das von keiner Zentralbank oder Regierung kontrolliert werden kann. Das Netzwerk läuft seit über 15 Jahren ohne nennenswerte Ausfallzeiten und gilt als das sicherste dezentralisierte System der Welt.</p>`,
+<p>Mit einer mathematisch auf <strong>21 Millionen Einheiten</strong> begrenzten Gesamtmenge gilt Bitcoin als „digitales Gold", ein deflationäres Wertaufbewahrungsmittel, das von keiner Zentralbank oder Regierung kontrolliert werden kann. Das Netzwerk läuft seit über 15 Jahren ohne nennenswerte Ausfallzeiten und gilt als das sicherste dezentralisierte System der Welt.</p>`,
       sections: [
         {
           title: 'Geschichte des Bitcoins',
-          content: `<p>Im Oktober 2008 veröffentlichte Satoshi Nakamoto das berühmte Whitepaper <em>„Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. Am 3. Januar 2009 wurde der Genesis-Block geminet — mit einer Botschaft, die auf die Bankenkrise anspielte. 2010 kaufte ein Entwickler mit <strong>10.000 BTC zwei Pizzen</strong>, die erste bekannte Bitcoin-Transaktion im echten Handel (heute „Bitcoin Pizza Day", 22. Mai).</p>
-<p>2013 überschritt der Kurs erstmals 1.000 $, 2017 erreichte er 20.000 $ im ersten großen Bullenmarkt. 2021 folgte der Durchbruch auf über 60.000 $. Ein Meilenstein für die institutionelle Akzeptanz kam im Januar 2024, als die SEC die ersten <strong>Bitcoin Spot-ETFs</strong> von Anbietern wie BlackRock und Fidelity genehmigte — was Milliarden institutioneller Gelder in den Markt führte.</p>`,
+          content: `<p>Im Oktober 2008 veröffentlichte Satoshi Nakamoto das berühmte Whitepaper <em>„Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. Am 3. Januar 2009 wurde der Genesis-Block geminet, mit einer Botschaft, die auf die Bankenkrise anspielte. 2010 kaufte ein Entwickler mit <strong>10.000 BTC zwei Pizzen</strong>, die erste bekannte Bitcoin-Transaktion im echten Handel (heute „Bitcoin Pizza Day", 22. Mai).</p>
+<p>2013 überschritt der Kurs erstmals 1.000 $, 2017 erreichte er 20.000 $ im ersten großen Bullenmarkt. 2021 folgte der Durchbruch auf über 60.000 $. Ein Meilenstein für die institutionelle Akzeptanz kam im Januar 2024, als die SEC die ersten <strong>Bitcoin Spot-ETFs</strong> von Anbietern wie BlackRock und Fidelity genehmigte, was Milliarden institutioneller Gelder in den Markt führte.</p>`,
         },
         {
           title: 'Wie funktioniert Bitcoin?',
-          content: `<p>Bitcoin basiert auf einer <strong>Blockchain</strong> — einem unveränderlichen, dezentralisierten Buchungssystem, das von Tausenden von Knoten weltweit gepflegt wird. Der Konsensmechanismus ist <strong>Proof of Work (PoW)</strong>: Miner konkurrieren darum, komplexe mathematische Aufgaben (SHA-256) zu lösen. Der Gewinner fügt den nächsten Block hinzu und erhält eine BTC-Belohnung.</p>
-<p>Alle vier Jahre wird diese Belohnung beim sogenannten <strong>Halving</strong> halbiert — ein in das Protokoll eingebauter deflationärer Mechanismus. Das letzte Halving fand im April 2024 statt (Belohnung: 3,125 BTC/Block). Für schnelle Kleinstbeträge bietet das <strong>Lightning Network</strong> als Layer-2-Lösung nahezu sofortige und kostenlose Transaktionen.</p>`,
+          content: `<p>Bitcoin basiert auf einer <strong>Blockchain</strong>, einem unveränderlichen, dezentralisierten Buchungssystem, das von Tausenden von Knoten weltweit gepflegt wird. Der Konsensmechanismus ist <strong>Proof of Work (PoW)</strong>: Miner konkurrieren darum, komplexe mathematische Aufgaben (SHA-256) zu lösen. Der Gewinner fügt den nächsten Block hinzu und erhält eine BTC-Belohnung.</p>
+<p>Alle vier Jahre wird diese Belohnung beim sogenannten <strong>Halving</strong> halbiert, ein in das Protokoll eingebauter deflationärer Mechanismus. Das letzte Halving fand im April 2024 statt (Belohnung: 3,125 BTC/Block). Für schnelle Kleinstbeträge bietet das <strong>Lightning Network</strong> als Layer-2-Lösung nahezu sofortige und kostenlose Transaktionen.</p>`,
         },
         {
           title: 'Anwendungsfälle von Bitcoin',
           content: `<ul>
-<li><strong>Wertaufbewahrung</strong>: Der häufigste Anwendungsfall — Schutz vor Inflation und Währungsabwertung.</li>
+<li><strong>Wertaufbewahrung</strong>: Der häufigste Anwendungsfall, Schutz vor Inflation und Währungsabwertung.</li>
 <li><strong>Internationale Zahlungen</strong>: Weltweite Geldübertragungen in Minuten, ohne Bankintermediär und zu einem Bruchteil der SWIFT-Gebühren.</li>
-<li><strong>Alltägliche Ausgaben per Krypto-Karte</strong>: Karten von Nexo, Crypto.com oder Coinbase ermöglichen BTC-Zahlungen überall, wo Visa/Mastercard akzeptiert wird — mit sofortiger Umrechnung in Euro.</li>
+<li><strong>Alltägliche Ausgaben per Krypto-Karte</strong>: Karten von Nexo, Crypto.com oder Coinbase ermöglichen BTC-Zahlungen überall, wo Visa/Mastercard akzeptiert wird, mit sofortiger Umrechnung in Euro.</li>
 <li><strong>DeFi-Sicherheit</strong>: Über Wrapped BTC (wBTC oder cbBTC) kann Bitcoin als Sicherheit in DeFi-Protokollen eingesetzt werden.</li>
 <li><strong>Gesetzliches Zahlungsmittel</strong>: In El Salvador und der Zentralafrikanischen Republik ist Bitcoin offizielles Zahlungsmittel.</li>
 </ul>`,
@@ -39,14 +39,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vorteile und Risiken',
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
-<li>Angebot fest auf 21 Millionen begrenzt — absolute Knappheit durch Code garantiert</li>
+<li>Angebot fest auf 21 Millionen begrenzt, absolute Knappheit durch Code garantiert</li>
 <li>Das dezentralisierteste und sicherste Netzwerk der Krypto-Industrie</li>
-<li>Maximale weltweite Liquidität — 24/7 an Hunderten von Börsen handelbar</li>
+<li>Maximale weltweite Liquidität, 24/7 an Hunderten von Börsen handelbar</li>
 <li>Wachsende institutionelle Akzeptanz (ETFs, Unternehmensbilanzen, Staatsfonds)</li>
 </ul>
 <p><strong>Risiken:</strong></p>
 <ul>
-<li>Hohe Volatilität — Kursrückgänge von -50 % bis -80 % sind in der Vergangenheit mehrfach aufgetreten</li>
+<li>Hohe Volatilität, Kursrückgänge von -50 % bis -80 % sind in der Vergangenheit mehrfach aufgetreten</li>
 <li>Hoher Energieverbrauch durch Proof of Work</li>
 <li>Begrenzte Skalierbarkeit auf der Hauptkette (~7 Transaktionen pro Sekunde)</li>
 <li>Irreversibler Verlust bei verlorenem Private Key oder Seed-Phrase</li>
@@ -54,7 +54,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           title: 'Bitcoin mit einer Krypto-Karte ausgeben',
-          content: `<p><strong>Bitcoin-kompatible Krypto-Karten</strong> sind das ideale Werkzeug, um BTC im Alltag zu nutzen, ohne manuell verkaufen zu müssen. Die Karte rechnet Ihren BTC automatisch in Euro (oder andere Lokalwährungen) um — in Echtzeit, bei jedem Händler der Visa oder Mastercard akzeptiert.</p>
+          content: `<p><strong>Bitcoin-kompatible Krypto-Karten</strong> sind das ideale Werkzeug, um BTC im Alltag zu nutzen, ohne manuell verkaufen zu müssen. Die Karte rechnet Ihren BTC automatisch in Euro (oder andere Lokalwährungen) um, in Echtzeit, bei jedem Händler der Visa oder Mastercard akzeptiert.</p>
 <p>Einige Karten bieten sogar <strong>Cashback in BTC</strong> auf jeden Einkauf. Beliebte Karten mit Bitcoin-Unterstützung: Nexo Card, Crypto.com Visa, Coinbase Card. Nutzen Sie unseren <a href="/de">Karten-Vergleich</a>, um die beste Option für Ihr Profil zu finden.</p>`,
         },
       ],
@@ -82,17 +82,17 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Todo sobre Bitcoin en 2026: funcionamiento, historia, halving, Lightning Network y cómo gastar BTC con una tarjeta crypto. Guía actualizada.',
       h1: 'Bitcoin (BTC): La Guía Completa 2026',
       intro: `<p><strong>Bitcoin (BTC)</strong> es la primera criptomoneda del mundo, creada en 2009 por una persona o grupo bajo el seudónimo <strong>Satoshi Nakamoto</strong>. En menos de 15 años, ha pasado de ser un experimento criptográfico a un activo financiero reconocido por estados, fondos institucionales y millones de particulares en todo el mundo.</p>
-<p>Con una oferta matemáticamente limitada a <strong>21 millones de unidades</strong>, Bitcoin se conoce como el "oro digital" — una reserva de valor deflacionaria que ningún banco central ni gobierno puede controlar. Su red lleva más de 15 años funcionando sin interrupciones significativas y es considerada el sistema descentralizado más seguro del mundo.</p>`,
+<p>Con una oferta matemáticamente limitada a <strong>21 millones de unidades</strong>, Bitcoin se conoce como el "oro digital", una reserva de valor deflacionaria que ningún banco central ni gobierno puede controlar. Su red lleva más de 15 años funcionando sin interrupciones significativas y es considerada el sistema descentralizado más seguro del mundo.</p>`,
       sections: [
         {
           title: 'Historia de Bitcoin',
-          content: `<p>En octubre de 2008, Satoshi Nakamoto publicó el célebre whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. El 3 de enero de 2009 se minó el bloque génesis. En 2010, un desarrollador compró <strong>dos pizzas por 10.000 BTC</strong> — la primera transacción comercial conocida (hoy el "Bitcoin Pizza Day", 22 de mayo).</p>
+          content: `<p>En octubre de 2008, Satoshi Nakamoto publicó el célebre whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. El 3 de enero de 2009 se minó el bloque génesis. En 2010, un desarrollador compró <strong>dos pizzas por 10.000 BTC</strong>, la primera transacción comercial conocida (hoy el "Bitcoin Pizza Day", 22 de mayo).</p>
 <p>En 2013 superó por primera vez los 1.000 $, en 2017 alcanzó 20.000 $ y en 2021 superó los 60.000 $. Un hito institucional llegó en enero de 2024 con la aprobación por parte de la SEC de los primeros <strong>ETF de Bitcoin spot</strong> de gestoras como BlackRock y Fidelity, abriendo el mercado a miles de millones de inversión institucional.</p>`,
         },
         {
           title: '¿Cómo funciona Bitcoin?',
-          content: `<p>Bitcoin se basa en una <strong>blockchain</strong> — un registro distribuido e inmutable mantenido por miles de nodos en todo el mundo. El mecanismo de consenso es el <strong>Proof of Work (PoW)</strong>: los mineros compiten para resolver problemas matemáticos complejos (SHA-256) y el ganador añade el siguiente bloque y recibe una recompensa en BTC.</p>
-<p>Cada cuatro años esta recompensa se reduce a la mitad en el llamado <strong>halving</strong> — un mecanismo deflacionario programado en el protocolo. El último halving ocurrió en abril de 2024 (recompensa: 3,125 BTC/bloque). Para pagos pequeños y rápidos, la <strong>Lightning Network</strong> como solución de capa 2 ofrece transacciones casi instantáneas y prácticamente gratuitas.</p>`,
+          content: `<p>Bitcoin se basa en una <strong>blockchain</strong>, un registro distribuido e inmutable mantenido por miles de nodos en todo el mundo. El mecanismo de consenso es el <strong>Proof of Work (PoW)</strong>: los mineros compiten para resolver problemas matemáticos complejos (SHA-256) y el ganador añade el siguiente bloque y recibe una recompensa en BTC.</p>
+<p>Cada cuatro años esta recompensa se reduce a la mitad en el llamado <strong>halving</strong>, un mecanismo deflacionario programado en el protocolo. El último halving ocurrió en abril de 2024 (recompensa: 3,125 BTC/bloque). Para pagos pequeños y rápidos, la <strong>Lightning Network</strong> como solución de capa 2 ofrece transacciones casi instantáneas y prácticamente gratuitas.</p>`,
         },
         {
           title: 'Casos de uso de Bitcoin',
@@ -108,14 +108,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Ventajas y riesgos',
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
-<li>Oferta fija en 21 millones — escasez absoluta garantizada por código</li>
+<li>Oferta fija en 21 millones, escasez absoluta garantizada por código</li>
 <li>La red más descentralizada y segura de toda la industria cripto</li>
-<li>Máxima liquidez global — negociable 24/7 en cientos de exchanges</li>
+<li>Máxima liquidez global, negociable 24/7 en cientos de exchanges</li>
 <li>Adopción institucional y soberana creciente (ETFs, balances empresariales, estados)</li>
 </ul>
 <p><strong>Riesgos:</strong></p>
 <ul>
-<li>Alta volatilidad — caídas del -50 % al -80 % han ocurrido varias veces</li>
+<li>Alta volatilidad, caídas del -50 % al -80 % han ocurrido varias veces</li>
 <li>Alto consumo energético por Proof of Work</li>
 <li>Escalabilidad limitada en la cadena principal (~7 tx/s)</li>
 <li>Pérdida irreversible si se pierde la clave privada o la seed phrase</li>
@@ -151,17 +151,17 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Tutto su Bitcoin nel 2026: funzionamento, storia, halving, Lightning Network e come spendere BTC con una carta crypto. Guida aggiornata.',
       h1: 'Bitcoin (BTC): La Guida Completa 2026',
       intro: `<p><strong>Bitcoin (BTC)</strong> è la prima criptovaluta al mondo, creata nel 2009 da una persona o gruppo sotto lo pseudonimo <strong>Satoshi Nakamoto</strong>. In meno di 15 anni è passato da esperimento crittografico a asset finanziario riconosciuto da stati, fondi istituzionali e milioni di privati in tutto il mondo.</p>
-<p>Con un'offerta matematicamente limitata a <strong>21 milioni di unità</strong>, Bitcoin è noto come "oro digitale" — una riserva di valore deflazionistica che nessuna banca centrale o governo può controllare. La sua rete funziona da oltre 15 anni senza interruzioni significative ed è considerata il sistema decentralizzato più sicuro al mondo.</p>`,
+<p>Con un'offerta matematicamente limitata a <strong>21 milioni di unità</strong>, Bitcoin è noto come "oro digitale", una riserva di valore deflazionistica che nessuna banca centrale o governo può controllare. La sua rete funziona da oltre 15 anni senza interruzioni significative ed è considerata il sistema decentralizzato più sicuro al mondo.</p>`,
       sections: [
         {
           title: 'Storia di Bitcoin',
-          content: `<p>Nell'ottobre 2008, Satoshi Nakamoto pubblicò il celebre whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. Il 3 gennaio 2009 fu minato il blocco genesi. Nel 2010 uno sviluppatore acquistò <strong>due pizze per 10.000 BTC</strong> — la prima transazione commerciale nota (oggi il "Bitcoin Pizza Day", 22 maggio).</p>
+          content: `<p>Nell'ottobre 2008, Satoshi Nakamoto pubblicò il celebre whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. Il 3 gennaio 2009 fu minato il blocco genesi. Nel 2010 uno sviluppatore acquistò <strong>due pizze per 10.000 BTC</strong>, la prima transazione commerciale nota (oggi il "Bitcoin Pizza Day", 22 maggio).</p>
 <p>Nel 2013 superò per la prima volta i 1.000 $, nel 2017 raggiunse i 20.000 $ e nel 2021 superò i 60.000 $. Un traguardo istituzionale arrivò nel gennaio 2024 con l'approvazione da parte della SEC dei primi <strong>ETF Bitcoin spot</strong> di BlackRock e Fidelity, aprendo il mercato a miliardi di investimenti istituzionali.</p>`,
         },
         {
           title: 'Come funziona Bitcoin?',
-          content: `<p>Bitcoin si basa su una <strong>blockchain</strong> — un registro distribuito e immutabile mantenuto da migliaia di nodi in tutto il mondo. Il meccanismo di consenso è il <strong>Proof of Work (PoW)</strong>: i miner competono per risolvere problemi matematici complessi (SHA-256) e il vincitore aggiunge il blocco successivo ricevendo una ricompensa in BTC.</p>
-<p>Ogni quattro anni questa ricompensa viene dimezzata nell'evento chiamato <strong>halving</strong> — un meccanismo deflazionistico programmato nel protocollo. L'ultimo halving è avvenuto nell'aprile 2024 (ricompensa: 3,125 BTC/blocco). Per i micropagamenti veloci, il <strong>Lightning Network</strong> come soluzione Layer 2 offre transazioni quasi istantanee e praticamente gratuite.</p>`,
+          content: `<p>Bitcoin si basa su una <strong>blockchain</strong>, un registro distribuito e immutabile mantenuto da migliaia di nodi in tutto il mondo. Il meccanismo di consenso è il <strong>Proof of Work (PoW)</strong>: i miner competono per risolvere problemi matematici complessi (SHA-256) e il vincitore aggiunge il blocco successivo ricevendo una ricompensa in BTC.</p>
+<p>Ogni quattro anni questa ricompensa viene dimezzata nell'evento chiamato <strong>halving</strong>, un meccanismo deflazionistico programmato nel protocollo. L'ultimo halving è avvenuto nell'aprile 2024 (ricompensa: 3,125 BTC/blocco). Per i micropagamenti veloci, il <strong>Lightning Network</strong> come soluzione Layer 2 offre transazioni quasi istantanee e praticamente gratuite.</p>`,
         },
         {
           title: 'Casi d\'uso di Bitcoin',
@@ -176,14 +176,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vantaggi e rischi',
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
-<li>Offerta fissa a 21 milioni — scarsità assoluta garantita dal codice</li>
+<li>Offerta fissa a 21 milioni, scarsità assoluta garantita dal codice</li>
 <li>La rete più decentralizzata e sicura di tutta l'industria crypto</li>
-<li>Massima liquidità globale — negoziabile 24/7 su centinaia di exchange</li>
+<li>Massima liquidità globale, negoziabile 24/7 su centinaia di exchange</li>
 <li>Crescente adozione istituzionale e sovrana (ETF, bilanci aziendali, stati)</li>
 </ul>
 <p><strong>Rischi:</strong></p>
 <ul>
-<li>Alta volatilità — cali dal -50 % all'80 % si sono verificati più volte</li>
+<li>Alta volatilità, cali dal -50 % all'80 % si sono verificati più volte</li>
 <li>Elevato consumo energetico per il Proof of Work</li>
 <li>Scalabilità limitata sulla chain principale (~7 tx/s)</li>
 <li>Perdita irreversibile in caso di smarrimento della chiave privata o seed phrase</li>
@@ -219,22 +219,22 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Everything about Bitcoin in 2026: how it works, history, halving, Lightning Network, and how to spend BTC with a crypto card. Updated guide.',
       h1: 'Bitcoin (BTC): The Complete Guide 2026',
       intro: `<p><strong>Bitcoin (BTC)</strong> is the world's first cryptocurrency, created in 2009 by a person or group using the pseudonym <strong>Satoshi Nakamoto</strong>. In less than 15 years, it evolved from a cryptographic experiment into a recognized financial asset held by institutional funds, sovereign states, and millions of individuals worldwide.</p>
-<p>With a supply mathematically capped at <strong>21 million units</strong>, Bitcoin is often called "digital gold" — a deflationary store of value that no central bank or government can control. Its network has run for over 15 years with no significant downtime, making it the most secure decentralized system ever built.</p>`,
+<p>With a supply mathematically capped at <strong>21 million units</strong>, Bitcoin is often called "digital gold", a deflationary store of value that no central bank or government can control. Its network has run for over 15 years with no significant downtime, making it the most secure decentralized system ever built.</p>`,
       sections: [
         {
           title: 'History of Bitcoin',
-          content: `<p>In October 2008, Satoshi Nakamoto published the famous whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. On January 3, 2009, the genesis block was mined. In 2010, a developer bought <strong>two pizzas for 10,000 BTC</strong> — the first known real-world transaction (now celebrated as "Bitcoin Pizza Day" on May 22nd).</p>
+          content: `<p>In October 2008, Satoshi Nakamoto published the famous whitepaper <em>"Bitcoin: A Peer-to-Peer Electronic Cash System"</em>. On January 3, 2009, the genesis block was mined. In 2010, a developer bought <strong>two pizzas for 10,000 BTC</strong>, the first known real-world transaction (now celebrated as "Bitcoin Pizza Day" on May 22nd).</p>
 <p>Bitcoin first crossed $1,000 in 2013, hit $20,000 in 2017, and surpassed $60,000 in 2021. A major institutional milestone came in January 2024 when the SEC approved the first <strong>Bitcoin spot ETFs</strong> from BlackRock and Fidelity, opening floodgates to billions in institutional capital.</p>`,
         },
         {
           title: 'How Does Bitcoin Work?',
-          content: `<p>Bitcoin runs on a <strong>blockchain</strong> — an immutable, distributed ledger maintained by thousands of nodes around the world. The consensus mechanism is <strong>Proof of Work (PoW)</strong>: miners compete to solve complex mathematical puzzles (SHA-256), and the winner adds the next block and earns a BTC reward.</p>
-<p>Every four years, this reward is cut in half in an event called the <strong>halving</strong> — a deflationary mechanism built into the protocol. The most recent halving occurred in April 2024 (reward: 3.125 BTC/block). For fast, low-value payments, the <strong>Lightning Network</strong> layer-2 solution enables near-instant, near-free transactions.</p>`,
+          content: `<p>Bitcoin runs on a <strong>blockchain</strong>, an immutable, distributed ledger maintained by thousands of nodes around the world. The consensus mechanism is <strong>Proof of Work (PoW)</strong>: miners compete to solve complex mathematical puzzles (SHA-256), and the winner adds the next block and earns a BTC reward.</p>
+<p>Every four years, this reward is cut in half in an event called the <strong>halving</strong>, a deflationary mechanism built into the protocol. The most recent halving occurred in April 2024 (reward: 3.125 BTC/block). For fast, low-value payments, the <strong>Lightning Network</strong> layer-2 solution enables near-instant, near-free transactions.</p>`,
         },
         {
           title: 'Bitcoin Use Cases',
           content: `<ul>
-<li><strong>Store of value</strong>: protection against inflation and currency debasement — the dominant use case.</li>
+<li><strong>Store of value</strong>: protection against inflation and currency debasement, the dominant use case.</li>
 <li><strong>International payments</strong>: send funds anywhere in the world in minutes, with no bank intermediary and at a fraction of SWIFT fees.</li>
 <li><strong>Daily spending via crypto card</strong>: Nexo, Crypto.com, and Coinbase cards let you spend BTC anywhere Visa/Mastercard is accepted, with real-time EUR conversion.</li>
 <li><strong>DeFi collateral</strong>: via Wrapped BTC (wBTC or cbBTC), Bitcoin can be used as collateral in DeFi protocols on Ethereum.</li>
@@ -245,14 +245,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Pros and Risks',
           content: `<p><strong>Advantages:</strong></p>
 <ul>
-<li>Supply capped at 21 million — absolute scarcity guaranteed by code</li>
+<li>Supply capped at 21 million, absolute scarcity guaranteed by code</li>
 <li>The most decentralized and secure network in all of crypto</li>
-<li>Maximum global liquidity — tradeable 24/7 on hundreds of exchanges</li>
+<li>Maximum global liquidity, tradeable 24/7 on hundreds of exchanges</li>
 <li>Growing institutional adoption (ETFs, corporate treasuries, sovereign wealth)</li>
 </ul>
 <p><strong>Risks:</strong></p>
 <ul>
-<li>High volatility — drawdowns of -50% to -80% have occurred multiple times</li>
+<li>High volatility, drawdowns of -50% to -80% have occurred multiple times</li>
 <li>High energy consumption from Proof of Work</li>
 <li>Limited throughput on the base chain (~7 tx/s)</li>
 <li>Irreversible loss if private key or seed phrase is lost</li>
@@ -261,7 +261,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Spending Bitcoin with a Crypto Card',
           content: `<p><strong>Bitcoin-compatible crypto cards</strong> are the ideal tool for using BTC in daily life without manually selling. The card automatically converts your BTC to euros (or local currency) in real time at any merchant accepting Visa or Mastercard.</p>
-<p>Some cards even offer <strong>BTC cashback</strong> on every purchase — a way to stack sats while shopping. Popular cards with Bitcoin support: Nexo Card, Crypto.com Visa, Coinbase Card. Check our <a href="/en">card comparison</a> to find the best option for your profile.</p>`,
+<p>Some cards even offer <strong>BTC cashback</strong> on every purchase, a way to stack sats while shopping. Popular cards with Bitcoin support: Nexo Card, Crypto.com Visa, Coinbase Card. Check our <a href="/en">card comparison</a> to find the best option for your profile.</p>`,
         },
       ],
       faq: [
@@ -271,7 +271,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Is Bitcoin legal?',
-          a: 'Bitcoin is legal in most countries. In the EU, crypto service providers must comply with MiCA regulations and register with national authorities. Tax treatment varies by country — in most jurisdictions, gains from selling crypto are subject to capital gains tax.',
+          a: 'Bitcoin is legal in most countries. In the EU, crypto service providers must comply with MiCA regulations and register with national authorities. Tax treatment varies by country, in most jurisdictions, gains from selling crypto are subject to capital gains tax.',
         },
         {
           q: 'How do I spend Bitcoin without selling it?',
@@ -291,23 +291,23 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Ethereum (ETH): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über Ethereum 2026: Smart Contracts, DeFi, The Merge, ETH-Staking und Krypto-Karten mit Ethereum-Unterstützung. Aktueller Leitfaden.',
       h1: 'Ethereum (ETH): Der vollständige Guide 2026',
-      intro: `<p><strong>Ethereum (ETH)</strong> ist die zweitgrößte Kryptowährung nach Marktkapitalisierung und die erste programmierbare Blockchain mit Massenadoption. 2015 von <strong>Vitalik Buterin</strong> und Mitgründern gestartet, hat Ethereum mit dem Konzept der <strong>Smart Contracts</strong> — selbstausführende Programme auf der Blockchain — die gesamte Krypto-Industrie revolutioniert.</p>
+      intro: `<p><strong>Ethereum (ETH)</strong> ist die zweitgrößte Kryptowährung nach Marktkapitalisierung und die erste programmierbare Blockchain mit Massenadoption. 2015 von <strong>Vitalik Buterin</strong> und Mitgründern gestartet, hat Ethereum mit dem Konzept der <strong>Smart Contracts</strong>, selbstausführende Programme auf der Blockchain, die gesamte Krypto-Industrie revolutioniert.</p>
 <p>Heute ist Ethereum das Fundament der dezentralen Finanzwirtschaft (DeFi), nicht-fungibler Token (NFTs) und dezentraler autonomer Organisationen (DAOs). Mit Tausenden aktiver dezentraler Anwendungen und Milliarden Dollar gesperrtem Wert ist es das am weitesten entwickelte und ausgereifte Ökosystem in der Kryptowelt.</p>`,
       sections: [
         {
           title: 'Geschichte von Ethereum',
           content: `<p>2013 veröffentlichte der damals 19-jährige Vitalik Buterin ein Whitepaper für eine universelle Blockchain, die beliebige Programme ausführen kann. 2014 finanzierte eine ICO das Projekt mit über 18 Millionen Dollar. Das Hauptnetz ging im Juli 2015 live.</p>
-<p>2016 erschütterte der <strong>The-DAO-Hack</strong> das Netzwerk — 60 Millionen Dollar wurden aus einem dezentralen Fonds gestohlen. Ein umstrittener Hard Fork schuf zwei Ketten: <strong>Ethereum (ETH)</strong> und Ethereum Classic (ETC). Der technologische Wendepunkt kam im September 2022 mit <strong>The Merge</strong>: Ethereum wechselte vom Proof of Work zum Proof of Stake und reduzierte seinen Energieverbrauch um über <strong>99,9 %</strong>. 2024 genehmigten US-Regulatoren die ersten Ethereum Spot-ETFs.</p>`,
+<p>2016 erschütterte der <strong>The-DAO-Hack</strong> das Netzwerk, 60 Millionen Dollar wurden aus einem dezentralen Fonds gestohlen. Ein umstrittener Hard Fork schuf zwei Ketten: <strong>Ethereum (ETH)</strong> und Ethereum Classic (ETC). Der technologische Wendepunkt kam im September 2022 mit <strong>The Merge</strong>: Ethereum wechselte vom Proof of Work zum Proof of Stake und reduzierte seinen Energieverbrauch um über <strong>99,9 %</strong>. 2024 genehmigten US-Regulatoren die ersten Ethereum Spot-ETFs.</p>`,
         },
         {
           title: 'Wie funktioniert Ethereum?',
-          content: `<p>Das Herzstück ist die <strong>Ethereum Virtual Machine (EVM)</strong> — eine dezentralisierte Weltcomputer-Umgebung, die Smart Contracts in der Regel in <strong>Solidity</strong> ausführt. Diese Verträge sind unveränderlich und laufen genau wie programmiert — ohne Eingriffsmöglichkeit Dritter.</p>
+          content: `<p>Das Herzstück ist die <strong>Ethereum Virtual Machine (EVM)</strong>, eine dezentralisierte Weltcomputer-Umgebung, die Smart Contracts in der Regel in <strong>Solidity</strong> ausführt. Diese Verträge sind unveränderlich und laufen genau wie programmiert, ohne Eingriffsmöglichkeit Dritter.</p>
 <p>Seit The Merge basiert die Validierung auf <strong>Proof of Stake</strong>: Validatoren hinterlegen 32 ETH als Sicherheit und erhalten als Belohnung etwa <strong>3–5 % Jahresrendite in ETH</strong>. Für günstigere Transaktionen bieten <strong>Layer-2-Lösungen</strong> (Arbitrum, Optimism, Base) Gebühren, die 10- bis 100-mal günstiger als auf der L1 sind.</p>`,
         },
         {
           title: 'Anwendungsfälle von Ethereum',
           content: `<ul>
-<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO — täglich werden Milliarden Dollar auf Ethereum-Protokollen gehandelt und verliehen.</li>
+<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO, täglich werden Milliarden Dollar auf Ethereum-Protokollen gehandelt und verliehen.</li>
 <li><strong>Stablecoins</strong>: USDC, DAI und USDT (ERC-20) laufen hauptsächlich auf Ethereum.</li>
 <li><strong>NFTs</strong>: Die größten Kollektionen (Bored Ape Yacht Club, CryptoPunks) basieren auf ERC-721/ERC-1155.</li>
 <li><strong>Tokenisierung realer Vermögenswerte (RWA)</strong>: Ethereum ist die bevorzugte Blockchain für die Tokenisierung von Anleihen, Fonds und Immobilien durch institutionelle Akteure.</li>
@@ -331,7 +331,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           title: 'ETH mit einer Krypto-Karte ausgeben',
-          content: `<p><strong>Ethereum-kompatible Krypto-Karten</strong> ermöglichen es, ETH im Alltag bei jedem Händler mit Visa- oder Mastercard-Akzeptanz auszugeben. Die Umrechnung erfolgt automatisch in Echtzeit — ohne manuelle Schritte.</p>
+          content: `<p><strong>Ethereum-kompatible Krypto-Karten</strong> ermöglichen es, ETH im Alltag bei jedem Händler mit Visa- oder Mastercard-Akzeptanz auszugeben. Die Umrechnung erfolgt automatisch in Echtzeit, ohne manuelle Schritte.</p>
 <p>Einige Karten unterstützen auch ERC-20-Token (USDC, DAI) als Zahlungsquelle. Nutzen Sie unseren <a href="/de">Kartenvergleich</a>, um die beste Karte zu finden.</p>`,
         },
       ],
@@ -358,23 +358,23 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Ethereum (ETH): Guía Completa 2026 | TopCryptoCards',
       meta_description: 'Todo sobre Ethereum en 2026: smart contracts, DeFi, The Merge, staking de ETH y tarjetas crypto compatibles. Guía actualizada.',
       h1: 'Ethereum (ETH): La Guía Completa 2026',
-      intro: `<p><strong>Ethereum (ETH)</strong> es la segunda criptomoneda por capitalización de mercado y la primera blockchain programable con adopción masiva. Lanzada en 2015 por <strong>Vitalik Buterin</strong> y cofundadores, revolucionó la industria cripto al introducir los <strong>smart contracts</strong> — programas autónomos que se ejecutan automáticamente en la blockchain sin intermediarios.</p>
+      intro: `<p><strong>Ethereum (ETH)</strong> es la segunda criptomoneda por capitalización de mercado y la primera blockchain programable con adopción masiva. Lanzada en 2015 por <strong>Vitalik Buterin</strong> y cofundadores, revolucionó la industria cripto al introducir los <strong>smart contracts</strong>, programas autónomos que se ejecutan automáticamente en la blockchain sin intermediarios.</p>
 <p>Hoy, Ethereum es la base sobre la que se construye casi toda la finanza descentralizada (DeFi), los tokens no fungibles (NFT) y las organizaciones autónomas descentralizadas (DAO). Con miles de aplicaciones activas y miles de millones en valor bloqueado, es el ecosistema más desarrollado y maduro del espacio cripto.</p>`,
       sections: [
         {
           title: 'Historia de Ethereum',
           content: `<p>En 2013, Vitalik Buterin, con 19 años, publicó el whitepaper para una blockchain universal capaz de ejecutar cualquier programa. En 2014, una ICO recaudó más de 18 millones de dólares. La red principal se lanzó en julio de 2015.</p>
-<p>En 2016, el <strong>hack de The DAO</strong> sacudió la red — 60 millones de dólares robados llevaron a un polémico hard fork creando <strong>Ethereum (ETH)</strong> y Ethereum Classic (ETC). El hito tecnológico llegó en septiembre de 2022 con <strong>The Merge</strong>: Ethereum pasó del Proof of Work al Proof of Stake, reduciendo su consumo energético más del <strong>99,9 %</strong>. En 2024, los reguladores estadounidenses aprobaron los primeros ETF de Ethereum spot.</p>`,
+<p>En 2016, el <strong>hack de The DAO</strong> sacudió la red, 60 millones de dólares robados llevaron a un polémico hard fork creando <strong>Ethereum (ETH)</strong> y Ethereum Classic (ETC). El hito tecnológico llegó en septiembre de 2022 con <strong>The Merge</strong>: Ethereum pasó del Proof of Work al Proof of Stake, reduciendo su consumo energético más del <strong>99,9 %</strong>. En 2024, los reguladores estadounidenses aprobaron los primeros ETF de Ethereum spot.</p>`,
         },
         {
           title: '¿Cómo funciona Ethereum?',
-          content: `<p>El núcleo es la <strong>Ethereum Virtual Machine (EVM)</strong> — una máquina virtual descentralizada que ejecuta smart contracts escritos principalmente en <strong>Solidity</strong>. Una vez desplegados, son inmutables y se ejecutan exactamente como se programaron.</p>
+          content: `<p>El núcleo es la <strong>Ethereum Virtual Machine (EVM)</strong>, una máquina virtual descentralizada que ejecuta smart contracts escritos principalmente en <strong>Solidity</strong>. Una vez desplegados, son inmutables y se ejecutan exactamente como se programaron.</p>
 <p>Desde The Merge, la validación usa <strong>Proof of Stake</strong>: los validadores depositan 32 ETH como garantía y reciben un rendimiento anual de aproximadamente <strong>3–5 % en ETH</strong>. Las soluciones <strong>Layer 2</strong> (Arbitrum, Optimism, Base) ofrecen comisiones entre 10 y 100 veces más bajas que la L1.</p>`,
         },
         {
           title: 'Casos de uso de Ethereum',
           content: `<ul>
-<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO — miles de millones se intercambian y prestan diariamente en protocolos Ethereum.</li>
+<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO, miles de millones se intercambian y prestan diariamente en protocolos Ethereum.</li>
 <li><strong>Stablecoins</strong>: USDC, DAI y USDT (ERC-20) circulan principalmente en Ethereum.</li>
 <li><strong>NFTs</strong>: Las grandes colecciones (Bored Ape Yacht Club, CryptoPunks) se basan en ERC-721/ERC-1155.</li>
 <li><strong>Tokenización de activos reales (RWA)</strong>: Ethereum es la blockchain elegida por instituciones financieras para tokenizar bonos, fondos e inmuebles.</li>
@@ -424,23 +424,23 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Ethereum (ETH): Guida Completa 2026 | TopCryptoCards',
       meta_description: 'Tutto su Ethereum nel 2026: smart contract, DeFi, The Merge, staking ETH e carte crypto compatibili. Guida aggiornata.',
       h1: 'Ethereum (ETH): La Guida Completa 2026',
-      intro: `<p><strong>Ethereum (ETH)</strong> è la seconda criptovaluta per capitalizzazione di mercato e la prima blockchain programmabile con adozione di massa. Lanciata nel 2015 da <strong>Vitalik Buterin</strong> e cofondatori, ha rivoluzionato l'industria crypto introducendo il concetto di <strong>smart contract</strong> — programmi autonomi che si eseguono automaticamente sulla blockchain senza intermediari.</p>
+      intro: `<p><strong>Ethereum (ETH)</strong> è la seconda criptovaluta per capitalizzazione di mercato e la prima blockchain programmabile con adozione di massa. Lanciata nel 2015 da <strong>Vitalik Buterin</strong> e cofondatori, ha rivoluzionato l'industria crypto introducendo il concetto di <strong>smart contract</strong>, programmi autonomi che si eseguono automaticamente sulla blockchain senza intermediari.</p>
 <p>Oggi, Ethereum è la base su cui si costruisce quasi tutta la finanza decentralizzata (DeFi), i token non fungibili (NFT) e le organizzazioni autonome decentralizzate (DAO). Con migliaia di applicazioni attive e miliardi di dollari di valore bloccato, è l'ecosistema più sviluppato e maturo dell'intero spazio crypto.</p>`,
       sections: [
         {
           title: 'Storia di Ethereum',
           content: `<p>Nel 2013 Vitalik Buterin, allora 19enne, pubblicò il whitepaper per una blockchain universale capace di eseguire qualsiasi programma. Nel 2014, una ICO raccolse oltre 18 milioni di dollari. La mainnet fu lanciata nel luglio 2015.</p>
-<p>Nel 2016, l'<strong>hack di The DAO</strong> scosse la rete — 60 milioni di dollari rubati portarono a un controverso hard fork che creò <strong>Ethereum (ETH)</strong> ed Ethereum Classic (ETC). Il punto di svolta tecnologico arrivò nel settembre 2022 con <strong>The Merge</strong>: Ethereum passò dal Proof of Work al Proof of Stake, riducendo il consumo energetico di oltre il <strong>99,9 %</strong>. Nel 2024, i regolatori americani approvarono i primi ETF Ethereum spot.</p>`,
+<p>Nel 2016, l'<strong>hack di The DAO</strong> scosse la rete, 60 milioni di dollari rubati portarono a un controverso hard fork che creò <strong>Ethereum (ETH)</strong> ed Ethereum Classic (ETC). Il punto di svolta tecnologico arrivò nel settembre 2022 con <strong>The Merge</strong>: Ethereum passò dal Proof of Work al Proof of Stake, riducendo il consumo energetico di oltre il <strong>99,9 %</strong>. Nel 2024, i regolatori americani approvarono i primi ETF Ethereum spot.</p>`,
         },
         {
           title: 'Come funziona Ethereum?',
-          content: `<p>Il cuore è l'<strong>Ethereum Virtual Machine (EVM)</strong> — una macchina virtuale decentralizzata che esegue smart contract scritti principalmente in <strong>Solidity</strong>. Una volta distribuiti, sono immutabili e si eseguono esattamente come programmato.</p>
+          content: `<p>Il cuore è l'<strong>Ethereum Virtual Machine (EVM)</strong>, una macchina virtuale decentralizzata che esegue smart contract scritti principalmente in <strong>Solidity</strong>. Una volta distribuiti, sono immutabili e si eseguono esattamente come programmato.</p>
 <p>Dall'avvento di The Merge, la validazione usa il <strong>Proof of Stake</strong>: i validatori depositano 32 ETH come garanzia e ricevono un rendimento annuo di circa <strong>3–5 % in ETH</strong>. Le soluzioni <strong>Layer 2</strong> (Arbitrum, Optimism, Base) offrono commissioni da 10 a 100 volte inferiori rispetto alla L1.</p>`,
         },
         {
           title: 'Casi d\'uso di Ethereum',
           content: `<ul>
-<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO — miliardi vengono scambiati e prestati ogni giorno su protocolli Ethereum.</li>
+<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO, miliardi vengono scambiati e prestati ogni giorno su protocolli Ethereum.</li>
 <li><strong>Stablecoin</strong>: USDC, DAI e USDT (ERC-20) circolano principalmente su Ethereum.</li>
 <li><strong>NFT</strong>: Le grandi collezioni (Bored Ape Yacht Club, CryptoPunks) si basano sugli standard ERC-721/ERC-1155.</li>
 <li><strong>Tokenizzazione di asset reali (RWA)</strong>: Ethereum è la blockchain preferita dalle istituzioni finanziarie per tokenizzare obbligazioni, fondi e immobili.</li>
@@ -490,7 +490,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Ethereum (ETH): Complete Guide 2026 | TopCryptoCards',
       meta_description: 'Everything about Ethereum in 2026: smart contracts, DeFi, The Merge, ETH staking and compatible crypto cards. Updated guide.',
       h1: 'Ethereum (ETH): The Complete Guide 2026',
-      intro: `<p><strong>Ethereum (ETH)</strong> is the world's second-largest cryptocurrency by market cap and the first programmable blockchain to achieve mass adoption. Launched in 2015 by <strong>Vitalik Buterin</strong> and co-founders, it revolutionized the crypto industry by introducing <strong>smart contracts</strong> — autonomous programs that execute automatically on the blockchain without intermediaries.</p>
+      intro: `<p><strong>Ethereum (ETH)</strong> is the world's second-largest cryptocurrency by market cap and the first programmable blockchain to achieve mass adoption. Launched in 2015 by <strong>Vitalik Buterin</strong> and co-founders, it revolutionized the crypto industry by introducing <strong>smart contracts</strong>, autonomous programs that execute automatically on the blockchain without intermediaries.</p>
 <p>Today, Ethereum is the foundation of virtually all decentralized finance (DeFi), non-fungible tokens (NFTs), and decentralized autonomous organizations (DAOs). With thousands of active decentralized applications and billions locked in value, it is the most developed and mature ecosystem in crypto.</p>`,
       sections: [
         {
@@ -500,13 +500,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           title: 'How Does Ethereum Work?',
-          content: `<p>The core is the <strong>Ethereum Virtual Machine (EVM)</strong> — a decentralized, global computer that executes smart contracts written primarily in <strong>Solidity</strong>. Once deployed, contracts are immutable and run exactly as programmed — no interference possible.</p>
+          content: `<p>The core is the <strong>Ethereum Virtual Machine (EVM)</strong>, a decentralized, global computer that executes smart contracts written primarily in <strong>Solidity</strong>. Once deployed, contracts are immutable and run exactly as programmed, no interference possible.</p>
 <p>Since The Merge, validation uses <strong>Proof of Stake</strong>: validators deposit 32 ETH as collateral and earn roughly <strong>3–5% annual yield in ETH</strong>. <strong>Layer 2 solutions</strong> (Arbitrum, Optimism, Base) offer fees 10–100x cheaper than the L1.</p>`,
         },
         {
           title: 'Ethereum Use Cases',
           content: `<ul>
-<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO — billions are traded and lent daily on Ethereum protocols.</li>
+<li><strong>DeFi</strong>: Uniswap, Aave, MakerDAO, billions are traded and lent daily on Ethereum protocols.</li>
 <li><strong>Stablecoins</strong>: USDC, DAI, and USDT (ERC-20) run primarily on Ethereum.</li>
 <li><strong>NFTs</strong>: Major collections (Bored Ape Yacht Club, CryptoPunks) are built on ERC-721/ERC-1155 standards.</li>
 <li><strong>Real-world asset tokenization (RWA)</strong>: Ethereum is the blockchain of choice for institutions tokenizing bonds, funds, and real estate.</li>
@@ -560,13 +560,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'XRP (Ripple): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über XRP und Ripple 2026: XRP Ledger, SEC-Verfahren, grenzüberschreitende Zahlungen und Krypto-Karten mit XRP-Unterstützung.',
       h1: 'XRP (Ripple): Der vollständige Guide 2026',
-      intro: `<p><strong>XRP</strong> ist eine Kryptowährung, die für <strong>ultraschnelle und nahezu kostenlose grenzüberschreitende Zahlungen</strong> entwickelt wurde. 2012 von <strong>Ripple Labs</strong> gegründet, zielt XRP darauf ab, das veraltete SWIFT-Interbanken-Netzwerk zu modernisieren — internationale Überweisungen in 3 bis 5 Sekunden für einen Bruchteil eines Cents.</p>
+      intro: `<p><strong>XRP</strong> ist eine Kryptowährung, die für <strong>ultraschnelle und nahezu kostenlose grenzüberschreitende Zahlungen</strong> entwickelt wurde. 2012 von <strong>Ripple Labs</strong> gegründet, zielt XRP darauf ab, das veraltete SWIFT-Interbanken-Netzwerk zu modernisieren, internationale Überweisungen in 3 bis 5 Sekunden für einen Bruchteil eines Cents.</p>
 <p>XRP ist das native Token des <strong>XRP Ledger (XRPL)</strong>, einer quelloffenen Blockchain. Ripple Labs ist das Unternehmen, das es gegründet hat und B2B-Zahlungslösungen auf Basis dieses Netzwerks anbietet. Diese Unterscheidung war Kern eines langen Rechtsstreits mit der US-amerikanischen SEC.</p>`,
       sections: [
         {
           title: 'Geschichte von XRP und Ripple',
-          content: `<p>Das XRP Ledger wurde 2012 von Jed McCaleb, Arthur Britto und David Schwartz gestartet. Im Gegensatz zu Bitcoin wird XRP nicht geminet — alle 100 Milliarden XRP existieren seit dem ersten Tag. Im Dezember 2020 klagte die SEC Ripple wegen des unregistrierten Verkaufs von Wertpapieren an.</p>
-<p>Im Juli 2023 entschied ein US-Gericht, dass <strong>XRP-Verkäufe auf sekundären Exchanges keine Wertpapierverkäufe darstellen</strong> — ein bedeutender Sieg für Ripple. 2024–2025 wurde der Rechtsstreit weitgehend beigelegt und öffnete den Weg für regulatorische Normalisierung.</p>`,
+          content: `<p>Das XRP Ledger wurde 2012 von Jed McCaleb, Arthur Britto und David Schwartz gestartet. Im Gegensatz zu Bitcoin wird XRP nicht geminet, alle 100 Milliarden XRP existieren seit dem ersten Tag. Im Dezember 2020 klagte die SEC Ripple wegen des unregistrierten Verkaufs von Wertpapieren an.</p>
+<p>Im Juli 2023 entschied ein US-Gericht, dass <strong>XRP-Verkäufe auf sekundären Exchanges keine Wertpapierverkäufe darstellen</strong>, ein bedeutender Sieg für Ripple. 2024–2025 wurde der Rechtsstreit weitgehend beigelegt und öffnete den Weg für regulatorische Normalisierung.</p>`,
         },
         {
           title: 'Wie funktioniert das XRP Ledger?',
@@ -583,7 +583,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Anwendungsfälle von XRP',
           content: `<ul>
 <li><strong>Bankzahlungen (ODL)</strong>: Ripples On-Demand-Liquidity-Produkt nutzt XRP als Brücken-Asset zwischen zwei Währungen.</li>
-<li><strong>Remittances</strong>: Geldübertragungen ins Ausland in Sekunden für weniger als einen Cent — statt 2–5 Tage und 20–50 € über SWIFT.</li>
+<li><strong>Remittances</strong>: Geldübertragungen ins Ausland in Sekunden für weniger als einen Cent, statt 2–5 Tage und 20–50 € über SWIFT.</li>
 <li><strong>DeFi auf XRPL</strong>: Der native DEX ermöglicht Asset-Tausch; Lending-Protokolle entstehen.</li>
 <li><strong>Tokenisierung</strong>: Projekte zur Tokenisierung realer Vermögenswerte wählen XRPL wegen seiner Geschwindigkeit und niedrigen Kosten.</li>
 </ul>`,
@@ -595,7 +595,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li>Außergewöhnliche Geschwindigkeit: 3–5 Sekunden bis zur Finalität</li>
 <li>Vernachlässigbare Gebühren: Bruchteil eines Cents</li>
 <li>Partnerschaften mit Banken und Finanzinstitutionen weltweit</li>
-<li>Kein Miningaufwand — energieeffizient und umweltfreundlich</li>
+<li>Kein Miningaufwand, energieeffizient und umweltfreundlich</li>
 </ul>
 <p><strong>Risiken:</strong></p>
 <ul>
@@ -606,7 +606,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           title: 'XRP mit einer Krypto-Karte ausgeben',
-          content: `<p>Mehrere <strong>Krypto-Karten unterstützen XRP</strong> direkt als Zahlungsquelle. Die Karte rechnet XRP automatisch in lokale Währung um — in Echtzeit, ohne manuelle Schritte. Vergleichen Sie die verfügbaren Karten in unserem <a href="/de">Vergleichsrechner</a>.</p>`,
+          content: `<p>Mehrere <strong>Krypto-Karten unterstützen XRP</strong> direkt als Zahlungsquelle. Die Karte rechnet XRP automatisch in lokale Währung um, in Echtzeit, ohne manuelle Schritte. Vergleichen Sie die verfügbaren Karten in unserem <a href="/de">Vergleichsrechner</a>.</p>`,
         },
       ],
       faq: [
@@ -620,7 +620,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Warum ist XRP so schnell?',
-          a: 'Das XRP Ledger verwendet Federated Byzantine Agreement statt energieintensivem Mining. Validatoren einigen sich in Millisekunden auf Transaktionen, was eine Finalität in 3–5 Sekunden ermöglicht — gegenüber Minuten oder Stunden bei anderen Netzwerken.',
+          a: 'Das XRP Ledger verwendet Federated Byzantine Agreement statt energieintensivem Mining. Validatoren einigen sich in Millisekunden auf Transaktionen, was eine Finalität in 3–5 Sekunden ermöglicht, gegenüber Minuten oder Stunden bei anderen Netzwerken.',
         },
       ],
     },
@@ -628,13 +628,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'XRP (Ripple): Guía Completa 2026 | TopCryptoCards',
       meta_description: 'Todo sobre XRP y Ripple en 2026: XRP Ledger, caso SEC, pagos bancarios transfronterizos y tarjetas crypto con soporte XRP.',
       h1: 'XRP (Ripple): La Guía Completa 2026',
-      intro: `<p><strong>XRP</strong> es una criptomoneda diseñada para <strong>pagos transfronterizos ultrarrápidos y prácticamente gratuitos</strong>. Creada por <strong>Ripple Labs</strong> en 2012, busca modernizar el sistema SWIFT — transferencias internacionales en 3 a 5 segundos por una fracción de céntimo.</p>
+      intro: `<p><strong>XRP</strong> es una criptomoneda diseñada para <strong>pagos transfronterizos ultrarrápidos y prácticamente gratuitos</strong>. Creada por <strong>Ripple Labs</strong> en 2012, busca modernizar el sistema SWIFT, transferencias internacionales en 3 a 5 segundos por una fracción de céntimo.</p>
 <p>XRP es el token nativo del <strong>XRP Ledger (XRPL)</strong>, una blockchain de código abierto. Ripple Labs es la empresa que lo fundó y ofrece soluciones de pago B2B basadas en esta red. Esta distinción fue el centro de un largo litigio regulatorio con la SEC estadounidense.</p>`,
       sections: [
         {
           title: 'Historia de XRP y Ripple',
-          content: `<p>El XRP Ledger fue lanzado en 2012. A diferencia de Bitcoin, XRP no se mina — los 100.000 millones de XRP existen desde el primer día. En diciembre de 2020, la SEC demandó a Ripple por la venta no registrada de valores.</p>
-<p>En julio de 2023, un tribunal estadounidense dictaminó que <strong>las ventas de XRP en exchanges secundarios no constituyen ventas de valores</strong> — una victoria clave para Ripple y la industria cripto. En 2024–2025 el litigio se resolvió progresivamente.</p>`,
+          content: `<p>El XRP Ledger fue lanzado en 2012. A diferencia de Bitcoin, XRP no se mina, los 100.000 millones de XRP existen desde el primer día. En diciembre de 2020, la SEC demandó a Ripple por la venta no registrada de valores.</p>
+<p>En julio de 2023, un tribunal estadounidense dictaminó que <strong>las ventas de XRP en exchanges secundarios no constituyen ventas de valores</strong>, una victoria clave para Ripple y la industria cripto. En 2024–2025 el litigio se resolvió progresivamente.</p>`,
         },
         {
           title: '¿Cómo funciona el XRP Ledger?',
@@ -650,7 +650,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Casos de uso de XRP',
           content: `<ul>
 <li><strong>Pagos bancarios (ODL)</strong>: el producto On-Demand Liquidity de Ripple usa XRP como activo puente entre dos divisas.</li>
-<li><strong>Remesas</strong>: envía dinero al extranjero en segundos por menos de un céntimo — frente a 2–5 días y 20–50 € por SWIFT.</li>
+<li><strong>Remesas</strong>: envía dinero al extranjero en segundos por menos de un céntimo, frente a 2–5 días y 20–50 € por SWIFT.</li>
 <li><strong>DeFi en XRPL</strong>: el DEX nativo permite intercambiar activos; están emergiendo protocolos de préstamo.</li>
 <li><strong>Tokenización</strong>: proyectos de tokenización de activos reales eligen XRPL por su velocidad y bajos costes.</li>
 </ul>`,
@@ -662,7 +662,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li>Velocidad excepcional: finalidad en 3–5 segundos</li>
 <li>Comisiones despreciables</li>
 <li>Asociaciones con bancos e instituciones financieras a nivel mundial</li>
-<li>Sin minería — eficiente energéticamente</li>
+<li>Sin minería, eficiente energéticamente</li>
 </ul>
 <p><strong>Riesgos:</strong></p>
 <ul>
@@ -686,7 +686,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: '¿Por qué XRP es tan rápido?',
-          a: 'El XRP Ledger usa Federated Byzantine Agreement en lugar de minería. Los validadores alcanzan consenso en milisegundos, lo que permite una finalidad de 3–5 segundos — frente a minutos u horas en otras redes.',
+          a: 'El XRP Ledger usa Federated Byzantine Agreement en lugar de minería. Los validadores alcanzan consenso en milisegundos, lo que permite una finalidad de 3–5 segundos, frente a minutos u horas en otras redes.',
         },
       ],
     },
@@ -694,13 +694,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'XRP (Ripple): Guida Completa 2026 | TopCryptoCards',
       meta_description: 'Tutto su XRP e Ripple nel 2026: XRP Ledger, caso SEC, pagamenti bancari transfrontalieri e carte crypto con supporto XRP.',
       h1: 'XRP (Ripple): La Guida Completa 2026',
-      intro: `<p><strong>XRP</strong> è una criptovaluta progettata per i <strong>pagamenti transfrontalieri ultraveloci e praticamente gratuiti</strong>. Creata da <strong>Ripple Labs</strong> nel 2012, mira a modernizzare il sistema SWIFT — trasferimenti internazionali in 3–5 secondi per una frazione di centesimo.</p>
+      intro: `<p><strong>XRP</strong> è una criptovaluta progettata per i <strong>pagamenti transfrontalieri ultraveloci e praticamente gratuiti</strong>. Creata da <strong>Ripple Labs</strong> nel 2012, mira a modernizzare il sistema SWIFT, trasferimenti internazionali in 3–5 secondi per una frazione di centesimo.</p>
 <p>XRP è il token nativo dello <strong>XRP Ledger (XRPL)</strong>, una blockchain open source. Ripple Labs è la società che l'ha fondata e offre soluzioni di pagamento B2B basate su questa rete. Questa distinzione è stata al centro di una lunga disputa legale con la SEC americana.</p>`,
       sections: [
         {
           title: 'Storia di XRP e Ripple',
-          content: `<p>Lo XRP Ledger fu lanciato nel 2012. A differenza di Bitcoin, XRP non viene minato — i 100 miliardi di XRP esistono fin dal primo giorno. Nel dicembre 2020, la SEC citò in giudizio Ripple per la vendita non registrata di titoli.</p>
-<p>Nel luglio 2023, un tribunale statunitense stabilì che <strong>le vendite di XRP sugli exchange secondari non costituiscono vendite di titoli</strong> — una vittoria fondamentale per Ripple. Nel 2024–2025 la controversia si è risolta progressivamente.</p>`,
+          content: `<p>Lo XRP Ledger fu lanciato nel 2012. A differenza di Bitcoin, XRP non viene minato, i 100 miliardi di XRP esistono fin dal primo giorno. Nel dicembre 2020, la SEC citò in giudizio Ripple per la vendita non registrata di titoli.</p>
+<p>Nel luglio 2023, un tribunale statunitense stabilì che <strong>le vendite di XRP sugli exchange secondari non costituiscono vendite di titoli</strong>, una vittoria fondamentale per Ripple. Nel 2024–2025 la controversia si è risolta progressivamente.</p>`,
         },
         {
           title: 'Come funziona lo XRP Ledger?',
@@ -716,7 +716,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Casi d\'uso di XRP',
           content: `<ul>
 <li><strong>Pagamenti bancari (ODL)</strong>: il prodotto On-Demand Liquidity di Ripple usa XRP come asset ponte tra due valute.</li>
-<li><strong>Rimesse</strong>: invia denaro all'estero in secondi per meno di un centesimo — rispetto a 2–5 giorni e 20–50 € tramite SWIFT.</li>
+<li><strong>Rimesse</strong>: invia denaro all'estero in secondi per meno di un centesimo, rispetto a 2–5 giorni e 20–50 € tramite SWIFT.</li>
 <li><strong>DeFi su XRPL</strong>: il DEX nativo permette lo scambio di asset; stanno emergendo protocolli di lending.</li>
 <li><strong>Tokenizzazione</strong>: progetti di tokenizzazione di asset reali scelgono XRPL per la sua velocità e i bassi costi.</li>
 </ul>`,
@@ -728,7 +728,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li>Velocità eccezionale: finalità in 3–5 secondi</li>
 <li>Commissioni trascurabili</li>
 <li>Partnership con banche e istituzioni finanziarie a livello mondiale</li>
-<li>Nessuna attività mineraria — efficiente dal punto di vista energetico</li>
+<li>Nessuna attività mineraria, efficiente dal punto di vista energetico</li>
 </ul>
 <p><strong>Rischi:</strong></p>
 <ul>
@@ -752,7 +752,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Perché XRP è così veloce?',
-          a: 'Lo XRP Ledger usa il Federated Byzantine Agreement invece del mining. I validatori raggiungono il consenso in millisecondi, permettendo una finalità di 3–5 secondi — rispetto a minuti od ore su altre reti.',
+          a: 'Lo XRP Ledger usa il Federated Byzantine Agreement invece del mining. I validatori raggiungono il consenso in millisecondi, permettendo una finalità di 3–5 secondi, rispetto a minuti od ore su altre reti.',
         },
       ],
     },
@@ -760,13 +760,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'XRP (Ripple): Complete Guide 2026 | TopCryptoCards',
       meta_description: 'Everything about XRP and Ripple in 2026: XRP Ledger, SEC lawsuit, cross-border payments and crypto cards supporting XRP.',
       h1: 'XRP (Ripple): The Complete Guide 2026',
-      intro: `<p><strong>XRP</strong> is a cryptocurrency designed for <strong>ultra-fast, near-free cross-border payments</strong>. Created by <strong>Ripple Labs</strong> in 2012, it aims to modernize the aging SWIFT interbank network — enabling international transfers in 3 to 5 seconds for fractions of a cent.</p>
+      intro: `<p><strong>XRP</strong> is a cryptocurrency designed for <strong>ultra-fast, near-free cross-border payments</strong>. Created by <strong>Ripple Labs</strong> in 2012, it aims to modernize the aging SWIFT interbank network, enabling international transfers in 3 to 5 seconds for fractions of a cent.</p>
 <p>XRP is the native token of the <strong>XRP Ledger (XRPL)</strong>, an open-source blockchain. Ripple Labs is the company that founded it and offers B2B payment solutions built on this network. This distinction was at the heart of a long regulatory battle with the US SEC.</p>`,
       sections: [
         {
           title: 'History of XRP and Ripple',
-          content: `<p>The XRP Ledger launched in 2012. Unlike Bitcoin, XRP is not mined — all 100 billion XRP existed from day one. In December 2020, the SEC sued Ripple for selling unregistered securities.</p>
-<p>In July 2023, a US court ruled that <strong>XRP sales on secondary exchanges do not constitute securities sales</strong> — a landmark win for Ripple and the broader crypto industry. The case was progressively resolved throughout 2024–2025.</p>`,
+          content: `<p>The XRP Ledger launched in 2012. Unlike Bitcoin, XRP is not mined, all 100 billion XRP existed from day one. In December 2020, the SEC sued Ripple for selling unregistered securities.</p>
+<p>In July 2023, a US court ruled that <strong>XRP sales on secondary exchanges do not constitute securities sales</strong>, a landmark win for Ripple and the broader crypto industry. The case was progressively resolved throughout 2024–2025.</p>`,
         },
         {
           title: 'How Does the XRP Ledger Work?',
@@ -782,7 +782,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'XRP Use Cases',
           content: `<ul>
 <li><strong>Bank payments (ODL)</strong>: Ripple's On-Demand Liquidity product uses XRP as a bridge asset between two currencies.</li>
-<li><strong>Remittances</strong>: send money abroad in seconds for less than a cent — vs. 2–5 days and $20–50 via SWIFT.</li>
+<li><strong>Remittances</strong>: send money abroad in seconds for less than a cent, vs. 2–5 days and $20–50 via SWIFT.</li>
 <li><strong>DeFi on XRPL</strong>: the native DEX enables asset swapping; lending protocols are emerging.</li>
 <li><strong>Tokenization</strong>: real-world asset tokenization projects choose XRPL for its speed and low costs.</li>
 </ul>`,
@@ -794,7 +794,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li>Exceptional speed: 3–5 second finality</li>
 <li>Negligible fees</li>
 <li>Partnerships with banks and financial institutions worldwide</li>
-<li>No mining — energy efficient</li>
+<li>No mining, energy efficient</li>
 </ul>
 <p><strong>Risks:</strong></p>
 <ul>
@@ -818,7 +818,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Why is XRP so fast?',
-          a: 'The XRP Ledger uses Federated Byzantine Agreement instead of mining. Validators reach consensus in milliseconds, enabling 3–5 second finality — compared to minutes or hours on other networks.',
+          a: 'The XRP Ledger uses Federated Byzantine Agreement instead of mining. Validators reach consensus in milliseconds, enabling 3–5 second finality, compared to minutes or hours on other networks.',
         },
       ],
     },
@@ -830,11 +830,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'BNB (Binance Coin): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über BNB 2026: BNB Chain, Binance-Ökosystem, Staking, Gebührenrabatte und Krypto-Karten mit BNB-Unterstützung.',
       h1: 'BNB (Binance Coin): Der vollständige Guide 2026',
-      intro: `<p><strong>BNB</strong> ist das native Token des Binance-Ökosystems — der größten Kryptobörse der Welt nach Handelsvolumen. Ursprünglich als Utility-Token für Gebührenrabatte auf Binance gestartet, hat sich BNB zur viertgrößten Kryptowährung nach Marktkapitalisierung entwickelt und treibt heute die gesamte <strong>BNB Chain</strong> an — eine Blockchain mit eigenem DeFi- und NFT-Ökosystem.</p>`,
+      intro: `<p><strong>BNB</strong> ist das native Token des Binance-Ökosystems, der größten Kryptobörse der Welt nach Handelsvolumen. Ursprünglich als Utility-Token für Gebührenrabatte auf Binance gestartet, hat sich BNB zur viertgrößten Kryptowährung nach Marktkapitalisierung entwickelt und treibt heute die gesamte <strong>BNB Chain</strong> an, eine Blockchain mit eigenem DeFi- und NFT-Ökosystem.</p>`,
       sections: [
         {
           title: 'Geschichte von BNB',
-          content: `<p>BNB wurde 2017 im Rahmen einer ICO eingeführt, die 15 Millionen Dollar einbrachte. Zunächst als ERC-20-Token auf Ethereum ausgegeben, migrierte es 2019 auf die Binance Chain. 2020 wurde die <strong>BNB Smart Chain (BSC)</strong> gestartet — EVM-kompatibel und mit deutlich niedrigeren Gebühren als Ethereum, was sie zur bevorzugten Wahl für DeFi-Nutzer mit kleinerem Budget machte. Seit 2022 vereinigt die <strong>BNB Chain</strong> beide Netzwerke.</p>`,
+          content: `<p>BNB wurde 2017 im Rahmen einer ICO eingeführt, die 15 Millionen Dollar einbrachte. Zunächst als ERC-20-Token auf Ethereum ausgegeben, migrierte es 2019 auf die Binance Chain. 2020 wurde die <strong>BNB Smart Chain (BSC)</strong> gestartet, EVM-kompatibel und mit deutlich niedrigeren Gebühren als Ethereum, was sie zur bevorzugten Wahl für DeFi-Nutzer mit kleinerem Budget machte. Seit 2022 vereinigt die <strong>BNB Chain</strong> beide Netzwerke.</p>`,
         },
         {
           title: 'Anwendungsfälle von BNB',
@@ -851,12 +851,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
 <li>Tiefe Integration in das größte Krypto-Ökosystem der Welt</li>
-<li>Quartalsweiser Burn reduziert das Angebot — deflationärer Mechanismus</li>
+<li>Quartalsweiser Burn reduziert das Angebot, deflationärer Mechanismus</li>
 <li>Sehr niedrige Transaktionsgebühren auf BNB Chain</li>
 </ul>
 <p><strong>Risiken:</strong></p>
 <ul>
-<li>Starke Abhängigkeit von Binance — regulatorisches Risiko der Börse</li>
+<li>Starke Abhängigkeit von Binance, regulatorisches Risiko der Börse</li>
 <li>Geringere Dezentralisierung als Bitcoin oder Ethereum</li>
 </ul>`,
         },
@@ -876,11 +876,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'BNB (Binance Coin): Guía Completa 2026 | TopCryptoCards',
       meta_description: 'Todo sobre BNB en 2026: BNB Chain, ecosistema Binance, staking, descuentos en comisiones y tarjetas crypto con soporte BNB.',
       h1: 'BNB (Binance Coin): La Guía Completa 2026',
-      intro: `<p><strong>BNB</strong> es el token nativo del ecosistema Binance — el mayor exchange de criptomonedas del mundo por volumen. Lanzado inicialmente como token de utilidad para descuentos en comisiones, BNB se ha convertido en la cuarta criptomoneda por capitalización e impulsa la <strong>BNB Chain</strong> — una blockchain con su propio ecosistema DeFi y NFT.</p>`,
+      intro: `<p><strong>BNB</strong> es el token nativo del ecosistema Binance, el mayor exchange de criptomonedas del mundo por volumen. Lanzado inicialmente como token de utilidad para descuentos en comisiones, BNB se ha convertido en la cuarta criptomoneda por capitalización e impulsa la <strong>BNB Chain</strong>, una blockchain con su propio ecosistema DeFi y NFT.</p>`,
       sections: [
         {
           title: 'Historia de BNB',
-          content: `<p>BNB se lanzó en 2017 mediante una ICO que recaudó 15 millones de dólares. Originalmente emitido como token ERC-20 en Ethereum, migró a Binance Chain en 2019. En 2020 se lanzó la <strong>BNB Smart Chain (BSC)</strong> — compatible con EVM y con comisiones mucho más bajas que Ethereum. Desde 2022, la <strong>BNB Chain</strong> unifica ambas redes.</p>`,
+          content: `<p>BNB se lanzó en 2017 mediante una ICO que recaudó 15 millones de dólares. Originalmente emitido como token ERC-20 en Ethereum, migró a Binance Chain en 2019. En 2020 se lanzó la <strong>BNB Smart Chain (BSC)</strong>, compatible con EVM y con comisiones mucho más bajas que Ethereum. Desde 2022, la <strong>BNB Chain</strong> unifica ambas redes.</p>`,
         },
         {
           title: 'Casos de uso de BNB',
@@ -897,12 +897,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
 <li>Profunda integración en el mayor ecosistema cripto del mundo</li>
-<li>Quema trimestral que reduce la oferta — mecanismo deflacionario</li>
+<li>Quema trimestral que reduce la oferta, mecanismo deflacionario</li>
 <li>Comisiones muy bajas en BNB Chain</li>
 </ul>
 <p><strong>Riesgos:</strong></p>
 <ul>
-<li>Fuerte dependencia de Binance — riesgo regulatorio del exchange</li>
+<li>Fuerte dependencia de Binance, riesgo regulatorio del exchange</li>
 <li>Menor descentralización que Bitcoin o Ethereum</li>
 </ul>`,
         },
@@ -922,11 +922,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'BNB (Binance Coin): Guida Completa 2026 | TopCryptoCards',
       meta_description: 'Tutto su BNB nel 2026: BNB Chain, ecosistema Binance, staking, sconti sulle commissioni e carte crypto con supporto BNB.',
       h1: 'BNB (Binance Coin): La Guida Completa 2026',
-      intro: `<p><strong>BNB</strong> è il token nativo dell'ecosistema Binance — il più grande exchange di criptovalute al mondo per volume. Lanciato inizialmente come token di utilità per sconti sulle commissioni, BNB è diventato la quarta criptovaluta per capitalizzazione e alimenta la <strong>BNB Chain</strong> — una blockchain con il proprio ecosistema DeFi e NFT.</p>`,
+      intro: `<p><strong>BNB</strong> è il token nativo dell'ecosistema Binance, il più grande exchange di criptovalute al mondo per volume. Lanciato inizialmente come token di utilità per sconti sulle commissioni, BNB è diventato la quarta criptovaluta per capitalizzazione e alimenta la <strong>BNB Chain</strong>, una blockchain con il proprio ecosistema DeFi e NFT.</p>`,
       sections: [
         {
           title: 'Storia di BNB',
-          content: `<p>BNB fu lanciato nel 2017 con una ICO che raccolse 15 milioni di dollari. Inizialmente emesso come token ERC-20 su Ethereum, migrò su Binance Chain nel 2019. Nel 2020 fu lanciata la <strong>BNB Smart Chain (BSC)</strong> — compatibile con EVM e con commissioni molto più basse di Ethereum. Dal 2022, la <strong>BNB Chain</strong> unifica entrambe le reti.</p>`,
+          content: `<p>BNB fu lanciato nel 2017 con una ICO che raccolse 15 milioni di dollari. Inizialmente emesso come token ERC-20 su Ethereum, migrò su Binance Chain nel 2019. Nel 2020 fu lanciata la <strong>BNB Smart Chain (BSC)</strong>, compatibile con EVM e con commissioni molto più basse di Ethereum. Dal 2022, la <strong>BNB Chain</strong> unifica entrambe le reti.</p>`,
         },
         {
           title: 'Casi d\'uso di BNB',
@@ -943,12 +943,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
 <li>Profonda integrazione nel più grande ecosistema crypto del mondo</li>
-<li>Burn trimestrale che riduce l'offerta — meccanismo deflazionistico</li>
+<li>Burn trimestrale che riduce l'offerta, meccanismo deflazionistico</li>
 <li>Commissioni molto basse su BNB Chain</li>
 </ul>
 <p><strong>Rischi:</strong></p>
 <ul>
-<li>Forte dipendenza da Binance — rischio regolatorio dell'exchange</li>
+<li>Forte dipendenza da Binance, rischio regolatorio dell'exchange</li>
 <li>Minore decentralizzazione rispetto a Bitcoin o Ethereum</li>
 </ul>`,
         },
@@ -968,11 +968,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'BNB (Binance Coin): Complete Guide 2026 | TopCryptoCards',
       meta_description: 'Everything about BNB in 2026: BNB Chain, Binance ecosystem, staking, fee discounts and crypto cards supporting BNB.',
       h1: 'BNB (Binance Coin): The Complete Guide 2026',
-      intro: `<p><strong>BNB</strong> is the native token of the Binance ecosystem — the world's largest crypto exchange by trading volume. Originally launched as a utility token for fee discounts, BNB has grown into the fourth-largest cryptocurrency by market cap and powers the <strong>BNB Chain</strong> — a blockchain with its own DeFi and NFT ecosystem.</p>`,
+      intro: `<p><strong>BNB</strong> is the native token of the Binance ecosystem, the world's largest crypto exchange by trading volume. Originally launched as a utility token for fee discounts, BNB has grown into the fourth-largest cryptocurrency by market cap and powers the <strong>BNB Chain</strong>, a blockchain with its own DeFi and NFT ecosystem.</p>`,
       sections: [
         {
           title: 'History of BNB',
-          content: `<p>BNB launched in 2017 via an ICO raising $15 million. Initially issued as an ERC-20 token on Ethereum, it migrated to Binance Chain in 2019. In 2020, the <strong>BNB Smart Chain (BSC)</strong> launched — EVM-compatible with much lower fees than Ethereum. Since 2022, the <strong>BNB Chain</strong> unifies both networks.</p>`,
+          content: `<p>BNB launched in 2017 via an ICO raising $15 million. Initially issued as an ERC-20 token on Ethereum, it migrated to Binance Chain in 2019. In 2020, the <strong>BNB Smart Chain (BSC)</strong> launched, EVM-compatible with much lower fees than Ethereum. Since 2022, the <strong>BNB Chain</strong> unifies both networks.</p>`,
         },
         {
           title: 'BNB Use Cases',
@@ -989,12 +989,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           content: `<p><strong>Advantages:</strong></p>
 <ul>
 <li>Deep integration into the world's largest crypto ecosystem</li>
-<li>Quarterly burn reduces supply — deflationary mechanism</li>
+<li>Quarterly burn reduces supply, deflationary mechanism</li>
 <li>Very low transaction fees on BNB Chain</li>
 </ul>
 <p><strong>Risks:</strong></p>
 <ul>
-<li>Heavy reliance on Binance — regulatory risk tied to the exchange</li>
+<li>Heavy reliance on Binance, regulatory risk tied to the exchange</li>
 <li>Less decentralized than Bitcoin or Ethereum</li>
 </ul>`,
         },
@@ -1018,13 +1018,13 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Solana (SOL): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über Solana 2026: Proof of History, DeFi auf Solana, NFTs, Ökosystem und Krypto-Karten mit SOL-Unterstützung.',
       h1: 'Solana (SOL): Der vollständige Guide 2026',
-      intro: `<p><strong>Solana (SOL)</strong> ist eine Hochleistungs-Blockchain, die für ihre außergewöhnliche Geschwindigkeit und ihre nahezu kostenlosen Transaktionen bekannt ist. Gegründet von <strong>Anatoly Yakovenko</strong> und 2020 gestartet, kombiniert Solana den innovativen <strong>Proof of History (PoH)</strong>-Mechanismus mit Proof of Stake, um bis zu <strong>65.000 Transaktionen pro Sekunde</strong> zu verarbeiten — bei Gebühren von weniger als einem Cent.</p>
+      intro: `<p><strong>Solana (SOL)</strong> ist eine Hochleistungs-Blockchain, die für ihre außergewöhnliche Geschwindigkeit und ihre nahezu kostenlosen Transaktionen bekannt ist. Gegründet von <strong>Anatoly Yakovenko</strong> und 2020 gestartet, kombiniert Solana den innovativen <strong>Proof of History (PoH)</strong>-Mechanismus mit Proof of Stake, um bis zu <strong>65.000 Transaktionen pro Sekunde</strong> zu verarbeiten, bei Gebühren von weniger als einem Cent.</p>
 <p>Solana ist zur wichtigsten Konkurrentin von Ethereum geworden und beherbergt ein florierendes Ökosystem aus DeFi-Protokollen, NFT-Marktplätzen und Consumer-Apps. Mit ihrem Fokus auf User Experience zieht sie sowohl erfahrene Krypto-Nutzer als auch Neulinge an.</p>`,
       sections: [
         {
           title: 'Geschichte von Solana',
-          content: `<p>Anatoly Yakovenko veröffentlichte das Solana-Whitepaper 2017. Das Mainnet Beta wurde im März 2020 gestartet. 2021 explodierte das Ökosystem — NFT-Kollektionen wie <strong>Degenerate Ape Academy</strong> und DeFi-Protokolle wie Serum zogen Milliarden an. Ende 2021 überstieg SOL kurzzeitig 260 $.</p>
-<p>2022 litt Solana unter mehreren Netzwerkausfällen und dem FTX-Kollaps — FTX und Alameda Research waren wichtige Unterstützer des Ökosystems. SOL fiel auf unter 10 $. Doch 2023–2024 kam die beeindruckende Erholung: Solanas Consumer-App-Strategie (Saga-Smartphone, Solana Pay) und der Meme-Coin-Boom auf dem Netzwerk trieben SOL wieder in neue Höhen.</p>`,
+          content: `<p>Anatoly Yakovenko veröffentlichte das Solana-Whitepaper 2017. Das Mainnet Beta wurde im März 2020 gestartet. 2021 explodierte das Ökosystem, NFT-Kollektionen wie <strong>Degenerate Ape Academy</strong> und DeFi-Protokolle wie Serum zogen Milliarden an. Ende 2021 überstieg SOL kurzzeitig 260 $.</p>
+<p>2022 litt Solana unter mehreren Netzwerkausfällen und dem FTX-Kollaps, FTX und Alameda Research waren wichtige Unterstützer des Ökosystems. SOL fiel auf unter 10 $. Doch 2023–2024 kam die beeindruckende Erholung: Solanas Consumer-App-Strategie (Saga-Smartphone, Solana Pay) und der Meme-Coin-Boom auf dem Netzwerk trieben SOL wieder in neue Höhen.</p>`,
         },
         {
           title: 'Wie funktioniert Solana?',
@@ -1034,9 +1034,9 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Anwendungsfälle von Solana',
           content: `<ul>
-<li><strong>DeFi</strong>: Jupiter (DEX-Aggregator), Raydium, Orca — milliardenschwere Handelsvolumina täglich.</li>
+<li><strong>DeFi</strong>: Jupiter (DEX-Aggregator), Raydium, Orca, milliardenschwere Handelsvolumina täglich.</li>
 <li><strong>NFTs</strong>: Magic Eden ist einer der größten NFT-Marktplätze überhaupt; günstige Gebühren ermöglichen Massenadoption.</li>
-<li><strong>Consumer-Apps</strong>: Solana Pay, Dialect, Drip — alltagsnahe Anwendungen.</li>
+<li><strong>Consumer-Apps</strong>: Solana Pay, Dialect, Drip, alltagsnahe Anwendungen.</li>
 <li><strong>Meme-Coins</strong>: Solana ist zur bevorzugten Blockchain für die Ausgabe von Meme-Coins geworden.</li>
 <li><strong>DePIN</strong>: dezentralisierte physische Infrastruktur wie Helium (jetzt auf Solana migriert).</li>
 </ul>`,
@@ -1081,7 +1081,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       sections: [
         {
           title: 'Historia de Solana',
-          content: `<p>Anatoly Yakovenko publicó el whitepaper de Solana en 2017. La mainnet beta se lanzó en marzo de 2020. En 2021 el ecosistema explotó — colecciones NFT y protocolos DeFi atrajeron miles de millones. SOL superó brevemente los 260 $.</p>
+          content: `<p>Anatoly Yakovenko publicó el whitepaper de Solana en 2017. La mainnet beta se lanzó en marzo de 2020. En 2021 el ecosistema explotó, colecciones NFT y protocolos DeFi atrajeron miles de millones. SOL superó brevemente los 260 $.</p>
 <p>En 2022, Solana sufrió varias caídas de red y el colapso de FTX (un importante respaldo del ecosistema) hundió SOL por debajo de 10 $. Pero en 2023–2024 llegó una impresionante recuperación impulsada por la estrategia de apps de consumo y el boom de meme coins en la red.</p>`,
         },
         {
@@ -1092,9 +1092,9 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Casos de uso de Solana',
           content: `<ul>
-<li><strong>DeFi</strong>: Jupiter, Raydium, Orca — miles de millones en volumen de trading diario.</li>
+<li><strong>DeFi</strong>: Jupiter, Raydium, Orca, miles de millones en volumen de trading diario.</li>
 <li><strong>NFTs</strong>: Magic Eden es uno de los mayores marketplaces de NFT del mundo.</li>
-<li><strong>Apps de consumo</strong>: Solana Pay, Dialect — aplicaciones del día a día.</li>
+<li><strong>Apps de consumo</strong>: Solana Pay, Dialect, aplicaciones del día a día.</li>
 <li><strong>Meme coins</strong>: Solana se ha convertido en la blockchain preferida para lanzar meme coins.</li>
 <li><strong>DePIN</strong>: infraestructura física descentralizada como Helium (migrado a Solana).</li>
 </ul>`,
@@ -1135,7 +1135,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       sections: [
         {
           title: 'Storia di Solana',
-          content: `<p>Anatoly Yakovenko pubblicò il whitepaper di Solana nel 2017. La mainnet beta fu lanciata nel marzo 2020. Nel 2021 l'ecosistema esplose — collezioni NFT e protocolli DeFi attirarono miliardi. SOL superò brevemente i 260 $.</p>
+          content: `<p>Anatoly Yakovenko pubblicò il whitepaper di Solana nel 2017. La mainnet beta fu lanciata nel marzo 2020. Nel 2021 l'ecosistema esplose, collezioni NFT e protocolli DeFi attirarono miliardi. SOL superò brevemente i 260 $.</p>
 <p>Nel 2022 Solana subì diverse interruzioni della rete e il crollo di FTX (un importante sostenitore dell'ecosistema) fece crollare SOL sotto i 10 $. Ma nel 2023–2024 arrivò un'impressionante ripresa guidata dalla strategia di app consumer e dal boom dei meme coin sulla rete.</p>`,
         },
         {
@@ -1146,9 +1146,9 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Casi d\'uso di Solana',
           content: `<ul>
-<li><strong>DeFi</strong>: Jupiter, Raydium, Orca — miliardi in volume di trading giornaliero.</li>
+<li><strong>DeFi</strong>: Jupiter, Raydium, Orca, miliardi in volume di trading giornaliero.</li>
 <li><strong>NFT</strong>: Magic Eden è uno dei più grandi marketplace NFT al mondo.</li>
-<li><strong>App consumer</strong>: Solana Pay, Dialect — applicazioni quotidiane.</li>
+<li><strong>App consumer</strong>: Solana Pay, Dialect, applicazioni quotidiane.</li>
 <li><strong>Meme coin</strong>: Solana è diventata la blockchain preferita per lanciare meme coin.</li>
 <li><strong>DePIN</strong>: infrastruttura fisica decentralizzata come Helium (migrato su Solana).</li>
 </ul>`,
@@ -1189,7 +1189,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       sections: [
         {
           title: 'History of Solana',
-          content: `<p>Anatoly Yakovenko published the Solana whitepaper in 2017. The mainnet beta launched in March 2020. In 2021 the ecosystem exploded — NFT collections and DeFi protocols attracted billions. SOL briefly crossed $260.</p>
+          content: `<p>Anatoly Yakovenko published the Solana whitepaper in 2017. The mainnet beta launched in March 2020. In 2021 the ecosystem exploded, NFT collections and DeFi protocols attracted billions. SOL briefly crossed $260.</p>
 <p>In 2022, Solana suffered several network outages and the FTX collapse (a key ecosystem backer) pushed SOL below $10. But 2023–2024 brought an impressive recovery driven by the consumer app strategy and a meme coin boom on the network.</p>`,
         },
         {
@@ -1200,9 +1200,9 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Solana Use Cases',
           content: `<ul>
-<li><strong>DeFi</strong>: Jupiter, Raydium, Orca — billions in daily trading volume.</li>
+<li><strong>DeFi</strong>: Jupiter, Raydium, Orca, billions in daily trading volume.</li>
 <li><strong>NFTs</strong>: Magic Eden is one of the world's largest NFT marketplaces.</li>
-<li><strong>Consumer apps</strong>: Solana Pay, Dialect — everyday applications.</li>
+<li><strong>Consumer apps</strong>: Solana Pay, Dialect, everyday applications.</li>
 <li><strong>Meme coins</strong>: Solana has become the go-to blockchain for launching meme coins.</li>
 <li><strong>DePIN</strong>: decentralized physical infrastructure like Helium (now on Solana).</li>
 </ul>`,
@@ -1254,7 +1254,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Anwendungsfälle von Cardano',
           content: `<ul>
 <li><strong>Smart Contracts (Plutus)</strong>: dezentrale Anwendungen und DeFi auf Cardano.</li>
-<li><strong>Identitätslösungen</strong>: Atala PRISM — digitale Identitäten für nicht-bankarisierte Bevölkerungen.</li>
+<li><strong>Identitätslösungen</strong>: Atala PRISM, digitale Identitäten für nicht-bankarisierte Bevölkerungen.</li>
 <li><strong>Tokenisierung</strong>: native Token ohne Smart-Contract-Overhead.</li>
 <li><strong>Governance</strong>: Voltaire-Era ermöglicht On-Chain-Abstimmungen durch ADA-Inhaber.</li>
 </ul>`,
@@ -1281,7 +1281,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Wie unterscheidet sich Cardano von anderen Blockchains?',
-          a: 'Cardano entwickelt Features erst nach Peer-Review-Veröffentlichungen und formaler Verifikation — ein deutlich langsamerer, aber wissenschaftlich robusterer Ansatz. Andere Blockchains deployen neue Features oft schneller mit mehr Pragmatismus.',
+          a: 'Cardano entwickelt Features erst nach Peer-Review-Veröffentlichungen und formaler Verifikation, ein deutlich langsamerer, aber wissenschaftlich robusterer Ansatz. Andere Blockchains deployen neue Features oft schneller mit mehr Pragmatismus.',
         },
       ],
     },
@@ -1300,7 +1300,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Casos de uso de Cardano',
           content: `<ul>
 <li><strong>Smart Contracts (Plutus)</strong>: aplicaciones descentralizadas y DeFi en Cardano.</li>
-<li><strong>Soluciones de identidad</strong>: Atala PRISM — identidades digitales para poblaciones sin acceso bancario.</li>
+<li><strong>Soluciones de identidad</strong>: Atala PRISM, identidades digitales para poblaciones sin acceso bancario.</li>
 <li><strong>Tokenización</strong>: tokens nativos sin sobrecarga de smart contracts.</li>
 <li><strong>Gobernanza</strong>: la era Voltaire permite votaciones on-chain por parte de los titulares de ADA.</li>
 </ul>`,
@@ -1327,7 +1327,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: '¿En qué se diferencia Cardano de otras blockchains?',
-          a: 'Cardano desarrolla características solo tras publicaciones revisadas por pares y verificación formal — un enfoque mucho más lento pero científicamente más robusto. Otras blockchains despliegan nuevas características más rápido con mayor pragmatismo.',
+          a: 'Cardano desarrolla características solo tras publicaciones revisadas por pares y verificación formal, un enfoque mucho más lento pero científicamente más robusto. Otras blockchains despliegan nuevas características más rápido con mayor pragmatismo.',
         },
       ],
     },
@@ -1346,7 +1346,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Casi d\'uso di Cardano',
           content: `<ul>
 <li><strong>Smart Contract (Plutus)</strong>: applicazioni decentralizzate e DeFi su Cardano.</li>
-<li><strong>Soluzioni di identità</strong>: Atala PRISM — identità digitali per popolazioni senza accesso bancario.</li>
+<li><strong>Soluzioni di identità</strong>: Atala PRISM, identità digitali per popolazioni senza accesso bancario.</li>
 <li><strong>Tokenizzazione</strong>: token nativi senza overhead di smart contract.</li>
 <li><strong>Governance</strong>: l'era Voltaire consente votazioni on-chain da parte dei titolari di ADA.</li>
 </ul>`,
@@ -1373,7 +1373,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'In cosa si differenzia Cardano da altre blockchain?',
-          a: 'Cardano sviluppa funzionalità solo dopo pubblicazioni riviste tra pari e verifica formale — un approccio molto più lento ma scientificamente più robusto. Altre blockchain distribuiscono nuove funzionalità più rapidamente con maggiore pragmatismo.',
+          a: 'Cardano sviluppa funzionalità solo dopo pubblicazioni riviste tra pari e verifica formale, un approccio molto più lento ma scientificamente più robusto. Altre blockchain distribuiscono nuove funzionalità più rapidamente con maggiore pragmatismo.',
         },
       ],
     },
@@ -1392,7 +1392,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Cardano Use Cases',
           content: `<ul>
 <li><strong>Smart contracts (Plutus)</strong>: decentralized apps and DeFi on Cardano.</li>
-<li><strong>Identity solutions</strong>: Atala PRISM — digital identities for unbanked populations.</li>
+<li><strong>Identity solutions</strong>: Atala PRISM, digital identities for unbanked populations.</li>
 <li><strong>Tokenization</strong>: native tokens without smart contract overhead.</li>
 <li><strong>Governance</strong>: the Voltaire era enables on-chain voting by ADA holders.</li>
 </ul>`,
@@ -1419,7 +1419,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'How does Cardano differ from other blockchains?',
-          a: 'Cardano builds features only after peer-reviewed publications and formal verification — a much slower but scientifically more robust approach. Other blockchains deploy features faster with more pragmatism.',
+          a: 'Cardano builds features only after peer-reviewed publications and formal verification, a much slower but scientifically more robust approach. Other blockchains deploy features faster with more pragmatism.',
         },
       ],
     },
@@ -1432,7 +1432,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Alles über Avalanche 2026: Subnets, schnelle Finalität, DeFi und Krypto-Karten mit AVAX-Unterstützung.',
       h1: 'Avalanche (AVAX): Der vollständige Guide 2026',
       intro: `<p><strong>Avalanche (AVAX)</strong> ist eine Smart-Contract-Plattform, die für ihre <strong>extrem schnelle Transaktionsfinalität</strong> (unter 2 Sekunden) und ihre einzigartige Multi-Chain-Architektur bekannt ist. Gegründet von <strong>Emin Gün Sirer</strong> und seinem Team bei Ava Labs, wurde Avalanche 2020 gestartet und richtet sich an Entwickler, die schnelle, kostengünstige und anpassbare Blockchain-Lösungen benötigen.</p>
-<p>Avalanche kombiniert drei integrierte Blockchains — die Exchange Chain (X-Chain), die Contract Chain (C-Chain, EVM-kompatibel) und die Platform Chain (P-Chain für Staking und Subnets) — und ermöglicht es Unternehmen, ihre eigenen <strong>Subnets</strong> (maßgeschneiderte Blockchains) zu erstellen.</p>`,
+<p>Avalanche kombiniert drei integrierte Blockchains, die Exchange Chain (X-Chain), die Contract Chain (C-Chain, EVM-kompatibel) und die Platform Chain (P-Chain für Staking und Subnets), und ermöglicht es Unternehmen, ihre eigenen <strong>Subnets</strong> (maßgeschneiderte Blockchains) zu erstellen.</p>`,
       sections: [
         {
           title: 'Geschichte von Avalanche',
@@ -1451,7 +1451,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vorteile und Risiken',
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
-<li>Finalität unter 2 Sekunden — eine der schnellsten unter L1-Blockchains</li>
+<li>Finalität unter 2 Sekunden, eine der schnellsten unter L1-Blockchains</li>
 <li>EVM-kompatibel: einfache Migration von Ethereum-Projekten</li>
 <li>Subnets ermöglichen maßgeschneiderte Blockchain-Lösungen</li>
 </ul>
@@ -1470,7 +1470,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Wie schnell ist Avalanche?',
-          a: 'Avalanche erreicht Transaktionsfinalität in unter 2 Sekunden — deutlich schneller als Ethereum (12 Sekunden Blockzeit, mehrere Minuten bis zur endgültigen Finalität) oder Bitcoin (10 Minuten Blockzeit).',
+          a: 'Avalanche erreicht Transaktionsfinalität in unter 2 Sekunden, deutlich schneller als Ethereum (12 Sekunden Blockzeit, mehrere Minuten bis zur endgültigen Finalität) oder Bitcoin (10 Minuten Blockzeit).',
         },
       ],
     },
@@ -1479,7 +1479,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Todo sobre Avalanche en 2026: Subnets, finalidad rápida, DeFi y tarjetas crypto con soporte AVAX.',
       h1: 'Avalanche (AVAX): La Guía Completa 2026',
       intro: `<p><strong>Avalanche (AVAX)</strong> es una plataforma de smart contracts conocida por su <strong>finalidad de transacción ultrarrápida</strong> (menos de 2 segundos) y su arquitectura multi-chain única. Fundada por <strong>Emin Gün Sirer</strong> y su equipo en Ava Labs, Avalanche fue lanzada en 2020.</p>
-<p>Avalanche combina tres blockchains integradas — X-Chain, C-Chain (compatible con EVM) y P-Chain — y permite a las empresas crear sus propias <strong>Subnets</strong> (blockchains personalizadas).</p>`,
+<p>Avalanche combina tres blockchains integradas, X-Chain, C-Chain (compatible con EVM) y P-Chain, y permite a las empresas crear sus propias <strong>Subnets</strong> (blockchains personalizadas).</p>`,
       sections: [
         {
           title: 'Historia de Avalanche',
@@ -1498,7 +1498,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Ventajas y riesgos',
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
-<li>Finalidad en menos de 2 segundos — una de las más rápidas entre L1</li>
+<li>Finalidad en menos de 2 segundos, una de las más rápidas entre L1</li>
 <li>Compatible con EVM: migración sencilla de proyectos Ethereum</li>
 <li>Las Subnets permiten soluciones blockchain personalizadas</li>
 </ul>
@@ -1517,7 +1517,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: '¿Qué tan rápido es Avalanche?',
-          a: 'Avalanche alcanza la finalidad de transacción en menos de 2 segundos — significativamente más rápido que Ethereum (tiempo de bloque de 12 segundos) o Bitcoin (10 minutos).',
+          a: 'Avalanche alcanza la finalidad de transacción en menos de 2 segundos, significativamente más rápido que Ethereum (tiempo de bloque de 12 segundos) o Bitcoin (10 minutos).',
         },
       ],
     },
@@ -1526,7 +1526,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Tutto su Avalanche nel 2026: Subnet, finalità rapida, DeFi e carte crypto con supporto AVAX.',
       h1: 'Avalanche (AVAX): La Guida Completa 2026',
       intro: `<p><strong>Avalanche (AVAX)</strong> è una piattaforma di smart contract nota per la sua <strong>finalità delle transazioni ultra-rapida</strong> (meno di 2 secondi) e la sua architettura multi-chain unica. Fondata da <strong>Emin Gün Sirer</strong> e il suo team di Ava Labs, Avalanche fu lanciata nel 2020.</p>
-<p>Avalanche combina tre blockchain integrate — X-Chain, C-Chain (compatibile con EVM) e P-Chain — e consente alle aziende di creare le proprie <strong>Subnet</strong> (blockchain personalizzate).</p>`,
+<p>Avalanche combina tre blockchain integrate, X-Chain, C-Chain (compatibile con EVM) e P-Chain, e consente alle aziende di creare le proprie <strong>Subnet</strong> (blockchain personalizzate).</p>`,
       sections: [
         {
           title: 'Storia di Avalanche',
@@ -1545,7 +1545,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vantaggi e rischi',
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
-<li>Finalità in meno di 2 secondi — tra le più veloci nelle blockchain L1</li>
+<li>Finalità in meno di 2 secondi, tra le più veloci nelle blockchain L1</li>
 <li>Compatibile con EVM: facile migrazione di progetti Ethereum</li>
 <li>Le Subnet permettono soluzioni blockchain personalizzate</li>
 </ul>
@@ -1564,7 +1564,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'Quanto è veloce Avalanche?',
-          a: 'Avalanche raggiunge la finalità delle transazioni in meno di 2 secondi — significativamente più veloce di Ethereum (12 secondi di block time) o Bitcoin (10 minuti).',
+          a: 'Avalanche raggiunge la finalità delle transazioni in meno di 2 secondi, significativamente più veloce di Ethereum (12 secondi di block time) o Bitcoin (10 minuti).',
         },
       ],
     },
@@ -1573,7 +1573,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Everything about Avalanche in 2026: Subnets, fast finality, DeFi and crypto cards supporting AVAX.',
       h1: 'Avalanche (AVAX): The Complete Guide 2026',
       intro: `<p><strong>Avalanche (AVAX)</strong> is a smart contracts platform known for its <strong>ultra-fast transaction finality</strong> (under 2 seconds) and unique multi-chain architecture. Founded by <strong>Emin Gün Sirer</strong> and the Ava Labs team, Avalanche launched in 2020 to serve developers needing fast, cheap, and customizable blockchain solutions.</p>
-<p>Avalanche combines three integrated blockchains — the X-Chain, C-Chain (EVM-compatible), and P-Chain — and allows enterprises to create their own <strong>Subnets</strong> (customized blockchains).</p>`,
+<p>Avalanche combines three integrated blockchains, the X-Chain, C-Chain (EVM-compatible), and P-Chain, and allows enterprises to create their own <strong>Subnets</strong> (customized blockchains).</p>`,
       sections: [
         {
           title: 'History of Avalanche',
@@ -1592,7 +1592,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Pros and Risks',
           content: `<p><strong>Advantages:</strong></p>
 <ul>
-<li>Under 2-second finality — among the fastest L1 blockchains</li>
+<li>Under 2-second finality, among the fastest L1 blockchains</li>
 <li>EVM-compatible: easy migration of Ethereum projects</li>
 <li>Subnets enable custom blockchain solutions</li>
 </ul>
@@ -1611,7 +1611,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         },
         {
           q: 'How fast is Avalanche?',
-          a: 'Avalanche achieves transaction finality in under 2 seconds — significantly faster than Ethereum (12-second block time) or Bitcoin (10-minute block time).',
+          a: 'Avalanche achieves transaction finality in under 2 seconds, significantly faster than Ethereum (12-second block time) or Bitcoin (10-minute block time).',
         },
       ],
     },
@@ -1623,17 +1623,17 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Dogecoin (DOGE): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über Dogecoin 2026: Geschichte, Community, Elon Musk, Zahlungsanwendungen und Krypto-Karten mit DOGE-Unterstützung.',
       h1: 'Dogecoin (DOGE): Der vollständige Guide 2026',
-      intro: `<p><strong>Dogecoin (DOGE)</strong> begann 2013 als Internet-Scherz, der auf dem viralen Shiba-Inu-Meme basiert — und entwickelte sich zur bekanntesten Meme-Kryptowährung der Welt. Gegründet von <strong>Billy Markus und Jackson Palmer</strong> als humorvolle Parodie auf Bitcoin, hat Dogecoin durch seine lebendige Community und die Unterstützung von Elon Musk eine erstaunliche Langlebigkeit bewiesen.</p>
+      intro: `<p><strong>Dogecoin (DOGE)</strong> begann 2013 als Internet-Scherz, der auf dem viralen Shiba-Inu-Meme basiert, und entwickelte sich zur bekanntesten Meme-Kryptowährung der Welt. Gegründet von <strong>Billy Markus und Jackson Palmer</strong> als humorvolle Parodie auf Bitcoin, hat Dogecoin durch seine lebendige Community und die Unterstützung von Elon Musk eine erstaunliche Langlebigkeit bewiesen.</p>
 <p>Anders als viele „ernsthaftere" Kryptowährungen positioniert sich Dogecoin als unkompliziertes, freundliches Zahlungsmittel für den Alltag. Mit nahezu kostenlosen Transaktionen und schnellen Bestätigungszeiten eignet es sich für Mikrozahlungen und Online-Trinkgelder.</p>`,
       sections: [
         {
           title: 'Geschichte von Dogecoin',
-          content: `<p>Dogecoin wurde im Dezember 2013 von Billy Markus und Jackson Palmer als Parodie-Kryptowährung gestartet. Der Hype war sofort riesig — in wenigen Wochen hatte die Community bereits Millionen von DOGE für wohltätige Zwecke gesammelt (Jamaika-Bobteam bei Olympia 2014, Wasserbohrprojekte in Kenia). 2021 katapultierte ein Reddit-Community-Boom und Elon-Musk-Tweets DOGE um über 12.000 %, bevor der Kurs wieder abstürzte. Seitdem ist DOGE eine der beständig meistgehandelten Kryptowährungen geblieben.</p>`,
+          content: `<p>Dogecoin wurde im Dezember 2013 von Billy Markus und Jackson Palmer als Parodie-Kryptowährung gestartet. Der Hype war sofort riesig, in wenigen Wochen hatte die Community bereits Millionen von DOGE für wohltätige Zwecke gesammelt (Jamaika-Bobteam bei Olympia 2014, Wasserbohrprojekte in Kenia). 2021 katapultierte ein Reddit-Community-Boom und Elon-Musk-Tweets DOGE um über 12.000 %, bevor der Kurs wieder abstürzte. Seitdem ist DOGE eine der beständig meistgehandelten Kryptowährungen geblieben.</p>`,
         },
         {
           title: 'Anwendungsfälle von Dogecoin',
           content: `<ul>
-<li><strong>Mikrozahlungen und Trinkgelder</strong>: der ursprüngliche Anwendungsfall — schnelle, günstige Online-Zahlungen.</li>
+<li><strong>Mikrozahlungen und Trinkgelder</strong>: der ursprüngliche Anwendungsfall, schnelle, günstige Online-Zahlungen.</li>
 <li><strong>Community-Spenden</strong>: DOGE wird regelmäßig für wohltätige Aktionen verwendet.</li>
 <li><strong>Spekulativer Handel</strong>: hohe Liquidität und Bekanntheit machen DOGE zu einem aktiv gehandelten Asset.</li>
 <li><strong>Crypto-Karten-Ausgaben</strong>: mehrere Krypto-Karten unterstützen DOGE als Zahlungsquelle.</li>
@@ -1643,14 +1643,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vorteile und Risiken',
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
-<li>Niedrige Transaktionsgebühren — ideal für Kleinzahlungen</li>
+<li>Niedrige Transaktionsgebühren, ideal für Kleinzahlungen</li>
 <li>Schnelle Blockzeit (1 Minute vs. 10 bei Bitcoin)</li>
 <li>Starke, loyale Community</li>
 <li>Hohe Liquidität und breite Exchange-Verfügbarkeit</li>
 </ul>
 <p><strong>Risiken:</strong></p>
 <ul>
-<li>Unbegrenzte Ausgabe (kein festes Maximum) — nicht deflationär</li>
+<li>Unbegrenzte Ausgabe (kein festes Maximum), nicht deflationär</li>
 <li>Kursstärke stark von Elon-Musk-Tweets und Social-Media-Sentiment abhängig</li>
 <li>Kein aktives Entwicklungsteam</li>
 </ul>`,
@@ -1671,7 +1671,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Dogecoin (DOGE): Guía Completa 2026 | TopCryptoCards',
       meta_description: 'Todo sobre Dogecoin en 2026: historia, comunidad, Elon Musk, pagos cotidianos y tarjetas crypto con soporte DOGE.',
       h1: 'Dogecoin (DOGE): La Guía Completa 2026',
-      intro: `<p><strong>Dogecoin (DOGE)</strong> comenzó en 2013 como una broma de Internet basada en el meme viral del Shiba Inu — y se convirtió en la criptomoneda meme más conocida del mundo. Fundada por <strong>Billy Markus y Jackson Palmer</strong> como una parodia humorística de Bitcoin, Dogecoin ha demostrado una sorprendente longevidad gracias a su vibrante comunidad y el apoyo de Elon Musk.</p>
+      intro: `<p><strong>Dogecoin (DOGE)</strong> comenzó en 2013 como una broma de Internet basada en el meme viral del Shiba Inu, y se convirtió en la criptomoneda meme más conocida del mundo. Fundada por <strong>Billy Markus y Jackson Palmer</strong> como una parodia humorística de Bitcoin, Dogecoin ha demostrado una sorprendente longevidad gracias a su vibrante comunidad y el apoyo de Elon Musk.</p>
 <p>A diferencia de criptomonedas más "serias", Dogecoin se posiciona como un medio de pago sencillo y amigable para el día a día, con transacciones prácticamente gratuitas y confirmaciones rápidas.</p>`,
       sections: [
         {
@@ -1681,7 +1681,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Casos de uso de Dogecoin',
           content: `<ul>
-<li><strong>Micropagos y propinas</strong>: el caso de uso original — pagos en línea rápidos y baratos.</li>
+<li><strong>Micropagos y propinas</strong>: el caso de uso original, pagos en línea rápidos y baratos.</li>
 <li><strong>Donaciones comunitarias</strong>: DOGE se usa regularmente para acciones benéficas.</li>
 <li><strong>Trading especulativo</strong>: alta liquidez y reconocimiento lo hacen un activo muy negociado.</li>
 <li><strong>Tarjetas crypto</strong>: varias tarjetas admiten DOGE como fuente de pago.</li>
@@ -1691,14 +1691,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Ventajas y riesgos',
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
-<li>Bajas comisiones — ideal para micropagos</li>
+<li>Bajas comisiones, ideal para micropagos</li>
 <li>Tiempo de bloque rápido (1 minuto frente a 10 de Bitcoin)</li>
 <li>Comunidad fuerte y leal</li>
 <li>Alta liquidez y disponibilidad en exchanges</li>
 </ul>
 <p><strong>Riesgos:</strong></p>
 <ul>
-<li>Emisión ilimitada (sin máximo fijo) — no deflacionario</li>
+<li>Emisión ilimitada (sin máximo fijo), no deflacionario</li>
 <li>Precio muy dependiente de tweets de Elon Musk y el sentimiento en redes sociales</li>
 <li>Sin equipo de desarrollo activo</li>
 </ul>`,
@@ -1719,7 +1719,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Dogecoin (DOGE): Guida Completa 2026 | TopCryptoCards',
       meta_description: 'Tutto su Dogecoin nel 2026: storia, community, Elon Musk, pagamenti quotidiani e carte crypto con supporto DOGE.',
       h1: 'Dogecoin (DOGE): La Guida Completa 2026',
-      intro: `<p><strong>Dogecoin (DOGE)</strong> è nato nel 2013 come uno scherzo su Internet basato sul meme virale del Shiba Inu — diventando la criptovaluta meme più nota al mondo. Fondato da <strong>Billy Markus e Jackson Palmer</strong> come parodia umoristica di Bitcoin, Dogecoin ha dimostrato una sorprendente longevità grazie alla sua vivace community e al sostegno di Elon Musk.</p>
+      intro: `<p><strong>Dogecoin (DOGE)</strong> è nato nel 2013 come uno scherzo su Internet basato sul meme virale del Shiba Inu, diventando la criptovaluta meme più nota al mondo. Fondato da <strong>Billy Markus e Jackson Palmer</strong> come parodia umoristica di Bitcoin, Dogecoin ha dimostrato una sorprendente longevità grazie alla sua vivace community e al sostegno di Elon Musk.</p>
 <p>A differenza di criptovalute più "serie", Dogecoin si posiziona come mezzo di pagamento semplice e amichevole per la vita quotidiana, con transazioni praticamente gratuite e conferme rapide.</p>`,
       sections: [
         {
@@ -1729,7 +1729,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Casi d\'uso di Dogecoin',
           content: `<ul>
-<li><strong>Micropagamenti e mance</strong>: il caso d'uso originale — pagamenti online veloci ed economici.</li>
+<li><strong>Micropagamenti e mance</strong>: il caso d'uso originale, pagamenti online veloci ed economici.</li>
 <li><strong>Donazioni della community</strong>: DOGE viene usato regolarmente per azioni benefiche.</li>
 <li><strong>Trading speculativo</strong>: alta liquidità e notorietà lo rendono un asset molto scambiato.</li>
 <li><strong>Carte crypto</strong>: diverse carte accettano DOGE come fonte di pagamento.</li>
@@ -1739,14 +1739,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Vantaggi e rischi',
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
-<li>Basse commissioni — ideale per i micropagamenti</li>
+<li>Basse commissioni, ideale per i micropagamenti</li>
 <li>Block time rapido (1 minuto rispetto ai 10 di Bitcoin)</li>
 <li>Community forte e leale</li>
 <li>Alta liquidità e disponibilità sugli exchange</li>
 </ul>
 <p><strong>Rischi:</strong></p>
 <ul>
-<li>Emissione illimitata (nessun massimo fisso) — non deflazionistico</li>
+<li>Emissione illimitata (nessun massimo fisso), non deflazionistico</li>
 <li>Prezzo molto dipendente dai tweet di Elon Musk e dal sentiment sui social</li>
 <li>Nessun team di sviluppo attivo</li>
 </ul>`,
@@ -1767,7 +1767,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Dogecoin (DOGE): Complete Guide 2026 | TopCryptoCards',
       meta_description: 'Everything about Dogecoin in 2026: history, community, Elon Musk, everyday payments and crypto cards supporting DOGE.',
       h1: 'Dogecoin (DOGE): The Complete Guide 2026',
-      intro: `<p><strong>Dogecoin (DOGE)</strong> started in 2013 as an Internet joke based on the viral Shiba Inu meme — and became the world's most famous meme cryptocurrency. Created by <strong>Billy Markus and Jackson Palmer</strong> as a humorous parody of Bitcoin, Dogecoin has shown remarkable staying power thanks to its vibrant community and Elon Musk's backing.</p>
+      intro: `<p><strong>Dogecoin (DOGE)</strong> started in 2013 as an Internet joke based on the viral Shiba Inu meme, and became the world's most famous meme cryptocurrency. Created by <strong>Billy Markus and Jackson Palmer</strong> as a humorous parody of Bitcoin, Dogecoin has shown remarkable staying power thanks to its vibrant community and Elon Musk's backing.</p>
 <p>Unlike more "serious" cryptocurrencies, Dogecoin positions itself as a simple, friendly everyday payment method with near-zero transaction fees and fast confirmations.</p>`,
       sections: [
         {
@@ -1777,7 +1777,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
         {
           title: 'Dogecoin Use Cases',
           content: `<ul>
-<li><strong>Micropayments and tips</strong>: the original use case — fast, cheap online payments.</li>
+<li><strong>Micropayments and tips</strong>: the original use case, fast, cheap online payments.</li>
 <li><strong>Community donations</strong>: DOGE is regularly used for charitable campaigns.</li>
 <li><strong>Speculative trading</strong>: high liquidity and name recognition make it an actively traded asset.</li>
 <li><strong>Crypto card spending</strong>: several crypto cards support DOGE as a payment source.</li>
@@ -1787,14 +1787,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
           title: 'Pros and Risks',
           content: `<p><strong>Advantages:</strong></p>
 <ul>
-<li>Low fees — ideal for small payments</li>
+<li>Low fees, ideal for small payments</li>
 <li>Fast block time (1 minute vs. Bitcoin's 10)</li>
 <li>Strong, loyal community</li>
 <li>High liquidity and broad exchange availability</li>
 </ul>
 <p><strong>Risks:</strong></p>
 <ul>
-<li>Unlimited issuance (no fixed maximum) — not deflationary</li>
+<li>Unlimited issuance (no fixed maximum), not deflationary</li>
 <li>Price heavily influenced by Elon Musk tweets and social media sentiment</li>
 <li>No active development team</li>
 </ul>`,
@@ -1819,12 +1819,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Tether (USDT): Vollständiger Guide 2026 | TopCryptoCards',
       meta_description: 'Alles über Tether USDT 2026: Stablecoin-Mechanismus, Reserven, Risiken und Krypto-Karten mit USDT-Unterstützung.',
       h1: 'Tether (USDT): Der vollständige Guide 2026',
-      intro: `<p><strong>Tether (USDT)</strong> ist der weltweit größte Stablecoin und eine der meistgehandelten Kryptowährungen überhaupt. Als <strong>Dollar-Stablecoin</strong> hält USDT stets einen Kurs von ~1 USD und bietet damit die Stabilität des US-Dollars auf der Blockchain — ohne Bankkonto, ohne Währungsrisiko.</p>
+      intro: `<p><strong>Tether (USDT)</strong> ist der weltweit größte Stablecoin und eine der meistgehandelten Kryptowährungen überhaupt. Als <strong>Dollar-Stablecoin</strong> hält USDT stets einen Kurs von ~1 USD und bietet damit die Stabilität des US-Dollars auf der Blockchain, ohne Bankkonto, ohne Währungsrisiko.</p>
 <p>USDT wird von <strong>Tether Limited</strong> ausgegeben und ist durch ein Portfolio aus US-Staatsanleihen, Bargeld und anderen Vermögenswerten gedeckt. Es ist auf Dutzenden von Blockchains verfügbar (Ethereum, Tron, Solana, BNB Chain usw.) und dient als universelles Austausch- und Wertaufbewahrungsmittel im Krypto-Ökosystem.</p>`,
       sections: [
         {
           title: 'Wie funktioniert Tether?',
-          content: `<p>Für jeden ausgegebenen USDT hält Tether Limited nach eigenen Angaben einen gleichwertigen Betrag in Reserven — hauptsächlich US-Staatsanleihen und Bargeldäquivalente. Jeder USDT kann theoretisch gegen 1 USD eingelöst werden.</p>
+          content: `<p>Für jeden ausgegebenen USDT hält Tether Limited nach eigenen Angaben einen gleichwertigen Betrag in Reserven, hauptsächlich US-Staatsanleihen und Bargeldäquivalente. Jeder USDT kann theoretisch gegen 1 USD eingelöst werden.</p>
 <p>Tether veröffentlicht regelmäßige Attestierungen der Reserven durch Wirtschaftsprüfer (aktuell BDO Italia). Die volle unabhängige Prüfung (Audit) ist ein langjähriges Diskussionsthema in der Community.</p>`,
         },
         {
@@ -1833,14 +1833,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Handelspaare</strong>: USDT ist das Haupt-Handelspaar auf fast allen Kryptobörsen.</li>
 <li><strong>DeFi-Liquidität</strong>: USDT wird als stabile Liquidität in Lending-Protokollen und Liquiditätspools eingesetzt.</li>
 <li><strong>Überweisungen</strong>: günstiger und schneller als SWIFT für internationale Zahlungen.</li>
-<li><strong>Krypto-Karten</strong>: USDT als stabile Zahlungsquelle bei Krypto-Karten — kein Wechselkursrisiko.</li>
+<li><strong>Krypto-Karten</strong>: USDT als stabile Zahlungsquelle bei Krypto-Karten, kein Wechselkursrisiko.</li>
 </ul>`,
         },
         {
           title: 'Vorteile und Risiken',
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
-<li>Maximale Liquidität — das meistgehandelte Krypto-Asset der Welt</li>
+<li>Maximale Liquidität, das meistgehandelte Krypto-Asset der Welt</li>
 <li>Verfügbar auf fast allen Blockchains und Börsen</li>
 <li>Kein Kursvolatilitätsrisiko</li>
 </ul>
@@ -1867,12 +1867,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Tether (USDT): Guía Completa 2026 | TopCryptoCards',
       meta_description: 'Todo sobre Tether USDT en 2026: mecanismo de stablecoin, reservas, riesgos y tarjetas crypto con soporte USDT.',
       h1: 'Tether (USDT): La Guía Completa 2026',
-      intro: `<p><strong>Tether (USDT)</strong> es el stablecoin más grande del mundo y una de las criptomonedas más negociadas. Como <strong>stablecoin dólar</strong>, USDT mantiene siempre un valor de ~1 USD y ofrece la estabilidad del dólar en la blockchain — sin cuenta bancaria, sin riesgo de cambio.</p>
+      intro: `<p><strong>Tether (USDT)</strong> es el stablecoin más grande del mundo y una de las criptomonedas más negociadas. Como <strong>stablecoin dólar</strong>, USDT mantiene siempre un valor de ~1 USD y ofrece la estabilidad del dólar en la blockchain, sin cuenta bancaria, sin riesgo de cambio.</p>
 <p>USDT es emitido por <strong>Tether Limited</strong> y está respaldado por un portfolio de bonos del Tesoro estadounidense, efectivo y otros activos. Está disponible en docenas de blockchains y sirve como medio de intercambio universal en el ecosistema cripto.</p>`,
       sections: [
         {
           title: '¿Cómo funciona Tether?',
-          content: `<p>Por cada USDT emitido, Tether Limited afirma mantener un valor equivalente en reservas — principalmente bonos del Tesoro de EE. UU. y equivalentes de efectivo. Cada USDT puede teóricamente canjearse por 1 USD.</p>
+          content: `<p>Por cada USDT emitido, Tether Limited afirma mantener un valor equivalente en reservas, principalmente bonos del Tesoro de EE. UU. y equivalentes de efectivo. Cada USDT puede teóricamente canjearse por 1 USD.</p>
 <p>Tether publica atestaciones periódicas de reservas por auditores (actualmente BDO Italia). La auditoría independiente completa es un tema de debate en la comunidad.</p>`,
         },
         {
@@ -1881,14 +1881,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Pares de trading</strong>: USDT es el par principal en casi todos los exchanges.</li>
 <li><strong>Liquidez DeFi</strong>: usado como liquidez estable en protocolos de préstamo y pools.</li>
 <li><strong>Transferencias</strong>: más barato y rápido que SWIFT para pagos internacionales.</li>
-<li><strong>Tarjetas crypto</strong>: USDT como fuente de pago estable — sin riesgo de tipo de cambio.</li>
+<li><strong>Tarjetas crypto</strong>: USDT como fuente de pago estable, sin riesgo de tipo de cambio.</li>
 </ul>`,
         },
         {
           title: 'Ventajas y riesgos',
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
-<li>Máxima liquidez — el activo cripto más negociado del mundo</li>
+<li>Máxima liquidez, el activo cripto más negociado del mundo</li>
 <li>Disponible en casi todas las blockchains y exchanges</li>
 <li>Sin riesgo de volatilidad de precio</li>
 </ul>
@@ -1915,12 +1915,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Tether (USDT): Guida Completa 2026 | TopCryptoCards',
       meta_description: 'Tutto su Tether USDT nel 2026: meccanismo stablecoin, riserve, rischi e carte crypto con supporto USDT.',
       h1: 'Tether (USDT): La Guida Completa 2026',
-      intro: `<p><strong>Tether (USDT)</strong> è il più grande stablecoin al mondo e una delle criptovalute più scambiate in assoluto. Come <strong>stablecoin in dollari</strong>, USDT mantiene sempre un valore di ~1 USD, offrendo la stabilità del dollaro sulla blockchain — senza conto bancario, senza rischio di cambio.</p>
+      intro: `<p><strong>Tether (USDT)</strong> è il più grande stablecoin al mondo e una delle criptovalute più scambiate in assoluto. Come <strong>stablecoin in dollari</strong>, USDT mantiene sempre un valore di ~1 USD, offrendo la stabilità del dollaro sulla blockchain, senza conto bancario, senza rischio di cambio.</p>
 <p>USDT è emesso da <strong>Tether Limited</strong> ed è garantito da un portfolio di titoli del Tesoro americano, liquidità e altri asset. È disponibile su decine di blockchain e funge da mezzo di scambio universale nell'ecosistema crypto.</p>`,
       sections: [
         {
           title: 'Come funziona Tether?',
-          content: `<p>Per ogni USDT emesso, Tether Limited dichiara di detenere un valore equivalente in riserve — principalmente titoli del Tesoro americano e equivalenti di liquidità. Ogni USDT può teoricamente essere riscattato per 1 USD.</p>
+          content: `<p>Per ogni USDT emesso, Tether Limited dichiara di detenere un valore equivalente in riserve, principalmente titoli del Tesoro americano e equivalenti di liquidità. Ogni USDT può teoricamente essere riscattato per 1 USD.</p>
 <p>Tether pubblica periodiche attestazioni delle riserve da parte di revisori (attualmente BDO Italia). L'audit indipendente completo è un argomento di dibattito nella community.</p>`,
         },
         {
@@ -1929,14 +1929,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Coppie di trading</strong>: USDT è la coppia principale su quasi tutti gli exchange.</li>
 <li><strong>Liquidità DeFi</strong>: usato come liquidità stabile in protocolli di lending e pool.</li>
 <li><strong>Trasferimenti</strong>: più economico e veloce di SWIFT per i pagamenti internazionali.</li>
-<li><strong>Carte crypto</strong>: USDT come fonte di pagamento stabile — senza rischio di tasso di cambio.</li>
+<li><strong>Carte crypto</strong>: USDT come fonte di pagamento stabile, senza rischio di tasso di cambio.</li>
 </ul>`,
         },
         {
           title: 'Vantaggi e rischi',
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
-<li>Massima liquidità — l'asset crypto più scambiato al mondo</li>
+<li>Massima liquidità, l'asset crypto più scambiato al mondo</li>
 <li>Disponibile su quasi tutte le blockchain e gli exchange</li>
 <li>Nessun rischio di volatilità del prezzo</li>
 </ul>
@@ -1963,12 +1963,12 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_title: 'Tether (USDT): Complete Guide 2026 | TopCryptoCards',
       meta_description: 'Everything about Tether USDT in 2026: stablecoin mechanism, reserves, risks and crypto cards supporting USDT.',
       h1: 'Tether (USDT): The Complete Guide 2026',
-      intro: `<p><strong>Tether (USDT)</strong> is the world's largest stablecoin and one of the most-traded crypto assets period. As a <strong>dollar stablecoin</strong>, USDT always trades at ~$1 USD, offering dollar stability on the blockchain — no bank account needed, no exchange rate risk.</p>
+      intro: `<p><strong>Tether (USDT)</strong> is the world's largest stablecoin and one of the most-traded crypto assets period. As a <strong>dollar stablecoin</strong>, USDT always trades at ~$1 USD, offering dollar stability on the blockchain, no bank account needed, no exchange rate risk.</p>
 <p>USDT is issued by <strong>Tether Limited</strong> and backed by a portfolio of US Treasury bonds, cash, and other assets. It's available on dozens of blockchains and acts as the universal medium of exchange across the crypto ecosystem.</p>`,
       sections: [
         {
           title: 'How Does Tether Work?',
-          content: `<p>For every USDT issued, Tether Limited claims to hold an equivalent value in reserves — primarily US Treasury bonds and cash equivalents. Each USDT can theoretically be redeemed for $1.</p>
+          content: `<p>For every USDT issued, Tether Limited claims to hold an equivalent value in reserves, primarily US Treasury bonds and cash equivalents. Each USDT can theoretically be redeemed for $1.</p>
 <p>Tether publishes periodic reserve attestations by auditors (currently BDO Italia). A full independent audit remains a community debate topic.</p>`,
         },
         {
@@ -1977,14 +1977,14 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Trading pairs</strong>: USDT is the primary trading pair on almost all exchanges.</li>
 <li><strong>DeFi liquidity</strong>: used as stable liquidity in lending protocols and liquidity pools.</li>
 <li><strong>Transfers</strong>: cheaper and faster than SWIFT for international payments.</li>
-<li><strong>Crypto cards</strong>: USDT as a stable payment source — no exchange rate risk.</li>
+<li><strong>Crypto cards</strong>: USDT as a stable payment source, no exchange rate risk.</li>
 </ul>`,
         },
         {
           title: 'Pros and Risks',
           content: `<p><strong>Advantages:</strong></p>
 <ul>
-<li>Maximum liquidity — the most-traded crypto asset in the world</li>
+<li>Maximum liquidity, the most-traded crypto asset in the world</li>
 <li>Available on virtually all blockchains and exchanges</li>
 <li>No price volatility risk</li>
 </ul>
@@ -2020,7 +2020,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       sections: [
         {
           title: 'Geschichte von USDC',
-          content: `<p>USDC wurde 2018 von Circle und Coinbase im Rahmen des Centre Consortiums eingeführt. 2023 übernahm Circle die alleinige Verwaltung. Seitdem hat sich USDC als der vertrauenswürdigste Stablecoin für institutionelle Akteure positioniert — mit monatlichen Attestierungen durch Grant Thornton/Deloitte, vollständiger Einhaltung von AML/KYC-Vorschriften und einer Lizenz als E-Geld-Institut in der EU.</p>`,
+          content: `<p>USDC wurde 2018 von Circle und Coinbase im Rahmen des Centre Consortiums eingeführt. 2023 übernahm Circle die alleinige Verwaltung. Seitdem hat sich USDC als der vertrauenswürdigste Stablecoin für institutionelle Akteure positioniert, mit monatlichen Attestierungen durch Grant Thornton/Deloitte, vollständiger Einhaltung von AML/KYC-Vorschriften und einer Lizenz als E-Geld-Institut in der EU.</p>`,
         },
         {
           title: 'Anwendungsfälle von USDC',
@@ -2028,15 +2028,15 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Institutionelle Zahlungen</strong>: Visa, Mastercard und PayPal nutzen USDC für Abrechnungen.</li>
 <li><strong>DeFi</strong>: USDC ist die bevorzugte stabile Währung in regulierten DeFi-Protokollen.</li>
 <li><strong>Unternehmensfinanzen</strong>: On-Chain-Rechnungsstellung und Gehaltsabrechnungen in USDC.</li>
-<li><strong>Krypto-Karten</strong>: USDC als stabiles Zahlungsmittel — kein Wechselkursrisiko, volle Konformität.</li>
+<li><strong>Krypto-Karten</strong>: USDC als stabiles Zahlungsmittel, kein Wechselkursrisiko, volle Konformität.</li>
 </ul>`,
         },
         {
           title: 'Vorteile und Risiken',
           content: `<p><strong>Vorteile:</strong></p>
 <ul>
-<li>Monatlich geprüfte Reserven — höchste Transparenz unter großen Stablecoins</li>
-<li>MiCA-konform — bevorzugte Wahl für EU-regulierte Unternehmen</li>
+<li>Monatlich geprüfte Reserven, höchste Transparenz unter großen Stablecoins</li>
+<li>MiCA-konform, bevorzugte Wahl für EU-regulierte Unternehmen</li>
 <li>Partnerschaft mit Visa, Mastercard, PayPal</li>
 <li>Verfügbar auf allen wichtigen Blockchains</li>
 </ul>
@@ -2051,7 +2051,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       faq: [
         {
           q: 'Ist USDC sicherer als USDT?',
-          a: 'USDC gilt allgemein als transparenter als USDT — monatliche Prüfungen durch Top-Wirtschaftsprüfer, vollständige Regulierungskonformität, keine unbeantworteten Fragen zu den Reserven. Beide haben jedoch Emittentenrisiken als zentralisierte Stablecoins.',
+          a: 'USDC gilt allgemein als transparenter als USDT, monatliche Prüfungen durch Top-Wirtschaftsprüfer, vollständige Regulierungskonformität, keine unbeantworteten Fragen zu den Reserven. Beide haben jedoch Emittentenrisiken als zentralisierte Stablecoins.',
         },
         {
           q: 'Was passierte mit USDC während der SVB-Krise 2023?',
@@ -2064,11 +2064,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Todo sobre USDC en 2026: Circle, stablecoin regulado, reservas, cumplimiento MiCA y tarjetas crypto con soporte USDC.',
       h1: 'USD Coin (USDC): La Guía Completa 2026',
       intro: `<p><strong>USD Coin (USDC)</strong> es un stablecoin regulado en dólares emitido por <strong>Circle</strong> y auditado mensualmente por importantes firmas de auditoría. Como uno de los stablecoins más transparentes del mercado, USDC es la opción preferida de bancos, inversores institucionales y empresas financieras reguladas.</p>
-<p>USDC está disponible en todas las principales blockchains y, con el reglamento europeo <strong>MiCA</strong>, es uno de los pocos stablecoins plenamente conforme con la normativa europea — una alternativa especialmente fiable para usuarios en la UE.</p>`,
+<p>USDC está disponible en todas las principales blockchains y, con el reglamento europeo <strong>MiCA</strong>, es uno de los pocos stablecoins plenamente conforme con la normativa europea, una alternativa especialmente fiable para usuarios en la UE.</p>`,
       sections: [
         {
           title: 'Historia de USDC',
-          content: `<p>USDC fue lanzado en 2018 por Circle y Coinbase a través del Centre Consortium. En 2023, Circle asumió la gestión en solitario. Desde entonces, USDC se ha posicionado como el stablecoin más confiable para actores institucionales — con atestaciones mensuales, pleno cumplimiento AML/KYC y licencia de entidad de dinero electrónico en la UE.</p>`,
+          content: `<p>USDC fue lanzado en 2018 por Circle y Coinbase a través del Centre Consortium. En 2023, Circle asumió la gestión en solitario. Desde entonces, USDC se ha posicionado como el stablecoin más confiable para actores institucionales, con atestaciones mensuales, pleno cumplimiento AML/KYC y licencia de entidad de dinero electrónico en la UE.</p>`,
         },
         {
           title: 'Casos de uso de USDC',
@@ -2076,15 +2076,15 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Pagos institucionales</strong>: Visa, Mastercard y PayPal usan USDC para liquidaciones.</li>
 <li><strong>DeFi</strong>: USDC es la moneda estable preferida en protocolos DeFi regulados.</li>
 <li><strong>Finanzas empresariales</strong>: facturación on-chain y nóminas en USDC.</li>
-<li><strong>Tarjetas crypto</strong>: USDC como medio de pago estable — sin riesgo de tipo de cambio, total conformidad.</li>
+<li><strong>Tarjetas crypto</strong>: USDC como medio de pago estable, sin riesgo de tipo de cambio, total conformidad.</li>
 </ul>`,
         },
         {
           title: 'Ventajas y riesgos',
           content: `<p><strong>Ventajas:</strong></p>
 <ul>
-<li>Reservas auditadas mensualmente — máxima transparencia entre los grandes stablecoins</li>
-<li>Conforme con MiCA — opción preferida para empresas reguladas en la UE</li>
+<li>Reservas auditadas mensualmente, máxima transparencia entre los grandes stablecoins</li>
+<li>Conforme con MiCA, opción preferida para empresas reguladas en la UE</li>
 <li>Asociación con Visa, Mastercard, PayPal</li>
 <li>Disponible en todas las principales blockchains</li>
 </ul>
@@ -2099,7 +2099,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       faq: [
         {
           q: '¿Es USDC más seguro que USDT?',
-          a: 'USDC generalmente se considera más transparente que USDT — auditorías mensuales por firmas de primer nivel, pleno cumplimiento regulatorio, sin preguntas sin respuesta sobre las reservas. Sin embargo, ambos tienen riesgos de emisor como stablecoins centralizados.',
+          a: 'USDC generalmente se considera más transparente que USDT, auditorías mensuales por firmas de primer nivel, pleno cumplimiento regulatorio, sin preguntas sin respuesta sobre las reservas. Sin embargo, ambos tienen riesgos de emisor como stablecoins centralizados.',
         },
         {
           q: '¿Qué pasó con USDC durante la crisis del SVB en 2023?',
@@ -2112,11 +2112,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Tutto su USDC nel 2026: Circle, stablecoin regolamentato, riserve, conformità MiCA e carte crypto con supporto USDC.',
       h1: 'USD Coin (USDC): La Guida Completa 2026',
       intro: `<p><strong>USD Coin (USDC)</strong> è uno stablecoin regolamentato in dollari emesso da <strong>Circle</strong> e sottoposto ad audit mensili da importanti società di revisione. Come uno degli stablecoin più trasparenti sul mercato, USDC è la scelta preferita di banche, investitori istituzionali e aziende finanziarie regolamentate.</p>
-<p>USDC è disponibile su tutte le principali blockchain e, con il regolamento europeo <strong>MiCA</strong>, è uno dei pochi stablecoin pienamente conforme alla normativa europea — un'alternativa particolarmente affidabile per gli utenti nell'UE.</p>`,
+<p>USDC è disponibile su tutte le principali blockchain e, con il regolamento europeo <strong>MiCA</strong>, è uno dei pochi stablecoin pienamente conforme alla normativa europea, un'alternativa particolarmente affidabile per gli utenti nell'UE.</p>`,
       sections: [
         {
           title: 'Storia di USDC',
-          content: `<p>USDC fu lanciato nel 2018 da Circle e Coinbase tramite il Centre Consortium. Nel 2023, Circle assunse la gestione in solitaria. Da allora, USDC si è posizionato come lo stablecoin più affidabile per gli attori istituzionali — con attestazioni mensili, piena conformità AML/KYC e licenza di istituto di moneta elettronica nell'UE.</p>`,
+          content: `<p>USDC fu lanciato nel 2018 da Circle e Coinbase tramite il Centre Consortium. Nel 2023, Circle assunse la gestione in solitaria. Da allora, USDC si è posizionato come lo stablecoin più affidabile per gli attori istituzionali, con attestazioni mensili, piena conformità AML/KYC e licenza di istituto di moneta elettronica nell'UE.</p>`,
         },
         {
           title: 'Casi d\'uso di USDC',
@@ -2124,15 +2124,15 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Pagamenti istituzionali</strong>: Visa, Mastercard e PayPal usano USDC per i regolamenti.</li>
 <li><strong>DeFi</strong>: USDC è la valuta stabile preferita nei protocolli DeFi regolamentati.</li>
 <li><strong>Finanza aziendale</strong>: fatturazione on-chain e stipendi in USDC.</li>
-<li><strong>Carte crypto</strong>: USDC come mezzo di pagamento stabile — nessun rischio di cambio, piena conformità.</li>
+<li><strong>Carte crypto</strong>: USDC come mezzo di pagamento stabile, nessun rischio di cambio, piena conformità.</li>
 </ul>`,
         },
         {
           title: 'Vantaggi e rischi',
           content: `<p><strong>Vantaggi:</strong></p>
 <ul>
-<li>Riserve verificate mensilmente — massima trasparenza tra i grandi stablecoin</li>
-<li>Conforme a MiCA — scelta preferita per le aziende regolamentate nell'UE</li>
+<li>Riserve verificate mensilmente, massima trasparenza tra i grandi stablecoin</li>
+<li>Conforme a MiCA, scelta preferita per le aziende regolamentate nell'UE</li>
 <li>Partnership con Visa, Mastercard, PayPal</li>
 <li>Disponibile su tutte le principali blockchain</li>
 </ul>
@@ -2147,7 +2147,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       faq: [
         {
           q: 'USDC è più sicuro di USDT?',
-          a: 'USDC è generalmente considerato più trasparente di USDT — audit mensili da parte di primarie società di revisione, piena conformità normativa, nessuna domanda senza risposta sulle riserve. Tuttavia, entrambi hanno rischi dell\'emittente come stablecoin centralizzati.',
+          a: 'USDC è generalmente considerato più trasparente di USDT, audit mensili da parte di primarie società di revisione, piena conformità normativa, nessuna domanda senza risposta sulle riserve. Tuttavia, entrambi hanno rischi dell\'emittente come stablecoin centralizzati.',
         },
         {
           q: 'Cosa è successo a USDC durante la crisi SVB nel 2023?',
@@ -2160,11 +2160,11 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       meta_description: 'Everything about USDC in 2026: Circle, regulated stablecoin, reserves, MiCA compliance and crypto cards supporting USDC.',
       h1: 'USD Coin (USDC): The Complete Guide 2026',
       intro: `<p><strong>USD Coin (USDC)</strong> is a regulated dollar stablecoin issued by <strong>Circle</strong> and audited monthly by major accounting firms. As one of the most transparent stablecoins on the market, USDC is the preferred choice of banks, institutional investors, and regulated financial companies.</p>
-<p>USDC is available on all major blockchains and, under the EU's <strong>MiCA regulation</strong>, is one of the few stablecoins fully compliant with European rules — making it the go-to choice for EU-regulated entities.</p>`,
+<p>USDC is available on all major blockchains and, under the EU's <strong>MiCA regulation</strong>, is one of the few stablecoins fully compliant with European rules, making it the go-to choice for EU-regulated entities.</p>`,
       sections: [
         {
           title: 'History of USDC',
-          content: `<p>USDC launched in 2018 by Circle and Coinbase through the Centre Consortium. In 2023, Circle took sole management. Since then, USDC has positioned itself as the most trustworthy stablecoin for institutional players — with monthly attestations, full AML/KYC compliance, and an e-money institution license in the EU.</p>`,
+          content: `<p>USDC launched in 2018 by Circle and Coinbase through the Centre Consortium. In 2023, Circle took sole management. Since then, USDC has positioned itself as the most trustworthy stablecoin for institutional players, with monthly attestations, full AML/KYC compliance, and an e-money institution license in the EU.</p>`,
         },
         {
           title: 'USDC Use Cases',
@@ -2172,15 +2172,15 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
 <li><strong>Institutional payments</strong>: Visa, Mastercard, and PayPal use USDC for settlements.</li>
 <li><strong>DeFi</strong>: USDC is the preferred stable currency in regulated DeFi protocols.</li>
 <li><strong>Business finance</strong>: on-chain invoicing and payroll in USDC.</li>
-<li><strong>Crypto cards</strong>: USDC as a stable payment source — no exchange rate risk, full compliance.</li>
+<li><strong>Crypto cards</strong>: USDC as a stable payment source, no exchange rate risk, full compliance.</li>
 </ul>`,
         },
         {
           title: 'Pros and Risks',
           content: `<p><strong>Advantages:</strong></p>
 <ul>
-<li>Monthly audited reserves — highest transparency among major stablecoins</li>
-<li>MiCA-compliant — preferred choice for EU-regulated companies</li>
+<li>Monthly audited reserves, highest transparency among major stablecoins</li>
+<li>MiCA-compliant, preferred choice for EU-regulated companies</li>
 <li>Partnerships with Visa, Mastercard, PayPal</li>
 <li>Available on all major blockchains</li>
 </ul>
@@ -2195,7 +2195,7 @@ export const CRYPTO_TRANSLATIONS: Record<string, Partial<Record<string, CryptoCo
       faq: [
         {
           q: 'Is USDC safer than USDT?',
-          a: 'USDC is generally considered more transparent than USDT — monthly audits by top-tier firms, full regulatory compliance, no unanswered reserve questions. However, both carry issuer risk as centralized stablecoins.',
+          a: 'USDC is generally considered more transparent than USDT, monthly audits by top-tier firms, full regulatory compliance, no unanswered reserve questions. However, both carry issuer risk as centralized stablecoins.',
         },
         {
           q: 'What happened to USDC during the SVB crisis in 2023?',

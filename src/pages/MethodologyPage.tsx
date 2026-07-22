@@ -58,7 +58,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Critères d\'évaluation',
         body: 'Les cartes sont comparées sur six axes principaux :',
         items: [
-          { label: 'Cashback', body: "Taux de cashback réaliste pour le tier accessible sans condition, et taux maximum atteignable avec staking. Nous ne retenons pas les chiffres marketing — seulement ce qu'un utilisateur ordinaire peut espérer obtenir." },
+          { label: 'Cashback', body: "Taux de cashback réaliste pour le tier accessible sans condition, et taux maximum atteignable avec staking. Nous ne retenons pas les chiffres marketing, seulement ce qu'un utilisateur ordinaire peut espérer obtenir." },
           { label: 'Frais annuels', body: "Coût total annuel du tier (frais d'émission, frais de maintenance). Les cartes entièrement gratuites reçoivent un bonus." },
           { label: 'Staking requis', body: "Montant en crypto natif à immobiliser pour accéder aux avantages. Nous indiquons la valeur en euros au moment de la mise à jour." },
           { label: 'Disponibilité', body: "Pays dans lesquels la carte est effectivement livrable et utilisable, d'après les conditions officielles de l'émetteur." },
@@ -80,7 +80,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       independence: {
         title: 'Indépendance éditoriale',
-        body: "Les relations d'affiliation — décrites en détail dans notre page de divulgation — n'influencent pas nos classements ni nos notes. Les cartes sans lien d'affiliation (Binance, Coinbase, Gemini, MetaMask, etc.) sont évaluées exactement de la même manière. Un émetteur ne peut pas payer pour améliorer son score ou sa position dans nos listes.",
+        body: "Les relations d'affiliation, décrites en détail dans notre page de divulgation, n'influencent pas nos classements ni nos notes. Les cartes sans lien d'affiliation (Binance, Coinbase, Gemini, MetaMask, etc.) sont évaluées exactement de la même manière. Un émetteur ne peut pas payer pour améliorer son score ou sa position dans nos listes.",
       },
       sources: {
         title: 'Sources de données',
@@ -105,7 +105,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Bewertungskriterien',
         body: 'Karten werden anhand von sechs Hauptkriterien verglichen:',
         items: [
-          { label: 'Cashback', body: "Realistischer Cashback-Satz für das kostengünstigste Tier sowie maximaler erreichbarer Satz mit Staking. Wir verwenden keine Marketingzahlen — nur das, was ein normaler Nutzer realistisch erwarten kann." },
+          { label: 'Cashback', body: "Realistischer Cashback-Satz für das kostengünstigste Tier sowie maximaler erreichbarer Satz mit Staking. Wir verwenden keine Marketingzahlen, nur das, was ein normaler Nutzer realistisch erwarten kann." },
           { label: 'Jahresgebühren', body: "Gesamte Jahreskosten des Tiers (Ausgabegebühr, Wartungsgebühr). Vollständig kostenlose Karten erhalten einen Bonus." },
           { label: 'Erforderliches Staking', body: "Menge an nativer Kryptowährung, die für den Zugang zu Vorteilen gesperrt werden muss. Wir geben den Euro-Wert zum Aktualisierungszeitpunkt an." },
           { label: 'Verfügbarkeit', body: "Länder, in denen die Karte laut offiziellen Emittentenbedingungen tatsächlich lieferbar und nutzbar ist." },
@@ -127,7 +127,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       independence: {
         title: 'Redaktionelle Unabhängigkeit',
-        body: "Affiliate-Beziehungen — ausführlich auf unserer Offenlegungsseite beschrieben — beeinflussen weder unsere Rankings noch unsere Bewertungen. Karten ohne Affiliate-Link (Binance, Coinbase, Gemini, MetaMask usw.) werden auf identische Weise bewertet. Kein Emittent kann sich einen besseren Score oder eine bessere Position in unseren Listen erkaufen.",
+        body: "Affiliate-Beziehungen, ausführlich auf unserer Offenlegungsseite beschrieben, beeinflussen weder unsere Rankings noch unsere Bewertungen. Karten ohne Affiliate-Link (Binance, Coinbase, Gemini, MetaMask usw.) werden auf identische Weise bewertet. Kein Emittent kann sich einen besseren Score oder eine bessere Position in unseren Listen erkaufen.",
       },
       sources: {
         title: 'Datenquellen',
@@ -152,7 +152,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Criterios de evaluación',
         body: 'Las tarjetas se comparan en seis ejes principales:',
         items: [
-          { label: 'Cashback', body: "Tasa de cashback realista para el nivel accesible sin condiciones, y tasa máxima alcanzable con staking. No utilizamos cifras de marketing — solo lo que un usuario ordinario puede esperar obtener." },
+          { label: 'Cashback', body: "Tasa de cashback realista para el nivel accesible sin condiciones, y tasa máxima alcanzable con staking. No utilizamos cifras de marketing, solo lo que un usuario ordinario puede esperar obtener." },
           { label: 'Comisiones anuales', body: "Coste total anual del nivel (comisión de emisión, comisión de mantenimiento). Las tarjetas completamente gratuitas reciben una bonificación." },
           { label: 'Staking requerido', body: "Cantidad de criptomoneda nativa que debe inmovilizarse para acceder a las ventajas. Indicamos el valor en euros en el momento de la actualización." },
           { label: 'Disponibilidad', body: "Países en los que la tarjeta es efectivamente entregable y utilizable, según las condiciones oficiales del emisor." },
@@ -174,7 +174,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       independence: {
         title: 'Independencia editorial',
-        body: "Las relaciones de afiliación — descritas en detalle en nuestra página de divulgación — no influyen en nuestras clasificaciones ni en nuestras notas. Las tarjetas sin enlace de afiliación (Binance, Coinbase, Gemini, MetaMask, etc.) se evalúan de exactamente la misma manera. Un emisor no puede pagar para mejorar su puntuación o su posición en nuestras listas.",
+        body: "Las relaciones de afiliación, descritas en detalle en nuestra página de divulgación, no influyen en nuestras clasificaciones ni en nuestras notas. Las tarjetas sin enlace de afiliación (Binance, Coinbase, Gemini, MetaMask, etc.) se evalúan de exactamente la misma manera. Un emisor no puede pagar para mejorar su puntuación o su posición en nuestras listas.",
       },
       sources: {
         title: 'Fuentes de datos',
@@ -199,7 +199,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Criteri di valutazione',
         body: 'Le carte vengono confrontate su sei assi principali:',
         items: [
-          { label: 'Cashback', body: "Tasso di cashback realistico per il livello accessibile senza condizioni, e tasso massimo raggiungibile con lo staking. Non utilizziamo cifre di marketing — solo ciò che un utente ordinario può aspettarsi di ottenere." },
+          { label: 'Cashback', body: "Tasso di cashback realistico per il livello accessibile senza condizioni, e tasso massimo raggiungibile con lo staking. Non utilizziamo cifre di marketing, solo ciò che un utente ordinario può aspettarsi di ottenere." },
           { label: 'Commissioni annuali', body: "Costo totale annuale del livello (commissione di emissione, commissione di manutenzione). Le carte completamente gratuite ricevono un bonus." },
           { label: 'Staking richiesto', body: "Quantità di criptovaluta nativa da immobilizzare per accedere ai vantaggi. Indichiamo il valore in euro al momento dell'aggiornamento." },
           { label: 'Disponibilità', body: "Paesi in cui la carta è effettivamente consegnabile e utilizzabile, secondo le condizioni ufficiali dell'emittente." },
@@ -221,7 +221,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       independence: {
         title: 'Indipendenza editoriale',
-        body: "Le relazioni di affiliazione — descritte in dettaglio nella nostra pagina di divulgazione — non influenzano le nostre classifiche né i nostri punteggi. Le carte senza link di affiliazione (Binance, Coinbase, Gemini, MetaMask, ecc.) vengono valutate esattamente allo stesso modo. Nessun emittente può pagare per migliorare il proprio punteggio o la propria posizione nelle nostre liste.",
+        body: "Le relazioni di affiliazione, descritte in dettaglio nella nostra pagina di divulgazione, non influenzano le nostre classifiche né i nostri punteggi. Le carte senza link di affiliazione (Binance, Coinbase, Gemini, MetaMask, ecc.) vengono valutate esattamente allo stesso modo. Nessun emittente può pagare per migliorare il proprio punteggio o la propria posizione nelle nostre liste.",
       },
       sources: {
         title: 'Fonti dei dati',
@@ -246,7 +246,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Evaluation Criteria',
         body: 'Cards are compared across six main criteria:',
         items: [
-          { label: 'Cashback', body: "Realistic cashback rate for the accessible tier without conditions, and maximum achievable rate with staking. We do not use marketing figures — only what an ordinary user can realistically expect to earn." },
+          { label: 'Cashback', body: "Realistic cashback rate for the accessible tier without conditions, and maximum achievable rate with staking. We do not use marketing figures, only what an ordinary user can realistically expect to earn." },
           { label: 'Annual Fees', body: "Total annual cost of the tier (issuance fee, maintenance fee). Completely free cards receive a bonus." },
           { label: 'Required Staking', body: "Amount of native cryptocurrency to be locked to access benefits. We state the EUR value at the time of the update." },
           { label: 'Availability', body: "Countries where the card is effectively deliverable and usable, per the issuer's official terms." },
@@ -268,7 +268,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       independence: {
         title: 'Editorial Independence',
-        body: "Affiliate relationships — described in detail on our disclosure page — do not influence our rankings or ratings. Cards without an affiliate link (Binance, Coinbase, Gemini, MetaMask, etc.) are evaluated in exactly the same way. No issuer can pay to improve their score or position in our lists.",
+        body: "Affiliate relationships, described in detail on our disclosure page, do not influence our rankings or ratings. Cards without an affiliate link (Binance, Coinbase, Gemini, MetaMask, etc.) are evaluated in exactly the same way. No issuer can pay to improve their score or position in our lists.",
       },
       sources: {
         title: 'Data Sources',
@@ -284,11 +284,11 @@ const CONTENT: Record<ContentLang, Content> = {
 
 /* ── Meta ─────────────────────────────────────────────────────────────────── */
 const META: Record<ContentLang, { title: string; description: string }> = {
-  fr: { title: 'Méthodologie — TopCryptoCards', description: 'Découvrez comment TopCryptoCards évalue et classe les cartes crypto : critères, Trust Score, indépendance éditoriale.' },
-  de: { title: 'Bewertungsmethodik — TopCryptoCards', description: 'Erfahren Sie, wie TopCryptoCards Krypto-Karten bewertet und rankt: Kriterien, Trust Score, redaktionelle Unabhängigkeit.' },
-  es: { title: 'Metodología — TopCryptoCards', description: 'Descubra cómo TopCryptoCards evalúa y clasifica las tarjetas cripto: criterios, Trust Score, independencia editorial.' },
-  it: { title: 'Metodologia — TopCryptoCards', description: 'Scopri come TopCryptoCards valuta e classifica le carte cripto: criteri, Trust Score, indipendenza editoriale.' },
-  en: { title: 'Methodology — TopCryptoCards', description: 'Discover how TopCryptoCards evaluates and ranks crypto cards: criteria, Trust Score, editorial independence.' },
+  fr: { title: 'Méthodologie, TopCryptoCards', description: 'Découvrez comment TopCryptoCards évalue et classe les cartes crypto : critères, Trust Score, indépendance éditoriale.' },
+  de: { title: 'Bewertungsmethodik, TopCryptoCards', description: 'Erfahren Sie, wie TopCryptoCards Krypto-Karten bewertet und rankt: Kriterien, Trust Score, redaktionelle Unabhängigkeit.' },
+  es: { title: 'Metodología, TopCryptoCards', description: 'Descubra cómo TopCryptoCards evalúa y clasifica las tarjetas cripto: criterios, Trust Score, independencia editorial.' },
+  it: { title: 'Metodologia, TopCryptoCards', description: 'Scopri come TopCryptoCards valuta e classifica le carte cripto: criteri, Trust Score, indipendenza editoriale.' },
+  en: { title: 'Methodology, TopCryptoCards', description: 'Discover how TopCryptoCards evaluates and ranks crypto cards: criteria, Trust Score, editorial independence.' },
 };
 
 const DISCLOSURE_SLUGS: Record<Lang, string> = {
@@ -330,7 +330,7 @@ const MethodologyPage: React.FC = () => {
             TopCryptoCards
           </Link>
           <span className="text-slate-400">/</span>
-          <span className="text-text-secondary text-sm">{meta.title.split(' — ')[0]}</span>
+          <span className="text-text-secondary text-sm">{meta.title.split(', ')[0]}</span>
         </div>
       </header>
 

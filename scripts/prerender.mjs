@@ -146,9 +146,13 @@ async function renderPath(page, path) {
       : html.replace('</head>', '<meta name="robots" content="noindex, follow"></head>');
   }
 
-  const outDir = join(DIST, ...path.split('/').filter(Boolean));
+  // Write as path.html (not path/index.html) so Netlify serves at the
+  // non-trailing-slash URL and avoids 301 redirects that confuse GSC.
+  const segments = path.split('/').filter(Boolean);
+  const outDir = join(DIST, ...segments.slice(0, -1));
+  const filename = segments[segments.length - 1] + '.html';
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(join(outDir, 'index.html'), html);
+  writeFileSync(join(outDir, filename), html);
 }
 
 // ── Make a fresh intercepted page ─────────────────────────────────────────

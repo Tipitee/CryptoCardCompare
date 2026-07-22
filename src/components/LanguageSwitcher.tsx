@@ -42,7 +42,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-label={`${LANGUAGES[currentLang].nativeName} — change language`}
+        aria-label={`${LANGUAGES[currentLang].nativeName}, change language`}
         className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors"
       >
         <span>{LANGUAGES[currentLang].flag}</span>

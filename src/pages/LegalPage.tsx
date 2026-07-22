@@ -93,20 +93,20 @@ const CONTENT: Record<ContentLang, LegalContent> = {
     privacySections: [
       {
         title: '1. Responsable du traitement',
-        body: `Thomas Petit — ${ADDRESS_EN}<br/>E-mail : ${EMAIL}`,
+        body: `Thomas Petit, ${ADDRESS_EN}<br/>E-mail : ${EMAIL}`,
       },
       {
         title: '2. Données collectées',
         body: `<strong>Logs d'accès :</strong> adresse IP (anonymisée), date/heure, URL consultée, navigateur et FAI. Durée de conservation : 7 jours maximum. Base légale : Art. 6(1)(f) RGPD (intérêt légitime).<br/><br/>
 <strong>Cookies strictement nécessaires :</strong> préférences de filtres et sélections de comparaison (session). Choix de consentement aux cookies (12 mois). Aucun consentement requis.<br/><br/>
-<strong>Cookies analytiques (optionnels) :</strong> Google Analytics via Google Tag Manager — uniquement après votre consentement via la bannière cookies. Base légale : Art. 6(1)(a) RGPD.`,
+<strong>Cookies analytiques (optionnels) :</strong> Google Analytics via Google Tag Manager, uniquement après votre consentement via la bannière cookies. Base légale : Art. 6(1)(a) RGPD.`,
       },
       {
         title: '3. Services tiers',
-        body: `<strong>Cloudflare</strong> (CDN et sécurité) — certifié EU-US Data Privacy Framework.<br/>
-<strong>Supabase</strong> (base de données) — serveurs dans l'UE (eu-west-1, Irlande).<br/>
-<strong>Google Tag Manager / Analytics</strong> — uniquement après consentement.<br/>
-<strong>Réseaux d'affiliation</strong> (Impact Radius, Awin) — uniquement après consentement.`,
+        body: `<strong>Cloudflare</strong> (CDN et sécurité), certifié EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (base de données), serveurs dans l'UE (eu-west-1, Irlande).<br/>
+<strong>Google Tag Manager / Analytics</strong>, uniquement après consentement.<br/>
+<strong>Réseaux d'affiliation</strong> (Impact Radius, Awin), uniquement après consentement.`,
       },
       {
         title: '4. Vos droits (RGPD)',
@@ -162,20 +162,20 @@ Deutschland<br/><br/>
     privacySections: [
       {
         title: '1. Verantwortlicher',
-        body: `Thomas Petit — ${ADDRESS_DE}<br/>E-Mail: ${EMAIL}`,
+        body: `Thomas Petit, ${ADDRESS_DE}<br/>E-Mail: ${EMAIL}`,
       },
       {
         title: '2. Erhobene Daten',
         body: `<strong>Zugriffsprotokolle:</strong> IP-Adresse (anonymisiert), Datum/Uhrzeit, aufgerufene URL, Browser und ISP. Speicherdauer: max. 7 Tage. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.<br/><br/>
 <strong>Notwendige Cookies:</strong> Filterpräferenzen und Vergleichsauswahlen (Session), Cookie-Einwilligung (12 Monate). Kein Einverständnis erforderlich.<br/><br/>
-<strong>Analyse-Cookies (optional):</strong> Google Analytics über Google Tag Manager — nur nach Ihrer Einwilligung über das Cookie-Banner. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO.`,
+<strong>Analyse-Cookies (optional):</strong> Google Analytics über Google Tag Manager, nur nach Ihrer Einwilligung über das Cookie-Banner. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO.`,
       },
       {
         title: '3. Drittanbieter',
-        body: `<strong>Cloudflare</strong> (CDN und Sicherheit) — zertifiziert nach EU-US Data Privacy Framework.<br/>
-<strong>Supabase</strong> (Datenbank) — Server in der EU (eu-west-1, Irland).<br/>
-<strong>Google Tag Manager / Analytics</strong> — nur nach Einwilligung.<br/>
-<strong>Affiliate-Netzwerke</strong> (Impact Radius, Awin) — nur nach Einwilligung.`,
+        body: `<strong>Cloudflare</strong> (CDN und Sicherheit), zertifiziert nach EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (Datenbank), Server in der EU (eu-west-1, Irland).<br/>
+<strong>Google Tag Manager / Analytics</strong>, nur nach Einwilligung.<br/>
+<strong>Affiliate-Netzwerke</strong> (Impact Radius, Awin), nur nach Einwilligung.`,
       },
       {
         title: '4. Ihre Rechte (DSGVO)',
@@ -227,20 +227,20 @@ Correo electrónico: ${EMAIL}`,
     privacySections: [
       {
         title: '1. Responsable del tratamiento',
-        body: `Thomas Petit — ${ADDRESS_EN}<br/>Correo electrónico: ${EMAIL}`,
+        body: `Thomas Petit, ${ADDRESS_EN}<br/>Correo electrónico: ${EMAIL}`,
       },
       {
         title: '2. Datos recopilados',
         body: `<strong>Registros de acceso:</strong> dirección IP (anonimizada), fecha/hora, URL visitada, navegador y proveedor de Internet. Periodo de conservación: 7 días como máximo. Base legal: Art. 6(1)(f) RGPD.<br/><br/>
 <strong>Cookies estrictamente necesarias:</strong> preferencias de filtros y selecciones de comparación (sesión), consentimiento de cookies (12 meses). No requieren consentimiento.<br/><br/>
-<strong>Cookies analíticas (opcionales):</strong> Google Analytics mediante Google Tag Manager — solo tras su consentimiento mediante el banner de cookies. Base legal: Art. 6(1)(a) RGPD.`,
+<strong>Cookies analíticas (opcionales):</strong> Google Analytics mediante Google Tag Manager, solo tras su consentimiento mediante el banner de cookies. Base legal: Art. 6(1)(a) RGPD.`,
       },
       {
         title: '3. Servicios de terceros',
-        body: `<strong>Cloudflare</strong> (CDN y seguridad) — certificado bajo el EU-US Data Privacy Framework.<br/>
-<strong>Supabase</strong> (base de datos) — servidores en la UE (eu-west-1, Irlanda).<br/>
-<strong>Google Tag Manager / Analytics</strong> — solo previa aceptación.<br/>
-<strong>Redes de afiliación</strong> (Impact Radius, Awin) — solo previa aceptación.`,
+        body: `<strong>Cloudflare</strong> (CDN y seguridad), certificado bajo el EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (base de datos), servidores en la UE (eu-west-1, Irlanda).<br/>
+<strong>Google Tag Manager / Analytics</strong>, solo previa aceptación.<br/>
+<strong>Redes de afiliación</strong> (Impact Radius, Awin), solo previa aceptación.`,
       },
       {
         title: '4. Sus derechos (RGPD)',
@@ -292,20 +292,20 @@ E-mail: ${EMAIL}`,
     privacySections: [
       {
         title: '1. Titolare del trattamento',
-        body: `Thomas Petit — ${ADDRESS_EN}<br/>E-mail: ${EMAIL}`,
+        body: `Thomas Petit, ${ADDRESS_EN}<br/>E-mail: ${EMAIL}`,
       },
       {
         title: '2. Dati raccolti',
         body: `<strong>Log di accesso:</strong> indirizzo IP (anonimizzato), data/ora, URL visitata, browser e fornitore Internet. Periodo di conservazione: massimo 7 giorni. Base giuridica: Art. 6(1)(f) GDPR.<br/><br/>
 <strong>Cookie strettamente necessari:</strong> preferenze di filtro e selezioni di confronto (sessione), consenso ai cookie (12 mesi). Non richiedono consenso.<br/><br/>
-<strong>Cookie analitici (opzionali):</strong> Google Analytics tramite Google Tag Manager — solo dopo il vostro consenso tramite il banner dei cookie. Base giuridica: Art. 6(1)(a) GDPR.`,
+<strong>Cookie analitici (opzionali):</strong> Google Analytics tramite Google Tag Manager, solo dopo il vostro consenso tramite il banner dei cookie. Base giuridica: Art. 6(1)(a) GDPR.`,
       },
       {
         title: '3. Servizi di terze parti',
-        body: `<strong>Cloudflare</strong> (CDN e sicurezza) — certificato EU-US Data Privacy Framework.<br/>
-<strong>Supabase</strong> (database) — server nell'UE (eu-west-1, Irlanda).<br/>
-<strong>Google Tag Manager / Analytics</strong> — solo previa accettazione.<br/>
-<strong>Reti di affiliazione</strong> (Impact Radius, Awin) — solo previa accettazione.`,
+        body: `<strong>Cloudflare</strong> (CDN e sicurezza), certificato EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (database), server nell'UE (eu-west-1, Irlanda).<br/>
+<strong>Google Tag Manager / Analytics</strong>, solo previa accettazione.<br/>
+<strong>Reti di affiliazione</strong> (Impact Radius, Awin), solo previa accettazione.`,
       },
       {
         title: '4. I vostri diritti (GDPR)',
@@ -358,20 +358,20 @@ In accordance with § 5 TMG (German Telemedia Act).`,
     privacySections: [
       {
         title: '1. Data Controller',
-        body: `Thomas Petit — ${ADDRESS_EN}<br/>Email: ${EMAIL}`,
+        body: `Thomas Petit, ${ADDRESS_EN}<br/>Email: ${EMAIL}`,
       },
       {
         title: '2. Data we collect',
-        body: `<strong>Access logs:</strong> IP address (anonymised), date/time, requested URL, browser type, and ISP. Retention period: max 7 days. Legal basis: Art. 6(1)(f) GDPR — legitimate interest.<br/><br/>
+        body: `<strong>Access logs:</strong> IP address (anonymised), date/time, requested URL, browser type, and ISP. Retention period: max 7 days. Legal basis: Art. 6(1)(f) GDPR, legitimate interest.<br/><br/>
 <strong>Strictly necessary cookies:</strong> filter preferences and comparison selections (session), cookie consent preference (12 months). No consent required.<br/><br/>
-<strong>Analytics cookies (optional):</strong> Google Analytics via Google Tag Manager — only after your consent via the cookie banner. Legal basis: Art. 6(1)(a) GDPR.`,
+<strong>Analytics cookies (optional):</strong> Google Analytics via Google Tag Manager, only after your consent via the cookie banner. Legal basis: Art. 6(1)(a) GDPR.`,
       },
       {
         title: '3. Third-party services',
-        body: `<strong>Cloudflare</strong> (CDN and security) — certified under EU-US Data Privacy Framework.<br/>
-<strong>Supabase</strong> (database) — EU servers (eu-west-1, Ireland).<br/>
-<strong>Google Tag Manager / Analytics</strong> — only after consent.<br/>
-<strong>Affiliate networks</strong> (Impact Radius, Awin) — only after consent.`,
+        body: `<strong>Cloudflare</strong> (CDN and security), certified under EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (database), EU servers (eu-west-1, Ireland).<br/>
+<strong>Google Tag Manager / Analytics</strong>, only after consent.<br/>
+<strong>Affiliate networks</strong> (Impact Radius, Awin), only after consent.`,
       },
       {
         title: '4. Your rights (GDPR)',
@@ -394,11 +394,11 @@ In accordance with § 5 TMG (German Telemedia Act).`,
 
 // ── SEO meta per lang ──────────────────────────────────────────────────────
 const SEO: Record<ContentLang, { title: string; desc: string }> = {
-  fr: { title: 'Mentions légales & Politique de confidentialité — TopCryptoCards', desc: 'Mentions légales, politique de confidentialité et informations RGPD de TopCryptoCards.' },
-  de: { title: 'Impressum & Datenschutz — TopCryptoCards', desc: 'Impressum, Datenschutzerklärung und gesetzliche Informationen von TopCryptoCards.' },
-  es: { title: 'Aviso Legal & Política de Privacidad — TopCryptoCards', desc: 'Aviso legal, política de privacidad e información sobre protección de datos de TopCryptoCards.' },
-  it: { title: 'Avviso Legale & Privacy — TopCryptoCards', desc: 'Avviso legale, informativa sulla privacy e GDPR di TopCryptoCards.' },
-  en: { title: 'Legal Notice & Privacy Policy — TopCryptoCards', desc: 'Legal notice, privacy policy and GDPR information for TopCryptoCards.' },
+  fr: { title: 'Mentions légales & Politique de confidentialité, TopCryptoCards', desc: 'Mentions légales, politique de confidentialité et informations RGPD de TopCryptoCards.' },
+  de: { title: 'Impressum & Datenschutz, TopCryptoCards', desc: 'Impressum, Datenschutzerklärung und gesetzliche Informationen von TopCryptoCards.' },
+  es: { title: 'Aviso Legal & Política de Privacidad, TopCryptoCards', desc: 'Aviso legal, política de privacidad e información sobre protección de datos de TopCryptoCards.' },
+  it: { title: 'Avviso Legale & Privacy, TopCryptoCards', desc: 'Avviso legale, informativa sulla privacy e GDPR di TopCryptoCards.' },
+  en: { title: 'Legal Notice & Privacy Policy, TopCryptoCards', desc: 'Legal notice, privacy policy and GDPR information for TopCryptoCards.' },
 };
 
 // ── Affiliate disclosure slug per lang (for footer link) ──────────────────

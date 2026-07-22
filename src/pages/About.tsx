@@ -15,23 +15,23 @@ const ABOUT_SLUGS: Record<string, string> = {
 
 const ABOUT_SEO: Record<string, { title: string; desc: string }> = {
   fr: {
-    title: 'À Propos de TopCryptoCards — Méthodologie & Équipe',
+    title: 'À Propos de TopCryptoCards, Méthodologie & Équipe',
     desc: "Découvrez qui nous sommes, comment nous évaluons les cartes crypto et notre engagement pour des données fiables et à jour. Indépendant, gratuit, mis à jour mensuellement.",
   },
   de: {
-    title: 'Über TopCryptoCards — Methodik & Team',
+    title: 'Über TopCryptoCards, Methodik & Team',
     desc: "Erfahren Sie, wer wir sind, wie wir Krypto-Karten bewerten und warum unsere Daten zuverlässig sind. Unabhängig, kostenlos, monatlich aktualisiert.",
   },
   es: {
-    title: 'Sobre TopCryptoCards — Metodología & Equipo',
+    title: 'Sobre TopCryptoCards, Metodología & Equipo',
     desc: "Descubre quiénes somos, cómo evaluamos las tarjetas crypto y nuestro compromiso con datos fiables y actualizados. Independiente, gratuito, actualizado mensualmente.",
   },
   it: {
-    title: 'Chi Siamo — TopCryptoCards Metodologia & Team',
+    title: 'Chi Siamo, TopCryptoCards Metodologia & Team',
     desc: "Scopri chi siamo, come valutiamo le carte crypto e il nostro impegno per dati affidabili e aggiornati. Indipendente, gratuito, aggiornato mensilmente.",
   },
   en: {
-    title: 'About TopCryptoCards — Methodology & Team',
+    title: 'About TopCryptoCards, Methodology & Team',
     desc: "Learn who we are, how we evaluate crypto cards, and our commitment to reliable, up-to-date data. Independent, free, updated monthly.",
   },
 };
@@ -58,7 +58,7 @@ const ABOUT_CONTENT: Record<string, {
     hero: 'À propos de TopCryptoCards',
     heroSub: "Le comparateur indépendant des cartes crypto en Europe. Données vérifiées, mises à jour mensuellement, sans agenda commercial caché.",
     missionTitle: 'Notre mission',
-    missionBody: `TopCryptoCards est né d'un constat simple : comparer les cartes crypto est complexe. Les cashback varient selon le niveau de staking, les frais sont parfois cachés, et les conditions changent régulièrement. Notre objectif est de centraliser toutes ces données de manière claire, structurée et à jour, pour que chaque utilisateur puisse faire un choix éclairé — qu'il soit novice en crypto ou utilisateur expérimenté.
+    missionBody: `TopCryptoCards est né d'un constat simple : comparer les cartes crypto est complexe. Les cashback varient selon le niveau de staking, les frais sont parfois cachés, et les conditions changent régulièrement. Notre objectif est de centraliser toutes ces données de manière claire, structurée et à jour, pour que chaque utilisateur puisse faire un choix éclairé, qu'il soit novice en crypto ou utilisateur expérimenté.
 
 Nous couvrons plus de 20 cartes émises par des acteurs réglementés en Europe : Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty, Plutus, Wirex, Revolut Metal, et d'autres. Chaque carte est évaluée sur les mêmes critères objectifs.`,
     methodTitle: 'Notre méthodologie',
@@ -97,7 +97,7 @@ Nous couvrons plus de 20 cartes émises par des acteurs réglementés en Europe 
     updateTitle: 'Nos sources',
     updateBody: `Nos données proviennent exclusivement de sources primaires : sites officiels des émetteurs, applications mobiles, annonces dans les forums officiels (Discord, Reddit, Telegram) et communiqués de presse. Nous n'utilisons pas de données agrégées tierces comme source principale. Lorsqu'une information est incertaine ou contestée, nous l'indiquons clairement.`,
     independenceTitle: 'Indépendance éditoriale',
-    independenceBody: `TopCryptoCards est un site éditorial indépendant. Nos classements et évaluations sont déterminés uniquement par nos critères objectifs — jamais par des accords commerciaux. Certaines cartes affichées incluent des liens affiliés : si vous utilisez ces liens pour vous inscrire, nous percevons une commission sans frais supplémentaires pour vous. Cette rémunération ne modifie pas nos notations ni l'ordre de nos comparaisons.`,
+    independenceBody: `TopCryptoCards est un site éditorial indépendant. Nos classements et évaluations sont déterminés uniquement par nos critères objectifs, jamais par des accords commerciaux. Certaines cartes affichées incluent des liens affiliés : si vous utilisez ces liens pour vous inscrire, nous percevons une commission sans frais supplémentaires pour vous. Cette rémunération ne modifie pas nos notations ni l'ordre de nos comparaisons.`,
     disclosureTitle: 'Divulgation des liens affiliés',
     disclosureBody: `Conformément aux réglementations européennes sur la publicité en ligne, tous les liens affiliés sont identifiés par l'attribut rel="sponsored". La présence d'un lien affilié n'influence pas notre évaluation de la carte concernée. Vous pouvez consulter notre page de divulgation complète pour plus de détails.`,
     ctaTitle: 'Prêt à comparer ?',
@@ -109,7 +109,7 @@ Nous couvrons plus de 20 cartes émises par des acteurs réglementés en Europe 
     hero: 'Über TopCryptoCards',
     heroSub: "Der unabhängige Krypto-Karten-Vergleich für Europa. Verifizierte Daten, monatlich aktualisiert, ohne versteckte kommerzielle Agenda.",
     missionTitle: 'Unsere Mission',
-    missionBody: `TopCryptoCards entstand aus einer einfachen Beobachtung: Der Vergleich von Krypto-Karten ist komplex. Cashback-Raten variieren je nach Staking-Level, Gebühren sind manchmal versteckt, und Konditionen ändern sich regelmäßig. Unser Ziel ist es, all diese Daten klar, strukturiert und aktuell zu zentralisieren, damit jeder Nutzer eine fundierte Entscheidung treffen kann — ob Krypto-Anfänger oder erfahrener Nutzer.
+    missionBody: `TopCryptoCards entstand aus einer einfachen Beobachtung: Der Vergleich von Krypto-Karten ist komplex. Cashback-Raten variieren je nach Staking-Level, Gebühren sind manchmal versteckt, und Konditionen ändern sich regelmäßig. Unser Ziel ist es, all diese Daten klar, strukturiert und aktuell zu zentralisieren, damit jeder Nutzer eine fundierte Entscheidung treffen kann, ob Krypto-Anfänger oder erfahrener Nutzer.
 
 Wir decken mehr als 20 Karten von in Europa regulierten Anbietern ab: Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty, Plutus, Wirex, Revolut Metal und andere. Jede Karte wird nach denselben objektiven Kriterien bewertet.`,
     methodTitle: 'Unsere Methodik',
@@ -148,7 +148,7 @@ Wir decken mehr als 20 Karten von in Europa regulierten Anbietern ab: Crypto.com
     updateTitle: 'Unsere Quellen',
     updateBody: `Unsere Daten stammen ausschließlich aus Primärquellen: offizielle Emittenten-Websites, mobile Apps, Ankündigungen in offiziellen Foren (Discord, Reddit, Telegram) und Pressemitteilungen. Wir verwenden keine aggregierten Drittanbieterdaten als Hauptquelle. Wenn eine Information unsicher oder umstritten ist, weisen wir klar darauf hin.`,
     independenceTitle: 'Redaktionelle Unabhängigkeit',
-    independenceBody: `TopCryptoCards ist eine unabhängige redaktionelle Website. Unsere Rankings und Bewertungen werden ausschließlich durch unsere objektiven Kriterien bestimmt — niemals durch kommerzielle Vereinbarungen. Einige angezeigte Karten enthalten Affiliate-Links: Wenn Sie diese Links zur Anmeldung verwenden, erhalten wir eine Provision ohne zusätzliche Kosten für Sie. Diese Vergütung ändert unsere Bewertungen oder die Reihenfolge unserer Vergleiche nicht.`,
+    independenceBody: `TopCryptoCards ist eine unabhängige redaktionelle Website. Unsere Rankings und Bewertungen werden ausschließlich durch unsere objektiven Kriterien bestimmt, niemals durch kommerzielle Vereinbarungen. Einige angezeigte Karten enthalten Affiliate-Links: Wenn Sie diese Links zur Anmeldung verwenden, erhalten wir eine Provision ohne zusätzliche Kosten für Sie. Diese Vergütung ändert unsere Bewertungen oder die Reihenfolge unserer Vergleiche nicht.`,
     disclosureTitle: 'Offenlegung von Affiliate-Links',
     disclosureBody: `Gemäß den europäischen Vorschriften zur Online-Werbung sind alle Affiliate-Links mit dem Attribut rel="sponsored" gekennzeichnet. Das Vorhandensein eines Affiliate-Links beeinflusst unsere Bewertung der betreffenden Karte nicht. Weitere Informationen finden Sie auf unserer vollständigen Offenlegungsseite.`,
     ctaTitle: 'Bereit zum Vergleichen?',
@@ -208,7 +208,7 @@ Cubrimos más de 20 tarjetas emitidas por actores regulados en Europa: Crypto.co
     ctaReviews: 'Leer opiniones',
   },
   it: {
-    hero: 'Chi Siamo — TopCryptoCards',
+    hero: 'Chi Siamo, TopCryptoCards',
     heroSub: "Il comparatore indipendente di carte crypto in Europa. Dati verificati, aggiornati mensilmente, senza agenda commerciale nascosta.",
     missionTitle: 'La nostra missione',
     missionBody: `TopCryptoCards è nato da una semplice osservazione: confrontare le carte crypto è complesso. I cashback variano in base al livello di staking, le commissioni sono a volte nascoste e le condizioni cambiano regolarmente. Il nostro obiettivo è centralizzare tutti questi dati in modo chiaro, strutturato e aggiornato, affinché ogni utente possa fare una scelta informata, che sia un principiante nel settore crypto o un utente esperto.
@@ -262,7 +262,7 @@ Copriamo più di 20 carte emesse da operatori regolamentati in Europa: Crypto.co
     hero: 'About TopCryptoCards',
     heroSub: "Europe's independent crypto card comparison tool. Verified data, updated monthly, with no hidden commercial agenda.",
     missionTitle: 'Our mission',
-    missionBody: `TopCryptoCards was born from a simple observation: comparing crypto cards is complex. Cashback rates vary by staking level, fees are sometimes hidden, and conditions change regularly. Our goal is to centralise all this data in a clear, structured and up-to-date way so that every user can make an informed choice — whether they're a crypto beginner or an experienced user.
+    missionBody: `TopCryptoCards was born from a simple observation: comparing crypto cards is complex. Cashback rates vary by staking level, fees are sometimes hidden, and conditions change regularly. Our goal is to centralise all this data in a clear, structured and up-to-date way so that every user can make an informed choice, whether they're a crypto beginner or an experienced user.
 
 We cover more than 20 cards issued by regulated providers in Europe: Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty, Plutus, Wirex, Revolut Metal, and others. Every card is evaluated against the same objective criteria.`,
     methodTitle: 'Our methodology',
@@ -301,7 +301,7 @@ We cover more than 20 cards issued by regulated providers in Europe: Crypto.com,
     updateTitle: 'Our sources',
     updateBody: `Our data comes exclusively from primary sources: official issuer websites, mobile apps, announcements on official forums (Discord, Reddit, Telegram) and press releases. We do not use aggregated third-party data as a primary source. When information is uncertain or disputed, we say so clearly.`,
     independenceTitle: 'Editorial independence',
-    independenceBody: `TopCryptoCards is an independent editorial site. Our rankings and evaluations are determined solely by our objective criteria — never by commercial agreements. Some cards displayed include affiliate links: if you use these links to sign up, we receive a commission at no additional cost to you. This remuneration does not alter our ratings or the order of our comparisons.`,
+    independenceBody: `TopCryptoCards is an independent editorial site. Our rankings and evaluations are determined solely by our objective criteria, never by commercial agreements. Some cards displayed include affiliate links: if you use these links to sign up, we receive a commission at no additional cost to you. This remuneration does not alter our ratings or the order of our comparisons.`,
     disclosureTitle: 'Affiliate link disclosure',
     disclosureBody: `In accordance with European regulations on online advertising, all affiliate links are identified by the rel="sponsored" attribute. The presence of an affiliate link does not influence our evaluation of the card concerned. You can consult our full disclosure page for more details.`,
     ctaTitle: 'Ready to compare?',

@@ -74,8 +74,8 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
     score >= 42 ? t('trust_moderate') :
     t('trust_caution');
 
-  const regLabel  = bd.regulation ? t(REGULATION_I18N_KEY[bd.regulation] ?? bd.regulation) : '—';
-  const aumLabel2 = bd.aum        ? t(AUM_I18N_KEY[bd.aum] ?? bd.aum)                      : '—';
+  const regLabel  = bd.regulation ? t(REGULATION_I18N_KEY[bd.regulation] ?? bd.regulation) : ',';
+  const aumLabel2 = bd.aum        ? t(AUM_I18N_KEY[bd.aum] ?? bd.aum)                      : ',';
 
   // Component scores for progress bars
   const ageScore = bd.age != null ? Math.min(Math.round((bd.age / 10) * 100), 100) : 25;
@@ -106,7 +106,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
           <div>
             <div className="flex justify-between text-xs mb-1">
               <span className="text-slate-400">{t('trust_age')}</span>
-              <span className="text-slate-300">{bd.age ? `${bd.age} ${t('trust_years')}` : '—'}</span>
+              <span className="text-slate-300">{bd.age ? `${bd.age} ${t('trust_years')}` : ','}</span>
             </div>
             <ProgressBar value={ageScore} color={scoreColor(ageScore)} />
           </div>
@@ -138,7 +138,7 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
     );
   }
 
-  // Badge variant — compact with CSS hover tooltip
+  // Badge variant, compact with CSS hover tooltip
   return (
     <div className="relative group/trust inline-block">
       <div
@@ -157,12 +157,12 @@ export default function TrustBadge({ card, variant = 'badge' }: Props) {
       <div className="absolute bottom-full right-0 mb-2 w-52 p-3 rounded-xl bg-[#0e1320] border border-bg-border shadow-2xl opacity-0 pointer-events-none group-hover/trust:opacity-100 transition-opacity duration-200 z-[60]">
         <div className="font-semibold text-white text-xs mb-2 flex items-center gap-1.5">
           <Shield className="w-3.5 h-3.5" style={{ color }} />
-          {t('trust_score')} — {score}/100
+          {t('trust_score')}, {score}/100
         </div>
         <div className="space-y-1.5 text-[11px]">
           <TooltipRow
             label={t('trust_age')}
-            value={bd.age ? `${bd.age} ${t('trust_years')}` : '—'}
+            value={bd.age ? `${bd.age} ${t('trust_years')}` : ','}
             score={ageScore}
           />
           <TooltipRow

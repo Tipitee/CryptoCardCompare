@@ -7,7 +7,7 @@ interface AffiliateButtonProps {
   card: { name: string; issuer: string; affiliateLink: string };
   lang: string;
   label: string;
-  /** Where the click originates — used for analytics */
+  /** Where the click originates, used for analytics */
   source: Parameters<typeof trackAffiliateClick>[3];
   className?: string;
   showIcon?: boolean;

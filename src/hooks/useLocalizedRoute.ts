@@ -6,7 +6,7 @@ import { ROUTE_TRANSLATIONS, type Language } from '../i18n/types';
 export function useLocalizedRoute() {
   const lang = useLanguage();
 
-  // Builds a full localized path string — does NOT trigger navigation.
+  // Builds a full localized path string, does NOT trigger navigation.
   const buildPath = useCallback(
     (path: string) => {
       return buildLocalizedPath(lang, path);

@@ -15,23 +15,23 @@ const CONTACT_SLUGS: Record<string, string> = {
 
 const SEO: Record<string, { title: string; desc: string }> = {
   fr: {
-    title: 'Contact — TopCryptoCards',
+    title: 'Contact, TopCryptoCards',
     desc: 'Une question sur notre comparatif de cartes crypto ? Contactez-nous par email ou sur X/Twitter. Réponse sous 48 h.',
   },
   de: {
-    title: 'Kontakt — TopCryptoCards',
+    title: 'Kontakt, TopCryptoCards',
     desc: 'Fragen zu unserem Krypto-Karten-Vergleich? Kontaktieren Sie uns per E-Mail oder auf X/Twitter. Antwort innerhalb von 48 Stunden.',
   },
   es: {
-    title: 'Contacto — TopCryptoCards',
+    title: 'Contacto, TopCryptoCards',
     desc: '¿Tienes preguntas sobre nuestro comparador de tarjetas crypto? Escríbenos por email o en X/Twitter. Respuesta en 48 h.',
   },
   it: {
-    title: 'Contatti — TopCryptoCards',
+    title: 'Contatti, TopCryptoCards',
     desc: 'Hai domande sul nostro comparatore di carte crypto? Contattaci via email o su X/Twitter. Risposta entro 48 ore.',
   },
   en: {
-    title: 'Contact — TopCryptoCards',
+    title: 'Contact, TopCryptoCards',
     desc: 'Questions about our crypto card comparison tool? Reach us by email or on X/Twitter. We reply within 48 hours.',
   },
 };

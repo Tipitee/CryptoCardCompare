@@ -1,5 +1,5 @@
 export function renderMarkdown(md: string): string {
-  // NOTE: We intentionally do NOT escape HTML — article content is admin-generated
+  // NOTE: We intentionally do NOT escape HTML, article content is admin-generated
   // and may contain <a>, <div>, etc. injected by our own scripts.
   let html = md;
 
@@ -62,7 +62,7 @@ export function renderMarkdown(md: string): string {
     return `<ol class="my-4 space-y-2">${items}</ol>`;
   });
 
-  // Paragraphs — double newlines
+  // Paragraphs, double newlines
   html = html
     .split(/\n{2,}/)
     .map(block => {

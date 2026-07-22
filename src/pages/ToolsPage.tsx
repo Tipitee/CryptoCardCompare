@@ -1,5 +1,5 @@
 /**
- * ToolsPage — Hub of all free tools on TopCryptoCards
+ * ToolsPage, Hub of all free tools on TopCryptoCards
  * URL: /:lang/outils-carte-crypto (fr/be), /krypto-karte-tools (de/at), etc.
  */
 import { useState } from 'react';
@@ -22,7 +22,7 @@ const COPY: Record<string, {
   breadcrumbHome: string;
 }> = {
   fr: {
-    title:   `Outils Gratuits Cartes Crypto ${YEAR} — Calculateurs & Comparateurs | TopCryptoCards`,
+    title:   `Outils Gratuits Cartes Crypto ${YEAR}, Calculateurs & Comparateurs | TopCryptoCards`,
     h1:      `Outils gratuits pour choisir votre carte crypto`,
     desc:    `Calculateurs, simulateurs et comparateurs de cartes crypto gratuits. Estimez votre cashback annuel, comparez les frais et trouvez la meilleure carte pour votre profil.`,
     intro:   `Tous nos outils sont 100 % gratuits, sans inscription. Ils sont également intégrables sur votre site via un simple code iframe.`,
@@ -41,7 +41,7 @@ const COPY: Record<string, {
     breadcrumbHome: 'Accueil',
   },
   de: {
-    title:   `Kostenlose Krypto-Karten Tools ${YEAR} — Rechner & Vergleiche | TopCryptoCards`,
+    title:   `Kostenlose Krypto-Karten Tools ${YEAR}, Rechner & Vergleiche | TopCryptoCards`,
     h1:      `Kostenlose Tools für Ihre Krypto-Karte`,
     desc:    `Kostenlose Cashback-Rechner, Gebührenvergleiche und Simulatoren für Krypto-Karten. Finden Sie die beste Karte für Ihr Profil.`,
     intro:   `Alle Tools sind 100 % kostenlos und ohne Anmeldung nutzbar. Sie können auch über einen einfachen iframe-Code in Ihre Website eingebettet werden.`,
@@ -60,7 +60,7 @@ const COPY: Record<string, {
     breadcrumbHome: 'Startseite',
   },
   es: {
-    title:   `Herramientas Gratuitas Tarjetas Crypto ${YEAR} — Calculadoras | TopCryptoCards`,
+    title:   `Herramientas Gratuitas Tarjetas Crypto ${YEAR}, Calculadoras | TopCryptoCards`,
     h1:      `Herramientas gratuitas para elegir tu tarjeta crypto`,
     desc:    `Calculadoras de cashback, comparadores de tarifas y simuladores gratuitos para tarjetas crypto. Encuentra la mejor tarjeta para tu perfil.`,
     intro:   `Todas nuestras herramientas son 100 % gratuitas, sin registro. También se pueden integrar en tu web con un simple código iframe.`,
@@ -79,7 +79,7 @@ const COPY: Record<string, {
     breadcrumbHome: 'Inicio',
   },
   it: {
-    title:   `Strumenti Gratuiti Carte Crypto ${YEAR} — Calcolatori | TopCryptoCards`,
+    title:   `Strumenti Gratuiti Carte Crypto ${YEAR}, Calcolatori | TopCryptoCards`,
     h1:      `Strumenti gratuiti per scegliere la tua carta crypto`,
     desc:    `Calcolatori cashback, comparatori di tariffe e simulatori gratuiti per carte crypto. Trova la migliore carta per il tuo profilo.`,
     intro:   `Tutti i nostri strumenti sono 100 % gratuiti, senza registrazione. Sono anche integrabili sul tuo sito con un semplice codice iframe.`,
@@ -98,7 +98,7 @@ const COPY: Record<string, {
     breadcrumbHome: 'Home',
   },
   en: {
-    title:   `Free Crypto Card Tools ${YEAR} — Calculators & Comparators | TopCryptoCards`,
+    title:   `Free Crypto Card Tools ${YEAR}, Calculators & Comparators | TopCryptoCards`,
     h1:      `Free tools to choose your crypto card`,
     desc:    `Free cashback calculators, fee comparators and simulators for crypto cards. Find the best card for your profile in minutes.`,
     intro:   `All tools are 100 % free, no sign-up required. They can also be embedded on your website via a simple iframe code.`,
@@ -126,7 +126,7 @@ export default function ToolsPage() {
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.fr;
   const [copied, setCopied] = useState(false);
 
-  const WIDGET_CODE = `<iframe src="${BASE}/widget-cashback.html?lang=${lang}" width="100%" height="500" frameborder="0" loading="lazy" title="Crypto Card Cashback Calculator — TopCryptoCards"></iframe>`;
+  const WIDGET_CODE = `<iframe src="${BASE}/widget-cashback.html?lang=${lang}" width="100%" height="500" frameborder="0" loading="lazy" title="Crypto Card Cashback Calculator, TopCryptoCards"></iframe>`;
 
   function handleCopy() {
     navigator.clipboard.writeText(WIDGET_CODE).then(() => {

@@ -125,11 +125,11 @@ export default function Blog() {
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
     const BLOG_LABELS: Record<string, string> = {
-      fr: 'Blog — Guides et Actualités Cartes Crypto',
-      de: 'Blog — Guides und Neuigkeiten Krypto-Karten',
-      es: 'Blog — Guías y Noticias Tarjetas Crypto',
-      it: 'Blog — Guide e Notizie Carte Crypto',
-      en: 'Blog — Crypto Card Guides and News',
+      fr: 'Blog, Guides et Actualités Cartes Crypto',
+      de: 'Blog, Guides und Neuigkeiten Krypto-Karten',
+      es: 'Blog, Guías y Noticias Tarjetas Crypto',
+      it: 'Blog, Guide e Notizie Carte Crypto',
+      en: 'Blog, Crypto Card Guides and News',
     };
     const schema = {
       '@context': 'https://schema.org',
@@ -308,7 +308,7 @@ export default function Blog() {
         </>
       )}
 
-      {/* Bloc éditorial — thin content fix + thematic links */}
+      {/* Bloc éditorial, thin content fix + thematic links */}
       {(() => {
         const ed = BLOG_EDITORIAL[lang] ?? BLOG_EDITORIAL.en;
         const catSlug = BLOG_CAT_SLUG[lang] ?? 'category';
