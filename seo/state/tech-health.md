@@ -1,6 +1,6 @@
 # Tech Health — 2026-07-23
 
-Statut global : 🔴 1 CRITIQUE(S)
+Statut global : 🟢 OK
 
 | Sévérité | Check | Résultat | Détail |
 |---|---|---|---|
@@ -8,7 +8,7 @@ Statut global : 🔴 1 CRITIQUE(S)
 | CRIT | Prerender /fr localisé | ✅ | lang=fr len=181662 title="Meilleure Carte Crypto France 2026, Cash" |
 | CRIT | Vrais 404 | ✅ | reçu 404 |
 | CRIT | hreflang sans 404 | ✅ | 8 alternates OK |
-| CRIT | Crawlers IA autorisés | ❌ | BLOQUÉS: GPTBot, ClaudeBot, Google-Extended |
+| CRIT | Crawlers IA autorisés | ✅ | GPTBot/Perplexity/Claude/Google-Extended OK |
 | CRIT | Sitemaps enfants 200 | ✅ | 16 sitemaps OK |
 | INFO | URLs sitemap-blog | ✅ | 550 URLs |
 
