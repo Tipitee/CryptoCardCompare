@@ -67,6 +67,15 @@
 /be/cryptos/*        /index.html  200
 /at/cryptos/*        /index.html  200
 
+# ── Dead card URLs (card not in that market after audit) ──────────────────
+/de/karten/ledger-card  /de/marken/ledger  301
+/en/cards/bleap-card    /en/brands/bleap   301
+
+# ── Dead blog posts (slugs never existed or deleted from Supabase) ─────────
+/de/blog/vergleich-coinbase-card-vs-crypto-com-ruby-steel-2026        /404.html  410
+/it/blog/confronto-coinbase-card-vs-okx-card-2026                     /404.html  410
+/es/blog/comparativa-coinbase-card-vs-crypto-com-midnight-blue-2026   /404.html  410
+
 # ── Everything else: real 404 ──────────────────────────────────────────────
 # Physical prerendered files (dist/fr/index.html etc.) take priority over
 # redirect rules without "!" — so prerendered pages are served directly.
