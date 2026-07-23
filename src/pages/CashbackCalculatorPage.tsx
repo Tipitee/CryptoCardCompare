@@ -262,19 +262,28 @@ export default function CashbackCalculatorPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <Breadcrumb items={breadcrumbItems} />
 
-      <div className="flex items-center gap-3 mb-4">
-        <Calculator className="w-8 h-8 text-blue-600 flex-shrink-0" />
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{copy.h1}</h1>
+      {/* Hero */}
+      <div className="relative rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-bg-card to-bg-elevated border border-bg-border p-6 md:p-8">
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+        <div className="relative flex items-start gap-4">
+          <div className="p-3 rounded-xl bg-cyan-accent/10 border border-cyan-accent/20 flex-shrink-0">
+            <Calculator className="w-7 h-7 text-cyan-accent" />
+          </div>
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">{copy.h1}</h1>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl">{copy.intro}</p>
+          </div>
+        </div>
       </div>
-      <p className="text-gray-600 mb-8">{copy.intro}</p>
 
       {/* Controls */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-8 shadow-sm">
+      <div className="bg-bg-card rounded-xl border border-bg-border p-6 mb-6">
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-end">
-          <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              {copy.labelSpend}, <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
-            </label>
+          <div className="flex-1 w-full">
+            <div className="flex items-baseline justify-between mb-3">
+              <label className="text-sm text-slate-400">{copy.labelSpend}</label>
+              <span className="text-2xl font-bold text-cyan-accent">{spend.toLocaleString()} <span className="text-base font-normal text-slate-400">{copy.labelSpendUnit}</span></span>
+            </div>
             <input
               type="range"
               min={100}
@@ -282,22 +291,23 @@ export default function CashbackCalculatorPage() {
               step={100}
               value={spend}
               onChange={e => setSpend(Number(e.target.value))}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-cyan-accent"
+              style={{ background: `linear-gradient(to right, #00D4FF ${(spend - 100) / 49}%, #1F2739 ${(spend - 100) / 49}%)` }}
             />
-            <div className="flex justify-between text-xs text-gray-400 mt-1">
+            <div className="flex justify-between text-xs text-slate-500 mt-1.5">
               <span>100 €</span><span>5 000 €</span>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-shrink-0">
             <button
               onClick={() => setMode('base')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === 'base' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${mode === 'base' ? 'bg-cyan-accent text-bg text-black' : 'bg-bg-elevated border border-bg-border text-slate-300 hover:border-cyan-accent/40 hover:text-white'}`}
             >
               {copy.noStaking}
             </button>
             <button
               onClick={() => setMode('staking')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === 'staking' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${mode === 'staking' ? 'bg-cyan-accent text-black' : 'bg-bg-elevated border border-bg-border text-slate-300 hover:border-cyan-accent/40 hover:text-white'}`}
             >
               {copy.withStaking}
             </button>
@@ -305,91 +315,118 @@ export default function CashbackCalculatorPage() {
         </div>
       </div>
 
-      {/* Results table */}
-      <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm mb-8">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-4 py-3 text-left text-gray-600 font-medium">{copy.colCard}</th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">{copy.colRate}</th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">{copy.colToken}</th>
-              <th className="px-4 py-3 text-right text-gray-600 font-medium">{copy.colAnnual}</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100 bg-white">
-            {results.map((c, i) => (
-              <tr key={c.cardId} className={i === 0 ? 'bg-green-50' : ''}>
-                <td className="px-4 py-3 font-medium text-gray-900">
-                  {c.name}
-                  {i === 0 && <span className="ml-2 text-xs text-green-700 font-semibold">{copy.bestValue}</span>}
-                  {c.annualFee > 0 && (
-                    <span className="ml-2 text-xs text-gray-400">−{c.annualFee}€/an</span>
-                  )}
-                  {c.stakingRequired > 0 && mode === 'staking' && (
-                    <span className="ml-2 text-xs text-orange-500">staking ~{c.stakingRequired >= 1000 ? `${(c.stakingRequired / 1000).toFixed(0)}k` : c.stakingRequired}€</span>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-center text-blue-700 font-bold">{c.rate}%</td>
-                <td className="px-4 py-3 text-center text-gray-500">{c.token}</td>
-                <td className={`px-4 py-3 text-right font-bold ${c.net > 0 ? 'text-green-700' : 'text-red-600'}`}>
-                  {c.net > 0 ? '+' : ''}{c.net} €
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Results */}
+      <div className="rounded-xl border border-bg-border overflow-hidden mb-8">
+        {/* Table header */}
+        <div className="grid grid-cols-[1fr_auto_auto_auto] gap-4 px-4 py-3 bg-bg-elevated border-b border-bg-border text-xs font-medium text-slate-500 uppercase tracking-wide">
+          <span>{copy.colCard}</span>
+          <span className="text-center w-14">{copy.colRate}</span>
+          <span className="text-center w-16 hidden sm:block">{copy.colToken}</span>
+          <span className="text-right w-24">{copy.colAnnual}</span>
+        </div>
+        {/* Rows */}
+        {results.map((c, i) => {
+          const barPct = bestNet > 0 ? Math.max(0, Math.round((c.net / bestNet) * 100)) : 0;
+          return (
+            <div
+              key={c.cardId}
+              className={`px-4 py-4 border-b border-bg-border last:border-0 transition-colors ${i === 0 ? 'bg-green-accent/5' : 'bg-bg-card hover:bg-bg-elevated'}`}
+            >
+              <div className="grid grid-cols-[1fr_auto_auto_auto] gap-4 items-center">
+                {/* Card name */}
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-medium text-slate-100 text-sm">{c.name}</span>
+                    {i === 0 && (
+                      <span className="px-1.5 py-0.5 rounded text-xs font-semibold bg-green-accent/15 text-green-accent border border-green-accent/30">
+                        {copy.bestValue}
+                      </span>
+                    )}
+                    {c.annualFee > 0 && (
+                      <span className="text-xs text-slate-500">−{c.annualFee}€/an</span>
+                    )}
+                    {c.stakingRequired > 0 && mode === 'staking' && (
+                      <span className="text-xs text-orange-400">staking ~{c.stakingRequired >= 1000 ? `${(c.stakingRequired / 1000).toFixed(0)}k` : c.stakingRequired}€</span>
+                    )}
+                  </div>
+                  {/* Progress bar */}
+                  <div className="mt-2 h-1 rounded-full bg-bg-elevated overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${i === 0 ? 'bg-green-accent' : 'bg-cyan-accent/50'}`}
+                      style={{ width: `${barPct}%` }}
+                    />
+                  </div>
+                </div>
+                {/* Rate */}
+                <div className="text-center w-14">
+                  <span className="text-cyan-accent font-bold text-sm">{c.rate}%</span>
+                </div>
+                {/* Token */}
+                <div className="text-center w-16 hidden sm:block">
+                  <span className="text-xs text-slate-500 bg-bg-elevated px-2 py-0.5 rounded-full">{c.token}</span>
+                </div>
+                {/* Annual gain */}
+                <div className="text-right w-24">
+                  <span className={`font-bold text-sm ${c.net > 0 ? 'text-green-accent' : 'text-red-400'}`}>
+                    {c.net > 0 ? '+' : ''}{c.net} €
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
         <Link
           to={`/${lang}/${simSlug}`}
-          className="flex items-center gap-2 px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium hover:bg-blue-100 transition-colors"
+          className="btn-primary flex items-center gap-2 justify-center"
         >
           <TrendingUp className="w-4 h-4" />
           {copy.ctaSimulator}
         </Link>
         <Link
           to={`/${lang}/${bestSlug}`}
-          className="flex items-center gap-2 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors"
+          className="btn-secondary flex items-center gap-2 justify-center"
         >
           {copy.ctaBest}
         </Link>
       </div>
 
       {/* Note */}
-      <p className="text-xs text-gray-500 mb-10 leading-relaxed">{copy.note}</p>
+      <p className="text-xs text-slate-500 mb-10 leading-relaxed">{copy.note}</p>
 
-      {/* Embed section (link-building) */}
-      <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 mb-10">
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">{copy.embedTitle}</h2>
-        <div className="relative">
-          <pre className="bg-white border border-gray-200 rounded-lg p-4 text-xs text-gray-600 overflow-x-auto whitespace-pre-wrap break-all">
-            {embedCode}
-          </pre>
+      {/* Embed section */}
+      <div className="bg-bg-elevated rounded-xl border border-bg-border p-6 mb-10">
+        <h2 className="text-base font-semibold text-slate-200 mb-3">{copy.embedTitle}</h2>
+        <pre className="bg-bg-card border border-bg-border rounded-lg p-4 text-xs text-slate-400 overflow-x-auto whitespace-pre-wrap break-all">
+          {embedCode}
+        </pre>
+        <div className="flex items-center gap-4 mt-3">
           <button
             onClick={handleCopy}
-            className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-4 py-2 bg-cyan-accent text-black text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
           >
             {copied ? copy.embedCopied : copy.embedCopy}
           </button>
+          <p className="text-xs text-slate-500">
+            Source: <a href="https://topcryptocards.eu" className="text-cyan-accent/70 hover:text-cyan-accent underline">TopCryptoCards.eu</a>
+          </p>
         </div>
-        <p className="mt-3 text-xs text-gray-400">
-          Source: <a href="https://topcryptocards.eu" className="underline">TopCryptoCards.eu</a>, <a href={`/${lang}/${feeSlug}`} className="underline">{copy.colAnnual.toLowerCase()}</a>
-        </p>
       </div>
 
       {/* FAQ */}
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">{copy.faqTitle}</h2>
-        <div className="space-y-4">
+        <h2 className="text-xl font-bold mb-4">{copy.faqTitle}</h2>
+        <div className="space-y-3">
           {copy.faqs.map((faq, i) => (
-            <details key={i} className="bg-white rounded-lg border border-gray-200 p-4 cursor-pointer group">
-              <summary className="font-semibold text-gray-800 list-none flex justify-between items-center">
-                {faq.q}
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+            <details key={i} className="bg-bg-card rounded-xl border border-bg-border p-4 cursor-pointer group">
+              <summary className="font-semibold text-slate-200 list-none flex justify-between items-center gap-3">
+                <span>{faq.q}</span>
+                <span className="text-slate-500 group-open:rotate-180 transition-transform flex-shrink-0">▾</span>
               </summary>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+              <p className="mt-3 text-slate-400 text-sm leading-relaxed">{faq.a}</p>
             </details>
           ))}
         </div>

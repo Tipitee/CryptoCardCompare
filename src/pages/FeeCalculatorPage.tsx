@@ -5,7 +5,7 @@
  */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react';
+import { TrendingUp, AlertTriangle, CheckCircle, Calculator } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
@@ -328,115 +328,147 @@ export default function FeeCalculatorPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <Breadcrumb items={breadcrumbItems} />
 
-      <div className="flex items-center gap-3 mb-4">
-        <TrendingUp className="w-8 h-8 text-blue-600 flex-shrink-0" />
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{copy.h1}</h1>
+      {/* Hero */}
+      <div className="relative rounded-2xl overflow-hidden mb-8 bg-gradient-to-br from-bg-card to-bg-elevated border border-bg-border p-6 md:p-8">
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+        <div className="relative flex items-start gap-4">
+          <div className="p-3 rounded-xl bg-cyan-accent/10 border border-cyan-accent/20 flex-shrink-0">
+            <TrendingUp className="w-7 h-7 text-cyan-accent" />
+          </div>
+          <div>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">{copy.h1}</h1>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-2xl">{copy.intro}</p>
+          </div>
+        </div>
       </div>
-      <p className="text-gray-600 mb-8">{copy.intro}</p>
 
       {/* Spend slider */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6 shadow-sm">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {copy.labelSpend}, <span className="text-blue-600 font-bold">{spend} {copy.labelSpendUnit}</span>
-        </label>
+      <div className="bg-bg-card rounded-xl border border-bg-border p-6 mb-6">
+        <div className="flex items-baseline justify-between mb-3">
+          <label className="text-sm text-slate-400">{copy.labelSpend}</label>
+          <span className="text-2xl font-bold text-cyan-accent">{spend.toLocaleString()} <span className="text-base font-normal text-slate-400">{copy.labelSpendUnit}</span></span>
+        </div>
         <input
           type="range" min={100} max={5000} step={100} value={spend}
           onChange={e => setSpend(Number(e.target.value))}
-          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+          className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-cyan-accent"
+          style={{ background: `linear-gradient(to right, #00D4FF ${(spend - 100) / 49}%, #1F2739 ${(spend - 100) / 49}%)` }}
         />
-        <div className="flex justify-between text-xs text-gray-400 mt-1">
+        <div className="flex justify-between text-xs text-slate-500 mt-1.5">
           <span>100 €</span><span>5 000 €</span>
         </div>
       </div>
 
-      {/* Baseline reference box */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-        <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-        <div className="text-sm text-blue-800">
-          <strong>{copy.labelFreeRef}</strong>, {spend} € × 1 % × 12 = <strong>{Math.round(freeMonthly * 12)} €/an</strong>
+      {/* Baseline reference */}
+      <div className="bg-cyan-accent/5 border border-cyan-accent/20 rounded-xl p-4 mb-6 flex items-start gap-3">
+        <CheckCircle className="w-5 h-5 text-cyan-accent flex-shrink-0 mt-0.5" />
+        <div className="text-sm text-slate-300">
+          <span className="font-semibold text-cyan-accent">{copy.labelFreeRef}</span>{' '}
+          {spend.toLocaleString()} € × 1 % × 12 = <span className="font-bold text-white">{Math.round(freeMonthly * 12)} €/an</span>
         </div>
       </div>
 
-      {/* Results table */}
-      <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm mb-8">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-4 py-3 text-left text-gray-600 font-medium">{copy.colCard}</th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">{copy.colAnnualCost}</th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">{copy.colExtraCashback}</th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">{copy.colBreakEven}</th>
-              <th className="px-4 py-3 text-right text-gray-600 font-medium">{copy.colVerdict}</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100 bg-white">
-            {results.map((c) => (
-              <tr key={c.cardId} className={c.netAnnual > 0 ? 'bg-green-50' : ''}>
-                <td className="px-4 py-3">
-                  <div className="font-medium text-gray-900">{c.name}</div>
-                  {c.token && <div className="text-xs text-gray-400">{c.token}</div>}
-                  <div className="text-xs text-gray-400">
-                    {c.type === 'staking' ? copy.stakingTier : copy.paidTier} · {c.cashbackRate}% cashback
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-center text-gray-700">{c.annualCost.toFixed(0)} €/an</td>
-                <td className="px-4 py-3 text-center">
-                  {c.extraMonthly > 0
-                    ? <span className="text-green-700 font-medium">+{c.extraMonthly.toFixed(1)} €</span>
-                    : <span className="text-gray-400">0 €</span>
-                  }
-                </td>
-                <td className="px-4 py-3 text-center">
-                  {c.breakEvenMonths === null
-                    ? <span className="text-red-500 flex items-center justify-center gap-1"><AlertTriangle className="w-3 h-3" />{copy.never}</span>
-                    : <span className="text-gray-700">{copy.breakEvenAt} {c.breakEvenMonths} {copy.months}</span>
-                  }
-                </td>
-                <td className={`px-4 py-3 text-right font-semibold text-xs ${verdictColor(c.netAnnual, c.breakEvenMonths)}`}>
+      {/* Results */}
+      <div className="rounded-xl border border-bg-border overflow-hidden mb-8">
+        {/* Header */}
+        <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 px-4 py-3 bg-bg-elevated border-b border-bg-border text-xs font-medium text-slate-500 uppercase tracking-wide">
+          <span>{copy.colCard}</span>
+          <span className="text-center w-20 hidden sm:block">{copy.colAnnualCost}</span>
+          <span className="text-center w-20">{copy.colExtraCashback}</span>
+          <span className="text-center w-28 hidden md:block">{copy.colBreakEven}</span>
+          <span className="text-right w-28">{copy.colVerdict}</span>
+        </div>
+        {/* Rows */}
+        {results.map((c) => (
+          <div
+            key={c.cardId}
+            className={`px-4 py-4 border-b border-bg-border last:border-0 transition-colors ${c.netAnnual > 0 ? 'bg-green-accent/5' : 'bg-bg-card hover:bg-bg-elevated'}`}
+          >
+            <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-2 items-center">
+              {/* Card info */}
+              <div>
+                <div className="font-medium text-slate-100 text-sm">{c.name}</div>
+                <div className="text-xs text-slate-500 mt-0.5">
+                  <span className={`inline-block px-1.5 py-0.5 rounded text-xs mr-1 ${c.type === 'staking' ? 'bg-orange-400/10 text-orange-400' : 'bg-blue-400/10 text-blue-400'}`}>
+                    {c.type === 'staking' ? copy.stakingTier : copy.paidTier}
+                  </span>
+                  {c.cashbackRate}% cashback{c.token ? ` · ${c.token}` : ''}
+                </div>
+              </div>
+              {/* Annual cost */}
+              <div className="text-center w-20 hidden sm:block">
+                <span className="text-slate-300 text-sm">{c.annualCost.toFixed(0)} €/an</span>
+              </div>
+              {/* Extra cashback */}
+              <div className="text-center w-20">
+                {c.extraMonthly > 0
+                  ? <span className="text-green-accent font-semibold text-sm">+{c.extraMonthly.toFixed(1)} €</span>
+                  : <span className="text-slate-500 text-sm">0 €</span>
+                }
+              </div>
+              {/* Break even */}
+              <div className="text-center w-28 hidden md:block">
+                {c.breakEvenMonths === null
+                  ? <span className="text-red-400 flex items-center justify-center gap-1 text-xs"><AlertTriangle className="w-3 h-3" />{copy.never}</span>
+                  : <span className="text-slate-400 text-xs">{copy.breakEvenAt} {c.breakEvenMonths} {copy.months}</span>
+                }
+              </div>
+              {/* Verdict */}
+              <div className="text-right w-28">
+                <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${
+                  c.breakEvenMonths === null
+                    ? 'bg-red-500/10 text-red-400'
+                    : c.netAnnual > 0
+                      ? 'bg-green-accent/10 text-green-accent'
+                      : c.netAnnual > -30
+                        ? 'bg-orange-400/10 text-orange-400'
+                        : 'bg-red-500/10 text-red-400'
+                }`}>
                   {verdict(c.netAnnual, c.breakEvenMonths)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Note */}
-      <p className="text-xs text-gray-500 mb-8 leading-relaxed">{copy.note}</p>
+      <p className="text-xs text-slate-500 mb-8 leading-relaxed">{copy.note}</p>
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3 mb-10">
-        <Link to={`/${lang}/${cbSlug}`} className="flex items-center gap-2 px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium hover:bg-blue-100 transition-colors">
+        <Link to={`/${lang}/${cbSlug}`} className="btn-primary flex items-center gap-2 justify-center">
+          <Calculator className="w-4 h-4" />
           {copy.ctaCashback}
         </Link>
-        <Link to={`/${lang}/${simSlug}`} className="flex items-center gap-2 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors">
+        <Link to={`/${lang}/${simSlug}`} className="btn-secondary flex items-center gap-2 justify-center">
           {copy.ctaSimulator}
         </Link>
-        <Link to={`/${lang}/${bestSlug}`} className="flex items-center gap-2 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-100 transition-colors">
+        <Link to={`/${lang}/${bestSlug}`} className="btn-secondary flex items-center gap-2 justify-center">
           {copy.ctaBest}
         </Link>
       </div>
 
       {/* Embed */}
-      <div className="bg-gray-50 rounded-xl border border-gray-200 p-6 mb-10">
-        <h2 className="text-lg font-semibold text-gray-800 mb-3">{copy.embedTitle}</h2>
-        <pre className="bg-white border border-gray-200 rounded-lg p-4 text-xs text-gray-600 overflow-x-auto whitespace-pre-wrap break-all">{embedCode}</pre>
-        <button onClick={handleCopy} className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
+      <div className="bg-bg-elevated rounded-xl border border-bg-border p-6 mb-10">
+        <h2 className="text-base font-semibold text-slate-200 mb-3">{copy.embedTitle}</h2>
+        <pre className="bg-bg-card border border-bg-border rounded-lg p-4 text-xs text-slate-400 overflow-x-auto whitespace-pre-wrap break-all">{embedCode}</pre>
+        <button onClick={handleCopy} className="mt-3 px-4 py-2 bg-cyan-accent text-black text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">
           {copied ? copy.embedCopied : copy.embedCopy}
         </button>
       </div>
 
       {/* FAQ */}
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">{copy.faqTitle}</h2>
-        <div className="space-y-4">
+        <h2 className="text-xl font-bold mb-4">{copy.faqTitle}</h2>
+        <div className="space-y-3">
           {copy.faqs.map((faq, i) => (
-            <details key={i} className="bg-white rounded-lg border border-gray-200 p-4 cursor-pointer group">
-              <summary className="font-semibold text-gray-800 list-none flex justify-between items-center">
-                {faq.q}
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+            <details key={i} className="bg-bg-card rounded-xl border border-bg-border p-4 cursor-pointer group">
+              <summary className="font-semibold text-slate-200 list-none flex justify-between items-center gap-3">
+                <span>{faq.q}</span>
+                <span className="text-slate-500 group-open:rotate-180 transition-transform flex-shrink-0">▾</span>
               </summary>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+              <p className="mt-3 text-slate-400 text-sm leading-relaxed">{faq.a}</p>
             </details>
           ))}
         </div>
