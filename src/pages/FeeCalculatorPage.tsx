@@ -254,15 +254,13 @@ export default function FeeCalculatorPage() {
   const [spend, setSpend] = useState(1000);
   const [copied, setCopied] = useState(false);
 
-  useHreflang({
-    fr: `${BASE}/fr/${ROUTE_TRANSLATIONS.fr.feeCalculator}`,
-    be: `${BASE}/be/${ROUTE_TRANSLATIONS.be.feeCalculator}`,
-    de: `${BASE}/de/${ROUTE_TRANSLATIONS.de.feeCalculator}`,
-    at: `${BASE}/at/${ROUTE_TRANSLATIONS.at.feeCalculator}`,
-    es: `${BASE}/es/${ROUTE_TRANSLATIONS.es.feeCalculator}`,
-    it: `${BASE}/it/${ROUTE_TRANSLATIONS.it.feeCalculator}`,
-    en: `${BASE}/en/${ROUTE_TRANSLATIONS.en.feeCalculator}`,
-  });
+  useHreflang(
+    (l) => {
+      const slug = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.feeCalculator;
+      return slug ? `${BASE}/${l}/${slug}` : null;
+    },
+    [],
+  );
 
   const slug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.feeCalculator ?? ROUTE_TRANSLATIONS.fr.feeCalculator;
 

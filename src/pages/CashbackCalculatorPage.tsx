@@ -209,15 +209,13 @@ export default function CashbackCalculatorPage() {
   const [mode, setMode] = useState<'base' | 'staking'>('base');
   const [copied, setCopied] = useState(false);
 
-  useHreflang({
-    fr: `https://topcryptocards.eu/fr/${ROUTE_TRANSLATIONS.fr.cashbackCalculator}`,
-    be: `https://topcryptocards.eu/be/${ROUTE_TRANSLATIONS.be.cashbackCalculator}`,
-    de: `https://topcryptocards.eu/de/${ROUTE_TRANSLATIONS.de.cashbackCalculator}`,
-    at: `https://topcryptocards.eu/at/${ROUTE_TRANSLATIONS.at.cashbackCalculator}`,
-    es: `https://topcryptocards.eu/es/${ROUTE_TRANSLATIONS.es.cashbackCalculator}`,
-    it: `https://topcryptocards.eu/it/${ROUTE_TRANSLATIONS.it.cashbackCalculator}`,
-    en: `https://topcryptocards.eu/en/${ROUTE_TRANSLATIONS.en.cashbackCalculator}`,
-  });
+  useHreflang(
+    (l) => {
+      const slug = ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator;
+      return slug ? `https://topcryptocards.eu/${l}/${slug}` : null;
+    },
+    [],
+  );
 
   useSeoMeta({
     title: copy.title,
