@@ -27,12 +27,17 @@
     "/brief": "run seo/content-strategy/content-briefs.md on the top item of the latest content-gap output",
     "/report": "run seo/reporting/weekly-report.md on fresh seo/gsc-data/ exports and update the dashboard",
     "/refresh": "pick the top page-2 prisoner from the latest weekly report and produce its refresh brief",
-    "/links": "run seo/agents/A7-internal-link-finder.md (node scripts/internal-link-finder.mjs depuis la machine de l utilisateur)"
+    "/links": "run seo/agents/A7-internal-link-finder.md (node scripts/internal-link-finder.mjs depuis la machine de l utilisateur)",
+    "/decay": "run seo/agents/A5-decay-detector.md (node scripts/decay-tracker.mjs)",
+    "/striking": "run seo/agents/A6-striking-distance-miner.md (node scripts/striking-distance.mjs)",
+    "/quality": "run seo/agents/A11-quality-gate.md (node scripts/quality-gate.mjs <draft.md>)",
+    "/digest": "run seo/agents/A12-weekly-digest.md"
   },
   "output_rules": [
     "every report ends with ONE recommended action sized under 4 hours",
     "never smooth over declines; money pages flagged at any decline",
     "segment everything by market (fr/be/de/at/es/it/en)",
     "all data claims dated; verify against Supabase or GSC, never guess"
-  ]
+  ],
+  "content_rule_country_adaptation": "Toute page/variante spécifique à un marché doit contenir des infos propres à CE pays (fiscalité, régulateur, dispo cartes, devise, banques). DE≠AT, fr≠be, en=UK. Jamais une simple traduction."
 }

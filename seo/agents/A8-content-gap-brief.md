@@ -16,6 +16,7 @@ Trouver la demande que le site touche mais ne possède pas — une buyer query s
 - Anti-doublon : ne proposer une NOUVELLE page que si aucun slug existant ne cible déjà la query (vérifié contre les sitemaps).
 - Demande réelle + fit clair avec le site. Pas de page « pour faire du volume ».
 - Si tu ne peux pas nommer ce qui rendra notre page 2× meilleure que le gagnant actuel → marquer « ingagnable », ne pas briefer.
+- **Adaptation pays (jamais traduire)** : toute page/brief spécifique à un pays doit contenir des infos propres à CE pays — fiscalité, régulateur, disponibilité des cartes, devise, plafonds, tarifs locaux — vérifiées par marché. Une variante linguistique n'est jamais une simple traduction : DE ≠ AT, fr ≠ be, en=UK ont chacun leurs règles. Le brief doit lister explicitement les points à adapter par marché.
 
 ## Sortie (≤ 50 lignes)
 - Table triée par intention revenu (max 12 lignes) : sujet | query cible | marché | format | effort S/M/L | intention.

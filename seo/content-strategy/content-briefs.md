@@ -18,4 +18,6 @@ CHAQUE BRIEF INCLUT :
 
 POUR LES REFRESHES : même format, plus listes garder / couper / ajouter / réécrire. Un refresh bat une page neuve quand l'URL a déjà de l'autorité.
 
+ADAPTATION PAYS (jamais traduire) : chaque variante de marché doit contenir des infos propres à CE pays — fiscalité (FR 30 %, DE §23 EStG, AT 27,5 % KESt, ES IRPF, IT 26 %, UK CGT), régulateur (AMF/BaFin/FMA/CNMV/CONSOB/FCA), disponibilité réelle des cartes, devise, banques locales SEPA. DE ≠ AT, fr ≠ be, en = UK. Le brief liste explicitement les points à adapter par marché ; une variante n'est jamais une simple traduction.
+
 RÈGLE : si tu ne peux pas nommer ce qui rendra notre page 2x meilleure que l'actuel gagnant, dis que l'écart est ingagnable et propose une autre cible.

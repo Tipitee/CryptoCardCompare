@@ -70,12 +70,30 @@ Trois protections Ryze intégrées : **cap** (max 3 pages/run), **quality gate q
 
 ---
 
-## Ordre de construction (MVP d'abord — la règle n°1 de l'article)
-- **Phase 0 ✅ faite** : A1 Rank Watcher + A2 AI Visibility (déjà planifiés)
-- **Phase 1 — cette semaine (zéro risque, aucun nouveau connecteur)** : A3 Tech Health Sentinel + A4 SERP Watch. 100 % lecture seule, tournent sur prod + WebSearch.
-- **Phase 2 — planners** : A7 Internal-Link + A8 Gap (faisables tout de suite via Supabase/sitemaps) ; A5 Decay + A6 Striking-distance dès que l'export GSC hebdo est en place.
-- **Phase 3 — makers + gate** : A9/A10/A11 + le script de publication. On active seulement quand un brief a été rédigé à la main une fois, validé, et qu'on fait confiance au gate.
-- **Phase 4 — option data live** : brancher Ahrefs ou Semrush (payant) pour passer A1/A4/A6 en données quotidiennes ; GA4 pour optimiser sur les conversions.
+## État de construction (mis à jour 2026-07-23)
+- **Phase 0 ✅** : A1 Rank Watcher (lun 8h) + A2 AI Visibility (mer 8h) — planifiés.
+- **Phase 1 ✅** : A3 Tech Health Sentinel (mar 8h) + A4 SERP Watch (jeu 8h). Lecture seule.
+- **Phase 2 ✅** : A8 Content-Gap Brief (ven 8h, planifié) + A7 Internal-Link Finder (`/links`, user-run car Supabase).
+- **Phase 2b ✅ scaffolding** : A5 Decay (`/decay`, `decay-tracker.mjs`) + A6 Striking-distance (`/striking`, `striking-distance.mjs`). **Actifs dès que l'export GSC hebdo est dans `seo/gsc-data/`** (A5 exige 3 semaines d'historique).
+- **Phase 3 ✅ construite, pas activée** : makers A9 (`A9-refresh-writer.md`) + A10 (`A10-localization-agent.md`), checker A11 (`quality-gate.mjs`, testé), pipeline `publish-drafts.mjs` (cap 5, user-run). On n'active la rédaction qu'après un brief validé à la main et confiance dans le gate.
+- **A12 Weekly Digest ✅** : lun 9h — roule tous les state files en <300 mots + 1 action.
+- **Phase 4 — option data live** : Ahrefs/Semrush (payant) pour passer A1/A4/A6 en quotidien ; GA4 pour optimiser sur conversions.
+
+## Scripts (tous testés, syntaxe OK)
+| Script | Agent | Réseau | Lancé par |
+|---|---|---|---|
+| `scripts/health-check.mjs` | A3 | prod (web) | tâche mar / toi |
+| `scripts/internal-link-finder.mjs` | A7 | Supabase | toi |
+| `scripts/striking-distance.mjs` | A6 | non (CSV local) | toi / tâche |
+| `scripts/decay-tracker.mjs` | A5 | non (CSV local) | toi lun |
+| `scripts/quality-gate.mjs` | A11 | non | maker / toi |
+| `scripts/publish-drafts.mjs` | pipeline | Supabase | **toi seul** |
+
+## Raccourcis (settings.json)
+`/audit /schema /visibility /perception /gap /brief /report /refresh /links /decay /striking /quality /digest`
+
+## Règle contenu gravée (settings.json + A8/A9/A10/A11/briefs)
+Adapter au pays, **jamais traduire** : fiscalité, régulateur, dispo cartes, devise, banques par marché. DE≠AT, fr≠be, en=UK.
 
 ## Qui fait quoi
 **Moi, maintenant (code + config, aucune permission spéciale) :**
