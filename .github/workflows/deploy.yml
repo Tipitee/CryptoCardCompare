@@ -15,6 +15,11 @@ name: Build, prerender & deploy to Netlify
 on:
   push:
     branches: [main]
+    # Les commits d'état SEO (brouillons marqués, logs) ne doivent PAS
+    # déclencher un redeploy complet du site.
+    paths-ignore:
+      - 'seo/state/**'
+      - 'seo/gsc-data/**'
   workflow_dispatch: {}
   schedule:
     # Nightly at 03:17 UTC: re-render so Supabase content changes (blog posts,

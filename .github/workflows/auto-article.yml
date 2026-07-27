@@ -1,0 +1,90 @@
+name: Auto-article (hybride)
+
+# Runner cloud du pipeline d'articles — tourne même Mac éteint.
+# NEUF (lun/mer/ven) : génère FR + localisations → brouillons Supabase (published=false).
+#   Rien n'est publié : tu relis dans /admin/blog puis tu publies.
+# REFRESH (samedi) : rafraîchit une page existante → published=true → sitemap + push
+#   → déclenche le déploiement (faible risque, URL déjà établie).
+#
+# Secrets requis (Settings → Secrets and variables → Actions) :
+#   ANTHROPIC_API_KEY, SUPABASE_URL (ou VITE_SUPABASE_URL), SUPABASE_SERVICE_ROLE_KEY
+# Note : horaires en UTC. 08:00 UTC ≈ 09/10h Paris selon l'heure d'été.
+
+on:
+  schedule:
+    - cron: '0 8 * * 1,3,5'   # NEUF — lundi / mercredi / vendredi
+    - cron: '0 8 * * 6'       # REFRESH — samedi
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode'
+        type: choice
+        options: [new, refresh]
+        default: new
+
+concurrency:
+  group: auto-article
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # pour le push en mode refresh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Déterminer le mode
+        id: mode
+        run: |
+          if [ -n "${{ github.event.inputs.mode }}" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 8 * * 6" ]; then
+            echo "mode=refresh" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=new" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Générer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/auto-article.mjs --mode ${{ steps.mode.outputs.mode }}
+
+      - name: Persister l'état (mode NEUF — backlog + log, sans redeploy)
+        if: steps.mode.outputs.mode == 'new'
+        run: |
+          git config user.name "auto-article-bot"
+          git config user.email "bot@topcryptocards.eu"
+          git add seo/state/article-backlog.csv seo/state/drafts.md || true
+          git commit -m "chore(seo): auto-article state [skip deploy]" || echo "rien à committer"
+          git push || echo "push ignoré"
+
+      - name: Publier le refresh (mode REFRESH — sitemap + push → déploiement)
+        if: steps.mode.outputs.mode == 'refresh'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          node scripts/gen-blog-sitemap.mjs || true
+          git config user.name "auto-article-bot"
+          git config user.email "bot@topcryptocards.eu"
+          git add -A
+          git commit -m "content: auto-refresh $(date +%F)" || echo "rien à committer"
+          git push || echo "push ignoré"
+
+      - name: Résumé
+        run: |
+          echo "### Auto-article — mode ${{ steps.mode.outputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Mode NEUF → brouillons dans Supabase (published=false), à relire dans /admin/blog." >> "$GITHUB_STEP_SUMMARY"
+          echo "Mode REFRESH → page mise à jour + déploiement déclenché." >> "$GITHUB_STEP_SUMMARY"
