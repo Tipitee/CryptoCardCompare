@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Planifie le pipeline d'articles auto (mode NEUF → brouillons) lun/mer/ven 9h.
+  Installe :
+    cp scripts/com.topcryptocards.autoarticle.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.topcryptocards.autoarticle.plist
+  IMPORTANT : remplace /Users/thomaspetit/CryptoCardCompare si ton chemin diffère,
+  et vérifie le chemin de node (`which node`).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.topcryptocards.autoarticle</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>cd /Users/thomaspetit/CryptoCardCompare &amp;&amp; set -a &amp;&amp; source .env &amp;&amp; set +a &amp;&amp; node scripts/auto-article.mjs &gt;&gt; seo/state/auto-article.log 2&gt;&amp;1</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardErrorPath</key>
+  <string>/tmp/topcryptocards-autoarticle.err</string>
+</dict>
+</plist>
