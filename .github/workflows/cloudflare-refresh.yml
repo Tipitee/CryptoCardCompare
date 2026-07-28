@@ -1,0 +1,32 @@
+name: Cloudflare nightly refresh
+
+# Remplace le cron nocturne de l'ancien deploy.yml (Netlify).
+# Cloudflare ne rebuild que sur push : ce workflow ping un Deploy Hook Cloudflare
+# chaque nuit pour re-prérender avec les dernières données Supabase (frais cartes,
+# articles publiés) sans avoir à pousser du code.
+#
+# SETUP (une fois) :
+#   1. Cloudflare Dashboard → Workers & Pages → ton projet → Settings →
+#      Builds & deployments → Deploy hooks → "Add deploy hook" (branche main)
+#   2. Copie l'URL générée
+#   3. GitHub → Settings → Secrets → Actions → nouveau secret CLOUDFLARE_DEPLOY_HOOK
+#
+# Publier un brouillon (publish-drafts.mjs → git push) déclenche déjà un build ;
+# ce workflow ne sert qu'à la fraîcheur quotidienne des données.
+
+on:
+  schedule:
+    - cron: '17 3 * * *'   # 03:17 UTC chaque nuit
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déclencher un rebuild Cloudflare
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" ]; then
+            echo "::warning::CLOUDFLARE_DEPLOY_HOOK non configuré — voir le SETUP en tête du fichier."
+            exit 0
+          fi
+          curl -fsS -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" && echo "✓ rebuild Cloudflare déclenché"
