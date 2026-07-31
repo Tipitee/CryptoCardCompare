@@ -5,3 +5,4 @@ Aucun draft. Un maker écrit ici : slug | langue | statut (rédigé / gate PASS 
 |---|---|---|---|
 
 | blog-auto-carte-crypto-fiscalite-2026-ce-que-vous-payez-vrai | fr+de+es+it+en | gate PASS | prêt review (2026-07-29) |
+| blog-auto-crypto-com-alternatives-meilleures-cartes-crypto-2 | fr+de+es+it+en | gate PASS | prêt review (2026-07-31) |
