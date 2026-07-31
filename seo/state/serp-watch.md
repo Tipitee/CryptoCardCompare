@@ -17,3 +17,15 @@ Concurrents suivis : cryptocardindex.com, koinly.io, journalducoin.com, cryptona
 | 2026-07-23 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) |
 | 2026-07-23 | carte crypto belgique | be | absent top 10 | mediasportif.fr | non détecté (à confirmer) |
 | 2026-07-23 | krypto karte österreich | at | absent top 10 | top-zins.at | non détecté (à confirmer) |
+| 2026-07-30 | meilleure carte crypto | fr | absent top 10 | coinacademy.fr | non détecté (WebSearch géo-US, à confirmer) — moneyradar.org #4 + journalducoin #5 dans le top (concurrents suivis, à confirmer si nouveau) |
+| 2026-07-30 | carte crypto cashback | fr | absent top 10 | community.finary.com | non détecté (à confirmer) — journalducoin présent, stable |
+| 2026-07-30 | crypto.com carte avis | fr | absent top 10 | community.finary.com (forum) | non détecté — gagnant cryptoast.fr → forum Finary (à confirmer, variance forum) |
+| 2026-07-30 | beste krypto karte | de | absent top 10 | blockspot.io | non détecté (à confirmer) — stable |
+| 2026-07-30 | bitcoin karte | de | absent top 10 | bitblokes.de (carte/map, intention mixte) | non détecté (à confirmer) — SERP navigationnelle, non cible |
+| 2026-07-30 | krypto karte cashback | de | absent top 10 | blockchainwelt.de | non détecté (à confirmer) — stable |
+| 2026-07-30 | best crypto card europe | en | absent top 10 | cryptoslate.com | non détecté (à confirmer) — stable |
+| 2026-07-30 | best crypto card uk | en | absent top 10 | sourceforge.net | non détecté (à confirmer) — stable |
+| 2026-07-30 | mejor tarjeta cripto | es | absent top 10 | web3.bitget.com | non détecté (à confirmer) — stable |
+| 2026-07-30 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) — stable |
+| 2026-07-30 | carte crypto belgique | be | absent top 10 | revolut.com/fr-BE (page marque) | non détecté — gagnant mediasportif.fr → Revolut (marque, à confirmer) |
+| 2026-07-30 | krypto karte österreich | at | absent top 10 | top-zins.at | non détecté (à confirmer) — stable |

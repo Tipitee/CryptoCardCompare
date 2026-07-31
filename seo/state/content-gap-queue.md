@@ -139,3 +139,72 @@ Chaque brief approuvé → confié au maker A9 (Phase 3) → checker A11 → toi
 - **Localisation — ADAPTER, jamais traduire** : page **IT uniquement**. Ne PAS réutiliser chiffres FR/DE/UK/ES. À revérifier au publish : aliquota imposta sostitutiva in vigore, soglia di esenzione, obblighi RW/RT. Disclaimer non-conseil fiscal + auteur cité.
 
 **→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/en/crypto-card-tax-uk` (comble le cluster fiscal promis à la page UK cards du RUN 07-23, zéro couverture EN, territoire Koinly, alimente 2 money pages EN/UK).**
+
+---
+
+### RUN 2026-07-31 (A8 /gap)
+
+**Note anti-doublon queue** : les gaps les plus évidents (UK cards `/en/crypto-cards-uk`, UK tax, DE/AT cashback tax, ES/IT tax, Netflix/Spotify reformat) sont DÉJÀ briefés (RUN 07-23 / 07-24) — non re-proposés. Ce run cible 3 gaps NON encore briefés, révélés par les passes format + concurrent.
+
+#### Table (triée par intention revenu)
+| Sujet | Query cible | Marché | Format | Effort | Intention |
+|---|---|---|---|---|---|
+| Cartes crypto compatibles Apple Pay / Google Pay | "which crypto cards work with Apple Pay?" | en + fr + ADAPTER 5 | thématique (tableau filtré) | M | commercial → **BRIEF 1** |
+| Carte crypto stablecoin (USDT/USDC) : dépense + cashback | "best crypto card for USDC/USDT in Europe" | en/es/it (+ fr/de reformat) | thématique (tableau) | M | commercial → **BRIEF 2** |
+| Fiscalité cashback carte crypto en Belgique | "le cashback crypto est-il imposable en Belgique ?" | be | guide (page dédiée) | M | informational → **BRIEF 3** |
+| Carte crypto prépayée (vs rechargeable) | "prepaid crypto card Europe" | en | thématique | S | commercial — candidat, recouvre partiellement `virtual-crypto-card` → non briefé |
+| Plafonds/limites mensuelles carte crypto | "crypto card monthly spending limits" | en/fr | tableau comparatif | S | informational — demande faible → non briefé |
+| UK cards + UK/DE/AT/ES/IT tax + Netflix/Spotify | (voir RUN 07-23 / 07-24) | multi | — | — | DÉJÀ EN FILE |
+
+#### BRIEF 1 — Cartes crypto compatibles Apple Pay & Google Pay — NOUVELLE PAGE THÉMATIQUE (reformat + gap FR)
+- **Query cible / buyer query mappée** : "Which crypto cards work with Apple Pay / Google Pay?" (en, commercial) — hors buyer-queries.csv mais demande pré-achat majeure ; signal interne : 8 posts blog existants sur le sujet (de/es/it/en, 2025 + 2026) → demande prouvée, mais AUCUNE page thématique et **FR totalement absent** du blog. Slug proposé : `/en/crypto-card-apple-pay`, `/fr/carte-crypto-apple-pay`, `/de/krypto-karte-apple-pay`, `/es/tarjeta-crypto-apple-pay`, `/it/carta-crypto-apple-pay` (+ be/at).
+- **Anti-doublon** : aucun slug thématique ne cible Apple/Google Pay (uniquement des posts blog datés « 2025 » au mauvais format). Gap de format réel : la SERP « crypto card apple pay » veut un tableau « quelle carte marche », pas un article.
+- **Intention** : commercial (comparaison avant souscription) → clics affiliés directs. Fort fit money page.
+- **2× meilleur que le gagnant actuel** : nos concurrents et nos vieux posts donnent une prose « oui la plupart supportent Apple Pay ». Nous : **tableau filtré depuis Supabase** (colonne booléenne Apple Pay / Google Pay par carte) × **disponibilité par marché**, + note « tokenisation / provisioning » par émetteur, + statut au 2026-07-31. Une page vivante qui répond en 5 secondes.
+- **Outline (H2 = questions)** :
+  - Quelles cartes crypto sont compatibles Apple Pay en 2026 ? (tableau)
+  - Quelles cartes crypto marchent avec Google Pay / Samsung Pay ?
+  - Comment ajouter une carte crypto à Apple Pay / Google Pay ?
+  - Y a-t-il des frais ou plafonds spécifiques en paiement mobile ?
+  - Apple Pay est-il disponible avec une carte crypto virtuelle ?
+- **Réponse clé (~100 mots)** : La plupart des grandes cartes crypto européennes (Crypto.com, Bybit, Nexo, Revolut, Wirex, Bitpanda) se rechargent dans Apple Pay et Google Pay via tokenisation, exactement comme une carte bancaire : tu ajoutes la carte au wallet, tu payes en NFC sans exposer le numéro. La compatibilité dépend de l'émetteur ET du marché — une carte disponible en France ne l'est pas forcément au Royaume-Uni. Les cartes purement virtuelles fonctionnent souvent dès l'émission ; les cartes physiques après activation. Vérifie les plafonds sans contact et les frais de conversion, identiques au paiement physique. Le tableau ci-dessus liste chaque carte, son statut Apple/Google Pay et sa disponibilité par pays (données 2026-07-31).
+- **FAQ (3–5)** : Toutes les cartes crypto marchent-elles avec Apple Pay ? · Apple Pay ajoute-t-il des frais ? · Puis-je utiliser Apple Pay avec une carte crypto virtuelle avant réception de la physique ? · Google Pay et Samsung Pay sont-ils supportés pareillement ? · Le cashback s'applique-t-il aussi aux paiements Apple Pay ?
+- **Liens internes (≥1 money page)** : → `/en/best-crypto-card` (money) / `/fr/meilleure-carte-crypto` (money), `/fr/carte-crypto-virtuelle`, `/fr/carte-crypto-cashback` (money), reviews des cartes citées (`/fr/avis/crypto-com-card`, `/fr/avis/nexo-card`).
+- **Données Supabase (datées 2026-07-31)** : insérer depuis `cards` les champs de support Apple Pay / Google Pay (si présents ; sinon créer/vérifier la colonne) + disponibilité par marché. REVÉRIFIER carte par carte avant publication (la compat wallet change souvent). Ne PAS publier de tableau non vérifié.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : le fait « Apple Pay via tokenisation » est universel MAIS la **liste des cartes compatibles change par marché** : fr/be, de/at, es, it, en=UK ont des sous-ensembles de cartes disponibles différents. Filtrer le tableau sur le marché de chaque variante ; ne pas recopier la liste EN en FR. hreflang self par locale. Vérifier notamment que les cartes citées sont réellement émises dans le pays.
+
+#### BRIEF 2 — Carte crypto stablecoin (USDT/USDC) : dépenser & cashback stable — NOUVELLE PAGE THÉMATIQUE
+- **Query cible / buyer query mappée** : "Best crypto card for USDC/USDT in Europe" + "carte crypto qui paye le cashback en stablecoin" (en/fr, commercial). Signal concurrent : cryptocardindex.com publie un guide dédié « spend USDT/USDC daily ». Signal interne : posts blog `fr/carte-crypto-cashback-usdt` + `de/krypto-karte-cashback-usdt` déjà écrits → demande, mais pas de page thématique et EN/ES/IT absents. Slug proposé : `/en/stablecoin-crypto-card`, `/fr/carte-crypto-stablecoin`, `/es/tarjeta-crypto-stablecoin`, `/it/carta-crypto-stablecoin` (+ de reformat).
+- **Anti-doublon** : aucun slug thématique stablecoin ; les 2 posts blog FR/DE sont au mauvais format (article vs tableau/outil) et incomplets en langues. Gap réel.
+- **Intention** : commercial. Angle différenciant : le cashback en stablecoin évite la volatilité et **simplifie la fiscalité** (pas de second événement de plus-value) → pont naturel vers le cluster fiscal déjà briefé.
+- **2× meilleur** : les concurrents parlent stablecoins en général ; nous répondons « quelle CARTE » — tableau filtré des cartes qui (a) permettent de dépenser USDC/USDT et (b) versent le cashback en stablecoin/EUR plutôt qu'en token volatil, par marché, avec taux réels.
+- **Outline (H2 = questions)** :
+  - Peut-on payer en USDT / USDC avec une carte crypto ?
+  - Quelles cartes versent le cashback en stablecoin (et pas en token volatil) ?
+  - Stablecoin vs token natif : quel impact fiscal sur le cashback ?
+  - Frais de conversion stablecoin → EUR au paiement
+  - Meilleures cartes stablecoin par marché (tableau)
+- **Réponse clé (~100 mots)** : Oui — de nombreuses cartes crypto européennes laissent régler en USDC ou USDT : le stablecoin est converti en euros au moment du paiement. L'intérêt d'un cashback versé en stablecoin (plutôt qu'en token natif volatil) est double : sa valeur ne fond pas entre le gain et la dépense, et il simplifie ta fiscalité, car un cashback stable évite en pratique un second calcul de plus-value à la revente. Attention aux frais de conversion et au spread appliqués à la sortie EUR, et à la disponibilité de la carte dans ton pays. Le tableau compare les cartes qui dépensent des stablecoins et celles qui paient le cashback en stablecoin (données 2026-07-31).
+- **FAQ (3–5)** : Quelle est la différence entre payer en USDC et en BTC avec une carte ? · Le cashback en stablecoin est-il imposable ? (renvoi cluster fiscal) · Y a-t-il des frais pour dépenser des stablecoins ? · Quelles cartes acceptent USDT sur quels réseaux ? · Le stablecoin est-il converti en euros instantanément ?
+- **Liens internes (≥1 money page)** : → `/fr/carte-crypto-cashback` (money) / `/en/crypto-card-cashback` (money), `/fr/meilleure-carte-crypto` (money), `/fr/blog/fiscalite-cashback-crypto-france` + futurs briefs fiscaux (DE/UK/ES/IT), reviews cartes citées.
+- **Données Supabase (datées 2026-07-31)** : insérer depuis `cards` — support de dépense USDC/USDT, devise du cashback (token natif vs stablecoin vs EUR), taux de cashback, frais de conversion, disponibilité par marché. Revérifier avant publish.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : le mécanisme est universel mais (1) la disponibilité des cartes diffère par marché, (2) le paragraphe fiscal doit pointer vers la fiscalité DU pays (be/at/es/it/UK ≠ FR — voir cluster fiscal briefé). Ne pas recopier l'exemple chiffré FR en EUR pour UK (GBP). hreflang self par locale.
+
+#### BRIEF 3 — Fiscalité du cashback des cartes crypto en Belgique — NOUVELLE PAGE
+- **Query cible / buyer query mappée** : "Le cashback crypto est-il imposable en Belgique ?" / "Dois-je déclarer ma carte crypto en Belgique ?" (be, informational). Complète le cluster fiscal : FR, UK, DE/AT, ES, IT sont briefés — **la Belgique est le seul marché fiscal jamais couvert**, alors qu'elle a une money page (`/be/carte-crypto-belgique`). Slug proposé : `/be/fiscalite-carte-crypto-belgique`.
+- **Anti-doublon** : aucune page fiscale belge ; la page fiscale FR (`/fr/blog/fiscalite-cashback-crypto-france`) porte sur la France et NE couvre PAS la Belgique (régime distinct). Gap total.
+- **Intention** : informational, territoire Koinly → E-E-A-T + backlinks, alimente la money page BE.
+- **2× meilleur** : les concurrents traitent « la crypto en Belgique » de façon générale ; nous lions à la CARTE et au régime belge spécifique — la distinction bon père de famille (gestion normale du patrimoine privé) vs revenus divers (spéculatif, ~33 %) vs activité professionnelle, appliquée au fait de payer en crypto et de recevoir du cashback.
+- **Outline (H2 = questions)** :
+  - Payer avec une carte crypto est-il imposable en Belgique ?
+  - Le cashback reçu en crypto est-il un revenu taxable en Belgique ?
+  - « Bon père de famille » vs revenus divers : dans quelle case tombe l'usage d'une carte ?
+  - Faut-il déclarer ses comptes/plateformes crypto étrangers ?
+  - Comment réduire le risque de requalification en « spéculatif » ?
+- **Réponse clé (~100 mots)** : En Belgique, il n'existe pas d'impôt sur les plus-values pour un particulier qui gère son patrimoine « en bon père de famille » : dans ce cas, payer avec une carte crypto n'est en principe pas taxé. Mais un usage jugé spéculatif ou fréquent peut être requalifié en « revenus divers », taxés autour de 33 %, et une activité régulière en revenus professionnels (barème progressif). Le cashback reçu en crypto peut être vu comme un avantage à valoriser à la réception ; sa revente ultérieure suit le même test de qualification. Les comptes crypto étrangers peuvent devoir être signalés. Informations générales, pas un conseil fiscal — vérifie ta situation avec un conseiller. (Cadre 2026-07-31.)
+- **FAQ (3–5)** : La Belgique taxe-t-elle les plus-values crypto d'un particulier ? · Le cashback en crypto est-il un revenu divers ? · Qu'est-ce que la gestion « en bon père de famille » ? · Dois-je déclarer Binance/Crypto.com au fisc belge ? · Payer souvent avec ma carte crypto me rend-il « spéculateur » ?
+- **Liens internes (≥1 money page)** : → `/be/carte-crypto-belgique` (money), `/be/meilleure-carte-crypto` (money), `/be/carte-crypto-cashback` (money), `/be/avis/...` selon dispo BE.
+- **Données Supabase (datées 2026-07-31)** : cartes réellement disponibles sur le marché `be` (filtre disponibilité) + devise du cashback pour l'exemple. Revérifier.
+- **Localisation — ADAPTER, jamais traduire** : page **be uniquement** (droit fiscal belge). NE PAS réutiliser les chiffres/règles FR (be ≠ fr : la France a une flat tax 30 %, la Belgique non). Contenu en français belge, marché be. À revérifier au publish : seuils/qualification « revenus divers », taux applicable, obligations de déclaration de comptes étrangers en vigueur. Disclaimer non-conseil fiscal + auteur cité (E-E-A-T).
+
+**→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/…/crypto-card-apple-pay` (thématique Apple Pay / Google Pay). Intention commerciale la plus forte, demande prouvée par 8 posts blog au mauvais format, gap FR total, et 2× meilleur immédiat via tableau Supabase filtré par marché.)**
