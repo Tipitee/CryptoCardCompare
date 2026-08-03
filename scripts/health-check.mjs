@@ -22,6 +22,20 @@ async function get(path, opts = {}) {
   return { status: r.status, body, headers: r.headers };
 }
 
+// ── Préflight réseau ────────────────────────────────────────────────────────
+// Si l'environnement d'exécution ne peut PAS joindre le site (ex. sandbox sans
+// réseau sortant), toutes les vérifs échoueraient en "fetch failed" et
+// produiraient une fausse alerte "site injoignable". On distingue ce cas :
+// une erreur RÉSEAU au préflight = sonde indisponible (pas un incident site).
+try {
+  await fetch(ORIGIN + '/robots.txt', { method: 'HEAD' });
+} catch (e) {
+  console.log('⚠️  SONDE RÉSEAU INDISPONIBLE — cet environnement ne peut pas joindre ' + ORIGIN + '.');
+  console.log('    Ce n\'est PAS un incident du site : vérification A3 ignorée ce run.');
+  console.log('    (' + (e?.message || e) + ')');
+  process.exit(0);
+}
+
 // 1. Racine → redirection langue (302)
 try {
   const r = await get('/');

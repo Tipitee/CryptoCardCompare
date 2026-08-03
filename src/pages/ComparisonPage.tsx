@@ -369,7 +369,15 @@ export default function ComparisonPage() {
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  useHreflang(l => `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare'}/${slug}`, [slug]);
+  // Les pages de comparaison n'existent qu'en 5 langues (fr/de/es/it/en).
+  // be/at n'ont PAS de pages compare → ne pas émettre d'alternate hreflang
+  // vers elles (sinon hreflang → 404, et Google ignore tout le cluster).
+  useHreflang(
+    l => (l === 'be' || l === 'at')
+      ? null
+      : `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare'}/${slug}`,
+    [slug],
+  );
 
   // ── Schema.org FAQPage (when specific FAQ available) ─────────────────────────
   useEffect(() => {
@@ -751,7 +759,7 @@ export default function ComparisonPage() {
             {t('faq_title')}
           </h2>
           <div className="space-y-4">
-            {localFaq.map((item, i) => (
+            {localFaq.map((item: { q: string; a: string }, i: number) => (
               <div key={i} className="card-surface p-5">
                 <h3 className="text-sm font-semibold text-white mb-2">{item.q}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">{item.a}</p>

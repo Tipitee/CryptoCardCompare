@@ -14,7 +14,7 @@ Attraper une casse technique (indexation, 404, hreflang, prerender, crawlers IA)
 
 ## Procédure (économe en tokens — ne pas explorer au-delà)
 1. Exécuter `node scripts/health-check.mjs`. Il fait tous les checks et écrit `seo/state/tech-health.md`.
-   - Si le script échoue faute de réseau (sandbox), refaire les 6 checks ci-dessus avec l'outil `web_fetch` sur exactement ces URLs : `/`, `/fr`, `/de/xxx-404`, `/fr/cartes/nexo-card`, `/robots.txt`, `/sitemap-index.xml`. Rien d'autre.
+   - **Si le script affiche « SONDE RÉSEAU INDISPONIBLE »** (l'environnement ne peut pas joindre le site) : ce n'est PAS un incident. Refaire les 6 checks avec l'outil **`web_fetch`** (qui a le réseau) sur exactement ces URLs : `/`, `/fr`, `/de/xxx-404`, `/fr/cartes/nexo-card`, `/robots.txt`, `/sitemap-index.xml`. Ne JAMAIS conclure « site injoignable » sur la seule base de l'échec réseau du script.
 2. Comparer au dernier run dans `seo/state/tech-health.md` (section Historique) : signaler tout check qui passe de ✅ à ❌.
 3. Ne RIEN corriger. Sortie ≤ 25 lignes : statut global (🟢/🟡/🔴), la liste des ❌ avec le fix en une ligne, et la régression vs semaine passée s'il y en a.
 4. S'il y a un 🔴 CRITIQUE, commencer la sortie par `⚠️ ACTION REQUISE`.

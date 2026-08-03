@@ -252,7 +252,7 @@ const CITE_COPY: Record<string, {
 CITE_COPY.be = CITE_COPY.fr;
 CITE_COPY.at = CITE_COPY.de;
 
-function CiteThis({ lang, title, url }: { lang: string; title: string; url: string }) {
+function CiteThis({ lang, url }: { lang: string; title: string; url: string }) {
   const [copiedApa, setCopiedApa] = useState(false);
   const [copiedEmbed, setCopiedEmbed] = useState(false);
   const cc = CITE_COPY[lang] ?? CITE_COPY.en;

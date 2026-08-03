@@ -8,6 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import type { CryptoCard } from '../types/card';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
@@ -268,9 +269,9 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
                 {/* Card image */}
                 <div className="flex justify-center my-1">
                   <SmartCardImage
-                    card={{ id: card.id, name: card.name, realCardImage: card.real_card_image }}
+                    card={{ id: card.id, name: card.name, realCardImage: card.real_card_image } as CryptoCard}
                     className="w-20 h-auto object-contain"
-                    loading={idx < 4 ? 'eager' : 'lazy'}
+                    priority={idx < 4}
                   />
                 </div>
 

@@ -1604,7 +1604,7 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
 
 };
 
-export function getSpecificComparison(id1: string, id2: string): ComparisonContent | null {
+export function getSpecificComparison(id1: string, id2: string): ComparisonSpecific | null {
   const key = normalizePairKey(id1, id2);
   return COMPARISONS[key] ?? null;
 }

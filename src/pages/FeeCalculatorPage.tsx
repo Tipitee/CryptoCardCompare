@@ -268,9 +268,6 @@ export default function FeeCalculatorPage() {
     title: copy.title,
     description: copy.desc,
     canonical: `${BASE}/${lang}/${slug}`,
-    ogType: 'website',
-    ogTitle: copy.title,
-    ogDescription: copy.desc,
   });
 
   const freeMonthly = spend * (FREE_RATE / 100);
@@ -298,13 +295,6 @@ export default function FeeCalculatorPage() {
     }
     if (netAnnual > -30) return `${copy.neutral} (${Math.round(netAnnual)}€/an)`;
     return `${copy.notWorth} (${Math.round(netAnnual)}€/an)`;
-  }
-
-  function verdictColor(netAnnual: number, breakEvenMonths: number | null) {
-    if (breakEvenMonths === null) return 'text-red-600';
-    if (netAnnual > 0) return 'text-green-700';
-    if (netAnnual > -30) return 'text-orange-600';
-    return 'text-red-600';
   }
 
   const bestSlug = THEMATIC_ROUTES.best?.[lang as keyof typeof THEMATIC_ROUTES.best] ?? 'meilleure-carte-crypto';

@@ -4,7 +4,7 @@
  */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calculator, BarChart2, Zap, Star, GitCompare, Globe, Copy, Check } from 'lucide-react';
+import { Zap, Star, GitCompare, Globe, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
@@ -149,16 +149,11 @@ export default function ToolsPage() {
     description: copy.desc,
     lang,
     canonical: `${BASE}/${lang}/${rt.tools}`,
-    ogType: 'website',
   });
 
   useHreflang(
-    Object.fromEntries(
-      ['fr','de','es','it','en','be','at'].map((l) => [
-        l,
-        `${BASE}/${l}/${(ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.fr).tools}`,
-      ])
-    )
+    (l) => `${BASE}/${l}/${(ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.fr).tools}`,
+    [lang],
   );
 
   const bestSlug = THEMATIC_ROUTES.best?.[lang as keyof typeof THEMATIC_ROUTES.best] ?? 'best-crypto-card';

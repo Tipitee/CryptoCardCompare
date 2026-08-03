@@ -5,7 +5,7 @@
  */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calculator, ExternalLink, TrendingUp } from 'lucide-react';
+import { Calculator, TrendingUp } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
@@ -221,9 +221,6 @@ export default function CashbackCalculatorPage() {
     title: copy.title,
     description: copy.desc,
     canonical: `https://topcryptocards.eu/${lang}/${ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator ?? ROUTE_TRANSLATIONS.fr.cashbackCalculator}`,
-    ogType: 'website',
-    ogTitle: copy.title,
-    ogDescription: copy.desc,
   });
 
   const results = useMemo(() => {
@@ -242,7 +239,6 @@ export default function CashbackCalculatorPage() {
 
   const simSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.simulator ?? 'simulateur';
   const bestSlug = THEMATIC_ROUTES.best?.[lang as keyof typeof THEMATIC_ROUTES.best] ?? 'meilleure-carte-crypto';
-  const feeSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.feeIndex ?? 'frais-cartes-crypto';
 
   const embedCode = `<iframe src="https://topcryptocards.eu/${lang}/${ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cashbackCalculator ?? 'calculateur-cashback-crypto'}" width="100%" height="600" frameborder="0" title="Cashback Calculator, TopCryptoCards"></iframe>`;
 
