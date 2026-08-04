@@ -211,7 +211,12 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
   }
 
   async function handleSave(publish?: boolean) {
-    if (!editPost?.title || !editPost?.slug) return;
+    if (!editPost?.title?.trim() || !editPost?.slug?.trim()) {
+      setSaveMsg('Erreur : titre et slug obligatoires (ce brouillon est vide — corrige-le ou supprime-le)');
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 4000);
+      return;
+    }
     const post = {
       ...editPost,
       published: publish !== undefined ? publish : (editPost.published ?? false),
