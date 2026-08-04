@@ -26,7 +26,7 @@ import IndependentNotice from '../components/IndependentNotice';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById, fetchRelatedPosts } from '../lib/supabase';
 import type { BlogPost } from '../types/blog';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import allowlist from '../../scripts/comparison-allowlist.json';
 
 // ─── SEO copy per language ────────────────────────────────────────────────────
@@ -270,6 +270,9 @@ export default function ComparisonPage() {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  // `lang` = market from the URL (be/at kept for URLs, canonical, hreflang).
+  // `cl` = content language: be→fr, at→de. Used only for TEXT resolution.
+  const cl = displayLang(lang);
   const { getRoute } = useLocalizedRoute();
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
@@ -302,7 +305,7 @@ export default function ComparisonPage() {
           id1,
           id2,
         ];
-        fetchRelatedPosts(tags, '', lang, 1)
+        fetchRelatedPosts(tags, '', cl, 1)
           .then(posts => setCompArticle(posts[0] ?? null))
           .catch(() => setCompArticle(null));
       }
@@ -311,21 +314,21 @@ export default function ComparisonPage() {
   }, [id1, id2, lang]);
 
   const rows = getRows(t);
-  const genericBlocks = getSeoText(lang, card1, card2);
+  const genericBlocks = getSeoText(cl, card1, card2);
   const specificContent = card1 && card2 ? getSpecificComparison(card1.id, card2.id) : null;
 
   // Localised FAQ: use {lang}_faq if available, fall back to fr faq only for FR
   const localFaq = (() => {
     if (!specificContent) return undefined;
-    if (lang === 'fr') return specificContent.faq;
-    const key = `${lang}_faq` as keyof typeof specificContent;
+    if (cl === 'fr') return specificContent.faq;
+    const key = `${cl}_faq` as keyof typeof specificContent;
     return (specificContent[key] as { q: string; a: string }[] | undefined);
   })();
 
   // Merge: replace intro (block 0) and verdict (block 3) with specific content when available
   const seoBlocks = genericBlocks.map((block, i) => {
     if (!specificContent) return block;
-    const langKey = lang as string;
+    const langKey = cl as string;
     if (i === 0) {
       // Use lang-specific override first, then EN, then fall back to generic (avoid FR fallback for non-FR)
       const intro = (specificContent as unknown as Record<string, string>)[`${langKey}_intro`]
@@ -354,7 +357,7 @@ export default function ComparisonPage() {
   const canonicalUrl = `https://topcryptocards.eu/${lang}/${comparisonRt.comparisons ?? 'compare'}/${canonicalSlug}`;
 
   const isIndexable = (allowlist as string[]).includes(canonicalSlug);
-  const comparisonSeo = COMPARISON_SEO[lang] || COMPARISON_SEO.en;
+  const comparisonSeo = COMPARISON_SEO[cl] || COMPARISON_SEO.en;
   useSeoMeta({
     title: card1 && card2
       ? `${card1.name} vs ${card2.name}, ${comparisonSeo.suffix}`
@@ -369,13 +372,11 @@ export default function ComparisonPage() {
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
-  // Les pages de comparaison n'existent qu'en 5 langues (fr/de/es/it/en).
-  // be/at n'ont PAS de pages compare → ne pas émettre d'alternate hreflang
-  // vers elles (sinon hreflang → 404, et Google ignore tout le cluster).
+  // Comparaisons disponibles sur les 7 marchés (fr, fr-BE, de, de-AT, es, it, en-GB).
+  // be/at sont de vraies variantes régionales (contenu FR/DE + filtre marché,
+  // self-canonical) — leurs URLs sont prérendues et présentes dans le sitemap.
   useHreflang(
-    l => (l === 'be' || l === 'at')
-      ? null
-      : `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare'}/${slug}`,
+    l => `https://topcryptocards.eu/${l}/${ROUTE_TRANSLATIONS[l as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare'}/${slug}`,
     [slug],
   );
 
@@ -413,8 +414,8 @@ export default function ComparisonPage() {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: homeL[lang] ?? 'Home', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: compareL[lang] ?? 'Comparison', item: `${BASE}/${lang}/${compSlug}` },
+        { '@type': 'ListItem', position: 1, name: homeL[cl] ?? 'Home', item: `${BASE}/${lang}` },
+        { '@type': 'ListItem', position: 2, name: compareL[cl] ?? 'Comparison', item: `${BASE}/${lang}/${compSlug}` },
         { '@type': 'ListItem', position: 3, name: `${card1.name} vs ${card2.name}`, item: `${BASE}/${lang}/${compSlug}/${slug}` },
       ],
     };
@@ -476,8 +477,8 @@ export default function ComparisonPage() {
     <div className="container-app py-10 max-w-5xl">
       {/* Breadcrumb */}
       <Breadcrumb items={[
-        { label: homeLabel[lang] ?? 'Home', href: `/${lang}` },
-        { label: compareLabel[lang] ?? 'Compare', href: getRoute('compare') },
+        { label: homeLabel[cl] ?? 'Home', href: `/${lang}` },
+        { label: compareLabel[cl] ?? 'Compare', href: getRoute('compare') },
         { label: `${card1.name} vs ${card2.name}` },
       ]} />
 
@@ -809,7 +810,7 @@ export default function ComparisonPage() {
                       to={`/${lang}/${cardsSlug}/${card.id}`}
                       className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
                     >
-                      <span>📋 {DETAIL_LABEL[lang] || DETAIL_LABEL.en}</span>
+                      <span>📋 {DETAIL_LABEL[cl] || DETAIL_LABEL.en}</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                     {reviewSlug && (
@@ -817,7 +818,7 @@ export default function ComparisonPage() {
                         to={`/${lang}/${reviewsSlug}/${reviewSlug}`}
                         className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
                       >
-                        <span>⭐ {REVIEW_LABEL[lang] || REVIEW_LABEL.en}</span>
+                        <span>⭐ {REVIEW_LABEL[cl] || REVIEW_LABEL.en}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                     )}
@@ -826,20 +827,20 @@ export default function ComparisonPage() {
                         to={`/${lang}/${brandsSlug}/${card.brandId}`}
                         className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1 border-b border-bg-border"
                       >
-                        <span>🏢 {BRAND_LABEL[lang] || BRAND_LABEL.en} {card.issuer}</span>
+                        <span>🏢 {BRAND_LABEL[cl] || BRAND_LABEL.en} {card.issuer}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                     )}
                     {card.brandId && ALT_BRAND_MAP[card.brandId as AltBrandId] && (() => {
                       const altConfig = ALT_BRAND_MAP[card.brandId as AltBrandId];
-                      const altSlug = altConfig.slugs[lang] ?? altConfig.slugs['fr'];
+                      const altSlug = altConfig.slugs[cl] ?? altConfig.slugs['fr'];
                       const ALT_CMP_LABEL: Record<string, string> = { fr: 'Alternatives', de: 'Alternativen', es: 'Alternativas', it: 'Alternative', en: 'Alternatives' };
                       return (
                         <Link
                           to={`/${lang}/${altSlug}`}
                           className="flex items-center justify-between text-sm text-slate-300 hover:text-cyan-accent transition-colors py-1"
                         >
-                          <span>🔄 {ALT_CMP_LABEL[lang] ?? 'Alternatives'} {card.issuer}</span>
+                          <span>🔄 {ALT_CMP_LABEL[cl] ?? 'Alternatives'} {card.issuer}</span>
                           <ChevronRight className="w-3.5 h-3.5" />
                         </Link>
                       );
@@ -854,8 +855,8 @@ export default function ComparisonPage() {
 
       {/* Bloc éditorial, enrichissement contenu + liens thématiques */}
       {(() => {
-        const ed = COMPARISON_EDITORIAL[lang] ?? COMPARISON_EDITORIAL.en;
-        const slugs = COMP_THEMATIC_SLUGS[lang] ?? COMP_THEMATIC_SLUGS.en;
+        const ed = COMPARISON_EDITORIAL[cl] ?? COMPARISON_EDITORIAL.en;
+        const slugs = COMP_THEMATIC_SLUGS[cl] ?? COMP_THEMATIC_SLUGS.en;
         const readArticleLabel: Record<string, string> = {
           fr: 'Lire notre article', de: 'Artikel lesen', es: 'Leer nuestro artículo', it: 'Leggi il nostro articolo', en: 'Read our article',
         };
@@ -870,7 +871,7 @@ export default function ComparisonPage() {
                 className="inline-flex items-center gap-2 mb-8 px-4 py-2.5 rounded-lg border border-cyan-accent/30 bg-bg-elevated text-sm text-cyan-accent hover:bg-cyan-accent/10 transition-colors"
               >
                 <span>📰</span>
-                {readArticleLabel[lang] ?? readArticleLabel.en}: {compArticle.title}
+                {readArticleLabel[cl] ?? readArticleLabel.en}: {compArticle.title}
               </Link>
             )}
 
