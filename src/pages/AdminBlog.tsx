@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Check, CreditCard as Edit2, Eye, EyeOff, FileText, Image as ImageIcon, Loader2, Plus, Save, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowLeft, BookOpen, Check, CreditCard as Edit2, ExternalLink, Eye, EyeOff, FileText, Image as ImageIcon, Loader2, Plus, Save, Search, Sparkles, Trash2, Upload, Wand2, X } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
-import { adminUpsertPost, adminDeletePost, adminFetchAllPosts, generateArticle, bulkPreviewBlocks, bulkGenerateOne } from '../lib/supabase';
+import { adminUpsertPost, adminDeletePost, adminFetchAllPosts, generateArticle, bulkPreviewBlocks, bulkGenerateOne, supabase } from '../lib/supabase';
+
+// Libellés de langue pour les badges (be/at = variantes régionales)
+const LANG_LABELS: Record<string, string> = {
+  fr: '🇫🇷 FR', be: '🇧🇪 BE', de: '🇩🇪 DE', at: '🇦🇹 AT', es: '🇪🇸 ES', it: '🇮🇹 IT', en: '🇬🇧 EN',
+};
 import type { BulkPreviewBlock, BulkResult } from '../lib/supabase';
 import { renderMarkdown, estimateReadTime } from '../utils/markdown';
 
@@ -142,6 +147,12 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
   const [tagInput, setTagInput] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [bulkModal, setBulkModal] = useState(false);
+  const [langFilter, setLangFilter] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'draft' | 'published'>('all');
+  const [search, setSearch] = useState('');
+  const [imgBusy, setImgBusy] = useState<'gen' | 'upload' | null>(null);
+  const [pagesModal, setPagesModal] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -256,8 +267,72 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
     }
   }
 
+  // Génère l'image hero via l'edge function (se propage à toutes les langues du même topic_key)
+  async function handleGenerateImage() {
+    if (!editPost?.id) { setSaveMsg('Erreur : sauvegarde le brouillon avant de générer une image'); return; }
+    setImgBusy('gen');
+    try {
+      const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-hero-image`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          'X-Admin-Secret': secret,
+        },
+        body: JSON.stringify({
+          id: editPost.id, slug: editPost.slug, title: editPost.title,
+          excerpt: editPost.excerpt, tags: editPost.tags, forceRegenerate: true,
+        }),
+      });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? 'Erreur de génération');
+      const data = await res.json();
+      if (!data.imageUrl) throw new Error('Aucune image reçue');
+      setField('image_hero', data.imageUrl);
+      setSaveMsg('Image générée (propagée à toutes les langues) !');
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 3000);
+    } catch (err) {
+      setSaveMsg(`Erreur image : ${String(err)}`);
+    } finally {
+      setImgBusy(null);
+    }
+  }
+
+  // Upload direct d'une image vers le bucket blog-hero-images
+  async function handleUploadImage(file: File) {
+    if (!file) return;
+    setImgBusy('upload');
+    try {
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const base = (editPost?.slug || editPost?.topic_key || 'upload').replace(/[^a-z0-9-]/gi, '-').slice(0, 50);
+      const path = `${base}-${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from('blog-hero-images').upload(path, file, {
+        cacheControl: '31536000', upsert: false, contentType: file.type || undefined,
+      });
+      if (upErr) throw upErr;
+      const { data } = supabase.storage.from('blog-hero-images').getPublicUrl(path);
+      setField('image_hero', data.publicUrl);
+      setSaveMsg('Image uploadée !');
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 3000);
+    } catch (err) {
+      setSaveMsg(`Erreur upload : ${String(err)}`);
+    } finally {
+      setImgBusy(null);
+    }
+  }
+
+  // Liste filtrée + langues disponibles
+  const availableLangs = Array.from(new Set(posts.map(p => p.lang))).sort();
+  const filteredPosts = posts.filter(p =>
+    (langFilter === 'all' || p.lang === langFilter) &&
+    (statusFilter === 'all' || (statusFilter === 'published' ? p.published : !p.published)) &&
+    (!search || (p.title || '').toLowerCase().includes(search.toLowerCase()) || (p.slug || '').toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
     <div className="min-h-screen bg-bg">
+      {pagesModal && <PagesPreviewModal onClose={() => setPagesModal(false)} />}
       {/* Top bar */}
       <div className="sticky top-0 z-30 bg-bg/95 backdrop-blur border-b border-bg-border">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -285,6 +360,10 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
               <Plus className="w-4 h-4" />
               Nouveau
             </button>
+            <button onClick={() => setPagesModal(true)} className="btn-ghost text-sm text-slate-400 flex items-center gap-1.5">
+              <ExternalLink className="w-4 h-4" />
+              Pages du site
+            </button>
             <Link to="/admin/generate-hero-images" className="btn-ghost text-sm text-slate-400 flex items-center gap-1.5">
               <ImageIcon className="w-4 h-4" />
               Images Hero
@@ -299,6 +378,34 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
       <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
         {/* Posts list */}
         <div className={`flex flex-col gap-3 ${editPost ? 'hidden lg:flex lg:w-80 shrink-0' : 'w-full'}`}>
+          {/* Filtres */}
+          {!loading && posts.length > 0 && (
+            <div className="card-surface p-3 space-y-2.5">
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2" />
+                <input
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  className="input-field w-full text-sm pl-8"
+                  placeholder="Rechercher (titre ou slug)…"
+                />
+              </div>
+              <div className="flex flex-wrap gap-1">
+                <button onClick={() => setLangFilter('all')} className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${langFilter === 'all' ? 'border-cyan-accent/50 bg-cyan-accent/10 text-cyan-accent' : 'border-bg-border text-slate-400 hover:text-white'}`}>Toutes</button>
+                {availableLangs.map(l => (
+                  <button key={l} onClick={() => setLangFilter(l)} className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${langFilter === l ? 'border-cyan-accent/50 bg-cyan-accent/10 text-cyan-accent' : 'border-bg-border text-slate-400 hover:text-white'}`}>{LANG_LABELS[l] ?? l.toUpperCase()}</button>
+                ))}
+              </div>
+              <div className="flex gap-1">
+                {(['all', 'draft', 'published'] as const).map(s => (
+                  <button key={s} onClick={() => setStatusFilter(s)} className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${statusFilter === s ? 'border-cyan-accent/50 bg-cyan-accent/10 text-cyan-accent' : 'border-bg-border text-slate-400 hover:text-white'}`}>
+                    {s === 'all' ? 'Tous' : s === 'draft' ? 'Brouillons' : 'Publiés'}
+                  </button>
+                ))}
+                <span className="text-xs text-slate-500 ml-auto self-center">{filteredPosts.length} / {posts.length}</span>
+              </div>
+            </div>
+          )}
           {loading ? (
             Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="card-surface p-4 animate-pulse">
@@ -306,13 +413,13 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
                 <div className="h-3 bg-bg-elevated rounded w-1/2" />
               </div>
             ))
-          ) : posts.length === 0 ? (
+          ) : filteredPosts.length === 0 ? (
             <div className="text-center py-16">
               <BookOpen className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-              <p className="text-slate-500">Aucun article. Créez-en un !</p>
+              <p className="text-slate-500">{posts.length === 0 ? 'Aucun article. Créez-en un !' : 'Aucun article pour ce filtre.'}</p>
             </div>
           ) : (
-            posts.map(post => (
+            filteredPosts.map(post => (
               <button
                 key={post.id}
                 onClick={() => openEdit(post)}
@@ -321,8 +428,8 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="font-semibold text-white text-sm leading-snug line-clamp-2">
-                    {post.title}
+                  <p className={`font-semibold text-sm leading-snug line-clamp-2 ${post.title ? 'text-white' : 'text-amber-400 italic'}`}>
+                    {post.title || `(sans titre) — ${post.slug || 'slug manquant'}`}
                   </p>
                   <span
                     className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-full ${
@@ -334,8 +441,11 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
                     {post.published ? 'Publié' : 'Brouillon'}
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-3">
+                <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-2 flex-wrap">
+                  <span className="font-medium text-slate-400">{LANG_LABELS[post.lang] ?? post.lang.toUpperCase()}</span>
+                  <span>·</span>
                   <span>{formatDate(post.created_at)}</span>
+                  <span>·</span>
                   <span>{estimateReadTime(post.content)} min</span>
                 </p>
                 {post.tags.length > 0 && (
@@ -461,15 +571,47 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
                     </p>
                   </div>
 
-                  {/* Image hero */}
+                  {/* Image hero — URL, génération IA, ou upload direct */}
                   <div>
-                    <label className="block text-xs text-slate-500 mb-1">URL image hero (optionnel)</label>
+                    <label className="block text-xs text-slate-500 mb-1">Image hero (optionnel — 1 image sert à toutes les langues du même sujet)</label>
                     <input
                       value={editPost.image_hero ?? ''}
                       onChange={e => setField('image_hero', e.target.value)}
-                      className="input-field w-full text-sm"
-                      placeholder="https://images.pexels.com/..."
+                      className="input-field w-full text-sm mb-2"
+                      placeholder="Collez une URL, générez, ou uploadez ci-dessous"
                     />
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleGenerateImage}
+                        disabled={imgBusy !== null}
+                        className="btn-secondary text-sm"
+                        title={editPost.id ? 'Génère une image via IA et la propage à toutes les variantes de langue (topic_key)' : 'Sauvegarde le brouillon d\'abord'}
+                      >
+                        {imgBusy === 'gen' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
+                        Générer
+                      </button>
+                      <button
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={imgBusy !== null}
+                        className="btn-secondary text-sm"
+                      >
+                        {imgBusy === 'upload' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                        Uploader
+                      </button>
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={e => { const f = e.target.files?.[0]; if (f) handleUploadImage(f); e.target.value = ''; }}
+                      />
+                      {editPost.image_hero && (
+                        <img src={editPost.image_hero} alt="" className="w-16 h-10 object-cover rounded border border-bg-border ml-auto" />
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-600 mt-1">
+                      « Générer » utilise l'IA (couleurs de la carte détectée) et applique l'image à <strong>toutes les langues</strong> de ce sujet. « Uploader » envoie votre propre fichier.
+                    </p>
                   </div>
 
                   {/* Tags */}
@@ -634,6 +776,59 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
           onDone={() => { setBulkModal(false); loadPosts(); }}
         />
       )}
+    </div>
+  );
+}
+
+// ── Aperçu des pages du site (money pages, thématiques, reviews…) ──────────────
+function PagesPreviewModal({ onClose }: { onClose: () => void }) {
+  const [lang, setLang] = useState('fr');
+  const LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'];
+  // Slugs représentatifs par langue (les principales money pages / types de page)
+  const SLUGS: Record<string, { label: string; path: (l: string) => string }[]> = {
+    all: [
+      { label: 'Accueil', path: l => `/${l}` },
+      { label: 'Meilleure carte', path: l => `/${l}/${({ fr: 'meilleure-carte-crypto', be: 'meilleure-carte-crypto', de: 'beste-krypto-karte', at: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'miglior-carta-crypto', en: 'best-crypto-card' } as Record<string, string>)[l]}` },
+      { label: 'Cashback', path: l => `/${l}/${({ fr: 'carte-crypto-cashback', be: 'carte-crypto-cashback', de: 'krypto-karte-cashback', at: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-crypto-cashback', en: 'crypto-card-cashback' } as Record<string, string>)[l]}` },
+      { label: 'Comparateur', path: l => `/${l}/${({ fr: 'comparer', be: 'comparer', de: 'vergleich', at: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' } as Record<string, string>)[l]}` },
+      { label: 'Avis (liste)', path: l => `/${l}/${({ fr: 'avis', be: 'avis', de: 'bewertungen', at: 'bewertungen', es: 'opiniones', it: 'recensioni', en: 'reviews' } as Record<string, string>)[l]}` },
+      { label: 'Blog', path: l => `/${l}/blog` },
+    ],
+  };
+  const items = SLUGS.all;
+  const [path, setPath] = useState(`/${lang}`);
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://topcryptocards.eu';
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bg/80 backdrop-blur-sm">
+      <div className="card-surface w-full max-w-5xl h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-bg-border shrink-0">
+          <div className="flex items-center gap-2">
+            <ExternalLink className="w-5 h-5 text-cyan-accent" />
+            <h2 className="font-display font-bold text-white">Aperçu des pages du site</h2>
+          </div>
+          <button onClick={onClose} className="text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+        </div>
+        <div className="px-5 py-3 border-b border-bg-border shrink-0 space-y-2">
+          <div className="flex flex-wrap gap-1">
+            {LANGS.map(l => (
+              <button key={l} onClick={() => { setLang(l); setPath(`/${l}`); }} className={`text-xs px-2 py-0.5 rounded-full border ${lang === l ? 'border-cyan-accent/50 bg-cyan-accent/10 text-cyan-accent' : 'border-bg-border text-slate-400 hover:text-white'}`}>{LANG_LABELS[l] ?? l}</button>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-1">
+            {items.map(it => (
+              <button key={it.label} onClick={() => setPath(it.path(lang))} className="text-xs px-2 py-0.5 rounded-lg border border-bg-border bg-bg-elevated text-slate-300 hover:border-cyan-accent/40">{it.label}</button>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <input value={path} onChange={e => setPath(e.target.value)} className="input-field flex-1 text-sm font-mono" placeholder="/fr/…" />
+            <a href={`${origin}${path}`} target="_blank" rel="noreferrer" className="btn-secondary text-sm"><ExternalLink className="w-4 h-4" /> Onglet</a>
+          </div>
+        </div>
+        <div className="flex-1 min-h-0 bg-white">
+          <iframe key={path} src={`${origin}${path}`} title="preview" className="w-full h-full border-0" />
+        </div>
+      </div>
     </div>
   );
 }
