@@ -217,9 +217,15 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
       saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 4000);
       return;
     }
+    const willPublish = publish !== undefined ? publish : (editPost.published ?? false);
+    // Quand on publie un brouillon, on lui donne la date du jour pour qu'il remonte
+    // en tête du blog (trié par created_at décroissant). On ne touche pas la date
+    // si l'article est déjà publié (simple ré-enregistrement) ou si on dépublie.
+    const freshDate = willPublish && !editPost.published;
     const post = {
       ...editPost,
-      published: publish !== undefined ? publish : (editPost.published ?? false),
+      published: willPublish,
+      ...(freshDate ? { created_at: new Date().toISOString() } : {}),
     } as Partial<BlogPost> & { slug: string };
 
     try {
