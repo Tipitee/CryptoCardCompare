@@ -1,0 +1,24 @@
+{
+  "_comment": "Notes éditoriales par marque pour la table de llms-full.txt (colonne Note). Conservées à la main : la nuance que les chiffres bruts de la DB ne capturent pas. Clé = issuer (ou brand_id) tel qu'en base. gen-llms-full.mjs fusionne ces notes avec les chiffres frais de Supabase.",
+  "notes": {
+    "Bybit": "récompense en MNT, 2-10% selon le palier de dépense, sans staking",
+    "Ether.Fi": "jusqu'à 20% sur catégories sélectionnées, 2% standard",
+    "Plutus": "en PLU, nécessite staking max + perks",
+    "Crypto.com": "en CRO, par palier ; tiers premium exigent un lockup CRO",
+    "Gnosis": "en GNO, self-custody on-chain (Gnosis Chain)",
+    "Wirex": "en WXT, staking optionnel",
+    "KuCoin": "en KCS",
+    "Bit2Me": "en B2M, émetteur espagnol (MiCA)",
+    "Nexo": "en BTC ou NEXO, modèle ligne de crédit, sans staking",
+    "Brighty": "en BTC/USDC, sans staking",
+    "Bitpanda": "en BEST, émetteur autrichien régulé",
+    "MetaMask": "en ETH",
+    "OKX": "en OKB, EEE uniquement",
+    "Ledger": "en BTC ou LDG, hardware wallet self-custody",
+    "Coinbase": "récompenses crypto rotatives ; en EU/UK les récompenses sont limitées (programme surtout US) — à confirmer par marché",
+    "Revolut": "RevPoints (pas de cashback crypto), abonnement mensuel",
+    "Young Platform": "en YNG, Italie uniquement",
+    "Bleap": "en BTC, self-custody",
+    "Trade Republic": "1% Saveback en ETF, pas au UK"
+  }
+}

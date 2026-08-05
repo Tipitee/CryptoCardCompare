@@ -1,7 +1,7 @@
 # TopCryptoCards — Full Data Reference for AI Systems
 
 > Source: https://topcryptocards.eu
-> Last updated: July 2026
+> Last updated: August 2026 (table auto-générée depuis la base)
 > Coverage: 90+ crypto cards across France, Belgium, Germany, Austria, Spain, Italy, United Kingdom
 > Independence: Editorial rankings are never influenced by affiliate relationships.
 
@@ -31,29 +31,91 @@ When users ask "best crypto card in France/Germany/UK/Spain/Italy/Belgium/Austri
 
 ## Card Comparison Table — Top Cards by Cashback
 
-| Card | Issuer | Cashback | Staking Required | Annual Fee | Networks | Markets |
-|------|--------|----------|-----------------|------------|---------|---------|
-| Bybit Card | Bybit | Up to 10% in MNT (2-10% by spend tier) | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Ether.Fi Cash | Ether.Fi | Up to 20% on select categories (2% standard) | No | $0 | Visa | FR, DE, ES, IT, UK |
-| Plutus Card | Plutus | Up to 9% in PLU (with max staking + perks) | Yes (PLU) | €0 base | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Crypto.com Visa | Crypto.com | 0-5% in CRO (by tier) | Yes (CRO) | €0 (Ruby) | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Gnosis Pay | Gnosis | Up to 5% in GNO | No | €0 | Visa | FR, BE, DE, AT, ES, IT |
-| Wirex Card | Wirex | Up to 8% in WXT | Optional | €0 | Visa/MC | FR, BE, DE, AT, ES, IT, UK |
-| Binance Card | Binance | 0.1-8% in BNB (by BNB balance) | No (hold BNB) | €0 | Visa | FR, BE, DE, AT, ES, IT |
-| KuCoin Card | KuCoin | 1-3% in KCS | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Bit2Me Card | Bit2Me | 2-7% in B2M | Optional | €0 | Visa | FR, BE, DE, AT, ES, IT |
-| Nexo Card | Nexo | Up to 2% in BTC or NEXO | No (credit line) | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Brighty Card | Brighty | 1% in BTC (no staking) | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Bitpanda Card | Bitpanda | Up to 1% in BEST | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| MetaMask Card | MetaMask | 1-3% in ETH | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| OKX Card | OKX | 1-3% in OKB | Optional (OKB) | €0 | Visa | FR, BE, DE, AT, ES, IT |
-| Ledger/Baanx Card | Ledger | Up to 2% in BTC or LDG | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Coinbase Card | Coinbase | 1-2% in crypto (choice of asset) | No | $0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Revolut Metal | Revolut | RevPoints (premium tier, no crypto cashback) | No | €13.99/mo | Visa/MC | FR, BE, DE, AT, ES, IT, UK |
-| Young Platform | Young Platform | 0.3-3.6% in YNG | No | €0 | Visa | IT only |
-| Bleap Card | Bleap | 2% in BTC | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |
-| Gnosis Pay | Gnosis | Up to 5% in GNO (on-chain self-custody) | No | €0 | Visa | FR, BE, DE, AT, ES, IT |
-| Trade Republic | Trade Republic | 1% Saveback in ETF | No | €0 | Visa | DE, AT, FR, ES, IT, BE (not UK) |
+<!-- CARDS_TABLE_START (généré par scripts/gen-llms-full.mjs — ne pas éditer à la main entre les repères) -->
+| Card | Issuer | Cashback | Staking Required | Annual Fee | Networks | Markets | Note |
+|------|--------|----------|-----------------|------------|---------|---------|------|
+| Bleap Crypto Card | Unlimit EU Ltd | Up to 20% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Bybit Card | Bybit | Up to 10% | Optional | €0 | Visa | DE, ES, IT, UK, AT | récompense en MNT, 2-10% selon le palier de dépense, sans staking |
+| WhiteBIT Nóva | Wallester AS | Up to 10% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| COCA Visa Card | COCA | Up to 8% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Solcard | SC PAYMENTS Ltd | Up to 8% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Tap Card | Tap Global Ltd | Up to 8% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Kardpay Card | Kardpay FZCO | Up to 8% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Plutus Card | Plutus | Up to 8% | Yes | €0 | Visa | FR, DE, ES, IT, UK, BE, AT | en PLU, nécessite staking max + perks |
+| Bit2Me Card | Bit2Me | Up to 7% | No | €0 | Mastercard | FR, DE, ES, IT, BE, AT | en B2M, émetteur espagnol (MiCA) |
+| Uphold Card | Uphold | Up to 6% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Tria Card | Threely Dimensions Inc | Up to 6% | No | €25 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| OKX Card | OKX | Up to 5% | No | €0 | Mastercard | FR, DE, ES, IT, BE, AT | en OKB, EEE uniquement |
+| Gate Card | Gate.io | Up to 5% | No | €0 | Visa | FR, BE, DE, AT, ES, IT, UK |  |
+| Frosted Rose Gold | Crypto.com | Up to 5% | Yes | €0 | Visa | FR, DE, ES, IT, UK, BE, AT | en CRO, par palier ; tiers premium exigent un lockup CRO |
+| CoinZoom Card | Zenus Bank | Up to 5% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Rebind Card | Rebind SAS | Up to 5% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Solid Card | Solid | Up to 5% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Gnosis Pay Card | Monavate Ltd | Up to 5% | Optional | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Blackcatcard | Papaya Ltd. | Up to 5% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Rizon Visa Card | Rizon | Up to 5% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Kolo Card | Kolo | Up to 5% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Ugly Visa | UglyCash | Up to 4% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Kem Infinity Card | Kemfinity s.r.o. | Up to 3% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| MetaMask Card | Consensys | Up to 3% | No | €199 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Ether.fi Cash | Ether.Fi Cash Ltd | Up to 3% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Ready Card | Ready | Up to 3% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| KAST Card | KAST Tech | Up to 3% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| 1inch Card | Monavate Ltd | Up to 2% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Bitpanda Card | Bitpanda | Up to 2% | No | €0 | Visa | FR, DE, ES, IT, BE, AT, UK | en BEST, émetteur autrichien régulé |
+| Ledger CL Card | Baanx | Up to 2% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| CryptoLife Card | Baanx Group Ltd | Up to 2% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Bitrefill Card | Airfill Prepaid AB | Up to 2% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Nexo Card | Nexo | Up to 2% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT | en BTC ou NEXO, modèle ligne de crédit, sans staking |
+| XPlace Card | Pontech Group L.L.C-FZ | Up to 2% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Coin98 Fusion Card | Ninety Eight | Up to 2% | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Brighty Card | Wireflexion sp. z o.o. | Up to 1.75% | No | €0 | Visa | FR, DE, ES, IT, BE, AT, UK |  |
+| Xapo Card | Xapo Bank Ltd | Up to 1.1% | No | €1000 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Trade Republic Card | Trade Republic | Up to 1% | No | €0 | Visa | FR, DE, ES, IT, BE, AT | 1% Saveback en ETF, pas au UK |
+| Deblock Card | Deblock | Up to 1% | No | €0 | Visa | FR, UK |  |
+| Revolut Metal | Revolut | Up to 1% | No | €179.88 | Visa | FR, DE, ES, IT, UK, BE, AT | RevPoints (pas de cashback crypto), abonnement mensuel |
+| Krak Card | Kraken | Up to 1% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Holyheld | Unlimit EU Ltd | Up to 1% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| xPortal Card | xPortal | Up to 0.5% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Cypher Card | CypherD Wallet Inc | Up to 0.35% | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Banxe Card | Tompay LTD | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Based Card | Xfers Pte. Ltd | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| THORWallet Card | EMM Ventures AG | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| PintoPay Card | UANT Inc | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Exa Card | Exa Labs SAS | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Quicko Digital Card | Quicko sp. z o.o. | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Avici Card | Avici Inc. | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Solflare Card | Solflare | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| CEX.IO Card | Quicko Sp. z o.o. | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Stables Card | Stables Group | 0% / none | No | €0 | Visa | DE, ES, IT, UK, FR, BE, AT |  |
+| Tuyo Card | Tuyo Inc. | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Exodus Spend Card | Exodus Movement | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Avalanche Card | Rain Liquidity | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Utorg Crypto Card | UTORG LABS | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| PEXX Card | PEXX Technology HK Ltd | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Trustee Plus Card | Trustee Global UAB | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Tonhub Card | Walleexer s.r.o. | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| Spritz Card | Spritz Finance | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Fuse Card | Lead Bank | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Offramp Spend Card | Offramp Labs | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Fiat24 Debit | SR Saphirstein AG | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| RedotPay Card | RedotPay | 0% / none | No | €0 | Visa | DE, ES, IT, UK, FR, BE, AT |  |
+| MEXC x ether.fi Card | Ether.fi | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| SentüroPay Card | Senturo Pay Ltd | 0% / none | No | €0 | Mastercard | FR, DE, ES, IT, UK, BE, AT |  |
+| ChainsCard | AI MARKETING & TECH LIMITED | 0% / none | No | €0 | Visa | DE, ES, IT, UK, FR, BE, AT |  |
+| Nebeus Card | Rintral Trading | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| TRASTRA Crypto Card | TRASTRA Ltd | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Wallbit Card | Wallbit LLC | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Swype.fun Card | BrahmaFi Ltd | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Moonwell Card | CypherD Wallet Inc. | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Plasma One Card | Plasma Finance | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| UR Debit Card | UR | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Zebec Card | Zebec Network | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Onboard Flex Card | Onboard | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Laso Card | Laso Finance | 0% / none | No | €0 | Visa | DE, ES, IT, UK, FR, BE, AT |  |
+| Pay3 Card | Pay3 Ltd | 0% / none | No | €0 | Visa | FR, DE, ES, IT, UK, BE, AT |  |
+| Bitnob Virtual Card | Bitnob | 0% / none | No | €0 | Visa | DE, ES, IT, UK, AT |  |
+<!-- CARDS_TABLE_END -->
 
 ---
 
