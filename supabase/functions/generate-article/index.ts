@@ -141,7 +141,7 @@ Assure-toi que le contenu est factuel, utile pour un lecteur français qui cherc
 
     if (saveToDb) {
       const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-      const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+      const supabaseServiceKey = (Deno.env.get("SB_SECRET_KEY") ?? Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"))!;
       const sbAdmin = createClient(supabaseUrl, supabaseServiceKey);
 
       const { data: existing } = await sbAdmin
