@@ -1,13 +1,21 @@
 {
   "generated": "2026-08-05",
-  "_note": "Changements PROPOSÉS par A13, à appliquer via: node scripts/apply-card-updates.mjs (--confirm). Revue humaine obligatoire. Seul l'écart Binance (produit arrêté, certitude haute) est inclus ici; les autres écarts du rapport doivent d'abord être re-vérifiés sur la fiche live.",
+  "_note": "Changements PROPOSÉS (revue humaine). À appliquer via: node scripts/apply-card-updates.mjs (--confirm). Seuls des faits BINAIRES confirmés à la source sont inclus (réseau). Les écarts de cashback/disponibilité (Coinbase EU, Nexo UK, Crypto.com Level Up, Gnosis UK) sont volontairement EXCLUS : flous ou nécessitant de réécrire tout le champ markets — à traiter à la main via l'admin.",
   "changes": [
     {
-      "card": "Binance Card",
-      "match": { "name": "Binance Card" },
-      "set": { "status": "discontinued" },
-      "reason": "Carte Binance retirée de l'EEE depuis le 20/12/2023 (produit inexistant, encore listé comme actif)",
-      "source": "financemagnates / pymnts",
+      "card": "Bybit Card",
+      "match": { "name": "Bybit Card" },
+      "set": { "card_network": "Mastercard" },
+      "reason": "La Bybit Card dans l'EEE/CH est une Mastercard (émetteur Harmoniie SAS/Moorwand), pas Visa",
+      "source": "cryptoslate, Bybit Wiki, Mastercard Edge 2025",
+      "confidence": "high"
+    },
+    {
+      "card": "Bit2Me Card",
+      "match": { "name": "Bit2Me Card" },
+      "set": { "card_network": "Mastercard" },
+      "reason": "La Bit2Me Card est une Mastercard (documentation officielle Bit2Me)",
+      "source": "bit2me.com/suite/card, Binance Square, UPay",
       "confidence": "high"
     }
   ]
