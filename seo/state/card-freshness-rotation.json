@@ -1,0 +1,25 @@
+{
+  "_comment": "Rotation A13. lastChecked=null => priorite. L'agent prend les 8 plus anciens/nulls chaque semaine et met a jour la date.",
+  "cards": [
+    { "card": "Bybit Card", "issuer": "Bybit", "lastChecked": "2026-08-05" },
+    { "card": "Crypto.com Visa", "issuer": "Crypto.com", "lastChecked": "2026-08-05" },
+    { "card": "Binance Card", "issuer": "Binance", "lastChecked": "2026-08-05" },
+    { "card": "Nexo Card", "issuer": "Nexo", "lastChecked": "2026-08-05" },
+    { "card": "Bit2Me Card", "issuer": "Bit2Me", "lastChecked": "2026-08-05" },
+    { "card": "Coinbase Card", "issuer": "Coinbase", "lastChecked": "2026-08-05" },
+    { "card": "Gnosis Pay", "issuer": "Gnosis", "lastChecked": "2026-08-05" },
+    { "card": "Wirex Card", "issuer": "Wirex", "lastChecked": "2026-08-05" },
+    { "card": "Bitpanda Card", "issuer": "Bitpanda", "lastChecked": null },
+    { "card": "MetaMask Card", "issuer": "MetaMask", "lastChecked": null },
+    { "card": "OKX Card", "issuer": "OKX", "lastChecked": null },
+    { "card": "Ledger/Baanx Card", "issuer": "Ledger", "lastChecked": null },
+    { "card": "Brighty Card", "issuer": "Brighty", "lastChecked": null },
+    { "card": "Bleap Card", "issuer": "Bleap", "lastChecked": null },
+    { "card": "KuCoin Card", "issuer": "KuCoin", "lastChecked": null },
+    { "card": "Plutus Card", "issuer": "Plutus", "lastChecked": null },
+    { "card": "Ether.Fi Cash", "issuer": "Ether.Fi", "lastChecked": null },
+    { "card": "Revolut Metal", "issuer": "Revolut", "lastChecked": null },
+    { "card": "Young Platform Card", "issuer": "Young Platform", "lastChecked": null },
+    { "card": "Trade Republic Card", "issuer": "Trade Republic", "lastChecked": null }
+  ]
+}

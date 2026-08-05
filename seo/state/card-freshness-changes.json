@@ -1,0 +1,14 @@
+{
+  "generated": "2026-08-05",
+  "_note": "Changements PROPOSÉS par A13, à appliquer via: node scripts/apply-card-updates.mjs (--confirm). Revue humaine obligatoire. Seul l'écart Binance (produit arrêté, certitude haute) est inclus ici; les autres écarts du rapport doivent d'abord être re-vérifiés sur la fiche live.",
+  "changes": [
+    {
+      "card": "Binance Card",
+      "match": { "name": "Binance Card" },
+      "set": { "status": "discontinued" },
+      "reason": "Carte Binance retirée de l'EEE depuis le 20/12/2023 (produit inexistant, encore listé comme actif)",
+      "source": "financemagnates / pymnts",
+      "confidence": "high"
+    }
+  ]
+}

@@ -31,7 +31,8 @@
     "/decay": "run seo/agents/A5-decay-detector.md (node scripts/decay-tracker.mjs)",
     "/striking": "run seo/agents/A6-striking-distance-miner.md (node scripts/striking-distance.mjs)",
     "/quality": "run seo/agents/A11-quality-gate.md (node scripts/quality-gate.mjs <draft.md>)",
-    "/digest": "run seo/agents/A12-weekly-digest.md"
+    "/digest": "run seo/agents/A12-weekly-digest.md",
+    "/freshness": "run seo/agents/A13-card-freshness-sentinel.md (rotation seo/state/card-freshness-rotation.json, ecrit seo/state/card-freshness-report.md)"
   },
   "output_rules": [
     "every report ends with ONE recommended action sized under 4 hours",
