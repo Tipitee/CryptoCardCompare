@@ -60,22 +60,34 @@ const FIX = {
   },
 };
 
+// On récupère tout et on matche en JS (robuste aux espaces/retours-ligne parasites
+// dans les slugs) : bonne langue + slug contenant "voyage-europe" (marqueur FR du cluster).
+const { data: allRows, error: allErr } = await sb.from('blog_posts')
+  .select('id, lang, slug, title');
+if (allErr) { console.error('✗', allErr.message); process.exit(1); }
+
 const redirects = [];
 for (const [lang, { oldSlug, patch }] of Object.entries(FIX)) {
-  const { data: rows, error } = await sb.from('blog_posts')
-    .select('id, lang, slug, title')
-    .eq('lang', lang).eq('slug', oldSlug);
-  if (error) { console.error(`✗ ${lang}:`, error.message); continue; }
-  if (!rows.length) { console.log(`⚠️  ${lang}: aucune ligne (slug déjà corrigé ?) — ${oldSlug}`); continue; }
-  if (rows.length > 1) { console.log(`⚠️  ${lang}: ${rows.length} lignes pour ce slug — on saute par prudence`); continue; }
+  const rows = allRows.filter(p =>
+    p.lang === lang &&
+    ((p.slug || '').trim() === oldSlug || /voyage-europe/i.test(p.slug || '')));
+  if (!rows.length) { console.log(`⚠️  ${lang}: aucune ligne trouvée (déjà corrigé ?)`); continue; }
+  if (rows.length > 1) {
+    console.log(`⚠️  ${lang}: ${rows.length} lignes candidates :`);
+    rows.forEach(r => console.log(`      - "${r.slug}"`));
+    console.log(`   → on saute par prudence, dis-moi laquelle.`);
+    continue;
+  }
   const p = rows[0];
+  const realOld = (p.slug || '').trim();
 
   console.log(`\n[${lang}] ${p.id}`);
   console.log(`   slug  : ${p.slug}  →  ${patch.slug}`);
   console.log(`   title : ${patch.title}`);
   console.log(`   meta_t: ${patch.meta_title}`);
 
-  redirects.push(`/${lang}/blog/${oldSlug}   /${lang}/blog/${patch.slug}   301`);
+  redirects.push(`/${lang}/blog/${realOld}   /${lang}/blog/${patch.slug}   301`);
+  if (realOld !== oldSlug) console.log(`   ⚠️ slug réel différent de l'attendu : "${realOld}" (vérifie la 301 dans _redirects)`);
 
   if (CONFIRM) {
     const { error: e } = await sb.from('blog_posts').update(patch).eq('id', p.id);
