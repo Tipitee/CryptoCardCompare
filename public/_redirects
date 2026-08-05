@@ -71,11 +71,6 @@
 /de/karten/ledger-card  /de/marken/ledger  301
 /en/cards/bleap-card    /en/brands/bleap   301
 
-# ── Dead blog posts (slugs never existed or deleted from Supabase) ─────────
-/de/blog/vergleich-coinbase-card-vs-crypto-com-ruby-steel-2026        /404.html  410
-/it/blog/confronto-coinbase-card-vs-okx-card-2026                     /404.html  410
-/es/blog/comparativa-coinbase-card-vs-crypto-com-midnight-blue-2026   /404.html  410
-
 # ── Slugs voyage relocalisés (étaient en FR sur des pages IT/DE/EN/ES) ────
 /it/blog/meilleure-carte-crypto-voyage-europe-comparatif        /it/blog/migliore-carta-crypto-viaggi-europa   301
 /de/blog/meilleure-carte-crypto-voyage-europe-sans-frais        /de/blog/beste-krypto-karte-reisen-europa      301

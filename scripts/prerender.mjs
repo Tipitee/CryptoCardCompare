@@ -102,8 +102,14 @@ function collectPaths() {
 // ── Decide noindex for thin programmatic compare pages ────────────────────
 // Normalizes to alphabetical order before checking the allowlist, so both
 // /fr/comparer/a-vs-b and /fr/comparer/b-vs-a resolve to the same key.
+// Sections de comparaison programmatique (SPA, noindex). Les articles de BLOG
+// comparatifs (…/blog/vergleich-…-vs-…) sont du vrai contenu et ne doivent PAS
+// être attrapés par la règle -vs-.
+const COMPARE_SECTIONS = new Set(['comparer', 'vergleichen', 'comparar', 'confrontare', 'compare']);
 function shouldNoindex(path) {
-  const last = path.split('/').filter(Boolean).pop() || '';
+  const segs = path.split('/').filter(Boolean);
+  if (!segs.some((s) => COMPARE_SECTIONS.has(s))) return false; // hors section compare → jamais noindex
+  const last = segs.pop() || '';
   if (!last.includes('-vs-')) return false;
   const vsIdx = last.indexOf('-vs-');
   const a = last.slice(0, vsIdx);
