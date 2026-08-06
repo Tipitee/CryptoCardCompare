@@ -406,10 +406,10 @@ export default function BrandPage() {
   useEffect(() => {
     if (!brandId) return;
     setLoading(true);
-    fetchCardsByBrand(brandId)
+    fetchCardsByBrand(brandId, lang)
       .then(setCards)
       .finally(() => setLoading(false));
-  }, [brandId]);
+  }, [brandId, lang]);
 
   useEffect(() => {
     if (!brandId) return;

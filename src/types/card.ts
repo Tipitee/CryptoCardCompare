@@ -48,6 +48,9 @@ export interface CryptoCard {
   brandId?: string;       // e.g. 'crypto-com', groups all tiers of a brand
   tierRank?: number;      // 1 = entry, 2 = mid, 3+ = premium
   tierLabel?: string;     // e.g. 'Midnight Blue', 'Ruby Steel', 'Obsidian'
+  // Surcharges par marché : { "en": { cashbackNoStaking: 0 }, ... }. Seuls les
+  // champs présents remplacent la valeur globale pour ce marché (résolu au fetch).
+  marketOverrides?: Record<string, Partial<CryptoCard>>;
 }
 
 export interface QuizAnswers {

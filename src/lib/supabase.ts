@@ -36,7 +36,7 @@ const CARD_COLUMNS =
   'color_primary, color_secondary, real_card_image, image_alt, markets, status, ' +
   'virtual_only, market_restrictions, category_rates, trust_score, founded_year, ' +
   'regulation_level, trustpilot_score, aum_tier, trust_breakdown, ' +
-  'brand_id, tier_rank, tier_label';
+  'brand_id, tier_rank, tier_label, market_overrides';
 
 type CardRow = {
   id: string;
@@ -74,6 +74,7 @@ type CardRow = {
   brand_id: string | null;
   tier_rank: number | null;
   tier_label: string | null;
+  market_overrides: Record<string, Record<string, unknown>> | null;
 };
 
 function rowToCard(row: CardRow): CryptoCard {
@@ -113,7 +114,20 @@ function rowToCard(row: CardRow): CryptoCard {
     brandId: row.brand_id ?? undefined,
     tierRank: row.tier_rank ?? undefined,
     tierLabel: row.tier_label ?? undefined,
+    marketOverrides: (row.market_overrides as CryptoCard['marketOverrides']) ?? {},
   };
+}
+
+/**
+ * Applique la surcharge par marché : la valeur globale est le défaut ; on ne
+ * remplace que les champs présents dans marketOverrides[market]. Pur, sans effet
+ * de bord. Sans marché ou sans surcharge → renvoie la carte telle quelle.
+ */
+export function applyMarketOverride(card: CryptoCard, market?: string): CryptoCard {
+  if (!market || !card.marketOverrides) return card;
+  const ov = card.marketOverrides[market];
+  if (!ov || typeof ov !== 'object' || !Object.keys(ov).length) return card;
+  return { ...card, ...(ov as Partial<CryptoCard>) };
 }
 
 export async function fetchCards(market?: string): Promise<CryptoCard[]> {
@@ -126,7 +140,7 @@ export async function fetchCards(market?: string): Promise<CryptoCard[]> {
   }
   const { data, error } = await query;
   if (error) throw error;
-  return (data as unknown as CardRow[]).map(rowToCard);
+  return (data as unknown as CardRow[]).map(rowToCard).map((c) => applyMarketOverride(c, market));
 }
 
 export async function fetchCardArticle(cardId: string, lang: string) {
@@ -140,7 +154,7 @@ export async function fetchCardArticle(cardId: string, lang: string) {
   return data ?? null;
 }
 
-export async function fetchCardsByBrand(brandId: string): Promise<CryptoCard[]> {
+export async function fetchCardsByBrand(brandId: string, market?: string): Promise<CryptoCard[]> {
   const { data, error } = await supabase
     .from('cards')
     .select(CARD_COLUMNS)
@@ -148,17 +162,17 @@ export async function fetchCardsByBrand(brandId: string): Promise<CryptoCard[]> 
     .neq('status', 'discontinued')
     .order('tier_rank', { ascending: true });
   if (error) throw error;
-  return (data as unknown as CardRow[]).map(rowToCard);
+  return (data as unknown as CardRow[]).map(rowToCard).map((c) => applyMarketOverride(c, market));
 }
 
-export async function fetchCardById(id: string): Promise<CryptoCard | null> {
+export async function fetchCardById(id: string, market?: string): Promise<CryptoCard | null> {
   const { data } = await supabase
     .from('cards')
     .select(CARD_COLUMNS)
     .eq('id', id)
     .maybeSingle();
   if (!data) return null;
-  return rowToCard(data as unknown as CardRow);
+  return applyMarketOverride(rowToCard(data as unknown as CardRow), market);
 }
 
 export async function fetchFavorites(): Promise<string[]> {

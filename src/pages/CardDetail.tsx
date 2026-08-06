@@ -194,13 +194,13 @@ export default function CardDetail() {
     if (!id) return;
     setLoading(true);
     setNotFound(false);
-    fetchCardById(id)
+    fetchCardById(id, lang)
       .then((c) => {
         if (!c) setNotFound(true);
         else setCard(c);
       })
       .finally(() => setLoading(false));
-  }, [id]);
+  }, [id, lang]);
 
   useEffect(() => {
     if (id && contentLang) fetchCardArticle(id, contentLang).then(setArticle);
@@ -209,10 +209,10 @@ export default function CardDetail() {
   // Fetch other tiers from the same brand
   useEffect(() => {
     if (!card?.brandId) { setBrandSiblings([]); return; }
-    fetchCardsByBrand(card.brandId).then(all => {
+    fetchCardsByBrand(card.brandId, lang).then(all => {
       setBrandSiblings(all.filter(c => c.id !== card.id));
     });
-  }, [card?.brandId, card?.id]);
+  }, [card?.brandId, card?.id, lang]);
 
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
