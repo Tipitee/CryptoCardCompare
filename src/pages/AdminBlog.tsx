@@ -321,11 +321,24 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
         cacheControl: '31536000', upsert: false, contentType: file.type || undefined,
       });
       if (upErr) throw upErr;
-      const { data } = supabase.storage.from('blog-hero-images').getPublicUrl(path);
-      setField('image_hero', data.publicUrl);
-      setSaveMsg('Image uploadée !');
+      const url = supabase.storage.from('blog-hero-images').getPublicUrl(path).data.publicUrl;
+      setField('image_hero', url);
+      // Persiste tout de suite si l'article existe déjà (comme la génération),
+      // pour éviter d'avoir à re-cliquer « Enregistrer ».
+      if (editPost?.id && editPost?.title?.trim() && editPost?.slug?.trim()) {
+        const saved = await adminUpsertPost({ ...editPost, image_hero: url }, secret);
+        setEditPost(saved);
+        setPosts(prev => {
+          const idx = prev.findIndex(p => p.id === saved.id);
+          if (idx >= 0) { const next = [...prev]; next[idx] = saved; return next; }
+          return prev;
+        });
+        setSaveMsg('Image uploadée et enregistrée ✓');
+      } else {
+        setSaveMsg('Image uploadée — clique « Enregistrer » pour l\'appliquer.');
+      }
       if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
-      saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 3000);
+      saveTimeoutRef.current = setTimeout(() => setSaveMsg(''), 3500);
     } catch (err) {
       setSaveMsg(`Erreur upload : ${String(err)}`);
     } finally {
