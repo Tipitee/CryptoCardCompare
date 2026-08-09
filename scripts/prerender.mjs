@@ -39,7 +39,18 @@ const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY || 8);
 const LIMIT = Number(process.env.PRERENDER_LIMIT || 0);
 
 /** Routes that exist but are intentionally NOT in any sitemap. Add here if needed. */
-const EXTRA_ROUTES = [];
+const EXTRA_ROUTES = [
+  // Pages légales / footer hors sitemaps : prérendues en fichiers physiques pour
+  // être servies de façon fiable (indépendamment du cache CDN et des règles _redirects).
+  '/impressum', '/datenschutz', '/privacy', '/risk-summary', '/affiliate-disclosure',
+  // Mentions légales par marché (LegalPage)
+  '/fr/mentions-legales', '/be/mentions-legales', '/de/rechtliches', '/at/rechtliches',
+  '/es/aviso-legal', '/it/avviso-legale', '/en/legal-notice',
+  // Divulgation affiliés par marché
+  '/fr/divulgation-affilies', '/be/divulgation-affilies', '/de/affiliate-offenlegung',
+  '/at/affiliate-offenlegung', '/es/divulgacion-afiliados', '/it/divulgazione-affiliati',
+  '/en/affiliate-disclosure',
+];
 
 /** Compare pairs worth indexing (high search demand). Everything else with
  *  "-vs-" in the slug gets noindex,follow injected. Slugs are alphabetically
