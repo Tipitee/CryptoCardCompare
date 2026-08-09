@@ -24,7 +24,10 @@ const FILE = 'public/llms-full.txt';
 const NOTES = JSON.parse(readFileSync('seo/llms-card-notes.json', 'utf8')).notes || {};
 
 const num = v => Number(v) || 0;
-const maxCb = c => Math.max(num(c.cashback_base), num(c.cashback_no_staking), num(c.cashback_premium));
+// Taux RÉALISTE (sans staking) = ce que la plupart des gens obtiennent.
+const realistic = c => Math.max(num(c.cashback_base), num(c.cashback_no_staking));
+// Taux ANNONCÉ (max, staking inclus) = le « jusqu'à X% ».
+const advertised = c => Math.max(num(c.cashback_base), num(c.cashback_no_staking), num(c.cashback_premium));
 const marketLabel = m => (m === 'en' ? 'UK' : String(m).toUpperCase());
 
 const { data, error } = await sb.from('cards')
@@ -34,19 +37,24 @@ if (error) { console.error('✗', error.message); process.exit(1); }
 const active = (data || []).filter(c => c.status === 'active');
 const dropped = (data || []).filter(c => c.status !== 'active');
 
-// Un représentant par marque (brand_id sinon issuer) : le tier au meilleur cashback.
+// Un représentant par marque (brand_id sinon issuer) : le tier au meilleur cashback annoncé.
 const byBrand = new Map();
 for (const c of active) {
   const key = c.brand_id || c.issuer || c.name;
   const cur = byBrand.get(key);
-  if (!cur || maxCb(c) > maxCb(cur)) byBrand.set(key, c);
+  if (!cur || advertised(c) > advertised(cur)) byBrand.set(key, c);
 }
-const reps = [...byBrand.values()].sort((a, b) => maxCb(b) - maxCb(a));
+// Tri : taux réaliste (sans staking) d'abord, puis annoncé, puis nom.
+const reps = [...byBrand.values()].sort((a, b) =>
+  realistic(b) - realistic(a) || advertised(b) - advertised(a) || String(a.name).localeCompare(String(b.name)));
 
 const noNote = [];
 const rows = reps.map(c => {
-  const cb = maxCb(c);
-  const cashback = cb > 0 ? `Up to ${cb}%` : '0% / none';
+  const r = realistic(c), a = advertised(c);
+  // Affichage honnête : on mène avec le taux réaliste, « (up to X%) » si le max diffère.
+  const cashback = r > 0
+    ? (a > r ? `${r}% (up to ${a}%)` : `${r}%`)
+    : (a > 0 ? `Up to ${a}% (staking)` : '0% / none');
   const staking = num(c.staking_required) > 0 ? (num(c.cashback_no_staking) > 0 ? 'Optional' : 'Yes') : 'No';
   const fee = num(c.annual_fees) > 0 ? `€${c.annual_fees}` : '€0';
   const markets = (c.markets || []).map(marketLabel).join(', ');

@@ -507,7 +507,7 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
                     className="btn-secondary text-sm"
                   >
                     <Save className="w-3.5 h-3.5" />
-                    Brouillon
+                    Enregistrer
                   </button>
                   <button
                     onClick={() => handleSave(!editPost.published)}

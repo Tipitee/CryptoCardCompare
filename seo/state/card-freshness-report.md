@@ -1,32 +1,33 @@
-# A13 — Rapport fraîcheur cartes — 2026-08-05
+# A13 — Rapport fraîcheur cartes — 2026-08-08
 
-**Lot vérifié (8) :** Bybit, Crypto.com Visa, Binance, Nexo, Bit2Me, Coinbase, Gnosis Pay, Wirex.
-**Écarts détectés : 8** (1 ARRÊTÉ, 6 CHANGÉ, 1 carte OK). Source « site » = llms-full.txt (maj juillet 2026). Réalité = sites/émetteurs via WebSearch, daté ci-dessous.
+Lot vérifié (8, `lastChecked` null) : Bitpanda, MetaMask, OKX, Ledger/Baanx, Brighty, Bleap, KuCoin, Plutus.
+Écarts : **4 CHANGÉ** (3 cartes) · **1 INCERTAIN** (KuCoin) · **1 nuance** (MetaMask) · + dérive GEO llms-full.txt.
 
-| Carte | Champ | Site dit | Réalité (source, 2026) | Statut | Marché |
-|-------|-------|----------|------------------------|--------|--------|
-| Binance | produit | actif, 0,1-8% BNB | Carte EEE **arrêtée le 20/12/2023** (financemagnates, pymnts) | **ARRÊTÉ** | FR/BE/DE/AT/ES/IT |
-| Coinbase | cashback | 1-2% crypto | Cashback **US-only** ; EU/UK = 0 récompense (bitdegree, sweepbase) | CHANGÉ | tous EU + UK |
-| Bybit | cashback | jusqu'à 10% MNT | Base EU = **1% illimité** ; 10-20% = promo/hors-EU (cryptonomist, prnewswire) | CHANGÉ | tous EU + UK |
-| Bybit | réseau | Visa | **Mastercard** dans l'EEE (Bybit Wiki) | CHANGÉ | EU |
-| Nexo | cashback | jusqu'à 2% BTC/NEXO | **UK = 0 cashback** (FCA, oct. 2023) ; carte physique en pause depuis janv. 2025 (cryptoslate, spendnode) | CHANGÉ | UK |
-| Bit2Me | réseau | Visa | **Mastercard** (bitcoinist, Binance Square, UPay) | CHANGÉ | tous |
-| Crypto.com | paliers | Ruby Steel €0, 0-5% CRO | Programme **« Level Up »** depuis sept. 2025 ; Basic gratuit = 0%, palier via abo OU lockup CRO (cryptoslate, skrumble) | CHANGÉ | tous |
-| Gnosis Pay | dispo | FR/BE/DE/AT/ES/IT (pas UK) | **UK disponible** (+32 pays EEE, AR, BR) ; prog. cashback intérimaire finit 30/09/2026 (spendnode, cardpilled) | CHANGÉ | +UK |
-| Wirex | — | jusqu'à 8% WXT, Visa/MC, base €0 | Conforme (8% = plan payant ; base gratuite 0,5%) (cryptoslate) | OK | — |
+> ⚠️ Contrainte : les fiches live `/en/cards/<slug>` n'ont pas pu être chargées (réseau/provenance bloqués). Source « site » utilisée = **CARDS_TABLE de `llms-full.txt`** (« table auto-générée depuis la base » → proxy fidèle des valeurs DB). Prose de `llms-full.txt` = contrôle GEO secondaire.
 
-## À corriger cette semaine (trié par importance / trafic)
-1. **Binance** — retirer/marquer « arrêté » : produit mort encore listé comme achetable = désinformation + mauvais SEO/GEO.
-2. **Coinbase** — supprimer le cashback 1-2% pour tous les marchés EU/UK (récompenses réservées aux US).
-3. **Bybit** (carte phare) — cashback EU = 1% (pas 10%) et réseau Mastercard en EEE (le 10-20% n'est que promo/hors-EU).
-4. **Nexo** — flag UK : 0 cashback (FCA) ; noter la pause carte physique.
-5. **Crypto.com** — remplacer paliers/naming Ruby Steel par « Level Up » (Basic gratuit = 0%).
-6. **Bit2Me** — réseau Visa → Mastercard.
-7. **Gnosis Pay** — ajouter le marché UK.
+| Carte | Champ | Site (CARDS_TABLE) | Réalité (source) | Statut | Marché |
+|-------|-------|--------------------|------------------|--------|--------|
+| Bleap Crypto Card | réseau | Visa | **Mastercard** (bleap.finance officiel) | CHANGÉ | tous |
+| Ledger CL Card | cashback | Up to 2% | **1%** BTC/USDC (2% = frais de dépense, spendnode/ueex) | CHANGÉ | tous |
+| Plutus Card | frais annuels | €0 | **plan payant mini £6.99/mois** (tier gratuit supprimé 2026, spendnode) | CHANGÉ | tous |
+| Plutus Card | cashback max | Up to 8% | **Up to 9%** (tier G.O.A.T, spendnode/cardpilled) | CHANGÉ | tous |
+| MetaMask Card | frais annuels | €199 | €199 = tier Metal ; carte virtuelle **€0 / 1%** (coincodecap) | INCERTAIN (nuance tier) | tous |
+| KuCoin Card | présence | absente de la table | **KuCard actif**, Visa, EEE (pas UK) — non listée (cryptowisser/IBSI) | INCERTAIN (couverture) | EEE |
+| Bitpanda | cashback / dispo | Up to 2%, dispo FR | Up to 2% asset au choix, **dispo FR OK** (spendnode) | OK | — |
+| OKX Card | tout | 5%, Mastercard, EEE, pas UK | conforme (Mastercard, EEE, USDG ≤5%, coincodecap) | OK | — |
+| Brighty Card | cashback | Up to 1.75% | conforme (0.5% gratuit → 1.75% payant, fintechmagazine) | OK | — |
 
-**Dérive llms-full.txt (GEO) :** fichier statique (maj juillet 2026), non régénéré ; 7 des 8 cartes du lot ont dérivé de la réalité émetteur. Il alimente les IA → régénération à prévoir après corrections en base. (Comparaison faite sur llms-full.txt uniquement ; fiches live non re-fetchées ce cycle.)
+## À corriger cette semaine (CHANGÉ, par trafic)
+1. **Plutus** — `annual_fees` €0 → payant (tier gratuit supprimé 2026, mini £6.99/mois) + `cashback_premium` 8→9. Carte à trafic (page alternatives dédiée).
+2. **Ledger CL Card** — `cashback_base` 2→1 % (le 2% affiché est le frais de dépense, pas le cashback). Vérifier quelle fiche (Ledger CL vs CryptoLife).
+3. **Bleap** — `card_network` Visa → Mastercard.
 
-## Action unique (< 4 h)
-Via l'admin, **marquer la Binance Card comme arrêtée / la dépublier** (retirée de l'EEE depuis déc. 2023). C'est la seule correction empêchant d'orienter des utilisateurs vers un produit inexistant.
+## Dérive GEO (`llms-full.txt`, prose statique périmée — la table est OK)
+- Section France : « Not available: Bitpanda » ❌ — Bitpanda **est** dispo en France (contredit la table qui liste FR). À corriger.
+- FAQ/recos : « Bleap 2% BTC », « Brighty 1% BTC », « Ledger 2% BTC » périmés (réalité : Bleap 20% USDC/Mastercard, Brighty 1.75% USDC, Ledger 1%).
+- MetaMask listée « €0 » en FAQ mais « €199 » en table → clarifier tier gratuit vs Metal.
 
-_Lecture seule : aucune modif base/site effectuée. Mise à jour Supabase + régénération llms-full.txt = étapes humaines._
+## UNE action prioritaire (< 4 h)
+Corriger **Plutus** en base via l'admin : `annual_fees` (tier gratuit supprimé — n'est plus €0). C'est l'écart le plus trompeur : carte annoncée gratuite alors qu'un abonnement est désormais obligatoire.
+
+*Lecture seule. Mise à jour Supabase + régénération `llms-full.txt` = étapes humaines (`node scripts/apply-card-updates.mjs --confirm`).*

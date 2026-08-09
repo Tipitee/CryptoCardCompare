@@ -208,3 +208,75 @@ Chaque brief approuvé → confié au maker A9 (Phase 3) → checker A11 → toi
 - **Localisation — ADAPTER, jamais traduire** : page **be uniquement** (droit fiscal belge). NE PAS réutiliser les chiffres/règles FR (be ≠ fr : la France a une flat tax 30 %, la Belgique non). Contenu en français belge, marché be. À revérifier au publish : seuils/qualification « revenus divers », taux applicable, obligations de déclaration de comptes étrangers en vigueur. Disclaimer non-conseil fiscal + auteur cité (E-E-A-T).
 
 **→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/…/crypto-card-apple-pay` (thématique Apple Pay / Google Pay). Intention commerciale la plus forte, demande prouvée par 8 posts blog au mauvais format, gap FR total, et 2× meilleur immédiat via tableau Supabase filtré par marché.)**
+
+---
+
+### RUN 2026-08-07 (A8 /gap)
+
+**Constat Pass 1 (couverture buyer-queries)** : les 25 buyer queries restent quasi toutes couvertes (thématiques × 7 marchés, reviews × 25 cartes, compare A-vs-B, brands, alternatives dans `sitemap-pages`, IBAN, sans-KYC, voyage, débutant). L'espace **commercial générique** est saturé. **Anti-doublon queue** : tous les gaps « évidents » sont DÉJÀ briefés — UK cards (07-23), fiscalité UK/DE/AT/ES/IT/BE (07-23 & 07-24), Netflix/Spotify reformat (07-23), Apple Pay & stablecoin USDC/USDT (07-31). Non re-proposés. Ce run cible **3 gaps par DEVISE/MÉCANIQUE de cashback et par structure de produit** — sous-niches commerciales détenues par aucune page dédiée, révélées par Pass 2 (Koinly = ligne de crédit ≠ disposition fiscale) et Pass 3 (page cashback générique là où la SERP segmente par token reçu).
+
+**Constat Pass 2 (concurrents)** : Koinly possède une page dédiée « Crypto Debit Card Taxes » qui insiste sur deux points que nos pages n'exploitent pas en page-produit : (1) **dépenser = disposition = plus-value**, mais (2) les **cartes à ligne de crédit adossée à un collatéral (Nexo)** n'entraînent PAS de disposition → pas d'événement fiscal. Angle sélection-de-carte inédit chez nous → BRIEF 3. cryptocardindex.com = disponibilité régionale hebdo (déjà couvert par nos pages pays). Aucun des deux n'a de page dédiée **self-custody / on-chain** ni **cashback-en-BTC** → BRIEF 1 & 2.
+
+**Constat Pass 3 (mauvais format)** : `carte-crypto-cashback` (money page générique) répond « quelles cartes ont du cashback » mais **ne segmente pas par token reçu** (BTC vs altcoin vs stablecoin vs points). La SERP sur « carte cashback en Bitcoin » veut un tableau filtré BTC-only → nouvelle page thématique, pas un reformat de la money page (qu'on garde générique).
+
+#### Table (triée par intention revenu — max 12 lignes)
+
+| Sujet | Query cible | Marché | Format | Effort | Intention |
+|---|---|---|---|---|---|
+| Carte crypto self-custody / non-custodial (on-chain) | "best self-custody / non-custodial crypto card" | en + fr + ADAPTER 5 | thématique (tableau filtré) | M | commercial → **BRIEF 1** |
+| Carte crypto avec cashback en Bitcoin (BTC) | "best crypto card with Bitcoin cashback" | en/fr/de + ADAPTER 5 | thématique (tableau filtré BTC) | M | commercial → **BRIEF 2** |
+| Carte crypto sans événement fiscal à la dépense (ligne de crédit) | "crypto card no capital gains when spending" | en/fr/de | thématique-décision + FAQ fiscale | M | commercial (pont cluster fiscal) → **BRIEF 3** |
+| Alternatives à la carte Binance | "best alternatives to the Binance card" | en+5 | déjà en `sitemap-pages` (AlternativesPage) | — | commercial — COUVERT, non briefé |
+| Carte crypto pour entreprise/société | "crypto card for business Europe" | en/fr | — | L | commercial — **ingagnable** : aucun produit business en base, pas de route affiliée |
+| Cartes crypto fermées / retirées d'un marché en 2026 | "which crypto cards were discontinued" | en | blog | S | info — demande faible, non briefé |
+| Plafonds/limites mensuelles carte crypto | "crypto card monthly spending limits" | en/fr | tableau | S | info — demande faible, non briefé |
+
+#### BRIEF 1 — Carte crypto self-custody / non-custodial (on-chain) — NOUVELLE PAGE THÉMATIQUE
+- **Query cible / buyer query mappée** : "best self-custody crypto card" / "non-custodial crypto card Europe" / "carte crypto non-custodial (on-chain)" (en+fr, commercial). Proche des buyer queries "best crypto card in Europe" et "without KYC" mais angle distinct (garde des clés, pas de dépôt chez l'émetteur). Slug proposé : `/en/self-custody-crypto-card` (+ `/fr/carte-crypto-non-custodial`).
+- **Anti-doublon** : aucune page thématique ne cible la self-custody. `crypto-card-no-kyc` traite le KYC (≠ custody), `virtual-crypto-card` le format virtuel. Reviews `gnosis-pay-card` et `metamask-card` existent mais aucune page catégorie qui les agrège → gap réel. Non briefé dans les runs précédents.
+- **2× meilleur que le gagnant actuel** : catégorie émergente sous-couverte par Koinly/cryptocardindex (qui listent surtout des cartes custodiales d'exchange). Nous livrons un **tableau filtré self-custody** (réseau on-chain, token de règlement, chaîne, staking, marchés) tiré de Supabase + explication claire « qui détient vos fonds » (émetteur vs wallet), risque de contrepartie, et lien vers la fiscalité (dépense on-chain = disposition, cf. cluster fiscal).
+- **Outline (H2 = questions réelles)** :
+  - What is a self-custody (non-custodial) crypto card?
+  - Which self-custody crypto cards are available in Europe in 2026?
+  - Self-custody vs custodial (exchange) cards: who holds your funds?
+  - Do non-custodial cards still need KYC?
+  - What are the trade-offs (fees, cashback, chargebacks, tax)?
+- **Réponse clé (~100 mots)** : A self-custody crypto card lets you spend directly from a wallet you control, rather than from a balance held by an exchange. In 2026 the main non-custodial options in Europe are Gnosis Pay (spends USDC on-chain via a Safe smart account, Visa, up to 5% cashback in GNO) and the MetaMask Card (spends from your MetaMask wallet). You keep the keys, so there's no counterparty/insolvency risk, but you handle security yourself and most still require KYC at the card layer. Note tax: spending on-chain is still a disposal and may trigger capital gains — see our per-country tax guides. (Data: Supabase `cards`, updated 2026-08-07.)
+- **FAQ (3–5)** : Is a self-custody card really non-custodial end-to-end? · Does Gnosis Pay/MetaMask Card require KYC? · Which chains/tokens can I spend? · Can I get cashback on a non-custodial card? · What happens if I lose my keys?
+- **Liens internes (≥1 money page)** : → `/en/best-crypto-card` (money) / `/fr/meilleure-carte-crypto` (money), `/en/crypto-card-cashback` (money), reviews `gnosis-pay-card` & `metamask-card`, `crypto-card-no-kyc` (cluster), cluster fiscal (dépense = disposition).
+- **Données Supabase à insérer (datées 2026-08-07)** : filtre custody=self/non-custodial (ou liste manuelle Gnosis Pay, MetaMask + tout ajout) → colonnes : carte | custodial O/N | chaîne/réseau | token de règlement | cashback max + token | staking | marchés. Vérifier chaque ligne contre `cards` avant publication (le champ custody peut devoir être ajouté/validé).
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : mécanisme universel MAIS (1) disponibilité par marché (Gnosis Pay/MetaMask acceptent-ils be/at/es/it/UK ? vérifier `cards`), (2) le paragraphe fiscal pointe vers la fiscalité DU pays (be/de/at/es/it/UK ≠ fr — cluster briefé), (3) UK en GBP + statut FCA, pas d'exemple € recopié. hreflang self par locale.
+
+#### BRIEF 2 — Carte crypto avec cashback en Bitcoin (BTC) — NOUVELLE PAGE THÉMATIQUE
+- **Query cible / buyer query mappée** : "best crypto card with Bitcoin cashback" / "carte crypto cashback en Bitcoin" / "Krypto-Karte mit Bitcoin-Cashback" (en+fr+de, commercial). Segmente la buyer query "best cashback card" par **token reçu = BTC**. Slug proposé : `/en/crypto-card-bitcoin-cashback` (+ `/fr/carte-crypto-cashback-bitcoin`).
+- **Anti-doublon** : complémentaire, NON dupliqué. `carte-crypto-cashback` = cashback générique (tous tokens), RUN 07-31 BRIEF 2 = cashback **stablecoin** (USDT/USDC). Aucune page ne cible le cashback **en BTC** — sous-niche à part (les utilisateurs veulent accumuler du Bitcoin, pas des altcoins/points). Gap réel.
+- **2× meilleur que le gagnant actuel** : les comparatifs concurrents mélangent tous les tokens ; nous livrons un **tableau BTC-only** (taux réel, staking requis O/N, marchés) + l'angle « accumuler du BTC sans acheter » et la note de volatilité vs cashback stable (lien BRIEF stablecoin).
+- **Outline (H2 = questions réelles)** :
+  - Which crypto cards pay cashback in Bitcoin (not altcoins or points)?
+  - How much BTC cashback can you realistically earn in 2026?
+  - Do BTC-cashback cards require staking?
+  - BTC cashback vs stablecoin vs token cashback: which is best for you?
+  - Is Bitcoin cashback taxable?
+- **Réponse clé (~100 mots)** : A handful of cards pay cashback directly in Bitcoin rather than an exchange token or points. In 2026 the main options in Europe are the Ledger/Baanx card (up to 2% in BTC), the Nexo Card (up to 2% in BTC or NEXO, no staking, credit-line model) and Brighty (around 1% in BTC). BTC cashback appeals to users who want to stack sats passively, but the reward's value fluctuates with the Bitcoin price — unlike stablecoin cashback. None of these require locking tokens the way tiered CRO cards do. Remember that receiving and later spending BTC can be a taxable event. (Data: Supabase `cards`, updated 2026-08-07.)
+- **FAQ (3–5)** : Which card gives the most BTC cashback? · Is BTC cashback better than stablecoin cashback? · Do I need to stake to earn BTC rewards? · Is Bitcoin cashback taxed as income or capital gains? · Can I auto-convert altcoin cashback to BTC instead?
+- **Liens internes (≥1 money page)** : → `/en/crypto-card-cashback` (money) / `/fr/carte-crypto-cashback` (money), `/en/best-crypto-card` (money), reviews `nexo-card`, `ledger-card`, `brighty-card`, `crypto-card-no-staking` (cluster), stablecoin cashback (RUN 07-31) + cluster fiscal.
+- **Données Supabase à insérer (datées 2026-08-07)** : filtre cashback_token=BTC → Ledger/Baanx (≤2% BTC), Nexo (≤2% BTC/NEXO, sans staking), Brighty (~1% BTC) + tout ajout. Colonnes : carte | cashback max BTC | staking O/N | frais annuels | marchés. Revérifier taux et token dans `cards` (les taux BTC changent souvent).
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : taux universels MAIS (1) disponibilité par marché (Ledger/Brighty en be/at/es/it/UK ? vérifier), (2) exemple chiffré en devise locale (UK = GBP, pas €), (3) paragraphe fiscal → fiscalité du pays (cluster briefé : BTC reçu = revenu/plus-value selon marché). hreflang self par locale.
+
+#### BRIEF 3 — Carte crypto sans événement fiscal à la dépense (cartes à ligne de crédit) — NOUVELLE PAGE THÉMATIQUE-DÉCISION
+- **Query cible / buyer query mappée** : "crypto card no capital gains when spending" / "crypto card that doesn't trigger tax" / "carte crypto sans impôt à la dépense" (en+fr+de, commercial avec forte composante info). Slug proposé : `/en/crypto-card-no-taxable-event` (+ `/fr/carte-crypto-sans-impot-depense`).
+- **Anti-doublon** : NON couvert. Le cluster fiscal briefé (FR/UK/DE/AT/ES/IT/BE) explique les RÈGLES ; aucune page ne fait la **sélection de cartes** par efficacité fiscale. Distinct des tax guides (page-produit commerciale, pas guide de déclaration). Confirmé par Pass 2 : Koinly note explicitement que les cartes à ligne de crédit adossée (Nexo) évitent la disposition — angle qu'on ne monétise pas encore.
+- **2× meilleur que le gagnant actuel** : Koinly explique la mécanique mais ne classe pas les cartes ; nous livrons le **tableau des cartes à ligne de crédit / collatéral** (dépense = emprunt, pas vente → pas de plus-value au moment de payer) vs cartes debit (chaque dépense = disposition), avec l'avertissement clé : la mécanique dépend du droit de CHAQUE pays et n'est pas un conseil fiscal.
+- **Outline (H2 = questions réelles)** :
+  - Why does spending with a normal crypto (debit) card trigger tax?
+  - Which crypto cards let you spend without selling your crypto?
+  - How do credit-line / collateral-backed cards (Nexo) work?
+  - Does this really avoid capital gains tax in my country?
+  - Trade-offs: interest, liquidation risk, LTV.
+- **Réponse clé (~100 mots)** : With a standard crypto debit card, every purchase sells crypto — a disposal that can create a capital gain to report. Credit-line cards work differently: you borrow against your crypto as collateral and spend the loan, so you don't sell, and in many jurisdictions no disposal occurs at the moment you pay. The Nexo Card is the main example in Europe (spend a credit line backed by your holdings, up to 2% cashback, no staking). This can defer tax, but you owe interest, face liquidation risk if prices drop, and rules differ by country — this is not tax advice. (Data: Supabase `cards`, updated 2026-08-07.)
+- **FAQ (3–5)** : Is it legal/legit to avoid a disposal this way? · Which cards use a credit-line model? · Do I pay interest on a crypto credit-line card? · What's the liquidation risk? · Does this work in France/Germany/UK? (link per-country tax guides)
+- **Liens internes (≥1 money page)** : → `/en/best-crypto-card` (money) / `/fr/meilleure-carte-crypto` (money), review `nexo-card` (money-proche), cluster fiscal par pays (UK/DE/AT/ES/IT/BE/FR briefés), `crypto-card-no-staking`.
+- **Données Supabase à insérer (datées 2026-08-07)** : filtre modèle=ligne de crédit/collatéral → Nexo (ligne de crédit, ≤2% BTC/NEXO, sans staking, marchés FR/DE/ES/IT/UK/BE/AT) + tout produit crédit ajouté (ex. Crypto.com credit selon marché — vérifier). Colonnes : carte | modèle (crédit/debit) | collatéral requis | intérêt | cashback | marchés. Revérifier dans `cards`.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : la mécanique produit est universelle mais **la conséquence fiscale ne l'est PAS** — chaque version doit dire ce que « pas de disposition » signifie DANS CE PAYS (fr/be/de/at/es/it/UK divergent ; ex. règle 1 an DE vs 27,5 % KESt AT vs flat tax 30 % FR) et pointer vers le guide fiscal du marché. Disclaimer non-conseil fiscal + auteur cité (E-E-A-T) obligatoire sur chaque version. UK en GBP + HMRC. hreflang self par locale.
+
+**→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/en/self-custody-crypto-card` (+ `/fr/carte-crypto-non-custodial`). Intention commerciale la plus forte sur une catégorie ÉMERGENTE que ni Koinly ni cryptocardindex ne couvrent en page dédiée, fit money page clair (Gnosis Pay + MetaMask reviews), et 2× meilleur immédiat via tableau Supabase filtré self-custody + explication custody/risque de contrepartie.**

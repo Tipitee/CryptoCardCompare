@@ -3,6 +3,10 @@ export function renderMarkdown(md: string): string {
   // and may contain <a>, <div>, etc. injected by our own scripts.
   let html = md;
 
+  // SEO : la page affiche déjà le titre en <h1>. On retire un H1 en tête de
+  // contenu (doublon fréquent) pour éviter deux <h1> sur la même page.
+  html = html.replace(/^﻿?\s*#\s+.+\r?\n+/, '');
+
   // Tables
   html = html.replace(/\n(\|.+\|)\n(\|[-| :]+\|)\n((?:\|.+\|\n?)+)/g, (_m, header, _sep, body) => {
     const headers = header.split('|').filter((c: string) => c.trim()).map((c: string) =>
@@ -22,7 +26,9 @@ export function renderMarkdown(md: string): string {
     .replace(/^#### (.+)$/gm, '<h4 class="text-base font-semibold text-white mt-5 mb-2">$1</h4>')
     .replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-white mt-7 mb-3">$1</h3>')
     .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-display font-bold text-white mt-10 mb-4 pb-2 border-b border-bg-border">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-display font-bold text-white mt-8 mb-4">$1</h1>');
+    // Un éventuel # résiduel dans le contenu est rétrogradé en <h2> : le seul
+    // <h1> de la page reste le titre affiché par le gabarit.
+    .replace(/^# (.+)$/gm, '<h2 class="text-2xl font-display font-bold text-white mt-10 mb-4 pb-2 border-b border-bg-border">$1</h2>');
 
   // Blockquotes
   html = html.replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-cyan-accent bg-bg-elevated rounded-r-xl px-5 py-3 my-4 text-slate-300 italic">$1</blockquote>');
