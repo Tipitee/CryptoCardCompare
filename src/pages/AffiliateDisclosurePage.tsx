@@ -1,7 +1,7 @@
 import { useHreflang } from '../hooks/useHreflang';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { Link, useParams } from 'react-router-dom';
-import { Coins, ExternalLink } from 'lucide-react';
+import { Coins } from 'lucide-react';
 
 const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
@@ -49,7 +49,7 @@ const CONTENT: Record<ContentLang, Content> = {
     sections: {
       commercial: {
         title: 'Nos relations commerciales',
-        p1: `TopCryptoCards perçoit des commissions d'affiliation sur certaines cartes référencées sur ce site. Lorsque vous souscrivez à une carte via un lien contenant <code>/go/</code> dans l'URL, nous pouvons recevoir un paiement de l'émetteur de la carte ou de son réseau d'affiliation. Le montant varie selon le prestataire et correspond généralement à un forfait fixe par inscription validée.`,
+        p1: `TopCryptoCards perçoit des commissions d'affiliation sur certaines cartes référencées sur ce site. Lorsque vous souscrivez à une carte via l'un de nos liens affiliés, nous pouvons recevoir un paiement de l'émetteur de la carte ou de son réseau d'affiliation. Le montant varie selon le prestataire et correspond généralement à un forfait fixe par inscription validée.`,
         p2: `Les cartes pour lesquelles nous avons une relation d'affiliation sont accessibles via <code>/go/&lt;card-slug&gt;/</code>.`,
         p3: `Les cartes sans relation d'affiliation renvoient directement vers le site de l'émetteur. Il s'agit notamment (au juillet 2026) de : Coinbase, Binance, Gemini, MetaMask, EtherFi, et d'autres. Elles apparaissent sur ce site parce qu'elles sont pertinentes pour les utilisateurs, pas parce que nous en tirons un revenu.`,
       },
@@ -81,7 +81,7 @@ const CONTENT: Record<ContentLang, Content> = {
     sections: {
       commercial: {
         title: 'Unsere Geschäftsbeziehungen',
-        p1: `TopCryptoCards verdient Affiliate-Provisionen von einigen der auf dieser Website gelisteten Karten. Wenn Sie sich über einen Link mit <code>/go/</code> in der URL für eine Karte anmelden, erhalten wir möglicherweise eine Zahlung vom Kartenemittenten oder dessen Affiliate-Netzwerk. Der Betrag variiert je nach Anbieter und ist in der Regel eine feste Gebühr pro verifizierter Anmeldung.`,
+        p1: `TopCryptoCards verdient Affiliate-Provisionen von einigen der auf dieser Website gelisteten Karten. Wenn Sie sich über einen unserer Affiliate-Links für eine Karte anmelden, erhalten wir möglicherweise eine Zahlung vom Kartenemittenten oder dessen Affiliate-Netzwerk. Der Betrag variiert je nach Anbieter und ist in der Regel eine feste Gebühr pro verifizierter Anmeldung.`,
         p2: `Karten, mit denen wir eine Affiliate-Beziehung haben, sind über <code>/go/&lt;card-slug&gt;/</code> verlinkt.`,
         p3: `Karten ohne Affiliate-Beziehung verlinken direkt auf die Website des Emittenten. Dazu gehören (Stand Juli 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi und andere. Sie erscheinen auf dieser Website, weil sie für Nutzer relevant sind, nicht weil wir davon profitieren.`,
       },
@@ -113,7 +113,7 @@ const CONTENT: Record<ContentLang, Content> = {
     sections: {
       commercial: {
         title: 'Nuestras relaciones comerciales',
-        p1: `TopCryptoCards gana comisiones de afiliación de algunas de las tarjetas listadas en este sitio. Cuando te registras para una tarjeta a través de un enlace con <code>/go/</code> en la URL, podemos recibir un pago del emisor de la tarjeta o su red de afiliados. El importe varía según el proveedor y suele ser una tarifa fija por registro verificado.`,
+        p1: `TopCryptoCards gana comisiones de afiliación de algunas de las tarjetas listadas en este sitio. Cuando te registras para una tarjeta a través de uno de nuestros enlaces de afiliado, podemos recibir un pago del emisor de la tarjeta o su red de afiliados. El importe varía según el proveedor y suele ser una tarifa fija por registro verificado.`,
         p2: `Las tarjetas con las que tenemos una relación de afiliación están enlazadas a través de <code>/go/&lt;card-slug&gt;/</code>.`,
         p3: `Las tarjetas sin relación de afiliación enlazan directamente al sitio web del emisor. Estas incluyen (a julio de 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi y otras. Aparecen en este sitio porque son relevantes para los usuarios, no porque obtengamos ingresos de ellas.`,
       },
@@ -145,7 +145,7 @@ const CONTENT: Record<ContentLang, Content> = {
     sections: {
       commercial: {
         title: 'Le nostre relazioni commerciali',
-        p1: `TopCryptoCards guadagna commissioni di affiliazione da alcune delle carte elencate su questo sito. Quando ti iscrivi a una carta tramite un link con <code>/go/</code> nell'URL, potremmo ricevere un pagamento dall'emittente della carta o dalla sua rete di affiliazione. L'importo varia in base al fornitore ed è solitamente una tariffa fissa per registrazione verificata.`,
+        p1: `TopCryptoCards guadagna commissioni di affiliazione da alcune delle carte elencate su questo sito. Quando ti iscrivi a una carta tramite uno dei nostri link di affiliazione, potremmo ricevere un pagamento dall'emittente della carta o dalla sua rete di affiliazione. L'importo varia in base al fornitore ed è solitamente una tariffa fissa per registrazione verificata.`,
         p2: `Le carte con cui abbiamo una relazione di affiliazione sono collegate tramite <code>/go/&lt;card-slug&gt;/</code>.`,
         p3: `Le carte senza relazione di affiliazione rimandano direttamente al sito web dell'emittente. Queste includono (a luglio 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi e altri. Appaiono su questo sito perché sono rilevanti per gli utenti, non perché ne ricaviamo entrate.`,
       },
@@ -177,7 +177,7 @@ const CONTENT: Record<ContentLang, Content> = {
     sections: {
       commercial: {
         title: 'Our commercial relationships',
-        p1: `TopCryptoCards earns affiliate commission from some of the cards listed on this site. When you sign up for a card via a link marked with <code>/go/</code> in the URL, we may receive a payment from the card issuer or its affiliate network. The amount varies by provider and is typically a fixed fee per verified sign-up.`,
+        p1: `TopCryptoCards earns affiliate commission from some of the cards listed on this site. When you sign up for a card via one of our affiliate links, we may receive a payment from the card issuer or its affiliate network. The amount varies by provider and is typically a fixed fee per verified sign-up.`,
         p2: `Cards we currently have an affiliate relationship with are linked via <code>/go/&lt;card-slug&gt;/</code>.`,
         p3: `Cards we do not have an affiliate relationship with are linked directly to the issuer's website. These include (as of July 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, and several others. They appear on this site because they are relevant to users, not because we earn from them.`,
       },
@@ -282,12 +282,6 @@ export default function AffiliateDisclosurePage() {
             <p className="mb-4"
               dangerouslySetInnerHTML={{ __html: c.sections.commercial.p1.replace(/<code>/g, '<code class="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">') }}
             />
-            <p className="mb-4">
-              <span className="text-slate-300 font-medium"
-                dangerouslySetInnerHTML={{ __html: c.sections.commercial.p2.replace(/<code>/g, '<code class="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">') }}
-              />
-            </p>
-            <p dangerouslySetInnerHTML={{ __html: c.sections.commercial.p3.replace(/<code>/g, '<code class="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">') }} />
           </section>
 
           {/* Not affected */}
@@ -306,29 +300,7 @@ export default function AffiliateDisclosurePage() {
           {/* Identify */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-4">{c.sections.identify.title}</h2>
-            <p className="mb-3"
-              dangerouslySetInnerHTML={{ __html: c.sections.identify.p1.replace(/<code>/g, '<code class="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">') }}
-            />
             <p dangerouslySetInnerHTML={{ __html: c.sections.identify.p2.replace(/<code>/g, '<code class="px-1.5 py-0.5 rounded bg-bg-elevated text-cyan-accent text-xs">') }} />
-          </section>
-
-          {/* Networks */}
-          <section>
-            <h2 className="text-xl font-semibold text-white mb-4">{c.sections.networks.title}</h2>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span><span className="text-slate-300">Impact Radius</span>, Impact Tech, Inc., Santa Barbara, CA, USA</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span><span className="text-slate-300">Awin</span>, Awin AG, Eichhornstraße 3, 10785 Berlin, Germany</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span>{lang === 'fr' ? 'Accords directs avec des prestataires de cartes' : lang === 'de' ? 'Direkte Vereinbarungen mit einzelnen Kartenanbietern' : lang === 'es' ? 'Acuerdos directos con proveedores de tarjetas' : lang === 'it' ? 'Accordi diretti con singoli fornitori di carte' : 'Direct arrangements with individual card providers'}</span>
-              </li>
-            </ul>
           </section>
 
           {/* Price */}
