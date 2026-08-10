@@ -9,3 +9,4 @@ Aucun draft. Un maker écrit ici : slug | langue | statut (rédigé / gate PASS 
 | blog-auto-carte-crypto-sans-conversion-classement-frais | fr+de+es+it+en | gate PASS | prêt review (2026-08-03) |
 | blog-auto-meilleure-carte-crypto-voyage-europe-sans-frais | fr+de+es+it+en | gate PASS | prêt review (2026-08-05) |
 | blog-auto-nexo-alternatives-cartes-crypto-cashback-2026 | fr+de+es+it+en | gate PASS | prêt review (2026-08-07) |
+| blog-auto-carte-crypto-remboursement-abonnements-netflix-spo | fr+de+es+it+en | gate PASS | prêt review (2026-08-10) |
