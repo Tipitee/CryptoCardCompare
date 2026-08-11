@@ -3,6 +3,8 @@ Allow: /
 Disallow: /*?sort=
 Disallow: /*?filter=
 Disallow: /*?page=
+Disallow: /*?selected=
+Disallow: /*?q=
 Disallow: /api/
 Disallow: /admin/
 Disallow: /*/blog-admin

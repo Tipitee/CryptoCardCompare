@@ -355,6 +355,30 @@ export default function Blog() {
           </div>
         );
       })()}
+
+      {/* Index complet — chemin de crawl direct vers TOUS les articles (SEO: évite les articles orphelins derrière la pagination JS) */}
+      {posts.length > 0 && (() => {
+        const allLabel: Record<string, string> = {
+          fr: 'Tous nos articles', de: 'Alle Artikel', es: 'Todos los artículos',
+          it: 'Tutti gli articoli', en: 'All articles',
+        };
+        const blogRoute = getRoute('blog');
+        return (
+          <nav aria-label={allLabel[dl] ?? allLabel.en} className="mt-16 border-t border-bg-border pt-10">
+            <h2 className="text-xl font-display font-bold text-white mb-5">{allLabel[dl] ?? allLabel.en}</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+              {posts.map(post => (
+                <li key={post.id}>
+                  <Link to={`${blogRoute}/${post.slug}`}
+                    className="text-sm text-slate-400 hover:text-cyan-accent transition-colors">
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        );
+      })()}
     </div>
   );
 }
