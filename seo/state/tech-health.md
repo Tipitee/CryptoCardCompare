@@ -1,8 +1,8 @@
-# Tech Health — 2026-08-06
+# Tech Health — 2026-08-11
 
 Statut global : ⚪ PROBE INDISPONIBLE (aucun incident site)
 
-La sonde réseau ne peut pas joindre topcryptocards.eu depuis cet environnement :
+La sonde réseau ne peut toujours pas joindre topcryptocards.eu depuis cet environnement :
 `web_fetch` → domaine hors allowlist (cowork-egress-blocked) ; le script bash n'a
 pas non plus le réseau. Ce n'est PAS une casse du site — aucun check n'a pu être
 exécuté. Fix : ajouter `topcryptocards.eu` dans Réglages → Capacités (allowlist réseau),
@@ -20,4 +20,5 @@ puis relancer l'agent A3.
 ## Historique
 ### 2026-07-28 — 🔴 (probe échec réseau, non concluant : 7 checks "fetch failed")
 ### 2026-08-06 — ⚪ PROBE INDISPONIBLE (egress bloqué, non concluant)
+### 2026-08-11 — ⚪ PROBE INDISPONIBLE (egress bloqué, non concluant)
 (les runs précédents restent ici — ne pas écraser cette section à la main)
