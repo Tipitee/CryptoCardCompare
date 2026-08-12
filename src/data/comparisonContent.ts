@@ -1577,27 +1577,27 @@ const COMPARISONS: Record<string, ComparisonSpecific> = {
     en_verdict: `For crypto users, Plutus wins on theoretical cashback (up to 9% PLU) and similar perks. For those wanting a stable banking ecosystem without crypto exposure, Revolut Metal is safer. Score: Plutus Card 3.8/5 vs Revolut Metal 3.7/5, tight match depending on your profile.`,
     faq: [
       { q: 'Plutus ou Revolut Metal : laquelle offre plus d\'avantages ?', a: 'Plutus offre jusqu\'à 9 % de cashback en PLU + remboursements Netflix/Spotify. Revolut Metal offre lounge access, assurances voyage et RevPoints. Plutus est meilleure pour le cashback crypto ; Revolut pour le package bancaire premium.' },
-      { q: 'La Plutus Card est-elle moins chère que Revolut Metal ?', a: 'Plutus a un plan gratuit (cashback réduit) et des plans premium payants. Revolut Metal coûte 13,99 €/mois. Selon votre niveau de staking PLU, Plutus peut revenir moins cher.' },
+      { q: 'La Plutus Card est-elle moins chère que Revolut Metal ?', a: 'Depuis 2026, Plutus n\'a plus de plan gratuit : tous les plans exigent un abonnement (Starter ~6,99 €/mois, soit ~84 €/an). Revolut Metal coûte 13,99 €/mois, donc Plutus reste moins chère à l\'entrée selon votre usage.' },
       { q: 'Revolut Metal offre-t-elle du crypto cashback ?', a: 'Non. Revolut Metal verse des RevPoints (programme Revolut), non convertibles en crypto. Pour du cashback crypto comme PLU ou BTC, Plutus Card ou Nexo Card sont plus adaptées.' },
     ],
     de_faq: [
       { q: 'Plutus oder Revolut Metal: Welche bietet mehr Vorteile?', a: 'Plutus bietet bis zu 9 % Cashback in PLU und Netflix/Spotify-Erstattungen. Revolut Metal bietet Lounge-Zugang, Reiseversicherungen und RevPoints. Plutus ist besser für Krypto-Cashback; Revolut für das Premium-Bankpaket.' },
-      { q: 'Ist die Plutus Card günstiger als Revolut Metal?', a: 'Plutus hat einen kostenlosen Tarif (reduziertes Cashback) und kostenpflichtige Premium-Tarife. Revolut Metal kostet 13,99 €/Monat. Je nach PLU-Staking-Level kann Plutus günstiger kommen.' },
+      { q: 'Ist die Plutus Card günstiger als Revolut Metal?', a: 'Seit 2026 hat Plutus keinen kostenlosen Tarif mehr: Alle Tarife erfordern ein Abo (Starter ~6,99 €/Monat, also ~84 €/Jahr). Revolut Metal kostet 13,99 €/Monat, Plutus bleibt beim Einstieg also günstiger.' },
       { q: 'Bietet Revolut Metal Krypto-Cashback?', a: 'Nein. Revolut Metal zahlt RevPoints (Revolut-Programm), nicht in Krypto umwandelbar. Für Krypto-Cashback wie PLU oder BTC sind Plutus Card oder Nexo Card besser geeignet.' },
     ],
     es_faq: [
       { q: 'Plutus o Revolut Metal: ¿cuál ofrece más ventajas?', a: 'Plutus ofrece hasta el 9 % de cashback en PLU más reembolsos de Netflix/Spotify. Revolut Metal ofrece acceso a lounges, seguros de viaje y RevPoints. Plutus es mejor para cashback crypto; Revolut para el paquete bancario premium.' },
-      { q: '¿Es Plutus Card más barata que Revolut Metal?', a: 'Plutus tiene un plan gratuito (cashback reducido) y planes premium de pago. Revolut Metal cuesta 13,99 €/mes. Según tu nivel de staking PLU, Plutus puede salir más barata.' },
+      { q: '¿Es Plutus Card más barata que Revolut Metal?', a: 'Desde 2026, Plutus ya no tiene plan gratuito: todos los planes exigen una suscripción (Starter ~6,99 €/mes, unos 84 €/año). Revolut Metal cuesta 13,99 €/mes, así que Plutus sigue siendo más barata en la entrada según tu uso.' },
       { q: '¿Revolut Metal ofrece cashback crypto?', a: 'No. Revolut Metal paga RevPoints (programa Revolut), no convertibles en crypto. Para cashback crypto como PLU o BTC, Plutus Card o Nexo Card son más adecuadas.' },
     ],
     it_faq: [
       { q: 'Plutus o Revolut Metal: quale offre più vantaggi?', a: 'Plutus offre fino al 9 % di cashback in PLU più rimborsi Netflix/Spotify. Revolut Metal offre accesso alle lounge, assicurazioni viaggio e RevPoints. Plutus è migliore per il cashback crypto; Revolut per il pacchetto bancario premium.' },
-      { q: 'Plutus Card costa meno di Revolut Metal?', a: 'Plutus ha un piano gratuito (cashback ridotto) e piani premium a pagamento. Revolut Metal costa 13,99 €/mese. A seconda del livello di staking PLU, Plutus può costare meno.' },
+      { q: 'Plutus Card costa meno di Revolut Metal?', a: 'Dal 2026 Plutus non ha più un piano gratuito: tutti i piani richiedono un abbonamento (Starter ~6,99 €/mese, circa 84 €/anno). Revolut Metal costa 13,99 €/mese, quindi Plutus resta più economica all\'ingresso a seconda dell\'uso.' },
       { q: 'Revolut Metal offre cashback crypto?', a: 'No. Revolut Metal paga RevPoints (programma Revolut), non convertibili in crypto. Per cashback crypto come PLU o BTC, Plutus Card o Nexo Card sono più adatte.' },
     ],
     en_faq: [
       { q: 'Plutus or Revolut Metal: which offers more perks?', a: 'Plutus offers up to 9% cashback in PLU plus Netflix/Spotify reimbursements. Revolut Metal offers lounge access, travel insurance and RevPoints. Plutus is better for crypto cashback; Revolut for the premium banking package.' },
-      { q: 'Is Plutus Card cheaper than Revolut Metal?', a: 'Plutus has a free plan (reduced cashback) and paid premium plans. Revolut Metal costs €13.99/month. Depending on your PLU staking level, Plutus can work out cheaper.' },
+      { q: 'Is Plutus Card cheaper than Revolut Metal?', a: 'Since 2026, Plutus no longer has a free plan: every plan requires a subscription (Starter ~€6.99/month, about €84/year). Revolut Metal costs €13.99/month, so Plutus is still cheaper to get started depending on your usage.' },
       { q: 'Does Revolut Metal offer crypto cashback?', a: 'No. Revolut Metal pays RevPoints (Revolut programme), not convertible to crypto. For crypto cashback like PLU or BTC, Plutus Card or Nexo Card are more suitable.' },
     ],
   },
