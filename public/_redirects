@@ -77,6 +77,15 @@
 /en/blog/meilleure-carte-crypto-voyage-europe-selection-testee  /en/blog/best-crypto-card-travel-europe        301
 /es/blog/meilleure-carte-crypto-voyage-europe-sans-frais        /es/blog/mejor-tarjeta-cripto-viajar-europa    301
 
+# ── Consolidation cluster voyage : doublons fins "blog-travel-2026" -> money page ──
+/fr/blog/carte-crypto-voyage-2026    /fr/blog/meilleure-carte-crypto-voyage-europe-sans-frais   301
+/be/blog/carte-crypto-voyage-2026    /be/blog/meilleure-carte-crypto-voyage-europe-sans-frais   301
+/de/blog/krypto-karte-reisen-2026    /de/blog/beste-krypto-karte-reisen-europa   301
+/at/blog/krypto-karte-reisen-2026    /at/blog/beste-krypto-karte-reisen-europa   301
+/es/blog/tarjeta-cripto-viaje-2026   /es/blog/mejor-tarjeta-cripto-viajar-europa   301
+/it/blog/carta-cripto-viaggio-2026   /it/blog/migliore-carta-crypto-viaggi-europa   301
+/en/blog/crypto-card-travel-2026     /en/blog/best-crypto-card-travel-europe   301
+
 # ── Everything else: real 404 ──────────────────────────────────────────────
 # Physical prerendered files (dist/fr/index.html etc.) take priority over
 # redirect rules without "!" — so prerendered pages are served directly.
