@@ -1431,11 +1431,26 @@ const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: str
     en: [{ slug: 'best-crypto-card-in-france-in-2025-complete',   title: 'Best crypto cards available in Europe' }],
   },
   travel: {
-    fr: [{ slug: 'carte-crypto-voyage-guide-complet',     title: 'Guide complet : payer en crypto à l\'étranger' }],
-    de: [{ slug: 'krypto-karte-reise-kompletter-guide',   title: 'Krypto-Karte auf Reisen: der komplette Guide' }],
-    es: [{ slug: 'tarjeta-crypto-viaje-guia-completa',    title: 'Guía completa: pagar con crypto en el extranjero' }],
-    it: [{ slug: 'carta-crypto-viaggio-guida-completa',   title: 'Guida completa: pagare in crypto all\'estero' }],
-    en: [{ slug: 'crypto-card-travel-complete-guide',     title: 'Complete guide: paying with crypto abroad' }],
+    fr: [
+      { slug: 'meilleure-carte-crypto-voyage-europe-sans-frais', title: 'Meilleure carte crypto pour voyager en Europe (2026)' },
+      { slug: 'carte-crypto-voyage-guide-complet',     title: 'Guide complet : payer en crypto à l\'étranger' },
+    ],
+    de: [
+      { slug: 'beste-krypto-karte-reisen-europa',      title: 'Beste Krypto-Karte für Reisen in Europa (2026)' },
+      { slug: 'krypto-karte-reise-kompletter-guide',   title: 'Krypto-Karte auf Reisen: der komplette Guide' },
+    ],
+    es: [
+      { slug: 'mejor-tarjeta-cripto-viajar-europa',    title: 'Mejor tarjeta cripto para viajar por Europa (2026)' },
+      { slug: 'tarjeta-crypto-viaje-guia-completa',    title: 'Guía completa: pagar con crypto en el extranjero' },
+    ],
+    it: [
+      { slug: 'migliore-carta-crypto-viaggi-europa',   title: 'Migliore carta crypto per viaggiare in Europa (2026)' },
+      { slug: 'carta-crypto-viaggio-guida-completa',   title: 'Guida completa: pagare in crypto all\'estero' },
+    ],
+    en: [
+      { slug: 'best-crypto-card-travel-europe',        title: 'Best Crypto Card for Travel in Europe (2026)' },
+      { slug: 'crypto-card-travel-complete-guide',     title: 'Complete guide: paying with crypto abroad' },
+    ],
   },
   rewards: {
     fr: [{ slug: 'carte-crypto-recompenses-avantages-guide', title: 'Cartes crypto : cashback, lounges, Netflix et Spotify' }],
