@@ -22,7 +22,6 @@ import CardDetailDrawer from '../components/CardDetailDrawer';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
-import IndependentNotice from '../components/IndependentNotice';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById, fetchRelatedPosts } from '../lib/supabase';
 import type { BlogPost } from '../types/blog';
@@ -500,9 +499,6 @@ export default function ComparisonPage() {
       <p className="text-slate-400 text-sm mb-3">
         {t('comparison_subtitle')}
       </p>
-      <div className="mb-8">
-        <IndependentNotice />
-      </div>
 
       {/* ── Card headers ─────────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ROUTE_TRANSLATIONS, contentLang } from '../i18n/types';
 import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS, VVP_SLUGS, VVP_NAV_LABELS } from '../config/routes';
 import { LEGAL_SLUGS, LEGAL_NAV_LABELS } from '../pages/LegalPage';
+import IndependentNotice from './IndependentNotice';
 
 export default function Layout() {
   const loadCards = useAppStore((s) => s.loadCards);
@@ -320,6 +321,11 @@ export default function Layout() {
       <main id="main-content" className="flex-1">
         <Outlet />
       </main>
+
+      {/* ── Affiliate disclosure notice, just above the footer (site-wide) ── */}
+      <div className="container-app pb-4 pt-2 flex justify-center text-center">
+        <IndependentNotice />
+      </div>
 
       {/* ── Footer ── */}
       <footer className="border-t border-bg-border bg-bg-elevated/40 mt-20">
