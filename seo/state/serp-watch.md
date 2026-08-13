@@ -41,3 +41,15 @@ Concurrents suivis : cryptocardindex.com, koinly.io, journalducoin.com, cryptona
 | 2026-08-06 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) — stable |
 | 2026-08-06 | carte crypto belgique | be | absent top 10 | revolut.com/fr-BE (page marque) | non détecté (à confirmer) — stable ; mediasportif.fr #2 |
 | 2026-08-06 | krypto karte österreich | at | absent top 10 | top-zins.at | non détecté (à confirmer) — stable |
+| 2026-08-13 | meilleure carte crypto | fr | absent top 10 | cryptoast.fr | non détecté (géo-US, à confirmer) — leader coinacademy.fr → cryptoast.fr #1 (à confirmer, variance) ; journalducoin #5 présent |
+| 2026-08-13 | carte crypto cashback | fr | absent top 10 | community.finary.com (forum) | non détecté (à confirmer) — stable ; journalducoin #2, ledger/bleap présents |
+| 2026-08-13 | crypto.com carte avis | fr | absent top 10 | community.finary.com (forum) | non détecté (à confirmer) — stable (forum #1, cryptoast #2) |
+| 2026-08-13 | beste krypto karte | de | absent top 10 | blockspot.io | non détecté (à confirmer) — stable ; bitget web3 #2 |
+| 2026-08-13 | bitcoin karte | de | absent top 10 | wiwo.de (comparatif, intention mixte) | non détecté (à confirmer) — SERP navigationnelle/mixte, non cible ; leader sbb.ch → wiwo.de |
+| 2026-08-13 | krypto karte cashback | de | absent top 10 | blockchainwelt.de | non détecté (à confirmer) — stable |
+| 2026-08-13 | best crypto card europe | en | absent top 10 | cryptoslate.com | non détecté (à confirmer) — stable |
+| 2026-08-13 | best crypto card uk | en | absent top 10 | sourceforge.net | non détecté (à confirmer) — stable ; bitcourier + coingape présents |
+| 2026-08-13 | mejor tarjeta cripto | es | absent top 10 | web3.bitget.com | non détecté (à confirmer) — stable |
+| 2026-08-13 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) — stable |
+| 2026-08-13 | carte crypto belgique | be | absent top 10 | revolut.com/fr-BE (page marque) | non détecté (à confirmer) — stable ; mediasportif.fr #2 |
+| 2026-08-13 | krypto karte österreich | at | absent top 10 | top-zins.at | non détecté (à confirmer) — stable |
