@@ -43,8 +43,8 @@ export default function CardVisual({ card, size = 'md', tilt = true, className =
 
   const onLeave = () => setT({ rx: 0, ry: 0, gx: 50, gy: 50 });
 
-  const bg = `linear-gradient(135deg, ${card.colorPrimary} 0%, ${card.colorSecondary} 100%)`;
-  const issuerLabel = card.issuer.toUpperCase();
+  const bg = `linear-gradient(135deg, ${card.colorPrimary ?? '#1f2937'} 0%, ${card.colorSecondary ?? '#0f172a'} 100%)`;
+  const issuerLabel = (card.issuer ?? '').toUpperCase();
   const isLightBg = size === 'lg';
   void isLightBg;
 
@@ -118,7 +118,7 @@ export default function CardVisual({ card, size = 'md', tilt = true, className =
         <div>
           {size !== 'xs' && (
             <div className="font-mono text-[13px] tracking-[0.2em] opacity-90 mb-1.5">
-              •••• •••• •••• {card.id.slice(-4).toUpperCase().padStart(4, '0')}
+              •••• •••• •••• {(card.id ?? '').slice(-4).toUpperCase().padStart(4, '0')}
             </div>
           )}
           <div className="flex items-end justify-between">
@@ -129,7 +129,7 @@ export default function CardVisual({ card, size = 'md', tilt = true, className =
             <div className="text-right">
               <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Réseau', de: 'Netzwerk', es: 'Red', it: 'Rete', en: 'Network' }[dl] ?? 'Network'}</div>
               <div className="text-sm font-bold italic">
-                {card.cardNetwork.toUpperCase()}
+                {(card.cardNetwork ?? '').toUpperCase()}
               </div>
             </div>
           </div>

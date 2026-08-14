@@ -25,14 +25,6 @@ const COUNTRIES: CountryEntry[] = [
   { flag: '🇬🇧', label: 'United Kingdom', lang: 'en', market: 'en' },
 ];
 
-/** Map market key → country entry (for lookup on init) */
-const MARKET_TO_COUNTRY: Record<string, CountryEntry> = Object.fromEntries(
-  COUNTRIES.filter(c => c.market).map(c => [c.market!, c])
-);
-
-function loadStoredMarket(): string | undefined {
-  try { return localStorage.getItem('ccc_market') || undefined; } catch { return undefined; }
-}
 
 export default function CountrySwitcher() {
   const [open, setOpen] = useState(false);
@@ -44,10 +36,11 @@ export default function CountrySwitcher() {
   const setSelectedMarket = useAppStore((s) => s.setSelectedMarket);
   const selectedMarket = useAppStore((s) => s.selectedMarket);
 
-  /* Derive current country from market + lang */
+  /* Derive current country from the URL (source of truth). Each market has its
+     own URL prefix (fr/be/de/at/es/it/en), so the lang segment is unambiguous.
+     Do NOT read a persisted market here: a stale localStorage value must never
+     override the market the visitor is actually viewing. */
   const current: CountryEntry =
-    (selectedMarket ? MARKET_TO_COUNTRY[selectedMarket] : null) ??
-    COUNTRIES.find(c => c.lang === currentLang && !c.market) ??   // fallback: same lang, no extra market
     COUNTRIES.find(c => c.lang === currentLang) ??
     COUNTRIES[0];
 
@@ -60,12 +53,14 @@ export default function CountrySwitcher() {
     return () => document.removeEventListener('mousedown', handleOutside);
   }, []);
 
-  /* Restore saved market on mount */
+  /* Keep the store's market in sync with the URL (URL = source of truth).
+     Fixes the stale-market bug: landing on /fr must show France + FR cards,
+     even if the visitor previously selected another country. */
   useEffect(() => {
-    const saved = loadStoredMarket();
-    if (saved !== undefined) setSelectedMarket(saved === '' ? undefined : saved);
+    const marketForUrl = COUNTRIES.find(c => c.lang === currentLang)?.market;
+    if (selectedMarket !== marketForUrl) setSelectedMarket(marketForUrl);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentLang]);
 
   const handleSelect = async (entry: CountryEntry) => {
     // 1. Persist market choice

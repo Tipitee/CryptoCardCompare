@@ -156,7 +156,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
   useEffect(() => {
     supabase
       .from('cards')
-      .select('id, name, brand_id, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image')
+      .select('id, name, brand_id, issuer, cashback_base, cashback_premium, annual_fees, staking_required, virtual_only, card_network, markets, trust_score, real_card_image, color_primary, color_secondary')
       .then(({ data, error }) => {
         if (error) console.error('AlternativesPage error:', error);
         setCards(data || []);
@@ -269,7 +269,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
                 {/* Card image */}
                 <div className="flex justify-center my-1">
                   <SmartCardImage
-                    card={{ id: card.id, name: card.name, realCardImage: card.real_card_image } as CryptoCard}
+                    card={{ id: card.id, name: card.name, realCardImage: card.real_card_image, issuer: card.issuer, cardNetwork: card.card_network, colorPrimary: card.color_primary, colorSecondary: card.color_secondary } as CryptoCard}
                     className="w-20 h-auto object-contain"
                     priority={idx < 4}
                   />
