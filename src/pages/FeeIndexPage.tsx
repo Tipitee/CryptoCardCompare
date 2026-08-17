@@ -325,6 +325,7 @@ export default function FeeIndexPage() {
       description: c.description,
       url: `${BASE}/${lang}/${rt.feeIndex ?? 'crypto-card-fees'}`,
       inLanguage: lang,
+      creator: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
       publisher: { '@type': 'Organization', name: 'TopCryptoCards', url: BASE },
       license: 'https://creativecommons.org/licenses/by/4.0/',
       dateModified: new Date().toISOString().split('T')[0],
