@@ -1,10 +1,10 @@
 {
   "_comment": "Rotation A13. lastChecked=null => priorite. L'agent prend les 8 plus anciens/nulls chaque semaine et met a jour la date.",
   "cards": [
-    { "card": "Bybit Card", "issuer": "Bybit", "lastChecked": "2026-08-05" },
-    { "card": "Crypto.com Visa", "issuer": "Crypto.com", "lastChecked": "2026-08-05" },
-    { "card": "Binance Card", "issuer": "Binance", "lastChecked": "2026-08-05" },
-    { "card": "Nexo Card", "issuer": "Nexo", "lastChecked": "2026-08-05" },
+    { "card": "Bybit Card", "issuer": "Bybit", "lastChecked": "2026-08-15" },
+    { "card": "Crypto.com Visa", "issuer": "Crypto.com", "lastChecked": "2026-08-15" },
+    { "card": "Binance Card", "issuer": "Binance", "lastChecked": "2026-08-15" },
+    { "card": "Nexo Card", "issuer": "Nexo", "lastChecked": "2026-08-15" },
     { "card": "Bit2Me Card", "issuer": "Bit2Me", "lastChecked": "2026-08-05" },
     { "card": "Coinbase Card", "issuer": "Coinbase", "lastChecked": "2026-08-05" },
     { "card": "Gnosis Pay", "issuer": "Gnosis", "lastChecked": "2026-08-05" },
@@ -17,9 +17,9 @@
     { "card": "Bleap Card", "issuer": "Bleap", "lastChecked": "2026-08-08" },
     { "card": "KuCoin Card", "issuer": "KuCoin", "lastChecked": "2026-08-08" },
     { "card": "Plutus Card", "issuer": "Plutus", "lastChecked": "2026-08-08" },
-    { "card": "Ether.Fi Cash", "issuer": "Ether.Fi", "lastChecked": null },
-    { "card": "Revolut Metal", "issuer": "Revolut", "lastChecked": null },
-    { "card": "Young Platform Card", "issuer": "Young Platform", "lastChecked": null },
-    { "card": "Trade Republic Card", "issuer": "Trade Republic", "lastChecked": null }
+    { "card": "Ether.Fi Cash", "issuer": "Ether.Fi", "lastChecked": "2026-08-15" },
+    { "card": "Revolut Metal", "issuer": "Revolut", "lastChecked": "2026-08-15" },
+    { "card": "Young Platform Card", "issuer": "Young Platform", "lastChecked": "2026-08-15" },
+    { "card": "Trade Republic Card", "issuer": "Trade Republic", "lastChecked": "2026-08-15" }
   ]
 }

@@ -54,6 +54,9 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Refresh sitemap-index lastmod (signal freshness for recrawl)
+        run: node scripts/gen-sitemap-index.mjs
+
       # Table cartes de llms-full.txt régénérée depuis la base (fraîcheur GEO).
       # Non bloquant : un aléa Supabase ne doit pas casser le déploiement.
       - name: Regenerate llms-full.txt card table (from Supabase)

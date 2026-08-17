@@ -1,33 +1,36 @@
-# A13 — Rapport fraîcheur cartes — 2026-08-08
+# A13 — Rapport fraîcheur cartes · 2026-08-15
 
-Lot vérifié (8, `lastChecked` null) : Bitpanda, MetaMask, OKX, Ledger/Baanx, Brighty, Bleap, KuCoin, Plutus.
-Écarts : **4 CHANGÉ** (3 cartes) · **1 INCERTAIN** (KuCoin) · **1 nuance** (MetaMask) · + dérive GEO llms-full.txt.
+Lot vérifié (8, les + anciens/nulls) : Bybit, Crypto.com Visa, Binance, Nexo, Ether.Fi Cash, Revolut Metal, Young Platform, Trade Republic.
+Écarts : **1 ARRÊTÉ**, **2 CHANGÉ**, 1 flag INCERTAIN (Nexo), 2 non vérifiables (fiche hors provenance). Source « site » = fiche live `/en/cards/<slug>` (fallback review page si fiche blanche).
 
-> ⚠️ Contrainte : les fiches live `/en/cards/<slug>` n'ont pas pu être chargées (réseau/provenance bloqués). Source « site » utilisée = **CARDS_TABLE de `llms-full.txt`** (« table auto-générée depuis la base » → proxy fidèle des valeurs DB). Prose de `llms-full.txt` = contrôle GEO secondaire.
+| Carte | Champ | Fiche live dit | Réalité (source) | Statut | Marché |
+|---|---|---|---|---|---|
+| Binance Card | statut | fiche blanche mais **review page active** « up to 8% BNB, Visa, EU+UK incl. FR » | Carte EEE **arrêtée 20/12/2023** ; Binance a stoppé ses services EEE le 01/07/2026 (financemagnates, binance) | **ARRÊTÉ** | EEE/UK |
+| Bybit Card | card_network | **Visa** | **Mastercard** (cryptoslate, bybit wiki ; llms+review disent aussi Mastercard) | **CHANGÉ** | tous |
+| Bybit Card | cashback_base | 2 % | base UE = 1 % illimité, paliers 2–10 % (cryptonomist 06/2026) — ambigu | INCERTAIN | UE |
+| Bybit Card | dispo France | non dispo FR | sources contradictoires (EEE incl. FR vs excl. FR) | INCERTAIN | fr |
+| Trade Republic | cashback_premium | 1 % | **2 % en payant en crypto** (investingintheweb ; review du site dit aussi 2 %) | **CHANGÉ** | tous |
+| Nexo Card | cashback_premium | 0 % (base 0,5 %) | jusqu'à 2 % (Platinum) — la review du site dit « max 2% » | INCERTAIN* | UE |
+| Crypto.com Visa | cashback max | up to 5 % (Obsidian) | max 5 % Obsidian toujours valable ; dérive paliers (Ruby 1→2 %) | OK | tous |
+| Nexo Card | réseau/dispo/virtuelle | Mastercard, virtuelle, UE+FR, UK cashback désactivé | conforme (défycard, kkinvesting) | OK | tous |
+| Ether.Fi Cash | (fiche hors provenance) | llms : 3 %, Visa, €0, 7 marchés | 3 % (1er $2k), Visa, non-custodial, UE ; UK après FCA 09/2026 | OK (via llms) | UK pending |
+| Revolut (Crypto Card) | annual_fees / cashback | €0 Standard, pas de cashback crypto, Visa | conforme (fiche = carte gratuite, pas la Metal) | OK | tous |
+| Young Platform | (fiche hors provenance) | absent de llms-full.txt | Visa, sans frais, cashback 0,1–3,6 % par palier, MiCA en attente | INCERTAIN | it/UE |
 
-| Carte | Champ | Site (CARDS_TABLE) | Réalité (source) | Statut | Marché |
-|-------|-------|--------------------|------------------|--------|--------|
-| Bleap Crypto Card | réseau | Visa | **Mastercard** (bleap.finance officiel) | CHANGÉ | tous |
-| Ledger CL Card | cashback | Up to 2% | **1%** BTC/USDC (2% = frais de dépense, spendnode/ueex) | CHANGÉ | tous |
-| Plutus Card | frais annuels | €0 | **plan payant mini £6.99/mois** (tier gratuit supprimé 2026, spendnode) | CHANGÉ | tous |
-| Plutus Card | cashback max | Up to 8% | **Up to 9%** (tier G.O.A.T, spendnode/cardpilled) | CHANGÉ | tous |
-| MetaMask Card | frais annuels | €199 | €199 = tier Metal ; carte virtuelle **€0 / 1%** (coincodecap) | INCERTAIN (nuance tier) | tous |
-| KuCoin Card | présence | absente de la table | **KuCard actif**, Visa, EEE (pas UK) — non listée (cryptowisser/IBSI) | INCERTAIN (couverture) | EEE |
-| Bitpanda | cashback / dispo | Up to 2%, dispo FR | Up to 2% asset au choix, **dispo FR OK** (spendnode) | OK | — |
-| OKX Card | tout | 5%, Mastercard, EEE, pas UK | conforme (Mastercard, EEE, USDG ≤5%, coincodecap) | OK | — |
-| Brighty Card | cashback | Up to 1.75% | conforme (0.5% gratuit → 1.75% payant, fintechmagazine) | OK | — |
+\*Nexo : incohérence interne (fiche numérique premium 0 % vs « max 2 % » affiché ailleurs) — à clarifier côté colonnes, hors JSON.
 
-## À corriger cette semaine (CHANGÉ, par trafic)
-1. **Plutus** — `annual_fees` €0 → payant (tier gratuit supprimé 2026, mini £6.99/mois) + `cashback_premium` 8→9. Carte à trafic (page alternatives dédiée).
-2. **Ledger CL Card** — `cashback_base` 2→1 % (le 2% affiché est le frais de dépense, pas le cashback). Vérifier quelle fiche (Ledger CL vs CryptoLife).
-3. **Bleap** — `card_network` Visa → Mastercard.
+## À corriger cette semaine (par trafic)
+1. **Binance Card — ARRÊTÉ** : produit mort depuis 12/2023, mais la review page le présente encore comme actif (8% BNB). Marque à fort trafic → risque désinformation + SEO. Passer `status=discontinued` et dé-lister/retirer la review.
+2. **Bybit Card — réseau Visa→Mastercard** : la fiche/DB dit Visa alors que la réalité (et llms + review) = Mastercard. Corriger `card_network`.
+3. **Trade Republic — cashback_premium 1→2 %** : 2 % confirmé sur paiement en crypto.
 
-## Dérive GEO (`llms-full.txt`, prose statique périmée — la table est OK)
-- Section France : « Not available: Bitpanda » ❌ — Bitpanda **est** dispo en France (contredit la table qui liste FR). À corriger.
-- FAQ/recos : « Bleap 2% BTC », « Brighty 1% BTC », « Ledger 2% BTC » périmés (réalité : Bleap 20% USDC/Mastercard, Brighty 1.75% USDC, Ledger 1%).
-- MetaMask listée « €0 » en FAQ mais « €199 » en table → clarifier tier gratuit vs Metal.
+## Dérive llms-full.txt (GEO — secondaire)
+- **Bybit** : llms = Mastercard (correct) alors que la **fiche live = Visa** → ici c'est la DB/fiche qui a dérivé, pas llms. Inversion à surveiller.
+- **Revolut Metal** : llms = €179.88/an ; prix UE réel ≈ €15.99/mo (annuel €155). Périmé.
+- **Young Platform** : totalement **absent** du tableau llms-full.txt alors qu'elle est suivie (trou GEO).
+- **Binance** : correctement absente du tableau llms ; le problème est la review page statique.
 
-## UNE action prioritaire (< 4 h)
-Corriger **Plutus** en base via l'admin : `annual_fees` (tier gratuit supprimé — n'est plus €0). C'est l'écart le plus trompeur : carte annoncée gratuite alors qu'un abonnement est désormais obligatoire.
+## Action prioritaire (< 4 h)
+Passer **Binance Card en `discontinued`** en base et retirer/dé-lister sa review page — carte arrêtée depuis 12/2023 encore affichée comme active avec 8 % de cashback.
 
-*Lecture seule. Mise à jour Supabase + régénération `llms-full.txt` = étapes humaines (`node scripts/apply-card-updates.mjs --confirm`).*
+_Lecture seule. La mise à jour Supabase et la régénération de llms-full.txt restent des étapes humaines (`node scripts/apply-card-updates.mjs --confirm`)._

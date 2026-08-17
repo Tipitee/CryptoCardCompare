@@ -1,29 +1,28 @@
 {
-  "generated": "2026-08-08",
-  "_note": "Changements PROPOSÉS (revue humaine). À appliquer via: node scripts/apply-card-updates.mjs (--confirm). Fiches live non joignables ce cycle (réseau/provenance) : diff fait vs CARDS_TABLE de llms-full.txt (auto-générée depuis la base). Confiance medium sur tout le lot -> revue attentive. INCERTAIN exclus (KuCoin absent de la table ; MetaMask nuance tier gratuit vs Metal). Vérifier le nom EXACT de fiche avant apply.",
+  "generated": "2026-08-15",
   "changes": [
     {
-      "card": "Bleap Card",
-      "match": { "name": "Bleap Crypto Card" },
+      "card": "Binance Card",
+      "match": { "name": "Binance Card" },
+      "set": { "status": "discontinued" },
+      "reason": "Carte Binance EEE arretee le 20/12/2023 ; Binance a stoppe ses services EEE le 01/07/2026. Toujours affichee comme active (up to 8% BNB) sur la review page.",
+      "source": "financemagnates.com/cryptocurrency/binances-visa-debit-card-services-in-europe-to-end-by-december",
+      "confidence": "high"
+    },
+    {
+      "card": "Bybit Card",
+      "match": { "name": "Bybit Card" },
       "set": { "card_network": "Mastercard" },
-      "reason": "Bleap fonctionne sur le réseau Mastercard (self-custodial), pas Visa comme indiqué",
-      "source": "bleap.finance (site officiel émetteur), coininterestrate 2026",
-      "confidence": "medium"
+      "reason": "Fiche live/DB indique Visa, mais la carte Bybit UE est un Mastercard (confirme par la review interne, llms-full.txt et les sources externes).",
+      "source": "cryptoslate.com/crypto-cards/bybit-card-review ; bybit.com/en/wiki/article/bybit-card-countries-availability-2026",
+      "confidence": "high"
     },
     {
-      "card": "Ledger/Baanx Card",
-      "match": { "name": "Ledger CL Card" },
-      "set": { "cashback_base": 1 },
-      "reason": "Cashback CL Card = 1% (BTC/USDC) ; le 2% affiché correspond au frais de dépense crypto, pas au cashback. Vérifier fiche (Ledger CL vs CryptoLife)",
-      "source": "spendnode, ueex, withcl.com 2026",
-      "confidence": "medium"
-    },
-    {
-      "card": "Plutus Card",
-      "match": { "name": "Plutus Card" },
-      "set": { "annual_fees": 84, "cashback_premium": 9 },
-      "reason": "Tier gratuit supprimé en 2026 : tous les plans exigent un abonnement mensuel (Starter £6.99/mois ~= €84/an), donc plus €0. Cashback max porté à 9% (tier G.O.A.T). Valeur annual_fees à affiner (Starter GBP->EUR).",
-      "source": "spendnode, cardpilled 2026",
+      "card": "Trade Republic Card",
+      "match": { "name": "Trade Republic Card" },
+      "set": { "cashback_premium": 2 },
+      "reason": "Fiche live premium=1% ; le taux max reel est 2% en payant directement en crypto (confirme par la review interne et sources externes).",
+      "source": "investingintheweb.com/brokers/trade-republic-saveback-review",
       "confidence": "medium"
     }
   ]
