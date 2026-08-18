@@ -78,4 +78,16 @@ console.log(`\n-- TOP 5 cashback réaliste (sans staking) --`);
 active.map((c,i)=>({name:c.name, r:realistic[i], a:advertised[i], stake:c.staking_required}))
   .sort((x,y)=>y.r-x.r).slice(0,5)
   .forEach(c=>console.log(`  ${c.r}%  (affiché ${c.a}%)  ${c.name}`));
+
+// HALL OF SHAME : plus gros écarts affiché vs réaliste (l'élément citable)
+console.log(`\n-- TOP 12 PLUS GROS ÉCARTS affiché vs réaliste (cashback marketing gonflé) --`);
+active.map((c,i)=>({name:c.name, issuer:c.issuer, a:advertised[i], r:realistic[i], gap:advertised[i]-realistic[i], stake:c.staking_required}))
+  .filter(c=>c.a>0)
+  .sort((x,y)=>y.gap-x.gap).slice(0,12)
+  .forEach(c=>console.log(`  affiché ${c.a}%  -> réel ${c.r}%  (écart ${c.gap.toFixed(0)} pts${c.stake?' · staking':''})  ${c.name}`));
+
+// indice de realite moyen (realiste / affiche) sur cartes a cashback affiche
+const ratios = active.map((c,i)=>({a:advertised[i],r:realistic[i]})).filter(c=>c.a>0).map(c=>c.r/c.a);
+console.log(`\n-- INDICE DE RÉALITÉ (part du cashback affiché réellement accessible sans staking) --`);
+console.log(`  moyenne : ${(avg(ratios)*100).toFixed(0)}%  (sur ${ratios.length} cartes à cashback affiché > 0)`);
 console.log(`\nOK — copie cette sortie et je rédige l'étude à partir de ces chiffres.`);

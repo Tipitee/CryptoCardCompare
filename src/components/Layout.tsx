@@ -460,6 +460,12 @@ export default function Layout() {
                     {({ fr: 'Tous les outils', be: 'Tous les outils', de: 'Alle Tools', at: 'Alle Tools', es: 'Todas las herramientas', it: 'Tutti gli strumenti', en: 'All Tools' } as Record<string, string>)[lang] ?? 'All Tools'}
                   </Link>
                 </li>
+                <li>
+                  <a href="/etudes/cartes-crypto-2026" className="hover:text-cyan-accent transition-colors flex items-center gap-1.5">
+                    <BarChart3 className="w-3.5 h-3.5" />
+                    {({ fr: 'Étude cartes crypto 2026', be: 'Étude cartes crypto 2026', de: 'Studie Krypto-Karten 2026', at: 'Studie Krypto-Karten 2026', es: 'Estudio tarjetas cripto 2026', it: 'Studio carte crypto 2026', en: 'Crypto cards study 2026' } as Record<string, string>)[lang] ?? 'Crypto cards study 2026'}
+                  </a>
+                </li>
               </ul>
               <p className="text-xs text-slate-400 leading-relaxed">
                 {t('footer_disclaimer')}

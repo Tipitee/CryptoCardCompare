@@ -105,7 +105,9 @@ function collectPaths() {
   // timeout. They stay SPA-served via a passthrough rule in _redirects
   // (written by writeRedirects() below).
   const all = [...paths];
-  const kept = all.filter((p) => p === '/' ? false : !shouldNoindex(p));
+  // '/etudes/*' sont des pages HTML statiques (public/etudes/*.html), PAS des routes SPA.
+  // Les prérendre écraserait le fichier statique par une 404 du SPA -> on les saute.
+  const kept = all.filter((p) => p === '/' || p.startsWith('/etudes/') ? false : !shouldNoindex(p));
   console.log(`URL set: ${all.length} in sitemaps → ${kept.length} to prerender (${all.length - kept.length} noindex compares + root skipped)`);
   return kept;
 }

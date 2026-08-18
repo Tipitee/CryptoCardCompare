@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartes crypto : elles ne versent que 31 % du cashback promis — Étude 2026 · TopCryptoCards</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e17; --card:#121a2b; --card2:#0f1626; --border:#1e2a44;
+    --text:#e8eef7; --muted:#8ea0bd; --cyan:#00d4ff; --red:#ff5c7a; --green:#38e08a; --amber:#ffb54d; --violet:#7a5cff;
+    --maxw:940px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  header.hero{padding:66px 0 38px;border-bottom:1px solid var(--border);background:radial-gradient(1200px 400px at 50% -120px, rgba(0,212,255,.10), transparent)}
+  .kicker{color:var(--cyan);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin-bottom:16px}
+  h1{font-size:clamp(29px,5vw,50px);line-height:1.08;margin:0 0 18px;font-weight:800;letter-spacing:-.02em}
+  h1 .hl{color:var(--cyan)}
+  .lede{font-size:19px;color:var(--muted);max-width:700px}
+  .lede strong{color:var(--text)}
+  .meta{margin-top:22px;font-size:13px;color:var(--muted)}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:34px 0 4px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center}
+  .stat .n{font-size:25px;font-weight:800;letter-spacing:-.02em}
+  .stat .n.red{color:var(--red)} .stat .n.cyan{color:var(--cyan)} .stat .n.green{color:var(--green)} .stat .n.amber{color:var(--amber)}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.35}
+  section{padding:44px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:clamp(23px,3.4vw,31px);margin:0 0 12px;font-weight:800;letter-spacing:-.01em}
+  h2 .sub{display:block;font-size:14px;color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+  p{color:#cdd8ea;margin:0 0 16px}
+  p .em{color:#fff;font-weight:700}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
+  .chartbox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+  .chartbox h3{margin:0 0 4px;font-size:15px} .chartbox .cap{font-size:12px;color:var(--muted);margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--border)}
+  th{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  td .adv{color:var(--muted);text-decoration:line-through} td .real{color:var(--green);font-weight:700}
+  td .gap{color:var(--red);font-weight:800}
+  tr.top td{background:rgba(255,92,122,.06)}
+  .rank{color:var(--muted);font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;background:rgba(255,92,122,.12);color:var(--red);border:1px solid rgba(255,92,122,.3);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+  .pill.stake{background:rgba(255,181,77,.12);color:var(--amber);border-color:rgba(255,181,77,.3)}
+  .bigstat{display:flex;gap:22px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;margin:6px 0}
+  .bigstat .huge{font-size:66px;font-weight:800;color:var(--cyan);line-height:1}
+  .bigstat .t{font-size:15px;color:#cdd8ea}
+  .calc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+  .calc .row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-bottom:16px}
+  .calc label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+  .calc select,.calc input[type=range]{width:100%}
+  .calc select{background:var(--card2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px}
+  .calc .field{flex:1;min-width:210px}
+  .result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .result .box{border-radius:14px;padding:18px;text-align:center}
+  .result .promise{background:rgba(255,92,122,.08);border:1px solid rgba(255,92,122,.25)}
+  .result .real{background:rgba(56,224,138,.08);border:1px solid rgba(56,224,138,.25)}
+  .result .big{font-size:34px;font-weight:800}
+  .result .promise .big{color:var(--red)} .result .real .big{color:var(--green)}
+  .result .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+  .verdict{margin-top:14px;font-size:15px;text-align:center;color:var(--muted)} .verdict b{color:#fff}
+  ul.take{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  ul.take li{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:10px;padding:14px 16px}
+  ul.take li b{color:#fff}
+  .cite{background:var(--card2);border:1px dashed var(--border);border-radius:14px;padding:18px;font-size:14px;color:var(--muted);font-style:italic}
+  footer{padding:34px 0 60px;color:var(--muted);font-size:13px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.result{grid-template-columns:1fr}.bigstat{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<h2 class="sr-only">Étude 2026 : les cartes crypto ne versent en moyenne que 31 % du cashback qu'elles affichent, sur 93 cartes analysées en Europe.</h2>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Étude TopCryptoCards · Août 2026 · 93 cartes analysées</div>
+    <h1>On vous promet jusqu'à <span class="hl">20 %</span> de cashback.<br>Vous en toucherez <span class="hl">1 %</span>.</h1>
+    <p class="lede">Nous avons analysé <strong>93 cartes crypto disponibles en Europe</strong>. Résultat : en moyenne, une carte ne verse que <strong>31 % du cashback qu'elle affiche</strong>. Entre le chiffre en gros sur la publicité et ce que vous encaissez vraiment, l'écart est systématique — et parfois vertigineux.</p>
+    <div class="meta">Données vérifiées à la main · 7 marchés (FR · BE · DE · AT · ES · IT · UK) · Comparatif indépendant · Mise à jour : 17 août 2026</div>
+
+    <div class="stats">
+      <div class="stat"><div class="n cyan">31 %</div><div class="l">du cashback affiché <b>réellement touché</b></div></div>
+      <div class="stat"><div class="n red">2,37 %</div><div class="l">cashback <b>affiché</b> moyen</div></div>
+      <div class="stat"><div class="n amber">51 %</div><div class="l">des cartes à <b>0 %</b> de cashback</div></div>
+      <div class="stat"><div class="n green">95 %</div><div class="l">sans <b>frais annuels</b></div></div>
+      <div class="stat"><div class="n">9</div><div class="l">cartes déjà <b>discontinuées</b></div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Le chiffre-clé</span>L'indice de réalité : 31 %</h2>
+    <div class="bigstat">
+      <div class="huge">31 %</div>
+      <div class="t">C'est, en moyenne, la part du cashback affiché qu'un utilisateur touche <span class="em">réellement, sans staking</span>. Les 69 % restants sont conditionnés à des paliers de fidélité, des volumes de dépenses, des tokens bloqués ou des plafonds mensuels. Autrement dit : <span class="em">deux tiers de la promesse s'évaporent</span> avant d'arriver dans votre poche.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Le classement</span>Les 10 plus gros écarts affiché / réel</h2>
+    <p>Le chiffre en gros n'est pas un mensonge : c'est un <span class="em">plafond théorique</span> qui suppose presque toujours une condition cachée. Voici les cartes dont l'écart entre la promesse et la réalité est le plus béant — cashback affiché barré, cashback réellement accessible sans staking en vert.</p>
+    <div class="grid2" style="align-items:start">
+      <div class="chartbox">
+        <h3>Affiché vs. réel (sans staking)</h3>
+        <div class="cap">Les 7 écarts les plus spectaculaires</div>
+        <canvas id="gapChart" height="300"></canvas>
+      </div>
+      <div>
+        <table>
+          <thead><tr><th>#</th><th>Carte</th><th>Affiché</th><th>Réel</th><th>Écart</th></tr></thead>
+          <tbody>
+            <tr class="top"><td class="rank">1</td><td><b>Bleap Card</b></td><td><span class="adv">20 %</span></td><td><span class="real">1 %</span></td><td><span class="gap">−19 pts</span></td></tr>
+            <tr><td class="rank">2</td><td><b>WhiteBIT Nóva</b></td><td><span class="adv">10 %</span></td><td><span class="real">1 %</span></td><td><span class="gap">−9</span></td></tr>
+            <tr><td class="rank">3</td><td><b>Bybit Card</b> <span class="pill stake">staking</span></td><td><span class="adv">10 %</span></td><td><span class="real">2 %</span></td><td><span class="gap">−8</span></td></tr>
+            <tr><td class="rank">4</td><td><b>Solcard</b></td><td><span class="adv">8 %</span></td><td><span class="real">0 %</span></td><td><span class="gap">−8</span></td></tr>
+            <tr><td class="rank">5</td><td><b>Kardpay Card</b></td><td><span class="adv">8 %</span></td><td><span class="real">0 %</span></td><td><span class="gap">−8</span></td></tr>
+            <tr><td class="rank">6</td><td><b>Tap Card</b></td><td><span class="adv">8 %</span></td><td><span class="real">0,5 %</span></td><td><span class="gap">−7,5</span></td></tr>
+            <tr><td class="rank">7</td><td><b>COCA Visa Card</b></td><td><span class="adv">8 %</span></td><td><span class="real">1 %</span></td><td><span class="gap">−7</span></td></tr>
+            <tr><td class="rank">8</td><td><b>Plutus Card</b> <span class="pill stake">staking</span></td><td><span class="adv">9 %</span></td><td><span class="real">3 %</span></td><td><span class="gap">−6</span></td></tr>
+            <tr><td class="rank">9</td><td><b>Bit2Me Card</b></td><td><span class="adv">7 %</span></td><td><span class="real">2 %</span></td><td><span class="gap">−5</span></td></tr>
+            <tr><td class="rank">10</td><td><b>Uphold Card</b></td><td><span class="adv">6 %</span></td><td><span class="real">1 %</span></td><td><span class="gap">−5</span></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--muted)">Écart = points de cashback affichés mais inaccessibles sans staking ni condition. Base TopCryptoCards, août 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Testez vous-même</span>Combien toucherez-vous vraiment ?</h2>
+    <p>Choisissez une carte et votre budget mensuel. Comparez ce que la publicité promet… et ce que vous encaisserez réellement sur un an.</p>
+    <div class="calc">
+      <div class="row">
+        <div class="field">
+          <label>Carte</label>
+          <select id="card">
+            <option value="20,1">Bleap Card — affiché 20 %</option>
+            <option value="10,2">Bybit Card — affiché 10 %</option>
+            <option value="9,3">Plutus Card — affiché 9 %</option>
+            <option value="8,1">COCA Visa Card — affiché 8 %</option>
+            <option value="6,1">Uphold Card — affiché 6 %</option>
+            <option value="5,3">Crypto.com Frosted Rose Gold — affiché 5 %</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Dépenses par mois : <output id="spendOut">1 000 €</output></label>
+          <input type="range" id="spend" min="100" max="5000" step="100" value="1000">
+        </div>
+      </div>
+      <div class="result">
+        <div class="box promise"><div class="big" id="promiseVal">2 400 €</div><div class="lbl">cashback « promis » sur 1 an</div></div>
+        <div class="box real"><div class="big" id="realVal">120 €</div><div class="lbl">cashback réel (sans staking) sur 1 an</div></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">La statistique qui dérange</span>Une carte sur deux ne paie rien</h2>
+    <div class="grid2">
+      <div>
+        <p>On imagine le cashback comme la norme d'une carte crypto. C'est faux. Sur 84 cartes actives, <span class="em">43 — soit 51 % — affichent 0 % de cashback de base</span>. Plus d'une carte sur deux vous laisse dépenser vos cryptos… sans rien vous rendre.</p>
+        <p>Et le staking, l'épouvantail des comparatifs ? Un faux problème : <span class="em">seules 8 % des cartes (7 sur 84) l'exigent réellement</span>. Le vrai piège n'est pas le staking — c'est de croire que « cashback affiché » veut dire « cashback touché ».</p>
+      </div>
+      <div class="chartbox">
+        <h3>Cartes actives selon le cashback de base</h3>
+        <div class="cap">Sur 84 cartes crypto actives en Europe</div>
+        <canvas id="zeroChart" height="230"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Frais</span>Gratuit en vitrine, salé dans le premium</h2>
+    <div class="grid2">
+      <div class="chartbox">
+        <h3>Frais annuels des cartes crypto</h3>
+        <div class="cap">Réparti sur 84 cartes actives</div>
+        <canvas id="feesChart" height="230"></canvas>
+      </div>
+      <div>
+        <p>Bonne nouvelle pour l'utilisateur : <span class="em">95 % des cartes crypto n'ont aucun frais annuel</span> (80 sur 84). La gratuité est devenue le standard.</p>
+        <p>Mais la minorité payante ne fait pas semblant : parmi les cartes à frais, la médiane est de <span class="em">151 €/an</span>, et le haut de gamme grimpe jusqu'à <span class="em">1 000 €/an</span> — des tarifs de carte bancaire de luxe, pour un cashback qui, on l'a vu, tient rarement ses promesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Le marché en coulisses</span>Visa écrase Mastercard, et 1 carte sur 10 a déjà disparu</h2>
+    <div class="grid2">
+      <div class="chartbox">
+        <h3>Réseau de paiement</h3>
+        <div class="cap">Part des cartes actives</div>
+        <canvas id="netChart" height="220"></canvas>
+      </div>
+      <div>
+        <p><span class="em">75 % des cartes crypto sont des Visa</span> (63 sur 84), contre 25 % pour Mastercard. Côté format, l'écrasante majorité propose une carte physique ; seules 3 sont exclusivement virtuelles.</p>
+        <p>Surtout : sur les 93 cartes que nous suivons, <span class="em">9 sont déjà discontinuées</span> — dont la carte Binance (retirée de l'espace européen) et, tout récemment, Brighty. Près d'une carte sur dix dont on parle encore sur le web <span class="em">n'existe tout simplement plus</span>. Un comparatif non tenu à jour induit activement en erreur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Analyse</span>Pourquoi un tel écart entre l'affiche et le réel ?</h2>
+    <p>Trois mécaniques, presque toujours combinées, creusent le fossé :</p>
+    <p><span class="em">1. Les paliers de fidélité.</span> Le taux maximum n'existe qu'au sommet d'une pyramide de niveaux, atteignable en immobilisant une grosse somme du token maison (CRO, PLU, BNB…). En bas de l'échelle — là où se trouve la majorité des utilisateurs — le taux est une fraction du plafond.</p>
+    <p><span class="em">2. Les plafonds mensuels.</span> Beaucoup de cartes limitent le cashback à quelques dizaines d'euros par mois. Au-delà, vous dépensez sans rien récupérer : le taux « réel » s'effondre à mesure que vos dépenses montent.</p>
+    <p><span class="em">3. Le coût caché du staking.</span> Bloquer un token volatil pour débloquer un taux, c'est un pari : si le token baisse pendant la période de blocage, votre « cashback » est mangé par la perte en capital. Ce risque n'apparaît jamais dans le chiffre en gros.</p>
+    <p>Conséquence : le seul chiffre qui compte pour un utilisateur normal, c'est le <span class="em">taux garanti, sans condition et sans staking</span>. C'est précisément celui que le marketing enterre — et c'est celui que mesure notre indice de réalité.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">À retenir</span>4 réflexes avant de choisir une carte crypto</h2>
+    <ul class="take">
+      <li><b>Ignorez le chiffre en gros.</b> Cherchez le taux <em>sans condition</em> : sans staking, sans palier, sans plafond mensuel. En moyenne, vous n'en toucherez qu'un tiers.</li>
+      <li><b>Vérifiez qu'il y a un cashback tout court.</b> Une carte sur deux n'en verse aucun sur les dépenses de base.</li>
+      <li><b>La gratuité est la norme.</b> Payer 150 à 1 000 €/an ne se justifie que pour de très gros volumes — faites le calcul du seuil de rentabilité.</li>
+      <li><b>Exigez de la fraîcheur.</b> Taux et disponibilité changent vite, et des cartes disparaissent. Une donnée de 2025 est déjà suspecte.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="sub">Méthodologie</span>Comment on a compté</h2>
+    <p>Données issues de la base <span class="em">TopCryptoCards</span> au 17 août 2026 : 93 cartes crypto référencées et vérifiées à la main sur 7 marchés européens (FR, BE, DE, AT, ES, IT, UK). Le « cashback affiché » correspond au taux maximum communiqué par l'émetteur ; le « cashback réel » au taux accessible sans staking. L'« indice de réalité » est la part moyenne (réel ÷ affiché) sur les cartes annonçant un cashback. Comparatif indépendant, mis à jour à chaque changement. Aucune carte n'est mieux classée en échange d'une commission.</p>
+    <div class="cite">Citer cette étude : « Selon l'étude 2026 de TopCryptoCards sur 93 cartes crypto européennes, les cartes ne versent en moyenne que 31 % du cashback qu'elles affichent, et une carte sur deux n'offre aucun cashback de base. La palme de l'écart revient à Bleap : 20 % affichés, 1 % réel. » — topcryptocards.eu</div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 TopCryptoCards — Comparatif indépendant des cartes crypto en Europe. Aucun conseil financier.</div></footer>
+
+<script>
+const CY='#00d4ff',RD='#ff5c7a',GR='#38e08a',AM='#ffb54d',VI='#7a5cff',MU='#8ea0bd',BD='#1e2a44';
+Chart.defaults.color=MU; Chart.defaults.font.family='-apple-system,Segoe UI,Roboto,sans-serif'; Chart.defaults.font.size=12;
+const noGrid={grid:{color:BD,drawBorder:false}};
+
+new Chart(gapChart,{type:'bar',data:{labels:['Bleap','WhiteBIT','Bybit','COCA','Bit2Me','Uphold','Plutus'],
+  datasets:[{label:'Affiché',data:[20,10,10,8,7,6,9],backgroundColor:RD,borderRadius:5},
+            {label:'Réel (sans staking)',data:[1,1,2,1,2,1,3],backgroundColor:GR,borderRadius:5}]},
+  options:{indexAxis:'y',plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{callback:v=>v+'%'},...noGrid},y:noGrid}}});
+
+new Chart(zeroChart,{type:'doughnut',data:{labels:['0 % de cashback','Cashback de base > 0'],
+  datasets:[{data:[43,41],backgroundColor:[AM,CY],borderColor:'#0a0e17',borderWidth:3}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom'}}}});
+
+new Chart(feesChart,{type:'doughnut',data:{labels:['Gratuites (0 €/an)','Payantes (médiane 151 €)'],
+  datasets:[{data:[80,4],backgroundColor:[GR,RD],borderColor:'#0a0e17',borderWidth:3}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom'}}}});
+
+new Chart(netChart,{type:'doughnut',data:{labels:['Visa (75 %)','Mastercard (25 %)'],
+  datasets:[{data:[63,21],backgroundColor:[CY,VI],borderColor:'#0a0e17',borderWidth:3}]},
+  options:{cutout:'62%',plugins:{legend:{position:'bottom'}}}});
+
+const card=document.getElementById('card'),spend=document.getElementById('spend'),
+  spendOut=document.getElementById('spendOut'),pv=document.getElementById('promiseVal'),
+  rv=document.getElementById('realVal'),vd=document.getElementById('verdict');
+function euro(n){return Math.round(n).toLocaleString('fr-FR')+' €';}
+function calc(){
+  const [adv,real]=card.value.split(',').map(Number);
+  const s=Number(spend.value); spendOut.textContent=s.toLocaleString('fr-FR')+' €';
+  const yr=s*12, promised=yr*adv/100, got=yr*real/100;
+  pv.textContent=euro(promised); rv.textContent=euro(got);
+  vd.innerHTML=`Écart : <b>${euro(promised-got)}</b> de cashback « promis » que vous ne toucherez pas cette année.`;
+}
+card.addEventListener('change',calc); spend.addEventListener('input',calc); calc();
+</script>
+</body>
+</html>

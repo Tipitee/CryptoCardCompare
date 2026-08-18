@@ -3050,4 +3050,10 @@
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-tools"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/outils-carte-crypto"/>
   </url>
+  <url>
+    <loc>https://topcryptocards.eu/etudes/cartes-crypto-2026</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
