@@ -1,4 +1,4 @@
-# Tech Health — 2026-08-11
+# Tech Health — 2026-08-18
 
 Statut global : ⚪ PROBE INDISPONIBLE (aucun incident site)
 
@@ -21,4 +21,5 @@ puis relancer l'agent A3.
 ### 2026-07-28 — 🔴 (probe échec réseau, non concluant : 7 checks "fetch failed")
 ### 2026-08-06 — ⚪ PROBE INDISPONIBLE (egress bloqué, non concluant)
 ### 2026-08-11 — ⚪ PROBE INDISPONIBLE (egress bloqué, non concluant)
+### 2026-08-18 — ⚪ PROBE INDISPONIBLE (egress bloqué, non concluant)
 (les runs précédents restent ici — ne pas écraser cette section à la main)

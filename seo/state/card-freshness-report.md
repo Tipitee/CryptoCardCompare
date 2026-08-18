@@ -1,36 +1,37 @@
-# A13 — Rapport fraîcheur cartes · 2026-08-15
+# A13 — Rapport fraîcheur cartes · 2026-08-18 (rotation complète, 20 cartes)
 
-Lot vérifié (8, les + anciens/nulls) : Bybit, Crypto.com Visa, Binance, Nexo, Ether.Fi Cash, Revolut Metal, Young Platform, Trade Republic.
-Écarts : **1 ARRÊTÉ**, **2 CHANGÉ**, 1 flag INCERTAIN (Nexo), 2 non vérifiables (fiche hors provenance). Source « site » = fiche live `/en/cards/<slug>` (fallback review page si fiche blanche).
+**Vérifié :** les 8 du lot hebdo + les 12 restantes (check étendu demandé).
+**Écarts majeurs :** 3 produits ARRÊTÉS encore listés (Wirex EEE, Binance EEE, Brighty) + 8 cartes CHANGÉ. 5 OK.
 
-| Carte | Champ | Fiche live dit | Réalité (source) | Statut | Marché |
-|---|---|---|---|---|---|
-| Binance Card | statut | fiche blanche mais **review page active** « up to 8% BNB, Visa, EU+UK incl. FR » | Carte EEE **arrêtée 20/12/2023** ; Binance a stoppé ses services EEE le 01/07/2026 (financemagnates, binance) | **ARRÊTÉ** | EEE/UK |
-| Bybit Card | card_network | **Visa** | **Mastercard** (cryptoslate, bybit wiki ; llms+review disent aussi Mastercard) | **CHANGÉ** | tous |
-| Bybit Card | cashback_base | 2 % | base UE = 1 % illimité, paliers 2–10 % (cryptonomist 06/2026) — ambigu | INCERTAIN | UE |
-| Bybit Card | dispo France | non dispo FR | sources contradictoires (EEE incl. FR vs excl. FR) | INCERTAIN | fr |
-| Trade Republic | cashback_premium | 1 % | **2 % en payant en crypto** (investingintheweb ; review du site dit aussi 2 %) | **CHANGÉ** | tous |
-| Nexo Card | cashback_premium | 0 % (base 0,5 %) | jusqu'à 2 % (Platinum) — la review du site dit « max 2% » | INCERTAIN* | UE |
-| Crypto.com Visa | cashback max | up to 5 % (Obsidian) | max 5 % Obsidian toujours valable ; dérive paliers (Ruby 1→2 %) | OK | tous |
-| Nexo Card | réseau/dispo/virtuelle | Mastercard, virtuelle, UE+FR, UK cashback désactivé | conforme (défycard, kkinvesting) | OK | tous |
-| Ether.Fi Cash | (fiche hors provenance) | llms : 3 %, Visa, €0, 7 marchés | 3 % (1er $2k), Visa, non-custodial, UE ; UK après FCA 09/2026 | OK (via llms) | UK pending |
-| Revolut (Crypto Card) | annual_fees / cashback | €0 Standard, pas de cashback crypto, Visa | conforme (fiche = carte gratuite, pas la Metal) | OK | tous |
-| Young Platform | (fiche hors provenance) | absent de llms-full.txt | Visa, sans frais, cashback 0,1–3,6 % par palier, MiCA en attente | INCERTAIN | it/UE |
+## Produits arrêtés encore listés — PRIORITÉ HAUTE
+| Carte | Réalité (source) | Statut |
+|-------|------------------|--------|
+| **Wirex** | Volet crypto + Cryptoback fermés dans l'EEE le 30/06/2026 (reste UK/NZ/HK/TW) (cryptoslate) | ARRÊTÉ EEE — déjà `discontinued` en base ✓ ; prose statique corrigée |
+| **Binance** | Carte arrêtée EEE 20/12/2023 ; Binance a quitté l'EEE (07/2026) (financemagnates, pymnts) | ARRÊTÉ — vérifier statut base |
+| **Brighty** | Wireflexion (services crypto Brighty) ferme fin juin 2026, retrait des fonds conseillé (milkroad) | ARRÊTÉ — vérifier statut base |
 
-\*Nexo : incohérence interne (fiche numérique premium 0 % vs « max 2 % » affiché ailleurs) — à clarifier côté colonnes, hors JSON.
+## Cartes CHANGÉ (fiche → réalité)
+| Carte | Champ | Fiche dit | Réalité (source) | Conf. |
+|-------|-------|-----------|------------------|-------|
+| OKX | cashback/token | 3 % en OKB | **2–5 % en USDG** selon VIP, dépenses USDG only (okx.com) | high |
+| MetaMask | frais/token | 199 $ fixe, ETH | **base gratuite** (1 %), Metal 199 $ (3 %) ; **mUSD** (cardpilled) | medium |
+| Ledger | cashback/token | 2 % BTC/LDG | **1 % en BTC ou USDT**, plus de palier LDG (ledger.com) | medium |
+| Coinbase | format | physique+virtuelle | **carte physique suspendue** → virtuelle (cryptowisser) | medium |
+| Bitpanda | token | 1 % en BEST | 1 % **dans la crypto de l'achat** (support.bitpanda) | medium |
+| Nexo | format | physique+virtuelle | **physique en pause** depuis 01/2025 → virtuelle ; UK sans cashback (cardpilled) | medium |
+| Plutus | frais/cashback | €0, up to 8 % | **plus de palier gratuit** (abo dès £6,99/mois), max **9 %**, FX 2,5 % (spendnode) | medium |
+| Revolut Metal | frais | 179,88 €/an | **203,88 €/an** (16,99 €/mois) (cryptowisser) | medium |
 
-## À corriger cette semaine (par trafic)
-1. **Binance Card — ARRÊTÉ** : produit mort depuis 12/2023, mais la review page le présente encore comme actif (8% BNB). Marque à fort trafic → risque désinformation + SEO. Passer `status=discontinued` et dé-lister/retirer la review.
-2. **Bybit Card — réseau Visa→Mastercard** : la fiche/DB dit Visa alors que la réalité (et llms + review) = Mastercard. Corriger `card_network`.
-3. **Trade Republic — cashback_premium 1→2 %** : 2 % confirmé sur paiement en crypto.
+## OK / points mineurs
+Bit2Me (7 % B2M, EEE ✓), Gnosis Pay (5 % GNO ✓, prog. jusqu'au 30/09/2026), Ether.fi Cash (3 % wETH ✓), Young Platform (3,6 % YNG, **Italie only** ✓), Trade Republic (1 % Saveback, pas UK ✓), Crypto.com (0-8 % CRO, abo désormais alternative au staking), KuCoin (EEE only, licence gelée jan.–mai 2026 puis rétablie), Bleap (20 % OK, promo 2 % courses **terminée le 31/05/2026**).
+**Bybit** — INCERTAIN : la réalité indique tout l'EEE (France incluse) ; la fiche liste DE/ES/IT/UK/AT sans FR/BE. À confirmer avant d'ajouter fr/be aux marchés.
 
-## Dérive llms-full.txt (GEO — secondaire)
-- **Bybit** : llms = Mastercard (correct) alors que la **fiche live = Visa** → ici c'est la DB/fiche qui a dérivé, pas llms. Inversion à surveiller.
-- **Revolut Metal** : llms = €179.88/an ; prix UE réel ≈ €15.99/mo (annuel €155). Périmé.
-- **Young Platform** : totalement **absent** du tableau llms-full.txt alors qu'elle est suivie (trou GEO).
-- **Binance** : correctement absente du tableau llms ; le problème est la review page statique.
+## Dérive llms-full.txt (GEO)
+- OKX : llms-full « up to 5 % » (proche réalité) vs fiche « 3 % » ; token « OKB » faux (réalité USDG).
+- Bitpanda : llms-full le dit dispo UK/FCA ; réalité = Eurozone only, pas UK.
+llms-full est régénéré depuis la base au déploiement → se corrige après application des changements.
 
 ## Action prioritaire (< 4 h)
-Passer **Binance Card en `discontinued`** en base et retirer/dé-lister sa review page — carte arrêtée depuis 12/2023 encore affichée comme active avec 8 % de cashback.
+Confirmer/forcer le statut **`discontinued`** de **Binance** et **Brighty** en base (comme Wirex) — 3 produits morts encore présentés comme disponibles = risque désinformation + SEO. Puis appliquer `card-freshness-changes.json`.
 
-_Lecture seule. La mise à jour Supabase et la régénération de llms-full.txt restent des étapes humaines (`node scripts/apply-card-updates.mjs --confirm`)._
+*Lecture seule. Changements proposés dans card-freshness-changes.json (revue humaine + `node scripts/apply-card-updates.mjs --confirm`). Prose statique Wirex/OKX/MetaMask/Ledger déjà corrigée dans src/data (typecheck OK).*

@@ -4,8 +4,17 @@
 - **Frontend**: React 18 + TypeScript, Vite, Tailwind CSS
 - **Routing**: React Router v6 (multilingual, see below)
 - **Backend**: Supabase (PostgreSQL + Edge Functions in Deno)
-- **Hosting**: Netlify
+- **Hosting**: Cloudflare Pages (project `topcryptocards`, **Direct Upload** mode — migrated off Netlify ~2026-07-28). Account ID `8fce1e4ded2b348e9dd8f0df6b687221`.
 - **Image generation**: Together AI (FLUX.1-schnell) via Edge Function
+
+### Deploy pipeline (Cloudflare Pages)
+`.github/workflows/deploy.yml` runs on push to `main`, manual dispatch, and nightly (03:17 UTC, to reflect live Supabase data). It: regenerates sitemaps + `llms-full.txt`, `vite build`, prerenders ~1,050 URLs, then `npx wrangler pages deploy dist --project-name=topcryptocards --branch=main`. Required GitHub secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`.
+
+### Hosting config (Cloudflare Pages conventions — NOT netlify.toml)
+- `public/_headers` → security headers (HSTS 2y, CSP, X-Frame-Options SAMEORIGIN, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) + `/assets/*` immutable caching. Vite copies it to `dist/_headers`.
+- `public/_redirects` → root `/ → /fr` (302), SPA-only fallbacks (`/admin/*`, legal pages, blog-admin) to `/index.html` 200. Cloudflare Pages does NOT support Netlify's `Language=` directive.
+- **Trailing slash**: handled automatically by Pages. `prerender.mjs` writes flat `path.html` files (not `path/index.html`), so Pages 308-redirects `/x/ → /x`; canonicals (`useSeoMeta.ts`) and sitemaps use the no-slash form. Do NOT add manual trailing-slash rules to `_redirects` — Pages can't splat-strip a slash generically and doesn't need to.
+- `deploy-cloudflare.sh` is a one-off migration helper. `.netlify/` is a dead leftover (safe to delete, gitignored).
 
 ---
 
@@ -145,7 +154,7 @@ One-off migration/generation scripts. **Not part of the app bundle.**
 - BCP 47 hreflang fixed: `be`→`fr-BE`, `at`→`de-AT`, `en`→`en-GB` (in `useHreflang.ts` + all 11 sitemap XML files)
 - Home/Compare/ComparisonPage: `IndependentNotice` affiliate disclaimer added
 - ContactPage × 7 langs + footer link + sitemap entries
-- Security headers in `netlify.toml` (HSTS 2y, X-Frame-Options, Referrer-Policy, Permissions-Policy, CSP)
+- Security headers in `public/_headers` (HSTS 2y, X-Frame-Options, Referrer-Policy, Permissions-Policy, CSP) — migrated from the old `netlify.toml [[headers]]`, now dead
 - LCP preload: `<link rel="preload" as="image" href="/logo-small.png">` in index.html
 - GTM preconnect in index.html
 - Logo width/height attributes set in Layout.tsx

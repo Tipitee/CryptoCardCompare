@@ -451,8 +451,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   },
   "okx-card__de": {
     "keyStats": {
-      "cashbackMax": "Bis zu 3 % je nach Stufe",
-      "stakingRequis": "OKB optional zur Verbesserung des Satzes",
+      "cashbackMax": "Bis zu 5 % in USDG (2 % Basis)",
+      "stakingRequis": "Je nach OKX VIP-Stufe (kein Token-Staking)",
       "fraisAnnuels": "0 €",
       "disponibilite": "EU (Frankreich inbegriffen)"
     },
@@ -465,8 +465,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Gute Integration mit OKX Web3 DEX"
     ],
     "cons": [
-      "Cashback unter der Konkurrenz (max. 3 %)",
-      "Cashback in OKB ausgezahlt (OKX-Token)",
+      "Cashback nur auf in USDG finanzierte Ausgaben",
+      "Cashback in USDG ausgezahlt (Global Dollar), nicht mehr in OKB",
       "Geografische Verfügbarkeit noch begrenzt",
       "OKX weniger bekannt als Binance oder Crypto.com in Frankreich",
       "KYC obligatorisch mit Verifizierungsverzögerung",
@@ -475,19 +475,19 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "Die OKX Card ist eine gute Option für OKX-Plattformbenutzer mit nativer Integration in das OKX Web3-Ökosystem. Der Cashback ist anständig, bleibt aber hinter den Marktführern zurück. Sie ist besonders geeignet, wenn Sie bereits OKX-Benutzer sind.",
     "sections": {
       "presentation": "Die **OKX Card** ist eine von OKX ausgegebene Prepaid-Mastercard, einer der weltweit größten Börsen. Sie ermöglicht es, mehr als 30 verschiedene Kryptowährungen direkt bei Händlern auszugeben, mit Echtzeit-Umrechnung.",
-      "cashback": "Der Cashback liegt zwischen **1 % und 3 %** je nach Nutzungsstufe und gehaltener OKB-Balance. Der Basis-Cashback beträgt 1 % für alle Benutzer. Der Cashback wird in OKB, dem nativen Token der Plattform, ausgezahlt.",
+      "cashback": "Der Cashback reicht von **2 % bis 5 %**, ausgezahlt in **USDG** (Global Dollar), je nach OKX VIP-Stufe: 2 % (Regular), 4 % (VIP1), 4,5 % (VIP2), 5 % (VIP3+). Wichtig: Cashback gibt es nur auf in **USDG finanzierte** Ausgaben. (Früher als 1–3 % in OKB angegeben.)",
       "frais": "**0 € Jahresgebühren**. Transaktionen in Fremdwährungen werden zum Marktkurs umgerechnet. Keine Kontoführungsgebühren.",
       "securite": "OKX ist in mehreren Gerichtsbarkeiten reguliert und hat Lizenzen in Europa erhalten. Die Plattform verwendet Cold Storage für 95 % der Fonds und bietet ein Versicherungssystem für verwahrte Fonds. Die Karte integriert 2FA, Echtzeit-Benachrichtigungen und sofortige Sperrung.",
       "experience": "Die Benutzererfahrung in der OKX-App ist insgesamt positiv mit moderner Schnittstelle. Die Karte ist kompatibel mit **Apple Pay** und **Google Pay**. Support ist hauptsächlich auf Englisch verfügbar."
     },
     "metaTitle": "OKX Card Bewertung 2026, Vollständiger Test, Cashback & Gebühren",
-    "metaDescription": "OKX Card Bewertung 2026: Cashback bis 3 %, kompatibel mit 30+ Kryptos, keine Jahresgebühren. Unser Test mit Vor-, Nachteilen und Fazit.",
+    "metaDescription": "OKX Card Bewertung 2026: 2–5 % Cashback in USDG (nur bei USDG-Ausgaben), 30+ Kryptos, keine Jahresgebühren. Unser Test mit Vor-, Nachteilen und Fazit.",
     "badge": "Guter Cashback"
   },
   "okx-card__es": {
     "keyStats": {
-      "cashbackMax": "Hasta 3% según el nivel",
-      "stakingRequis": "OKB opcional para mejorar la tasa",
+      "cashbackMax": "Hasta 5% en USDG (2% base)",
+      "stakingRequis": "Según el nivel VIP de OKX (sin staking de token)",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia incluida)"
     },
@@ -500,8 +500,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Buena integración con el DEX OKX Web3"
     ],
     "cons": [
-      "Cashback inferior a la competencia (máx. 3%)",
-      "Cashback pagado en OKB (token OKX)",
+      "Cashback solo sobre gastos financiados en USDG",
+      "Cashback pagado en USDG (Global Dollar), ya no en OKB",
       "Disponibilidad geográfica aún limitada",
       "OKX menos conocido que Binance o Crypto.com en Francia",
       "KYC obligatorio con plazo de verificación",
@@ -510,18 +510,18 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "OKX Card es una buena opción para usuarios de la plataforma OKX, con integración nativa en el ecosistema OKX Web3. El cashback es correcto pero sigue siendo inferior a los líderes del mercado. Es ideal si ya eres usuario de OKX.",
     "sections": {
       "presentation": "La **OKX Card** es una Mastercard prepago emitida por OKX, uno de los mayores exchanges mundiales. Permite gastar más de 30 criptomonedas diferentes directamente en comercios, con conversión en tiempo real.",
-      "cashback": "El cashback varía entre **1% y 3%** según el nivel de uso y el saldo de OKB que tengas. El cashback base es del 1% para todos los usuarios. El cashback se paga en OKB, el token nativo de la plataforma.",
+      "cashback": "El cashback va del **2% al 5%**, pagado en **USDG** (Global Dollar), según el nivel VIP de OKX: 2% (Regular), 4% (VIP1), 4,5% (VIP2), 5% (VIP3+). Importante: solo se concede sobre gastos financiados en **USDG**. (Antes indicado como 1-3% en OKB.)",
       "frais": "**0 € de cuota anual**. Las transacciones en monedas extranjeras se convierten al tipo de mercado. Sin cuotas de mantenimiento de cuenta.",
       "securite": "OKX está regulado en varias jurisdicciones y ha obtenido licencias en Europa. La plataforma utiliza almacenamiento en frío para el 95% de los fondos y ofrece un sistema de seguros para fondos en custodia. La tarjeta integra 2FA, notificaciones en tiempo real y bloqueo instantáneo.",
       "experience": "La experiencia de usuario en la app OKX es generalmente positiva, con una interfaz moderna. La tarjeta es compatible con **Apple Pay** y **Google Pay**. El soporte está disponible principalmente en inglés."
     },
     "metaTitle": "OKX Card Opinión 2026, Test Completo, Cashback y Cuotas",
-    "metaDescription": "Opinión OKX Card 2026: cashback hasta 3%, compatible con 30+ criptos, cero cuota anual. Nuestro test completo con ventajas, desventajas y veredicto."
+    "metaDescription": "Opinión OKX Card 2026: cashback 2-5% en USDG (solo gastos en USDG), compatible con 30+ criptos, cero cuota anual. Nuestro test completo con ventajas, desventajas y veredicto."
   },
   "okx-card__it": {
     "keyStats": {
-      "cashbackMax": "Fino al 3% a seconda del livello",
-      "stakingRequis": "OKB opzionale per migliorare il tasso",
+      "cashbackMax": "Fino al 5% in USDG (2% base)",
+      "stakingRequis": "In base al livello VIP OKX (nessuno staking di token)",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia inclusa)"
     },
@@ -534,8 +534,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Buona integrazione con OKX Web3 DEX"
     ],
     "cons": [
-      "Cashback inferiore alla concorrenza (max 3%)",
-      "Cashback erogato in OKB (token OKX)",
+      "Cashback solo sulle spese finanziate in USDG",
+      "Cashback erogato in USDG (Global Dollar), non più in OKB",
       "Disponibilità geografica ancora limitata",
       "OKX meno conosciuto di Binance o Crypto.com in Francia",
       "KYC obbligatorio con tempi di verifica",
@@ -544,19 +544,19 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "OKX Card è una buona opzione per gli utenti della piattaforma OKX, con integrazione nativa nell'ecosistema OKX Web3. Il cashback è corretto ma rimane inferiore ai leader di mercato. È particolarmente adatta se sei già un utente OKX.",
     "sections": {
       "presentation": "La **OKX Card** è una Mastercard prepagata emessa da OKX, uno dei più grandi exchange mondiali. Permette di spendere più di 30 criptovalute diverse direttamente presso i commercianti, con conversione in tempo reale.",
-      "cashback": "Il cashback varia tra **1% e 3%** a seconda del livello di utilizzo e del saldo OKB detenuto. Il cashback di base è dell'1% per tutti gli utenti. Il cashback viene erogato in OKB, il token nativo della piattaforma.",
+      "cashback": "Il cashback va dal **2% al 5%**, erogato in **USDG** (Global Dollar), in base al livello VIP OKX: 2% (Regular), 4% (VIP1), 4,5% (VIP2), 5% (VIP3+). Importante: viene concesso solo sulle spese finanziate in **USDG**. (Prima indicato come 1-3% in OKB.)",
       "frais": "**0 € di commissioni annuali**. Le transazioni in valute estere vengono convertite al tasso di mercato. Nessuna commissione di manutenzione del conto.",
       "securite": "OKX è regolamentato in diverse giurisdizioni e ha ottenuto licenze in Europa. La piattaforma utilizza cold storage per il 95% dei fondi e offre un sistema di assicurazione per i fondi in custodia. La carta integra 2FA, notifiche in tempo reale e blocco istantaneo.",
       "experience": "L'esperienza utente nell'app OKX è complessivamente positiva, con un'interfaccia moderna. La carta è compatibile con **Apple Pay** e **Google Pay**. Il supporto è disponibile principalmente in inglese."
     },
     "metaTitle": "OKX Card Recensione 2026, Test Completo, Cashback e Commissioni",
-    "metaDescription": "Recensione OKX Card 2026: cashback fino al 3%, compatibile con 30+ crypto, zero commissioni annuali. Test completo con pro, contro e verdetto.",
+    "metaDescription": "Recensione OKX Card 2026: cashback 2-5% in USDG (solo spese in USDG), compatibile con 30+ crypto, zero commissioni annuali. Test completo con pro, contro e verdetto.",
     "badge": "Buona scelta OKX"
   },
   "okx-card__en": {
     "keyStats": {
-      "cashbackMax": "Up to 3% depending on tier",
-      "stakingRequis": "OKB optional to boost rewards",
+      "cashbackMax": "Up to 5% in USDG (2% base)",
+      "stakingRequis": "Based on OKX VIP level (no token staking)",
       "fraisAnnuels": "0 €",
       "disponibilite": "EU (France included)"
     },
@@ -569,8 +569,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Strong integration with OKX Web3 DEX"
     ],
     "cons": [
-      "Cashback lower than competitors (max 3%)",
-      "Cashback paid in OKB (OKX token)",
+      "Cashback only on USDG-funded spending",
+      "Cashback paid in USDG (Global Dollar), no longer in OKB",
       "Geographic availability still limited",
       "OKX less known than Binance or Crypto.com in France",
       "Mandatory KYC with verification delays",
@@ -579,13 +579,13 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "OKX Card is a solid option for OKX platform users, with native integration into the OKX Web3 ecosystem. Cashback is decent but remains below market leaders. Best suited if you're already an OKX user.",
     "sections": {
       "presentation": "The **OKX Card** is a prepaid Mastercard issued by OKX, one of the world's largest exchanges. It lets you spend 30+ cryptocurrencies directly at merchants with real-time conversion.",
-      "cashback": "Cashback ranges between **1% and 3%** depending on usage tier and OKB balance held. Base cashback is 1% for all users. Cashback is paid in OKB, the platform's native token.",
+      "cashback": "Cashback ranges from **2% to 5%**, paid in **USDG** (Global Dollar), based on OKX VIP level: 2% (Regular), 4% (VIP1), 4.5% (VIP2), 5% (VIP3+). Important: it is only earned on **USDG-funded** spending. (Previously listed as 1–3% in OKB.)",
       "frais": "**0 € annual fees**. Foreign currency transactions are converted at market rates. No account maintenance fees.",
       "securite": "OKX is regulated in multiple jurisdictions and holds European licenses. The platform uses cold storage for 95% of funds and offers insurance coverage for custodied assets. The card includes 2FA, real-time notifications, and instant blocking.",
       "experience": "User experience in the OKX app is generally positive with a modern interface. The card is compatible with **Apple Pay** and **Google Pay**. Support is available primarily in English."
     },
     "metaTitle": "OKX Card Review 2026, Cashback, Fees & Verdict | TopCryptoCards",
-    "metaDescription": "OKX Card review 2026: 1–3% cashback in OKB, 30+ cryptos, zero annual fees. Is it worth it? Independent verdict, pros, cons and full test ✓"
+    "metaDescription": "OKX Card review 2026: 2–5% cashback in USDG (USDG-funded spend only), 30+ cryptos, zero annual fees. Is it worth it? Independent verdict, pros, cons and full test ✓"
   },
   "coinbase-card__de": {
     "badge": "Kein Staking",
@@ -1038,8 +1038,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     ],
     "verdict": "Die Wirex Card ist interessant für ihre außergewöhnliche geografische Abdeckung und Multi-Währungs-Unterstützung. Sie eignet sich besonders für internationale Reisende. Allerdings ist das Cashback in WXT angesichts der geringen Liquidität des Tokens wenig attraktiv.",
     "sections": {
-      "presentation": "**Wirex** ist ein 2014 gegründetes britisches Fintech-Unternehmen, das sich auf Multi-Währungs-Konten und Krypto-Zahlungen spezialisiert. Die **Wirex Card** (Visa) ist in über 150 Ländern verfügbar und unterstützt über 150 Kryptowährungen und Fiat-Währungen.",
-      "cashback": "Das Wirex Cashback (genannt **Cryptoback™**) variiert je nach gewähltem Plan: Standard-Plan (kostenlos): 0,5 % in WXT; Premium-Plan (4,99 €/Monat): 1,5 % in WXT; Elite-Plan (9,99 €/Monat): bis zu 8 % in WXT für bestimmte Kategorien.",
+      "presentation": "⚠️ **Seit dem 30. Juni 2026 hat Wirex den Krypto-Teil (Finanzierung, Umtausch, Ausgaben und Cryptoback) im EWR und in Australien eingestellt.** Die Krypto-Karte wird in Deutschland und der EU nicht mehr angeboten; Cryptoback bleibt nur im Vereinigten Königreich, in Neuseeland, Hongkong und Taiwan bestehen. Die folgende Beschreibung dokumentiert das frühere Angebot.\n\n**Wirex** ist ein 2014 gegründetes britisches Fintech-Unternehmen, das sich auf Multi-Währungs-Konten und Krypto-Zahlungen spezialisiert. Die **Wirex Card** (Visa) war in über 150 Ländern verfügbar und unterstützte über 150 Kryptowährungen und Fiat-Währungen.",
+      "cashback": "⚠️ Das **Cryptoback™**-Programm wurde am 30. Juni 2026 im EWR eingestellt; die folgenden Sätze gelten nur noch im UK, in Neuseeland, Hongkong und Taiwan. Das Wirex Cashback variierte je nach Plan: Standard (kostenlos): 0,5 % in WXT; Premium (4,99 €/Monat): 1,5 % in WXT; Elite (9,99 €/Monat): bis zu 8 % in WXT für bestimmte Kategorien.",
       "frais": "Die Gebühren variieren je nach Plan. Der Standard-Plan ist **kostenlos**, bietet aber begrenzte Vorteile. Die Premium- und Elite-Pläne kosten 4,99 € bzw. 9,99 €/Monat. Geldautomaten-Abhebungen sind im Standard-Plan bis 200 €/Monat kostenlos.",
       "securite": "Wirex ist von der FCA im Vereinigten Königreich reguliert und betreibt Lizenzen in der EU. Die Plattform nutzt End-to-End-Verschlüsselung und 2FA. Die Gelder sind segregiert.",
       "experience": "Die Wirex-App ist funktional, aber weniger modern als die von Crypto.com oder Binance. Sie ermöglicht die Verwaltung von Konten in 150+ Währungen, sofortige Umwandlung und Cashback-Tracking. Die Karte ist **Apple Pay** kompatibel."
@@ -1072,8 +1072,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     ],
     "verdict": "La Wirex Card es interesante por su cobertura geográfica excepcional y soporte multimoneda. Es especialmente adecuada para viajeros internacionales. Sin embargo, el cashback en WXT es poco atractivo dada la baja liquidez del token.",
     "sections": {
-      "presentation": "**Wirex** es una fintech británica fundada en 2014, especializada en cuentas multimoneda y pagos cripto. La **Wirex Card** (Visa) está disponible en más de 150 países y soporta más de 150 criptomonedas y divisas fiat.",
-      "cashback": "El cashback Wirex (llamado **Cryptoback™**) varía según el plan elegido: Plan Standard (gratuito): 0,5 % en WXT; Plan Premium (4,99 €/mes): 1,5 % en WXT; Plan Elite (9,99 €/mes): hasta 8 % en WXT para ciertas categorías.",
+      "presentation": "⚠️ **Desde el 30 de junio de 2026, Wirex cerró su parte cripto (financiación, intercambio, gasto y Cryptoback) en el EEE y Australia.** La tarjeta cripto ya no se ofrece en España ni en la UE; Cryptoback solo se mantiene en Reino Unido, Nueva Zelanda, Hong Kong y Taiwán. La descripción siguiente documenta la oferta histórica.\n\n**Wirex** es una fintech británica fundada en 2014, especializada en cuentas multimoneda y pagos cripto. La **Wirex Card** (Visa) estaba disponible en más de 150 países y soportaba más de 150 criptomonedas y divisas fiat.",
+      "cashback": "⚠️ El programa **Cryptoback™** se cerró en el EEE el 30 de junio de 2026; las tasas siguientes solo se aplican en Reino Unido, Nueva Zelanda, Hong Kong y Taiwán. El cashback Wirex variaba según el plan: Standard (gratuito): 0,5 % en WXT; Premium (4,99 €/mes): 1,5 % en WXT; Elite (9,99 €/mes): hasta 8 % en WXT para ciertas categorías.",
       "frais": "Las comisiones varían según el plan. El plan Standard es **gratuito** pero con beneficios limitados. Los planes Premium y Elite cuestan 4,99 € y 9,99 €/mes respectivamente. Los retiros en cajeros son gratuitos hasta 200 €/mes en el plan Standard.",
       "securite": "Wirex está regulada por la FCA en el Reino Unido y opera con licencias en la UE. La plataforma utiliza cifrado end-to-end y 2FA. Los fondos están segregados.",
       "experience": "La aplicación Wirex es funcional pero menos moderna que la de Crypto.com o Binance. Permite gestionar cuentas en 150+ divisas, conversión instantánea y seguimiento del cashback. La tarjeta es compatible con **Apple Pay**."
@@ -1106,8 +1106,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     ],
     "verdict": "La Wirex Card è interessante per la sua copertura geografica eccezionale e il supporto multi-valuta. È particolarmente adatta ai viaggiatori internazionali. D'altro canto, il cashback in WXT è poco attraente data la scarsa liquidità del token.",
     "sections": {
-      "presentation": "**Wirex** è una fintech britannica fondata nel 2014, specializzata in conti multi-valuta e pagamenti cripto. La **Wirex Card** (Visa) è disponibile in più di 150 paesi e supporta più di 150 criptovalute e valute fiat.",
-      "cashback": "Il cashback Wirex (chiamato **Cryptoback™**) varia in base al piano scelto: Piano Standard (gratuito): 0,5% in WXT; Piano Premium (4,99 €/mese): 1,5% in WXT; Piano Elite (9,99 €/mese): fino all'8% in WXT per determinate categorie.",
+      "presentation": "⚠️ **Dal 30 giugno 2026, Wirex ha chiuso la parte cripto (finanziamento, scambio, spesa e Cryptoback) nel SEE e in Australia.** La carta cripto non è più offerta in Italia né nell'UE; Cryptoback resta attivo solo in Regno Unito, Nuova Zelanda, Hong Kong e Taiwan. La descrizione seguente documenta l'offerta storica.\n\n**Wirex** è una fintech britannica fondata nel 2014, specializzata in conti multi-valuta e pagamenti cripto. La **Wirex Card** (Visa) era disponibile in più di 150 paesi e supportava più di 150 criptovalute e valute fiat.",
+      "cashback": "⚠️ Il programma **Cryptoback™** è stato chiuso nel SEE il 30 giugno 2026; i tassi seguenti si applicano solo in Regno Unito, Nuova Zelanda, Hong Kong e Taiwan. Il cashback Wirex variava in base al piano: Standard (gratuito): 0,5% in WXT; Premium (4,99 €/mese): 1,5% in WXT; Elite (9,99 €/mese): fino all'8% in WXT per determinate categorie.",
       "frais": "I costi variano in base al piano. Il piano Standard è **gratuito** ma con vantaggi limitati. I piani Premium ed Elite costano rispettivamente 4,99 € e 9,99 €/mese. I prelievi bancomat sono gratuiti fino a 200 €/mese sul piano Standard.",
       "securite": "Wirex è regolato dalla FCA nel Regno Unito e opera con licenze nell'UE. La piattaforma utilizza la crittografia end-to-end e l'autenticazione 2FA. I fondi sono segregati.",
       "experience": "L'app Wirex è funzionale ma meno moderna di quella di Crypto.com o Binance. Consente la gestione di conti in 150+ valute, la conversione istantanea e il monitoraggio del cashback. La carta è compatibile con **Apple Pay**."
@@ -1140,8 +1140,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     ],
     "verdict": "Wirex Card is interesting for its exceptional geographic coverage and multi-currency support. It suits international travelers particularly well. However, cashback in WXT is unattractive given the token's low liquidity.",
     "sections": {
-      "presentation": "**Wirex** is a British fintech founded in 2014, specializing in multi-currency accounts and crypto payments. The **Wirex Card** (Visa) is available in 150+ countries and supports 150+ cryptocurrencies and fiat currencies.",
-      "cashback": "Wirex cashback (called **Cryptoback™**) varies by plan: Standard Plan (free): 0.5% in WXT; Premium Plan (€4.99/month): 1.5% in WXT; Elite Plan (€9.99/month): up to 8% in WXT for certain categories.",
+      "presentation": "⚠️ **As of 30 June 2026, Wirex shut down the crypto side (funding, exchange, spending and Cryptoback) in the EEA and Australia.** The crypto card is no longer offered in France or the EU; Cryptoback only remains in the UK, New Zealand, Hong Kong and Taiwan. The description below documents the historical offer.\n\n**Wirex** is a British fintech founded in 2014, specializing in multi-currency accounts and crypto payments. The **Wirex Card** (Visa) was available in 150+ countries and supported 150+ cryptocurrencies and fiat currencies.",
+      "cashback": "⚠️ The **Cryptoback™** programme was discontinued in the EEA on 30 June 2026; the rates below now only apply in the UK, New Zealand, Hong Kong and Taiwan. Wirex cashback varied by plan: Standard (free): 0.5% in WXT; Premium (€4.99/month): 1.5% in WXT; Elite (€9.99/month): up to 8% in WXT for certain categories.",
       "frais": "Fees vary by plan. The Standard plan is **free** but with limited benefits. Premium and Elite plans cost €4.99 and €9.99/month respectively. ATM withdrawals are free up to €200/month on the Standard plan.",
       "securite": "Wirex is regulated by the FCA in the UK and operates with licenses in the EU. The platform uses end-to-end encryption and 2FA. Funds are segregated.",
       "experience": "The Wirex app is functional but less modern than Crypto.com or Binance. It allows management of 150+ currency accounts, instant conversion, and cashback tracking. The card is **Apple Pay** compatible."
@@ -1151,8 +1151,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   },
   "ledger-card__es": {
     "keyStats": {
-      "cashbackMax": "Hasta 2 % en BTC o LDG",
-      "stakingRequis": "LDG opcional para aumentar la tasa",
+      "cashbackMax": "1 % en BTC o USDT",
+      "stakingRequis": "Ninguno",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia incluida)"
     },
@@ -1167,15 +1167,14 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "cons": [
       "Requiere un hardware wallet Ledger",
       "Configuración más compleja que las tarjetas tradicionales",
-      "Cashback limitado a 2 %",
-      "Token LDG con baja liquidez",
+      "Cashback limitado al 1 %",
       "No disponible en Estados Unidos",
       "Menos funcionalidades para el público general"
     ],
     "verdict": "La Ledger Card es la referencia en seguridad, es la única tarjeta criptográfica que permite gestión en autocustodia parcial a través del hardware wallet Ledger. Va dirigida a usuarios avanzados que no desean confiar sus claves a una plataforma tercera.",
     "sections": {
       "presentation": "La **Ledger Card** es una colaboración entre Ledger (el fabricante del hardware wallet más popular del mundo) y Baanx (fintech de pagos). Permite gastar tus criptomonedas manteniendo un nivel de control sobre tus activos superior al de todas las otras tarjetas criptográficas.",
-      "cashback": "El cashback es de **1 % en BTC** (por defecto) o **2 % en LDG** (token Ledger) si mantienes un saldo mínimo en LDG. El cashback en BTC es particularmente interesante para inversores a largo plazo.",
+      "cashback": "El cashback es del **1 %**, pagado mensualmente en **BTC o USDT** (fuera de EE. UU.), sin staking ni token propietario. El cashback en BTC es particularmente interesante para inversores a largo plazo. (El antiguo nivel del 2 % en LDG ya no se ofrece.)",
       "frais": "**0 € de comisiones anuales**. Las transacciones se convierten al tipo de cambio de mercado en el momento del pago. Los retiros en cajeros automáticos y las comisiones de cambio en monedas extranjeras son competitivos. Sin comisiones por inactividad.",
       "securite": "La Ledger Card se distingue por su seguridad excepcional: los activos pueden almacenarse en tu **hardware wallet Ledger** (almacenamiento en frío físico), lo que elimina el riesgo de hackeo de exchange. Ledger es líder mundial en hardware wallets con más de 6 millones de dispositivos vendidos.",
       "experience": "La configuración inicial es más compleja que otras tarjetas (requiere un hardware wallet Ledger y la aplicación Ledger Live). Una vez configurada, el uso es fluido. La tarjeta es compatible con **Apple Pay** y **Google Pay**."
@@ -1185,8 +1184,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   },
   "ledger-card__it": {
     "keyStats": {
-      "cashbackMax": "Fino al 2% in BTC o LDG",
-      "stakingRequis": "LDG opzionale per aumentare il tasso",
+      "cashbackMax": "1% in BTC o USDT",
+      "stakingRequis": "Nessuno",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia inclusa)"
     },
@@ -1201,15 +1200,14 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "cons": [
       "Richiede un hardware wallet Ledger",
       "Configurazione più complessa rispetto alle carte tradizionali",
-      "Cashback limitato al 2%",
-      "Token LDG con bassa liquidità",
+      "Cashback limitato all'1%",
       "Non disponibile negli Stati Uniti",
       "Meno funzionalità per il pubblico generale"
     ],
     "verdict": "La Ledger Card è il riferimento in materia di sicurezza, è l'unica carta crypto che consente una gestione in self-custody parziale tramite l'hardware wallet Ledger. Si rivolge agli utenti avanzati che non vogliono affidare le loro chiavi a una piattaforma terza.",
     "sections": {
       "presentation": "La **Ledger Card** è una collaborazione tra Ledger (il produttore dell'hardware wallet più popolare al mondo) e Baanx (fintech di pagamento). Permette di spendere le tue criptovalute mantenendo un livello di controllo sui tuoi asset superiore a tutte le altre carte crypto.",
-      "cashback": "Il cashback è dell'**1% in BTC** (per impostazione predefinita) o del **2% in LDG** (token Ledger) se detieni un saldo minimo in LDG. Il cashback in BTC è particolarmente interessante per gli investitori a lungo termine.",
+      "cashback": "Il cashback è dell'**1%**, erogato mensilmente in **BTC o USDT** (fuori dagli USA), senza staking né token proprietario. Il cashback in BTC è particolarmente interessante per gli investitori a lungo termine. (Il vecchio livello del 2% in LDG non è più offerto.)",
       "frais": "**0 € di commissioni annuali**. Le transazioni vengono convertite al tasso di mercato al momento del pagamento. I prelievi da bancomat e le commissioni di cambio in valute estere sono competitivi. Nessuna commissione di inattività.",
       "securite": "La Ledger Card si distingue per la sua eccezionale sicurezza: gli asset possono essere archiviati sul tuo **hardware wallet Ledger** (cold storage fisico), il che elimina il rischio di hack su exchange. Ledger è il leader mondiale degli hardware wallet con più di 6 milioni di dispositivi venduti.",
       "experience": "La configurazione iniziale è più complessa rispetto alle altre carte (richiede un hardware wallet Ledger e l'applicazione Ledger Live). Una volta configurata, l'utilizzo è fluido. La carta è compatibile con **Apple Pay** e **Google Pay**."
@@ -1219,8 +1217,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   },
   "ledger-card__en": {
     "keyStats": {
-      "cashbackMax": "Up to 2% in BTC or LDG",
-      "stakingRequis": "LDG optional to increase rate",
+      "cashbackMax": "1% in BTC or USDT",
+      "stakingRequis": "None",
       "fraisAnnuels": "0 €",
       "disponibilite": "EU (France included)"
     },
@@ -1235,15 +1233,14 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "cons": [
       "Requires a Ledger hardware wallet",
       "More complex setup than standard cards",
-      "Cashback limited to 2%",
-      "LDG token with low liquidity",
+      "Cashback limited to 1%",
       "Not available in the United States",
       "Fewer mainstream features"
     ],
     "verdict": "The Ledger Card is the gold standard for security, it's the only crypto card allowing partial self-custody management via Ledger hardware wallet. It's designed for advanced users who won't entrust their keys to a third-party platform.",
     "sections": {
       "presentation": "The **Ledger Card** is a collaboration between Ledger (maker of the world's most popular hardware wallet) and Baanx (payment fintech). It lets you spend your crypto while maintaining superior control over your assets compared to all other crypto cards.",
-      "cashback": "Cashback is **1% in BTC** (default) or **2% in LDG** (Ledger token) if you hold a minimum LDG balance. BTC cashback is especially attractive for long-term investors.",
+      "cashback": "Cashback is **1%**, paid monthly in **BTC or USDT** (outside the US), with no staking or proprietary token required. BTC cashback is especially attractive for long-term investors. (The former 2% LDG tier is no longer offered.)",
       "frais": "**0 € annual fees**. Transactions are converted at market rate at payment time. ATM withdrawals and foreign currency exchange fees are competitive. No inactivity fees.",
       "securite": "The Ledger Card stands out for exceptional security: assets can be stored on your **Ledger hardware wallet** (physical cold storage), eliminating exchange hack risk. Ledger is the global hardware wallet leader with over 6 million devices sold.",
       "experience": "Initial setup is more complex than other cards (requires a Ledger hardware wallet and Ledger Live app). Once configured, usage is seamless. The card is compatible with **Apple Pay** and **Google Pay**."
@@ -2263,14 +2260,14 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   "metamask-card__de": {
     "badge": "Web3 nativ",
     "keyStats": {
-      "cashbackMax": "1-3 % in ETH",
+      "cashbackMax": "1-3 % in mUSD",
       "stakingRequis": "Keine",
-      "fraisAnnuels": "199 €/Jahr",
+      "fraisAnnuels": "0 € (Basis) · 199 $/Jahr (Metal)",
       "disponibilite": "Frankreich, EU"
     },
     "pros": [
       "Direkt mit Ihrer MetaMask-Wallet verbunden, echte Self-Custody",
-      "Cashback 1-3% in ETH auf alle Zahlungen",
+      "Kostenlose Basisstufe (1% in mUSD), keine Jahresgebühr",
       "Kompatibel mit allen EVM-Tokens (ETH, USDC, WBTC, DAI, MATIC…)",
       "Kein Staking erforderlich",
       "In 200+ Ländern über Mastercard akzeptiert",
@@ -2278,7 +2275,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Keine FX-Wechselgebühren"
     ],
     "cons": [
-      "Hohe Jahresgebühr: 199 €/Jahr",
+      "Die Metal-Stufe (3%) kostet 199 $/Jahr",
       "Nur für Nutzer mit Crypto-Wallet-Kenntnissen",
       "Support weniger reaktiv als bei Neobanken",
       "Keine IBAN"
@@ -2286,25 +2283,25 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "MetaMask Card ist die Referenzkarte für erfahrene Web3-Nutzer, die ihre EVM-Assets ausgeben möchten, ohne auf Self-Custody zu verzichten. Die 199€ Jahresgebühr macht sie weniger wettbewerbsfähig gegenüber kostenlosen Karten, aber das einzigartige Angebot (MetaMask nativ + Self-Custody + ETH Cashback) rechtfertigt die Investition für echte Ethereum-Maximalisten.",
     "sections": {
       "presentation": "**MetaMask Card** ist die offizielle Mastercard von MetaMask, der weltweit meistgenutzten Web3-Wallet mit über 30 Millionen aktiven Nutzern. Entwickelt von **ConsenSys**, ist sie direkt mit Ihrer MetaMask-Wallet verbunden.",
-      "cashback": "Der Cashback beträgt **1% bis 3%** in ETH, gutgeschrieben direkt in Ihre MetaMask-Wallet. Es ist kein Staking eines proprietären Tokens erforderlich, der Cashback ist universell auf alle Zahlungen anwendbar.",
-      "frais": "Die MetaMask Card kostet **199 €/Jahr**, einer der höchsten Gebührensätze auf dem Markt. Dafür: Null Wechselgebühren bei Transaktionen in Fremdwährungen.",
+      "cashback": "Der Cashback wird in **mUSD** (dem MetaMask-Stablecoin) ausgezahlt, nicht in ETH. Zwei Stufen: die **kostenlose Basisstufe** bietet **1 %**; die Stufe **Metal (199 $/Jahr)** bietet **3 %** auf die ersten 10 000 $/Jahr, danach 1 %. Kein Staking eines proprietären Tokens erforderlich.",
+      "frais": "Die **Basisstufe ist kostenlos** (0 €/Jahr, 1 % FX im Ausland). Die Stufe **Metal kostet 199 $/Jahr** und bietet 0 % FX-Gebühren sowie höheren Cashback.",
       "securite": "Sicherheit ist die Stärke der MetaMask Card: Ihre Guthaben bleiben in Ihrer **Self-Custody MetaMask-Wallet**. ConsenSys ist eines der etabliertesten Ethereum-Unternehmen (gegründet von Joe Lubin, Co-Gründer von Ethereum).",
       "experience": "Die Erfahrung ist für fortgeschrittene Nutzer konzipiert, die bereits mit MetaMask vertraut sind. Die Kartenverwaltung erfolgt über die MetaMask-App. Kompatibel mit **Apple Pay** und **Google Pay**."
     },
-    "metaTitle": "MetaMask Card Bewertung 2026, ETH Cashback Self-Custody, 199€/Jahr",
-    "metaDescription": "MetaMask Card Bewertung 2026: native Web3 Mastercard mit 1-3% Cashback in ETH, Self-Custody, EVM-Token kompatibel. 199€/Jahr. In Frankreich und EU verfügbar."
+    "metaTitle": "MetaMask Card Bewertung 2026, mUSD Cashback Self-Custody, Basisstufe gratis",
+    "metaDescription": "MetaMask Card Bewertung 2026: native Web3 Mastercard, 1-3% Cashback in mUSD, Self-Custody. Kostenlose Basisstufe, Metal-Stufe 199$/Jahr. In Frankreich und EU verfügbar."
   },
   "metamask-card__es": {
     "badge": "Nativa Web3",
     "keyStats": {
-      "cashbackMax": "1-3% en ETH",
+      "cashbackMax": "1-3% en mUSD",
       "stakingRequis": "Ninguno",
-      "fraisAnnuels": "199 €/año",
+      "fraisAnnuels": "0 € (base) · 199 $/año (Metal)",
       "disponibilite": "Francia, UE"
     },
     "pros": [
       "Conectada directamente a tu wallet MetaMask, verdadera auto-custodia",
-      "Cashback 1-3% en ETH en todos los pagos",
+      "Nivel base gratuito (1% en mUSD), sin cuota anual",
       "Compatible con todos los tokens EVM (ETH, USDC, WBTC, DAI, MATIC…)",
       "Sin staking requerido",
       "Aceptada en 200+ países vía Mastercard",
@@ -2312,7 +2309,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Cero comisiones por cambio de divisas"
     ],
     "cons": [
-      "Cuota anual elevada: 199 €/año",
+      "El nivel Metal (3%) cuesta 199 $/año",
       "Reservada para usuarios expertos en wallets crypto",
       "Soporte menos reactivo que los neobancos",
       "Sin IBAN"
@@ -2320,25 +2317,25 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "MetaMask Card es la tarjeta de referencia para usuarios Web3 avanzados que desean gastar sus activos EVM sin renunciar a la auto-custodia. Los 199€ anuales la hacen poco competitiva frente a tarjetas gratuitas, pero la propuesta única (nativa MetaMask + auto-custodia + cashback ETH) justifica la inversión para los verdaderos maximalistas Ethereum.",
     "sections": {
       "presentation": "**MetaMask Card** es la tarjeta Mastercard oficial de MetaMask, el wallet Web3 más utilizado en el mundo con más de 30 millones de usuarios activos. Desarrollada por **ConsenSys**, está conectada directamente a tu wallet MetaMask.",
-      "cashback": "El cashback es de **1% a 3%** en ETH, acreditado directamente en tu wallet MetaMask. No se requiere staking de token propietario, el cashback es universal en todos los pagos.",
-      "frais": "MetaMask Card cuesta **199 €/año**, una de las cuotas más altas del mercado. A cambio: cero comisiones por cambio de divisas en transacciones en moneda extranjera.",
+      "cashback": "El cashback se paga en **mUSD** (el stablecoin de MetaMask), no en ETH. Dos niveles: el **nivel base, gratuito**, ofrece **1 %**; el nivel **Metal (199 $/año)** ofrece **3 %** sobre los primeros 10 000 $/año, luego 1 %. No se requiere staking de token propietario.",
+      "frais": "El **nivel base es gratuito** (0 €/año, 1 % FX en el extranjero). El nivel **Metal cuesta 199 $/año** y añade 0 % de comisiones FX y mayor cashback.",
       "securite": "La seguridad es el punto fuerte de MetaMask Card: tus fondos permanecen en tu **wallet MetaMask en auto-custodia**. ConsenSys es una de las empresas Ethereum más establecidas (fundada por Joe Lubin, cofundador de Ethereum).",
       "experience": "La experiencia está diseñada para usuarios avanzados ya familiarizados con MetaMask. La gestión de la tarjeta se realiza a través de la aplicación MetaMask. Compatible con **Apple Pay** y **Google Pay**."
     },
-    "metaTitle": "Opinión MetaMask Card 2026, Cashback ETH Auto-Custodia, 199€/año",
-    "metaDescription": "Opinión MetaMask Card 2026: tarjeta Mastercard nativa Web3 con 1-3% cashback en ETH, auto-custodia, compatible tokens EVM. 199€/año. Disponible Francia y UE."
+    "metaTitle": "Opinión MetaMask Card 2026, Cashback mUSD Auto-Custodia, nivel base gratis",
+    "metaDescription": "Opinión MetaMask Card 2026: tarjeta Mastercard nativa Web3, cashback 1-3% en mUSD, auto-custodia. Nivel base gratuito, nivel Metal 199$/año. Disponible Francia y UE."
   },
   "metamask-card__it": {
     "badge": "Web3 nativa",
     "keyStats": {
-      "cashbackMax": "1-3% in ETH",
+      "cashbackMax": "1-3% in mUSD",
       "stakingRequis": "Nessuno",
-      "fraisAnnuels": "199€/anno",
+      "fraisAnnuels": "0 € (base) · 199 $/anno (Metal)",
       "disponibilite": "Francia, UE"
     },
     "pros": [
       "Collegata direttamente al tuo wallet MetaMask, vera self-custody",
-      "Cashback 1-3% in ETH su tutti i pagamenti",
+      "Livello base gratuito (1% in mUSD), senza canone annuale",
       "Compatibile con tutti i token EVM (ETH, USDC, WBTC, DAI, MATIC…)",
       "Nessuno staking richiesto",
       "Accettata in 200+ paesi tramite Mastercard",
@@ -2346,7 +2343,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Zero commissioni di cambio FX"
     ],
     "cons": [
-      "Commissioni annuali elevate: 199€/anno",
+      "Il livello Metal (3%) costa 199 $/anno",
       "Riservata agli utenti esperti di wallet crypto",
       "Supporto meno reattivo delle neobank",
       "Nessun IBAN"
@@ -2354,25 +2351,25 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "MetaMask Card è la carta di riferimento per gli utenti Web3 esperti che desiderano spendere i propri asset EVM senza rinunciare alla self-custody. I 199€ annuali la rendono poco competitiva rispetto alle carte gratuite, ma la proposta unica (MetaMask nativa + self-custody + cashback ETH) giustifica l'investimento per i veri massimalisti Ethereum.",
     "sections": {
       "presentation": "**MetaMask Card** è la carta Mastercard ufficiale di MetaMask, il wallet Web3 più utilizzato al mondo con oltre 30 milioni di utenti attivi. Sviluppata da **ConsenSys**, è direttamente collegata al tuo wallet MetaMask.",
-      "cashback": "Il cashback è **1-3%** in ETH, accreditato direttamente nel tuo wallet MetaMask. Nessun staking di token proprietario richiesto, il cashback è universale su tutti i pagamenti.",
-      "frais": "MetaMask Card costa **199€/anno**, tra le commissioni più elevate del mercato. In cambio: zero commissioni di cambio sulle transazioni in valute estere.",
+      "cashback": "Il cashback viene erogato in **mUSD** (lo stablecoin di MetaMask), non in ETH. Due livelli: il **livello base, gratuito**, offre **1%**; il livello **Metal (199 $/anno)** offre **3%** sui primi 10.000 $/anno, poi 1%. Nessuno staking di token proprietario richiesto.",
+      "frais": "Il **livello base è gratuito** (0 €/anno, 1% FX all'estero). Il livello **Metal costa 199 $/anno** e aggiunge 0% di commissioni FX e un cashback più elevato.",
       "securite": "La sicurezza è il punto di forza di MetaMask Card: i tuoi fondi rimangono nel tuo **wallet MetaMask in self-custody**. ConsenSys è una delle aziende Ethereum più consolidate (fondata da Joe Lubin, co-fondatore di Ethereum).",
       "experience": "L'esperienza è progettata per gli utenti avanzati già familiari con MetaMask. La gestione della carta avviene tramite l'applicazione MetaMask. Compatibile con **Apple Pay** e **Google Pay**."
     },
-    "metaTitle": "MetaMask Card Opinioni 2026, Cashback ETH Self-Custody, 199€/anno",
-    "metaDescription": "Opinioni MetaMask Card 2026: carta Mastercard Web3 nativa con cashback 1-3% in ETH, self-custody, compatibile token EVM. 199€/anno. Disponibile Francia e UE."
+    "metaTitle": "MetaMask Card Opinioni 2026, Cashback mUSD Self-Custody, livello base gratis",
+    "metaDescription": "Opinioni MetaMask Card 2026: carta Mastercard Web3 nativa, cashback 1-3% in mUSD, self-custody. Livello base gratuito, livello Metal 199$/anno. Disponibile Francia e UE."
   },
   "metamask-card__en": {
     "badge": "Web3 native",
     "keyStats": {
-      "cashbackMax": "1-3% in ETH",
+      "cashbackMax": "1-3% in mUSD",
       "stakingRequis": "None",
-      "fraisAnnuels": "$199/year",
+      "fraisAnnuels": "$0 (base) · $199/year (Metal)",
       "disponibilite": "France, EU"
     },
     "pros": [
       "Directly connected to your MetaMask wallet, true self-custody",
-      "1-3% ETH cashback on all payments",
+      "Free base tier (1% in mUSD), no annual fee",
       "Compatible with all EVM tokens (ETH, USDC, WBTC, DAI, MATIC…)",
       "No staking required",
       "Accepted in 200+ countries via Mastercard",
@@ -2380,7 +2377,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Zero FX exchange fees"
     ],
     "cons": [
-      "High annual fees: $199/year",
+      "The Metal tier (3%) costs $199/year",
       "Reserved for users comfortable with crypto wallets",
       "Less responsive support than neobanks",
       "No IBAN"
@@ -2388,13 +2385,13 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "verdict": "MetaMask Card is the reference card for advanced Web3 users who want to spend their EVM assets without giving up self-custody. The $199 annual fee makes it less competitive against free cards, but the unique value proposition (MetaMask native + self-custody + ETH cashback) justifies the investment for true Ethereum maximalists.",
     "sections": {
       "presentation": "**MetaMask Card** is the official Mastercard of MetaMask, the world's most-used Web3 wallet with over 30 million active users. Developed by **ConsenSys**, it connects directly to your MetaMask wallet.",
-      "cashback": "Cashback is **1% to 3%** in ETH, credited directly to your MetaMask wallet. No proprietary token staking required, cashback is universal on all payments.",
-      "frais": "MetaMask Card costs **$199/year**, one of the highest fees on the market. In return: zero FX fees on foreign currency transactions.",
+      "cashback": "Cashback is paid in **mUSD** (the MetaMask stablecoin), not ETH. Two tiers: the **free base tier** earns **1%**; the **Metal tier ($199/year)** earns **3%** on the first $10k/year, then 1%. No proprietary token staking required.",
+      "frais": "The **base tier is free** ($0/year, 1% FX abroad). The **Metal tier costs $199/year** and adds 0% FX fees and higher cashback.",
       "securite": "Security is MetaMask Card's strength: your funds remain in your **MetaMask wallet in self-custody**. ConsenSys is one of the most established Ethereum companies (founded by Joe Lubin, Ethereum co-founder).",
       "experience": "The experience is designed for advanced users already familiar with MetaMask. Card management is done through the MetaMask app. Compatible with **Apple Pay** and **Google Pay**."
     },
-    "metaTitle": "MetaMask Card Review 2026, ETH Cashback Self-Custody, $199/yr",
-    "metaDescription": "MetaMask Card review 2026: native Web3 Mastercard with 1-3% ETH cashback, self-custody, EVM token compatible. $199/year. Available in France and EU."
+    "metaTitle": "MetaMask Card Review 2026, mUSD Cashback Self-Custody, free base tier",
+    "metaDescription": "MetaMask Card review 2026: native Web3 Mastercard, 1-3% mUSD cashback, self-custody. Free base tier, Metal tier $199/year. Available in France and EU."
   },
   "ether-fi-card__es": {
     "badge": "DeFi nativa",
@@ -3044,8 +3041,8 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   },
   "ledger-card__de": {
     "keyStats": {
-      "cashbackMax": "Bis zu 2 % in BTC oder LDG",
-      "stakingRequis": "LDG optional zur Erhöhung des Satzes",
+      "cashbackMax": "1 % in BTC oder USDT",
+      "stakingRequis": "Keine",
       "fraisAnnuels": "0 €",
       "disponibilite": "EU (Frankreich eingeschlossen)"
     },
@@ -3060,15 +3057,14 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "cons": [
       "Erfordert Ledger Hardware Wallet",
       "Komplexere Konfiguration als Standard-Karten",
-      "Cashback begrenzt auf 2 %",
-      "LDG Token mit niedriger Liquidität",
+      "Cashback begrenzt auf 1 %",
       "In den USA nicht verfügbar",
       "Weniger Mainstream-Funktionen"
     ],
     "verdict": "Die Ledger Card ist der Sicherheitsstandard, sie ist die einzige Krypto-Karte, die teilweise Self-Custody-Verwaltung über das Ledger Hardware Wallet ermöglicht. Sie richtet sich an fortgeschrittene Benutzer, die ihre Schlüssel nicht an eine Drittplattform abgeben möchten.",
     "sections": {
       "presentation": "Die **Ledger Card** ist eine Zusammenarbeit zwischen Ledger (dem Hersteller des weltweit beliebtesten Hardware Wallets) und Baanx (Fintech-Zahlungsanbieter). Sie ermöglicht es, seine Kryptowährungen auszugeben und dabei eine größere Kontrolle über seine Vermögenswerte zu behalten als alle anderen Krypto-Karten.",
-      "cashback": "Der Cashback beträgt **1 % in BTC** (Standard) oder **2 % in LDG** (Ledger Token), wenn Sie einen Mindestbetrag in LDG halten. Der BTC-Cashback ist besonders interessant für Langzeitinvestoren.",
+      "cashback": "Der Cashback beträgt **1 %**, monatlich in **BTC oder USDT** ausgezahlt (außerhalb der USA), ohne Staking oder proprietären Token. Der BTC-Cashback ist besonders interessant für Langzeitinvestoren. (Die frühere Stufe von 2 % in LDG wird nicht mehr angeboten.)",
       "frais": "**0 € Jahresgebühren**. Transaktionen werden zum Marktpreis zum Zeitpunkt der Zahlung umgewandelt. Geldautomaten-Abhebungen und Devisenwechselgebühren sind wettbewerbsfähig. Keine Inaktivitätsgebühren.",
       "securite": "Die Ledger Card zeichnet sich durch außergewöhnliche Sicherheit aus: Vermögenswerte können auf Ihrem **Ledger Hardware Wallet** (physischer Cold Storage) gespeichert werden, was das Risiko von Exchange-Hacks eliminiert. Ledger ist der weltweite Marktführer für Hardware Wallets mit über 6 Millionen verkauften Geräten.",
       "experience": "Die anfängliche Konfiguration ist komplexer als bei anderen Karten (erfordert Ledger Hardware Wallet und Ledger Live App). Nach der Konfiguration läuft die Nutzung reibungslos. Die Karte ist mit **Apple Pay** und **Google Pay** kompatibel."

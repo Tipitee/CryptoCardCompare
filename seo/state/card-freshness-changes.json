@@ -1,28 +1,61 @@
 {
-  "generated": "2026-08-15",
+  "generated": "2026-08-18",
+  "_note": "Contient (1) les correctifs cryptos OKX/MetaMask encore EN ATTENTE d'application (restaure la liste des cryptos supportées écrasée au 1er run), et (2) les écarts du check étendu des 12 autres cartes. Les changements OKX cashback / MetaMask annual_fees / Coinbase virtual_only / Ledger cashback ont déjà été appliqués et ne sont PAS répétés ici. Brighty et Binance : vérifier d'abord le nom exact via `node scripts/list-card-names.mjs <marque>` (le script ignore proprement si le name ne matche pas, comme Wirex).",
   "changes": [
+    {
+      "card": "OKX Card",
+      "match": { "name": "OKX Card" },
+      "set": { "cryptos": ["USDC", "USDG", "OKB", "BTC", "ETH"] },
+      "reason": "Restauration de la liste des cryptos supportées, écrasée par erreur par le token de cashback (USDG) au run précédent.",
+      "source": "correction interne A13",
+      "confidence": "high"
+    },
+    {
+      "card": "MetaMask Card",
+      "match": { "name": "MetaMask Card" },
+      "set": { "cryptos": ["ETH", "USDC", "USDT", "WBTC", "DAI", "MATIC", "BNB", "AVAX"] },
+      "reason": "Restauration de la liste des cryptos supportées, écrasée par erreur par le token de cashback (mUSD) au run précédent.",
+      "source": "correction interne A13",
+      "confidence": "high"
+    },
     {
       "card": "Binance Card",
       "match": { "name": "Binance Card" },
       "set": { "status": "discontinued" },
-      "reason": "Carte Binance EEE arretee le 20/12/2023 ; Binance a stoppe ses services EEE le 01/07/2026. Toujours affichee comme active (up to 8% BNB) sur la review page.",
-      "source": "financemagnates.com/cryptocurrency/binances-visa-debit-card-services-in-europe-to-end-by-december",
+      "reason": "Carte Visa Binance arrêtée dans l'EEE le 20/12/2023 ; Binance a en plus quitté l'EEE (retrait MiCA 24/06/2026, services stoppés 01/07/2026). Produit non disponible. Vérifier si déjà discontinued en base.",
+      "source": "financemagnates, pymnts, blockworks (2023-2026)",
       "confidence": "high"
     },
     {
-      "card": "Bybit Card",
-      "match": { "name": "Bybit Card" },
-      "set": { "card_network": "Mastercard" },
-      "reason": "Fiche live/DB indique Visa, mais la carte Bybit UE est un Mastercard (confirme par la review interne, llms-full.txt et les sources externes).",
-      "source": "cryptoslate.com/crypto-cards/bybit-card-review ; bybit.com/en/wiki/article/bybit-card-countries-availability-2026",
-      "confidence": "high"
+      "card": "Brighty Card",
+      "match": { "name": "Brighty Card" },
+      "set": { "status": "discontinued" },
+      "reason": "Wireflexion (société derrière les services crypto de Brighty) ferme fin juin 2026 ; les utilisateurs sont invités à retirer leurs fonds. Le produit carte crypto n'est plus opérationnel. PRIORITÉ HAUTE (produit mort encore listé).",
+      "source": "milkroad, fintechmagazine (2026)",
+      "confidence": "medium"
     },
     {
-      "card": "Trade Republic Card",
-      "match": { "name": "Trade Republic Card" },
-      "set": { "cashback_premium": 2 },
-      "reason": "Fiche live premium=1% ; le taux max reel est 2% en payant directement en crypto (confirme par la review interne et sources externes).",
-      "source": "investingintheweb.com/brokers/trade-republic-saveback-review",
+      "card": "Nexo Card",
+      "match": { "name": "Nexo Card" },
+      "set": { "virtual_only": true },
+      "reason": "Commande de la carte physique en pause depuis janvier 2025 ; seule la carte virtuelle est émise mi-2026. (UK : accès à la carte mais pas de cashback, restriction FCA.)",
+      "source": "cardpilled, cryptoslate, spendnode (2026)",
+      "confidence": "medium"
+    },
+    {
+      "card": "Plutus Card",
+      "match": { "name": "Plutus Card" },
+      "set": { "annual_fees": 98, "cashback_premium": 9 },
+      "reason": "Le palier gratuit a été supprimé en 2026 : tous les plans exigent désormais un abonnement mensuel (Starter £6,99 ≈ 98 €/an, jusqu'à Premium £19,99). Cashback max porté à 9 % (40 000 PLU stakés). Ajout aussi d'un frais FX de 2,5 %.",
+      "source": "spendnode, cardpilled, sweepbase (2026)",
+      "confidence": "medium"
+    },
+    {
+      "card": "Revolut Metal",
+      "match": { "name": "Revolut Metal" },
+      "set": { "annual_fees": 203.88 },
+      "reason": "Abonnement Metal passé à ~16,99 €/mois (203,88 €/an) contre 14,99 €/mois (179,88 €/an) auparavant. Cashback inchangé (1 % hors zone home, RevPoints).",
+      "source": "cryptowisser, revolut.com (2026)",
       "confidence": "medium"
     }
   ]

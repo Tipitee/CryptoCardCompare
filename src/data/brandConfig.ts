@@ -219,7 +219,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
           'Support client parfois lent à répondre',
         ],
         faq: [
-          { q: 'La carte Wirex est-elle disponible en France ?', a: 'Oui, la carte Wirex est disponible en France et dans toute l\'UE. Elle fonctionne partout où Visa est accepté.' },
+          { q: 'La carte Wirex est-elle disponible en France ?', a: 'Non. Depuis le 30 juin 2026, Wirex a fermé son volet crypto (dépense et Cryptoback) dans l\'EEE : la carte crypto n\'est plus disponible en France ni dans l\'UE. Elle reste active au Royaume-Uni, en Nouvelle-Zélande, à Hong Kong et à Taïwan.' },
           { q: 'Qu\'est-ce que le token WXT de Wirex ?', a: 'WXT est le token natif de Wirex. Il sert à payer l\'abonnement et à recevoir le cashback. Sa valeur varie en fonction du marché crypto.' },
           { q: 'Quel plan Wirex est recommandé pour débuter ?', a: 'Le plan Standard est gratuit et sans engagement, idéal pour tester la carte. Le cashback est de 1% en WXT. Les plans supérieurs offrent plus de récompenses mais ont un coût mensuel.' },
           { q: 'Comment fonctionne le cashback Wirex ?', a: 'Le cashback est versé en WXT après chaque achat. Le taux varie de 1% (Standard) à 8% (Elite) selon votre abonnement et le staking WXT effectué.' },
@@ -247,7 +247,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
           'Kundensupport manchmal langsam',
         ],
         faq: [
-          { q: 'Ist die Wirex-Karte in Deutschland verfügbar?', a: 'Ja, die Wirex-Karte ist in Deutschland und in der gesamten EU verfügbar. Sie funktioniert überall dort, wo Visa akzeptiert wird.' },
+          { q: 'Ist die Wirex-Karte in Deutschland verfügbar?', a: 'Nein. Seit dem 30. Juni 2026 hat Wirex den Krypto-Teil (Ausgaben und Cryptoback) im EWR eingestellt: Die Krypto-Karte ist in Deutschland und der EU nicht mehr verfügbar. Sie bleibt im Vereinigten Königreich, in Neuseeland, Hongkong und Taiwan aktiv.' },
           { q: 'Was ist der WXT-Token von Wirex?', a: 'WXT ist der native Token von Wirex. Er dient zur Zahlung des Abonnements und zum Empfang von Cashback. Sein Wert schwankt je nach Krypto-Markt.' },
           { q: 'Welcher Wirex-Plan wird für Einsteiger empfohlen?', a: 'Der Standard-Plan ist kostenlos und ohne Verpflichtung, ideal zum Ausprobieren. Das Cashback beträgt 1% in WXT. Höhere Pläne bieten mehr Prämien, aber mit monatlichen Kosten.' },
           { q: 'Wie funktioniert das Wirex-Cashback?', a: 'Cashback wird in WXT nach jedem Einkauf gutgeschrieben. Die Rate variiert von 1% (Standard) bis 8% (Elite) je nach Ihrem Abonnement und WXT-Staking.' },
@@ -275,7 +275,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
           'Soporte al cliente a veces lento',
         ],
         faq: [
-          { q: '¿La tarjeta Wirex está disponible en España?', a: 'Sí, la tarjeta Wirex está disponible en España y en toda la UE. Funciona en cualquier lugar donde se acepte Visa.' },
+          { q: '¿La tarjeta Wirex está disponible en España?', a: 'No. Desde el 30 de junio de 2026, Wirex cerró su parte cripto (gasto y Cryptoback) en el EEE: la tarjeta cripto ya no está disponible en España ni en la UE. Sigue activa en Reino Unido, Nueva Zelanda, Hong Kong y Taiwán.' },
           { q: '¿Qué es el token WXT de Wirex?', a: 'WXT es el token nativo de Wirex. Se usa para pagar la suscripción y recibir cashback. Su valor varía según el mercado crypto.' },
           { q: '¿Qué plan Wirex se recomienda para empezar?', a: 'El plan Standard es gratuito y sin compromiso, ideal para probar la tarjeta. El cashback es del 1% en WXT. Los planes superiores ofrecen más recompensas pero tienen un coste mensual.' },
           { q: '¿Cómo funciona el cashback de Wirex?', a: 'El cashback se acredita en WXT después de cada compra. La tasa varía del 1% (Standard) al 8% (Elite) según tu suscripción y el staking de WXT realizado.' },
@@ -303,7 +303,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
           'Supporto clienti a volte lento',
         ],
         faq: [
-          { q: 'La carta Wirex è disponibile in Italia?', a: 'Sì, la carta Wirex è disponibile in Italia e in tutta l\'UE. Funziona ovunque venga accettato Visa.' },
+          { q: 'La carta Wirex è disponibile in Italia?', a: 'No. Dal 30 giugno 2026, Wirex ha chiuso la parte cripto (spesa e Cryptoback) nel SEE: la carta cripto non è più disponibile in Italia né nell\'UE. Resta attiva in Regno Unito, Nuova Zelanda, Hong Kong e Taiwan.' },
           { q: 'Cos\'è il token WXT di Wirex?', a: 'WXT è il token nativo di Wirex. Viene utilizzato per pagare l\'abbonamento e ricevere cashback. Il suo valore varia in base al mercato crypto.' },
           { q: 'Quale piano Wirex è consigliato per iniziare?', a: 'Il piano Standard è gratuito e senza impegno, ideale per testare la carta. Il cashback è dell\'1% in WXT. I piani superiori offrono più premi ma hanno un costo mensile.' },
           { q: 'Come funziona il cashback Wirex?', a: 'Il cashback viene accreditato in WXT dopo ogni acquisto. Il tasso varia dall\'1% (Standard) all\'8% (Elite) in base all\'abbonamento e allo staking WXT effettuato.' },
@@ -331,7 +331,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
           'Customer support can be slow to respond',
         ],
         faq: [
-          { q: 'Is the Wirex card available in Europe?', a: 'Yes, the Wirex card is available in France, Germany, Spain, Italy and throughout the EU. It works anywhere Visa is accepted.' },
+          { q: 'Is the Wirex card available in Europe?', a: 'The Wirex crypto card was discontinued in the EEA on 30 June 2026 (crypto spending and Cryptoback ended), so it is no longer available in France, Germany, Spain, Italy or the EU. It remains active in the UK, New Zealand, Hong Kong and Taiwan.' },
           { q: 'What is the Wirex WXT token?', a: 'WXT is Wirex\'s native token, used to pay for subscriptions and receive cashback. Its value fluctuates with the crypto market.' },
           { q: 'Which Wirex plan is recommended for beginners?', a: 'The Standard plan is free with no commitment, ideal for testing the card. Cashback is 1% in WXT. Higher plans offer more rewards but come with a monthly cost.' },
           { q: 'How does Wirex cashback work?', a: 'Cashback is credited in WXT after each purchase. The rate ranges from 1% (Standard) to 8% (Elite) depending on your subscription and WXT staking.' },
