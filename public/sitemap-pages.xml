@@ -3055,5 +3055,15 @@
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/etudes/cartes-crypto-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/etudes/crypto-cards-2026"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/etudes/crypto-cards-2026</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/etudes/cartes-crypto-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://topcryptocards.eu/etudes/crypto-cards-2026"/>
   </url>
 </urlset>

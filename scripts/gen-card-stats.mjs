@@ -90,4 +90,25 @@ active.map((c,i)=>({name:c.name, issuer:c.issuer, a:advertised[i], r:realistic[i
 const ratios = active.map((c,i)=>({a:advertised[i],r:realistic[i]})).filter(c=>c.a>0).map(c=>c.r/c.a);
 console.log(`\n-- INDICE DE RÉALITÉ (part du cashback affiché réellement accessible sans staking) --`);
 console.log(`  moyenne : ${(avg(ratios)*100).toFixed(0)}%  (sur ${ratios.length} cartes à cashback affiché > 0)`);
-console.log(`\nOK — copie cette sortie et je rédige l'étude à partir de ces chiffres.`);
+
+// ---- BLOC PAR MARCHÉ (applique les market_overrides) ----
+console.log(`\n===== CHIFFRES PAR MARCHÉ (cartes actives dispo dans le marché, overrides appliqués) =====`);
+const MK = { fr:'France', be:'Belgique', de:'Allemagne', at:'Autriche', es:'Espagne', it:'Italie', en:'UK' };
+for (const m of Object.keys(MK)) {
+  const cards = active.filter(c => Array.isArray(c.markets) && c.markets.includes(m));
+  const eff = cards.map(c => {
+    const ov = (c.market_overrides && c.market_overrides[m]) || {};
+    const b = num(ov.cashbackBase ?? c.cashback_base) || 0;
+    const ns = num(ov.cashbackNoStaking ?? c.cashback_no_staking) || 0;
+    const pr = num(ov.cashbackPremium ?? c.cashback_premium) || 0;
+    const fee = num(ov.annualFees ?? c.annual_fees) || 0;
+    return { adv: Math.max(b, ns, pr), real: Math.max(b, ns), base: b, fee };
+  });
+  const advM = avg(eff.map(e => e.adv));
+  const realM = avg(eff.map(e => e.real));
+  const rIdx = eff.filter(e => e.adv > 0).map(e => e.real / e.adv);
+  const zero = eff.filter(e => e.base === 0).length;
+  const free = eff.filter(e => e.fee === 0).length;
+  console.log(`  ${MK[m].padEnd(9)} : ${cards.length} cartes · affiché ${advM.toFixed(2)}% · réel ${realM.toFixed(2)}% · indice réalité ${(avg(rIdx)*100).toFixed(0)}% · 0%-cashback ${zero} (${pct(zero,cards.length)}) · gratuites ${pct(free,cards.length)}`);
+}
+console.log(`\nOK — copie TOUTE la sortie et je rédige les versions localisées avec les chiffres exacts par marché.`);
