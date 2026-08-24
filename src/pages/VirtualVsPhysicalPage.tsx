@@ -6,6 +6,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES, VVP_SLUGS } from '../config/routes';
+import { displayLang } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 
@@ -275,11 +276,14 @@ function StatusIcon({ status }: { status: RowStatus }) {
 /* ── Component ───────────────────────────────────────────────────────────── */
 export default function VirtualVsPhysicalPage() {
   const lang = useLanguage();
-  const seo  = SEO[lang]          ?? SEO.en;
-  const rows = TABLE_ROWS[lang]   ?? TABLE_ROWS.en;
-  const head = TABLE_HEADER[lang] ?? TABLE_HEADER.en;
-  const secs = SECTIONS[lang]     ?? SECTIONS.en;
-  const faqs = FAQ[lang]          ?? FAQ.en;
+  // be→fr, at→de: reuse the French/German content so Belgian/Austrian URLs are
+  // never served English. All content maps below are keyed by content language.
+  const cl   = displayLang(lang);
+  const seo  = SEO[cl]          ?? SEO.en;
+  const rows = TABLE_ROWS[cl]   ?? TABLE_ROWS.en;
+  const head = TABLE_HEADER[cl] ?? TABLE_HEADER.en;
+  const secs = SECTIONS[cl]     ?? SECTIONS.en;
+  const faqs = FAQ[cl]          ?? FAQ.en;
 
   useSeoMeta({ title: seo.title, description: seo.desc, lang });
 
@@ -313,19 +317,19 @@ export default function VirtualVsPhysicalPage() {
       {/* Breadcrumb */}
       <div className="container-app pt-6 pb-2">
         <Breadcrumb items={[
-          { label: HOME_LABEL[lang] ?? 'Home', href: `/${lang}` },
-          { label: GUIDES_LABEL[lang] ?? 'Guides', href: `/${lang}` },
-          { label: PAGE_TITLE[lang] ?? PAGE_TITLE.en },
+          { label: HOME_LABEL[cl] ?? 'Home', href: `/${lang}` },
+          { label: GUIDES_LABEL[cl] ?? 'Guides', href: `/${lang}` },
+          { label: PAGE_TITLE[cl] ?? PAGE_TITLE.en },
         ]} />
       </div>
 
       {/* H1 + Intro */}
       <div className="container-app pt-4 pb-8">
         <h1 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-          {PAGE_TITLE[lang] ?? PAGE_TITLE.en}
+          {PAGE_TITLE[cl] ?? PAGE_TITLE.en}
         </h1>
         <p className="text-slate-300 text-base leading-relaxed max-w-3xl">
-          {INTRO[lang] ?? INTRO.en}
+          {INTRO[cl] ?? INTRO.en}
         </p>
       </div>
 
@@ -380,13 +384,13 @@ export default function VirtualVsPhysicalPage() {
             to={`/${lang}/${virtualSlug}`}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-bg-elevated border border-bg-border text-cyan-accent hover:border-cyan-accent/50 transition-colors text-sm font-medium"
           >
-            {CTA_VIRTUAL[lang] ?? CTA_VIRTUAL.en}
+            {CTA_VIRTUAL[cl] ?? CTA_VIRTUAL.en}
           </Link>
           <Link
             to={`/${lang}/${physicalSlug}`}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-bg-elevated border border-bg-border text-emerald-400 hover:border-emerald-400/50 transition-colors text-sm font-medium"
           >
-            {CTA_PHYSICAL[lang] ?? CTA_PHYSICAL.en}
+            {CTA_PHYSICAL[cl] ?? CTA_PHYSICAL.en}
           </Link>
         </div>
       </div>
@@ -394,7 +398,7 @@ export default function VirtualVsPhysicalPage() {
       {/* FAQ */}
       <div className="container-app pb-10 max-w-3xl">
         <h2 className="font-display text-xl font-bold text-white mb-6">
-          {FAQ_TITLE[lang] ?? FAQ_TITLE.en}
+          {FAQ_TITLE[cl] ?? FAQ_TITLE.en}
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, i) => (
@@ -409,7 +413,7 @@ export default function VirtualVsPhysicalPage() {
       {/* See also */}
       <div className="container-app pb-4">
         <p className="text-slate-400 text-sm font-medium uppercase tracking-wide mb-3">
-          {SEE_ALSO_TITLE[lang] ?? SEE_ALSO_TITLE.en}
+          {SEE_ALSO_TITLE[cl] ?? SEE_ALSO_TITLE.en}
         </p>
         <div className="flex flex-wrap gap-3">
           <Link to={`/${lang}/${virtualSlug}`}

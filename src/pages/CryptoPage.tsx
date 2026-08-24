@@ -7,7 +7,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { CRYPTO_CONTENT } from '../data/cryptoContent';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { CRYPTO_COM_AFFILIATE } from '../utils/affiliateLink';
 
 /* ── Static crypto metadata ─────────────────────────────────────────────── */
@@ -73,7 +73,8 @@ export default function CryptoPage() {
   const { t } = useTranslation('common');
   const sym  = symbol.toLowerCase();
   const meta = CRYPTO_META[sym];
-  const copy = CRYPTO_CONTENT[sym]?.[lang] ?? CRYPTO_CONTENT[sym]?.['fr'];
+  // be→fr, at→de content reuse (displayLang), then fr as last resort.
+  const copy = CRYPTO_CONTENT[sym]?.[lang] ?? CRYPTO_CONTENT[sym]?.[displayLang(lang)] ?? CRYPTO_CONTENT[sym]?.['fr'];
 
   const [cards, setCards] = useState<any[]>([]);
 
