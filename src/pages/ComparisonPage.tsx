@@ -142,7 +142,7 @@ function getSeoText(
     ],
   };
 
-  return blocks[lang] ?? blocks.en;
+  return blocks[dl] ?? blocks.en;
 }
 
 // ─── Row definition ───────────────────────────────────────────────────────────
@@ -269,6 +269,7 @@ export default function ComparisonPage() {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   // `lang` = market from the URL (be/at kept for URLs, canonical, hreflang).
   // `cl` = content language: be→fr, at→de. Used only for TEXT resolution.
   const cl = displayLang(lang);

@@ -70,6 +70,7 @@ const THEMATIC_LINK_LABELS: Record<string, { best: string; cashback: string; noF
 
 export default function CryptoPage() {
   const { lang = 'fr', symbol = 'btc' } = useParams<{ lang: string; symbol: string }>();
+  const cl = displayLang(lang); // be→fr, at→de for UI text
   const { t } = useTranslation('common');
   const sym  = symbol.toLowerCase();
   const meta = CRYPTO_META[sym];
@@ -109,8 +110,8 @@ export default function CryptoPage() {
     en: (n) => `Which crypto cards support ${n} in ${YEAR}? Cashback, fees, staking: full comparison of the best cards. Free ✓`,
   };
   const cryptoName = meta?.name ?? sym.toUpperCase();
-  const fallbackTitle = (CRYPTO_TITLE_FALLBACK[lang] ?? CRYPTO_TITLE_FALLBACK.en)(cryptoName);
-  const fallbackDesc = (CRYPTO_DESC_FALLBACK[lang] ?? CRYPTO_DESC_FALLBACK.en)(cryptoName);
+  const fallbackTitle = (CRYPTO_TITLE_FALLBACK[cl] ?? CRYPTO_TITLE_FALLBACK.en)(cryptoName);
+  const fallbackDesc = (CRYPTO_DESC_FALLBACK[cl] ?? CRYPTO_DESC_FALLBACK.en)(cryptoName);
   useSeoMeta({
     title:       copy?.meta_title       ?? fallbackTitle,
     description: copy?.meta_description ?? fallbackDesc,
@@ -248,7 +249,7 @@ export default function CryptoPage() {
       {cards.length > 0 && (
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-5">
-            {CARDS_LABEL[lang] ?? CARDS_LABEL.en} {meta.ticker}
+            {CARDS_LABEL[cl] ?? CARDS_LABEL.en} {meta.ticker}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {cards.map((card) => {
@@ -307,8 +308,8 @@ export default function CryptoPage() {
 
       {/* ── Internal linking: thematic guides ────────────────────────── */}
       {(() => {
-        const slugs = THEMATIC_SLUGS[lang] ?? THEMATIC_SLUGS.en;
-        const tLabels = THEMATIC_LINK_LABELS[lang] ?? THEMATIC_LINK_LABELS.en;
+        const slugs = THEMATIC_SLUGS[cl] ?? THEMATIC_SLUGS.en;
+        const tLabels = THEMATIC_LINK_LABELS[cl] ?? THEMATIC_LINK_LABELS.en;
         const guides = [
           { slug: slugs.best, label: tLabels.best, icon: '⭐' },
           { slug: slugs.cashback, label: tLabels.cashback, icon: '💰' },
@@ -318,7 +319,7 @@ export default function CryptoPage() {
         return (
           <section className="mb-10">
             <h2 className="text-lg font-semibold text-white mb-3">
-              {COMPARE_CARDS[lang] ?? COMPARE_CARDS.en}
+              {COMPARE_CARDS[cl] ?? COMPARE_CARDS.en}
             </h2>
             <div className="flex flex-wrap gap-2">
               {guides.map((g) => (
@@ -345,7 +346,7 @@ export default function CryptoPage() {
         return (
           <section className="mb-10">
             <h2 className="text-lg font-semibold text-white mb-3">
-              {COMPARE_WITH_LABEL[lang] ?? COMPARE_WITH_LABEL.en}
+              {COMPARE_WITH_LABEL[cl] ?? COMPARE_WITH_LABEL.en}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {pairs.map(slug => (
@@ -371,7 +372,7 @@ export default function CryptoPage() {
         return (
           <section className="mb-10">
             <h2 className="text-lg font-semibold text-white mb-3">
-              {SEE_ALSO[lang] ?? SEE_ALSO.en}
+              {SEE_ALSO[cl] ?? SEE_ALSO.en}
             </h2>
             <div className="flex flex-wrap gap-2">
               {others.map(([symbol, m]) => (
@@ -398,13 +399,13 @@ export default function CryptoPage() {
         return (
           <div className="flex flex-wrap gap-2 mb-10">
             <Link to={`/${lang}/${rt.cryptos ?? 'cryptos'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-              <span>🪙</span>{CRYPTOLIST_LABEL[lang] ?? CRYPTOLIST_LABEL.en}
+              <span>🪙</span>{CRYPTOLIST_LABEL[cl] ?? CRYPTOLIST_LABEL.en}
             </Link>
             <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-              <span>🧮</span>{SIMULATOR_LABEL[lang] ?? SIMULATOR_LABEL.en}
+              <span>🧮</span>{SIMULATOR_LABEL[cl] ?? SIMULATOR_LABEL.en}
             </Link>
             <Link to={`/${lang}/${rt.reviews ?? 'reviews'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-              <span>⭐</span>{REVIEWS_LABEL[lang] ?? REVIEWS_LABEL.en}
+              <span>⭐</span>{REVIEWS_LABEL[cl] ?? REVIEWS_LABEL.en}
             </Link>
           </div>
         );

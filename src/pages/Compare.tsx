@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLanguage } from '../hooks/useLanguage';
+import { displayLang } from '../i18n/types';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
@@ -132,7 +133,8 @@ const COMPARE_ROUTE: Record<string, string> = { fr: 'comparer', de: 'vergleich',
 export default function Compare() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
-  const compareSeo = COMPARE_SEO[lang] || COMPARE_SEO.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text/content
+  const compareSeo = COMPARE_SEO[dl] || COMPARE_SEO.en;
   useSeoMeta({ title: compareSeo.title, description: compareSeo.desc, lang });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
@@ -166,7 +168,7 @@ export default function Compare() {
 
   // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
   useEffect(() => {
-    const ed = COMPARE_EDITORIAL[lang] ?? COMPARE_EDITORIAL.en;
+    const ed = COMPARE_EDITORIAL[dl] ?? COMPARE_EDITORIAL.en;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -187,7 +189,7 @@ export default function Compare() {
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Comparer'], de: ['Startseite', 'Vergleich'], es: ['Inicio', 'Comparar'], it: ['Home', 'Confronto'], en: ['Home', 'Compare'],
     };
-    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const [homeL, pageL] = labels[dl] ?? labels.en;
     const seg = RT[lang] ?? 'compare';
     const schema = {
       '@context': 'https://schema.org',
@@ -530,7 +532,7 @@ export default function Compare() {
     freeWdOnly ||
     selectedCryptos.length > 0;
 
-  const qcLabels = QUICK_COMPARE_LABELS[lang] ?? QUICK_COMPARE_LABELS.en;
+  const qcLabels = QUICK_COMPARE_LABELS[dl] ?? QUICK_COMPARE_LABELS.en;
   const sortedForSelect = [...allCards].sort((a, b) => (b.trustScore ?? 0) - (a.trustScore ?? 0));
   const cardAName = allCards.find((c) => c.id === quickA)?.name;
   const cardBName = allCards.find((c) => c.id === quickB)?.name;
@@ -798,7 +800,7 @@ export default function Compare() {
 
       {/* Bloc éditorial, thin content fix */}
       {(() => {
-        const ed = COMPARE_EDITORIAL[lang] ?? COMPARE_EDITORIAL.en;
+        const ed = COMPARE_EDITORIAL[dl] ?? COMPARE_EDITORIAL.en;
         return (
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>

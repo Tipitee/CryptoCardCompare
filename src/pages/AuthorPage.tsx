@@ -7,7 +7,7 @@ import type { BlogPost } from '../types/blog';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { estimateReadTime } from '../utils/markdown';
 import Breadcrumb from '../components/Breadcrumb';
 
@@ -46,6 +46,7 @@ const SINCE_LABEL: Record<string, string> = {
 export default function AuthorPage() {
   const { id } = useParams<{ id: string }>();
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const author = id ? AUTHORS[id] : null;
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
 
@@ -62,7 +63,7 @@ export default function AuthorPage() {
   useSeoMeta({
     title: author
       ? `${author.name}, TopCryptoCards`
-      : (NOT_FOUND_LABEL[lang] ?? NOT_FOUND_LABEL.en),
+      : (NOT_FOUND_LABEL[dl] ?? NOT_FOUND_LABEL.en),
     description: author
       ? (author.bio[lang] ?? author.bio.en)
       : '',
@@ -102,7 +103,7 @@ export default function AuthorPage() {
   if (!author) {
     return (
       <div className="container-app py-16 text-center text-slate-400">
-        {NOT_FOUND_LABEL[lang] ?? NOT_FOUND_LABEL.en}
+        {NOT_FOUND_LABEL[dl] ?? NOT_FOUND_LABEL.en}
       </div>
     );
   }
@@ -150,11 +151,11 @@ export default function AuthorPage() {
 
             <dl className="flex flex-wrap justify-center sm:justify-start gap-x-8 gap-y-2 text-sm mb-4">
               <div>
-                <dt className="text-slate-400 text-xs uppercase tracking-wide">{EXPERTISE_LABEL[lang] ?? EXPERTISE_LABEL.en}</dt>
-                <dd className="text-slate-300 font-medium">{EXPERTISE_VALUE[lang] ?? EXPERTISE_VALUE.en}</dd>
+                <dt className="text-slate-400 text-xs uppercase tracking-wide">{EXPERTISE_LABEL[dl] ?? EXPERTISE_LABEL.en}</dt>
+                <dd className="text-slate-300 font-medium">{EXPERTISE_VALUE[dl] ?? EXPERTISE_VALUE.en}</dd>
               </div>
               <div>
-                <dt className="text-slate-400 text-xs uppercase tracking-wide">{SINCE_LABEL[lang] ?? SINCE_LABEL.en}</dt>
+                <dt className="text-slate-400 text-xs uppercase tracking-wide">{SINCE_LABEL[dl] ?? SINCE_LABEL.en}</dt>
                 <dd className="text-slate-300 font-medium">2024</dd>
               </div>
             </dl>
@@ -183,7 +184,7 @@ export default function AuthorPage() {
       <div className="container-app">
         <h2 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-cyan-accent" />
-          {ARTICLES_LABEL[lang] ?? ARTICLES_LABEL.en}
+          {ARTICLES_LABEL[dl] ?? ARTICLES_LABEL.en}
         </h2>
 
         {loading ? (
@@ -222,11 +223,11 @@ export default function AuthorPage() {
                   </p>
                   <p className="text-xs text-slate-400 flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    {estimateReadTime(post.content)} {READ_DURATION_LABEL[lang] ?? READ_DURATION_LABEL.en}
+                    {estimateReadTime(post.content)} {READ_DURATION_LABEL[dl] ?? READ_DURATION_LABEL.en}
                   </p>
                 </div>
                 <span className="text-xs text-cyan-accent font-medium group-hover:underline">
-                  {READ_MORE_LABEL[lang] ?? READ_MORE_LABEL.en} →
+                  {READ_MORE_LABEL[dl] ?? READ_MORE_LABEL.en} →
                 </span>
               </Link>
             ))}

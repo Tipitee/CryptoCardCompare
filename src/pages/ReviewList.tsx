@@ -8,7 +8,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 const YEAR = new Date().getFullYear();
@@ -154,7 +154,8 @@ const RATING_COLOR = (r: number) =>
 
 export default function ReviewList() {
   const lang = useLanguage();
-  const l = L[lang] ?? L.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text/content
+  const l = L[dl] ?? L.en;
   const { getRoute } = useLocalizedRoute();
   const reviewSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.reviews ?? 'reviews';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
@@ -214,7 +215,7 @@ export default function ReviewList() {
         </p>
         {/* Editorial intro, enrichit le contenu pour Google */}
         <p className="text-slate-400 text-sm max-w-3xl mx-auto mt-4 leading-relaxed">
-          {REVIEW_EDITORIAL[lang] ?? REVIEW_EDITORIAL.en}
+          {REVIEW_EDITORIAL[dl] ?? REVIEW_EDITORIAL.en}
         </p>
       </div>
 
@@ -367,7 +368,7 @@ export default function ReviewList() {
                 className="flex items-center gap-2 px-4 py-3 rounded-lg border border-bg-border bg-bg-elevated hover:border-cyan-accent/40 hover:text-cyan-accent transition-all text-sm text-slate-300"
               >
                 <span aria-hidden="true">{emoji}</span>
-                {label[lang] ?? label.en}
+                {label[dl] ?? label.en}
               </Link>
             );
           })}

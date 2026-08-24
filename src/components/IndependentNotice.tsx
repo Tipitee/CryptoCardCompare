@@ -27,7 +27,7 @@ const AFFILIATE_SLUGS: Record<string, string> = {
 
 export default function IndependentNotice() {
   const lang = useLanguage();
-  const copy = COPY[lang] ?? COPY.en;
+  const copy = COPY[displayLang(lang)] ?? COPY.en;
   const slug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 
   return (

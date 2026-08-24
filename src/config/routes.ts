@@ -19,6 +19,13 @@ import type { Language } from '../i18n/types';
 // ---------------------------------------------------------------------------
 
 export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
+  bitcoin: {
+    fr: 'carte-bitcoin',              be: 'carte-bitcoin',
+    de: 'bitcoin-karte',              at: 'bitcoin-karte',
+    es: 'tarjeta-bitcoin',
+    it: 'carta-bitcoin',
+    en: 'bitcoin-card',
+  },
   best: {
     fr: 'meilleure-carte-crypto',     be: 'meilleure-carte-crypto',
     de: 'beste-krypto-karte',         at: 'beste-krypto-karte',

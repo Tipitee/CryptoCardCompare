@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { displayLang } from '../i18n/types';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
@@ -31,9 +32,10 @@ const THEMATIC_BEST: Record<string, string> = {
 
 export default function NotFound() {
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const { getRoute } = useLocalizedRoute();
-  const msg = MESSAGES[lang] || MESSAGES.en;
-  const links = LINKS[lang] || LINKS.en;
+  const msg = MESSAGES[dl] || MESSAGES.en;
+  const links = LINKS[dl] || LINKS.en;
 
   useSeoMeta({ title: `404, ${msg.title} | TopCryptoCards`, description: msg.subtitle });
 
@@ -71,7 +73,7 @@ export default function NotFound() {
         </Link>
 
         <Link
-          to={`/${lang}/${THEMATIC_BEST[lang] || THEMATIC_BEST.en}`}
+          to={`/${lang}/${THEMATIC_BEST[dl] || THEMATIC_BEST.en}`}
           className="flex flex-col items-center gap-2 p-4 rounded-xl border border-slate-700/50 bg-bg-elevated hover:border-cyan-accent/50 hover:bg-cyan-accent/5 transition-all group"
         >
           <TrendingUp className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 transition-colors" />

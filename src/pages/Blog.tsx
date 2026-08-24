@@ -1,4 +1,4 @@
-import { contentLang } from '../i18n/types';
+import { contentLang, displayLang } from '../i18n/types';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -134,7 +134,7 @@ export default function Blog() {
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: BLOG_LABELS[lang] ?? BLOG_LABELS['en'],
+      name: BLOG_LABELS[dl] ?? BLOG_LABELS['en'],
       url: `${BASE}/${lang}/blog`,
       inLanguage: lang,
       publisher: {
@@ -310,7 +310,7 @@ export default function Blog() {
 
       {/* Bloc éditorial, thin content fix + thematic links */}
       {(() => {
-        const ed = BLOG_EDITORIAL[lang] ?? BLOG_EDITORIAL.en;
+        const ed = BLOG_EDITORIAL[dl] ?? BLOG_EDITORIAL.en;
         const catSlug = BLOG_CAT_SLUG[lang] ?? 'category';
         const catLinks: { key: string; emoji: string; label: Record<string, string> }[] = [
           { key: 'card',   emoji: '💳', label: { fr: 'Cartes Crypto', de: 'Krypto-Karten', es: 'Tarjetas Crypto', it: 'Carte Crypto', en: 'Crypto Cards' } },
@@ -328,13 +328,13 @@ export default function Blog() {
 
             {/* Category hubs */}
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-              <Layers className="w-3.5 h-3.5 inline mr-1.5" />{browseLabel[lang] ?? browseLabel.en}
+              <Layers className="w-3.5 h-3.5 inline mr-1.5" />{browseLabel[dl] ?? browseLabel.en}
             </p>
             <div className="flex flex-wrap gap-2 mb-8">
               {catLinks.map(({ key, emoji, label }) => (
                 <Link key={key} to={`/${lang}/blog/${catSlug}/${key}`}
                   className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-cyan-accent/20 bg-cyan-accent/5 text-sm text-cyan-accent hover:bg-cyan-accent/15 hover:border-cyan-accent/50 transition-all">
-                  <span aria-hidden="true">{emoji}</span>{label[lang] ?? label.en}
+                  <span aria-hidden="true">{emoji}</span>{label[dl] ?? label.en}
                 </Link>
               ))}
             </div>

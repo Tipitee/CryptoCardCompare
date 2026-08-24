@@ -1,4 +1,5 @@
 import React from 'react';
+import { displayLang } from '../i18n/types';
 import { Link } from 'react-router-dom';
 import { Coins, AlertTriangle } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
@@ -170,7 +171,8 @@ function Section({ h, p }: { h: string; p: string | string[] }) {
 /* ── Page ─────────────────────────────────────────────────────────────────── */
 export default function RiskSummary() {
   const lang = useLanguage();
-  const c = CONTENT[lang] ?? CONTENT.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text
+  const c = CONTENT[dl] ?? CONTENT.en;
 
   React.useEffect(() => {
     const el = document.createElement('meta');

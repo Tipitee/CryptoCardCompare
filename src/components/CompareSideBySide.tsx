@@ -99,8 +99,8 @@ function computeBest(metric: MetricDef, cards: CryptoCard[]): Set<string> {
 
 function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
   const v = metric.get(card);
-  const free = FREE_LABEL[lang] ?? FREE_LABEL.en;
-  const none = NONE_LABEL[lang] ?? NONE_LABEL.en;
+  const free = FREE_LABEL[displayLang(lang)] ?? FREE_LABEL.en;
+  const none = NONE_LABEL[displayLang(lang)] ?? NONE_LABEL.en;
   switch (metric.kind) {
     case 'pct':
       return <span className="font-mono font-semibold">{fmtPct(v as number)}</span>;
@@ -168,10 +168,10 @@ export default function CompareSideBySide({
   if (cards.length === 0) {
     return (
       <div className="card-surface p-12 text-center">
-        <div className="text-slate-400 mb-5">{EMPTY_LABEL[lang] ?? EMPTY_LABEL.en}</div>
+        <div className="text-slate-400 mb-5">{EMPTY_LABEL[displayLang(lang)] ?? EMPTY_LABEL.en}</div>
         <Link to={`/${lang}`} className="btn-primary">
           <Plus className="w-4 h-4" />
-          {CHOOSE_LABEL[lang] ?? CHOOSE_LABEL.en}
+          {CHOOSE_LABEL[displayLang(lang)] ?? CHOOSE_LABEL.en}
         </Link>
       </div>
     );
@@ -202,14 +202,14 @@ export default function CompareSideBySide({
             >
               <button
                 onClick={() => onRemove(card.id)}
-                aria-label={REMOVE_LABEL[lang] ?? REMOVE_LABEL.en}
+                aria-label={REMOVE_LABEL[displayLang(lang)] ?? REMOVE_LABEL.en}
                 className="absolute top-3 right-3 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-bg-elevated transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
               >
                 <X className="w-4 h-4" />
               </button>
               <button
                 onClick={() => onToggleFavorite(card.id)}
-                aria-label={isFav ? (REMOVE_FAV_LABEL[lang] ?? REMOVE_FAV_LABEL.en) : (ADD_FAV_LABEL[lang] ?? ADD_FAV_LABEL.en)}
+                aria-label={isFav ? (REMOVE_FAV_LABEL[displayLang(lang)] ?? REMOVE_FAV_LABEL.en) : (ADD_FAV_LABEL[displayLang(lang)] ?? ADD_FAV_LABEL.en)}
                 className={`absolute top-3 left-3 p-2 rounded-lg transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center ${
                   isFav
                     ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
@@ -232,7 +232,7 @@ export default function CompareSideBySide({
                 to={`/${lang}/${cardSlug}/${card.id}`}
                 className="mt-3 btn-ghost w-full text-xs"
               >
-                {DETAILS_LABEL[lang] ?? DETAILS_LABEL.en}
+                {DETAILS_LABEL[displayLang(lang)] ?? DETAILS_LABEL.en}
               </Link>
 
               <a
@@ -242,7 +242,7 @@ export default function CompareSideBySide({
                 className="mt-2 btn-secondary w-full text-xs"
                 onClick={() => trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'compare_tool', lang)}
               >
-                {SEE_OFFER_LABEL[lang] ?? SEE_OFFER_LABEL.en}
+                {SEE_OFFER_LABEL[displayLang(lang)] ?? SEE_OFFER_LABEL.en}
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -253,7 +253,7 @@ export default function CompareSideBySide({
       <div className="card-surface overflow-hidden">
         <div
           role="table"
-          aria-label={COMPARE_LABEL[lang] ?? COMPARE_LABEL.en}
+          aria-label={COMPARE_LABEL[displayLang(lang)] ?? COMPARE_LABEL.en}
           className="divide-y divide-bg-border"
         >
           {METRICS.map((metric, rowIdx) => (

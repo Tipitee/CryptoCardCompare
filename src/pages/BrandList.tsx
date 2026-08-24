@@ -9,7 +9,7 @@ import { useHreflang } from '../hooks/useHreflang';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useAppStore } from '../store/useAppStore';
 import SmartCardImage from '../components/SmartCardImage';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { BRAND_CONFIG } from '../data/brandConfig';
 import { THEMATIC_ROUTES } from '../config/routes';
 import type { CryptoCard } from '../types/card';
@@ -131,7 +131,8 @@ const MARKET_FLAG: Record<string, string> = {
 
 export default function BrandList() {
   const lang = useLanguage();
-  const l = L[lang] ?? L.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text/content
+  const l = L[dl] ?? L.en;
   const cards = useAppStore((s) => s.cards);
   const [ready, setReady] = useState(false);
 
@@ -227,7 +228,7 @@ export default function BrandList() {
   if (!ready) {
     return (
       <div className="min-h-screen flex items-center justify-center text-slate-400">
-        {LOADING_LABEL[lang] || LOADING_LABEL.en}
+        {LOADING_LABEL[dl] || LOADING_LABEL.en}
       </div>
     );
   }
@@ -344,7 +345,7 @@ export default function BrandList() {
 
       {/* Bloc éditorial, thin content fix + thematic links */}
       {(() => {
-        const ed = BRANDLIST_EDITORIAL[lang] ?? BRANDLIST_EDITORIAL.en;
+        const ed = BRANDLIST_EDITORIAL[dl] ?? BRANDLIST_EDITORIAL.en;
         return (
           <div className="border-t border-bg-border pt-10">
             <h2 className="text-xl font-bold text-white mb-4">{ed.h2}</h2>

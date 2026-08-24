@@ -26,9 +26,9 @@ export default function Layout() {
   const { getRoute } = useLocalizedRoute();
   const location = useLocation();
 
-  const labels = THEMATIC_NAV_LABELS[lang] ?? THEMATIC_NAV_LABELS.en;
+  const labels = THEMATIC_NAV_LABELS[displayLang(lang)] ?? THEMATIC_NAV_LABELS.en;
   const reviewSlug = ROUTE_TRANSLATIONS[lang]?.reviews ?? 'reviews';
-  const reviewLabel = REVIEW_NAV_LABELS[lang] ?? REVIEW_NAV_LABELS.en;
+  const reviewLabel = REVIEW_NAV_LABELS[displayLang(lang)] ?? REVIEW_NAV_LABELS.en;
   const AFFILIATE_SLUGS: Record<string, string> = {
     fr: 'divulgation-affilies',
     be: 'divulgation-affilies',
@@ -91,7 +91,7 @@ export default function Layout() {
     { slug: THEMATIC_ROUTES.france[lang],          label: labels.france },
     { slug: THEMATIC_ROUTES.virtual[lang],         label: labels.virtual },
     { slug: THEMATIC_ROUTES.physical[lang],        label: labels.physical },
-    { slug: VVP_SLUGS[lang],                       label: VVP_NAV_LABELS[lang] ?? VVP_NAV_LABELS.en },
+    { slug: VVP_SLUGS[lang],                       label: VVP_NAV_LABELS[displayLang(lang)] ?? VVP_NAV_LABELS.en },
     { slug: THEMATIC_ROUTES.beginner[lang],        label: labels.beginner },
     { slug: THEMATIC_ROUTES['no-kyc'][lang],       label: labels.noKyc },
     { slug: THEMATIC_ROUTES['2026'][lang],         label: labels.year2026 },

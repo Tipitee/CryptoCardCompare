@@ -126,7 +126,7 @@ export default function CompareTable({
       {canScrollRight && !hintDismissed && (
         <div className="sm:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 bg-bg-elevated/90 backdrop-blur-sm text-slate-400 text-xs px-3 py-1.5 rounded-full border border-bg-border pointer-events-none animate-pulse">
           <span>←</span>
-          <span>{SCROLL_HINT[lang] ?? SCROLL_HINT.en}</span>
+          <span>{SCROLL_HINT[displayLang(lang)] ?? SCROLL_HINT.en}</span>
           <span>→</span>
         </div>
       )}
@@ -206,7 +206,7 @@ export default function CompareTable({
           {cards.length === 0 && (
             <tr>
               <td colSpan={10} className="p-10 text-center text-slate-400">
-                {NO_CARDS[lang] ?? NO_CARDS.en}
+                {NO_CARDS[displayLang(lang)] ?? NO_CARDS.en}
               </td>
             </tr>
           )}
@@ -283,8 +283,8 @@ function Row({
   const lang = useLanguage();
   const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const isBest = (key: string) => best && best[key] === card.id;
-  const free = FREE_L[lang] ?? FREE_L.en;
-  const none = NONE_L[lang] ?? NONE_L.en;
+  const free = FREE_L[displayLang(lang)] ?? FREE_L.en;
+  const none = NONE_L[displayLang(lang)] ?? NONE_L.en;
 
   const slotColor =
     quickSlot === 'A'
@@ -314,7 +314,7 @@ function Row({
             onClick={onCardClick}
             disabled={!onCardClick}
             className={`flex items-center gap-3 flex-1 text-left ${onCardClick ? 'cursor-pointer group' : ''}`}
-            title={onCardClick ? (quickSlot ? `${SELECTED[lang] ?? SELECTED.en} ${quickSlot}` : (CLICK_SEL[lang] ?? CLICK_SEL.en)) : undefined}
+            title={onCardClick ? (quickSlot ? `${SELECTED[displayLang(lang)] ?? SELECTED.en} ${quickSlot}` : (CLICK_SEL[displayLang(lang)] ?? CLICK_SEL.en)) : undefined}
           >
             <div className="relative shrink-0">
               <SmartCardImage card={card} size="xs" />
@@ -389,7 +389,7 @@ function Row({
         <div className="flex items-center gap-1.5">
           <button
             onClick={(e) => { e.stopPropagation(); onToggleCompare(); }}
-            aria-label={inCompare ? (REM_CMP[lang] ?? REM_CMP.en) : (ADD_CMP[lang] ?? ADD_CMP.en)}
+            aria-label={inCompare ? (REM_CMP[displayLang(lang)] ?? REM_CMP.en) : (ADD_CMP[displayLang(lang)] ?? ADD_CMP.en)}
             aria-pressed={inCompare}
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               inCompare
@@ -401,7 +401,7 @@ function Row({
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onToggleFav(); }}
-            aria-label={isFav ? (REM_FAV[lang] ?? REM_FAV.en) : (ADD_FAV[lang] ?? ADD_FAV.en)}
+            aria-label={isFav ? (REM_FAV[displayLang(lang)] ?? REM_FAV.en) : (ADD_FAV[displayLang(lang)] ?? ADD_FAV.en)}
             className={`p-2 rounded-lg transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center ${
               isFav
                 ? 'text-green-accent bg-green-accent/10 hover:bg-green-accent/20'
@@ -415,7 +415,7 @@ function Row({
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
-            {DETAILS_L[lang] ?? DETAILS_L.en}
+            {DETAILS_L[displayLang(lang)] ?? DETAILS_L.en}
           </Link>
           <a
             href={getAffiliateLink(card)}
@@ -424,7 +424,7 @@ function Row({
             onClick={(e) => { e.stopPropagation(); trackAffiliateClick(card.name, card.issuer, getAffiliateLink(card), 'compare_tool', lang); }}
             className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent px-2 py-1 rounded border border-bg-border hover:border-cyan-accent/40 transition-colors"
           >
-            {OFFER_L[lang] ?? OFFER_L.en}
+            {OFFER_L[displayLang(lang)] ?? OFFER_L.en}
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>

@@ -5,7 +5,7 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import AutoLinker from '../components/AutoLinker';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 const HOME_LABEL: Record<string, string> = {
@@ -15,7 +15,7 @@ const HOME_LABEL: Record<string, string> = {
 const YEAR = new Date().getFullYear();
 
 const LANG_TO_SEGMENT: Record<string, string> = {
-  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -24,6 +24,15 @@ const LANG_TO_SEGMENT: Record<string, string> = {
 const THEME_CONFIG: Record<string, Record<string, {
   title: string; h1: string; description: string; intro: string; outro: string;
 }>> = {
+  bitcoin: {
+    fr: { title:`Carte Bitcoin ${YEAR} : Payer et Gagner des BTC | TopCryptoCards`, h1:`Carte Bitcoin ${YEAR} : Dépenser et Recevoir des Bitcoin`, description:`Quelle carte bitcoin choisir en ${YEAR} ? Payer en BTC au quotidien, cashback en bitcoin, sans staking. Nexo, Crypto.com, Gnosis Pay comparées. Comparatif indépendant ✓`, intro:`Une carte bitcoin est une carte Visa ou Mastercard qui convertit vos BTC en euros au moment du paiement, chez n'importe quel commerçant. Trois familles cohabitent. Les cartes qui convertissent votre bitcoin à la caisse, comme Nexo, Crypto.com ou Bybit. Les cartes qui reversent un cashback en bitcoin sur chaque achat, Nexo verse 1 à 2% en BTC. Les cartes on-chain qui puisent directement dans votre wallet, comme Gnosis Pay et MetaMask Card. Ce classement compare les cartes disponibles pour dépenser des bitcoin, frais et taux vérifiés.`, outro:`Pour la plupart des usages, la Nexo Card offre le meilleur équilibre : cashback versé en BTC, aucun staking obligatoire, disponible en Europe et régulée sous MiCA. Si vous tenez à garder vos clés, Gnosis Pay reste la carte bitcoin la plus avancée en auto-conservation. Un réflexe avant de choisir, vérifiez dans quelle crypto le cashback est réellement payé.` },
+    be: { title:`Carte Bitcoin Belgique ${YEAR} : Payer en BTC | TopCryptoCards`, h1:`Carte Bitcoin en Belgique ${YEAR}`, description:`Quelle carte bitcoin en Belgique en ${YEAR} ? Payer en BTC, cashback en bitcoin, FSMA/MiCA. Nexo, Crypto.com, Gnosis Pay comparées. Comparatif indépendant ✓`, intro:`Une carte bitcoin disponible en Belgique est une carte Visa ou Mastercard qui convertit vos BTC en euros au moment du paiement. Trois familles existent. Les cartes qui convertissent le bitcoin à la caisse, comme Nexo, Crypto.com ou Bybit. Les cartes avec cashback versé en bitcoin, Nexo reverse 1 à 2% en BTC. Les cartes on-chain reliées à votre wallet, comme Gnosis Pay et MetaMask Card. La Belgique accède aux mêmes cartes MiCA que la France. Ce classement compare celles utilisables par les résidents belges.`, outro:`En Belgique, privilégiez les émetteurs conformes MiCA ou supervisés par la FSMA. La Nexo Card reste le meilleur compromis pour la plupart des résidents belges, cashback en BTC et sans staking obligatoire. Pour l'auto-conservation, Gnosis Pay est la carte bitcoin la plus aboutie.` },
+    de: { title:`Bitcoin Karte ${YEAR}: Mit BTC bezahlen und verdienen | TopCryptoCards`, h1:`Bitcoin Karte ${YEAR}: Bitcoin ausgeben und zurückbekommen`, description:`Welche Bitcoin Karte in ${YEAR}? Im Alltag mit BTC bezahlen, Cashback in Bitcoin, kein Staking. Nexo, Crypto.com, Gnosis Pay verglichen. Unabhängig ✓`, intro:`Eine Bitcoin Karte ist eine Visa- oder Mastercard, die Ihre BTC beim Bezahlen in Euro umwandelt, bei jedem Händler. Es gibt drei Familien. Karten, die Ihr Bitcoin an der Kasse umrechnen, etwa Nexo, Crypto.com oder Bybit. Karten mit Cashback in Bitcoin auf jeden Einkauf, Nexo zahlt 1 bis 2% in BTC. On-Chain-Karten, die direkt Ihr Wallet nutzen, wie Gnosis Pay und MetaMask Card. Dieses Ranking vergleicht die Karten zum Ausgeben von Bitcoin, mit geprüften Gebühren und Sätzen.`, outro:`Für die meisten Nutzer bietet die Nexo Card das beste Gleichgewicht: Cashback in BTC, kein Pflicht-Staking, in Deutschland verfügbar und nach MiCA reguliert. Wer die eigenen Schlüssel behalten will, findet in Gnosis Pay die fortschrittlichste Bitcoin Karte in Selbstverwahrung. Prüfen Sie vor der Wahl, in welcher Krypto der Cashback ausgezahlt wird.` },
+    at: { title:`Bitcoin Karte Österreich ${YEAR}: Mit BTC bezahlen | TopCryptoCards`, h1:`Bitcoin Karte Österreich ${YEAR}`, description:`Welche Bitcoin Karte in Österreich ${YEAR}? Mit BTC bezahlen, Cashback in Bitcoin, FMA/MiCA. Bitpanda, Nexo, Crypto.com verglichen. Unabhängig ✓`, intro:`Eine in Österreich verfügbare Bitcoin Karte wandelt Ihre BTC beim Bezahlen in Euro um. Drei Familien existieren. Karten, die Bitcoin an der Kasse umrechnen, Nexo, Crypto.com, Bybit. Karten mit Cashback in Bitcoin, Nexo zahlt 1 bis 2% in BTC. On-Chain-Karten, die Ihr Wallet direkt nutzen, Gnosis Pay und MetaMask Card. Österreich hat zudem Bitpanda, die heimische Plattform mit Sitz in Wien. Dieses Ranking vergleicht die für österreichische Einwohner verfügbaren Karten.`, outro:`In Österreich bevorzugen Sie FMA-regulierte oder MiCA-konforme Anbieter. Nexo Card bietet BTC-Cashback ohne Pflicht-Staking, Bitpanda ist die österreichische Hausmarke mit 2% in BEST. Für die Selbstverwahrung bleibt Gnosis Pay die fortschrittlichste Bitcoin Karte.` },
+    es: { title:`Tarjeta Bitcoin ${YEAR}: Pagar y Ganar BTC | TopCryptoCards`, h1:`Tarjeta Bitcoin ${YEAR}: Pagar con BTC en el día a día`, description:`¿Qué tarjeta bitcoin elegir en ${YEAR}? Pagar en BTC, cashback en bitcoin, sin staking. Nexo, Crypto.com, Gnosis Pay comparadas. Comparativa independiente ✓`, intro:`Una tarjeta bitcoin es una Visa o Mastercard que convierte tus BTC en euros en el momento del pago, en cualquier comercio. Existen tres familias. Las tarjetas que convierten tu bitcoin en caja, como Nexo, Crypto.com o Bybit. Las tarjetas con cashback en bitcoin en cada compra, Nexo devuelve entre el 1% y el 2% en BTC. Las tarjetas on-chain que usan tu wallet directamente, como Gnosis Pay y MetaMask Card. Esta clasificación compara las tarjetas disponibles para gastar bitcoin, con comisiones y tasas verificadas.`, outro:`Para la mayoría de los usuarios, la Nexo Card ofrece el mejor equilibrio: cashback en BTC, sin staking obligatorio, disponible en España y regulada bajo MiCA. Si prefieres conservar tus claves, Gnosis Pay es la tarjeta bitcoin más avanzada en autocustodia. Antes de elegir, comprueba en qué cripto se paga el cashback.` },
+    it: { title:`Carta Bitcoin ${YEAR}: Pagare e Guadagnare BTC | TopCryptoCards`, h1:`Carta Bitcoin ${YEAR}: Pagare con BTC nella vita quotidiana`, description:`Quale carta bitcoin scegliere nel ${YEAR}? Pagare in BTC, cashback in bitcoin, senza staking. Nexo, Crypto.com, Gnosis Pay confrontate. Confronto indipendente ✓`, intro:`Una carta bitcoin è una Visa o Mastercard che converte i tuoi BTC in euro al momento del pagamento, presso qualsiasi commerciante. Esistono tre famiglie. Le carte che convertono il tuo bitcoin alla cassa, come Nexo, Crypto.com o Bybit. Le carte con cashback in bitcoin su ogni acquisto, Nexo restituisce tra l'1% e il 2% in BTC. Le carte on-chain che usano direttamente il tuo wallet, come Gnosis Pay e MetaMask Card. Questa classifica confronta le carte disponibili per spendere bitcoin, con costi e tassi verificati.`, outro:`Per la maggior parte degli utenti, la Nexo Card offre il miglior equilibrio: cashback in BTC, senza staking obbligatorio, disponibile in Italia e regolamentata sotto MiCA. Se preferisci conservare le tue chiavi, Gnosis Pay è la carta bitcoin più avanzata in auto-custodia. Prima di scegliere, verifica in quale cripto viene pagato il cashback.` },
+    en: { title:`Bitcoin Card ${YEAR}: Spend and Earn BTC | TopCryptoCards`, h1:`Bitcoin Card ${YEAR}: Spending and Earning Bitcoin`, description:`Which bitcoin card in ${YEAR}? Spend BTC anywhere, earn cashback in bitcoin, no staking. Nexo, Crypto.com, Gnosis Pay compared. Independent comparison ✓`, intro:`A bitcoin card is a Visa or Mastercard that converts your BTC to pounds at the point of sale, at any merchant. Three families exist. Cards that convert your bitcoin at checkout, such as Nexo, Crypto.com or Bybit. Cards that pay cashback in bitcoin on every purchase, Nexo returns 1% to 2% in BTC. On-chain cards that draw straight from your wallet, such as Gnosis Pay and MetaMask Card. This ranking compares the cards available to spend bitcoin, with fees and rates verified.`, outro:`For most users, the Nexo Card offers the best balance: cashback paid in BTC, no mandatory staking, available in the UK and regulated under MiCA. If you want to keep your own keys, Gnosis Pay remains the most advanced self-custody bitcoin card. Before you choose, check which crypto the cashback is actually paid in.` },
+  },
   best: {
     fr: { title:`Meilleure Carte Crypto ${YEAR}, Top 5 Testées | TopCryptoCards`, h1:`Meilleure Carte Crypto ${YEAR} : Comparatif Indépendant`, description:`Quelle est la meilleure carte crypto en ${YEAR} ? Cashback jusqu'à 8%, 0€/an, sans staking. Crypto.com, Nexo, Gnosis Pay, MetaMask comparées. Verdict indépendant ✓`, intro:`La meilleure carte crypto en ${YEAR} sans staking est la Nexo Card : 2% de cashback en BTC, 0€/an, disponible en France. Pour maximiser le cashback avec staking, Crypto.com Jade offre 3% avec 50 000 CRO immobilisés (~18 000€). Ce comparatif indépendant classe les cartes disponibles en France par profil d'usage, avec les frais et taux vérifiés en juillet ${YEAR}. Le tableau comparatif ci-dessous résume les 3 cartes les mieux notées — cashback, frais annuels et staking requis — en un coup d'œil.`, outro:`Pour faire le bon choix, comparez les taux de cashback mais pensez aussi aux conditions : certaines cartes exigent un staking important pour débloquer les meilleurs avantages. Si vous débutez, préférez une carte sans staking et sans frais annuels. Si vous êtes déjà investi en crypto, les cartes premium peuvent offrir jusqu'à 8% de cashback.` },
     de: { title:`Beste Krypto-Karte ${YEAR}, Top 5 Getestet | TopCryptoCards`, h1:`Die besten Krypto-Karten ${YEAR}`, description:`Welche Krypto-Karte ist die beste ${YEAR}? Bis zu 8% Cashback, 0€/Jahr, kein Staking. Bitcoin Karte, Crypto.com, Nexo, Gnosis Pay verglichen. Unabhängig ✓`, intro:`Die beste Krypto-Karte ${YEAR} ohne Staking ist die Nexo Card: 2% Cashback in BTC, 0€/Jahr, sofort in Deutschland verfügbar. Wer Staking akzeptiert, erreicht mit der Crypto.com Jade 3% bei 50.000 CRO (~18.000€). Dieser unabhängige Vergleich bewertet alle Krypto-Karten in Deutschland nach Profil, mit verifizierten Gebühren und Konditionen von Juli ${YEAR}.`, outro:`Vergleichen Sie Cashback-Sätze, aber berücksichtigen Sie auch die Bedingungen: Einige Karten erfordern erhebliches Staking, um die besten Vorteile freizuschalten. Wenn Sie Anfänger sind, bevorzugen Sie eine Karte ohne Staking und ohne Jahresgebühr.` },
@@ -134,6 +143,14 @@ const THEME_CONFIG: Record<string, Record<string, {
     en: { title:`Crypto Card with IBAN ${YEAR}, SEPA + Cashback | TopCryptoCards`, h1:`Crypto Cards with IBAN in ${YEAR}`, description:`Which crypto card includes an IBAN in ${YEAR}? Brighty (EU IBAN), Revolut, Deblock. Free SEPA transfers, cashback in crypto. Independent comparison ✓`, intro:`A crypto card with IBAN is a Visa or Mastercard integrated into an account with a European IBAN number, enabling you to receive salary, make SEPA transfers, and pay in crypto, all in one app. This comparison lists all crypto cards offering a real IBAN available in ${YEAR}.`, outro:`Brighty offers a European IBAN from Switzerland. Revolut and N26 offer IBANs with crypto support. Deblock is the French option with a local FR IBAN and full ACPR regulation. Compare by local IBAN availability, regulatory framework, and cashback rate.` },
   },
 };
+
+// Propagate be→fr and at→de content aliases into THEME_CONFIG (skip if explicit
+// be/at already set, e.g. best/cashback/bitcoin keep their market-specific copy).
+// Without this, themes lacking be/at fell back to English on /be/ and /at/ URLs.
+for (const theme of Object.keys(THEME_CONFIG)) {
+  if (THEME_CONFIG[theme].fr && !THEME_CONFIG[theme].be) THEME_CONFIG[theme].be = THEME_CONFIG[theme].fr;
+  if (THEME_CONFIG[theme].de && !THEME_CONFIG[theme].at) THEME_CONFIG[theme].at = THEME_CONFIG[theme].de;
+}
 
 /* ────────────────────────────────────────────────────────────────────────────
    THEME_SECTIONS, extra editorial H2 blocks for content depth (SEO)
@@ -1282,6 +1299,7 @@ for (const theme of Object.keys(THEME_FAQ)) {
    FILTERS / SORT / LIMIT
    ──────────────────────────────────────────────────────────────────────────── */
 const THEME_FILTERS: Record<string, (card: any) => boolean> = {
+  bitcoin:      () => true,
   best:         () => true,
   cashback:     (c) => (c.cashback_premium || c.cashback_base || 0) > 0,
   'no-fees':    (c) => (c.annual_fees || 0) === 0,
@@ -1299,6 +1317,7 @@ const THEME_FILTERS: Record<string, (card: any) => boolean> = {
   iban:         (c) => Array.isArray(c.extras) && c.extras.some((e: string) => ['french_iban', 'sepa_free', 'eu_iban'].includes(e)),
 };
 const THEME_SORT: Record<string, (a: any, b: any) => number> = {
+  bitcoin:      (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   best:         (a, b) => (b.trust_score || 0) - (a.trust_score || 0),
   cashback:     (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
   'no-fees':    (a, b) => (b.cashback_premium || b.cashback_base || 0) - (a.cashback_premium || a.cashback_base || 0),
@@ -1326,6 +1345,7 @@ const THEME_LIMIT: Record<string, number> = { best: 15 };
    THEMATIC SLUGS (for hreflang)
    ──────────────────────────────────────────────────────────────────────────── */
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
+  bitcoin:      { fr: 'carte-bitcoin', be: 'carte-bitcoin', de: 'bitcoin-karte', at: 'bitcoin-karte', es: 'tarjeta-bitcoin', it: 'carta-bitcoin', en: 'bitcoin-card' },
   best:         { fr: 'meilleure-carte-crypto', be: 'meilleure-carte-crypto', de: 'beste-krypto-karte', at: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
   cashback:     { fr: 'carte-crypto-cashback', be: 'carte-crypto-cashback', de: 'krypto-karte-cashback', at: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
   'no-fees':    { fr: 'carte-crypto-sans-frais', be: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', at: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
@@ -1347,8 +1367,9 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
    RELATED THEMES (maillage cross-thématique)
    ──────────────────────────────────────────────────────────────────────────── */
 const RELATED_THEMES: Record<string, string[]> = {
-  best:         ['cashback', 'no-fees', 'no-staking', 'rewards'],
-  cashback:     ['rewards', 'travel', 'no-staking', 'best'],
+  bitcoin:      ['cashback', 'best', 'no-staking', 'rewards'],
+  best:         ['cashback', 'no-fees', 'bitcoin', 'rewards'],
+  cashback:     ['rewards', 'bitcoin', 'no-staking', 'best'],
   'no-fees':    ['cashback', 'beginner', 'no-staking', 'best'],
   'no-staking': ['no-fees', 'cashback', 'beginner', 'rewards'],
   france:       ['best', 'cashback', 'no-fees', 'virtual'],
@@ -1364,11 +1385,13 @@ const RELATED_THEMES: Record<string, string[]> = {
   iban:         ['no-fees', 'no-staking', 'beginner', 'virtual'],
 };
 const THEME_EMOJI: Record<string, string> = {
+  bitcoin: '₿',
   best: '⭐', cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓',
   france: '🇪🇺', virtual: '📱', physical: '💳', beginner: '🎯', 'no-kyc': '🔐',
   '2026': '🚀', travel: '✈️', rewards: '🎁', belgium: '🇧🇪', austria: '🇦🇹', iban: '🏦',
 };
 const THEME_LABEL: Record<string, Record<string, string>> = {
+  bitcoin:      { fr:'Carte Bitcoin', de:'Bitcoin Karte', es:'Tarjeta Bitcoin', it:'Carta Bitcoin', en:'Bitcoin card' },
   best:         { fr:'Meilleure carte', de:'Beste Karte', es:'Mejor tarjeta', it:'Migliore carta', en:'Best card' },
   cashback:     { fr:'Cashback', de:'Cashback', es:'Cashback', it:'Cashback', en:'Cashback' },
   'no-fees':    { fr:'Sans frais', de:'Ohne Gebühren', es:'Sin comisiones', it:'Senza costi', en:'No fees' },
@@ -1590,8 +1613,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       });
   }, []);
 
-  const config    = THEME_CONFIG[theme]?.[lang] || THEME_CONFIG[theme]?.['en'];
-  const faqs      = THEME_FAQ[theme]?.[lang]    || THEME_FAQ[theme]?.['en'] || [];
+  // cl = content language: be→fr, at→de. Use cl for UI text/labels, keep lang for URLs.
+  const cl        = displayLang(lang);
+  const config    = THEME_CONFIG[theme]?.[lang] || THEME_CONFIG[theme]?.[cl] || THEME_CONFIG[theme]?.['en'];
+  const faqs      = THEME_FAQ[theme]?.[lang]    || THEME_FAQ[theme]?.[cl] || THEME_FAQ[theme]?.['en'] || [];
   const filterFn  = THEME_FILTERS[theme] || (() => true);
   const sortFn    = THEME_SORT[theme]   || (() => 0);
 
@@ -1671,7 +1696,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: homeL[lang] ?? 'Home', item: `${window.location.origin}/${lang}` },
+        { '@type': 'ListItem', position: 1, name: homeL[cl] ?? 'Home', item: `${window.location.origin}/${lang}` },
         { '@type': 'ListItem', position: 2, name: config?.h1 ?? segment, item: `${window.location.origin}/${lang}/${segment}` },
       ],
     });
@@ -1698,12 +1723,12 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     virtual:           { fr:'Virtuelle', de:'Virtuell', es:'Virtual', it:'Virtuale', en:'Virtual' },
     annual_suffix:     { fr:'€/an', de:'€/Jahr', es:'€/año', it:'€/anno', en:'€/year' },
   };
-  const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[lang] || (L[key] as Record<string, string>)['en'] || '';
+  const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[cl] || (L[key] as Record<string, string>)['en'] || '';
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <Breadcrumb items={[
-        { label: HOME_LABEL[lang] || 'Home', href: `/${lang}` },
+        { label: HOME_LABEL[cl] || 'Home', href: `/${lang}` },
         { label: config.h1 },
       ]} />
       <h1 className="text-3xl font-bold text-white mb-3 mt-4">{config.h1}</h1>
@@ -1730,7 +1755,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           it: ['Cashback', 'Commissioni annuali', 'Staking rich.', 'Rete', 'Trust Score'],
           en: ['Cashback', 'Annual fees', 'Staking req.', 'Network', 'Trust Score'],
         };
-        const labels = KEY_FACTS_LABELS[lang] ?? KEY_FACTS_LABELS.en;
+        const labels = KEY_FACTS_LABELS[cl] ?? KEY_FACTS_LABELS.en;
         const FREE_LABEL: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
         const NO_STAKING_LABEL: Record<string, string> = { fr: 'Non requis', de: 'Nicht erf.', es: 'No requerido', it: 'Non richiesto', en: 'Not required' };
         function fmtCashback(c: any): string {
@@ -1738,10 +1763,10 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           return val ? `${val}%` : '-';
         }
         function fmtFees(c: any): string {
-          return (c.annual_fees || 0) > 0 ? `${c.annual_fees} €/${({fr:'an',de:'Jahr',es:'año',it:'anno',en:'year'})[lang]??'year'}` : (FREE_LABEL[lang]??'Free');
+          return (c.annual_fees || 0) > 0 ? `${c.annual_fees} €/${({fr:'an',de:'Jahr',es:'año',it:'anno',en:'year'})[cl]??'year'}` : (FREE_LABEL[cl]??'Free');
         }
         function fmtStaking(c: any): string {
-          if (!c.staking_required || c.staking_required <= 0) return NO_STAKING_LABEL[lang] ?? 'Not required';
+          if (!c.staking_required || c.staking_required <= 0) return NO_STAKING_LABEL[cl] ?? 'Not required';
           return `~€${Math.round(c.staking_required).toLocaleString()}`;
         }
         function getRow(c: any): string[] {
@@ -1753,7 +1778,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               <thead>
                 <tr className="bg-bg-elevated border-b border-bg-border">
                   <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider min-w-[120px]">
-                    {({ fr:'Critère', de:'Kriterium', es:'Criterio', it:'Criterio', en:'Criteria' })[lang]??'Criteria'}
+                    {({ fr:'Critère', de:'Kriterium', es:'Criterio', it:'Criterio', en:'Criteria' })[cl]??'Criteria'}
                   </th>
                   {TOP.map((c: any, i: number) => (
                     <th key={c.id} scope="col" className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
@@ -1785,7 +1810,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           ))}
         </div>
       ) : filteredCards.length === 0 ? (
-        <p className="text-slate-400 mb-10">{{ fr: 'Aucune carte trouvée pour ce critère.', de: 'Keine Karte für dieses Kriterium gefunden.', es: 'Ninguna tarjeta encontrada.', it: 'Nessuna carta trovata.', en: 'No cards found for this criterion.' }[lang] ?? 'No cards found.'}</p>
+        <p className="text-slate-400 mb-10">{{ fr: 'Aucune carte trouvée pour ce critère.', de: 'Keine Karte für dieses Kriterium gefunden.', es: 'Ninguna tarjeta encontrada.', it: 'Nessuna carta trovata.', en: 'No cards found for this criterion.' }[cl] ?? 'No cards found.'}</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {filteredCards.map((card: any, idx: number) => (
@@ -1859,7 +1884,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                   to={`/${lang}/${brandsSlug}/${card.brand_id}`}
                   className="mt-1.5 text-center text-xs text-slate-400 hover:text-cyan-accent transition-colors py-1"
                 >
-                  {SEE_TIERS_LABEL[lang] || 'See all tiers'} →
+                  {SEE_TIERS_LABEL[cl] || 'See all tiers'} →
                 </Link>
               )}
             </div>
@@ -1894,7 +1919,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
         return (
           <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-3xl">
-            {CROSS_INTRO[lang] ?? CROSS_INTRO.en}{' '}
+            {CROSS_INTRO[cl] ?? CROSS_INTRO.en}{' '}
             {related.map((t2, i) => {
               const slug = THEMATIC_SLUGS[t2]?.[lang];
               const label = THEME_CONFIG[t2]?.[lang]?.h1 ?? t2;
@@ -1903,13 +1928,13 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               return (
                 <span key={t2}>
                   <Link to={`/${lang}/${slug}`} className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">{label}</Link>
-                  {isSecondToLast ? ` ${CROSS_AND[lang] ?? 'and'} ` : isLast ? '. ' : ', '}
+                  {isSecondToLast ? ` ${CROSS_AND[cl] ?? 'and'} ` : isLast ? '. ' : ', '}
                 </span>
               );
             })}
-            {SIM_INTRO[lang] ?? SIM_INTRO.en}{' '}
+            {SIM_INTRO[cl] ?? SIM_INTRO.en}{' '}
             <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors">
-              {SIM_LABEL[lang] ?? SIM_LABEL.en}
+              {SIM_LABEL[cl] ?? SIM_LABEL.en}
             </Link>.
           </p>
         );
@@ -1962,7 +1987,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
             ))}
             {relatedLinks.length > 0 && (
               <p className="text-slate-400 text-sm leading-relaxed">
-                {RELATED_PREFIX[lang] ?? RELATED_PREFIX.en}{' '}
+                {RELATED_PREFIX[cl] ?? RELATED_PREFIX.en}{' '}
                 {relatedLinks.map((t, i) => {
                   const slug = THEMATIC_ROUTES[t]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]];
                   const label = THEME_CONFIG[t]?.[lang]?.h1 ?? t;
@@ -2011,7 +2036,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       {(RELATED_THEMES[theme] || []).length > 0 && (
         <div className="mb-12">
           <h2 className="text-base font-semibold text-slate-400 mb-3">
-            {RELATED_TITLE[lang] || RELATED_TITLE['en']}
+            {RELATED_TITLE[cl] || RELATED_TITLE['en']}
           </h2>
           <div className="flex flex-wrap gap-2">
             {(RELATED_THEMES[theme] || []).map((t2) => {
@@ -2040,19 +2065,19 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               return (
                 <>
                   <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-                    <span>🧮</span>{SIMULATOR_LABEL[lang] ?? SIMULATOR_LABEL.en}
+                    <span>🧮</span>{SIMULATOR_LABEL[cl] ?? SIMULATOR_LABEL.en}
                   </Link>
                   <Link to={`/${lang}/${rt.compare ?? 'compare'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-                    <span>⚖️</span>{COMPARE_LABEL[lang] ?? COMPARE_LABEL.en}
+                    <span>⚖️</span>{COMPARE_LABEL[cl] ?? COMPARE_LABEL.en}
                   </Link>
                   <Link to={`/${lang}/${rt.reviews ?? 'reviews'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-                    <span>⭐</span>{REVIEWS_LABEL[lang] ?? REVIEWS_LABEL.en}
+                    <span>⭐</span>{REVIEWS_LABEL[cl] ?? REVIEWS_LABEL.en}
                   </Link>
                   <Link to={`/${lang}/${rt.cashbackCalculator ?? 'crypto-card-cashback-calculator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-                    <span>💰</span>{CB_CALC_LABEL[lang] ?? CB_CALC_LABEL.en}
+                    <span>💰</span>{CB_CALC_LABEL[cl] ?? CB_CALC_LABEL.en}
                   </Link>
                   <Link to={`/${lang}/${rt.feeCalculator ?? 'crypto-card-fee-calculator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">
-                    <span>📊</span>{FEE_CALC_LABEL[lang] ?? FEE_CALC_LABEL.en}
+                    <span>📊</span>{FEE_CALC_LABEL[cl] ?? FEE_CALC_LABEL.en}
                   </Link>
                 </>
               );
@@ -2062,13 +2087,13 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       )}
 
       {/* Blog articles (Lire aussi) */}
-      {(THEME_BLOG_LINKS[theme]?.[lang] || THEME_BLOG_LINKS[theme]?.['en'] || []).length > 0 && (
+      {(THEME_BLOG_LINKS[theme]?.[cl] || THEME_BLOG_LINKS[theme]?.['en'] || []).length > 0 && (
         <div className="mb-12">
           <h2 className="text-base font-semibold text-slate-400 mb-3">
-            {READ_MORE_TITLE[lang] || READ_MORE_TITLE['en']}
+            {READ_MORE_TITLE[cl] || READ_MORE_TITLE['en']}
           </h2>
           <div className="flex flex-col gap-2">
-            {(THEME_BLOG_LINKS[theme]?.[lang] || THEME_BLOG_LINKS[theme]?.['en'] || []).map((article) => (
+            {(THEME_BLOG_LINKS[theme]?.[cl] || THEME_BLOG_LINKS[theme]?.['en'] || []).map((article) => (
               <Link
                 key={article.slug}
                 to={`/${lang}/blog/${article.slug}`}
@@ -2090,7 +2115,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
         return (
           <div className="mb-12">
             <h2 className="text-base font-semibold text-slate-400 mb-3">
-              {POPULAR_COMPARISONS_TITLE[lang] || POPULAR_COMPARISONS_TITLE['en']}
+              {POPULAR_COMPARISONS_TITLE[cl] || POPULAR_COMPARISONS_TITLE['en']}
             </h2>
             <div className="flex flex-wrap gap-2">
               {(THEME_COMPARISONS[theme] || []).map((slug) => (

@@ -9,7 +9,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import { authorJsonLd, AUTHORS } from '../data/authors';
 import { autoLinkHtml } from '../components/AutoLinker';
@@ -119,7 +119,7 @@ function buildBlogMetaDesc(post: { meta_description?: string | null; excerpt?: s
     const e = post.excerpt.trim();
     return e.length > 157 ? e.slice(0, 154) + '…' : e;
   }
-  const suffix = BLOG_META_SUFFIX[lang] ?? BLOG_META_SUFFIX.en;
+  const suffix = BLOG_META_SUFFIX[dl] ?? BLOG_META_SUFFIX.en;
   const desc = `${post.title} ${suffix}`;
   return desc.length > 157 ? desc.slice(0, 154) + '…' : desc;
 }
@@ -157,6 +157,7 @@ export default function BlogPost() {
   const { t } = useTranslation('blog');
   const { t: tCards } = useTranslation('cards');
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const { getRoute } = useLocalizedRoute();
 
   const [post, setPost] = useState<BlogPostType | null>(null);
@@ -434,7 +435,7 @@ export default function BlogPost() {
               return (
                 <div className="mt-8 p-5 rounded-xl border border-bg-border bg-bg-card">
                   <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
-                    {RELATED_PAGES_LABEL[lang] || RELATED_PAGES_LABEL.en}
+                    {RELATED_PAGES_LABEL[dl] || RELATED_PAGES_LABEL.en}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {themes.map(theme => {
@@ -458,7 +459,7 @@ export default function BlogPost() {
                       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-elevated border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all"
                     >
                       <span>📝</span>
-                      {REVIEWS_LABEL[lang] || REVIEWS_LABEL.en}
+                      {REVIEWS_LABEL[dl] || REVIEWS_LABEL.en}
                     </Link>
                   </div>
                 </div>
@@ -490,7 +491,7 @@ export default function BlogPost() {
               {mentionedBrands.length > 0 && (
                 <div className="mt-8">
                   <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">
-                    {MENTIONED_BRANDS_LABEL[lang] ?? MENTIONED_BRANDS_LABEL.en}
+                    {MENTIONED_BRANDS_LABEL[dl] ?? MENTIONED_BRANDS_LABEL.en}
                   </h4>
                   <div className="space-y-2">
                     {mentionedBrands.map(b => (
@@ -501,13 +502,13 @@ export default function BlogPost() {
                             to={`/${lang}/${brandsSlug}/${b.brandId}`}
                             className="flex-1 text-center text-xs px-2 py-1.5 rounded bg-bg-elevated border border-bg-border text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/30 transition-colors"
                           >
-                            {SEE_BRAND_LABEL[lang] ?? SEE_BRAND_LABEL.en} {b.name}
+                            {SEE_BRAND_LABEL[dl] ?? SEE_BRAND_LABEL.en} {b.name}
                           </Link>
                           <Link
                             to={`/${lang}/${reviewsSlug}/${b.reviewSlug}`}
                             className="flex-1 text-center text-xs px-2 py-1.5 rounded bg-bg-elevated border border-bg-border text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/30 transition-colors"
                           >
-                            {SEE_REVIEW_LABEL[lang] ?? SEE_REVIEW_LABEL.en}
+                            {SEE_REVIEW_LABEL[dl] ?? SEE_REVIEW_LABEL.en}
                           </Link>
                         </div>
                       </div>
@@ -527,7 +528,7 @@ export default function BlogPost() {
                   {t('blog_sidebar_compare_btn')}
                 </Link>
                 <Link to={getRoute('simulator')} className="btn-ghost w-full text-sm mt-2 border border-bg-border flex justify-center items-center gap-1.5">
-                  🧮 {SIMULATOR_LABEL[lang] || SIMULATOR_LABEL.en}
+                  🧮 {SIMULATOR_LABEL[dl] || SIMULATOR_LABEL.en}
                 </Link>
               </div>
             </div>

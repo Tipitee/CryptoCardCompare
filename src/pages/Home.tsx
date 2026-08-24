@@ -39,7 +39,7 @@ const HOME_SEO: Record<string, { title: string; desc: string }> = {
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import TrustBadge from '../components/TrustBadge';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 // Section "Explorer par type de carte", 11 thèmes × 5 langues
@@ -184,7 +184,8 @@ export default function Home() {
   const { t } = useTranslation('common');
   const { getRoute } = useLocalizedRoute();
   const lang = useLanguage();
-  const homeSeo = HOME_SEO[lang] || HOME_SEO.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text/content
+  const homeSeo = HOME_SEO[dl] || HOME_SEO.en;
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc, lang });
 
@@ -764,7 +765,7 @@ export default function Home() {
       </section>
       {/* Section "Explorer par type de carte", internal links to all thematic pages */}
       {(() => {
-        const grid = THEME_GRID[lang] ?? THEME_GRID.en;
+        const grid = THEME_GRID[dl] ?? THEME_GRID.en;
         return (
           <section className="container-app py-14 border-t border-bg-border">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
@@ -801,7 +802,7 @@ export default function Home() {
           it: { blog: 'Blog crypto', cryptos: 'Guida criptovalute', reviews: 'Recensioni carte' },
           en: { blog: 'Crypto blog', cryptos: 'Crypto guide', reviews: 'Card reviews' },
         };
-        const labels = HUB_LINKS[lang] ?? HUB_LINKS.en;
+        const labels = HUB_LINKS[dl] ?? HUB_LINKS.en;
         return (
           <div className="container-app pb-4 flex flex-wrap justify-center gap-3">
             <Link to={`/${lang}/blog`} className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">

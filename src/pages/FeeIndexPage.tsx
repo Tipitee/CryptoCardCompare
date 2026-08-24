@@ -6,7 +6,7 @@ import type { CryptoCard } from '../types/card';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR, fmtPct } from '../utils/format';
@@ -255,7 +255,7 @@ CITE_COPY.at = CITE_COPY.de;
 function CiteThis({ lang, url }: { lang: string; title: string; url: string }) {
   const [copiedApa, setCopiedApa] = useState(false);
   const [copiedEmbed, setCopiedEmbed] = useState(false);
-  const cc = CITE_COPY[lang] ?? CITE_COPY.en;
+  const cc = CITE_COPY[dl] ?? CITE_COPY.en;
   const year = new Date().getFullYear();
   const apaText = cc.apa(url, year);
   const embedText = cc.embedCode(url);
@@ -289,7 +289,8 @@ function CiteThis({ lang, url }: { lang: string; title: string; url: string }) {
 
 export default function FeeIndexPage() {
   const lang = useLanguage();
-  const c = COPY[lang] ?? COPY.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text
+  const c = COPY[dl] ?? COPY.en;
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
 
   const [cards, setCards] = useState<CryptoCard[]>([]);

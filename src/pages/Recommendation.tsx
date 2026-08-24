@@ -14,7 +14,7 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { saveQuizResult } from '../lib/supabase';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 const SLUGS: Record<string, string> = {
@@ -104,9 +104,10 @@ type StepDef<K extends keyof QuizAnswers> = {
 export default function Recommendation() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-  const recSeo = REC_SEO[lang] || REC_SEO.en;
+  const recSeo = REC_SEO[dl] || REC_SEO.en;
   useSeoMeta({ title: recSeo.title, description: recSeo.desc, lang });
 
   useHreflang(l => `https://topcryptocards.eu/${l}/${SLUGS[l as keyof typeof SLUGS] ?? 'recommendation'}`, []);
@@ -136,7 +137,7 @@ export default function Recommendation() {
 
   // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
   useEffect(() => {
-    const ed = REC_EDITORIAL[lang] ?? REC_EDITORIAL.en;
+    const ed = REC_EDITORIAL[dl] ?? REC_EDITORIAL.en;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -157,7 +158,7 @@ export default function Recommendation() {
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Recommandation'], de: ['Startseite', 'Empfehlung'], es: ['Inicio', 'Recomendación'], it: ['Home', 'Raccomandazione'], en: ['Home', 'Recommendation'],
     };
-    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const [homeL, pageL] = labels[dl] ?? labels.en;
     const seg = SLUGS[lang] ?? 'recommendation';
     const schema = {
       '@context': 'https://schema.org',
@@ -548,7 +549,7 @@ export default function Recommendation() {
 
       {/* Bloc éditorial, thin content fix + internal links */}
       {(() => {
-        const ed = REC_EDITORIAL[lang] ?? REC_EDITORIAL.en;
+        const ed = REC_EDITORIAL[dl] ?? REC_EDITORIAL.en;
         return (
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>

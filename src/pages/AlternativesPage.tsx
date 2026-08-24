@@ -14,7 +14,7 @@ import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import SmartCardImage from '../components/SmartCardImage';
 import { useLanguage } from '../hooks/useLanguage';
-import { contentLang, ROUTE_TRANSLATIONS } from '../i18n/types';
+import { contentLang, ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { ALT_BRANDS, ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
@@ -227,14 +227,14 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
       {/* Why block */}
       <div className="mb-8 p-5 rounded-2xl border border-amber-500/30 bg-amber-500/5">
         <p className="text-sm font-semibold text-amber-400 mb-2">
-          {WHY_LABEL[lang] ?? WHY_LABEL.en}
+          {WHY_LABEL[cl] ?? WHY_LABEL.en}
         </p>
         <p className="text-slate-300 text-sm leading-relaxed">{copy.reason}</p>
       </div>
 
       {/* Alternatives grid */}
       <h2 className="text-xl font-semibold text-white mb-5">
-        {TOP_ALTS_LABEL[lang] ?? TOP_ALTS_LABEL.en}
+        {TOP_ALTS_LABEL[cl] ?? TOP_ALTS_LABEL.en}
       </h2>
 
       {loading ? (
@@ -336,10 +336,10 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
       {/* How to choose */}
       <div className="mb-10 p-5 rounded-2xl border border-bg-border bg-bg-card">
         <h2 className="text-lg font-semibold text-white mb-3">
-          {HOW_TO_LABEL[lang] ?? HOW_TO_LABEL.en}
+          {HOW_TO_LABEL[cl] ?? HOW_TO_LABEL.en}
         </h2>
         <p className="text-slate-300 text-sm leading-relaxed">
-          {HOW_TO_BODY[lang] ?? HOW_TO_BODY.en}
+          {HOW_TO_BODY[cl] ?? HOW_TO_BODY.en}
         </p>
       </div>
 
@@ -356,7 +356,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
         return (
           <div className="mb-10">
             <h2 className="text-base font-semibold text-slate-300 mb-3">
-              {OTHER_ALTS_LABEL[lang] ?? OTHER_ALTS_LABEL.en}
+              {OTHER_ALTS_LABEL[cl] ?? OTHER_ALTS_LABEL.en}
             </h2>
             <div className="flex flex-wrap gap-2">
               {others.map(b => (
@@ -377,7 +377,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
       {copy.faq.length > 0 && (
         <div className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">
-            {FAQ_LABEL[lang] ?? FAQ_LABEL.en}
+            {FAQ_LABEL[cl] ?? FAQ_LABEL.en}
           </h2>
           <div className="space-y-2">
             {copy.faq.map(([q, a], i) => (

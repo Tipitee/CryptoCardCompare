@@ -24,7 +24,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
 import { getExtraLabel } from '../i18n/extrasLabels';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { generateCardContent } from '../utils/cardContent';
 import AutoLinker, { autoLinkHtml } from '../components/AutoLinker';
@@ -639,7 +639,7 @@ export default function CardDetail() {
                           };
                           return (
                             <p className="mt-3 text-slate-400 text-sm leading-relaxed">
-                              {prefix[lang] ?? prefix.en}{' '}
+                              {prefix[dl] ?? prefix.en}{' '}
                               {validLinks.map(({ theme, label }, i) => {
                                 const slug = THEMATIC_ROUTES[theme]?.[lang as keyof (typeof THEMATIC_ROUTES)[string]];
                                 return (

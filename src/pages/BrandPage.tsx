@@ -391,6 +391,7 @@ const BRAND_COMP_TITLE: Record<string, string> = {
 
 export default function BrandPage() {
   const { lang = 'fr', brandId } = useParams<{ lang: string; brandId: string }>();
+  const cl = displayLang(lang); // be→fr, at→de for UI text
   useLanguage(); // ensure lang is tracked
   const l = L[displayLang(lang) as keyof typeof L] ?? L.en;
 
@@ -626,7 +627,7 @@ export default function BrandPage() {
               className="inline-flex items-center gap-1 text-text-secondary hover:text-brand-accent text-sm transition-colors"
             >
               <ChevronRight className="w-3.5 h-3.5" />
-              {REVIEW_LABEL[lang] || REVIEW_LABEL.en}
+              {REVIEW_LABEL[cl] || REVIEW_LABEL.en}
             </Link>
           )}
         </div>
@@ -860,7 +861,7 @@ export default function BrandPage() {
         <section className="bg-bg-card border border-brand-accent/20 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <p className="text-text-primary font-semibold text-base">
-              {REVIEW_LABEL[lang] || REVIEW_LABEL.en}, {brand.displayName}
+              {REVIEW_LABEL[cl] || REVIEW_LABEL.en}, {brand.displayName}
             </p>
             <p className="text-text-secondary text-sm mt-0.5">
               {lang === 'fr' && 'Cashback, frais, sécurité, expérience utilisateur, tout est détaillé.'}
@@ -874,7 +875,7 @@ export default function BrandPage() {
             to={`/${lang}/${reviewsSlug}/${BRAND_REVIEW_SLUG[brandId ?? '']}`}
             className="shrink-0 inline-flex items-center gap-1.5 bg-brand-accent text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:opacity-90 transition-opacity"
           >
-            {REVIEW_LABEL[lang] || REVIEW_LABEL.en}
+            {REVIEW_LABEL[cl] || REVIEW_LABEL.en}
             <ChevronRight className="w-4 h-4" />
           </Link>
         </section>
@@ -907,7 +908,7 @@ export default function BrandPage() {
         return (
           <section>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
-              {BRAND_COMP_TITLE[lang] || BRAND_COMP_TITLE.en}
+              {BRAND_COMP_TITLE[cl] || BRAND_COMP_TITLE.en}
             </h2>
             <div className="flex flex-wrap gap-2">
               {(BRAND_COMPARISONS[brandId ?? ''] || []).map((slug) => (
@@ -929,7 +930,7 @@ export default function BrandPage() {
       {brandArticles.length > 0 && (
         <section>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-3">
-            {BRAND_ARTICLES_TITLE[lang] || BRAND_ARTICLES_TITLE.en} {brand.displayName}
+            {BRAND_ARTICLES_TITLE[cl] || BRAND_ARTICLES_TITLE.en} {brand.displayName}
           </h2>
           <div className="space-y-2">
             {brandArticles.map(article => (
@@ -942,7 +943,7 @@ export default function BrandPage() {
                   📰 {article.title}
                 </span>
                 <span className="shrink-0 text-xs text-slate-400 group-hover:text-brand-accent transition-colors">
-                  {BRAND_ARTICLES_READ[lang] || BRAND_ARTICLES_READ.en} →
+                  {BRAND_ARTICLES_READ[cl] || BRAND_ARTICLES_READ.en} →
                 </span>
               </Link>
             ))}
@@ -960,7 +961,7 @@ export default function BrandPage() {
             to={`/${lang}/${reviewsSlug}/${BRAND_REVIEW_SLUG[brandId ?? '']}`}
             className="text-brand-accent hover:underline text-sm"
           >
-            {REVIEW_LABEL[lang] || REVIEW_LABEL.en} →
+            {REVIEW_LABEL[cl] || REVIEW_LABEL.en} →
           </Link>
         )}
         {brandId && ALT_BRAND_MAP[brandId as keyof typeof ALT_BRAND_MAP] && (() => {
@@ -980,7 +981,7 @@ export default function BrandPage() {
               to={`/${lang}/${altSlug}`}
               className="text-brand-accent hover:underline text-sm"
             >
-              {ALT_LABEL[lang] ?? ALT_LABEL.en} →
+              {ALT_LABEL[cl] ?? ALT_LABEL.en} →
             </Link>
           );
         })()}
@@ -1123,14 +1124,14 @@ const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at
 function fmtCashbackMax(card: CryptoCard, lang: string): string {
   const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
   if (!pct) return ',';
-  const upTo = UP_TO[lang] ?? UP_TO.en;
+  const upTo = UP_TO[cl] ?? UP_TO.en;
   return `${upTo} ${pct} %`;
 }
 
 function fmtAnnualFees(card: CryptoCard, lang: string): string {
   const fees = card.annualFees ?? 0;
-  if (fees === 0) return FREE[lang] ?? FREE.en;
-  return `${fees} €${PER_YEAR[lang] ?? PER_YEAR.en}`;
+  if (fees === 0) return FREE[cl] ?? FREE.en;
+  return `${fees} €${PER_YEAR[cl] ?? PER_YEAR.en}`;
 }
 
 function ReviewMiniCard({

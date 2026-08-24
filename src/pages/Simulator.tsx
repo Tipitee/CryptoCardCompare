@@ -16,7 +16,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import type { SimulatorSpending } from '../types/card';
 import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR } from '../utils/format';
@@ -143,7 +143,8 @@ function ChartTooltip({ active, payload, label }: {
 export default function Simulator() {
   const { t } = useTranslation('common');
   const lang = useLanguage();
-  const simSeo = SIM_SEO[lang] || SIM_SEO.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text
+  const simSeo = SIM_SEO[dl] || SIM_SEO.en;
   useSeoMeta({ title: simSeo.title, description: simSeo.desc, lang });
 
   useHreflang(l => `https://topcryptocards.eu/${l}/${SIM_SLUGS[l as keyof typeof SIM_SLUGS] ?? 'simulator'}`, []);
@@ -176,7 +177,7 @@ export default function Simulator() {
 
   // ── FAQ schema (editorial how-to bloc) ───────────────────────────────────────
   useEffect(() => {
-    const ed = SIM_EDITORIAL[lang] ?? SIM_EDITORIAL.en;
+    const ed = SIM_EDITORIAL[dl] ?? SIM_EDITORIAL.en;
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -197,7 +198,7 @@ export default function Simulator() {
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Simulateur'], de: ['Startseite', 'Simulator'], es: ['Inicio', 'Simulador'], it: ['Home', 'Simulatore'], en: ['Home', 'Simulator'],
     };
-    const [homeL, pageL] = labels[lang] ?? labels.en;
+    const [homeL, pageL] = labels[dl] ?? labels.en;
     const seg = SIM_SLUGS[lang] ?? 'simulator';
     const schema = {
       '@context': 'https://schema.org',
@@ -791,7 +792,7 @@ export default function Simulator() {
 
         {/* Bloc éditorial, thin content fix + internal links */}
         {(() => {
-          const ed = SIM_EDITORIAL[lang] ?? SIM_EDITORIAL.en;
+          const ed = SIM_EDITORIAL[dl] ?? SIM_EDITORIAL.en;
           return (
             <div className="mt-14 border-t border-bg-border pt-10">
               <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>
@@ -824,7 +825,7 @@ export default function Simulator() {
           return (
             <div className="mt-10 p-4 rounded-xl border border-bg-border bg-bg-elevated/50 text-center">
               <Link to={`/${lang}/${rt.tools ?? 'crypto-card-tools'}`} className="text-sm text-cyan-accent hover:underline inline-flex items-center gap-1.5">
-                💡 {label[lang] ?? label.en}
+                💡 {label[dl] ?? label.en}
               </Link>
             </div>
           );

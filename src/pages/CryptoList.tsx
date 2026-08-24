@@ -134,11 +134,12 @@ const CRYPTO_SEGMENT: Record<string, string> = { fr: 'cryptos', de: 'cryptos', e
 
 export default function CryptoList() {
   const { lang = 'fr' } = useParams<{ lang: string }>();
+  const cl = displayLang(lang); // be→fr, at→de for UI text
   const { t } = useTranslation('common');
-  const seo = SEO[lang] || SEO.en;
+  const seo = SEO[cl] || SEO.en;
   const segment = CRYPTO_SEGMENT[lang] || 'cryptos';
-  const slugs = THEMATIC_SLUGS[lang] || THEMATIC_SLUGS.en;
-  const guideLinks = GUIDES_LINKS[lang] || GUIDES_LINKS.en;
+  const slugs = THEMATIC_SLUGS[cl] || THEMATIC_SLUGS.en;
+  const guideLinks = GUIDES_LINKS[cl] || GUIDES_LINKS.en;
 
   useSeoMeta({ title: seo.title, description: seo.desc, lang });
 
@@ -208,7 +209,7 @@ export default function CryptoList() {
       {/* Thematic guide links */}
       <div className="mb-10">
         <h2 className="text-base font-semibold text-slate-400 mb-3">
-          {GUIDES_TITLE[lang] || GUIDES_TITLE.en}
+          {GUIDES_TITLE[cl] || GUIDES_TITLE.en}
         </h2>
         <div className="flex flex-wrap gap-2">
           {guideLinks.map((g) => (
@@ -255,8 +256,8 @@ export default function CryptoList() {
 
       {/* Bloc éditorial, thin content fix + liens thématiques */}
       {(() => {
-        const ed = CRYPTOLIST_EDITORIAL[lang] ?? CRYPTOLIST_EDITORIAL.en;
-        const slugs = THEMATIC_SLUGS[lang] ?? THEMATIC_SLUGS.en;
+        const ed = CRYPTOLIST_EDITORIAL[cl] ?? CRYPTOLIST_EDITORIAL.en;
+        const slugs = THEMATIC_SLUGS[cl] ?? THEMATIC_SLUGS.en;
         return (
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>

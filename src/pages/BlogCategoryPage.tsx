@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { displayLang } from '../i18n/types';
 import { Link, useParams } from 'react-router-dom';
 import { BookOpen, Calendar, ChevronRight, Clock, Layers } from 'lucide-react';
 import type { BlogPost } from '../types/blog';
@@ -200,6 +201,7 @@ const PAGE_SIZE = 9;
 // ── Main component ─────────────────────────────────────────────────────────────
 export default function BlogCategoryPage() {
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const { category = '' } = useParams<{ category: string }>();
   const { getRoute } = useLocalizedRoute();
 
@@ -210,9 +212,9 @@ export default function BlogCategoryPage() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
 
-  const l = L[lang] ?? L.en;
+  const l = L[dl] ?? L.en;
   const labels = CAT_LABEL[cat] ?? CAT_LABEL.card;
-  const catTitle = labels[lang] ?? labels.en;
+  const catTitle = labels[dl] ?? labels.en;
   const catDesc = (CAT_DESC[cat] ?? CAT_DESC.card)[lang] ?? (CAT_DESC[cat] ?? CAT_DESC.card).en;
   const metaTitle = (CAT_META_TITLE[cat] ?? CAT_META_TITLE.card)[lang] ?? (CAT_META_TITLE[cat] ?? CAT_META_TITLE.card).en;
   const metaDesc = (CAT_META_DESC[cat] ?? CAT_META_DESC.card)[lang] ?? (CAT_META_DESC[cat] ?? CAT_META_DESC.card).en;
@@ -385,7 +387,7 @@ export default function BlogCategoryPage() {
             {CAT_THEMATIC_LINKS[cat].map(({ key, emoji, label }) => {
               const slug = THEMATIC_ROUTES[key]?.[lang as keyof typeof THEMATIC_ROUTES['best']] ?? THEMATIC_ROUTES[key]?.en;
               if (!slug) return null;
-              const lbl = label[lang] ?? label.en;
+              const lbl = label[dl] ?? label.en;
               return (
                 <Link
                   key={key}

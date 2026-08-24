@@ -11,7 +11,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 
 const YEAR = new Date().getFullYear();
 
@@ -199,11 +199,12 @@ export default function Favorites() {
   const favorites = useAppStore((s) => s.favorites);
   const toggleFavorite = useAppStore((s) => s.toggleFavorite);
   const lang = useLanguage();
+  const dl = displayLang(lang); // be→fr, at→de for UI text
   const { getRoute } = useLocalizedRoute();
   const cardSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.cards ?? 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-  const ui = UI[lang] || UI.en;
-  const favSeo = FAV_SEO[lang] || FAV_SEO.en;
+  const ui = UI[dl] || UI.en;
+  const favSeo = FAV_SEO[dl] || FAV_SEO.en;
   // noindex: user-specific page (localStorage), crawlers see empty state
   useSeoMeta({ title: favSeo.title, description: favSeo.desc, lang, noindex: true });
 
@@ -307,7 +308,7 @@ export default function Favorites() {
                       to={`/${lang}/${brandsSlug}/${c.brandId}`}
                       className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-accent transition-colors"
                     >
-                      {BRAND_LABEL[lang] || BRAND_LABEL.en}
+                      {BRAND_LABEL[dl] || BRAND_LABEL.en}
                     </Link>
                   )}
                 </div>
@@ -329,7 +330,7 @@ export default function Favorites() {
 
       {/* Bloc éditorial, internal links + UX hint */}
       {(() => {
-        const ed = FAV_EDITORIAL[lang] ?? FAV_EDITORIAL.en;
+        const ed = FAV_EDITORIAL[dl] ?? FAV_EDITORIAL.en;
         return (
           <div className="mt-14 border-t border-bg-border pt-10">
             <h2 className="text-xl font-display font-bold text-white mb-4">{ed.h2}</h2>

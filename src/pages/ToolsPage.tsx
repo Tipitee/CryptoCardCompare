@@ -8,7 +8,7 @@ import { Zap, Star, GitCompare, Globe, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import Breadcrumb from '../components/Breadcrumb';
 
@@ -122,7 +122,8 @@ COPY.at = COPY.de;
 
 export default function ToolsPage() {
   const lang = useLanguage();
-  const copy = COPY[lang] ?? COPY.en;
+  const dl = displayLang(lang); // be→fr, at→de for UI text
+  const copy = COPY[dl] ?? COPY.en;
   const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.fr;
   const [copied, setCopied] = useState(false);
 
