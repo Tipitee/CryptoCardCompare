@@ -74,7 +74,10 @@ jobs:
       - name: Prerender (~2,300 URLs; noindex compare pages are skipped)
         run: node scripts/prerender.mjs
         env:
-          PRERENDER_CONCURRENCY: 16
+          # 10 is the proven-safe value: higher concurrency starves the heavy
+          # hub pages (homepages) so React doesn't finish before capture and the
+          # English shell title gets saved. The 120min job timeout covers volume.
+          PRERENDER_CONCURRENCY: 10
 
       - name: Sanity-check prerender output
         run: |

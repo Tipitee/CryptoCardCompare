@@ -133,16 +133,26 @@ function shouldNoindex(path) {
 
 // ── Render one path ────────────────────────────────────────────────────────
 async function renderPath(page, path) {
-  await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
   // Wait until React has replaced the shell title with the real localised one.
   // The shell title is the hardcoded English fallback in index.html — we must
   // wait until it changes, otherwise we capture before useEffect fires.
   const SHELL_TITLE = 'TopCryptoCards — Compare Crypto Cards in Europe';
-  await page.waitForFunction(
-    (shellTitle) => document.querySelector('h1') && document.title !== shellTitle,
-    { timeout: 15000 },
-    SHELL_TITLE
-  ).catch(() => console.warn(`! slow render (kept anyway): ${path}`));
+  const load = async () => {
+    await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
+    await page.waitForFunction(
+      (shellTitle) => document.querySelector('h1') && document.title !== shellTitle,
+      { timeout: 30000 },
+      SHELL_TITLE
+    ).catch(() => {});
+  };
+  await load();
+  // Self-heal: if React never replaced the English shell title (transient
+  // starvation on heavy hub pages), retry once so we never save the shell.
+  if ((await page.title()) === SHELL_TITLE) {
+    console.warn(`! shell title captured, retrying: ${path}`);
+    await load();
+    if ((await page.title()) === SHELL_TITLE) console.warn(`! slow render (kept anyway): ${path}`);
+  }
 
   let html = await page.evaluate(() => '<!DOCTYPE html>' + document.documentElement.outerHTML);
 
