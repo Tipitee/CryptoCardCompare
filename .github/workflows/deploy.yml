@@ -31,7 +31,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -71,10 +71,10 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
-      - name: Prerender (~1,050 URLs; noindex compare pages are skipped)
+      - name: Prerender (~2,300 URLs; noindex compare pages are skipped)
         run: node scripts/prerender.mjs
         env:
-          PRERENDER_CONCURRENCY: 10
+          PRERENDER_CONCURRENCY: 16
 
       - name: Sanity-check prerender output
         run: |
