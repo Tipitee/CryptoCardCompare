@@ -33,6 +33,18 @@ try {
 }
 
 const DIST = join(process.cwd(), 'dist');
+
+// Read the shell <title> straight from the built index.html so this can never
+// drift out of sync with the app (a stale hardcoded value made waitForFunction
+// resolve instantly and capture the shell before React set the real title).
+const SHELL_TITLE = (() => {
+  try {
+    const m = readFileSync(join(DIST, 'index.html'), 'utf8').match(/<title>([^<]*)<\/title>/i);
+    return m ? m[1].trim() : 'TopCryptoCards — Comparatif cartes crypto Europe';
+  } catch {
+    return 'TopCryptoCards — Comparatif cartes crypto Europe';
+  }
+})();
 const ORIGIN = 'https://topcryptocards.eu';
 const PORT = Number(process.env.PRERENDER_PORT || 45173);
 const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY || 8);
@@ -133,9 +145,8 @@ function shouldNoindex(path) {
 
 // ── Render one path ────────────────────────────────────────────────────────
 async function renderPath(page, path) {
-  // Wait until React has replaced the shell title with the real localised one.
-  // The shell title is the hardcoded English fallback in index.html.
-  const SHELL_TITLE = 'TopCryptoCards — Compare Crypto Cards in Europe';
+  // Wait until React has replaced the shell title (SHELL_TITLE, read from
+  // index.html) with the real localised one.
   const isHub = path.split('/').filter(Boolean).length === 1; // /fr, /de, /es …
   const load = async (waitMs) => {
     await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
