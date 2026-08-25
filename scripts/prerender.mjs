@@ -33,18 +33,6 @@ try {
 }
 
 const DIST = join(process.cwd(), 'dist');
-
-// Read the shell <title> straight from the built index.html so this can never
-// drift out of sync with the app (a stale hardcoded value made waitForFunction
-// resolve instantly and capture the shell before React set the real title).
-const SHELL_TITLE = (() => {
-  try {
-    const m = readFileSync(join(DIST, 'index.html'), 'utf8').match(/<title>([^<]*)<\/title>/i);
-    return m ? m[1].trim() : 'TopCryptoCards — Comparatif cartes crypto Europe';
-  } catch {
-    return 'TopCryptoCards — Comparatif cartes crypto Europe';
-  }
-})();
 const ORIGIN = 'https://topcryptocards.eu';
 const PORT = Number(process.env.PRERENDER_PORT || 45173);
 const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY || 8);
@@ -145,25 +133,27 @@ function shouldNoindex(path) {
 
 // ── Render one path ────────────────────────────────────────────────────────
 async function renderPath(page, path) {
-  // Wait until React has replaced the shell title (SHELL_TITLE, read from
-  // index.html) with the real localised one.
+  // Wait for a POSITIVE signal that React ran and applied the page's SEO tags.
+  // useSeoMeta sets document.title AND injects <meta property="og:title"> in the
+  // same synchronous effect; the shell index.html has NO og:title, so its
+  // presence reliably means the real localised title is in place. This avoids
+  // brittle shell-title string matching (which drifts and broke the homepage).
   const isHub = path.split('/').filter(Boolean).length === 1; // /fr, /de, /es …
+  const seoReady = () => page.$('meta[property="og:title"]');
   const load = async (waitMs) => {
     await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
     await page.waitForFunction(
-      (shellTitle) => document.querySelector('h1') && document.title !== shellTitle,
-      { timeout: waitMs },
-      SHELL_TITLE
+      () => document.querySelector('meta[property="og:title"]') && document.querySelector('h1'),
+      { timeout: waitMs }
     ).catch(() => {});
   };
   await load(15000);
-  // Homepages are the only pages the deploy sanity-check validates, and the only
-  // ones heavy enough to occasionally capture the English shell under load. Retry
-  // just those with a longer wait — keeps the other ~2,290 pages fast.
-  if (isHub && (await page.title()) === SHELL_TITLE) {
-    console.warn(`! shell title on hub, retrying: ${path}`);
+  // Homepages are the only pages the deploy sanity-check validates. If React
+  // hasn't applied SEO tags yet, retry once with a longer wait.
+  if (isHub && !(await seoReady())) {
+    console.warn(`! seo tags missing on hub, retrying: ${path}`);
     await load(30000);
-    if ((await page.title()) === SHELL_TITLE) console.warn(`! slow render (kept anyway): ${path}`);
+    if (!(await seoReady())) console.warn(`! slow render (kept anyway): ${path}`);
   }
 
   let html = await page.evaluate(() => '<!DOCTYPE html>' + document.documentElement.outerHTML);
