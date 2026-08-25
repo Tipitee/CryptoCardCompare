@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
+import { displayLang } from '../i18n/types';
 
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   fr: { best: 'meilleure-carte-crypto', cashback: 'carte-crypto-cashback', noFees: 'carte-crypto-sans-frais', noStaking: 'carte-crypto-sans-staking' },

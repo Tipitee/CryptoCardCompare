@@ -7,7 +7,7 @@ import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { useLanguage } from '../hooks/useLanguage';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 
 const SCROLL_HINT: Record<string, string> = {
   fr: 'Faites défiler pour voir plus',

@@ -8,7 +8,7 @@ import CountrySwitcher from './CountrySwitcher';
 import LanguageSync from './LanguageSync';
 import CookieBanner from './CookieBanner';
 import { useEffect, useRef, useState } from 'react';
-import { ROUTE_TRANSLATIONS, contentLang } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, contentLang, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES, THEMATIC_NAV_LABELS, REVIEW_NAV_LABELS, VVP_SLUGS, VVP_NAV_LABELS } from '../config/routes';
 import { LEGAL_SLUGS, LEGAL_NAV_LABELS } from '../pages/LegalPage';
 import IndependentNotice from './IndependentNotice';

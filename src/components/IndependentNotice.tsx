@@ -6,6 +6,7 @@
 import { Link } from 'react-router-dom';
 import { Info } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
+import { displayLang } from '../i18n/types';
 
 const COPY: Record<string, { text: string; linkLabel: string }> = {
   fr: { text: 'Comparatif indépendant, nous pouvons percevoir des commissions d\'affiliation.', linkLabel: 'En savoir plus' },
