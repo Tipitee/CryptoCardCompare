@@ -13,6 +13,9 @@ import deBlog from './locales/de/blog.json';
 import esCommon from './locales/es/common.json';
 import esCards from './locales/es/cards.json';
 import esBlog from './locales/es/blog.json';
+import ptCommon from './locales/pt/common.json';
+import ptCards from './locales/pt/cards.json';
+import ptBlog from './locales/pt/blog.json';
 
 import itCommon from './locales/it/common.json';
 import itCards from './locales/it/cards.json';
@@ -22,7 +25,7 @@ import enCommon from './locales/en/common.json';
 import enCards from './locales/en/cards.json';
 import enBlog from './locales/en/blog.json';
 
-export const SUPPORTED_LANGUAGES = ['fr', 'de', 'es', 'it', 'en'] as const;
+export const SUPPORTED_LANGUAGES = ['fr', 'de', 'es', 'it', 'en', 'pt'] as const;
 export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 i18next
@@ -57,6 +60,11 @@ i18next
         common: enCommon,
         cards: enCards,
         blog: enBlog,
+      },
+      pt: {
+        common: ptCommon,
+        cards: ptCards,
+        blog: ptBlog,
       },
       // Belgium: French display content, Belgian market
       be: {

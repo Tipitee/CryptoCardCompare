@@ -35,6 +35,7 @@ const HOME_SEO: Record<string, { title: string; desc: string }> = {
   es: { title: `Tarjeta Criptomonedas España ${YEAR}, Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas de criptomonedas en España ${YEAR}: hasta 8% cashback en Bitcoin, sin cuota anual, sin staking. Gnosis Pay, Crypto.com, Nexo comparadas. Gratis ✓` },
   it: { title: `Migliore Carta Crypto Italia ${YEAR}, Top 10 | TopCryptoCards`, desc: `Migliore carta crypto in Italia nel ${YEAR}: carta bitcoin, fino all'8% cashback, 0€/anno, senza staking. Crypto.com, Nexo, Gnosis Pay confrontate. Confronto gratuito ✓` },
   en: { title: `Best Crypto Card UK ${YEAR}, Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards in the UK ${YEAR}: bitcoin card, up to 8% cashback, no annual fees, no staking. Gnosis Pay, Crypto.com, Nexo compared. Free ✓` },
+  pt: { title: `Melhor Cartão Crypto Portugal ${YEAR}, Cashback | TopCryptoCards`, desc: `Compara 90+ cartões crypto em Portugal ${YEAR}: cartão bitcoin, até 8% cashback, sem anuidade, sem staking. Gnosis Pay, Crypto.com, Nexo comparados. Grátis ✓` },
 };
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
@@ -93,6 +94,22 @@ const THEME_GRID: Record<string, {
       { key: '2026',       emoji: '🚀', label: 'Mejores en 2026',           desc: 'Las tarjetas que dominan el mercado este año.' },
       { key: 'no-kyc',     emoji: '🛡️', label: 'Sin KYC estricto',         desc: 'Menos verificaciones, acceso más rápido.' },
       { key: 'france',     emoji: '🇪🇸', label: 'Disponibles en España',   desc: 'Todas las tarjetas conformes y accesibles desde España.' },
+    ],
+  },
+  pt: {
+    title: 'Explorar por tipo de cartão',
+    items: [
+      { key: 'best',       emoji: '⭐', label: 'Melhores cartões',         desc: 'O nosso ranking dos melhores cartões crypto de 2026.' },
+      { key: 'cashback',   emoji: '💰', label: 'Cashback alto',            desc: 'Até 8 % de cashback em crypto nos teus gastos do dia a dia.' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sem anuidade',             desc: 'MetaMask, Gnosis Pay, Brighty, gratuitos e sem compromisso.' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sem staking exigido',      desc: 'Ganha cashback sem imobilizar capital.' },
+      { key: 'travel',     emoji: '✈️', label: 'Viagem & estrangeiro',     desc: '0 % de taxas de câmbio e levantamentos gratuitos no estrangeiro.' },
+      { key: 'rewards',    emoji: '🎁', label: 'Vantagens & recompensas',  desc: 'Lounge de aeroporto, Netflix, Airbnb, os cartões mais generosos.' },
+      { key: 'virtual',    emoji: '💳', label: 'Cartões virtuais',         desc: 'Ativáveis em menos de 5 minutos, compatível com Apple Pay.' },
+      { key: 'beginner',   emoji: '🌱', label: 'Para iniciantes',          desc: 'Registo simples, sem condições, ideal para começar.' },
+      { key: '2026',       emoji: '🚀', label: 'Melhores em 2026',         desc: 'Os cartões que dominam o mercado este ano.' },
+      { key: 'no-kyc',     emoji: '🛡️', label: 'Sem KYC rigoroso',        desc: 'Menos verificações, acesso mais rápido.' },
+      { key: 'france',     emoji: '🇵🇹', label: 'Disponíveis em Portugal',  desc: 'Todos os cartões conformes e acessíveis a partir de Portugal.' },
     ],
   },
   it: {
@@ -801,6 +818,7 @@ export default function Home() {
           es: { blog: 'Blog cripto', cryptos: 'Guía criptomonedas', reviews: 'Reseñas tarjetas' },
           it: { blog: 'Blog crypto', cryptos: 'Guida criptovalute', reviews: 'Recensioni carte' },
           en: { blog: 'Crypto blog', cryptos: 'Crypto guide', reviews: 'Card reviews' },
+          pt: { blog: 'Blog cripto', cryptos: 'Guia de criptomoedas', reviews: 'Análises de cartões' },
         };
         const labels = HUB_LINKS[dl] ?? HUB_LINKS.en;
         return (

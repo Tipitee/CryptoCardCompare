@@ -22,6 +22,7 @@ const COUNTRIES: CountryEntry[] = [
   { flag: '🇦🇹', label: 'Österreich',   lang: 'at', market: 'at' },
   { flag: '🇪🇸', label: 'España',       lang: 'es', market: 'es' },
   { flag: '🇮🇹', label: 'Italia',       lang: 'it', market: 'it' },
+  { flag: '🇵🇹', label: 'Portugal',     lang: 'pt', market: 'pt' },
   { flag: '🇬🇧', label: 'United Kingdom', lang: 'en', market: 'en' },
 ];
 
