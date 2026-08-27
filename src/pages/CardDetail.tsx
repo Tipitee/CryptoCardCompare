@@ -31,57 +31,57 @@ import AutoLinker, { autoLinkHtml } from '../components/AutoLinker';
 import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
 const CARD_SEGMENT: Record<string, string> = {
-  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes',
 };
 const HOME_LABEL: Record<string, string> = {
-  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início',
 };
 const OTHER_TIERS_LABEL: Record<string, string> = {
   fr: 'Autres cartes de cette marque',
   de: 'Weitere Karten dieser Marke',
   es: 'Otras tarjetas de esta marca',
   it: 'Altre carte di questo marchio',
-  en: 'Other cards from this brand',
+  en: 'Other cards from this brand', pt: 'Outros cartões desta marca',
 };
 const SEE_ALL_TIERS_LABEL: Record<string, string> = {
   fr: 'Voir toutes les cartes',
   de: 'Alle Karten ansehen',
   es: 'Ver todas las tarjetas',
   it: 'Vedi tutte le carte',
-  en: 'See all cards',
+  en: 'See all cards', pt: 'Ver todos os cartões',
 };
 const RELATED_LABEL: Record<string, string> = {
   fr: 'Pages liées', de: 'Verwandte Seiten', es: 'Páginas relacionadas',
-  it: 'Pagine correlate', en: 'Related pages',
+  it: 'Pagine correlate', en: 'Related pages', pt: 'Páginas relacionadas',
 };
 const REVIEW_LINK_LABEL: Record<string, string> = {
   fr: 'Avis complet', de: 'Vollständige Bewertung', es: 'Reseña completa',
-  it: 'Recensione completa', en: 'Full review',
+  it: 'Recensione completa', en: 'Full review', pt: 'Análise completa',
 };
 // ── Generated-content section labels ─────────────────────────────────────────
 const OVERVIEW_LABEL: Record<string, string> = {
-  fr: 'Présentation', de: 'Beschreibung', es: 'Descripción', it: 'Descrizione', en: 'Overview',
+  fr: 'Présentation', de: 'Beschreibung', es: 'Descripción', it: 'Descrizione', en: 'Overview', pt: 'Apresentação',
 };
 const FORWHO_LABEL: Record<string, string> = {
   fr: 'Pour qui est cette carte ?',
   de: 'Für wen ist diese Karte?',
   es: '¿Para quién es esta tarjeta?',
   it: 'Per chi è questa carta?',
-  en: 'Who is this card for?',
+  en: 'Who is this card for?', pt: 'Para quem é este cartão?',
 };
 const PROS_LABEL: Record<string, string> = {
-  fr: 'Avantages', de: 'Vorteile', es: 'Ventajas', it: 'Vantaggi', en: 'Advantages',
+  fr: 'Avantages', de: 'Vorteile', es: 'Ventajas', it: 'Vantaggi', en: 'Advantages', pt: 'Vantagens',
 };
 const CONS_LABEL: Record<string, string> = {
-  fr: 'Inconvénients', de: 'Nachteile', es: 'Inconvenientes', it: 'Svantaggi', en: 'Disadvantages',
+  fr: 'Inconvénients', de: 'Nachteile', es: 'Inconvenientes', it: 'Svantaggi', en: 'Disadvantages', pt: 'Desvantagens',
 };
 const FAQ_SECTION_LABEL: Record<string, string> = {
   fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes',
-  it: 'Domande frequenti', en: 'FAQ',
+  it: 'Domande frequenti', en: 'FAQ', pt: 'Perguntas frequentes',
 };
 const COMPARISON_LABEL: Record<string, string> = {
   fr: 'Analyse comparative', de: 'Vergleichende Analyse', es: 'Análisis comparativo',
-  it: 'Analisi comparativa', en: 'Comparative Analysis',
+  it: 'Analisi comparativa', en: 'Comparative Analysis', pt: 'Análise comparativa',
 };
 
 // Editorial comparison pairs per card, used to build sidebar "Compare with..." links
@@ -113,7 +113,7 @@ const EDITORIAL_PAIRS = [
 ];
 
 const COMPARE_WITH_LABEL: Record<string, string> = {
-  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons',
+  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons', pt: 'Comparativos',
 };
 
 // Propagate be→fr and at→de aliases for all CardDetail maps
@@ -216,14 +216,15 @@ export default function CardDetail() {
 
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
-  const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review' };
-  const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free' };
+  const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review', pt: 'Análise' };
+  const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free', pt: 'grátis' };
   const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
     fr: (name, _issuer, cb, fees) => `${name} ${year} : ${cb > 0 ? `${cb}% de cashback` : 'sans cashback'}, ${fees === 0 ? '0€/an' : fees + ' €/an'}. Avis complet, test indépendant, avantages et limites. Comparateur gratuit ✓`,
     de: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% Cashback` : 'kein Cashback'}, ${fees === 0 ? FREE_LABEL.de : fees + ' €/Jahr'}. Vollständige Bewertung, Vor- und Nachteile, unabhängiges Fazit ✓`,
     es: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'sin cashback'}, ${fees === 0 ? FREE_LABEL.es : fees + ' €/año'}. Análisis completo, ventajas, inconvenientes y veredicto independiente ✓`,
     it: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'senza cashback'}, ${fees === 0 ? FREE_LABEL.it : fees + ' €/anno'}. Recensione completa, pro, contro e verdetto indipendente ✓`,
     en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review, pros, cons, our verdict. Independent comparison ✓`,
+    pt: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'sem cashback'}, ${fees === 0 ? FREE_LABEL.pt : fees + ' €/ano'}. Análise completa, prós, contras e veredicto independente ✓`,
   };
   const seoTitle = card
     ? (article?.meta_title || `${card.name}, ${REVIEW_WORD[contentLang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
