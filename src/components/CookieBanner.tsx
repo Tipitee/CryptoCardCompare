@@ -52,6 +52,14 @@ const translations: Record<ContentLang, {
     link: 'Informativa sulla privacy',
     href: '/privacy',
   },
+  pt: {
+    title: 'Definições de cookies',
+    body: 'Utilizamos cookies para melhorar a tua experiência e registar cliques em links de afiliados. Os cookies estritamente necessários estão sempre ativos. Os cookies opcionais só são ativados com o teu consentimento.',
+    accept: 'Aceitar tudo',
+    reject: 'Apenas necessários',
+    link: 'Política de Privacidade',
+    href: '/privacy',
+  },
 };
 
 export default function CookieBanner({ lang = 'en' }: { lang?: Language }) {

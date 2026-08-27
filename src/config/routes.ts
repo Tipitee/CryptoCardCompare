@@ -25,6 +25,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-credito',
     it: 'carta-crypto-credito',
     en: 'crypto-credit-card',
+    pt: 'cartao-crypto-credito',
   },
   business: {
     fr: 'carte-crypto-entreprise',     be: 'carte-crypto-entreprise',
@@ -32,6 +33,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-empresa',
     it: 'carta-crypto-aziendale',
     en: 'business-crypto-card',
+    pt: 'cartao-crypto-empresa',
   },
   bitcoin: {
     fr: 'carte-bitcoin',              be: 'carte-bitcoin',
@@ -39,6 +41,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-bitcoin',
     it: 'carta-bitcoin',
     en: 'bitcoin-card',
+    pt: 'cartao-bitcoin',
   },
   best: {
     fr: 'meilleure-carte-crypto',     be: 'meilleure-carte-crypto',
@@ -46,6 +49,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'mejor-tarjeta-cripto',
     it: 'migliore-carta-cripto',
     en: 'best-crypto-card',
+    pt: 'melhor-cartao-crypto',
   },
   cashback: {
     fr: 'carte-crypto-cashback',      be: 'carte-crypto-cashback',
@@ -53,6 +57,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-cashback',
     it: 'carta-cripto-cashback',
     en: 'crypto-card-cashback',
+    pt: 'cartao-crypto-cashback',
   },
   'no-fees': {
     fr: 'carte-crypto-sans-frais',    be: 'carte-crypto-sans-frais',
@@ -60,6 +65,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-sin-comisiones',
     it: 'carta-cripto-senza-commissioni',
     en: 'crypto-card-no-fees',
+    pt: 'cartao-crypto-sem-taxas',
   },
   'no-staking': {
     fr: 'carte-crypto-sans-staking',  be: 'carte-crypto-sans-staking',
@@ -67,6 +73,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-sin-staking',
     it: 'carta-cripto-senza-staking',
     en: 'crypto-card-no-staking',
+    pt: 'cartao-crypto-sem-staking',
   },
   france: {
     fr: 'cartes-crypto-france',       be: 'cartes-crypto-france',
@@ -74,6 +81,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjetas-crypto-espana',
     it: 'carte-crypto-italia',
     en: 'crypto-cards-europe',
+    pt: 'cartoes-crypto-portugal',
   },
   virtual: {
     fr: 'carte-crypto-virtuelle',     be: 'carte-crypto-virtuelle',
@@ -81,6 +89,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-virtual',
     it: 'carta-crypto-virtuale',
     en: 'virtual-crypto-card',
+    pt: 'cartao-crypto-virtual',
   },
   beginner: {
     fr: 'cartes-crypto-debutant',     be: 'cartes-crypto-debutant',
@@ -88,6 +97,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjetas-crypto-principiante',
     it: 'carte-crypto-principiante',
     en: 'beginner-crypto-cards',
+    pt: 'cartao-crypto-iniciantes',
   },
   'no-kyc': {
     fr: 'carte-crypto-sans-kyc',      be: 'carte-crypto-sans-kyc',
@@ -95,6 +105,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-sin-kyc',
     it: 'carta-cripto-senza-kyc',
     en: 'crypto-card-no-kyc',
+    pt: 'cartao-crypto-sem-kyc',
   },
   '2026': {
     fr: 'carte-crypto-2026',          be: 'carte-crypto-2026',
@@ -102,6 +113,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-2026',
     it: 'carta-cripto-2026',
     en: 'best-crypto-card-2026',
+    pt: 'cartao-crypto-2026',
   },
   travel: {
     fr: 'carte-crypto-voyage',        be: 'carte-crypto-voyage',
@@ -109,6 +121,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-viaje',
     it: 'carta-cripto-viaggio',
     en: 'crypto-card-travel',
+    pt: 'cartao-crypto-viagem',
   },
   rewards: {
     fr: 'carte-crypto-recompenses',   be: 'carte-crypto-recompenses',
@@ -116,6 +129,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-cripto-recompensas',
     it: 'carta-cripto-premi',
     en: 'crypto-card-rewards',
+    pt: 'cartao-crypto-recompensas',
   },
   physical: {
     fr: 'carte-crypto-physique',      be: 'carte-crypto-physique',
@@ -123,6 +137,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-fisica',
     it: 'carta-crypto-fisica',
     en: 'physical-crypto-card',
+    pt: 'cartao-crypto-fisico',
   },
   belgium: {
     fr: 'carte-crypto-belgique',      be: 'carte-crypto-belgique',
@@ -130,6 +145,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-belgica',
     it: 'carta-crypto-belgio',
     en: 'crypto-card-belgium',
+    pt: 'cartao-crypto-belgica',
   },
   austria: {
     fr: 'carte-crypto-autriche',      be: 'carte-crypto-autriche',
@@ -137,6 +153,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-austria',
     it: 'carta-crypto-austria',
     en: 'crypto-card-austria',
+    pt: 'cartao-crypto-austria',
   },
   iban: {
     fr: 'carte-crypto-avec-iban',     be: 'carte-crypto-avec-iban',
@@ -144,6 +161,7 @@ export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
     es: 'tarjeta-crypto-con-iban',
     it: 'carta-crypto-con-iban',
     en: 'crypto-card-with-iban',
+    pt: 'cartao-crypto-com-iban',
   },
 };
 
@@ -181,6 +199,7 @@ export const THEMATIC_NAV_LABELS: Record<Language, ThematicNavGroup> = {
   be: { title: 'Guides', best: 'Meilleures cartes crypto', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Cartes sans staking', cryptos: 'Guide Cryptomonnaies', france: 'Cartes disponibles en France', virtual: 'Cartes virtuelles', beginner: 'Cartes pour débutants', noKyc: 'Cartes sans KYC', year2026: 'Meilleures cartes 2026', travel: 'Cartes voyage', rewards: 'Cartes avec récompenses', physical: 'Cartes physiques', belgium: 'Cartes crypto en Belgique', austria: 'Cartes crypto en Autriche', iban: 'Cartes crypto avec IBAN' },
   // Austria: German nav labels
   at: { title: 'Ratgeber', best: 'Beste Krypto-Karten', cashback: 'Karten mit Cashback', noFees: 'Kostenlose Karten', noStaking: 'Karten ohne Staking', cryptos: 'Kryptowährungs-Guide', france: 'Karten in Deutschland', virtual: 'Virtuelle Karten', beginner: 'Karten für Einsteiger', noKyc: 'Karten ohne KYC', year2026: 'Beste Karten 2026', travel: 'Reise-Karten', rewards: 'Karten mit Prämien', physical: 'Physische Karten', belgium: 'Krypto-Karten in Belgien', austria: 'Krypto-Karten in Österreich', iban: 'Krypto-Karten mit IBAN' },
+  pt: { title: 'Guias', best: 'Melhores cartões crypto', cashback: 'Cartões com cashback', noFees: 'Cartões sem taxas', noStaking: 'Cartões sem staking', cryptos: 'Guia de Criptomoedas', france: 'Cartões disponíveis em Portugal', virtual: 'Cartões virtuais', beginner: 'Cartões para iniciantes', noKyc: 'Cartões sem KYC', year2026: 'Melhores cartões 2026', travel: 'Cartões de viagem', rewards: 'Cartões com recompensas', physical: 'Cartões físicos', belgium: 'Cartões crypto na Bélgica', austria: 'Cartões crypto na Áustria', iban: 'Cartões crypto com IBAN' },
 };
 
 // ---------------------------------------------------------------------------
@@ -195,6 +214,7 @@ export const VVP_SLUGS: Record<Language, string> = {
   es: 'tarjeta-crypto-virtual-vs-fisica',
   it: 'carta-crypto-virtuale-vs-fisica',
   en: 'virtual-vs-physical-crypto-card',
+  pt: 'cartao-crypto-virtual-vs-fisico',
 };
 
 export const VVP_NAV_LABELS: Record<Language, string> = {
@@ -205,6 +225,7 @@ export const VVP_NAV_LABELS: Record<Language, string> = {
   es: 'Virtual vs Física',
   it: 'Virtuale vs Fisica',
   en: 'Virtual vs Physical',
+  pt: 'Virtual vs Físico',
 };
 
 // ---------------------------------------------------------------------------
@@ -219,4 +240,5 @@ export const REVIEW_NAV_LABELS: Record<Language, string> = {
   es: 'Opiniones',
   it: 'Recensioni',
   en: 'Reviews',
+  pt: 'Análises',
 };

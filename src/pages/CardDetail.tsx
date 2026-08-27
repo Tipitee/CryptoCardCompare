@@ -24,7 +24,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
 import { getExtraLabel } from '../i18n/extrasLabels';
-import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
+import { ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { generateCardContent } from '../utils/cardContent';
 import AutoLinker, { autoLinkHtml } from '../components/AutoLinker';

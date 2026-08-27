@@ -14,7 +14,7 @@ import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import SmartCardImage from '../components/SmartCardImage';
 import { useLanguage } from '../hooks/useLanguage';
-import { contentLang, ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
+import { contentLang, ROUTE_TRANSLATIONS } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 import { ALT_BRANDS, ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 

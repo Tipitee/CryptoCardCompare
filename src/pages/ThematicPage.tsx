@@ -1369,7 +1369,7 @@ const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   best:         { fr: 'meilleure-carte-crypto', be: 'meilleure-carte-crypto', de: 'beste-krypto-karte', at: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
   cashback:     { fr: 'carte-crypto-cashback', be: 'carte-crypto-cashback', de: 'krypto-karte-cashback', at: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
   'no-fees':    { fr: 'carte-crypto-sans-frais', be: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', at: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
-  'no-staking': { fr: 'carte-crypto-sans-staking', be: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', at: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
+  'no-staking': { fr: 'carte-crypto-sans-staking', be: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', at: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking', pt: 'cartao-crypto-sem-staking' },
   france:       { fr: 'cartes-crypto-france', be: 'cartes-crypto-france', de: 'krypto-karten-deutschland', at: 'krypto-karten-deutschland', es: 'tarjetas-crypto-espana', it: 'carte-crypto-italia', en: 'crypto-cards-europe' },
   virtual:      { fr: 'carte-crypto-virtuelle', be: 'carte-crypto-virtuelle', de: 'virtuelle-krypto-karte', at: 'virtuelle-krypto-karte', es: 'tarjeta-crypto-virtual', it: 'carta-crypto-virtuale', en: 'virtual-crypto-card' },
   beginner:     { fr: 'cartes-crypto-debutant', be: 'cartes-crypto-debutant', de: 'krypto-karten-einsteiger', at: 'krypto-karten-einsteiger', es: 'tarjetas-crypto-principiante', it: 'carte-crypto-principiante', en: 'beginner-crypto-cards' },
@@ -1787,7 +1787,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           return val ? `${val}%` : '-';
         }
         function fmtFees(c: any): string {
-          return (c.annual_fees || 0) > 0 ? `${c.annual_fees} €/${({fr:'an',de:'Jahr',es:'año',it:'anno',en:'year'})[cl]??'year'}` : (FREE_LABEL[cl]??'Free');
+          return (c.annual_fees || 0) > 0 ? `${c.annual_fees} €/${(({fr:'an',de:'Jahr',es:'año',it:'anno',en:'year'}) as Record<string,string>)[cl]??'year'}` : (FREE_LABEL[cl]??'Free');
         }
         function fmtStaking(c: any): string {
           if (!c.staking_required || c.staking_required <= 0) return NO_STAKING_LABEL[cl] ?? 'Not required';
@@ -1802,7 +1802,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               <thead>
                 <tr className="bg-bg-elevated border-b border-bg-border">
                   <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider min-w-[120px]">
-                    {({ fr:'Critère', de:'Kriterium', es:'Criterio', it:'Criterio', en:'Criteria' })[cl]??'Criteria'}
+                    {({ fr:'Critère', de:'Kriterium', es:'Criterio', it:'Criterio', en:'Criteria', pt:'Critério' } as Record<string,string>)[cl]??'Criteria'}
                   </th>
                   {TOP.map((c: any, i: number) => (
                     <th key={c.id} scope="col" className="px-4 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">
@@ -1834,7 +1834,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           ))}
         </div>
       ) : filteredCards.length === 0 ? (
-        <p className="text-slate-400 mb-10">{{ fr: 'Aucune carte trouvée pour ce critère.', de: 'Keine Karte für dieses Kriterium gefunden.', es: 'Ninguna tarjeta encontrada.', it: 'Nessuna carta trovata.', en: 'No cards found for this criterion.' }[cl] ?? 'No cards found.'}</p>
+        <p className="text-slate-400 mb-10">{({ fr: 'Aucune carte trouvée pour ce critère.', de: 'Keine Karte für dieses Kriterium gefunden.', es: 'Ninguna tarjeta encontrada.', it: 'Nessuna carta trovata.', en: 'No cards found for this criterion.', pt: 'Nenhum cartão encontrado para este critério.' } as Record<string,string>)[cl] ?? 'No cards found.'}</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {filteredCards.map((card: any, idx: number) => (

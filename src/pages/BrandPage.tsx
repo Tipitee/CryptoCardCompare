@@ -1124,14 +1124,14 @@ const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at
 function fmtCashbackMax(card: CryptoCard, lang: string): string {
   const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
   if (!pct) return ',';
-  const upTo = UP_TO[cl] ?? UP_TO.en;
+  const upTo = UP_TO[displayLang(lang)] ?? UP_TO.en;
   return `${upTo} ${pct} %`;
 }
 
 function fmtAnnualFees(card: CryptoCard, lang: string): string {
   const fees = card.annualFees ?? 0;
-  if (fees === 0) return FREE[cl] ?? FREE.en;
-  return `${fees} €${PER_YEAR[cl] ?? PER_YEAR.en}`;
+  if (fees === 0) return FREE[displayLang(lang)] ?? FREE.en;
+  return `${fees} €${PER_YEAR[displayLang(lang)] ?? PER_YEAR.en}`;
 }
 
 function ReviewMiniCard({

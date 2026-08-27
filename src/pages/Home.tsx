@@ -374,7 +374,7 @@ export default function Home() {
   const heroCards = cards.slice(0, 3);
   useEffect(() => {
     if (cards.length === 0) return;
-    const segment = { fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards' }[lang] || 'cards';
+    const segment = { fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes' }[lang] || 'cards';
     const schema = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',

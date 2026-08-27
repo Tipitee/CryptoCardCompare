@@ -326,7 +326,7 @@ function AdminPanel({ secret, onLogout }: { secret: string; onLogout: () => void
       // Persiste tout de suite si l'article existe déjà (comme la génération),
       // pour éviter d'avoir à re-cliquer « Enregistrer ».
       if (editPost?.id && editPost?.title?.trim() && editPost?.slug?.trim()) {
-        const saved = await adminUpsertPost({ ...editPost, image_hero: url }, secret);
+        const saved = await adminUpsertPost({ ...editPost, image_hero: url } as Parameters<typeof adminUpsertPost>[0], secret);
         setEditPost(saved);
         setPosts(prev => {
           const idx = prev.findIndex(p => p.id === saved.id);

@@ -65,6 +65,12 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      # Type-check before building. vite/esbuild does NOT type-check, so without
+      # this, undefined identifiers and missing props ship silently (they crash
+      # at runtime / during prerender). Uses the app tsconfig that includes src.
+      - name: Type-check (catch runtime bugs before build)
+        run: npx tsc --noEmit -p tsconfig.app.json
+
       - name: Build
         run: npx vite build
         env:

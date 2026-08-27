@@ -1,4 +1,4 @@
-import { contentLang, displayLang } from '../i18n/types';
+import { contentLang } from '../i18n/types';
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -194,7 +194,7 @@ export default function Blog() {
   return (
     <div className="container-app py-12 animate-fade-in">
       <Breadcrumb items={[
-        { label: { fr:'Accueil',de:'Startseite',es:'Inicio',it:'Home',en:'Home' }[dl] || 'Home', href: `/${lang}` },
+        { label: { fr:'Accueil',de:'Startseite',es:'Inicio',it:'Home',en:'Home',pt:'Início' }[dl] || 'Home', href: `/${lang}` },
         { label: t('blog_header_badge') },
       ]} />
       {/* Header */}

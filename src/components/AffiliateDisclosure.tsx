@@ -27,6 +27,11 @@ const content: Record<ContentLang, { label: string; text: string; link: string }
     text: "Questa pagina può contenere link di affiliazione. Se ti iscrivi tramite i nostri link, potremmo ricevere una commissione. Ciò non influisce sulle nostre valutazioni né sull'ordine delle carte. Le carte senza relazioni di affiliazione sono elencate in modo uguale.",
     link: 'Informativa completa',
   },
+  pt: {
+    label: 'Aviso de afiliação',
+    text: 'Esta página pode conter links de afiliados. Se te registares através dos nossos links, podemos receber uma comissão. Isto não afeta as nossas avaliações nem a ordem dos cartões. Os cartões sem relação de afiliação são apresentados de igual modo.',
+    link: 'Informação completa',
+  },
 };
 
 export default function AffiliateDisclosure({ lang = 'en' }: { lang?: Language }) {

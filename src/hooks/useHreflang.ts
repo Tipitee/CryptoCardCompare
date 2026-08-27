@@ -24,7 +24,7 @@
 import { useEffect } from 'react';
 
 export const HREFLANG_BASE = 'https://topcryptocards.eu';
-const LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
+const LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'] as const;
 const ATTR = 'data-hreflang';
 
 /**
@@ -40,6 +40,7 @@ const HREFLANG_BCP47: Record<string, string> = {
   es: 'es',
   it: 'it',
   en: 'en-GB',
+  pt: 'pt-PT',
 };
 
 export interface HreflangEntry {

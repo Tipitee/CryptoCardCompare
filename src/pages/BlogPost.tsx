@@ -119,7 +119,7 @@ function buildBlogMetaDesc(post: { meta_description?: string | null; excerpt?: s
     const e = post.excerpt.trim();
     return e.length > 157 ? e.slice(0, 154) + '…' : e;
   }
-  const suffix = BLOG_META_SUFFIX[dl] ?? BLOG_META_SUFFIX.en;
+  const suffix = BLOG_META_SUFFIX[displayLang(lang)] ?? BLOG_META_SUFFIX.en;
   const desc = `${post.title} ${suffix}`;
   return desc.length > 157 ? desc.slice(0, 154) + '…' : desc;
 }

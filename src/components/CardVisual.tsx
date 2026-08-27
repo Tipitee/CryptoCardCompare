@@ -123,11 +123,11 @@ export default function CardVisual({ card, size = 'md', tilt = true, className =
           )}
           <div className="flex items-end justify-between">
             <div className="min-w-0">
-              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Titulaire', de: 'Inhaber', es: 'Titular', it: 'Titolare', en: 'Holder' }[dl] ?? 'Holder'}</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Titulaire', de: 'Inhaber', es: 'Titular', it: 'Titolare', en: 'Holder', pt: 'Titular' }[dl] ?? 'Holder'}</div>
               <div className="text-xs font-semibold truncate">{card.name}</div>
             </div>
             <div className="text-right">
-              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Réseau', de: 'Netzwerk', es: 'Red', it: 'Rete', en: 'Network' }[dl] ?? 'Network'}</div>
+              <div className="text-[9px] uppercase tracking-wider opacity-60">{{ fr: 'Réseau', de: 'Netzwerk', es: 'Red', it: 'Rete', en: 'Network', pt: 'Rede' }[dl] ?? 'Network'}</div>
               <div className="text-sm font-bold italic">
                 {(card.cardNetwork ?? '').toUpperCase()}
               </div>

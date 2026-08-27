@@ -255,7 +255,7 @@ CITE_COPY.at = CITE_COPY.de;
 function CiteThis({ lang, url }: { lang: string; title: string; url: string }) {
   const [copiedApa, setCopiedApa] = useState(false);
   const [copiedEmbed, setCopiedEmbed] = useState(false);
-  const cc = CITE_COPY[dl] ?? CITE_COPY.en;
+  const cc = CITE_COPY[displayLang(lang)] ?? CITE_COPY.en;
   const year = new Date().getFullYear();
   const apaText = cc.apa(url, year);
   const embedText = cc.embedCode(url);
