@@ -19,6 +19,13 @@ import type { Language } from '../i18n/types';
 // ---------------------------------------------------------------------------
 
 export const THEMATIC_ROUTES: Record<string, Record<Language, string>> = {
+  credit: {
+    fr: 'carte-crypto-credit',          be: 'carte-crypto-credit',
+    de: 'krypto-kreditkarte',           at: 'krypto-kreditkarte',
+    es: 'tarjeta-crypto-credito',
+    it: 'carta-crypto-credito',
+    en: 'crypto-credit-card',
+  },
   business: {
     fr: 'carte-crypto-entreprise',     be: 'carte-crypto-entreprise',
     de: 'krypto-karte-unternehmen',    at: 'krypto-karte-unternehmen',
