@@ -5,6 +5,7 @@
 // DE/ES/IT/EN translations are merged in from cryptoContentTranslations.ts
 // ─────────────────────────────────────────────────────────────────────────────
 import { CRYPTO_TRANSLATIONS } from './cryptoContentTranslations';
+import { CRYPTO_TRANSLATIONS_PT } from './cryptoContentTranslationsPt';
 
 export interface CryptoSection {
   title: string;
@@ -899,6 +900,13 @@ export const CRYPTO_CONTENT: Record<string, Partial<Record<string, CryptoCopy>>>
 
 // Merge DE/ES/IT/EN translations into CRYPTO_CONTENT
 for (const [sym, langs] of Object.entries(CRYPTO_TRANSLATIONS)) {
+  if (CRYPTO_CONTENT[sym]) {
+    Object.assign(CRYPTO_CONTENT[sym], langs);
+  }
+}
+
+// Merge PT translations into CRYPTO_CONTENT
+for (const [sym, langs] of Object.entries(CRYPTO_TRANSLATIONS_PT)) {
   if (CRYPTO_CONTENT[sym]) {
     Object.assign(CRYPTO_CONTENT[sym], langs);
   }

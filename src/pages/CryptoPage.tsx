@@ -101,6 +101,7 @@ export default function CryptoPage() {
     es: (n) => `${n} y tarjetas crypto, Cashback & Guía ${YEAR} | TopCryptoCards`,
     it: (n) => `${n} e carte crypto, Cashback & Guida ${YEAR} | TopCryptoCards`,
     en: (n) => `${n} Crypto Card, Cashback & Guide ${YEAR} | TopCryptoCards`,
+    pt: (n) => `${n} e cartões crypto, Cashback & Guia ${YEAR} | TopCryptoCards`,
   };
   const CRYPTO_DESC_FALLBACK: Record<string, (name: string) => string> = {
     fr: (n) => `Quelles cartes crypto acceptent le ${n} en ${YEAR} ? Cashback, frais, staking : comparatif complet des meilleures cartes. Gratuit ✓`,
@@ -108,6 +109,7 @@ export default function CryptoPage() {
     es: (n) => `¿Qué tarjetas crypto aceptan ${n} en ${YEAR}? Cashback, comisiones, staking: comparativa completa de las mejores tarjetas. Gratis ✓`,
     it: (n) => `Quali carte crypto accettano ${n} nel ${YEAR}? Cashback, commissioni, staking: confronto completo delle migliori carte. Gratuito ✓`,
     en: (n) => `Which crypto cards support ${n} in ${YEAR}? Cashback, fees, staking: full comparison of the best cards. Free ✓`,
+    pt: (n) => `Que cartões crypto aceitam ${n} em ${YEAR}? Cashback, comissões, staking: comparativo completo dos melhores cartões. Grátis ✓`,
   };
   const cryptoName = meta?.name ?? sym.toUpperCase();
   const fallbackTitle = (CRYPTO_TITLE_FALLBACK[cl] ?? CRYPTO_TITLE_FALLBACK.en)(cryptoName);

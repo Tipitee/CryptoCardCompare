@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>https://topcryptocards.eu/fr/cryptos</loc>
     <lastmod>2026-07-04</lastmod>
@@ -11,6 +12,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url>
@@ -23,6 +25,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url>
@@ -35,6 +38,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url>
@@ -47,6 +51,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url>
@@ -59,6 +64,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url>
@@ -71,6 +77,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url>
@@ -83,6 +90,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url>
@@ -95,6 +103,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url>
@@ -107,6 +116,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url>
@@ -119,6 +129,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url>
@@ -131,6 +142,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url>
@@ -143,6 +155,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url>
@@ -155,6 +168,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url>
@@ -167,6 +181,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url>
@@ -179,6 +194,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url>
@@ -191,6 +207,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url>
@@ -203,6 +220,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url>
@@ -215,6 +233,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url>
@@ -227,6 +246,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url>
@@ -239,6 +259,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url>
@@ -251,6 +272,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url>
@@ -263,6 +285,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url>
@@ -275,6 +298,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url>
@@ -287,6 +311,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url>
@@ -299,6 +324,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url>
@@ -311,6 +337,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url>
@@ -323,6 +350,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url>
@@ -335,6 +363,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url>
@@ -347,6 +376,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url>
@@ -359,6 +389,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url>
@@ -371,6 +402,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url>
@@ -383,6 +415,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url>
@@ -395,6 +428,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url>
@@ -407,6 +441,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url>
@@ -419,6 +454,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url>
@@ -431,6 +467,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url>
@@ -443,6 +480,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url>
@@ -455,6 +493,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url>
@@ -467,6 +506,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url>
@@ -479,6 +519,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url>
@@ -491,6 +532,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url>
@@ -503,6 +545,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url>
@@ -515,6 +558,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url>
@@ -527,6 +571,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url>
@@ -539,6 +584,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url>
@@ -551,6 +597,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url>
@@ -563,6 +610,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url>
@@ -575,6 +623,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url>
@@ -587,6 +636,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url>
@@ -599,6 +649,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url>
@@ -611,6 +662,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url>
@@ -623,6 +675,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url>
@@ -635,6 +688,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url>
@@ -647,6 +701,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url>
@@ -659,6 +714,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/btc</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -669,6 +725,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/btc</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -679,6 +736,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/eth</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -689,6 +747,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/eth</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -699,6 +758,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/xrp</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -709,6 +769,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/xrp</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -719,6 +780,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/bnb</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -729,6 +791,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/bnb</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -739,6 +802,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/sol</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -749,6 +813,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/sol</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -759,6 +824,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/ada</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -769,6 +835,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/ada</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -779,6 +846,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/avax</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -789,6 +857,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/avax</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -799,6 +868,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/doge</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -809,6 +879,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/doge</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -819,6 +890,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/usdt</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -829,6 +901,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/usdt</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -839,6 +912,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos/usdc</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -849,6 +923,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos/usdc</loc><lastmod>2026-08-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
@@ -859,6 +934,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
   <url><loc>https://topcryptocards.eu/be/cryptos</loc><lastmod>2026-08-24</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
@@ -869,6 +945,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
   </url>
   <url><loc>https://topcryptocards.eu/at/cryptos</loc><lastmod>2026-08-24</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
@@ -879,6 +956,150 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/btc</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/btc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/btc"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/eth</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/eth"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/eth"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/xrp</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/xrp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/xrp"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/bnb</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/bnb"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/bnb"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/sol</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/sol"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/sol"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/ada</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/ada"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/ada"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/avax</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/avax"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/avax"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/doge</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/doge"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/doge"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/usdt</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdt"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cryptos/usdc</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cryptos/usdc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/cryptos/usdc"/>
   </url>
 </urlset>
