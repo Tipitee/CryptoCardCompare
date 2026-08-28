@@ -25,6 +25,7 @@ const REVIEW_TITLE_FALLBACK: Record<string, (name: string) => string> = {
   es: (n) => `${n} Opinión ${YEAR}, Cashback, Comisiones y Veredicto | TopCryptoCards`,
   it: (n) => `${n} Recensione ${YEAR}, Cashback, Commissioni & Verdetto | TopCryptoCards`,
   en: (n) => `${n} Review ${YEAR}, Cashback, Fees & Verdict | TopCryptoCards`,
+  pt: (n) => `${n} Análise ${YEAR}, Cashback, Comissões e Veredicto | TopCryptoCards`,
 };
 
 /** Fallback meta description when no i18n translation exists */
@@ -34,11 +35,13 @@ const REVIEW_DESC_FALLBACK: Record<string, (name: string) => string> = {
   es: (n) => `Reseña completa ${n} ${YEAR}: cashback, comisiones, staking, ventajas y desventajas. Nuestro test y veredicto.`,
   it: (n) => `Recensione completa ${n} ${YEAR}: cashback, commissioni, staking, pro e contro. Il nostro test e verdetto.`,
   en: (n) => `Full review of ${n} ${YEAR}: cashback, annual fees, staking, pros and cons. Our complete test and verdict.`,
+  pt: (n) => `Análise completa ${n} ${YEAR}: cashback, comissões anuais, staking, prós e contras. O nosso teste e veredicto objetivo.`,
 };
 
 const VIEW_CARD_LABEL: Record<string, string> = {
   fr: 'Voir la fiche complète', de: 'Vollständige Karte ansehen',
   es: 'Ver ficha completa', it: 'Vedi scheda completa', en: 'View full card details',
+  pt: 'Ver ficha completa',
 };
 
 // ── i18n ──────────────────────────────────────────────────────────────────────
@@ -208,6 +211,37 @@ const L: Record<string, {
     breakdownLabels: { cashback: 'Cashback', frais: 'Fees', facilite: 'Ease of use', securite: 'Security', support: 'Support' },
     statsLabels: { cashbackMax: '💰 Max cashback', stakingRequis: '🔒 Staking req.', fraisAnnuels: '💳 Annual fees', disponibilite: '🌍 Availability' },
     sectionTitles: { presentation: '📋 Overview', cashback: '💰 Cashback & Rewards', frais: '💳 Fees & Conditions', securite: '🔒 Security & Regulation', experience: '📱 User experience' },
+  },
+  pt: {
+    notFound: 'Análise não encontrada',
+    notFoundDesc: 'Esta análise não existe ou foi movida.',
+    allReviews: 'Ver todas as análises',
+    reviewWord: 'Análise',
+    updatedOn: 'Atualizado a',
+    network: 'Rede',
+    globalRating: 'Nota global / 5',
+    outOf5: 'em 5',
+    issuer: 'Emissor',
+    getCard: 'Obter o cartão',
+    compareCards: 'Comparar cartões',
+    ratingDetail: 'Detalhe da avaliação',
+    avgRating: 'Nota média',
+    strongPoints: 'Pontos fortes',
+    weakPoints: 'Pontos fracos',
+    verdict: 'O nosso veredicto',
+    recap: 'Resumo',
+    noteGlobale: 'Nota global',
+    maxCashback: 'Cashback máx.',
+    annualFees: 'Comissões anuais',
+    otherReviews: 'Outras análises',
+    compareCta: 'Comparar cartões',
+    compareCtaDesc: 'Encontra o cartão que realmente corresponde ao teu perfil com a nossa ferramenta de comparação.',
+    compareNow: 'Comparar agora',
+    breadcrumbReviews: 'Análises de cartões crypto',
+    home: 'Início',
+    breakdownLabels: { cashback: 'Cashback', frais: 'Comissões', facilite: 'Facilidade de uso', securite: 'Segurança', support: 'Apoio' },
+    statsLabels: { cashbackMax: '💰 Cashback máx.', stakingRequis: '🔒 Staking exig.', fraisAnnuels: '💳 Comissões anuais', disponibilite: '🌍 Disponibilidade' },
+    sectionTitles: { presentation: '📋 Apresentação', cashback: '💰 Cashback e Recompensas', frais: '💳 Comissões e Condições', securite: '🔒 Segurança e Regulação', experience: '📱 Experiência de utilização' },
   },
 };
 

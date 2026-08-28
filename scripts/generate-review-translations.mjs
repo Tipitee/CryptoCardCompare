@@ -458,8 +458,11 @@ const FR_REVIEWS = [
 
 // ── Translation prompt ────────────────────────────────────────────────────────
 function buildPrompt(card, targetLang) {
-  const LANG_NAMES = { de: 'German', es: 'Spanish', it: 'Italian', en: 'English' };
+  const LANG_NAMES = { de: 'German', es: 'Spanish', it: 'Italian', en: 'English', pt: 'European Portuguese (Portugal, pt-PT)' };
   const langName = LANG_NAMES[targetLang];
+  const ptNote = targetLang === 'pt'
+    ? `\n- Use EUROPEAN Portuguese (pt-PT), NOT Brazilian: e.g. "cartão", "grátis", "IVA", "detido", "levantamento" (not "saque"). Use impersonal or "tu" form, never "você".`
+    : '';
 
   return `You are a professional crypto-finance copywriter. Translate the following card review content from French to ${langName}.
 
@@ -470,7 +473,7 @@ Rules:
 - metaTitle and metaDescription must be SEO-optimized in ${langName} (under 60 and 155 chars respectively)
 - badge is a short tag (2-4 words max) — translate concisely
 - keyStats values should be translated naturally (e.g. "Jusqu'à 8 % en BNB" → "Up to 8% in BNB")
-- Do NOT translate proper nouns like card names, platform names
+- Do NOT translate proper nouns like card names, platform names${ptNote}
 - Return ONLY valid JSON, no markdown code fences, no explanation
 
 Input JSON (French):
@@ -559,7 +562,7 @@ if (fs.existsSync(outputPath)) {
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
-const TARGET_LANGS = ['de', 'es', 'it', 'en'];
+const TARGET_LANGS = ['de', 'es', 'it', 'en', 'pt'];
 const TOTAL = FR_REVIEWS.length * TARGET_LANGS.length;
 let done = 0;
 let skipped = 0;
