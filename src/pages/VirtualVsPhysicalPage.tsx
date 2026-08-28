@@ -32,17 +32,22 @@ const SEO: Record<string, { title: string; desc: string }> = {
     title: `Virtual vs Physical Crypto Card ${YEAR}, Which to Choose?`,
     desc: `Virtual or physical crypto card in ${YEAR}? Full comparison: cashback, ATM withdrawals, activation, security. Crypto.com, Nexo, Revolut compared. Free ✓`,
   },
+  pt: {
+    title: `Cartão Crypto Virtual vs Físico ${YEAR}, Qual Escolher?`,
+    desc: `Cartão crypto virtual ou físico em ${YEAR}? Comparativo completo: cashback, levantamentos multibanco, ativação, segurança. Crypto.com, Nexo, Revolut comparados. Grátis ✓`,
+  },
 };
 
 /* ── Labels ──────────────────────────────────────────────────────────────── */
-const HOME_LABEL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-const GUIDES_LABEL: Record<string, string> = { fr: 'Guides', de: 'Ratgeber', es: 'Guías', it: 'Guide', en: 'Guides' };
+const HOME_LABEL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
+const GUIDES_LABEL: Record<string, string> = { fr: 'Guides', de: 'Ratgeber', es: 'Guías', it: 'Guide', en: 'Guides', pt: 'Guias' };
 const PAGE_TITLE: Record<string, string> = {
   fr: `Carte Crypto Virtuelle vs Physique : Comparatif ${YEAR}`,
   de: `Virtuelle vs. Physische Krypto-Karte: Vergleich ${YEAR}`,
   es: `Tarjeta Crypto Virtual vs Física: Comparativa ${YEAR}`,
   it: `Carta Crypto Virtuale vs Fisica: Confronto ${YEAR}`,
   en: `Virtual vs Physical Crypto Card: Full Comparison ${YEAR}`,
+  pt: `Cartão Crypto Virtual vs Físico: Comparativo ${YEAR}`,
 };
 const INTRO: Record<string, string> = {
   fr: `Vous hésitez entre une carte crypto virtuelle et une carte physique ? Ces deux formats ont des usages distincts et des avantages bien différents. Une carte virtuelle s'active en quelques minutes et fonctionne immédiatement sur Apple Pay et Google Pay, idéale pour les achats en ligne. Une carte physique permet les retraits DAB, les paiements en magasin sans smartphone, et représente le choix évident pour un usage quotidien complet. La bonne nouvelle : la plupart des émetteurs proposent les deux avec un seul compte.`,
@@ -50,6 +55,7 @@ const INTRO: Record<string, string> = {
   es: `¿Dudas entre una tarjeta crypto virtual y una física? Ambos formatos tienen usos distintos y ventajas muy diferentes. Una tarjeta virtual se activa en minutos y funciona de inmediato en Apple Pay y Google Pay, ideal para compras online. Una tarjeta física permite retiradas en cajero automático, pagos en tienda sin smartphone, y es la opción obvia para un uso cotidiano completo. La buena noticia: la mayoría de emisores ofrecen ambas con una sola cuenta.`,
   it: `Indeciso tra una carta crypto virtuale e una fisica? Entrambi i formati hanno utilizzi distinti e vantaggi molto diversi. Una carta virtuale si attiva in pochi minuti e funziona immediatamente con Apple Pay e Google Pay, ideale per gli acquisti online. Una carta fisica permette prelievi ATM, pagamenti in negozio senza smartphone, ed è la scelta ovvia per un utilizzo quotidiano completo. La buona notizia: la maggior parte degli emittenti offre entrambe con un unico account.`,
   en: `Unsure whether to choose a virtual or physical crypto card? Both formats have distinct use cases and very different advantages. A virtual card activates in minutes and works immediately on Apple Pay and Google Pay, perfect for online shopping. A physical card enables ATM cash withdrawals, in-store payments without a smartphone, and is the obvious choice for full everyday use. The good news: most issuers offer both with a single account.`,
+  pt: `Estás indeciso entre um cartão crypto virtual e um físico? Estes dois formatos têm usos distintos e vantagens bem diferentes. Um cartão virtual ativa-se em poucos minutos e funciona de imediato no Apple Pay e Google Pay, ideal para compras online. Um cartão físico permite levantamentos multibanco, pagamentos em loja sem smartphone, e é a escolha óbvia para um uso diário completo. A boa notícia: a maioria dos emissores oferece os dois com uma só conta.`,
 };
 
 /* ── Comparison table ────────────────────────────────────────────────────── */
@@ -66,6 +72,7 @@ const TABLE_HEADER: Record<string, { criterion: string; virtual: string; physica
   es: { criterion: 'Criterio', virtual: 'Tarjeta virtual', physical: 'Tarjeta física' },
   it: { criterion: 'Criterio', virtual: 'Carta virtuale', physical: 'Carta fisica' },
   en: { criterion: 'Criterion', virtual: 'Virtual card', physical: 'Physical card' },
+  pt: { criterion: 'Critério', virtual: 'Cartão virtual', physical: 'Cartão físico' },
 };
 
 const TABLE_ROWS: Record<string, CompRow[]> = {
@@ -118,6 +125,16 @@ const TABLE_ROWS: Record<string, CompRow[]> = {
     { criterion: 'Cashback', virtual: { status: 'yes', label: 'Identical to physical' }, physical: { status: 'yes', label: 'Identical to virtual' } },
     { criterion: 'Annual fees', virtual: { status: 'yes', label: 'Generally free' }, physical: { status: 'partial', label: 'Free or delivery fee' } },
     { criterion: 'Worldwide coverage', virtual: { status: 'yes', label: 'Everywhere online' }, physical: { status: 'yes', label: '200+ countries (Visa/Mastercard)' } },
+  ],
+  pt: [
+    { criterion: 'Ativação', virtual: { status: 'yes', label: 'Instantânea (< 5 min)' }, physical: { status: 'partial', label: 'Entrega 5–15 dias' } },
+    { criterion: 'Levantamentos multibanco', virtual: { status: 'no', label: 'Impossível' }, physical: { status: 'yes', label: 'Até ilimitado (premium)' } },
+    { criterion: 'Pagamentos em loja', virtual: { status: 'partial', label: 'Via NFC (Apple/Google Pay)' }, physical: { status: 'yes', label: 'Direto, sem smartphone' } },
+    { criterion: 'Compras online', virtual: { status: 'yes', label: 'Ideal, número único possível' }, physical: { status: 'yes', label: 'Sim, mesmo número' } },
+    { criterion: 'Segurança anti-skimming', virtual: { status: 'yes', label: 'Impossível de clonar' }, physical: { status: 'partial', label: 'Protegido por PIN + bloqueio na app' } },
+    { criterion: 'Cashback', virtual: { status: 'yes', label: 'Idêntico ao físico' }, physical: { status: 'yes', label: 'Idêntico ao virtual' } },
+    { criterion: 'Anuidade', virtual: { status: 'yes', label: 'Geralmente gratuito' }, physical: { status: 'partial', label: 'Gratuito ou custo de envio' } },
+    { criterion: 'Cobertura mundial', virtual: { status: 'yes', label: 'Em todo o lado online' }, physical: { status: 'yes', label: '200+ países (Visa/Mastercard)' } },
   ],
 };
 
@@ -194,6 +211,20 @@ const SECTIONS: Record<string, Section[]> = {
       p: `Most major crypto platforms now offer both formats with a single account. Crypto.com automatically activates the virtual version of your card after KYC validation, the physical one is ordered afterwards from the app. Revolut works exactly the same way: virtual card available in seconds, physical card delivered in 5 to 10 days. Nexo and Bybit follow the same model. This complementarity is the ideal solution: use the virtual card for online purchases right now, and the physical card for ATM withdrawals and travel. Cashback applies to both formats at the same rate, so you lose nothing by combining them.`,
     },
   ],
+  pt: [
+    {
+      h2: 'Quando escolher um cartão crypto virtual?',
+      p: `O cartão virtual é a escolha ideal se fazes sobretudo compras online: e-commerce, subscrições, plataformas de streaming. Ativa-se instantaneamente após a validação do KYC, geralmente em menos de uma hora, e liga-se diretamente ao Apple Pay e Google Pay para pagamentos NFC em loja. Grande vantagem de segurança: o número do teu cartão físico nunca circula online, o que reduz consideravelmente o risco de fraude. A Gnosis Pay e a MetaMask Card levam este conceito ainda mais longe, com números de cartão temporários e integração direta com a tua carteira self-custody. Para quem viaja pouco e prefere compras digitais, o cartão virtual sozinho é muitas vezes suficiente.`,
+    },
+    {
+      h2: 'Quando escolher um cartão crypto físico?',
+      p: `O cartão físico torna-se indispensável assim que precisas de levantar dinheiro ou pagar em comércios que não aceitam pagamentos NFC. No estrangeiro sobretudo, muitos países (zonas rurais, países emergentes) continuam muito orientados para o dinheiro físico, um cartão virtual sozinho deixa de bastar. A entrega demora geralmente entre 5 e 15 dias úteis consoante o país e o nível escolhido. A Crypto.com oferece cinco níveis de cartão físico, da Ruby (staking 500 USDC) à Obsidian (staking 400.000 USDC, metal escovado). A Nexo e a Bybit oferecem limites de levantamento multibanco atrativos logo nos primeiros níveis, a Nexo sem staking obrigatório. Em ${YEAR}, o cartão físico é recomendado a quem viaja ou vive em zonas com menos terminais NFC.`,
+    },
+    {
+      h2: `Cartões com os dois formatos: Crypto.com, Revolut, Nexo, Bybit`,
+      p: `A maioria das grandes plataformas crypto oferece hoje os dois formatos com uma só conta. A Crypto.com ativa automaticamente a versão virtual do teu cartão após a validação KYC, o físico é encomendado depois na aplicação. A Revolut funciona exatamente da mesma forma: cartão virtual disponível em segundos, cartão físico entregue em 5 a 10 dias. A Nexo e a Bybit seguem o mesmo modelo. Esta complementaridade é a solução ideal: usas o virtual para as compras online desde já, e o físico para os levantamentos multibanco e as viagens. O cashback aplica-se aos dois formatos à mesma taxa, por isso não perdes nada ao combiná-los.`,
+    },
+  ],
 };
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
@@ -234,6 +265,13 @@ const FAQ: Record<string, FaqItem[]> = {
     { q: 'Which card to choose for travel?', a: 'The physical card is essential for travel: ATM withdrawals, payments in countries with fewer NFC terminals. Crypto.com and Bybit have the best withdrawal limits abroad.' },
     { q: 'Is the virtual card more secure than the physical?', a: 'Both have different security advantages. The virtual card cannot be physically skimmed. The physical card cannot be used for online fraud if its number differs from the virtual card.' },
   ],
+  pt: [
+    { q: 'Pode ter ao mesmo tempo um cartão virtual e um físico?', a: 'Sim, na Crypto.com, Revolut, Nexo e Bybit, os dois formatos estão incluídos na mesma conta. O virtual é ativado primeiro, o físico é encomendado depois.' },
+    { q: 'O cashback é o mesmo no cartão virtual e físico?', a: 'Sim, a taxa de cashback é idêntica independentemente do formato do cartão. Depende do nível de conta (staking), não do formato.' },
+    { q: 'Pode-se levantar dinheiro com um cartão virtual?', a: 'Não, os levantamentos multibanco exigem um cartão físico. É a principal limitação do cartão virtual.' },
+    { q: 'Que cartão escolher para viajar?', a: 'O cartão físico é indispensável em viagem: levantamentos multibanco, pagamentos em países com menos terminais NFC. A Crypto.com e a Bybit têm os melhores limites de levantamento no estrangeiro.' },
+    { q: 'O cartão virtual é mais seguro do que o físico?', a: 'Ambos têm vantagens de segurança diferentes. O virtual não pode ser clonado fisicamente. O físico não pode ser usado para compras online fraudulentas se o número for diferente do virtual.' },
+  ],
 };
 
 /* ── CTA labels ──────────────────────────────────────────────────────────── */
@@ -243,6 +281,7 @@ const CTA_VIRTUAL: Record<string, string> = {
   es: 'Ver las mejores tarjetas virtuales →',
   it: 'Vedi le migliori carte virtuali →',
   en: 'Browse best virtual cards →',
+  pt: 'Ver os melhores cartões virtuais →',
 };
 const CTA_PHYSICAL: Record<string, string> = {
   fr: 'Voir les meilleures cartes physiques →',
@@ -250,6 +289,7 @@ const CTA_PHYSICAL: Record<string, string> = {
   es: 'Ver las mejores tarjetas físicas →',
   it: 'Vedi le migliori carte fisiche →',
   en: 'Browse best physical cards →',
+  pt: 'Ver os melhores cartões físicos →',
 };
 const FAQ_TITLE: Record<string, string> = {
   fr: 'Questions fréquentes',
@@ -257,6 +297,7 @@ const FAQ_TITLE: Record<string, string> = {
   es: 'Preguntas frecuentes',
   it: 'Domande frequenti',
   en: 'Frequently asked questions',
+  pt: 'Perguntas frequentes',
 };
 const SEE_ALSO_TITLE: Record<string, string> = {
   fr: 'Comparez aussi',
@@ -264,6 +305,7 @@ const SEE_ALSO_TITLE: Record<string, string> = {
   es: 'También compara',
   it: 'Confronta anche',
   en: 'Also compare',
+  pt: 'Compara também',
 };
 
 /* ── Status icon ─────────────────────────────────────────────────────────── */

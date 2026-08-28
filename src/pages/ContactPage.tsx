@@ -14,6 +14,10 @@ const CONTACT_SLUGS: Record<string, string> = {
 };
 
 const SEO: Record<string, { title: string; desc: string }> = {
+  pt: {
+    title: 'Contacto, TopCryptoCards',
+    desc: 'Tens uma questão sobre o nosso comparativo de cartões crypto? Contacta-nos por email ou no X/Twitter. Resposta em 48 h.',
+  },
   fr: {
     title: 'Contact, TopCryptoCards',
     desc: 'Une question sur notre comparatif de cartes crypto ? Contactez-nous par email ou sur X/Twitter. Réponse sous 48 h.',
@@ -48,6 +52,23 @@ const COPY: Record<string, {
   responseTime: string;
   disclaimer: string;
 }> = {
+  pt: {
+    hero: 'Contacta-nos',
+    heroSub: 'Uma questão, uma correção, uma parceria? Respondemos em 48 horas.',
+    emailLabel: 'Email',
+    emailDesc: 'Para qualquer questão geral, comunicação de erro ou proposta de parceria.',
+    twitterLabel: 'X / Twitter',
+    twitterDesc: 'Segue-nos e envia-nos uma mensagem para respostas rápidas.',
+    reasonsTitle: 'Quando nos contactar?',
+    reasons: [
+      { title: 'Comunicar um erro', body: 'Os dados dos cartões mudam depressa. Se detetares uma informação incorreta (cashback, taxas, disponibilidade), contacta-nos.' },
+      { title: 'Propor um cartão em falta', body: 'Conheces um cartão crypto disponível na Europa que ainda não listámos? Partilha connosco.' },
+      { title: 'Parcerias e imprensa', body: 'Para qualquer pedido de parceria, afiliação ou contacto de imprensa, usa o endereço de email abaixo.' },
+      { title: 'Questões gerais', body: 'Tens uma questão sobre o nosso método de comparação, as nossas fontes ou a nossa independência editorial? Respondemos.' },
+    ],
+    responseTime: 'Prazo de resposta habitual: em 48 horas (dias úteis).',
+    disclaimer: 'A TopCryptoCards é um comparativo independente. Não somos afiliados aos emissores de cartões apresentados, salvo indicação em contrário nas nossas páginas de divulgação.',
+  },
   fr: {
     hero: 'Contactez-nous',
     heroSub: 'Une question, une correction, un partenariat ? Nous vous répondons sous 48 heures.',

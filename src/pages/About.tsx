@@ -34,6 +34,10 @@ const ABOUT_SEO: Record<string, { title: string; desc: string }> = {
     title: 'About TopCryptoCards, Methodology & Team',
     desc: "Learn who we are, how we evaluate crypto cards, and our commitment to reliable, up-to-date data. Independent, free, updated monthly.",
   },
+  pt: {
+    title: 'Sobre a TopCryptoCards, Metodologia e Equipa',
+    desc: "Descobre quem somos, como avaliamos os cartões crypto e o nosso compromisso com dados fiáveis e atualizados. Independente, gratuito, atualizado mensalmente.",
+  },
 };
 
 const ABOUT_CONTENT: Record<string, {
@@ -54,6 +58,33 @@ const ABOUT_CONTENT: Record<string, {
   ctaSimulator: string;
   ctaReviews: string;
 }> = {
+  pt: {
+    hero: 'Sobre a TopCryptoCards',
+    heroSub: "O comparador independente de cartões crypto na Europa. Dados verificados, atualizados mensalmente, sem agenda comercial escondida.",
+    missionTitle: 'A nossa missão',
+    missionBody: `A TopCryptoCards nasceu de uma constatação simples: comparar cartões crypto é complexo. O cashback varia consoante o nível de staking, as taxas por vezes estão escondidas e as condições mudam com frequência. O nosso objetivo é centralizar todos estes dados de forma clara, estruturada e atualizada, para que cada utilizador possa fazer uma escolha informada, seja principiante em cripto ou utilizador experiente.
+
+Cobrimos mais de 20 cartões emitidos por entidades reguladas na Europa: Crypto.com, Nexo, Bybit, Binance Card, OKX Card, Gnosis Pay, MetaMask Card, Brighty, Plutus, Wirex, Revolut Metal e outros. Cada cartão é avaliado segundo os mesmos critérios objetivos.`,
+    methodTitle: 'A nossa metodologia',
+    criteria: [
+      { icon: '💰', title: 'Taxas de cashback reais', body: 'Distinguimos o cashback base (sem staking), o cashback premium (com staking ativo) e o cashback sem staking. Os dados vêm diretamente das páginas oficiais de cada emissor e são verificados manualmente.' },
+      { icon: '💶', title: 'Taxas anuais reais', body: 'As taxas incluem as subscrições mensais convertidas em anual, o custo do cartão físico e os custos de manutenção do nível. Excluímos as taxas de emissão únicas, salvo quando são sistemáticas.' },
+      { icon: '🔒', title: 'Requisitos de staking', body: 'O montante de staking exigido é expresso em euros ao câmbio de mercado no momento da recolha. Indicamos claramente quando o staking é opcional ou obrigatório para desbloquear o cashback.' },
+      { icon: '🛡️', title: 'Pontuação de confiança', body: 'A pontuação de confiança reflete a regulação (licença EMI, conformidade MiCA, registo junto do Banco de Portugal), a antiguidade da plataforma, a liquidez e os incidentes de segurança passados. Não constitui aconselhamento financeiro.' },
+      { icon: '🌍', title: 'Disponibilidade por mercado', body: 'Cada cartão é marcado consoante a sua disponibilidade em Portugal, na zona euro e a nível internacional. Verificamos as restrições geográficas nas app stores e nas páginas oficiais.' },
+      { icon: '📅', title: 'Frequência de atualização', body: 'Os dados são revistos no mínimo uma vez por mês. Em caso de alteração tarifária importante (anunciada nos sites oficiais ou fóruns), atualizamos em 72h.' },
+    ],
+    updateTitle: 'As nossas fontes',
+    updateBody: `Os nossos dados provêm exclusivamente de fontes primárias: sites oficiais dos emissores, aplicações móveis, anúncios em fóruns oficiais (Discord, Reddit, Telegram) e comunicados de imprensa. Não usamos dados agregados de terceiros como fonte principal. Quando uma informação é incerta ou contestada, indicamo-lo claramente.`,
+    independenceTitle: 'Independência editorial',
+    independenceBody: `A TopCryptoCards é um site editorial independente. As nossas classificações e avaliações são determinadas apenas pelos nossos critérios objetivos, nunca por acordos comerciais. Alguns cartões apresentados incluem links de afiliados: se os usares para te registares, recebemos uma comissão sem custo adicional para ti. Esta remuneração não altera as nossas notas nem a ordem das comparações.`,
+    disclosureTitle: 'Divulgação dos links de afiliados',
+    disclosureBody: `De acordo com a regulamentação europeia sobre publicidade online, todos os links de afiliados são identificados pelo atributo rel="sponsored". A presença de um link de afiliado não influencia a nossa avaliação do cartão em questão. Podes consultar a nossa página de divulgação completa para mais detalhes.`,
+    ctaTitle: 'Pronto para comparar?',
+    ctaCompare: 'Comparar cartões',
+    ctaSimulator: 'Simular os meus ganhos',
+    ctaReviews: 'Ler as análises',
+  },
   fr: {
     hero: 'À propos de TopCryptoCards',
     heroSub: "Le comparateur indépendant des cartes crypto en Europe. Données vérifiées, mises à jour mensuellement, sans agenda commercial caché.",

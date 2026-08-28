@@ -25,6 +25,36 @@ const COPY: Record<string, {
   perYear: string;
   bestLink: string; bestLabel: string; simLink: string; simLabel: string;
 }> = {
+  pt: {
+    title:       `Taxas Cartões Crypto ${new Date().getFullYear()}, Tabela Comparativa Completa | TopCryptoCards`,
+    h1:          `Índice de Taxas dos Cartões Crypto em ${new Date().getFullYear()}`,
+    description: `Tabela completa das taxas de todos os cartões crypto disponíveis na Europa: anuidade, staking exigido, cashback, levantamentos. Atualizado ${new Date().getFullYear()}.`,
+    intro:       `Um índice de taxas de cartões crypto é uma tabela de referência que lista, para cada cartão Visa ou Mastercard crypto disponível na Europa, todos os custos reais: anuidade, montante de staking exigido, taxa de cashback base e máxima, política de levantamento ATM e rede de pagamento. Esta tabela é atualizada regularmente a partir dos dados oficiais dos emissores.`,
+    note:        `As taxas de staking são expressas em valor nominal no momento da atualização. O valor real em euros depende da cotação do token no momento do compromisso. As taxas de câmbio (0% na maioria dos cartões listados) e os limites mensais de cashback podem variar consoante o nível do cartão.`,
+    thLabel:     'Cartão',
+    thFees:      'Anuidade',
+    thStaking:   'Staking exigido',
+    thCbBase:    'Cashback base',
+    thCbMax:     'Cashback máx.',
+    thWithdrawals: 'Levantamento ATM grátis',
+    thNetwork:   'Rede',
+    thMarkets:   'Mercados',
+    thDetails:   'Detalhes',
+    free:        'Grátis',
+    yes:         'Sim',
+    no:          'Não',
+    eu:          'UE',
+    fr:          'PT',
+    global:      'Mundial',
+    loading:     'A carregar…',
+    compareLink: 'Comparar os cartões em detalhe →',
+    lastUpdated: `Dados atualizados em julho de ${new Date().getFullYear()}`,
+    perYear:     '/ano',
+    bestLink:    'melhor-cartao-crypto',
+    bestLabel:   'Ver o ranking dos melhores cartões crypto →',
+    simLink:     'simulador',
+    simLabel:    'Simular o meu cashback anual →',
+  },
   fr: {
     title:       `Frais Cartes Crypto ${new Date().getFullYear()}, Tableau Comparatif Complet | TopCryptoCards`,
     h1:          `Index des Frais des Cartes Crypto en ${new Date().getFullYear()}`,
@@ -208,6 +238,14 @@ const CITE_COPY: Record<string, {
   copyEmbed: string;
   copied: string;
 }> = {
+  pt: {
+    heading:   'Citar estes dados',
+    apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Índice de Taxas dos Cartões Crypto na Europa. Consultado em ${new Date().toLocaleDateString('pt-PT')} em ${url}`,
+    embedCode: (url: string) => `<iframe src="${url}" width="100%" height="700" frameborder="0" title="Índice Taxas Cartões Crypto, TopCryptoCards"></iframe>`,
+    copyApa:   'Copiar a citação APA',
+    copyEmbed: 'Copiar o código iframe',
+    copied:    'Copiado!',
+  },
   fr: {
     heading:   'Citer ces données',
     apa:       (url: string, year: number) => `TopCryptoCards. (${year}). Index des Frais des Cartes Crypto en Europe. Récupéré le ${new Date().toLocaleDateString('fr-FR')} sur ${url}`,
@@ -527,7 +565,7 @@ export default function FeeIndexPage() {
               fr: 'Intégrez cet index sur votre site →', be: 'Intégrez cet index sur votre site →',
               de: 'Diesen Index auf Ihrer Website einbetten →', at: 'Diesen Index auf Ihrer Website einbetten →',
               es: 'Integra este índice en tu web →', it: 'Integra questo indice sul tuo sito →',
-              en: 'Embed this fee index on your website →',
+              en: 'Embed this fee index on your website →', pt: 'Incorpora este índice no teu site →',
             } as Record<string, string>)[lang] ?? 'Embed this fee index on your website →'}
           </Link>
         </div>

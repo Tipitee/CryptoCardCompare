@@ -2908,6 +2908,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/sobre-nosotros"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/chi-siamo"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/about"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/sobre-nos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/a-propos"/>
   </url>
   <url>
@@ -3006,6 +3007,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/contacto"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/contatti"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/contacto"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/contact"/>
   </url>
   <url>
@@ -3104,6 +3106,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-virtual-vs-fisica"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-virtuale-vs-fisica"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/virtual-vs-physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cartao-crypto-virtual-vs-fisico"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-virtuelle-vs-physique"/>
   </url>
   <url>
@@ -3202,6 +3205,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarifas-tarjetas-crypto"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/tariffe-carte-crypto"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fees"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/taxas-cartoes-crypto"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/frais-cartes-crypto"/>
   </url>
   <url>
@@ -3286,6 +3290,66 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarifas-tarjetas-crypto"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/tariffe-carte-crypto"/>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fees"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/frais-cartes-crypto"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/sobre-nos</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/chi-siamo"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/about"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/sobre-nos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/a-propos"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/contacto</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/contatti"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/contact"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/cartao-crypto-virtual-vs-fisico</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/carte-crypto-virtuelle-vs-physique"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/carte-crypto-virtuelle-vs-physique"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/virtuelle-vs-physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/virtuelle-vs-physische-krypto-karte"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarjeta-crypto-virtual-vs-fisica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/carta-crypto-virtuale-vs-fisica"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/virtual-vs-physical-crypto-card"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/cartao-crypto-virtual-vs-fisico"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/carte-crypto-virtuelle-vs-physique"/>
+  </url>
+  <url>
+    <loc>https://topcryptocards.eu/pt/taxas-cartoes-crypto</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://topcryptocards.eu/fr/frais-cartes-crypto"/>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://topcryptocards.eu/be/frais-cartes-crypto"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://topcryptocards.eu/de/krypto-karten-gebuehren"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://topcryptocards.eu/at/krypto-karten-gebuehren"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://topcryptocards.eu/es/tarifas-tarjetas-crypto"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://topcryptocards.eu/it/tariffe-carte-crypto"/>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://topcryptocards.eu/en/crypto-card-fees"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://topcryptocards.eu/pt/taxas-cartoes-crypto"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/frais-cartes-crypto"/>
   </url>
 </urlset>
