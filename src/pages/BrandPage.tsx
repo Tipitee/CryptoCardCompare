@@ -276,18 +276,69 @@ const L = {
     whyChooseTitle: 'Why choose',
     thematicLinksTitle: 'Related pages',
   },
+  pt: {
+    prosTitle: 'Pontos fortes',
+    consTitle: 'Pontos fracos',
+    ratingLabel: 'Nota global',
+    readReview: 'Ler a análise',
+    updatedAt: 'Atualizado',
+    cashbackLabel: 'Cashback máx.',
+    stakingLabel: 'Staking exigido',
+    feesLabel: 'Comissões anuais',
+    stakingNo: '✓ Não exigido',
+    stakingYes: '⚠️ Sim',
+    home: 'Início',
+    allCards: 'Todos os cartões',
+    allBrands: 'Todas as marcas',
+    tier: 'Cartão',
+    cashback: 'Cashback',
+    fees: 'Comissões anuais',
+    staking: 'Staking exigido',
+    network: 'Rede',
+    market: 'Disponibilidade',
+    free: 'Grátis',
+    perYear: '/ano',
+    eur: '€',
+    notRequired: 'Não exigido',
+    yes: 'Sim',
+    no: 'Não',
+    seeOffer: 'Ver oferta',
+    details: 'Detalhes',
+    compareCards: 'Comparar',
+    loading: 'A carregar…',
+    noBrand: 'Marca não encontrada',
+    noBrandDesc: 'Nenhum cartão encontrado para esta marca.',
+    withStaking: 'com staking',
+    noStaking: 'sem staking',
+    premium: 'premium',
+    tiers: 'cartões',
+    tier1: 'cartão',
+    markets: 'Mercados',
+    compareTitle: 'Comparação dos cartões',
+    aboutTitle: 'Sobre',
+    foundedLabel: 'Fundada em',
+    hqLabel: 'Sede',
+    regulationLabel: 'Regulação',
+    verdictTitle: 'O nosso veredicto',
+    faqTitle: 'Perguntas frequentes',
+    relatedTitle: 'Ver também',
+    upTo: 'Até',
+    websiteLabel: 'Site oficial',
+    whyChooseTitle: 'Porquê escolher',
+    thematicLinksTitle: 'Páginas relacionadas',
+  },
 } as const;
 
 const BRAND_ARTICLES_TITLE: Record<string, string> = {
-  fr: 'Articles sur', de: 'Artikel über', es: 'Artículos sobre', it: 'Articoli su', en: 'Articles about',
+  fr: 'Articles sur', de: 'Artikel über', es: 'Artículos sobre', it: 'Articoli su', en: 'Articles about', pt: 'Artigos sobre',
 };
 const BRAND_ARTICLES_READ: Record<string, string> = {
-  fr: 'Lire l\'article', de: 'Artikel lesen', es: 'Leer artículo', it: 'Leggi articolo', en: 'Read article',
+  fr: 'Lire l\'article', de: 'Artikel lesen', es: 'Leer artículo', it: 'Leggi articolo', en: 'Read article', pt: 'Ler artigo',
 };
 
 // ── Market flags ──────────────────────────────────────────────────────────────
 const MARKET_FLAG: Record<string, string> = {
-  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧',
+  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
 };
 
 // ── Review slugs by brand (FR review slug; ReviewPage handles multi-lang) ─────
@@ -321,7 +372,7 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
 
 const REVIEW_LABEL: Record<string, string> = {
   fr: 'Avis complet', de: 'Vollständige Bewertung', es: 'Reseña completa',
-  it: 'Recensione completa', en: 'Full review',
+  it: 'Recensione completa', en: 'Full review', pt: 'Análise completa',
 };
 
 const BASE_URL = 'https://topcryptocards.eu';
@@ -329,15 +380,15 @@ const BASE_URL = 'https://topcryptocards.eu';
 // ── HQ localization ───────────────────────────────────────────────────────────
 // brand.hq is stored in French; translate it for non-FR pages
 const HQ_TRANSLATIONS: Record<string, Record<string, string>> = {
-  'Singapour':      { de: 'Singapur',            es: 'Singapur',            it: 'Singapore',           en: 'Singapore' },
-  'Royaume-Uni':    { de: 'Vereinigtes Königreich', es: 'Reino Unido',       it: 'Regno Unito',         en: 'United Kingdom' },
-  'Suisse':         { de: 'Schweiz',              es: 'Suiza',               it: 'Svizzera',            en: 'Switzerland' },
-  'Dubaï':          { de: 'Dubai',                es: 'Dubái',               it: 'Dubai',               en: 'Dubai' },
-  'États-Unis':     { de: 'Vereinigte Staaten',   es: 'Estados Unidos',      it: 'Stati Uniti',         en: 'United States' },
-  'Autriche':       { de: 'Österreich',           es: 'Austria',             it: 'Austria',             en: 'Austria' },
-  'Allemagne':      { de: 'Deutschland',          es: 'Alemania',            it: 'Germania',            en: 'Germany' },
-  'Pologne':        { de: 'Polen',                es: 'Polonia',             it: 'Polonia',             en: 'Poland' },
-  'Non communiqué': { de: 'Unbekannt',            es: 'Desconocido',         it: 'Sconosciuto',         en: 'N/A' },
+  'Singapour':      { de: 'Singapur',            es: 'Singapur',            it: 'Singapore',           en: 'Singapore', pt: 'Singapura' },
+  'Royaume-Uni':    { de: 'Vereinigtes Königreich', es: 'Reino Unido',       it: 'Regno Unito',         en: 'United Kingdom', pt: 'Reino Unido' },
+  'Suisse':         { de: 'Schweiz',              es: 'Suiza',               it: 'Svizzera',            en: 'Switzerland', pt: 'Suíça' },
+  'Dubaï':          { de: 'Dubai',                es: 'Dubái',               it: 'Dubai',               en: 'Dubai', pt: 'Dubai' },
+  'États-Unis':     { de: 'Vereinigte Staaten',   es: 'Estados Unidos',      it: 'Stati Uniti',         en: 'United States', pt: 'Estados Unidos' },
+  'Autriche':       { de: 'Österreich',           es: 'Austria',             it: 'Austria',             en: 'Austria', pt: 'Áustria' },
+  'Allemagne':      { de: 'Deutschland',          es: 'Alemania',            it: 'Germania',            en: 'Germany', pt: 'Alemanha' },
+  'Pologne':        { de: 'Polen',                es: 'Polonia',             it: 'Polonia',             en: 'Poland', pt: 'Polónia' },
+  'Non communiqué': { de: 'Unbekannt',            es: 'Desconocido',         it: 'Sconosciuto',         en: 'N/A', pt: 'Desconhecido' },
 };
 
 function translateHq(hq: string, lang: string): string {
@@ -384,7 +435,7 @@ function brandCompSlugToLabel(slug: string): string {
 }
 
 const BRAND_COMP_TITLE: Record<string, string> = {
-  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
+  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons', pt: 'Comparativos populares',
 };
 
 // ── Main component ────────────────────────────────────────────────────────────
@@ -975,6 +1026,7 @@ export default function BrandPage() {
             es: `Alternativas a ${brand.displayName}`,
             it: `Alternative a ${brand.displayName}`,
             en: `${brand.displayName} Alternatives`,
+            pt: `Alternativas ao ${brand.displayName}`,
           };
           return (
             <Link

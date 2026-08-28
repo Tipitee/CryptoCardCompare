@@ -1,5 +1,6 @@
 // Static metadata for brand pages, supplements data from Supabase.
 // brandId must match the brand_id column in the cards table.
+import { BRAND_SEO_PT } from './brandConfigPt';
 
 const YEAR = new Date().getFullYear();
 
@@ -3807,6 +3808,13 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
 };
 
 /** Returns brand metadata or a minimal fallback if not in config. */
+// Merge auto-generated Portuguese SEO (seo.pt) into each brand.
+for (const [brandId, ptSeo] of Object.entries(BRAND_SEO_PT)) {
+  if (BRAND_CONFIG[brandId] && ptSeo) {
+    BRAND_CONFIG[brandId].seo.pt = ptSeo;
+  }
+}
+
 export function getBrandMeta(brandId: string): BrandMeta {
   return BRAND_CONFIG[brandId] ?? {
     brandId,
