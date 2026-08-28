@@ -3,13 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 
-const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
+const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
-type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en';
+type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en' | 'pt';
 
 /** Maps URL lang (be/at) to the content variant to use */
 const CONTENT_LANG: Record<Lang, ContentLang> = {
-  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en',
+  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en', pt: 'pt',
 };
 
 function useMethodologyLang(): Lang {
@@ -26,6 +26,7 @@ export const METHODOLOGY_SLUGS: Record<Lang, string> = {
   es: 'metodologia',
   it: 'metodologia',
   en: 'methodology',
+  pt: 'metodologia',
 };
 
 /* ── Content ─────────────────────────────────────────────────────────────── */
@@ -45,6 +46,53 @@ interface Content {
 }
 
 const CONTENT: Record<ContentLang, Content> = {
+  pt: {
+    h1: 'A nossa metodologia de comparação',
+    intro: "A TopCryptoCards avalia os cartões crypto segundo critérios objetivos, verificados manualmente e atualizados regularmente. Esta página explica em detalhe como selecionamos, comparamos e classificamos os cartões.",
+    lastUpdated: 'Última atualização: julho de 2026',
+    sections: {
+      overview: {
+        title: 'Visão geral',
+        body: "Cobrimos os cartões crypto disponíveis na Europa (zona SEPA), incluindo Portugal. Cada cartão é avaliado com base em dados públicos (sites oficiais, condições gerais) e, sempre que possível, na experiência de utilização direta. Nenhum cartão pode pagar para obter uma melhor classificação.",
+      },
+      criteria: {
+        title: 'Critérios de avaliação',
+        body: 'Os cartões são comparados em seis eixos principais:',
+        items: [
+          { label: 'Cashback', body: "Taxa de cashback realista para o nível acessível sem condições, e taxa máxima alcançável com staking. Não retemos os números de marketing, apenas o que um utilizador comum pode esperar obter." },
+          { label: 'Anuidade', body: "Custo total anual do nível (taxas de emissão, taxas de manutenção). Os cartões totalmente gratuitos recebem um bónus." },
+          { label: 'Staking exigido', body: "Montante em cripto nativa a imobilizar para aceder às vantagens. Indicamos o valor em euros no momento da atualização." },
+          { label: 'Disponibilidade', body: "Países onde o cartão é efetivamente entregável e utilizável, segundo as condições oficiais do emissor." },
+          { label: 'KYC', body: "Nível de verificação de identidade exigido: mínimo (apenas email), padrão (documento de identidade) ou reforçado (comprovativo de morada + liveness)." },
+          { label: 'Rede', body: "Rede de pagamento (Visa, Mastercard) e tipo (físico, virtual, ou ambos)." },
+        ],
+      },
+      trustScore: {
+        title: 'Pontuação de confiança (Trust Score)',
+        body: 'A pontuação de confiança é a nossa nota global sobre 10, calculada automaticamente a partir dos dados de cada cartão:',
+        items: [
+          { label: 'Cashback realista (30 %)', body: 'Taxa do nível base, sem condição de staking, limitada a 5 % para o cálculo.' },
+          { label: 'Taxas (20 %)', body: 'Cartão gratuito = 10 pts. Taxas elevadas = penalização.' },
+          { label: 'Staking (15 %)', body: 'Zero staking exigido = pontuação máxima. Staking elevado = penalização.' },
+          { label: 'Rede (15 %)', body: 'Visa/Mastercard = pontuação máxima. Apenas Visa ou rede menos universal = pontuação reduzida.' },
+          { label: 'Disponibilidade (10 %)', body: "Número de mercados cobertos na Europa." },
+          { label: 'Extras (10 %)', body: 'Lounges, seguros de viagem, cashback em cripto, vantagens de parceiros.' },
+        ],
+      },
+      independence: {
+        title: 'Independência editorial',
+        body: "As relações de afiliação, descritas em detalhe na nossa página de divulgação, não influenciam as nossas classificações nem as nossas notas. Os cartões sem link de afiliação (Binance, Coinbase, Gemini, MetaMask, etc.) são avaliados exatamente da mesma forma. Um emissor não pode pagar para melhorar a sua pontuação ou a sua posição nas nossas listas.",
+      },
+      sources: {
+        title: 'Fontes de dados',
+        body: "Todos os dados (cashback, taxas, disponibilidade, condições de staking) são extraídos dos sites oficiais dos emissores, das suas condições gerais publicadas e, para alguns produtos, dos nossos próprios testes. Citamos a fonte para cada dado sensível. Em caso de divergência entre o que apresentamos e as condições atuais de um emissor, prevalecem as condições oficiais do emissor.",
+      },
+      updates: {
+        title: 'Frequência de atualização',
+        body: "Os dados dos cartões são verificados mensalmente. O site é totalmente re-renderizado todas as noites através do nosso pipeline GitHub Actions → Cloudflare, o que garante que os artigos do blog, as fichas de cartão e os comparativos refletem o estado atual da nossa base de dados. As atualizações importantes (novo produto, alteração significativa de cashback) são integradas em 48 h.",
+      },
+    },
+  },
   fr: {
     h1: 'Notre méthodologie de comparaison',
     intro: "TopCryptoCards évalue les cartes crypto selon des critères objectifs, vérifiés manuellement et mis à jour régulièrement. Cette page explique en détail comment nous sélectionnons, comparons et classons les cartes.",
@@ -289,6 +337,7 @@ const META: Record<ContentLang, { title: string; description: string }> = {
   es: { title: 'Metodología, TopCryptoCards', description: 'Descubra cómo TopCryptoCards evalúa y clasifica las tarjetas cripto: criterios, Trust Score, independencia editorial.' },
   it: { title: 'Metodologia, TopCryptoCards', description: 'Scopri come TopCryptoCards valuta e classifica le carte cripto: criteri, Trust Score, indipendenza editoriale.' },
   en: { title: 'Methodology, TopCryptoCards', description: 'Discover how TopCryptoCards evaluates and ranks crypto cards: criteria, Trust Score, editorial independence.' },
+  pt: { title: 'Metodologia, TopCryptoCards', description: 'Descubra como a TopCryptoCards avalia e classifica os cartões crypto: critérios, Trust Score, independência editorial.' },
 };
 
 const DISCLOSURE_SLUGS: Record<Lang, string> = {
@@ -299,6 +348,7 @@ const DISCLOSURE_SLUGS: Record<Lang, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
+  pt: 'divulgacion-afiliados',
 };
 
 const DISCLOSURE_LABEL: Record<Lang, string> = {
@@ -309,6 +359,7 @@ const DISCLOSURE_LABEL: Record<Lang, string> = {
   es: "nuestra página de divulgación de afiliados",
   it: "la nostra pagina di divulgazione degli affiliati",
   en: "our affiliate disclosure page",
+  pt: "a nossa página de divulgação de afiliados",
 };
 
 /* ── Component ───────────────────────────────────────────────────────────── */
