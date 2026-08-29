@@ -830,7 +830,7 @@ export default function BrandPage() {
                     <div className="font-bold text-brand-accent">
                       {Math.max(c.cashbackBase, c.cashbackNoStaking, c.cashbackPremium) > 0
                         ? `${Math.max(c.cashbackBase, c.cashbackNoStaking, c.cashbackPremium)}%`
-                        : ','}
+                        : '—'}
                     </div>
                   )}
                 </CompareRow>
@@ -1169,9 +1169,9 @@ function CompareRow({
 import type { CardReview } from '../data/cardReviews';
 
 // ── Helpers for ReviewMiniCard keyStats (lang-aware, from numeric card data) ──
-const UP_TO: Record<string, string> = { fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino al', en: 'Up to' };
-const FREE: Record<string, string> = { fr: 'Gratuit', be: 'Gratuit', de: 'Kostenlos', at: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
-const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at: '/Jahr', es: '/año', it: '/anno', en: '/year' };
+const UP_TO: Record<string, string> = { fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino al', en: 'Up to', pt: 'Até' };
+const FREE: Record<string, string> = { fr: 'Gratuit', be: 'Gratuit', de: 'Kostenlos', at: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free', pt: 'Grátis' };
+const PER_YEAR: Record<string, string> = { fr: '/an', be: '/an', de: '/Jahr', at: '/Jahr', es: '/año', it: '/anno', en: '/year', pt: '/ano' };
 
 function fmtCashbackMax(card: CryptoCard, lang: string): string {
   const pct = card.cashbackPremium ?? card.cashbackBase ?? 0;
@@ -1201,8 +1201,8 @@ function ReviewMiniCard({
   const updatedLabel = new Date(review.updatedAt).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
 
   // Use numeric card data for keyStats when available (avoids FR-only strings)
-  const cashbackDisplay = primaryCard ? fmtCashbackMax(primaryCard, lang) : (lang === 'fr' ? review.keyStats.cashbackMax : ',');
-  const feesDisplay = primaryCard ? fmtAnnualFees(primaryCard, lang) : (lang === 'fr' ? review.keyStats.fraisAnnuels : ',');
+  const cashbackDisplay = primaryCard ? fmtCashbackMax(primaryCard, lang) : (lang === 'fr' ? review.keyStats.cashbackMax : '—');
+  const feesDisplay = primaryCard ? fmtAnnualFees(primaryCard, lang) : (lang === 'fr' ? review.keyStats.fraisAnnuels : '—');
   const stakingBool = primaryCard
     ? (primaryCard.stakingRequired ?? 0) > 0
     : review.keyStats.stakingRequis.toLowerCase().includes('aucun') || review.keyStats.stakingRequis.toLowerCase().includes('non') ? false : true;

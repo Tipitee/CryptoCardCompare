@@ -492,11 +492,11 @@ export default function FeeIndexPage() {
                       </td>
                       {/* Cashback base */}
                       <td className="px-4 py-3 text-center font-semibold text-cyan-accent">
-                        {card.cashbackBase > 0 ? fmtPct(card.cashbackBase) : ','}
+                        {card.cashbackBase > 0 ? fmtPct(card.cashbackBase) : '—'}
                       </td>
                       {/* Cashback max */}
                       <td className="px-4 py-3 text-center font-semibold text-cyan-accent">
-                        {card.cashbackPremium > 0 ? fmtPct(card.cashbackPremium) : ','}
+                        {card.cashbackPremium > 0 ? fmtPct(card.cashbackPremium) : '—'}
                       </td>
                       {/* Free withdrawals */}
                       <td className="px-4 py-3 text-center">

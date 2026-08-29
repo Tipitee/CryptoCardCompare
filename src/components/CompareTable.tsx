@@ -15,38 +15,40 @@ const SCROLL_HINT: Record<string, string> = {
   es: 'Desliza para ver más',
   it: 'Scorri per vedere altro',
   en: 'Scroll for more',
+  pt: 'Desliza para ver mais',
 };
 
 // ── i18n label maps ────────────────────────────────────────────────────────────
 const TH: Record<string, Record<string, string>> = {
-  card:       { fr: 'Carte',            de: 'Karte',             es: 'Tarjeta',          it: 'Carta',           en: 'Card' },
-  cbBase:     { fr: 'Cashback base',    de: 'Basis-Cashback',    es: 'Cashback base',    it: 'Cashback base',   en: 'Base cashback' },
-  cbMax:      { fr: 'Cashback max',     de: 'Max. Cashback',     es: 'Cashback máx.',    it: 'Cashback max.',   en: 'Max cashback' },
-  fees:       { fr: 'Frais annuels',    de: 'Jahresgebühren',    es: 'Comisiones',       it: 'Costi annuali',   en: 'Annual fees' },
-  staking:    { fr: 'Staking requis',   de: 'Staking erf.',      es: 'Staking req.',     it: 'Staking rich.',   en: 'Staking req.' },
-  cryptos:    { fr: 'Cryptos',          de: 'Kryptos',           es: 'Criptos',          it: 'Criptovalute',    en: 'Cryptos' },
-  france:     { fr: 'France',           de: 'Frankreich',        es: 'Francia',          it: 'Francia',         en: 'France' },
-  network:    { fr: 'Réseau',           de: 'Netzwerk',          es: 'Red',              it: 'Rete',            en: 'Network' },
-  withdrawals:{ fr: 'Retraits gratuits',de: 'Gratis-Abhebungen', es: 'Retiros gratis',   it: 'Prelievi gratis', en: 'Free withdrawals' },
-  actions:    { fr: 'Actions',          de: 'Aktionen',          es: 'Acciones',         it: 'Azioni',          en: 'Actions' },
+  card:       { fr: 'Carte',            de: 'Karte',             es: 'Tarjeta',          it: 'Carta',           en: 'Card', pt: 'Cartão' },
+  cbBase:     { fr: 'Cashback base',    de: 'Basis-Cashback',    es: 'Cashback base',    it: 'Cashback base',   en: 'Base cashback', pt: 'Cashback base' },
+  cbMax:      { fr: 'Cashback max',     de: 'Max. Cashback',     es: 'Cashback máx.',    it: 'Cashback max.',   en: 'Max cashback', pt: 'Cashback máx.' },
+  fees:       { fr: 'Frais annuels',    de: 'Jahresgebühren',    es: 'Comisiones',       it: 'Costi annuali',   en: 'Annual fees', pt: 'Comissões anuais' },
+  staking:    { fr: 'Staking requis',   de: 'Staking erf.',      es: 'Staking req.',     it: 'Staking rich.',   en: 'Staking req.', pt: 'Staking exig.' },
+  cryptos:    { fr: 'Cryptos',          de: 'Kryptos',           es: 'Criptos',          it: 'Criptovalute',    en: 'Cryptos', pt: 'Criptos' },
+  france:     { fr: 'France',           de: 'Frankreich',        es: 'Francia',          it: 'Francia',         en: 'France', pt: 'Portugal' },
+  network:    { fr: 'Réseau',           de: 'Netzwerk',          es: 'Red',              it: 'Rete',            en: 'Network', pt: 'Rede' },
+  withdrawals:{ fr: 'Retraits gratuits',de: 'Gratis-Abhebungen', es: 'Retiros gratis',   it: 'Prelievi gratis', en: 'Free withdrawals', pt: 'Levantamentos grátis' },
+  actions:    { fr: 'Actions',          de: 'Aktionen',          es: 'Acciones',         it: 'Azioni',          en: 'Actions', pt: 'Ações' },
 };
-const FREE_L:    Record<string, string> = { fr: 'Gratuit',   de: 'Kostenlos',  es: 'Gratis',   it: 'Gratuito',  en: 'Free' };
-const NONE_L:    Record<string, string> = { fr: 'Aucun',     de: 'Keins',      es: 'Ninguno',  it: 'Nessuno',   en: 'None' };
+const FREE_L:    Record<string, string> = { fr: 'Gratuit',   de: 'Kostenlos',  es: 'Gratis',   it: 'Gratuito',  en: 'Free', pt: 'Grátis' };
+const NONE_L:    Record<string, string> = { fr: 'Aucun',     de: 'Keins',      es: 'Ninguno',  it: 'Nessuno',   en: 'None', pt: 'Nenhum' };
 const NO_CARDS:  Record<string, string> = {
   fr: 'Aucune carte ne correspond aux filtres sélectionnés.',
   de: 'Keine Karte entspricht den ausgewählten Filtern.',
   es: 'Ninguna tarjeta coincide con los filtros seleccionados.',
   it: 'Nessuna carta corrisponde ai filtri selezionati.',
   en: 'No card matches the selected filters.',
+  pt: 'Nenhum cartão corresponde aos filtros selecionados.',
 };
-const ADD_CMP:   Record<string, string> = { fr: 'Ajouter à la comparaison',  de: 'Zum Vergleich', es: 'Añadir a comparación', it: 'Aggiungi al confronto', en: 'Add to comparison' };
-const REM_CMP:   Record<string, string> = { fr: 'Retirer de la comparaison', de: 'Aus Vergleich', es: 'Quitar de comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison' };
-const ADD_FAV:   Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites' };
-const REM_FAV:   Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites' };
-const SELECTED:  Record<string, string> = { fr: 'Sélectionnée', de: 'Ausgewählt', es: 'Seleccionada', it: 'Selezionata', en: 'Selected' };
-const CLICK_SEL: Record<string, string> = { fr: 'Cliquer pour sélectionner', de: 'Zum Auswählen klicken', es: 'Clic para seleccionar', it: 'Clicca per selezionare', en: 'Click to select' };
-const DETAILS_L: Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details' };
-const OFFER_L:   Record<string, string> = { fr: 'Offre', de: 'Angebot', es: 'Oferta', it: 'Offerta', en: 'Offer' };
+const ADD_CMP:   Record<string, string> = { fr: 'Ajouter à la comparaison',  de: 'Zum Vergleich', es: 'Añadir a comparación', it: 'Aggiungi al confronto', en: 'Add to comparison', pt: 'Adicionar à comparação' };
+const REM_CMP:   Record<string, string> = { fr: 'Retirer de la comparaison', de: 'Aus Vergleich', es: 'Quitar de comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison', pt: 'Remover da comparação' };
+const ADD_FAV:   Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites', pt: 'Adicionar aos favoritos' };
+const REM_FAV:   Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites', pt: 'Remover dos favoritos' };
+const SELECTED:  Record<string, string> = { fr: 'Sélectionnée', de: 'Ausgewählt', es: 'Seleccionada', it: 'Selezionata', en: 'Selected', pt: 'Selecionado' };
+const CLICK_SEL: Record<string, string> = { fr: 'Cliquer pour sélectionner', de: 'Zum Auswählen klicken', es: 'Clic para seleccionar', it: 'Clicca per selezionare', en: 'Click to select', pt: 'Clica para selecionar' };
+const DETAILS_L: Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details', pt: 'Detalhes' };
+const OFFER_L:   Record<string, string> = { fr: 'Offre', de: 'Angebot', es: 'Oferta', it: 'Offerta', en: 'Offer', pt: 'Oferta' };
 
 export type SortKey =
   | 'name'

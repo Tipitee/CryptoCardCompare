@@ -19,7 +19,7 @@ import { THEMATIC_ROUTES } from '../config/routes';
 
 const SLUGS: Record<string, string> = {
   fr: 'recommandation', be: 'recommandation', de: 'empfehlung', at: 'empfehlung',
-  es: 'recomendacion', it: 'raccomandazione', en: 'recommendation',
+  es: 'recomendacion', it: 'raccomandazione', en: 'recommendation', pt: 'recomendacao',
 };
 
 const YEAR = new Date().getFullYear();
@@ -29,6 +29,7 @@ const REC_SEO: Record<string, { title: string; desc: string }> = {
   es: { title: `Quiz, ¿Qué Tarjeta Crypto es para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde 6 preguntas y obtén al instante la mejor tarjeta crypto para tu perfil. Cashback, comisiones, staking, nuestro algoritmo elige por ti. Gratis ✓` },
   it: { title: `Quiz, Quale Carta Crypto fa per Te? ${YEAR} | TopCryptoCards`, desc: `Rispondi a 6 domande e ottieni subito la migliore carta crypto per il tuo profilo. Cashback, commissioni, staking, il nostro algoritmo sceglie per te. Gratuito ✓` },
   en: { title: `Which Crypto Card is Right for You? ${YEAR} | TopCryptoCards`, desc: `Answer 6 questions and instantly get the best crypto card for your profile. Cashback, fees, staking, our algorithm picks for you. Free ✓` },
+  pt: { title: `Qual o Cartão Crypto Ideal para Ti? ${YEAR} | TopCryptoCards`, desc: `Responde a 6 perguntas e recebe na hora o melhor cartão crypto para o teu perfil. Cashback, comissões, staking: o nosso algoritmo escolhe por ti. Grátis ✓` },
 };
 
 const REC_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
@@ -115,7 +116,7 @@ export default function Recommendation() {
   // ── Schema.org WebPage (Quiz) ─────────────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
+    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation', pt: 'recomendacao' };
     const seg = SLUGS[lang] ?? 'recommendation';
     const schema = {
       '@context': 'https://schema.org',
@@ -154,7 +155,7 @@ export default function Recommendation() {
   // ── BreadcrumbList schema ────────────────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation' };
+    const SLUGS: Record<string, string> = { fr: 'recommandation', de: 'empfehlung', es: 'recomendacion', it: 'raccomandazione', en: 'recommendation', pt: 'recomendacao' };
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Recommandation'], de: ['Startseite', 'Empfehlung'], es: ['Inicio', 'Recomendación'], it: ['Home', 'Raccomandazione'], en: ['Home', 'Recommendation'],
     };

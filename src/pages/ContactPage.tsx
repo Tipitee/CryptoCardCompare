@@ -10,7 +10,7 @@ const TWITTER_URL   = 'https://x.com/cryptocards_eu';
 const CONTACT_SLUGS: Record<string, string> = {
   fr: 'contact', be: 'contact',
   de: 'kontakt', at: 'kontakt',
-  es: 'contacto', it: 'contatti', en: 'contact',
+  es: 'contacto', it: 'contatti', en: 'contact', pt: 'contacto',
 };
 
 const SEO: Record<string, { title: string; desc: string }> = {

@@ -25,7 +25,7 @@ import { THEMATIC_ROUTES } from '../config/routes';
 const YEAR = new Date().getFullYear();
 const SIM_SLUGS: Record<string, string> = {
   fr: 'simulateur', be: 'simulateur', de: 'simulator', at: 'simulator',
-  es: 'simulador', it: 'simulatore', en: 'simulator',
+  es: 'simulador', it: 'simulatore', en: 'simulator', pt: 'simulador',
 };
 
 const SIM_SEO: Record<string, { title: string; desc: string }> = {
@@ -34,6 +34,7 @@ const SIM_SEO: Record<string, { title: string; desc: string }> = {
   es: { title: `Simulador de Ganancias Tarjetas Crypto ${YEAR} | TopCryptoCards`, desc: `Calcula tus ganancias anuales con cada tarjeta crypto: Crypto.com, Nexo, Bybit, Binance. Introduce tus gastos, ve el resultado en segundos. Gratis ✓` },
   it: { title: `Simulatore di Guadagni Carte Crypto ${YEAR} | TopCryptoCards`, desc: `Calcola i tuoi guadagni annuali con ogni carta crypto: Crypto.com, Nexo, Bybit, Binance. Inserisci le spese, vedi il risultato in secondi. Gratuito ✓` },
   en: { title: `Crypto Card Earnings Simulator ${YEAR} | TopCryptoCards`, desc: `Calculate your annual earnings with each crypto card: Crypto.com, Nexo, Bybit, Binance. Enter your spending, see results instantly. Free ✓` },
+  pt: { title: `Simulador de Ganhos Cartões Crypto ${YEAR} | TopCryptoCards`, desc: `Calcula os teus ganhos anuais com cada cartão crypto: Crypto.com, Nexo, Bybit, Binance. Introduz as tuas despesas e vê o resultado em segundos. Grátis ✓` },
 };
 
 const SIM_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { key: string; emoji: string; label: string }[] }> = {
@@ -152,7 +153,7 @@ export default function Simulator() {
   // ── Schema.org SoftwareApplication ───────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
+    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator', pt: 'simulador' };
     const seg = SIM_SLUGS[lang] ?? 'simulator';
     const schema = {
       '@context': 'https://schema.org',
@@ -194,7 +195,7 @@ export default function Simulator() {
   // ── BreadcrumbList schema ────────────────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator' };
+    const SIM_SLUGS: Record<string, string> = { fr: 'simulateur', de: 'simulator', es: 'simulador', it: 'simulatore', en: 'simulator', pt: 'simulador' };
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Simulateur'], de: ['Startseite', 'Simulator'], es: ['Inicio', 'Simulador'], it: ['Home', 'Simulatore'], en: ['Home', 'Simulator'],
     };
@@ -726,7 +727,7 @@ export default function Simulator() {
                             {fmtEUR(r.rewards)}
                           </td>
                           <td className="px-4 py-3 text-right font-mono text-slate-400 hidden md:table-cell">
-                            {r.card.annualFees === 0 ? ',' : fmtEUR(r.card.annualFees)}
+                            {fmtEUR(r.card.annualFees)}
                           </td>
                           <td className="px-4 py-3 text-right font-mono font-semibold text-green-accent">
                             {fmtEUR(r.net)}
@@ -769,7 +770,7 @@ export default function Simulator() {
                                 {fmtEUR(t2.rewards)}
                               </td>
                               <td className="px-4 py-2 text-right text-xs font-mono hidden md:table-cell">
-                                {t2.card.annualFees === 0 ? ',' : fmtEUR(t2.card.annualFees)}
+                                {fmtEUR(t2.card.annualFees)}
                               </td>
                               <td className="px-4 py-2 text-right text-xs font-mono text-slate-300">
                                 {fmtEUR(t2.net)}
@@ -820,7 +821,7 @@ export default function Simulator() {
             fr: 'Intégrez ce simulateur sur votre site →', be: 'Intégrez ce simulateur sur votre site →',
             de: 'Diesen Simulator auf Ihrer Website einbetten →', at: 'Diesen Simulator auf Ihrer Website einbetten →',
             es: 'Integra esta herramienta en tu web →', it: 'Integra questo strumento sul tuo sito →',
-            en: 'Embed this tool on your website →',
+            en: 'Embed this tool on your website →', pt: 'Incorpora esta ferramenta no teu site →',
           };
           return (
             <div className="mt-10 p-4 rounded-xl border border-bg-border bg-bg-elevated/50 text-center">

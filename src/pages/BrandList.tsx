@@ -80,7 +80,7 @@ const BRANDLIST_EDITORIAL: Record<string, { h2: string; body: string; related: s
 };
 
 const LOADING_LABEL: Record<string, string> = {
-  fr: 'Chargement…', de: 'Wird geladen…', es: 'Cargando…', it: 'Caricamento…', en: 'Loading…',
+  fr: 'Chargement…', de: 'Wird geladen…', es: 'Cargando…', it: 'Caricamento…', en: 'Loading…', pt: 'A carregar…',
 };
 
 const L: Record<string, {
@@ -126,7 +126,7 @@ const L: Record<string, {
 };
 
 const MARKET_FLAG: Record<string, string> = {
-  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧',
+  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
 };
 
 export default function BrandList() {
@@ -178,7 +178,7 @@ export default function BrandList() {
   // BreadcrumbList schema
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
     const slug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
     const schema = {
       '@context': 'https://schema.org',

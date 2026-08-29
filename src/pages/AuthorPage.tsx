@@ -12,35 +12,43 @@ import { estimateReadTime } from '../utils/markdown';
 import Breadcrumb from '../components/Breadcrumb';
 
 const HOME_LABEL: Record<string, string> = {
-  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início',
 };
-const BLOG_LABEL: Record<string, string> = {
-  fr: 'Blog', de: 'Blog', es: 'Blog', it: 'Blog', en: 'Blog',
+const NO_POSTS_LABEL: Record<string, string> = {
+  fr: 'Aucun article pour le moment.',
+  be: 'Aucun article pour le moment.',
+  de: 'Noch keine Artikel.',
+  at: 'Noch keine Artikel.',
+  es: 'Aún no hay artículos.',
+  it: 'Nessun articolo per ora.',
+  en: 'No articles yet.',
+  pt: 'Ainda não há artigos.',
 };
 const READ_MORE_LABEL: Record<string, string> = {
-  fr: "Lire l'article", de: 'Artikel lesen', es: 'Leer artículo', it: "Leggi l'articolo", en: 'Read article',
+  fr: "Lire l'article", de: 'Artikel lesen', es: 'Leer artículo', it: "Leggi l'articolo", en: 'Read article', pt: 'Ler artigo',
 };
 const READ_DURATION_LABEL: Record<string, string> = {
-  fr: 'min de lecture', de: 'Min. Lesezeit', es: 'min de lectura', it: 'min di lettura', en: 'min read',
+  fr: 'min de lecture', de: 'Min. Lesezeit', es: 'min de lectura', it: 'min di lettura', en: 'min read', pt: 'min de leitura',
 };
 const ARTICLES_LABEL: Record<string, string> = {
-  fr: 'Articles publiés', de: 'Veröffentlichte Artikel', es: 'Artículos publicados', it: 'Articoli pubblicati', en: 'Published articles',
+  fr: 'Articles publiés', de: 'Veröffentlichte Artikel', es: 'Artículos publicados', it: 'Articoli pubblicati', en: 'Published articles', pt: 'Artigos publicados',
 };
 const NOT_FOUND_LABEL: Record<string, string> = {
-  fr: 'Auteur introuvable', de: 'Autor nicht gefunden', es: 'Autor no encontrado', it: 'Autore non trovato', en: 'Author not found',
+  fr: 'Auteur introuvable', de: 'Autor nicht gefunden', es: 'Autor no encontrado', it: 'Autore non trovato', en: 'Author not found', pt: 'Autor não encontrado',
 };
 const EXPERTISE_LABEL: Record<string, string> = {
-  fr: "Domaine d'expertise", de: 'Fachgebiet', es: 'Área de experiencia', it: 'Area di competenza', en: 'Area of expertise',
+  fr: "Domaine d'expertise", de: 'Fachgebiet', es: 'Área de experiencia', it: 'Area di competenza', en: 'Area of expertise', pt: 'Área de especialização',
 };
 const EXPERTISE_VALUE: Record<string, string> = {
   fr: 'Cartes crypto · Fintech · Régulation MiCA',
   de: 'Krypto-Karten · Fintech · MiCA-Regulierung',
+  pt: 'Cartões crypto · Fintech · Regulação MiCA',
   es: 'Tarjetas cripto · Fintech · Regulación MiCA',
   it: 'Carte crypto · Fintech · Regolazione MiCA',
   en: 'Crypto cards · Fintech · MiCA regulation',
 };
 const SINCE_LABEL: Record<string, string> = {
-  fr: 'Sur TopCryptoCards depuis', de: 'Auf TopCryptoCards seit', es: 'En TopCryptoCards desde', it: 'Su TopCryptoCards dal', en: 'On TopCryptoCards since',
+  fr: 'Sur TopCryptoCards depuis', de: 'Auf TopCryptoCards seit', es: 'En TopCryptoCards desde', it: 'Su TopCryptoCards dal', en: 'On TopCryptoCards since', pt: 'Na TopCryptoCards desde',
 };
 
 export default function AuthorPage() {
@@ -194,7 +202,7 @@ export default function AuthorPage() {
             ))}
           </div>
         ) : posts.length === 0 ? (
-          <p className="text-slate-400 text-sm">{BLOG_LABEL[lang]}:,</p>
+          <p className="text-slate-400 text-sm">{NO_POSTS_LABEL[lang] ?? NO_POSTS_LABEL.en}</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {posts.map(post => (

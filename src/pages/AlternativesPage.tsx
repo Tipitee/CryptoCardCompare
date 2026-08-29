@@ -23,15 +23,15 @@ const BASE = 'https://topcryptocards.eu';
 /* ── i18n labels ────────────────────────────────────────────────────────────── */
 const LOADING_LABEL: Record<string, string> = {
   fr: 'Chargement…', be: 'Chargement…', de: 'Laden…', at: 'Laden…',
-  es: 'Cargando…', it: 'Caricamento…', en: 'Loading…',
+  es: 'Cargando…', it: 'Caricamento…', en: 'Loading…', pt: 'A carregar…',
 };
 const BRANDS_LABEL: Record<string, string> = {
   fr: 'Marques', be: 'Marques', de: 'Marken', at: 'Marken',
-  es: 'Marcas', it: 'Marchi', en: 'Brands',
+  es: 'Marcas', it: 'Marchi', en: 'Brands', pt: 'Marcas',
 };
 const ALTERNATIVES_LABEL: Record<string, string> = {
   fr: 'Alternatives', be: 'Alternatives', de: 'Alternativen', at: 'Alternativen',
-  es: 'Alternativas', it: 'Alternative', en: 'Alternatives',
+  es: 'Alternativas', it: 'Alternative', en: 'Alternatives', pt: 'Alternativas',
 };
 const WHY_LABEL: Record<string, string> = {
   fr: 'Pourquoi chercher une alternative ?',
@@ -41,6 +41,7 @@ const WHY_LABEL: Record<string, string> = {
   es: '¿Por qué buscar una alternativa?',
   it: 'Perché cercare un\'alternativa?',
   en: 'Why look for an alternative?',
+  pt: 'Porquê procurar uma alternativa?',
 };
 const TOP_ALTS_LABEL: Record<string, string> = {
   fr: 'Meilleures alternatives',
@@ -50,44 +51,48 @@ const TOP_ALTS_LABEL: Record<string, string> = {
   es: 'Mejores alternativas',
   it: 'Migliori alternative',
   en: 'Top alternatives',
+  pt: 'Melhores alternativas',
 };
 const FREE_LABEL: Record<string, string> = {
   fr: 'Gratuit', be: 'Gratuit', de: 'Kostenlos', at: 'Kostenlos',
-  es: 'Gratuita', it: 'Gratuita', en: 'Free',
+  es: 'Gratuita', it: 'Gratuita', en: 'Free', pt: 'Grátis',
 };
 const PER_YEAR_LABEL: Record<string, string> = {
   fr: '/an', be: '/an', de: '/Jahr', at: '/Jahr',
-  es: '/año', it: '/anno', en: '/year',
+  es: '/año', it: '/anno', en: '/year', pt: '/ano',
 };
 const STAKING_LABEL: Record<string, string> = {
   fr: 'Staking requis', be: 'Staking requis', de: 'Staking erforderlich', at: 'Staking erforderlich',
-  es: 'Staking requerido', it: 'Staking richiesto', en: 'Staking required',
+  es: 'Staking requerido', it: 'Staking richiesto', en: 'Staking required', pt: 'Staking exigido',
 };
 const NO_STAKING_LABEL: Record<string, string> = {
   fr: 'Sans staking', be: 'Sans staking', de: 'Kein Staking', at: 'Kein Staking',
-  es: 'Sin staking', it: 'Nessuno staking', en: 'No staking',
+  es: 'Sin staking', it: 'Nessuno staking', en: 'No staking', pt: 'Sem staking',
 };
 const DETAILS_LABEL: Record<string, string> = {
   fr: 'Voir la fiche', be: 'Voir la fiche', de: 'Details', at: 'Details',
-  es: 'Ver ficha', it: 'Vedi scheda', en: 'View card',
+  es: 'Ver ficha', it: 'Vedi scheda', en: 'View card', pt: 'Ver ficha',
 };
 const COMPARE_LINK_LABEL: Record<string, string> = {
   fr: 'Comparer toutes les cartes', be: 'Comparer toutes les cartes',
   de: 'Alle Karten vergleichen', at: 'Alle Karten vergleichen',
   es: 'Comparar todas las tarjetas', it: 'Confronta tutte le carte',
   en: 'Compare all cards',
+  pt: 'Comparar todos os cartões',
 };
 const BRAND_PAGE_LABEL: Record<string, string> = {
   fr: 'Voir la page marque', be: 'Voir la page marque',
   de: 'Zur Markenseite', at: 'Zur Markenseite',
   es: 'Ver página de marca', it: 'Vedi pagina del marchio',
   en: 'View brand page',
+  pt: 'Ver página da marca',
 };
 const FAQ_LABEL: Record<string, string> = {
   fr: 'Questions fréquentes', be: 'Questions fréquentes',
   de: 'Häufige Fragen', at: 'Häufige Fragen',
   es: 'Preguntas frecuentes', it: 'Domande frequenti',
   en: 'Frequently Asked Questions',
+  pt: 'Perguntas frequentes',
 };
 const HOW_TO_LABEL: Record<string, string> = {
   fr: 'Comment choisir la meilleure alternative ?',
@@ -97,6 +102,7 @@ const HOW_TO_LABEL: Record<string, string> = {
   es: '¿Cómo elegir la mejor alternativa?',
   it: 'Come scegliere la migliore alternativa?',
   en: 'How to choose the best alternative?',
+  pt: 'Como escolher a melhor alternativa?',
 };
 const HOW_TO_BODY: Record<string, string> = {
   fr: 'Trois critères sont déterminants : (1) le taux de cashback crypto, comparez le taux de base sans staking et le taux maximum accessible ; (2) les frais annuels, certaines cartes sont entièrement gratuites, d\'autres facturent jusqu\'à 400 €/an ; (3) les exigences de staking, bloquer des tokens dans votre portefeuille représente un coût d\'opportunité à intégrer dans votre calcul de rendement réel.',
@@ -106,12 +112,13 @@ const HOW_TO_BODY: Record<string, string> = {
   es: 'Tres criterios son determinantes: (1) tasa de cashback en cripto, compara la tasa base sin staking y la tasa máxima accesible; (2) comisiones anuales, algunas tarjetas son completamente gratuitas, otras cobran hasta 400 €/año; (3) requisitos de staking, bloquear tokens en tu cartera representa un coste de oportunidad que debes incluir en tu cálculo de rendimiento real.',
   it: 'Tre criteri sono determinanti: (1) tasso di cashback cripto, confronta il tasso base senza staking e il tasso massimo raggiungibile; (2) commissioni annuali, alcune carte sono completamente gratuite, altre costano fino a 400 €/anno; (3) requisiti di staking, bloccare token nel tuo portafoglio rappresenta un costo opportunità da includere nel calcolo del rendimento reale.',
   en: 'Three criteria are decisive: (1) crypto cashback rate, compare the base rate without staking and the maximum accessible rate; (2) annual fees, some cards are entirely free, others charge up to €400/year; (3) staking requirements, locking tokens in your wallet represents an opportunity cost you must factor into your real yield calculation.',
+  pt: 'Três critérios são decisivos: (1) taxa de cashback em cripto, compara a taxa base sem staking e a taxa máxima acessível; (2) comissões anuais, alguns cartões são totalmente gratuitos, outros cobram até 400 €/ano; (3) exigências de staking, imobilizar tokens na tua carteira representa um custo de oportunidade a incluir no cálculo do rendimento real. Em Portugal, soma-se a fiscalidade: pagar com cripto detida há menos de 365 dias gera mais-valia tributada a 28%.',
 };
 const OTHER_ALTS_LABEL: Record<string, string> = {
   fr: 'Autres comparatifs d\'alternatives', be: 'Autres comparatifs d\'alternatives',
   de: 'Weitere Alternativen-Vergleiche', at: 'Weitere Alternativen-Vergleiche',
   es: 'Otros comparativos de alternativas', it: 'Altri confronti di alternative',
-  en: 'Other alternatives comparisons',
+  en: 'Other alternatives comparisons', pt: 'Outros comparativos de alternativas',
 };
 
 /* ── Component ──────────────────────────────────────────────────────────────── */
@@ -249,7 +256,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
               ? `${card.cashback_base}–${card.cashback_premium}%`
               : card.cashback_base
                 ? `${card.cashback_base}%`
-                : ',';
+                : '—';
             return (
               <Link
                 key={card.id}
@@ -351,7 +358,7 @@ export default function AlternativesPage({ brand }: AlternativesPageProps) {
         const ALT_PREFIX: Record<string, string> = {
           fr: 'Alternatives', be: 'Alternatives',
           de: 'Alternativen', at: 'Alternativen',
-          es: 'Alternativas', it: 'Alternative', en: 'Alternatives',
+          es: 'Alternativas', it: 'Alternative', en: 'Alternatives', pt: 'Alternativas',
         };
         return (
           <div className="mb-10">

@@ -24,6 +24,7 @@ const LINKS: Record<string, { home: string; compare: string; blog: string; guide
 
 const THEMATIC_BEST: Record<string, string> = {
   fr: 'meilleure-carte-crypto',
+  pt: 'melhor-cartao-crypto',
   de: 'beste-krypto-karte',
   es: 'mejor-tarjeta-cripto',
   it: 'migliore-carta-cripto',

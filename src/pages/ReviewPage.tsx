@@ -13,7 +13,7 @@ import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
 const CARD_SEGMENT: Record<string, string> = {
-  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes',
 };
 
 const YEAR = new Date().getFullYear();
@@ -274,7 +274,7 @@ const EDITORIAL_PAIRS_R = [
 ];
 
 const COMPARE_WITH_R: Record<string, string> = {
-  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons',
+  fr: 'Comparatifs', de: 'Vergleiche', es: 'Comparativas', it: 'Confronti', en: 'Comparisons', pt: 'Comparativos',
 };
 
 function pairToLabelR(slug: string): string {
@@ -295,11 +295,11 @@ const ISSUER_TO_BRAND: Record<string, string> = {
 };
 const SEE_ALL_TIERS: Record<string, string> = {
   fr: 'Voir toutes les cartes', de: 'Alle Karten ansehen',
-  es: 'Ver todas las tarjetas', it: 'Vedi tutte le carte', en: 'See all cards',
+  es: 'Ver todas las tarjetas', it: 'Vedi tutte le carte', en: 'See all cards', pt: 'Ver todos os cartões',
 };
 
 const DATE_LOCALE: Record<string, string> = {
-  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB',
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT',
 };
 
 function StarRating({ value, max = 5 }: { value: number; max?: number }) {
@@ -336,20 +336,20 @@ function RatingBar({ label, value, icon: Icon }: { label: string; value: number;
 }
 
 const REVIEW_THEMATIC_SLUGS: Record<string, Record<string, string>> = {
-  cashback:     { fr: 'carte-crypto-cashback', de: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback' },
-  'no-fees':    { fr: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
-  'no-staking': { fr: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking' },
-  travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel' },
-  best:         { fr: 'meilleure-carte-crypto', de: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card' },
-  rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards' },
+  cashback:     { fr: 'carte-crypto-cashback', de: 'krypto-karte-cashback', es: 'tarjeta-cripto-cashback', it: 'carta-cripto-cashback', en: 'crypto-card-cashback', pt: 'cartao-crypto-cashback' },
+  'no-fees':    { fr: 'carte-crypto-sans-frais', de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones', it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees', pt: 'cartao-crypto-sem-taxas' },
+  'no-staking': { fr: 'carte-crypto-sans-staking', de: 'krypto-karte-ohne-staking', es: 'tarjeta-cripto-sin-staking', it: 'carta-cripto-senza-staking', en: 'crypto-card-no-staking', pt: 'cartao-crypto-sem-staking' },
+  travel:       { fr: 'carte-crypto-voyage', de: 'krypto-karte-reise', es: 'tarjeta-cripto-viaje', it: 'carta-cripto-viaggio', en: 'crypto-card-travel', pt: 'cartao-crypto-viagem' },
+  best:         { fr: 'meilleure-carte-crypto', de: 'beste-krypto-karte', es: 'mejor-tarjeta-cripto', it: 'migliore-carta-cripto', en: 'best-crypto-card', pt: 'melhor-cartao-crypto' },
+  rewards:      { fr: 'carte-crypto-recompenses', de: 'krypto-karte-praemien', es: 'tarjeta-cripto-recompensas', it: 'carta-cripto-premi', en: 'crypto-card-rewards', pt: 'cartao-crypto-recompensas' },
 };
 const REVIEW_THEMATIC_LABEL: Record<string, Record<string, string>> = {
-  cashback:     { fr: 'Meilleures cartes cashback', de: 'Beste Cashback-Karten', es: 'Mejores tarjetas cashback', it: 'Migliori carte cashback', en: 'Best cashback cards' },
-  'no-fees':    { fr: 'Cartes sans frais', de: 'Karten ohne Gebühren', es: 'Tarjetas sin comisiones', it: 'Carte senza commissioni', en: 'No-fee cards' },
-  'no-staking': { fr: 'Cartes sans staking', de: 'Karten ohne Staking', es: 'Tarjetas sin staking', it: 'Carte senza staking', en: 'No-staking cards' },
-  travel:       { fr: 'Cartes pour voyager', de: 'Reisekarten', es: 'Tarjetas de viaje', it: 'Carte per viaggiare', en: 'Travel cards' },
-  best:         { fr: 'Meilleures cartes crypto', de: 'Beste Krypto-Karten', es: 'Mejores tarjetas cripto', it: 'Migliori carte cripto', en: 'Best crypto cards' },
-  rewards:      { fr: 'Cartes à récompenses', de: 'Prämienkarten', es: 'Tarjetas de recompensas', it: 'Carte con premi', en: 'Rewards cards' },
+  cashback:     { fr: 'Meilleures cartes cashback', de: 'Beste Cashback-Karten', es: 'Mejores tarjetas cashback', it: 'Migliori carte cashback', en: 'Best cashback cards', pt: 'Melhores cartões cashback' },
+  'no-fees':    { fr: 'Cartes sans frais', de: 'Karten ohne Gebühren', es: 'Tarjetas sin comisiones', it: 'Carte senza commissioni', en: 'No-fee cards', pt: 'Cartões sem taxas' },
+  'no-staking': { fr: 'Cartes sans staking', de: 'Karten ohne Staking', es: 'Tarjetas sin staking', it: 'Carte senza staking', en: 'No-staking cards', pt: 'Cartões sem staking' },
+  travel:       { fr: 'Cartes pour voyager', de: 'Reisekarten', es: 'Tarjetas de viaje', it: 'Carte per viaggiare', en: 'Travel cards', pt: 'Cartões de viagem' },
+  best:         { fr: 'Meilleures cartes crypto', de: 'Beste Krypto-Karten', es: 'Mejores tarjetas cripto', it: 'Migliori carte cripto', en: 'Best crypto cards', pt: 'Melhores cartões crypto' },
+  rewards:      { fr: 'Cartes à récompenses', de: 'Prämienkarten', es: 'Tarjetas de recompensas', it: 'Carte con premi', en: 'Rewards cards', pt: 'Cartões com recompensas' },
 };
 const REVIEW_THEMATIC_EMOJI: Record<string, string> = {
   cashback: '💰', 'no-fees': '🆓', 'no-staking': '🔓', travel: '✈️', best: '🏆', rewards: '🎁',
@@ -366,8 +366,8 @@ function reviewToThemes(rb: Record<string, number>, keyStats: Record<string, str
   if (rb.cashback >= 4) themes.push('rewards');
   return [...new Set(themes)].slice(0, 4);
 }
-const SIMULATOR_LABEL_R: Record<string, string> = { fr: 'Simuler mes gains', de: 'Gewinne simulieren', es: 'Simular mis ganancias', it: 'Simulare i guadagni', en: 'Simulate my earnings' };
-const THEMED_PAGES_LABEL: Record<string, string> = { fr: 'Pages thématiques', de: 'Themenseiten', es: 'Páginas temáticas', it: 'Pagine tematiche', en: 'Thematic pages' };
+const SIMULATOR_LABEL_R: Record<string, string> = { fr: 'Simuler mes gains', de: 'Gewinne simulieren', es: 'Simular mis ganancias', it: 'Simulare i guadagni', en: 'Simulate my earnings', pt: 'Simular os meus ganhos' };
+const THEMED_PAGES_LABEL: Record<string, string> = { fr: 'Pages thématiques', de: 'Themenseiten', es: 'Páginas temáticas', it: 'Pagine tematiche', en: 'Thematic pages', pt: 'Páginas temáticas' };
 
 // Propagate be→fr and at→de aliases
 L.be = L.fr; L.at = L.de;
@@ -789,13 +789,13 @@ export default function ReviewPage() {
                         ? i18n.keyStats.cashbackMax.split(' ').slice(0, 3).join(' ')
                         : lang === 'fr'
                           ? review.keyStats.cashbackMax.split(' ').slice(0, 3).join(' ')
-                          : ','}
+                          : '—'}
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-400">{l.annualFees}</span>
                     <span className="font-semibold text-white">
-                      {i18n?.keyStats.fraisAnnuels ?? (lang === 'fr' ? review.keyStats.fraisAnnuels : ',')}
+                      {i18n?.keyStats.fraisAnnuels ?? (lang === 'fr' ? review.keyStats.fraisAnnuels : '—')}
                     </span>
                   </div>
                 </div>

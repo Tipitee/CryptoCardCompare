@@ -113,11 +113,11 @@ const ALL_CRYPTOS = [
 type ViewMode = 'columns' | 'table';
 
 const DATE_LOCALES: Record<string, string> = {
-  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB',
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT',
 };
 
 const COMPARE_PREFIX: Record<string, string> = {
-  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+  fr: 'comparer', de: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare', pt: 'comparar',
 };
 
 const QUICK_COMPARE_LABELS: Record<string, { title: string; hint: string; cardA: string; cardB: string; btn: string; selectHint: string }> = {
@@ -128,7 +128,7 @@ const QUICK_COMPARE_LABELS: Record<string, { title: string; hint: string; cardA:
   en: { title: 'Compare two cards in detail', hint: 'Click any card in the list to select it', cardA: 'Card A', cardB: 'Card B', btn: 'Compare', selectHint: 'or click a card below' },
 };
 
-const COMPARE_ROUTE: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+const COMPARE_ROUTE: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare', pt: 'comparar' };
 
 export default function Compare() {
   const { t } = useTranslation('common');
@@ -185,7 +185,7 @@ export default function Compare() {
   // ── BreadcrumbList schema ────────────────────────────────────────────────────
   useEffect(() => {
     const BASE = 'https://topcryptocards.eu';
-    const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare' };
+    const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare', pt: 'comparar' };
     const labels: Record<string, [string, string]> = {
       fr: ['Accueil', 'Comparer'], de: ['Startseite', 'Vergleich'], es: ['Inicio', 'Comparar'], it: ['Home', 'Confronto'], en: ['Home', 'Compare'],
     };
@@ -537,8 +537,8 @@ export default function Compare() {
   const cardAName = allCards.find((c) => c.id === quickA)?.name;
   const cardBName = allCards.find((c) => c.id === quickB)?.name;
 
-  const compareBreadcrumb: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare' };
-  const homeBreadcrumb: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+  const compareBreadcrumb: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare', pt: 'Comparar' };
+  const homeBreadcrumb: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
 
   return (
     <div className="container-app py-10">

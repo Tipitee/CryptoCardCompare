@@ -10,7 +10,7 @@ const BASE = 'https://topcryptocards.eu';
 
 const ABOUT_SLUGS: Record<string, string> = {
   fr: 'a-propos', be: 'a-propos', de: 'ueber-uns', at: 'ueber-uns',
-  es: 'sobre-nosotros', it: 'chi-siamo', en: 'about',
+  es: 'sobre-nosotros', it: 'chi-siamo', en: 'about', pt: 'sobre-nos',
 };
 
 const ABOUT_SEO: Record<string, { title: string; desc: string }> = {

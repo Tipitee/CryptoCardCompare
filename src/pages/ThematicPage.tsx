@@ -9,13 +9,13 @@ import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
 
 const HOME_LABEL: Record<string, string> = {
-  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home',
+  fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início',
 };
 
 const YEAR = new Date().getFullYear();
 
 const LANG_TO_SEGMENT: Record<string, string> = {
-  fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes',
 };
 
 /* ────────────────────────────────────────────────────────────────────────────
@@ -1431,24 +1431,24 @@ const THEME_EMOJI: Record<string, string> = {
   '2026': '🚀', travel: '✈️', rewards: '🎁', belgium: '🇧🇪', austria: '🇦🇹', iban: '🏦',
 };
 const THEME_LABEL: Record<string, Record<string, string>> = {
-  bitcoin:      { fr:'Carte Bitcoin', de:'Bitcoin Karte', es:'Tarjeta Bitcoin', it:'Carta Bitcoin', en:'Bitcoin card' },
-  business:     { fr:'Carte entreprise', de:'Für Unternehmen', es:'Para empresas', it:'Per aziende', en:'For business' },
-  credit:       { fr:'Carte à crédit', de:'Kreditkarte', es:'Tarjeta de crédito', it:'Carta di credito', en:'Credit card' },
-  best:         { fr:'Meilleure carte', de:'Beste Karte', es:'Mejor tarjeta', it:'Migliore carta', en:'Best card' },
-  cashback:     { fr:'Cashback', de:'Cashback', es:'Cashback', it:'Cashback', en:'Cashback' },
-  'no-fees':    { fr:'Sans frais', de:'Ohne Gebühren', es:'Sin comisiones', it:'Senza costi', en:'No fees' },
-  'no-staking': { fr:'Sans staking', de:'Ohne Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
-  france:       { fr:'Disponible en France', de:'In Deutschland', es:'En España', it:'In Italia', en:'Available in EU' },
-  virtual:      { fr:'Carte virtuelle', de:'Virtuelle Karte', es:'Tarjeta virtual', it:'Carta virtuale', en:'Virtual card' },
-  physical:     { fr:'Carte physique', de:'Physische Karte', es:'Tarjeta física', it:'Carta fisica', en:'Physical card' },
-  beginner:     { fr:'Pour débutants', de:'Für Einsteiger', es:'Para principiantes', it:'Per principianti', en:'For beginners' },
-  'no-kyc':     { fr:'Sans KYC', de:'Ohne KYC', es:'Sin KYC', it:'Senza KYC', en:'No KYC' },
-  '2026':       { fr:'Meilleures 2026', de:'Beste 2026', es:'Mejores 2026', it:'Migliori 2026', en:'Best 2026' },
-  travel:       { fr:'Voyage', de:'Reisen', es:'Viaje', it:'Viaggio', en:'Travel' },
-  rewards:      { fr:'Récompenses', de:'Prämien', es:'Recompensas', it:'Premi', en:'Rewards' },
-  belgium:      { fr:'Disponible en Belgique', de:'In Belgien', es:'En Bélgica', it:'In Belgio', en:'Available in Belgium' },
-  austria:      { fr:'Disponible en Autriche', de:'In Österreich', es:'En Austria', it:'In Austria', en:'Available in Austria' },
-  iban:         { fr:'Avec IBAN', de:'Mit IBAN', es:'Con IBAN', it:'Con IBAN', en:'With IBAN' },
+  bitcoin:      { fr:'Carte Bitcoin', de:'Bitcoin Karte', es:'Tarjeta Bitcoin', it:'Carta Bitcoin', en:'Bitcoin card', pt:'Cartão Bitcoin' },
+  business:     { fr:'Carte entreprise', de:'Für Unternehmen', es:'Para empresas', it:'Per aziende', en:'For business', pt:'Para empresas' },
+  credit:       { fr:'Carte à crédit', de:'Kreditkarte', es:'Tarjeta de crédito', it:'Carta di credito', en:'Credit card', pt:'Cartão de crédito' },
+  best:         { fr:'Meilleure carte', de:'Beste Karte', es:'Mejor tarjeta', it:'Migliore carta', en:'Best card', pt:'Melhor cartão' },
+  cashback:     { fr:'Cashback', de:'Cashback', es:'Cashback', it:'Cashback', en:'Cashback', pt:'Cashback' },
+  'no-fees':    { fr:'Sans frais', de:'Ohne Gebühren', es:'Sin comisiones', it:'Senza costi', en:'No fees', pt:'Sem taxas' },
+  'no-staking': { fr:'Sans staking', de:'Ohne Staking', es:'Sin staking', it:'Senza staking', en:'No staking', pt:'Sem staking' },
+  france:       { fr:'Disponible en France', de:'In Deutschland', es:'En España', it:'In Italia', en:'Available in EU', pt:'Disponível em Portugal' },
+  virtual:      { fr:'Carte virtuelle', de:'Virtuelle Karte', es:'Tarjeta virtual', it:'Carta virtuale', en:'Virtual card', pt:'Cartão virtual' },
+  physical:     { fr:'Carte physique', de:'Physische Karte', es:'Tarjeta física', it:'Carta fisica', en:'Physical card', pt:'Cartão físico' },
+  beginner:     { fr:'Pour débutants', de:'Für Einsteiger', es:'Para principiantes', it:'Per principianti', en:'For beginners', pt:'Para iniciantes' },
+  'no-kyc':     { fr:'Sans KYC', de:'Ohne KYC', es:'Sin KYC', it:'Senza KYC', en:'No KYC', pt:'Sem KYC' },
+  '2026':       { fr:'Meilleures 2026', de:'Beste 2026', es:'Mejores 2026', it:'Migliori 2026', en:'Best 2026', pt:'Melhores 2026' },
+  travel:       { fr:'Voyage', de:'Reisen', es:'Viaje', it:'Viaggio', en:'Travel', pt:'Viagem' },
+  rewards:      { fr:'Récompenses', de:'Prämien', es:'Recompensas', it:'Premi', en:'Rewards', pt:'Recompensas' },
+  belgium:      { fr:'Disponible en Belgique', de:'In Belgien', es:'En Bélgica', it:'In Belgio', en:'Available in Belgium', pt:'Disponível na Bélgica' },
+  austria:      { fr:'Disponible en Autriche', de:'In Österreich', es:'En Austria', it:'In Austria', en:'Available in Austria', pt:'Disponível na Áustria' },
+  iban:         { fr:'Avec IBAN', de:'Mit IBAN', es:'Con IBAN', it:'Con IBAN', en:'With IBAN', pt:'Com IBAN' },
 };
 // Propagate be→fr and at→de content aliases into THEME_LABEL
 for (const theme of Object.keys(THEME_LABEL)) {
@@ -1456,7 +1456,7 @@ for (const theme of Object.keys(THEME_LABEL)) {
   if (THEME_LABEL[theme].de) THEME_LABEL[theme].at = THEME_LABEL[theme].de;
 }
 const RELATED_TITLE: Record<string, string> = {
-  fr: 'Voir aussi', be: 'Voir aussi', de: 'Siehe auch', at: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also',
+  fr: 'Voir aussi', be: 'Voir aussi', de: 'Siehe auch', at: 'Siehe auch', es: 'Ver también', it: 'Vedi anche', en: 'See also', pt: 'Ver também',
 };
 
 const THEME_BLOG_LINKS: Record<string, Record<string, { slug: string; title: string }[]>> = {
@@ -1561,11 +1561,11 @@ for (const theme of Object.keys(THEME_BLOG_LINKS)) {
 }
 
 const READ_MORE_TITLE: Record<string, string> = {
-  fr: 'Lire aussi', be: 'Lire aussi', de: 'Mehr lesen', at: 'Mehr lesen', es: 'Leer también', it: 'Leggi anche', en: 'Read more',
+  fr: 'Lire aussi', be: 'Lire aussi', de: 'Mehr lesen', at: 'Mehr lesen', es: 'Leer también', it: 'Leggi anche', en: 'Read more', pt: 'Ler também',
 };
 
 const POPULAR_COMPARISONS_TITLE: Record<string, string> = {
-  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons',
+  fr: 'Comparatifs populaires', be: 'Comparatifs populaires', de: 'Beliebte Vergleiche', at: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons', pt: 'Comparativos populares',
 };
 
 /** Maps each theme to relevant card-vs-card comparison slugs (alphabetically normalized). */
@@ -1672,7 +1672,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
 
   const segment = LANG_TO_SEGMENT[lang] || 'cards';
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-  const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir toutes les cartes', de: 'Alle Karten', es: 'Ver tarjetas', it: 'Vedi carte', en: 'See all cards' };
+  const SEE_TIERS_LABEL: Record<string, string> = { fr: 'Voir toutes les cartes', de: 'Alle Karten', es: 'Ver tarjetas', it: 'Vedi carte', en: 'See all cards', pt: 'Ver todos os cartões' };
 
   // ── SEO ───────────────────────────────────────────────────────────────────────
   // Cannibalization fix: "2026" pages are year-specific variants of the "best" evergreen
@@ -1731,7 +1731,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     }
 
     // BreadcrumbList
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
     const breadcrumbEl = document.createElement('script');
     breadcrumbEl.id = 'schema-thematic-breadcrumb'; breadcrumbEl.type = 'application/ld+json';
     breadcrumbEl.textContent = JSON.stringify({
@@ -1798,8 +1798,8 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           en: ['Cashback', 'Annual fees', 'Staking req.', 'Network', 'Trust Score'],
         };
         const labels = KEY_FACTS_LABELS[cl] ?? KEY_FACTS_LABELS.en;
-        const FREE_LABEL: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free' };
-        const NO_STAKING_LABEL: Record<string, string> = { fr: 'Non requis', de: 'Nicht erf.', es: 'No requerido', it: 'Non richiesto', en: 'Not required' };
+        const FREE_LABEL: Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis', it: 'Gratuito', en: 'Free', pt: 'Grátis' };
+        const NO_STAKING_LABEL: Record<string, string> = { fr: 'Non requis', de: 'Nicht erf.', es: 'No requerido', it: 'Non richiesto', en: 'Not required', pt: 'Não exigido' };
         function fmtCashback(c: any): string {
           const val = c.cashback_premium || c.cashback_base;
           return val ? `${val}%` : '-';
@@ -1942,16 +1942,18 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           es: 'Sobre el mismo tema, consulta también nuestras guías sobre',
           it: 'Sullo stesso argomento, consulta anche le nostre guide su',
           en: 'On the same topic, explore our guides on',
+          pt: 'Sobre o mesmo tema, vê também os nossos guias sobre',
         };
-        const CROSS_AND: Record<string, string> = { fr: 'et', de: 'und', es: 'y', it: 'e', en: 'and' };
+        const CROSS_AND: Record<string, string> = { fr: 'et', de: 'und', es: 'y', it: 'e', en: 'and', pt: 'e' };
         const SIM_INTRO: Record<string, string> = {
           fr: 'Estimez vos gains avec notre',
           de: 'Schätzen Sie Ihre Gewinne mit unserem',
           es: 'Calcule sus ganancias con nuestra',
           it: 'Stimate i vostri guadagni con il nostro',
           en: 'Estimate your earnings with our',
+          pt: 'Estima os teus ganhos com o nosso',
         };
-        const SIM_LABEL: Record<string, string> = { fr: 'simulateur de cashback', de: 'Cashback-Rechner', es: 'calculadora de cashback', it: 'simulatore di cashback', en: 'cashback calculator' };
+        const SIM_LABEL: Record<string, string> = { fr: 'simulateur de cashback', de: 'Cashback-Rechner', es: 'calculadora de cashback', it: 'simulatore di cashback', en: 'cashback calculator', pt: 'simulador de cashback' };
         const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
 
         const related = (RELATED_THEMES[theme] ?? [])
@@ -2010,6 +2012,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           es: 'También te puede interesar:',
           it: 'Da esplorare anche:',
           en: 'Also worth exploring:',
+          pt: 'A explorar também:',
         };
 
         const relatedThemes = RELATED_THEMES[theme] ?? [];
@@ -2099,11 +2102,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
             {/* Simulator + Compare + ReviewList + Calculators */}
             {(() => {
               const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
-              const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator' };
-              const COMPARE_LABEL: Record<string, string> = { fr: 'Comparer les cartes', de: 'Karten vergleichen', es: 'Comparar tarjetas', it: 'Confronta le carte', en: 'Compare cards' };
-              const REVIEWS_LABEL: Record<string, string> = { fr: 'Tous les avis', de: 'Alle Bewertungen', es: 'Todas las reseñas', it: 'Tutte le recensioni', en: 'All reviews' };
-              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', de: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator' };
-              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', de: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' };
+              const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator', pt: 'Simulador de ganhos' };
+              const COMPARE_LABEL: Record<string, string> = { fr: 'Comparer les cartes', de: 'Karten vergleichen', es: 'Comparar tarjetas', it: 'Confronta le carte', en: 'Compare cards', pt: 'Comparar cartões' };
+              const REVIEWS_LABEL: Record<string, string> = { fr: 'Tous les avis', de: 'Alle Bewertungen', es: 'Todas las reseñas', it: 'Tutte le recensioni', en: 'All reviews', pt: 'Todas as análises' };
+              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', de: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator', pt: 'Calculadora de cashback' };
+              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', de: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator', pt: 'Calculadora de taxas' };
               return (
                 <>
                   <Link to={`/${lang}/${rt.simulator ?? 'simulator'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">

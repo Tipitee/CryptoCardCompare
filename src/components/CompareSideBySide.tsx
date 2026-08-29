@@ -27,41 +27,42 @@ interface MetricDef {
 
 // Labels per metric key per language
 const METRIC_LABELS: Record<string, Record<string, string>> = {
-  cashbackBase:     { fr: 'Cashback de base',     de: 'Basis-Cashback',       es: 'Cashback base',         it: 'Cashback base',          en: 'Base cashback' },
-  cashbackPremium:  { fr: 'Cashback max',          de: 'Max. Cashback',        es: 'Cashback máx.',         it: 'Cashback max.',           en: 'Max cashback' },
-  annualFees:       { fr: 'Frais annuels',         de: 'Jahresgebühren',       es: 'Comisiones anuales',    it: 'Costi annuali',           en: 'Annual fees' },
-  stakingRequired:  { fr: 'Staking requis',        de: 'Staking erforderlich', es: 'Staking requerido',     it: 'Staking richiesto',       en: 'Staking required' },
-  dailyLimit:       { fr: 'Plafond journalier',    de: 'Tageslimit',           es: 'Límite diario',         it: 'Limite giornaliero',      en: 'Daily limit' },
-  cardNetwork:      { fr: 'Réseau',                de: 'Netzwerk',             es: 'Red',                   it: 'Rete',                    en: 'Network' },
-  availableFrance:  { fr: 'Disponible France',     de: 'Verfügbar FR',         es: 'Disponible Francia',    it: 'Disponibile Francia',     en: 'Available France' },
-  availableEU:      { fr: 'Disponible UE',         de: 'Verfügbar EU',         es: 'Disponible UE',         it: 'Disponibile UE',          en: 'Available EU' },
-  freeWithdrawals:  { fr: 'Retraits gratuits',     de: 'Gratis-Abhebungen',    es: 'Retiros gratuitos',     it: 'Prelievi gratuiti',       en: 'Free withdrawals' },
-  cryptos:          { fr: 'Cryptos supportées',    de: 'Unterstützte Kryptos', es: 'Criptos admitidas',     it: 'Criptovalute supportate', en: 'Supported cryptos' },
-  extras:           { fr: 'Avantages inclus',      de: 'Enthaltene Vorteile',  es: 'Ventajas incluidas',    it: 'Vantaggi inclusi',        en: 'Included benefits' },
+  cashbackBase:     { fr: 'Cashback de base',     de: 'Basis-Cashback',       es: 'Cashback base',         it: 'Cashback base',          en: 'Base cashback', pt: 'Cashback base' },
+  cashbackPremium:  { fr: 'Cashback max',          de: 'Max. Cashback',        es: 'Cashback máx.',         it: 'Cashback max.',           en: 'Max cashback', pt: 'Cashback máx.' },
+  annualFees:       { fr: 'Frais annuels',         de: 'Jahresgebühren',       es: 'Comisiones anuales',    it: 'Costi annuali',           en: 'Annual fees', pt: 'Comissões anuais' },
+  stakingRequired:  { fr: 'Staking requis',        de: 'Staking erforderlich', es: 'Staking requerido',     it: 'Staking richiesto',       en: 'Staking required', pt: 'Staking exigido' },
+  dailyLimit:       { fr: 'Plafond journalier',    de: 'Tageslimit',           es: 'Límite diario',         it: 'Limite giornaliero',      en: 'Daily limit', pt: 'Limite diário' },
+  cardNetwork:      { fr: 'Réseau',                de: 'Netzwerk',             es: 'Red',                   it: 'Rete',                    en: 'Network', pt: 'Rede' },
+  availableFrance:  { fr: 'Disponible France',     de: 'Verfügbar FR',         es: 'Disponible Francia',    it: 'Disponibile Francia',     en: 'Available France', pt: 'Disponível Portugal' },
+  availableEU:      { fr: 'Disponible UE',         de: 'Verfügbar EU',         es: 'Disponible UE',         it: 'Disponibile UE',          en: 'Available EU', pt: 'Disponível UE' },
+  freeWithdrawals:  { fr: 'Retraits gratuits',     de: 'Gratis-Abhebungen',    es: 'Retiros gratuitos',     it: 'Prelievi gratuiti',       en: 'Free withdrawals', pt: 'Levantamentos grátis' },
+  cryptos:          { fr: 'Cryptos supportées',    de: 'Unterstützte Kryptos', es: 'Criptos admitidas',     it: 'Criptovalute supportate', en: 'Supported cryptos', pt: 'Criptos suportadas' },
+  extras:           { fr: 'Avantages inclus',      de: 'Enthaltene Vorteile',  es: 'Ventajas incluidas',    it: 'Vantaggi inclusi',        en: 'Included benefits', pt: 'Vantagens incluídas' },
 };
 
-const FREE_LABEL:  Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis',  it: 'Gratuito', en: 'Free' };
-const NONE_LABEL:  Record<string, string> = { fr: 'Aucun',   de: 'Keins',     es: 'Ninguno', it: 'Nessuno',  en: 'None' };
-const BEST_LABEL:  Record<string, string> = { fr: 'Meilleur', de: 'Beste',    es: 'Mejor',   it: 'Migliore', en: 'Best' };
+const FREE_LABEL:  Record<string, string> = { fr: 'Gratuit', de: 'Kostenlos', es: 'Gratis',  it: 'Gratuito', en: 'Free', pt: 'Grátis' };
+const NONE_LABEL:  Record<string, string> = { fr: 'Aucun',   de: 'Keins',     es: 'Ninguno', it: 'Nessuno',  en: 'None', pt: 'Nenhum' };
+const BEST_LABEL:  Record<string, string> = { fr: 'Meilleur', de: 'Beste',    es: 'Mejor',   it: 'Migliore', en: 'Best', pt: 'Melhor' };
 const EMPTY_LABEL: Record<string, string> = {
   fr: 'Aucune carte sélectionnée à comparer.',
   de: 'Keine Karte zur Vergleich ausgewählt.',
   es: 'Ninguna tarjeta seleccionada para comparar.',
   it: 'Nessuna carta selezionata per il confronto.',
   en: 'No card selected for comparison.',
+  pt: 'Nenhum cartão selecionado para comparar.',
 };
 const CHOOSE_LABEL: Record<string, string> = {
-  fr: 'Choisir des cartes', de: 'Karten wählen', es: 'Elegir tarjetas', it: 'Scegli carte', en: 'Choose cards',
+  fr: 'Choisir des cartes', de: 'Karten wählen', es: 'Elegir tarjetas', it: 'Scegli carte', en: 'Choose cards', pt: 'Escolher cartões',
 };
 const REMOVE_LABEL: Record<string, string> = {
   fr: 'Retirer de la comparaison', de: 'Aus Vergleich entfernen',
-  es: 'Quitar de la comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison',
+  es: 'Quitar de la comparación', it: 'Rimuovi dal confronto', en: 'Remove from comparison', pt: 'Remover da comparação',
 };
-const ADD_FAV_LABEL:    Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites' };
-const REMOVE_FAV_LABEL: Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites' };
-const SEE_OFFER_LABEL:  Record<string, string> = { fr: "Voir l'offre", de: 'Angebot', es: 'Ver oferta', it: 'Vedi offerta', en: 'See offer' };
-const COMPARE_LABEL:    Record<string, string> = { fr: 'Comparaison détaillée', de: 'Detaillierter Vergleich', es: 'Comparación detallada', it: 'Confronto dettagliato', en: 'Detailed comparison' };
-const DETAILS_LABEL:    Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details' };
+const ADD_FAV_LABEL:    Record<string, string> = { fr: 'Ajouter aux favoris',  de: 'Zu Favoriten', es: 'Añadir a favoritos', it: 'Aggiungi ai preferiti', en: 'Add to favourites', pt: 'Adicionar aos favoritos' };
+const REMOVE_FAV_LABEL: Record<string, string> = { fr: 'Retirer des favoris', de: 'Aus Favoriten', es: 'Quitar de favoritos', it: 'Rimuovi dai preferiti', en: 'Remove from favourites', pt: 'Remover dos favoritos' };
+const SEE_OFFER_LABEL:  Record<string, string> = { fr: "Voir l'offre", de: 'Angebot', es: 'Ver oferta', it: 'Vedi offerta', en: 'See offer', pt: 'Ver oferta' };
+const COMPARE_LABEL:    Record<string, string> = { fr: 'Comparaison détaillée', de: 'Detaillierter Vergleich', es: 'Comparación detallada', it: 'Confronto dettagliato', en: 'Detailed comparison', pt: 'Comparação detalhada' };
+const DETAILS_LABEL:    Record<string, string> = { fr: 'Détails', de: 'Details', es: 'Detalles', it: 'Dettagli', en: 'Details', pt: 'Detalhes' };
 
 const METRICS: MetricDef[] = [
   { key: 'cashbackBase',    kind: 'pct',         higherIsBetter: true,  get: (c) => c.cashbackBase },
@@ -121,7 +122,7 @@ function formatValue(metric: MetricDef, card: CryptoCard, lang: string) {
     case 'number_eur':
       return (
         <span className="font-mono font-semibold">
-          {(v as number) === 0 ? ',' : fmtEUR(v as number)}
+          {fmtEUR(v as number)}
         </span>
       );
     case 'bool':

@@ -74,12 +74,12 @@ const FAV_EDITORIAL: Record<string, { h2: string; body: string; related: string;
 };
 
 const BRAND_LABEL: Record<string, string> = {
-  fr: 'Marque', de: 'Marke', es: 'Marca', it: 'Marchio', en: 'Brand',
+  fr: 'Marque', de: 'Marke', es: 'Marca', it: 'Marchio', en: 'Brand', pt: 'Marca',
 };
 
 const SLUGS: Record<string, string> = {
   fr: 'favoris', be: 'favoris', de: 'favoriten', at: 'favoriten',
-  es: 'favoritos', it: 'preferiti', en: 'favorites',
+  es: 'favoritos', it: 'preferiti', en: 'favorites', pt: 'favoritos',
 };
 
 const FAV_SEO: Record<string, { title: string; desc: string }> = {

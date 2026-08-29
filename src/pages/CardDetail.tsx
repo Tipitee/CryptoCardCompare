@@ -157,19 +157,19 @@ const CARD_REVIEW_SLUG: Record<string, string> = {
  * to the correct thematic page slug for each language.
  */
 const THEMATIC_SLUGS: Record<string, Record<string, string>> = {
-  cashback:     { fr: 'carte-crypto-cashback',        de: 'krypto-karte-cashback',        es: 'tarjeta-cripto-cashback',          it: 'carta-cripto-cashback',        en: 'crypto-card-cashback' },
-  comparatif:   { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card' },
-  meilleure:    { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card' },
-  best:         { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card' },
-  'sans-frais': { fr: 'carte-crypto-sans-frais',       de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones',  it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
-  'no-fees':    { fr: 'carte-crypto-sans-frais',       de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones',  it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees' },
-  'sans-staking': { fr: 'carte-crypto-sans-staking',   de: 'krypto-karte-ohne-staking',      es: 'tarjeta-cripto-sin-staking',      it: 'carta-cripto-senza-staking',   en: 'crypto-card-no-staking' },
-  'no-staking': { fr: 'carte-crypto-sans-staking',    de: 'krypto-karte-ohne-staking',      es: 'tarjeta-cripto-sin-staking',      it: 'carta-cripto-senza-staking',   en: 'crypto-card-no-staking' },
-  virtuelle:    { fr: 'carte-crypto-virtuelle',        de: 'virtuelle-krypto-karte',         es: 'tarjeta-crypto-virtual',          it: 'carta-crypto-virtuale',        en: 'virtual-crypto-card' },
-  virtual:      { fr: 'carte-crypto-virtuelle',        de: 'virtuelle-krypto-karte',         es: 'tarjeta-crypto-virtual',          it: 'carta-crypto-virtuale',        en: 'virtual-crypto-card' },
-  debutant:     { fr: 'cartes-crypto-debutant',        de: 'krypto-karten-einsteiger',       es: 'tarjetas-crypto-principiante',    it: 'carte-crypto-principiante',    en: 'beginner-crypto-cards' },
-  beginner:     { fr: 'cartes-crypto-debutant',        de: 'krypto-karten-einsteiger',       es: 'tarjetas-crypto-principiante',    it: 'carte-crypto-principiante',    en: 'beginner-crypto-cards' },
-  france:       { fr: 'cartes-crypto-france',          de: 'krypto-karten-deutschland',      es: 'tarjetas-crypto-espana',          it: 'carte-crypto-italia',          en: 'crypto-cards-europe' },
+  cashback:     { fr: 'carte-crypto-cashback',        de: 'krypto-karte-cashback',        es: 'tarjeta-cripto-cashback',          it: 'carta-cripto-cashback',        en: 'crypto-card-cashback', pt: 'cartao-crypto-cashback' },
+  comparatif:   { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card', pt: 'melhor-cartao-crypto' },
+  meilleure:    { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card', pt: 'melhor-cartao-crypto' },
+  best:         { fr: 'meilleure-carte-crypto',        de: 'beste-krypto-karte',            es: 'mejor-tarjeta-cripto',             it: 'migliore-carta-cripto',        en: 'best-crypto-card', pt: 'melhor-cartao-crypto' },
+  'sans-frais': { fr: 'carte-crypto-sans-frais',       de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones',  it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees', pt: 'cartao-crypto-sem-taxas' },
+  'no-fees':    { fr: 'carte-crypto-sans-frais',       de: 'krypto-karte-ohne-jahresgebuehr', es: 'tarjeta-cripto-sin-comisiones',  it: 'carta-cripto-senza-commissioni', en: 'crypto-card-no-fees', pt: 'cartao-crypto-sem-taxas' },
+  'sans-staking': { fr: 'carte-crypto-sans-staking',   de: 'krypto-karte-ohne-staking',      es: 'tarjeta-cripto-sin-staking',      it: 'carta-cripto-senza-staking',   en: 'crypto-card-no-staking', pt: 'cartao-crypto-sem-staking' },
+  'no-staking': { fr: 'carte-crypto-sans-staking',    de: 'krypto-karte-ohne-staking',      es: 'tarjeta-cripto-sin-staking',      it: 'carta-cripto-senza-staking',   en: 'crypto-card-no-staking', pt: 'cartao-crypto-sem-staking' },
+  virtuelle:    { fr: 'carte-crypto-virtuelle',        de: 'virtuelle-krypto-karte',         es: 'tarjeta-crypto-virtual',          it: 'carta-crypto-virtuale',        en: 'virtual-crypto-card', pt: 'cartao-crypto-virtual' },
+  virtual:      { fr: 'carte-crypto-virtuelle',        de: 'virtuelle-krypto-karte',         es: 'tarjeta-crypto-virtual',          it: 'carta-crypto-virtuale',        en: 'virtual-crypto-card', pt: 'cartao-crypto-virtual' },
+  debutant:     { fr: 'cartes-crypto-debutant',        de: 'krypto-karten-einsteiger',       es: 'tarjetas-crypto-principiante',    it: 'carte-crypto-principiante',    en: 'beginner-crypto-cards', pt: 'cartao-crypto-iniciantes' },
+  beginner:     { fr: 'cartes-crypto-debutant',        de: 'krypto-karten-einsteiger',       es: 'tarjetas-crypto-principiante',    it: 'carte-crypto-principiante',    en: 'beginner-crypto-cards', pt: 'cartao-crypto-iniciantes' },
+  france:       { fr: 'cartes-crypto-france',          de: 'krypto-karten-deutschland',      es: 'tarjetas-crypto-espana',          it: 'carte-crypto-italia',          en: 'crypto-cards-europe', pt: 'cartoes-crypto-portugal' },
 };
 
 export default function CardDetail() {
@@ -633,6 +633,7 @@ export default function CardDetail() {
                           if (validLinks.length === 0) return null;
                           const prefix: Record<string, string> = {
                             fr: 'Voir aussi :',
+                            pt: 'Ver também:',
                             de: 'Siehe auch:',
                             es: 'Ver también:',
                             it: 'Vedi anche:',
@@ -882,8 +883,8 @@ export default function CardDetail() {
 
               // Calculator tools
               const rt2 = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
-              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', be: 'Calculateur cashback', de: 'Cashback-Rechner', at: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator' };
-              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', be: 'Calculateur de frais', de: 'Gebühren-Rechner', at: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator' };
+              const CB_CALC_LABEL: Record<string, string> = { fr: 'Calculateur cashback', be: 'Calculateur cashback', de: 'Cashback-Rechner', at: 'Cashback-Rechner', es: 'Calculadora cashback', it: 'Calcolatore cashback', en: 'Cashback Calculator', pt: 'Calculadora de cashback' };
+              const FEE_CALC_LABEL: Record<string, string> = { fr: 'Calculateur de frais', be: 'Calculateur de frais', de: 'Gebühren-Rechner', at: 'Gebühren-Rechner', es: 'Calculadora de tarifas', it: 'Calcolatore costi', en: 'Fee Calculator', pt: 'Calculadora de taxas' };
               links.push({ to: `/${lang}/${rt2.cashbackCalculator ?? 'crypto-card-cashback-calculator'}`, icon: '💰', label: CB_CALC_LABEL[lang] ?? 'Cashback Calculator' });
               links.push({ to: `/${lang}/${rt2.feeCalculator ?? 'crypto-card-fee-calculator'}`, icon: '📊', label: FEE_CALC_LABEL[lang] ?? 'Fee Calculator' });
 

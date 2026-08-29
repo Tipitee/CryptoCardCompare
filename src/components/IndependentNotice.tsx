@@ -16,6 +16,7 @@ const COPY: Record<string, { text: string; linkLabel: string }> = {
   es: { text: 'Comparador independiente, podemos recibir comisiones de afiliados.', linkLabel: 'Más información' },
   it: { text: 'Comparatore indipendente, potremmo ricevere commissioni di affiliazione.', linkLabel: 'Scopri di più' },
   en: { text: 'Independent comparison, we may earn affiliate commissions.', linkLabel: 'Learn more' },
+  pt: { text: 'Comparativo independente, podemos receber comissões de afiliação.', linkLabel: 'Saber mais' },
 };
 
 const AFFILIATE_SLUGS: Record<string, string> = {
@@ -24,6 +25,7 @@ const AFFILIATE_SLUGS: Record<string, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
+  pt: 'divulgacion-afiliados',
 };
 
 export default function IndependentNotice() {

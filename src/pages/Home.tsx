@@ -25,7 +25,7 @@ import { fmtEUR, fmtPct } from '../utils/format';
 import { BRAND_CONFIG } from '../data/brandConfig';
 const YEAR = new Date().getFullYear();
 const COMPARE_PREFIX: Record<string, string> = {
-  fr: 'comparer', be: 'comparer', de: 'vergleichen', at: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare',
+  fr: 'comparer', be: 'comparer', de: 'vergleichen', at: 'vergleichen', es: 'comparar', it: 'confrontare', en: 'compare', pt: 'comparar',
 };
 const HOME_SEO: Record<string, { title: string; desc: string }> = {
   fr: { title: `Meilleure Carte Crypto France ${YEAR}, Cashback | TopCryptoCards`, desc: `Comparez 90+ cartes crypto en France ${YEAR} : jusqu'à 8 % cashback, sans frais annuels. Crypto.com, Nexo, Bybit, Revolut. Comparateur gratuit ✓` },
@@ -173,16 +173,16 @@ type FilterKey = 'all' | 'no_fees' | 'high_cashback' | 'no_staking' | 'france';
 
 // ── Phase 3: brand-grouping labels ───────────────────────────────────────────
 const TIERS_LABEL: Record<string, string> = {
-  fr: 'cartes', be: 'cartes', de: 'Karten', at: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards',
+  fr: 'cartes', be: 'cartes', de: 'Karten', at: 'Karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartões',
 };
 const ABOUT_LABEL: Record<string, string> = {
-  fr: 'À propos de', be: 'À propos de', de: 'Über', at: 'Über', es: 'Sobre', it: 'Su', en: 'About',
+  fr: 'À propos de', be: 'À propos de', de: 'Über', at: 'Über', es: 'Sobre', it: 'Su', en: 'About', pt: 'Sobre',
 };
 const UP_TO: Record<string, string> = {
-  fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to',
+  fr: "Jusqu'à", be: "Jusqu'à", de: 'Bis zu', at: 'Bis zu', es: 'Hasta', it: 'Fino a', en: 'Up to', pt: 'Até',
 };
 const FROM_LABEL: Record<string, string> = {
-  fr: 'Dès', be: 'Dès', de: 'Ab', at: 'Ab', es: 'Desde', it: 'Da', en: 'From',
+  fr: 'Dès', be: 'Dès', de: 'Ab', at: 'Ab', es: 'Desde', it: 'Da', en: 'From', pt: 'Desde',
 };
 export default function Home() {
   const cards = useAppStore((s) => s.cards);
@@ -716,7 +716,7 @@ export default function Home() {
                       <dd className="text-white font-semibold">
                         {maxCashback > 0
                           ? <><span className="text-slate-400 text-[10px]">{UP_TO[lang] ?? 'Up to'} </span>{fmtPct(maxCashback)}</>
-                          : ','}
+                          : '—'}
                       </dd>
                     </div>
                     <div>

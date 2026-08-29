@@ -37,6 +37,7 @@ export default function Layout() {
     es: 'divulgacion-afiliados',
     it: 'divulgazione-affiliati',
     en: 'affiliate-disclosure',
+    pt: 'divulgacion-afiliados',
   };
   const affiliateSlug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 
@@ -48,6 +49,7 @@ export default function Layout() {
     es: 'metodologia',
     it: 'metodologia',
     en: 'methodology',
+    pt: 'metodologia',
   };
   const methodologySlug = METHODOLOGY_SLUGS[lang] ?? 'methodology';
   const METHODOLOGY_LABELS: Record<string, string> = {
@@ -58,6 +60,7 @@ export default function Layout() {
     es: 'Metodología',
     it: 'Metodologia',
     en: 'Methodology',
+    pt: 'Metodologia',
   };
   const methodologyLabel = METHODOLOGY_LABELS[lang] ?? 'Methodology';
 
@@ -67,6 +70,7 @@ export default function Layout() {
     es: 'Índice de tarifas',
     it: 'Indice tariffe',
     en: 'Fee Index',
+    pt: 'Índice de taxas',
   };
   const feeIndexSlug = ROUTE_TRANSLATIONS[lang]?.feeIndex ?? 'crypto-card-fees';
   const feeIndexLabel = FEE_INDEX_LABELS[lang] ?? 'Fee Index';
@@ -81,7 +85,7 @@ export default function Layout() {
   ];
 
   const brandsSlug = ROUTE_TRANSLATIONS[lang]?.brands ?? 'brands';
-  const brandsLabel: Record<string, string> = { fr: 'Marques de cartes', de: 'Karten-Marken', es: 'Marcas de tarjetas', it: 'Marchi di carte', en: 'Card brands' };
+  const brandsLabel: Record<string, string> = { fr: 'Marques de cartes', de: 'Karten-Marken', es: 'Marcas de tarjetas', it: 'Marchi di carte', en: 'Card brands', pt: 'Marcas de cartões' };
 
   const thematicLinks = [
     { slug: THEMATIC_ROUTES.best[lang],           label: labels.best },

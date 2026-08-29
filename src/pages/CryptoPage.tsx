@@ -24,13 +24,13 @@ const CRYPTO_META: Record<string, { name: string; ticker: string; color: string;
   usdc: { name: 'USD Coin',  ticker: 'USDC', color: '#2775CA', emoji: '$'  },
 };
 
-const HOME_LABEL:    Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-const CRYPTO_LABEL:  Record<string, string> = { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies' };
-const FAQ_LABEL:     Record<string, string> = { fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes', it: 'Domande frequenti', en: 'FAQ' };
-const CARDS_LABEL:   Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting' };
-const SEE_ALSO:      Record<string, string> = { fr: 'Autres cryptomonnaies', de: 'Andere Kryptowährungen', es: 'Otras criptomonedas', it: 'Altre criptovalute', en: 'Other cryptocurrencies' };
-const COMPARE_CARDS: Record<string, string> = { fr: 'Comparer les cartes crypto', de: 'Krypto-Karten vergleichen', es: 'Comparar tarjetas crypto', it: 'Confronta le carte crypto', en: 'Compare crypto cards' };
-const COMPARE_WITH_LABEL: Record<string, string> = { fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons' };
+const HOME_LABEL:    Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
+const CRYPTO_LABEL:  Record<string, string> = { fr: 'Cryptomonnaies', de: 'Kryptowährungen', es: 'Criptomonedas', it: 'Criptovalute', en: 'Cryptocurrencies', pt: 'Criptomoedas' };
+const FAQ_LABEL:     Record<string, string> = { fr: 'Questions fréquentes', de: 'Häufige Fragen', es: 'Preguntas frecuentes', it: 'Domande frequenti', en: 'FAQ', pt: 'Perguntas frequentes' };
+const CARDS_LABEL:   Record<string, string> = { fr: 'Cartes supportant', de: 'Karten für', es: 'Tarjetas para', it: 'Carte per', en: 'Cards supporting', pt: 'Cartões que suportam' };
+const SEE_ALSO:      Record<string, string> = { fr: 'Autres cryptomonnaies', de: 'Andere Kryptowährungen', es: 'Otras criptomonedas', it: 'Altre criptovalute', en: 'Other cryptocurrencies', pt: 'Outras criptomoedas' };
+const COMPARE_CARDS: Record<string, string> = { fr: 'Comparer les cartes crypto', de: 'Krypto-Karten vergleichen', es: 'Comparar tarjetas crypto', it: 'Confronta le carte crypto', en: 'Compare crypto cards', pt: 'Comparar cartões crypto' };
+const COMPARE_WITH_LABEL: Record<string, string> = { fr: 'Comparatifs populaires', de: 'Beliebte Vergleiche', es: 'Comparativas populares', it: 'Confronti popolari', en: 'Popular comparisons', pt: 'Comparativos populares' };
 
 /* Comparison pairs editorially relevant to each crypto */
 const CRYPTO_PAIRS: Record<string, string[]> = {
@@ -59,6 +59,7 @@ const THEMATIC_SLUGS: Record<string, { best: string; cashback: string; noFees: s
   es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
   it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
   en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+  pt: { best: 'melhor-cartao-crypto', cashback: 'cartao-crypto-cashback', noFees: 'cartao-crypto-sem-taxas', noStaking: 'cartao-crypto-sem-staking' },
 };
 const THEMATIC_LINK_LABELS: Record<string, { best: string; cashback: string; noFees: string; noStaking: string }> = {
   fr: { best: 'Meilleures cartes', cashback: 'Cartes avec cashback', noFees: 'Cartes sans frais', noStaking: 'Sans staking' },
@@ -66,6 +67,7 @@ const THEMATIC_LINK_LABELS: Record<string, { best: string; cashback: string; noF
   es: { best: 'Mejores tarjetas', cashback: 'Con cashback', noFees: 'Sin comisiones', noStaking: 'Sin staking' },
   it: { best: 'Migliori carte', cashback: 'Con cashback', noFees: 'Senza costi', noStaking: 'Senza staking' },
   en: { best: 'Best cards', cashback: 'Cards with cashback', noFees: 'No-fee cards', noStaking: 'No-staking' },
+  pt: { best: 'Melhores cartões', cashback: 'Com cashback', noFees: 'Sem taxas', noStaking: 'Sem staking' },
 };
 
 export default function CryptoPage() {
@@ -395,9 +397,9 @@ export default function CryptoPage() {
       {/* ── Internal linking: CryptoList + Simulator + ReviewList ───── */}
       {(() => {
         const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
-        const CRYPTOLIST_LABEL: Record<string, string> = { fr: 'Toutes les cryptos', de: 'Alle Kryptowährungen', es: 'Todas las criptos', it: 'Tutte le crypto', en: 'All cryptos' };
-        const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator' };
-        const REVIEWS_LABEL: Record<string, string> = { fr: 'Avis cartes crypto', de: 'Krypto-Karten Bewertungen', es: 'Reseñas tarjetas cripto', it: 'Recensioni carte cripto', en: 'Crypto card reviews' };
+        const CRYPTOLIST_LABEL: Record<string, string> = { fr: 'Toutes les cryptos', de: 'Alle Kryptowährungen', es: 'Todas las criptos', it: 'Tutte le crypto', en: 'All cryptos', pt: 'Todas as criptos' };
+        const SIMULATOR_LABEL: Record<string, string> = { fr: 'Simulateur de gains', de: 'Gewinn-Simulator', es: 'Simulador de ganancias', it: 'Simulatore di guadagni', en: 'Earnings simulator', pt: 'Simulador de ganhos' };
+        const REVIEWS_LABEL: Record<string, string> = { fr: 'Avis cartes crypto', de: 'Krypto-Karten Bewertungen', es: 'Reseñas tarjetas cripto', it: 'Recensioni carte cripto', en: 'Crypto card reviews', pt: 'Análises de cartões crypto' };
         return (
           <div className="flex flex-wrap gap-2 mb-10">
             <Link to={`/${lang}/${rt.cryptos ?? 'cryptos'}`} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-card border border-bg-border text-sm text-slate-300 hover:text-cyan-accent hover:border-cyan-accent/40 transition-all">

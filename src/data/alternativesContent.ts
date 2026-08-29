@@ -2,6 +2,7 @@
  * alternatives pages, "[Brand] alternatives" × 10 brands × 5 content langs
  * BE uses FR slugs/content, AT uses DE slugs/content.
  */
+import { ALT_PT } from './alternativesContentPt';
 
 export type AltBrandId =
   | 'revolut' | 'crypto-com' | 'binance' | 'bybit' | 'nexo'
@@ -1249,6 +1250,15 @@ export const ALT_BRAND_MAP: Record<AltBrandId, AltBrandConfig> = Object.fromEntr
 ) as Record<AltBrandId, AltBrandConfig>;
 
 /** Flat list of all [lang, slug, brandId] triples, for route generation in App.tsx */
+// Merge PT slug + copy overlay into each brand (be/at reuse fr/de; pt is its own).
+for (const brand of ALT_BRANDS) {
+  const pt = ALT_PT[brand.brandId];
+  if (pt) {
+    brand.slugs.pt = pt.slug;
+    brand.copy.pt = pt.copy;
+  }
+}
+
 export const ALT_ROUTES: Array<{ lang: string; slug: string; brandId: AltBrandId }> =
   ALT_BRANDS.flatMap(brand =>
     Object.entries(brand.slugs).map(([lang, slug]) => ({ lang, slug, brandId: brand.brandId }))

@@ -37,6 +37,7 @@ const COMPARISON_SEO: Record<string, { suffix: string; desc: (n1: string, n2: st
   es: { suffix: `Comparativa ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, comisiones, staking, comparativa completa ${YEAR}. Descubre qué tarjeta crypto te da más. Gratis ✓` },
   it: { suffix: `Confronto ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, commissioni, staking, confronto completo ${YEAR}. Scopri quale carta crypto conviene di più. Gratuito ✓` },
   en: { suffix: `Comparison ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, fees, staking, full comparison ${YEAR}. Find out which crypto card earns you more. Free tool ✓` },
+  pt: { suffix: `Comparativo ${YEAR} | TopCryptoCards`, desc: (n1, n2) => `${n1} vs ${n2}: cashback, comissões, staking, comparativo completo ${YEAR}. Descobre qual cartão crypto te rende mais. Grátis ✓` },
 };
 
 type SeoBlock = { heading: string; body: string };
@@ -140,6 +141,24 @@ function getSeoText(
         body: `Ultimately, the choice between ${n1} and ${n2} comes down to your usage profile. If you travel frequently and want free international withdrawals, certain cards stand out clearly. If you want to maximise daily crypto rewards and are willing to stake tokens, other criteria take precedence. Use our simulator to estimate your real annual gain with each card based on your spending habits.`,
       },
     ],
+    pt: [
+      {
+        heading: `${n1} vs ${n2}: que cartão crypto escolher?`,
+        body: `Comparar ${n1} e ${n2} é um passo fundamental antes de te decidires por qualquer um destes cartões crypto. Estes produtos dirigem-se a perfis de investidor diferentes: enquanto um aposta num cashback elevado para quem detém o token nativo, o outro pode seduzir por comissões anuais reduzidas ou por uma maior disponibilidade geográfica. O nosso comparativo coloca frente a frente as principais características para te ajudar a decidir com conhecimento de causa.`,
+      },
+      {
+        heading: `Cashback e recompensas: vantagem ${n1} ou ${n2}?`,
+        body: `O cashback é muitas vezes o primeiro critério de escolha de um cartão crypto. Tanto ${n1} como ${n2} oferecem níveis de recompensa variáveis consoante o montante de tokens em staking. Regra geral, quanto maior o staking, mais interessante é a taxa de cashback, por vezes até 5% ou mais. Vale a pena calcular se o rendimento extra justifica a imobilização de capital, tendo em conta a volatilidade dos criptoativos.`,
+      },
+      {
+        heading: `Comissões, staking e condições de utilização`,
+        body: `Para além do cashback, as comissões anuais e as exigências de staking são decisivas para a rentabilidade real de um cartão. ${n1} e ${n2} distinguem-se nestes pontos: um pode ser gratuito sob certas condições, enquanto o outro exige um compromisso em tokens. Os levantamentos em multibanco, as moedas estrangeiras e eventuais comissões mensais também devem entrar na tua análise. Em Portugal, lembra-te ainda de que pagar com cripto detida há menos de 365 dias gera uma mais-valia tributada a 28%.`,
+      },
+      {
+        heading: `O nosso veredicto: ${n1} vs ${n2}`,
+        body: `No fim, a escolha entre ${n1} e ${n2} depende do teu perfil de utilização. Se viajas com frequência e procuras levantamentos gratuitos no estrangeiro, alguns cartões destacam-se claramente. Se, pelo contrário, queres maximizar as tuas recompensas crypto no dia a dia e estás disposto a fazer staking de tokens, outros critérios ganham peso. Usa o nosso simulador para estimar o teu ganho anual real com cada cartão consoante os teus hábitos de despesa.`,
+      },
+    ],
   };
 
   return blocks[displayLang(lang)] ?? blocks.en;
@@ -203,6 +222,7 @@ const COMP_THEMATIC_SLUGS: Record<string, Record<string, string>> = {
   es: { best: 'mejor-tarjeta-cripto', cashback: 'tarjeta-cripto-cashback', noFees: 'tarjeta-cripto-sin-comisiones', noStaking: 'tarjeta-cripto-sin-staking' },
   it: { best: 'migliore-carta-cripto', cashback: 'carta-cripto-cashback', noFees: 'carta-cripto-senza-commissioni', noStaking: 'carta-cripto-senza-staking' },
   en: { best: 'best-crypto-card', cashback: 'crypto-card-cashback', noFees: 'crypto-card-no-fees', noStaking: 'crypto-card-no-staking' },
+  pt: { best: 'melhor-cartao-crypto', cashback: 'cartao-crypto-cashback', noFees: 'cartao-crypto-sem-taxas', noStaking: 'cartao-crypto-sem-staking' },
 };
 
 const COMPARISON_EDITORIAL: Record<string, { h2: string; body: string; related: string; links: { emoji: string; label: string; slug: string }[] }> = {
@@ -259,6 +279,17 @@ const COMPARISON_EDITORIAL: Record<string, { h2: string; body: string; related: 
       { emoji: '💰', label: 'Cashback cards', slug: 'cashback' },
       { emoji: '🆓', label: 'No annual fees', slug: 'noFees' },
       { emoji: '🔓', label: 'No staking required', slug: 'noStaking' },
+    ],
+  },
+  pt: {
+    h2: 'Como escolher entre dois cartões crypto?',
+    body: `Comparar dois cartões crypto não se resume a olhar para a taxa de cashback anunciada. É preciso ter em conta o montante de staking exigido para desbloquear essa taxa, as comissões anuais que corroem o rendimento líquido, os limites de despesa diários e a disponibilidade geográfica do cartão. Por exemplo, um cartão que oferece 5% de cashback mas exige 10 000 € de staking pode ser menos interessante do que um cartão a 2% sem staking, consoante o teu perfil. Em Portugal, soma-se ainda a fiscalidade: pagar com cripto detida há menos de 365 dias gera uma mais-valia tributada a 28%. O nosso comparativo coloca todos estes critérios frente a frente para te ajudar a decidir. Podes também usar o nosso simulador de cashback para estimar o teu rendimento consoante os teus hábitos de despesa.`,
+    related: 'Explorar por critério',
+    links: [
+      { emoji: '⭐', label: 'Melhores cartões', slug: 'best' },
+      { emoji: '💰', label: 'Cartões cashback', slug: 'cashback' },
+      { emoji: '🆓', label: 'Sem comissões anuais', slug: 'noFees' },
+      { emoji: '🔓', label: 'Sem staking exigido', slug: 'noStaking' },
     ],
   },
 };
@@ -329,15 +360,14 @@ export default function ComparisonPage() {
     if (!specificContent) return block;
     const langKey = cl as string;
     if (i === 0) {
-      // Use lang-specific override first, then EN, then fall back to generic (avoid FR fallback for non-FR)
+      // Use lang-specific override only; otherwise keep the generic localized block
+      // (never inject EN specific text into a non-EN page — the generic block is already translated).
       const intro = (specificContent as unknown as Record<string, string>)[`${langKey}_intro`]
-        ?? (langKey !== 'en' ? (specificContent as unknown as Record<string, string>)['en_intro'] : undefined)
         ?? undefined;
       return intro ? { ...block, body: intro } : block;
     }
     if (i === genericBlocks.length - 1) {
       const verdict = (specificContent as unknown as Record<string, string>)[`${langKey}_verdict`]
-        ?? (langKey !== 'en' ? (specificContent as unknown as Record<string, string>)['en_verdict'] : undefined)
         ?? undefined;
       return verdict ? { ...block, body: verdict } : block;
     }
@@ -407,8 +437,8 @@ export default function ComparisonPage() {
     const BASE = 'https://topcryptocards.eu';
     const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
     const compSlug = rt.comparisons ?? 'compare';
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-    const compareL: Record<string, string> = { fr: 'Comparatif', de: 'Vergleich', es: 'Comparativa', it: 'Confronto', en: 'Comparison' };
+    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
+    const compareL: Record<string, string> = { fr: 'Comparatif', de: 'Vergleich', es: 'Comparativa', it: 'Confronto', en: 'Comparison', pt: 'Comparativo' };
     const breadcrumb = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -469,8 +499,8 @@ export default function ComparisonPage() {
   );
   const maxScore = Math.max(score1, score2, 1);
 
-  const compareLabel: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare' };
-  const homeLabel: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
+  const compareLabel: Record<string, string> = { fr: 'Comparer', de: 'Vergleich', es: 'Comparar', it: 'Confronto', en: 'Compare', pt: 'Comparar' };
+  const homeLabel: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
 
   return (
     <div className="container-app py-10 max-w-5xl">
@@ -790,9 +820,9 @@ export default function ComparisonPage() {
           deblock: 'deblock-card', bleap: 'bleap-card', plutus: 'plutus-card',
           'trade-republic': 'trade-republic-card', ledger: 'ledger-card',
         };
-        const DETAIL_LABEL: Record<string, string> = { fr: 'Fiche complète', de: 'Vollständige Karte', es: 'Ficha completa', it: 'Scheda completa', en: 'Full details' };
-        const REVIEW_LABEL: Record<string, string> = { fr: 'Lire l\'avis', de: 'Bewertung lesen', es: 'Leer reseña', it: 'Leggi recensione', en: 'Read review' };
-        const BRAND_LABEL: Record<string, string> = { fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About' };
+        const DETAIL_LABEL: Record<string, string> = { fr: 'Fiche complète', de: 'Vollständige Karte', es: 'Ficha completa', it: 'Scheda completa', en: 'Full details', pt: 'Ficha completa' };
+        const REVIEW_LABEL: Record<string, string> = { fr: 'Lire l\'avis', de: 'Bewertung lesen', es: 'Leer reseña', it: 'Leggi recensione', en: 'Read review', pt: 'Ler análise' };
+        const BRAND_LABEL: Record<string, string> = { fr: 'À propos de', de: 'Über', es: 'Sobre', it: 'Su', en: 'About', pt: 'Sobre' };
         return (
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[card1, card2].map((card) => {
@@ -830,7 +860,7 @@ export default function ComparisonPage() {
                     {card.brandId && ALT_BRAND_MAP[card.brandId as AltBrandId] && (() => {
                       const altConfig = ALT_BRAND_MAP[card.brandId as AltBrandId];
                       const altSlug = altConfig.slugs[cl] ?? altConfig.slugs['fr'];
-                      const ALT_CMP_LABEL: Record<string, string> = { fr: 'Alternatives', de: 'Alternativen', es: 'Alternativas', it: 'Alternative', en: 'Alternatives' };
+                      const ALT_CMP_LABEL: Record<string, string> = { fr: 'Alternatives', de: 'Alternativen', es: 'Alternativas', it: 'Alternative', en: 'Alternatives', pt: 'Alternativas' };
                       return (
                         <Link
                           to={`/${lang}/${altSlug}`}
@@ -854,7 +884,7 @@ export default function ComparisonPage() {
         const ed = COMPARISON_EDITORIAL[cl] ?? COMPARISON_EDITORIAL.en;
         const slugs = COMP_THEMATIC_SLUGS[cl] ?? COMP_THEMATIC_SLUGS.en;
         const readArticleLabel: Record<string, string> = {
-          fr: 'Lire notre article', de: 'Artikel lesen', es: 'Leer nuestro artículo', it: 'Leggi il nostro articolo', en: 'Read our article',
+          fr: 'Lire notre article', de: 'Artikel lesen', es: 'Leer nuestro artículo', it: 'Leggi il nostro articolo', en: 'Read our article', pt: 'Ler o nosso artigo',
         };
         return (
           <div className="mt-14 border-t border-bg-border pt-10">

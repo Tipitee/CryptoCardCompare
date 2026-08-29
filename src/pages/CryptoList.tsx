@@ -72,7 +72,7 @@ const CRYPTOLIST_EDITORIAL: Record<string, { h2: string; body: string; related: 
 };
 
 const GUIDES_TITLE: Record<string, string> = {
-  fr: 'Guides thématiques', de: 'Thematische Ratgeber', es: 'Guías temáticas', it: 'Guide tematiche', en: 'Thematic Guides',
+  fr: 'Guides thématiques', de: 'Thematische Ratgeber', es: 'Guías temáticas', it: 'Guide tematiche', en: 'Thematic Guides', pt: 'Guias temáticos',
 };
 const GUIDES_LINKS: Record<string, { label: string; icon: string; key: string }[]> = {
   fr: [
@@ -130,8 +130,8 @@ const SEO: Record<string, { title: string; desc: string; h1: string; intro: stri
   en: { title: `Crypto Guide ${YEAR}, Best Crypto Cards | TopCryptoCards`, desc: `Everything about the top 10 cryptocurrencies: Bitcoin, Ethereum, XRP, Solana… and which crypto cards support them in ${YEAR}.`, h1: `Guide to the Top Cryptocurrencies`, intro: `Bitcoin, Ethereum, XRP, Solana… each cryptocurrency has its own characteristics: use cases, transaction speed, decentralization level. Find our complete guide for each crypto and discover which crypto cards support them.` },
 };
 
-const HOME_LABEL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-const CRYPTO_SEGMENT: Record<string, string> = { fr: 'cryptos', de: 'cryptos', es: 'cryptos', it: 'cryptos', en: 'cryptos' };
+const HOME_LABEL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
+const CRYPTO_SEGMENT: Record<string, string> = { fr: 'cryptos', de: 'cryptos', es: 'cryptos', it: 'cryptos', en: 'cryptos', pt: 'cryptos' };
 
 export default function CryptoList() {
   const { lang = 'fr' } = useParams<{ lang: string }>();
