@@ -37,7 +37,7 @@ export default function Layout() {
     es: 'divulgacion-afiliados',
     it: 'divulgazione-affiliati',
     en: 'affiliate-disclosure',
-    pt: 'divulgacion-afiliados',
+    pt: 'divulgacao-de-afiliados',
   };
   const affiliateSlug = AFFILIATE_SLUGS[lang] ?? 'affiliate-disclosure';
 

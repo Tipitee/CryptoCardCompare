@@ -128,6 +128,7 @@ export default function App() {
         <Route path="/:lang/affiliate-offenlegung"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgacion-afiliados"     element={<AffiliateDisclosurePage />} />
         <Route path="/:lang/divulgazione-affiliati"    element={<AffiliateDisclosurePage />} />
+        <Route path="/:lang/divulgacao-de-afiliados"   element={<AffiliateDisclosurePage />} />
 
         {/* Legal pages, lang-prefixed (mentions légales + privacy, 7 langs) */}
         <Route path="/:lang/legal-notice"              element={<LegalPage />} />

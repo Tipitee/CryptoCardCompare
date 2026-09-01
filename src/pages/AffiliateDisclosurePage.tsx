@@ -3,13 +3,13 @@ import { useSeoMeta } from '../hooks/useSeoMeta';
 import { Link, useParams } from 'react-router-dom';
 import { Coins } from 'lucide-react';
 
-const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
+const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
-type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en';
+type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en' | 'pt';
 
 /** Maps URL lang (be/at) to the content variant to use */
 const CONTENT_LANG: Record<Lang, ContentLang> = {
-  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en',
+  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en', pt: 'pt',
 };
 
 function useDisclosureLang(): Lang {
@@ -26,6 +26,7 @@ const SLUGS: Record<Lang, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
+  pt: 'divulgacao-de-afiliados',
 };
 
 /* ── Content ─────────────────────────────────────────────────────────────── */
@@ -203,6 +204,38 @@ const CONTENT: Record<ContentLang, Content> = {
       },
     },
   },
+  pt: {
+    h1: 'Divulgação de links de afiliação',
+    lastUpdated: 'Última atualização: julho de 2026',
+    sections: {
+      commercial: {
+        title: 'As nossas relações comerciais',
+        p1: `A TopCryptoCards recebe comissões de afiliação de alguns dos cartões listados neste site. Quando subscreves um cartão através de um dos nossos links de afiliação, podemos receber um pagamento do emissor do cartão ou da sua rede de afiliação. O montante varia consoante o prestador e corresponde, regra geral, a um valor fixo por inscrição validada.`,
+        p2: `Os cartões com os quais temos uma relação de afiliação estão ligados através de <code>/go/&lt;card-slug&gt;/</code>.`,
+        p3: `Os cartões sem relação de afiliação ligam diretamente para o site do emissor. Incluem (em julho de 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, entre outros. Aparecem neste site por serem relevantes para os utilizadores, não porque tiramos daí um rendimento.`,
+      },
+      notAffected: {
+        title: 'O que as relações de afiliação NÃO influenciam',
+        rankings: { title: 'Classificações', body: 'Os cartões são classificados segundo a nossa metodologia publicada (cashback realista, comissões, disponibilidade regional). Nenhum cartão sobe na classificação por nos gerar uma comissão.' },
+        inclusion: { title: 'Inclusão', body: 'Os cartões sem relação de afiliação são incluídos e avaliados exatamente da mesma forma.' },
+        editorial: { title: 'Avaliações editoriais', body: 'As fraquezas, restrições e limitações são assinaladas independentemente da relação comercial.' },
+      },
+      identify: {
+        title: 'Como identificar os links de afiliação',
+        p1: `Todos os links de afiliação de saída passam por <code>/go/&lt;card-name&gt;/</code>. Os links diretos (sem afiliação) apontam diretamente para o URL do emissor. Podes confirmá-lo passando o rato sobre qualquer botão «Visitar o site».`,
+        p2: `No HTML, os links de afiliação incluem <code>rel="sponsored"</code>, conforme a convenção recomendada pela Google para uma divulgação transparente.`,
+      },
+      networks: { title: 'Redes de afiliação com que trabalhamos' },
+      price: {
+        title: 'O preço que pagas nunca é afetado',
+        body: 'Usar os nossos links de afiliação <strong>nunca aumenta o preço que pagas</strong> nem altera as condições de qualquer cartão. A comissão é paga pelo emissor, não por ti.',
+      },
+      questions: {
+        title: 'Questões',
+        body: 'Se tiveres questões sobre as nossas relações comerciais, escreve-nos para',
+      },
+    },
+  },
 };
 
 const SEO_META: Record<ContentLang, { title: string; description: string }> = {
@@ -222,6 +255,10 @@ const SEO_META: Record<ContentLang, { title: string; description: string }> = {
     title: 'Divulgazione affiliati | TopCryptoCards',
     description: 'TopCryptoCards può guadagnare commissioni su alcuni link. Le classifiche restano indipendenti, nessuna carta è favorita in cambio di una commissione.',
   },
+  pt: {
+    title: 'Divulgação de afiliados | TopCryptoCards',
+    description: 'A TopCryptoCards pode receber comissões em alguns links. As nossas classificações são independentes: nenhum cartão é favorecido em troca de comissão.',
+  },
   en: {
     title: 'Affiliate Disclosure | TopCryptoCards',
     description: 'TopCryptoCards may earn commissions on some links. Our rankings remain independent, no card is favoured because of a commission.',
@@ -236,6 +273,7 @@ const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privac
   es: { copyright: 'Sin asesoramiento financiero.', impressum: 'Aviso legal', privacy: 'Privacidad', affiliate: 'Afiliados', risk: 'Resumen de riesgos' },
   it: { copyright: 'Nessun consiglio finanziario.', impressum: 'Note legali', privacy: 'Privacy', affiliate: 'Affiliati', risk: 'Riepilogo rischi' },
   en: { copyright: 'No financial advice.', impressum: 'Impressum', privacy: 'Privacy', affiliate: 'Affiliate Disclosure', risk: 'Risk Summary' },
+  pt: { copyright: 'Sem aconselhamento financeiro.', impressum: 'Aviso legal', privacy: 'Privacidade', affiliate: 'Afiliados', risk: 'Resumo de riscos' },
 };
 
 export default function AffiliateDisclosurePage() {

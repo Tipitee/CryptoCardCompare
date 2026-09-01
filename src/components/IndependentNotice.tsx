@@ -25,7 +25,7 @@ const AFFILIATE_SLUGS: Record<string, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
-  pt: 'divulgacion-afiliados',
+  pt: 'divulgacao-de-afiliados',
 };
 
 export default function IndependentNotice() {

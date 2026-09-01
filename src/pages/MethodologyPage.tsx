@@ -348,7 +348,7 @@ const DISCLOSURE_SLUGS: Record<Lang, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
-  pt: 'divulgacion-afiliados',
+  pt: 'divulgacao-de-afiliados',
 };
 
 const DISCLOSURE_LABEL: Record<Lang, string> = {
