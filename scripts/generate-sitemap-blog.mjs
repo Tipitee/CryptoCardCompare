@@ -61,7 +61,7 @@ async function fetchAllPosts() {
 // ── Générer le XML ────────────────────────────────────────────────────────────
 function generateSitemap(posts) {
   const BASE  = 'https://topcryptocards.eu';
-  const LANGS = ['fr', 'de', 'es', 'it', 'en'];
+  const LANGS = ['fr', 'de', 'es', 'it', 'en', 'pt'];
 
   // Grouper par topic_key
   const byTopic = {};
