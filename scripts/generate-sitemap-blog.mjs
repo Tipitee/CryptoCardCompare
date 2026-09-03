@@ -44,7 +44,7 @@ if (!SUPABASE_URL || !API_KEY) {
 
 // ── Fetch tous les articles publiés ──────────────────────────────────────────
 async function fetchAllPosts() {
-  const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=lang,slug,topic_key,created_at&published=eq.true&order=lang,slug&limit=2000`;
+  const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=lang,slug,topic_key,created_at,updated_at&published=eq.true&order=lang,slug&limit=2000`;
   const res = await fetch(url, {
     headers: {
       apikey: API_KEY,
@@ -70,7 +70,7 @@ function generateSitemap(posts) {
     if (!byTopic[key]) byTopic[key] = {};
     byTopic[key][p.lang] = {
       slug: p.slug,
-      date: p.created_at?.slice(0, 10) || '2026-06-30',
+      date: (p.updated_at || p.created_at)?.slice(0, 10) || '2026-06-30',
     };
   }
 

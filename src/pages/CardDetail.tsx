@@ -232,7 +232,7 @@ export default function CardDetail() {
   const seoDesc = card
     ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
     : '';
-  useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article', lang });
+  useSeoMeta({ title: seoTitle, description: seoDesc, image: card?.realCardImage || undefined, type: 'article', lang, noindex: notFound || undefined });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
   useHreflang(

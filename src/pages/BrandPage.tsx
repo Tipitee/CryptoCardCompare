@@ -484,6 +484,8 @@ export default function BrandPage() {
     description: seo.description || '',
     image: brandOgImage,
     lang,
+    // Empty brand page (no card available in this market) = thin/soft-404 → noindex.
+    noindex: (!loading && cards.length === 0) || undefined,
   });
 
   // ── Hreflang ───────────────────────────────────────────────────────────────

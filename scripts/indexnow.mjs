@@ -156,6 +156,51 @@ const URLS = [
 
   // ── Tools hub ───────────────────────────────────────────────────────────────
   `${BASE}/fr/outils-carte-crypto`, `${BASE}/be/outils-carte-crypto`, `${BASE}/de/krypto-karte-tools`, `${BASE}/at/krypto-karte-tools`, `${BASE}/es/herramientas-tarjeta-crypto`, `${BASE}/it/strumenti-carta-crypto`, `${BASE}/en/crypto-card-tools`,
+
+  // ── Portugal (pt-PT) — nouveau marché ────────────────────────────────────────
+  `${BASE}/pt`,
+  `${BASE}/pt/melhor-cartao-crypto`,
+  `${BASE}/pt/cartao-crypto-cashback`,
+  `${BASE}/pt/cartao-crypto-sem-taxas`,
+  `${BASE}/pt/cartao-crypto-sem-staking`,
+  `${BASE}/pt/cartoes-crypto-portugal`,
+  `${BASE}/pt/cartao-bitcoin`,
+  `${BASE}/pt/cartao-crypto-virtual`,
+  `${BASE}/pt/cartao-crypto-2026`,
+  `${BASE}/pt/cartao-crypto-empresa`,
+  `${BASE}/pt/cartao-crypto-credito`,
+  `${BASE}/pt/cartao-crypto-iniciantes`,
+  `${BASE}/pt/cartao-crypto-sem-kyc`,
+  `${BASE}/pt/cartao-crypto-viagem`,
+  `${BASE}/pt/taxas-cartoes-crypto`,
+  `${BASE}/pt/metodologia`,
+  `${BASE}/pt/sobre-nos`,
+  `${BASE}/pt/contacto`,
+  `${BASE}/pt/cartao-crypto-virtual-vs-fisico`,
+  // crypto hub + guides
+  `${BASE}/pt/cryptos`,
+  `${BASE}/pt/cryptos/btc`,
+  `${BASE}/pt/cryptos/eth`,
+  `${BASE}/pt/cryptos/usdt`,
+  `${BASE}/pt/cryptos/sol`,
+  `${BASE}/pt/cryptos/xrp`,
+  // marques (top)
+  `${BASE}/pt/marcas/crypto-com`,
+  `${BASE}/pt/marcas/nexo`,
+  `${BASE}/pt/marcas/binance`,
+  `${BASE}/pt/marcas/bybit`,
+  `${BASE}/pt/marcas/bitpanda`,
+  // blog pt (10 articles)
+  `${BASE}/pt/blog/melhores-cartoes-crypto-portugal-2026-ranking-completo`,
+  `${BASE}/pt/blog/ranking-cashback-cartoes-crypto-portugal-2026`,
+  `${BASE}/pt/blog/cartao-crypto-impostos-portugal-2026-guia-completo`,
+  `${BASE}/pt/blog/cartao-crypto-bitcoin-portugal-2026-gastar-btc`,
+  `${BASE}/pt/blog/cartoes-crypto-sem-anuidade-portugal-2026-classific`,
+  `${BASE}/pt/blog/melhor-cartao-crypto-portugal-2026-guia-completo`,
+  `${BASE}/pt/blog/guia-iniciante-como-escolher-primeiro-cartao-crypto-portugal`,
+  `${BASE}/pt/blog/cartao-crypto-viagem-portugal-2026-guia-completo-pagar-estrangeiro`,
+  `${BASE}/pt/blog/melhores-cartoes-crypto-sem-staking-obrigatorio-portugal-2026`,
+  `${BASE}/pt/blog/cartoes-crypto-legalidade-portugal-2026`,
 ];
 
 // ── Submit ────────────────────────────────────────────────────────────────────
