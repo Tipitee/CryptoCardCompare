@@ -38,6 +38,7 @@
 /es/favoritos   /index.html  200
 /it/preferiti   /index.html  200
 /en/favorites   /index.html  200
+/pt/favoritos   /index.html  200
 
 # ── Non-allowlisted A-vs-B compare pages ──────────────────────────────────
 # Valid SPA routes for users, noindex for bots, NOT prerendered at scale.
@@ -49,6 +50,7 @@
 /es/comparar/*     /index.html  200
 /it/confrontare/*  /index.html  200
 /en/compare/*      /index.html  200
+/pt/comparar/*     /index.html  200
 
 # ── BE/AT blog — no prerendered files, serve SPA (FR/DE content via dbLang) ──
 /be/blog          /index.html  200

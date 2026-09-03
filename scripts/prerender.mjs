@@ -49,7 +49,9 @@ const EXTRA_ROUTES = [
   // Divulgation affiliés par marché
   '/fr/divulgation-affilies', '/be/divulgation-affilies', '/de/affiliate-offenlegung',
   '/at/affiliate-offenlegung', '/es/divulgacion-afiliados', '/it/divulgazione-affiliati',
-  '/en/affiliate-disclosure',
+  '/en/affiliate-disclosure', '/pt/divulgacao-de-afiliados',
+  // Mentions légales pt (rend le contenu EN en fallback, mais URL servie en 200)
+  '/pt/legal-notice',
 ];
 
 /** Compare pairs worth indexing (high search demand). Everything else with
