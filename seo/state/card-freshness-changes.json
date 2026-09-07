@@ -1,0 +1,13 @@
+{
+  "generated": "2026-09-05",
+  "changes": [
+    {
+      "card": "OKX Card",
+      "match": { "name": "OKX Card" },
+      "set": { "cashback_premium": 10 },
+      "reason": "Barème cashback EEE OKX révisé (depuis 01–03/2026) : jusqu'à 10% en USDG pour VIP4+ (plafond 1000 €/mois), contre 5% affiché. Cashback en USDG uniquement, non-VIP = 2% plafonné 10 €/mois.",
+      "source": "okx.com/en-eu/help (OKX Card EEA ongoing cashback FAQ, 2026)",
+      "confidence": "medium"
+    }
+  ]
+}

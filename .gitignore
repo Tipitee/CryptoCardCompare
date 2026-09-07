@@ -28,7 +28,7 @@ dist-ssr
 # Clé compte de service Google (NE JAMAIS committer)
 scripts/gsc-service-account.json
 
-seo/state/
+# NB: seo/state/ et seo/ai-visibility/ sont des INPUTS des workflows CI
+# (auto-article, decay-tracker, etc.) → ils DOIVENT rester versionnés.
 seo/reporting/weekly-*
-seo/ai-visibility/
 vite.config.ts.timestamp-*.mjs
