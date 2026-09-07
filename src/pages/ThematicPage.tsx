@@ -7,6 +7,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import AutoLinker from '../components/AutoLinker';
 import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { THEMATIC_ROUTES } from '../config/routes';
+import { THEME_SECTIONS_PT, THEME_FAQ_PT } from '../data/themeContentPt';
 
 const HOME_LABEL: Record<string, string> = {
   fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início',
@@ -1355,6 +1356,9 @@ const THEME_FAQ: Record<string, Record<string, { q: string; a: string }[]>> = {
 for (const theme of Object.keys(THEME_FAQ)) {
   if (THEME_FAQ[theme].fr && !THEME_FAQ[theme].be) THEME_FAQ[theme].be = THEME_FAQ[theme].fr;
   if (THEME_FAQ[theme].de && !THEME_FAQ[theme].at) THEME_FAQ[theme].at = THEME_FAQ[theme].de;
+  // Portuguese overlay (real pt-PT content when the generator has been run).
+  if (THEME_SECTIONS_PT[theme]?.length && THEME_SECTIONS[theme]) (THEME_SECTIONS[theme] as Record<string, unknown>).pt = THEME_SECTIONS_PT[theme];
+  if (THEME_FAQ_PT[theme]?.length && THEME_FAQ[theme]) THEME_FAQ[theme].pt = THEME_FAQ_PT[theme];
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
