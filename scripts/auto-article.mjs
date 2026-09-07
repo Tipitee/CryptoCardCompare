@@ -45,6 +45,9 @@ const MARKETS = {
   es: { name: 'español',  locale: 'es-ES', tax: 'IRPF base del ahorro 19-28% + modelo 721', reg: 'CNMV', note: 'España' },
   it: { name: 'italiano', locale: 'it-IT', tax: 'imposta sostitutiva 26% + quadro RW', reg: 'CONSOB/OAM', note: 'Italia' },
   en: { name: 'English (UK)', locale: 'en-GB', tax: 'UK Capital Gains Tax + annual allowance', reg: 'FCA', note: 'United Kingdom' },
+  pt: { name: 'português europeu (pt-PT, JAMAIS brésilien : "cartão", "grátis", "levantamento", "detido")', locale: 'pt-PT', tax: 'Portugal : mais-valias tributadas a 28% se a cripto for detida há menos de 365 dias, ISENTAS a partir de um ano ; pagar com cripto é uma alienação tributável', reg: 'Banco de Portugal / MiCA', note: 'Portugal' },
+  be: { name: 'français (Belgique)', locale: 'fr-BE', tax: 'Belgique : plus-values en gestion normale non imposées ; gains spéculatifs = revenus divers taxés à 33% ; activité professionnelle au barème', reg: 'FSMA', note: 'Belgique' },
+  at: { name: 'Deutsch (Österreich)', locale: 'de-AT', tax: 'Österreich : 27,5% KESt pauschal, keine Haltefrist (seit März 2022) ; Bitpanda mit Sitz in Wien', reg: 'FMA', note: 'Österreich' },
 };
 // be hérite du contenu fr mais adapte la fiscalité belge ; at hérite de de + fiscalité autrichienne
 const MARKET_VARIANTS = {
@@ -96,7 +99,7 @@ RÈGLES OBLIGATOIRES (elles seront vérifiées automatiquement, un échec = reje
 - Réponse directe à l'intention dès les 100 premiers mots, avec un chiffre concret.
 - Les H2 (##) sont de VRAIES questions que se posent les acheteurs.
 - Une section FAQ avec 3-5 questions/réponses.
-- Au moins un lien interne markdown vers une money page, ex : [meilleure carte crypto](/fr/meilleure-carte-crypto) ou une fiche [Nexo Card](/fr/cartes/nexo-card).
+- 3 à 5 liens internes markdown contextuels, répartis : au moins une money page (ex : [meilleure carte crypto](/fr/meilleure-carte-crypto), [carte crypto cashback](/fr/carte-crypto-cashback)), au moins une fiche carte (ex : [Nexo Card](/fr/cartes/nexo-card)) et un guide/comparatif connexe. Les liens doivent être naturels dans le texte, pas listés.
 - Mentionne "vérifié en ${new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}".
 - Longueur 1000-1500 mots. Aucun cliché ("dans le monde en constante évolution"...). Pas de conseil financier personnalisé, pas de stat non sourcée.
 - Honnête : dire pour QUI la carte n'est pas adaptée.
@@ -151,9 +154,24 @@ async function runNew() {
   const topicKey = `blog-auto-${md.slug}`.slice(0, 60);
 
   const variants = [{ lang: 'fr', body: frBody, ...md }];
-  for (const lang of ['de', 'es', 'it', 'en']) {
+  const bodies = { fr: frBody }; // keep generated bodies to source variant markets
+  // Own-content languages (adapted from the FR article) + Portugal.
+  for (const lang of ['de', 'es', 'it', 'en', 'pt']) {
     await sleep(800);
     const body = await claude(locPrompt(frBody, lang));
+    const lg = gate(body);
+    if (!lg.pass) { console.log(`⚠️ ${lang} rejeté, ignoré`); continue; }
+    await sleep(600);
+    const lmeta = await meta(body, topic);
+    variants.push({ lang, body, ...lmeta });
+    bodies[lang] = body;
+    console.log(`✅ ${lang} adapté + gate OK`);
+  }
+  // Market variants: be = French for Belgium (source FR), at = German for Austria (source DE).
+  for (const [lang, src] of [['be', bodies.fr], ['at', bodies.de || bodies.fr]]) {
+    if (!src) continue;
+    await sleep(800);
+    const body = await claude(locPrompt(src, lang));
     const lg = gate(body);
     if (!lg.pass) { console.log(`⚠️ ${lang} rejeté, ignoré`); continue; }
     await sleep(600);
