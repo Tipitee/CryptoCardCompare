@@ -1789,15 +1789,15 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
   if (!config) return null;
 
   const L = {
-    free:              { fr:'Gratuit', de:'Kostenlos', es:'Gratis', it:'Gratuito', en:'Free' },
-    updated:           { fr:'Mis à jour', de:'Aktualisiert', es:'Actualizado', it:'Aggiornato', en:'Updated' },
-    cards:             { fr:'cartes', de:'Karten', es:'tarjetas', it:'carte', en:'cards' },
-    faq:               { fr:'Questions fréquentes', de:'Häufige Fragen', es:'Preguntas frecuentes', it:'Domande frequenti', en:'Frequently Asked Questions' },
-    crypto_guide_title:{ fr:'Guide des Cryptomonnaies', de:'Kryptowährungs-Guide', es:'Guía de Criptomonedas', it:'Guida alle Criptovalute', en:'Cryptocurrency Guide' },
-    crypto_guide_desc: { fr:'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches', de:'Bitcoin, Ethereum, XRP… 10 Krypto-Guides', es:'Bitcoin, Ethereum, XRP… 10 guías completas', it:'Bitcoin, Ethereum, XRP… 10 guide complete', en:'Bitcoin, Ethereum, XRP… 10 in-depth guides' },
-    no_stake:          { fr:'Sans staking', de:'Kein Staking', es:'Sin staking', it:'Senza staking', en:'No staking' },
-    virtual:           { fr:'Virtuelle', de:'Virtuell', es:'Virtual', it:'Virtuale', en:'Virtual' },
-    annual_suffix:     { fr:'€/an', de:'€/Jahr', es:'€/año', it:'€/anno', en:'€/year' },
+    free:              { fr:'Gratuit', de:'Kostenlos', es:'Gratis', it:'Gratuito', en:'Free', pt:'Grátis' },
+    updated:           { fr:'Mis à jour', de:'Aktualisiert', es:'Actualizado', it:'Aggiornato', en:'Updated', pt:'Atualizado' },
+    cards:             { fr:'cartes', de:'Karten', es:'tarjetas', it:'carte', en:'cards', pt:'cartões' },
+    faq:               { fr:'Questions fréquentes', de:'Häufige Fragen', es:'Preguntas frecuentes', it:'Domande frequenti', en:'Frequently Asked Questions', pt:'Perguntas frequentes' },
+    crypto_guide_title:{ fr:'Guide des Cryptomonnaies', de:'Kryptowährungs-Guide', es:'Guía de Criptomonedas', it:'Guida alle Criptovalute', en:'Cryptocurrency Guide', pt:'Guia de Criptomoedas' },
+    crypto_guide_desc: { fr:'Bitcoin, Ethereum, XRP… tout comprendre en 10 fiches', de:'Bitcoin, Ethereum, XRP… 10 Krypto-Guides', es:'Bitcoin, Ethereum, XRP… 10 guías completas', it:'Bitcoin, Ethereum, XRP… 10 guide complete', en:'Bitcoin, Ethereum, XRP… 10 in-depth guides', pt:'Bitcoin, Ethereum, XRP… 10 guias completos' },
+    no_stake:          { fr:'Sans staking', de:'Kein Staking', es:'Sin staking', it:'Senza staking', en:'No staking', pt:'Sem staking' },
+    virtual:           { fr:'Virtuelle', de:'Virtuell', es:'Virtual', it:'Virtuale', en:'Virtual', pt:'Virtual' },
+    annual_suffix:     { fr:'€/an', de:'€/Jahr', es:'€/año', it:'€/anno', en:'€/year', pt:'€/ano' },
   };
   const t = (key: keyof typeof L): string => (L[key] as Record<string, string>)[cl] || (L[key] as Record<string, string>)['en'] || '';
 
@@ -1811,7 +1811,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       <p className="text-slate-400 text-sm mb-4">
         {t('updated')}{' '}
         {new Date().toLocaleDateString(
-          lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB',
+          lang === 'fr' || lang === 'be' ? 'fr-FR' : lang === 'de' || lang === 'at' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : lang === 'pt' ? 'pt-PT' : 'en-GB',
           { year: 'numeric', month: 'long' }
         )}
         {' · '}

@@ -64,7 +64,7 @@ function extractFrArray(mapName, theme) {
 
 const THEMES = ['credit','business','bitcoin','best','cashback','no-fees','no-staking','france','virtual','beginner','no-kyc','2026','travel','rewards','physical','belgium','austria','iban'];
 
-const PT_NOTE = `Write EUROPEAN Portuguese (pt-PT, Portugal — never Brazilian: "cartão", "grátis", "comissões", "levantamento", "detido", impersonal or "tu", never "você"). Keep crypto/card brand names in English. Keep the same structure and length. Where a paragraph mentions a country, tax or regulator, adapt to Portugal: Banco de Portugal / MiCA, and the Portuguese crypto tax (28% on gains if held < 365 days, exempt after one year; paying with crypto is a taxable disposal). Keep any \${YEAR} template markers intact.`;
+const PT_NOTE = `Write EUROPEAN Portuguese (pt-PT, Portugal — never Brazilian: "cartão", "grátis", "comissões", "levantamento", "detido", impersonal or "tu", never "você"). Keep crypto/card brand names in English. Keep the same structure and length. Where a paragraph mentions a country, tax or regulator, adapt to Portugal: Banco de Portugal / MiCA, and the Portuguese crypto tax (28% on gains if held < 365 days, exempt after one year; paying with crypto is a taxable disposal). Write any year as the literal "2026" — do NOT output the token \${YEAR} (this content is stored as data, not a template literal).`;
 
 async function translate(kind, frText, attempt = 1) {
   const shape = kind === 'sections'

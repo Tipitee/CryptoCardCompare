@@ -6,7 +6,7 @@
 export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
   "2026": [
     {
-      "h2": "Quais os cartões crypto indispensáveis em ${YEAR}?",
+      "h2": "Quais os cartões crypto indispensáveis em 2026?",
       "p": "Em 2026, o mercado dos cartões crypto consolidou-se em torno de alguns operadores sólidos: a Crypto.com mantém-se líder com o seu ecossistema completo, a Nexo destaca-se pelo cashback em BTC sem staking, e a Gnosis Pay ganha terreno com a sua proposta on-chain única. As recém-chegadas MetaMask Card e Ether.fi Card atraem utilizadores DeFi. A regulamentação MiCA na Europa traz maior transparência e segurança para os consumidores."
     },
     {
@@ -14,21 +14,21 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "A regulamentação MiCA (Markets in Crypto-Assets), plenamente em vigor desde 2025, obriga os emitentes a deter reservas e a publicar relatórios de conformidade. Como consequência, os cartões emitidos por operadores regulamentados na Europa (Crypto.com, Nexo, Revolut) estão agora mais protegidos. A tendência on-chain acelera-se com cartões como a Gnosis Pay, que liquida diretamente a partir da tua carteira, sem intermediários e com total transparência. Em Portugal, o Banco de Portugal supervisiona os prestadores de serviços de criptoativos no quadro do MiCA."
     },
     {
-      "h2": "Como escolher o teu cartão crypto em ${YEAR} de acordo com o teu perfil?",
+      "h2": "Como escolher o teu cartão crypto em 2026 de acordo com o teu perfil?",
       "p": "Em 2026, a escolha de um cartão crypto depende sobretudo do teu uso principal. Viajas com frequência? A Crypto.com Jade ou Indigo oferecem acesso a lounges Priority Pass, seguro de viagem e cashback no Airbnb. Queres acumular Bitcoin? A Nexo Card oferece cashback em BTC sem staking obrigatório. És utilizador DeFi? A MetaMask Card ou a Gnosis Pay ligam diretamente à tua carteira. Estás a começar? A Brighty ou a Revolut Standard oferecem uma transição suave sem risco. A maturidade do mercado em 2026 significa que existe um cartão adaptado a cada perfil."
     },
     {
-      "h2": "O que mudou em ${YEAR} para os cartões crypto na Europa",
+      "h2": "O que mudou em 2026 para os cartões crypto na Europa",
       "p": "2026 marca uma viragem regulatória e tecnológica para os cartões crypto europeus. O MiCA é plenamente aplicável, afastando do mercado os emitentes não conformes. Os consumidores beneficiam de proteções semelhantes às da banca tradicional, incluindo em Portugal sob a supervisão do Banco de Portugal. A liquidação on-chain avança (Gnosis Pay, MetaMask Card, Ether.fi Card), os stablecoins impõem-se como meio de carregamento preferencial e as interfaces integram-se com as carteiras existentes. A barreira de entrada para o primeiro cartão crypto nunca foi tão baixa."
     },
     {
-      "h2": "A nossa seleção dos melhores cartões crypto de ${YEAR} por categoria",
-      "p": "Melhor cartão crypto para todos os perfis: Crypto.com Jade (cashback de 3%, lounges, seguros de viagem, reembolsos Airbnb/Expedia/Netflix). Melhor cartão sem staking: Gnosis Pay (2% on-chain, self-custody, rede xDAI). Melhor cartão para principiantes: Brighty (grátis, USDC, IBAN europeu, cashback de 1,75%). Melhor cartão para acumulação de BTC: Nexo Card (2% em BTC, sem staking). Melhor cartão DeFi-nativo: MetaMask Card (cashback em ETH, carteira direta). Em Portugal, importa recordar que os ganhos com criptoativos estão sujeitos a IRS à taxa autónoma de 28% se os ativos forem detidos há menos de 365 dias, sendo isentos após esse prazo; o pagamento com crypto constitui uma alienação tributável. Estas recomendações ${YEAR} baseiam-se na conformidade regulatória MiCA, na solidez financeira do emitente e no cashback efetivo após dedução dos custos de staking."
+      "h2": "A nossa seleção dos melhores cartões crypto de 2026 por categoria",
+      "p": "Melhor cartão crypto para todos os perfis: Crypto.com Jade (cashback de 3%, lounges, seguros de viagem, reembolsos Airbnb/Expedia/Netflix). Melhor cartão sem staking: Gnosis Pay (2% on-chain, self-custody, rede xDAI). Melhor cartão para principiantes: Brighty (grátis, USDC, IBAN europeu, cashback de 1,75%). Melhor cartão para acumulação de BTC: Nexo Card (2% em BTC, sem staking). Melhor cartão DeFi-nativo: MetaMask Card (cashback em ETH, carteira direta). Em Portugal, importa recordar que os ganhos com criptoativos estão sujeitos a IRS à taxa autónoma de 28% se os ativos forem detidos há menos de 365 dias, sendo isentos após esse prazo; o pagamento com crypto constitui uma alienação tributável. Estas recomendações 2026 baseiam-se na conformidade regulatória MiCA, na solidez financeira do emitente e no cashback efetivo após dedução dos custos de staking."
     }
   ],
   "best": [
     {
-      "h2": "Como escolher o melhor cartão crypto em ${YEAR}?",
+      "h2": "Como escolher o melhor cartão crypto em 2026?",
       "p": "Para identificar o melhor cartão crypto, analisa vários critérios: taxa máxima de cashback, condições de staking, comissões anuais, disponibilidade em Portugal e fiabilidade do emissor. Um cartão que oferece 8% de cashback com 200 000€ de staking em CRO não é rentável para um utilizador médio. Calcula o retorno real sobre o investimento tendo em conta o capital imobilizado e a volatilidade do token nativo."
     },
     {
@@ -37,7 +37,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
     },
     {
       "h2": "Os 5 critérios que fazem realmente a diferença",
-      "p": "Para além da taxa de cashback apresentada, cinco critérios separam os bons cartões dos maus em ${YEAR}. Em primeiro lugar, a crypto na qual é pago o cashback: um cashback em BTC (Nexo) é intrinsecamente mais estável do que um cashback em token proprietário volátil. Em segundo lugar, a disponibilidade efetiva em Portugal ou no país de residência. Em terceiro lugar, a qualidade do apoio ao cliente (prazos, idiomas, canais disponíveis). Em quarto lugar, a solidez financeira do emissor e a sua conformidade com o regulamento MiCA, supervisionado pelo Banco de Portugal. Em quinto lugar, os limites de levantamento em ATM e as comissões de câmbio no estrangeiro, critérios frequentemente negligenciados que podem custar caro no dia a dia."
+      "p": "Para além da taxa de cashback apresentada, cinco critérios separam os bons cartões dos maus em 2026. Em primeiro lugar, a crypto na qual é pago o cashback: um cashback em BTC (Nexo) é intrinsecamente mais estável do que um cashback em token proprietário volátil. Em segundo lugar, a disponibilidade efetiva em Portugal ou no país de residência. Em terceiro lugar, a qualidade do apoio ao cliente (prazos, idiomas, canais disponíveis). Em quarto lugar, a solidez financeira do emissor e a sua conformidade com o regulamento MiCA, supervisionado pelo Banco de Portugal. Em quinto lugar, os limites de levantamento em ATM e as comissões de câmbio no estrangeiro, critérios frequentemente negligenciados que podem custar caro no dia a dia."
     },
     {
       "h2": "Classificação por perfil: qual o cartão para cada utilizador?",
@@ -66,8 +66,8 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "Para maximizar o teu cashback crypto, há várias estratégias a adotar. Concentra as despesas correntes num único cartão para atingir os eventuais limites mensais de cashback (alguns cartões limitam a 50 ou 100€/mês de cashback). Usa o teu cartão crypto para subscrições recorrentes — Netflix, Spotify, compras online —, compras que se acumulam mês após mês. Verifica se o teu cartão oferece cashback majorado em determinadas categorias, como restaurantes ou viagens. Por fim, mantém o teu cashback em vez de o vender imediatamente: deixa-o valorizar ao longo do tempo se estiveres otimista em relação à crypto associada."
     },
     {
-      "h2": "Comparativo de cashback por cartão: resumo ${YEAR}",
-      "p": "Melhores taxas de cashback em ${YEAR}: Crypto.com Obsidian 8% (400K CRO em staking), Crypto.com Jade 3% (50K CRO), Nexo Card 2% (em BTC ou NEXO, sem staking), Gnosis Pay 2% (em GNO, on-chain), Bitpanda 2% (em BEST), MetaMask Card 1-3% (em ETH, conforme volume), Brighty 1,75% (em USDC, sem staking), Revolut 1% (em crypto à escolha). Os cartões sem staking mais rentáveis para uso corrente continuam a ser a Nexo e a Gnosis Pay. Para volumes de despesa elevados, os cartões Crypto.com de 3-8% tornam-se competitivos apesar do staking exigido."
+      "h2": "Comparativo de cashback por cartão: resumo 2026",
+      "p": "Melhores taxas de cashback em 2026: Crypto.com Obsidian 8% (400K CRO em staking), Crypto.com Jade 3% (50K CRO), Nexo Card 2% (em BTC ou NEXO, sem staking), Gnosis Pay 2% (em GNO, on-chain), Bitpanda 2% (em BEST), MetaMask Card 1-3% (em ETH, conforme volume), Brighty 1,75% (em USDC, sem staking), Revolut 1% (em crypto à escolha). Os cartões sem staking mais rentáveis para uso corrente continuam a ser a Nexo e a Gnosis Pay. Para volumes de despesa elevados, os cartões Crypto.com de 3-8% tornam-se competitivos apesar do staking exigido."
     },
     {
       "h2": "Fiscalidade do cashback crypto em Portugal: o que diz a lei",
@@ -80,7 +80,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "As comissões anuais de um cartão crypto podem chegar aos 180€/ano nos níveis premium. Antes de pagar, calcula se as vantagens (cashback, lounges, subscrições) superam esse custo. Para um utilizador que gasta 500€/mês com um cashback de 1%, o ganho anual é de 60€, bem abaixo dos 180€ de comissões. Os cartões grátis como MetaMask Card, Gnosis Pay ou Brighty oferecem um excelente ponto de entrada sem compromisso financeiro."
     },
     {
-      "h2": "Cartões crypto grátis: MetaMask, Gnosis Pay, Brighty, comparativo ${YEAR}",
+      "h2": "Cartões crypto grátis: MetaMask, Gnosis Pay, Brighty, comparativo 2026",
       "p": "O MetaMask Card é totalmente grátis (0€/ano), disponível na rede Visa, com cashback de 1% em ETH nas compras do dia a dia, sem staking obrigatório. O Gnosis Pay, também grátis, é único enquanto cartão on-chain nativo, com cashback em GNO. O Brighty oferece um cartão USDC grátis com IBAN europeu integrado e até 1,75% de cashback. Estas três opções combinam as vantagens das fintech tradicionais com as da DeFi."
     },
     {
@@ -102,7 +102,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "O staking obrigatório apresenta dois riscos principais: imobilização de capital e exposição ao risco cambial sobre a crypto em staking. Se o preço colapsar durante o período de lock-up (muitas vezes 180 dias), perde-se duplamente — no valor em staking e nas oportunidades perdidas. Um cartão sem staking como o Gnosis Pay ou o MetaMask Card oferece cashback imediato sem restrições nem risco de perda adicional."
     },
     {
-      "h2": "Gnosis Pay, MetaMask Card, Brighty: a comparação ${YEAR}",
+      "h2": "Gnosis Pay, MetaMask Card, Brighty: a comparação 2026",
       "p": "O Gnosis Pay é único: é o primeiro cartão Visa ligado diretamente a uma wallet on-chain, com cashback em GNO em cada compra. O MetaMask Card oferece 1 a 3% em ETH nas compras, ideal para utilizadores de DeFi. O Brighty propõe entre 0,5% e 1,75% de cashback em USDC sem staking, com um IBAN europeu integrado. Estes três cartões distinguem-se pela total transparência e pela ausência de condições ocultas."
     },
     {
@@ -110,12 +110,12 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "A comparação numérica é frequentemente mais favorável aos cartões sem staking do que se pensa. Exemplo: o Gnosis Pay oferece 2% de cashback em GNO sem staking. O Crypto.com Ruby Steel oferece 2% em CRO, mas exige 350 CRO em staking (~210€ ao preço atual). Com 500€/mês de despesas, o Gnosis Pay gera 120€/ano em GNO, sem imobilização de capital. O Crypto.com gera os mesmos 120€ em CRO, mas com 210€ de capital bloqueado e exposto à volatilidade do CRO. Se o CRO descer 30%, o valor em staking diminui, tornando o cartão retrospetivamente menos rentável."
     },
     {
-      "h2": "Cartões sem staking e DeFi: a convergência de ${YEAR}",
-      "p": "Em ${YEAR}, os cartões crypto sem staking aproximam-se cada vez mais da DeFi: o Gnosis Pay liquida em xDAI on-chain, o MetaMask Card debita diretamente da wallet Ethereum do utilizador, e o Ether.fi Card está associado a ETH em staking líquido (faz-se staking mas mantém-se o controlo). Esta convergência permite acumular as vantagens da Web3 — self-custody, transparência, rendimento DeFi — com a comodidade de um cartão Visa aceite em todo o lado. Para um utilizador de DeFi, é a solução mais coerente com o seu ecossistema existente."
+      "h2": "Cartões sem staking e DeFi: a convergência de 2026",
+      "p": "Em 2026, os cartões crypto sem staking aproximam-se cada vez mais da DeFi: o Gnosis Pay liquida em xDAI on-chain, o MetaMask Card debita diretamente da wallet Ethereum do utilizador, e o Ether.fi Card está associado a ETH em staking líquido (faz-se staking mas mantém-se o controlo). Esta convergência permite acumular as vantagens da Web3 — self-custody, transparência, rendimento DeFi — com a comodidade de um cartão Visa aceite em todo o lado. Para um utilizador de DeFi, é a solução mais coerente com o seu ecossistema existente."
     },
     {
       "h2": "FAQ: todas as questões sobre cartões crypto sem staking",
-      "p": "É possível obter mais de 2% de cashback sem staking? Em ${YEAR}, 2% continua a ser o limite máximo dos cartões sem staking (Gnosis Pay, Nexo). Um cartão sem staking é menos vantajoso? Não — a ausência de staking é, por si só, uma vantagem: o capital mantém-se líquido e acessível a qualquer momento. O Gnosis Pay é verdadeiramente on-chain? Sim, cada transação é liquidada diretamente na Gnosis Chain, sendo publicamente visível no explorador de blocos. Em Portugal, o cashback em crypto está sujeito a imposto? O uso de crypto como meio de pagamento constitui uma alienação tributável; as mais-valias são tributadas a 28% se o ativo for detido há menos de 365 dias, estando isentas após esse prazo, de acordo com as regras fiscais portuguesas supervisionadas pelo Banco de Portugal no quadro do MiCA. É possível perder o capital com um cartão sem staking? Não — o risco de perda limita-se à volatilidade do cashback recebido (em GNO, ETH ou USDC)."
+      "p": "É possível obter mais de 2% de cashback sem staking? Em 2026, 2% continua a ser o limite máximo dos cartões sem staking (Gnosis Pay, Nexo). Um cartão sem staking é menos vantajoso? Não — a ausência de staking é, por si só, uma vantagem: o capital mantém-se líquido e acessível a qualquer momento. O Gnosis Pay é verdadeiramente on-chain? Sim, cada transação é liquidada diretamente na Gnosis Chain, sendo publicamente visível no explorador de blocos. Em Portugal, o cashback em crypto está sujeito a imposto? O uso de crypto como meio de pagamento constitui uma alienação tributável; as mais-valias são tributadas a 28% se o ativo for detido há menos de 365 dias, estando isentas após esse prazo, de acordo com as regras fiscais portuguesas supervisionadas pelo Banco de Portugal no quadro do MiCA. É possível perder o capital com um cartão sem staking? Não — o risco de perda limita-se à volatilidade do cashback recebido (em GNO, ETH ou USDC)."
     }
   ],
   "france": [
@@ -128,15 +128,15 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "O regulamento MiCA (Markets in Crypto-Assets), em vigor desde dezembro de 2024, impõe normas rigorosas aos emitentes de cartões crypto que operam em Portugal e na UE: reservas comprováveis, relatórios de transparência e proteção dos fundos dos clientes. O resultado prático é que emitentes regulados como Crypto.com, Nexo ou Revolut oferecem agora uma proteção comparável à da banca tradicional. Para os residentes em Portugal, isso traduz-se em maior segurança e em vias de recurso claras em caso de litígio. Dá sempre preferência a um cartão emitido por um operador com registo junto do Banco de Portugal ou com licença equivalente ao abrigo do MiCA."
     },
     {
-      "h2": "Fiscalidade dos cartões crypto em Portugal em ${YEAR}",
+      "h2": "Fiscalidade dos cartões crypto em Portugal em 2026",
       "p": "Em Portugal, cada utilização de um cartão crypto implica uma conversão de cripto para euros no momento do pagamento. Esta conversão constitui um facto tributável: as mais-valias realizadas estão sujeitas a uma taxa de 28% se o ativo tiver sido detido há menos de 365 dias; ao fim de um ano de detenção, as mais-valias ficam isentas de imposto. Pagar com crypto é sempre considerado uma alienação tributável, independentemente do prazo. Para simplificar a declaração, utiliza ferramentas como Waltio, Koinly ou CoinTracking para agregar automaticamente as transações. A estratégia mais simples para evitar eventos fiscais: carrega o cartão com stablecoins (USDC, USDT) — valor estável, sem mais-valia realizada, sem obrigação de declaração na conversão."
     },
     {
-      "h2": "Melhores cartões crypto para residentes em Portugal em ${YEAR}",
+      "h2": "Melhores cartões crypto para residentes em Portugal em 2026",
       "p": "Para os residentes em Portugal, os cartões com melhor relação qualidade-preço são: Crypto.com Visa (ecossistema completo, 5 níveis, disponível em Portugal), Nexo Card (cashback em BTC sem staking), Gnosis Pay (on-chain, self-custody), MetaMask Card (nativa em DeFi, cashback em ETH), Brighty (grátis, USDC, IBAN europeu disponível) e Deblock (fintech crypto-friendly, IBAN europeu, interface intuitiva). Todos estes cartões dispõem de autorização regulatória válida em Portugal."
     },
     {
-      "h2": "Abrir um cartão crypto a partir de Portugal: guia passo a passo em ${YEAR}",
+      "h2": "Abrir um cartão crypto a partir de Portugal: guia passo a passo em 2026",
       "p": "(1) Escolhe o teu cartão no TopCryptoCards de acordo com o teu perfil (cashback, staking, DeFi). (2) Cria uma conta na plataforma oficial — demora entre 5 a 10 minutos. (3) Completa o KYC: documento de identificação (cartão de cidadão ou passaporte) + selfie, validação em 24 a 72 horas. (4) Se o cartão o exigir, faz o staking do montante mínimo necessário (ex.: 350 CRO para o Crypto.com Ruby Steel). (5) Carrega via transferência SEPA a partir do teu banco português (Millennium BCP, Caixa Geral de Depósitos, Novo Banco, BPI…). (6) O cartão virtual fica disponível de imediato; o cartão físico chega em 5 a 10 dias úteis."
     }
   ],
@@ -146,7 +146,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "Um cartão crypto virtual funciona como um cartão físico, mas existe apenas em formato digital. Adicionas-o ao Apple Pay, Google Pay ou Samsung Pay para pagar online e em loja via NFC. A principal vantagem: ativação imediata (muitas vezes em menos de 5 minutos), sem demoras de entrega e possibilidade de gerar números únicos para proteger as tuas compras online contra fraude."
     },
     {
-      "h2": "Melhores cartões crypto virtuais em ${YEAR}: Crypto.com, Wirex, Brighty",
+      "h2": "Melhores cartões crypto virtuais em 2026: Crypto.com, Wirex, Brighty",
       "p": "A Crypto.com disponibiliza um cartão virtual Visa ativável imediatamente, recarregável em crypto ou em euros. A Wirex oferece cartões virtuais multi-divisa com cashback em WXT. A Brighty fornece um cartão virtual USDC com IBAN europeu integrado. Para compras exclusivamente online, estes cartões virtuais são ideais: sem custos de envio, cashback desde a primeira compra e proteção total do número do cartão físico."
     },
     {
@@ -155,7 +155,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
     },
     {
       "h2": "Cartões crypto virtuais vs carteira móvel: qual a diferença?",
-      "p": "Um cartão crypto virtual e uma carteira crypto (MetaMask, Trust Wallet) são duas ferramentas complementares, não substituíveis. A carteira armazena os teus crypto-ativos on-chain com as tuas chaves privadas. O cartão virtual está ligado a uma conta emissora (custodial ou semi-custodial) e converte automaticamente as criptomoedas em moeda fiat no momento do pagamento — e esta conversão constitui um facto tributável em Portugal. A exceção notável é a MetaMask Card, que liga diretamente a carteira ao cartão, sem necessidade de conta intermediária. É a convergência mais avançada entre cartão virtual e carteira DeFi em ${YEAR}."
+      "p": "Um cartão crypto virtual e uma carteira crypto (MetaMask, Trust Wallet) são duas ferramentas complementares, não substituíveis. A carteira armazena os teus crypto-ativos on-chain com as tuas chaves privadas. O cartão virtual está ligado a uma conta emissora (custodial ou semi-custodial) e converte automaticamente as criptomoedas em moeda fiat no momento do pagamento — e esta conversão constitui um facto tributável em Portugal. A exceção notável é a MetaMask Card, que liga diretamente a carteira ao cartão, sem necessidade de conta intermediária. É a convergência mais avançada entre cartão virtual e carteira DeFi em 2026."
     },
     {
       "h2": "Como utilizar um cartão crypto virtual no dia a dia",
@@ -168,7 +168,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "O primeiro passo é escolher um cartão acessível sem staking e sem anuidade. Abre uma conta na plataforma, completa a verificação KYC (identidade e morada), depois recarrega o teu cartão a partir da tua exchange ou diretamente em euros por transferência SEPA. Para principiantes, evita plataformas com tokens proprietários voláteis; privilegia cartões associados a stablecoins (USDC) ou diretamente ao teu saldo em euros."
     },
     {
-      "h2": "Melhores cartões crypto para principiantes em ${YEAR}: Revolut, Brighty, MetaMask",
+      "h2": "Melhores cartões crypto para principiantes em 2026: Revolut, Brighty, MetaMask",
       "p": "A Revolut combina banca tradicional e crypto numa única aplicação, ideal para principiantes que querem experimentar sem grandes compromissos. A Brighty é 100% grátis, com IBAN europeu e cashback em USDC sem staking. O MetaMask Card é perfeito se já estás familiarizado com carteiras Web3. Estas três opções têm um ponto em comum: registo rápido em menos de 10 minutos e utilização imediata desde o primeiro dia."
     },
     {
@@ -191,14 +191,14 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
     },
     {
       "h2": "Gnosis Pay e MetaMask Card: os cartões crypto mais próximos do modelo sem intermediário",
-      "p": "O Gnosis Pay é o cartão on-chain mais avançado disponível: cada pagamento é assinado a partir do teu Gnosis Safe e liquidado em xDAI diretamente na blockchain. Nenhuma conta custodial, nenhum intermediário entre a tua wallet e o terminal de pagamento. O MetaMask Card segue o mesmo princípio: a tua crypto permanece na tua wallet até ao momento do pagamento, sem que a plataforma seja sua guardiã. Estes dois cartões representam a vanguarda da soberania financeira crypto em ${YEAR}."
+      "p": "O Gnosis Pay é o cartão on-chain mais avançado disponível: cada pagamento é assinado a partir do teu Gnosis Safe e liquidado em xDAI diretamente na blockchain. Nenhuma conta custodial, nenhum intermediário entre a tua wallet e o terminal de pagamento. O MetaMask Card segue o mesmo princípio: a tua crypto permanece na tua wallet até ao momento do pagamento, sem que a plataforma seja sua guardiã. Estes dois cartões representam a vanguarda da soberania financeira crypto em 2026."
     },
     {
       "h2": "Os limites da auto-custódia aplicada aos cartões de pagamento",
       "p": "Os cartões com custódia reduzida como o Gnosis Pay e o MetaMask Card apresentam vantagens inegáveis em termos de soberania, mas também condicionantes práticas. O carregamento exige domínio das wallets on-chain (gas fees, bridging, gestão de chaves). Em caso de perda das chaves privadas, o capital é irrecuperável — nenhum serviço de apoio ao cliente pode ajudar. A liquidez pode também ser limitada consoante a rede. Estes cartões são ideais para utilizadores DeFi experientes, sendo menos adequados para principiantes, que preferirão uma solução custodial como o Brighty ou o Nexo."
     },
     {
-      "h2": "Segurança e auto-custódia: as boas práticas em ${YEAR}",
+      "h2": "Segurança e auto-custódia: as boas práticas em 2026",
       "p": "Se utilizares um cartão crypto com custódia reduzida, algumas regras são imperativas. Em primeiro lugar, guarda a tua seed phrase (12 ou 24 palavras) offline, em papel ou numa placa de aço inoxidável — nunca na cloud nem em capturas de ecrã. Em segundo lugar, usa uma hardware wallet (Ledger, Trezor) como camada adicional de segurança. Em terceiro lugar, verifica sistematicamente os endereços de contrato antes de interagir com o teu Gnosis Safe ou com a tua wallet MetaMask. A auto-custódia oferece liberdade máxima, mas exige uma disciplina de segurança proporcional."
     },
     {
@@ -256,7 +256,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "O cartão físico distingue-se por três vantagens principais: o acesso a levantamentos de numerário (impossível com um cartão puramente virtual), a utilização em todos os comerciantes que aceitam Visa/Mastercard sem necessidade de smartphone, e uma segurança reforçada, uma vez que o número do cartão virtual fica protegido. Em contrapartida, a entrega demora 1 a 2 semanas consoante o país, ao contrário da ativação instantânea do cartão virtual. Os dois formatos são complementares: a maioria dos emissores disponibiliza ambos com uma única conta, permitindo escolher conforme o contexto."
     },
     {
-      "h2": "Crypto.com, Revolut, Nexo, Bybit: melhores cartões físicos ${YEAR}",
+      "h2": "Crypto.com, Revolut, Nexo, Bybit: melhores cartões físicos 2026",
       "p": "A Crypto.com oferece um cartão Visa físico disponível em 5 níveis (Ruby, Jade, Indigo, Frosted Rose, Obsidian) com cashback de 1% a 8% consoante o staking em CRO. A Revolut disponibiliza um cartão físico grátis (nível Standard) com vantagens bancárias completas a partir da versão premium. A Nexo fornece um cartão Mastercard físico com cashback em BTC ou NEXO, sem staking obrigatório. A Bybit oferece um cartão Visa físico com cashback em BIT e plafonds de levantamento em ATM vantajosos para quem viaja com frequência."
     },
     {
@@ -269,7 +269,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
     },
     {
       "h2": "Quando optar por um cartão crypto físico em vez do virtual?",
-      "p": "O cartão físico impõe-se em três situações principais: levantamentos em ATM (o cartão virtual não funciona em caixas automáticos), comércios que não aceitam Apple Pay ou Google Pay (raros, mas existentes, sobretudo em zonas rurais ou em certos países), e viagens para regiões com conectividade limitada onde não é possível depender do smartphone. O cartão virtual é preferível para todas as compras online, subscrições e países onde o pagamento por aproximação é universal. Em Portugal, importa também considerar a fiscalidade: ao pagar com crypto efetua uma alienação sujeita a imposto — as mais-valias são tributadas a 28% se o ativo for detido há menos de 365 dias, ficando isentas após um ano, em conformidade com as regras aplicáveis e enquadradas no regime MiCA supervisionado pelo Banco de Portugal. A estratégia ideal em ${YEAR}: ative o cartão virtual imediatamente após o KYC, utilize-o no dia a dia, e solicite o cartão físico apenas se tiver uma necessidade concreta — a entrega demora sempre 1 a 2 semanas."
+      "p": "O cartão físico impõe-se em três situações principais: levantamentos em ATM (o cartão virtual não funciona em caixas automáticos), comércios que não aceitam Apple Pay ou Google Pay (raros, mas existentes, sobretudo em zonas rurais ou em certos países), e viagens para regiões com conectividade limitada onde não é possível depender do smartphone. O cartão virtual é preferível para todas as compras online, subscrições e países onde o pagamento por aproximação é universal. Em Portugal, importa também considerar a fiscalidade: ao pagar com crypto efetua uma alienação sujeita a imposto — as mais-valias são tributadas a 28% se o ativo for detido há menos de 365 dias, ficando isentas após um ano, em conformidade com as regras aplicáveis e enquadradas no regime MiCA supervisionado pelo Banco de Portugal. A estratégia ideal em 2026: ative o cartão virtual imediatamente após o KYC, utilize-o no dia a dia, e solicite o cartão físico apenas se tiver uma necessidade concreta — a entrega demora sempre 1 a 2 semanas."
     }
   ],
   "belgium": [
@@ -286,7 +286,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "Para os residentes em Portugal, o Gnosis Pay distingue-se pelo seu modelo on-chain único: cada pagamento é liquidado diretamente a partir da tua Gnosis Safe em xDAI, sem qualquer intermediário centralizado. A MetaMask Card oferece uma alternativa DeFi-native com cashback em ETH. Para quem pretende um cashback mais elevado, o Crypto.com Jade (3%) ou o Nexo Card (em BTC) são excelentes opções disponíveis em Portugal. Todos estes cartões são Visa ou Mastercard, aceites em todo o território nacional e no estrangeiro."
     },
     {
-      "h2": "Melhor cashback crypto para residentes em Portugal em ${YEAR}",
+      "h2": "Melhor cashback crypto para residentes em Portugal em 2026",
       "p": "Em Portugal, a classificação dos cartões por cashback real é a seguinte: Crypto.com Jade (3% em CRO, staking obrigatório), Nexo Card (2% em BTC ou NEXO, sem staking), Gnosis Pay (2% em GNO, on-chain, sem staking), Bitpanda Card (2% em BEST), Brighty (1,75% em USDC, sem staking). Para os residentes em Portugal que pretendem maximizar o retorno sem imobilizar capital, o Nexo Card e o Gnosis Pay oferecem a melhor relação rendimento/risco. O cashback em BTC (Nexo) é particularmente relevante num contexto de mercado em alta, ao passo que o cashback em USDC (Brighty) é mais estável e previsível para uma gestão prudente."
     },
     {
@@ -308,7 +308,7 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "Sem uma plataforma de origem nacional com o mesmo nível de integração local, os residentes em Portugal orientam-se naturalmente para as principais opções europeias reguladas pelo MiCA. A Crypto.com Visa, a Nexo Card e a Gnosis Pay destacam-se pela disponibilidade em Portugal, pelo suporte a SEPA e pela conformidade regulatória europeia. Todas permitem converter activos crypto no momento do pagamento, com conversão automática e emissão de cartão Visa ou Mastercard para uso quotidiano. O Banco de Portugal acompanha a implementação do MiCA a nível nacional."
     },
     {
-      "h2": "Melhor cashback crypto para residentes em Portugal em ${YEAR}",
+      "h2": "Melhor cashback crypto para residentes em Portugal em 2026",
       "p": "Em Portugal, a classificação dos cartões por cashback real é a seguinte: Crypto.com Jade (3% em CRO, requer staking), Nexo Card (2% em BTC ou NEXO, sem staking), Gnosis Pay (2% em GNO, on-chain), Brighty (1,75% em USDC, sem staking). Para quem pretende o melhor cashback sem qualquer requisito de staking, a Nexo Card é a opção mais vantajosa. A Gnosis Pay distingue-se pela abordagem totalmente on-chain. A Brighty é a mais simples de activar para quem começa. Importa recordar que o cashback recebido em cripto pode ser considerado rendimento tributável; recomenda-se consultar um contabilista familiarizado com o regime fiscal português."
     },
     {
@@ -322,8 +322,8 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
       "p": "Um cartão crypto com IBAN combina as funcionalidades de uma conta bancária tradicional com as vantagens das criptomoedas. O IBAN (International Bank Account Number) permite receber transferências bancárias, salários e pagamentos SEPA, tal como uma conta à ordem convencional. A diferença está no facto de o dinheiro ser gerido em ligação com criptomoedas, sendo que cada compra com o cartão gera cashback em crypto. Em Portugal, a oferta de neobancas crypto com IBAN português e supervisão do Banco de Portugal ainda é limitada; a maioria dos emissores opera ao abrigo do enquadramento MiCA, o que significa que o IBAN pode ser de outro país da União Europeia, mas continua a ser utilizável para domiciliar o salário ou débitos diretos."
     },
     {
-      "h2": "Deblock, Brighty, Revolut: qual o cartão IBAN a escolher em ${YEAR}?",
-      "p": "Os principais cartões crypto com IBAN em ${YEAR}: Deblock (IBAN FR, regulado ACPR, cashback de 1% no plano Premium a 9,90 €/mês), Brighty (IBAN EU, regulado FINMA, cashback em USDC), Revolut (IBAN local consoante o país, cashback em crypto nos planos Premium). Para utilizadores em Portugal, nenhum destes emissores oferece atualmente um IBAN PT, pelo que a domiciliação de salário pode exigir confirmação junto da entidade patronal. O Brighty é ideal para quem pretende uma conta crypto com transferências internacionais. O Revolut oferece o ecossistema mais completo, embora as funcionalidades crypto sejam limitadas no plano base."
+      "h2": "Deblock, Brighty, Revolut: qual o cartão IBAN a escolher em 2026?",
+      "p": "Os principais cartões crypto com IBAN em 2026: Deblock (IBAN FR, regulado ACPR, cashback de 1% no plano Premium a 9,90 €/mês), Brighty (IBAN EU, regulado FINMA, cashback em USDC), Revolut (IBAN local consoante o país, cashback em crypto nos planos Premium). Para utilizadores em Portugal, nenhum destes emissores oferece atualmente um IBAN PT, pelo que a domiciliação de salário pode exigir confirmação junto da entidade patronal. O Brighty é ideal para quem pretende uma conta crypto com transferências internacionais. O Revolut oferece o ecossistema mais completo, embora as funcionalidades crypto sejam limitadas no plano base."
     },
     {
       "h2": "Fiscalidade dos levantamentos e transferências SEPA: o que é preciso saber",
@@ -335,30 +335,30 @@ export const THEME_SECTIONS_PT: Record<string, { h2: string; p: string }[]> = {
 export const THEME_FAQ_PT: Record<string, { q: string; a: string }[]> = {
   "2026": [
     {
-      "q": "Qual é o melhor cartão crypto em ${YEAR}?",
-      "a": "Em ${YEAR}, o Gnosis Pay e o MetaMask Card destacam-se para o dia a dia (sem staking, sem comissões). Para o máximo de cashback, o Crypto.com Obsidian continua a ser a referência, apesar do staking elevado."
+      "q": "Qual é o melhor cartão crypto em 2026?",
+      "a": "Em 2026, o Gnosis Pay e o MetaMask Card destacam-se para o dia a dia (sem staking, sem comissões). Para o máximo de cashback, o Crypto.com Obsidian continua a ser a referência, apesar do staking elevado."
     },
     {
-      "q": "Os cartões crypto são seguros em ${YEAR}?",
+      "q": "Os cartões crypto são seguros em 2026?",
       "a": "Sim, graças ao regulamento MiCA em vigor em toda a UE desde 2025. Os emitentes estão regulados e supervisionados, estando os teus fundos mais protegidos do que anteriormente."
     },
     {
-      "q": "Existem novos cartões crypto em ${YEAR}?",
+      "q": "Existem novos cartões crypto em 2026?",
       "a": "Sim, vários novos operadores entraram no mercado na sequência da adoção do regulamento MiCA. O nosso comparativo é atualizado regularmente para refletir as últimas ofertas disponíveis."
     },
     {
-      "q": "O cashback dos cartões crypto é tributável em ${YEAR}?",
+      "q": "O cashback dos cartões crypto é tributável em 2026?",
       "a": "Em Portugal, as mais-valias em criptoativos estão sujeitas a uma taxa de 28% se os ativos forem detidos há menos de 365 dias. Após um ano de detenção, os ganhos estão isentos de imposto. O pagamento com criptoativos constitui igualmente um facto tributável. Consulta um contabilista certificado para a tua situação pessoal."
     },
     {
-      "q": "Qual o cartão crypto a escolher para Portugal em ${YEAR}?",
+      "q": "Qual o cartão crypto a escolher para Portugal em 2026?",
       "a": "O Gnosis Pay e o Crypto.com estão confirmados como disponíveis em Portugal. Dá preferência a um cartão emitido por um prestador de serviços de criptoativos registado junto do Banco de Portugal, ao abrigo do regulamento MiCA, para uma proteção máxima."
     }
   ],
   "best": [
     {
-      "q": "Qual é o melhor cartão crypto em ${YEAR}?",
-      "a": "Em ${YEAR}, os melhores cartões crypto são o Crypto.com Obsidian (8% de cashback), o Gnosis Pay (2% sem staking) e o MetaMask Card (1% com self-custody). A melhor escolha depende do teu perfil."
+      "q": "Qual é o melhor cartão crypto em 2026?",
+      "a": "Em 2026, os melhores cartões crypto são o Crypto.com Obsidian (8% de cashback), o Gnosis Pay (2% sem staking) e o MetaMask Card (1% com self-custody). A melhor escolha depende do teu perfil."
     },
     {
       "q": "Os cartões crypto são seguros?",
@@ -527,7 +527,7 @@ export const THEME_FAQ_PT: Record<string, { q: string; a: string }[]> = {
       "a": "Não na Europa. O regulamento MiCA e as diretivas AML impõem uma identificação mínima. No entanto, os dados crypto não são expostos aos comerciantes no momento do pagamento."
     },
     {
-      "q": "Qual é o cartão crypto com menos KYC em ${YEAR}?",
+      "q": "Qual é o cartão crypto com menos KYC em 2026?",
       "a": "O MetaMask Card e o Gnosis Pay são os que apresentam o processo de registo mais simples, graças à sua arquitetura descentralizada e ao modelo self-custody."
     }
   ],
@@ -600,7 +600,7 @@ export const THEME_FAQ_PT: Record<string, { q: string; a: string }[]> = {
   "belgium": [
     {
       "q": "Quais são os cartões crypto disponíveis em Portugal?",
-      "a": "Em ${YEAR}, os principais cartões crypto disponíveis em Portugal são: Bybit Card, Crypto.com Visa, Nexo Card, Gnosis Pay, Brighty, MetaMask Card e Wirex. Portugal faz parte do EEE e beneficia do enquadramento MiCA."
+      "a": "Em 2026, os principais cartões crypto disponíveis em Portugal são: Bybit Card, Crypto.com Visa, Nexo Card, Gnosis Pay, Brighty, MetaMask Card e Wirex. Portugal faz parte do EEE e beneficia do enquadramento MiCA."
     },
     {
       "q": "Os cartões crypto são legais em Portugal?",
@@ -622,7 +622,7 @@ export const THEME_FAQ_PT: Record<string, { q: string; a: string }[]> = {
   "austria": [
     {
       "q": "Quais cartões crypto estão disponíveis em Portugal?",
-      "a": "Em ${YEAR}, os principais cartões crypto disponíveis em Portugal são: Bybit Card, Crypto.com Visa, Nexo Card, Gnosis Pay, Trade Republic e Brighty. A oferta tem crescido significativamente com a adoção do enquadramento MiCA na União Europeia."
+      "a": "Em 2026, os principais cartões crypto disponíveis em Portugal são: Bybit Card, Crypto.com Visa, Nexo Card, Gnosis Pay, Trade Republic e Brighty. A oferta tem crescido significativamente com a adoção do enquadramento MiCA na União Europeia."
     },
     {
       "q": "Os cartões crypto são legais em Portugal?",
@@ -644,11 +644,11 @@ export const THEME_FAQ_PT: Record<string, { q: string; a: string }[]> = {
   "iban": [
     {
       "q": "O que é um cartão crypto com IBAN?",
-      "a": "Um cartão crypto com IBAN integra uma conta bancária IBAN europeia (SEPA) diretamente ligada aos teus ativos crypto. Em ${YEAR}, a Brighty, a Deblock e a Gnosis Pay oferecem este tipo de conta, permitindo receber salário, fazer transferências SEPA e utilizar um cartão Visa/Mastercard crypto."
+      "a": "Um cartão crypto com IBAN integra uma conta bancária IBAN europeia (SEPA) diretamente ligada aos teus ativos crypto. Em 2026, a Brighty, a Deblock e a Gnosis Pay oferecem este tipo de conta, permitindo receber salário, fazer transferências SEPA e utilizar um cartão Visa/Mastercard crypto."
     },
     {
-      "q": "Qual o cartão crypto que oferece um IBAN em ${YEAR}?",
-      "a": "Em ${YEAR}, as melhores opções são: Brighty (IBAN CH, transferências SEPA grátis), Deblock (IBAN FR, integração DeFi), Gnosis Pay (conta on-chain com IBAN) e Revolut (IBAN EU com opção crypto). A Brighty é particularmente adequada para residentes em Portugal."
+      "q": "Qual o cartão crypto que oferece um IBAN em 2026?",
+      "a": "Em 2026, as melhores opções são: Brighty (IBAN CH, transferências SEPA grátis), Deblock (IBAN FR, integração DeFi), Gnosis Pay (conta on-chain com IBAN) e Revolut (IBAN EU com opção crypto). A Brighty é particularmente adequada para residentes em Portugal."
     },
     {
       "q": "Um IBAN crypto é seguro?",
