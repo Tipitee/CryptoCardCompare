@@ -27,3 +27,8 @@ dist-ssr
 
 # Clé compte de service Google (NE JAMAIS committer)
 scripts/gsc-service-account.json
+
+seo/state/
+seo/reporting/weekly-*
+seo/ai-visibility/
+vite.config.ts.timestamp-*.mjs
