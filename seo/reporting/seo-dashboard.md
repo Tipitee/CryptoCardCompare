@@ -3,27 +3,47 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 
 ---
 
-## Cette semaine — 2026-08-18
+## Cette semaine — 2026-09-08
 
-> ✅ **Export GSC frais chargé (2026-08-18)**, ancien 2026-08-04 archivé dans `gsc-data/history/`. Première vraie compa W/W. ⚠️ Les deux exports sont des fenêtres glissantes 90 j (pas du 28j-vs-28j) → deltas naturellement amortis, à lire comme directionnels. Rien de lissé.
+> ✅ **Export GSC frais reçu (08/09, « Last 3 months »)** — blocage data levé après 3 sem.
+> 🔴 **CRASH confirmé, non résorbé.** Trend quotidien (Chart.csv) : pic W30 (26/07–01/08) = 2 892 imp/sem → chute W31 (387) → 147 → 122 → 94 → 72 → **95** (W36). **−94 % imp / −100 % clics sur 28 j vs 28 j précédents**, 0 clic depuis 4 sem. Cassure = migration Cloudflare (~28/07) + déploiements août. **L'hypothèse « reprise 3–6 sem. » du 24/08 est INFIRMÉE** (6 sem., aucune remontée) → cause structurelle, pas un lag de recrawl. Détail : `reporting/weekly-2026-09-08.md`.
 
-| Métrique | Cette semaine (08-18) | Semaine passée (08-04) | Tendance | Source |
+| Métrique | Cette semaine (09-08) | Réf. (08-18) | Tendance | Source |
 |---|---|---|---|---|
-| Clics organiques — total | 43 | 42 | ➡️ +1 | gsc-data/pages |
-| Impressions — total | 13 818 | 13 542 | 🔼 +276 | gsc-data/pages |
-| Clics EN / ES / FR / IT / DE / AT / BE | 19 / 10 / 5 / 4 / 2 / 2 / 0 | 19 / 10 / 5 / 4 / 1 / 2 / 0 | ➡️ (DE +1) | gsc-data/pages |
-| Prisonniers page 2 (pos 11–20, >100 imp) | 1 (`/en/cards/okx-card`, pos 12, 0 clic) | 1 (idem) | 🟠 figé 3 sem | gsc-data/pages |
-| Cannibalisation trailing-slash (paires ≥40 imp) | 57 | ~57 | 🔴 critique | gsc-data/pages |
-| Money pages à 0 impression | 4 (crypto-com FR, bitpanda DE, /it slug, compare FR) | — | 🔴 | overview + gsc-data |
-| Score visibilité IA (25 requêtes) | | | | ai-visibility/citations.md |
-| Domaines référents | ≈ 0 | ≈ 0 | ➡️ | Ahrefs Webmaster Tools |
+| Impressions — 28 derniers j | **409** | ~6 388 (28 j préc.) | 🔴 −94 % | gsc-data/Chart |
+| Clics — 28 derniers j | **0** | 28 | 🔴 −100 % | gsc-data/Chart |
+| Clics organiques — total 3 mois | 43 | 43 | ➡️ (fenêtre glissante pré-crash) | gsc-data/pages |
+| Impressions — total 3 mois | ~14 167 | 13 818 | ➡️ (traîne pré-crash) | gsc-data/pages |
+| Clics EN / ES / FR / IT / DE / AT / BE / PT | 19 / 10 / 5 / 4 / 2 / 2 / 0 / 0 | 19/10/5/4/2/2/0 | ➡️ | gsc-data/pages |
+| Prisonniers page 2 (pos 11–20, >100 imp) | **0** | 1 | 🔴 tombé de page 2 | gsc-data/queries |
+| Positions requêtes money | pos **55–95** | idem | 🔴 jamais ranké | gsc-data/queries |
+| Doublons trailing-slash (paires ≥40 imp) | encore visibles (`/es`+`/es/`…) | ~57 | 🟡 purge stoppée (recrawl tari) | gsc-data/pages |
+| Domaines référents | ≈ 0 | ≈ 0 | ➡️ | Ahrefs WT |
 
 ## Lire le dashboard
 - Clics ↑ + visibilité IA plate = SEO classique fonctionne, AI SEO en retard → construire les pages comparaison/alternatives.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine
-**Confirmer le 308 trailing-slash puis passer à l'autorité (backlinks). (< 30 min)** — CORRECTION vs les 3 semaines précédentes : le site est sur **Cloudflare Pages** (pas Netlify), et la normalisation trailing-slash **est déjà en place structurellement** — `prerender.mjs` écrit des fichiers plats `x.html`, donc Pages renvoie un **308 `/x/ → /x`** automatiquement ; canonicals (`useSeoMeta.ts`) et sitemaps sont déjà sans slash (0 URL à slash trouvée). Les 57 paires `/x`+`/x/` de GSC sont un **résidu d'index de l'ère Netlify** qui se purge au recrawl, pas un bug de config. Sur Pages on ne peut PAS (et il ne faut pas) ajouter de règle `_redirects` splat-strip. **✅ VÉRIFIÉ 2026-08-18** : `curl -sI …/en/crypto-card-cashback/` → `HTTP/2 308` + `location: /en/crypto-card-cashback` (sans slash), en-têtes sécurité servis en live (HSTS/CSP/X-Frame/nosniff OK). Rien à toucher : le recrawl purge les doublons Netlify tout seul. En-têtes de sécurité : OK, reportés dans `public/_headers` (pas perdus). _(Contexte : chute trafic = black-out migration ~28/07, Googlebot non bloqué, crawl OK 12/08 — reprise lente normale. Sync chat « Website SEO report » 2026-08-18.)_
+## Focus de la semaine (maj 2026-09-08)
+**Action (< 4 h) : lancer l'outreach. J0 = envoyer l'exclu à The Big Whale (Grégory Raymond) + Journal du Coin, puis s'inscrire à Source of Sources et Qwoted, et logger chaque envoi dans `seo/backlinks-outreach.xlsx`.** Emails prêts dans `seo/EMAILS-OUTREACH.md`, cibles et accroches dans `seo/PITCH-PRESSE.md`, stratégie dans `seo/PLAN-BACKLINKS.md`. La page-étude (asset) a été renforcée le 08/09 : schema FAQPage + bloc « reprise presse » sur les 5 langues. _Verdict établi le 08/09 : test sur 4 money pages (pas de `noindex`, HTTP 200, 73 454 car. prérendus, indexées OK dans GSC) → cause technique écartée. Le crash = fin de l'échantillonnage « honeymoon » (site neuf, interrompu par la migration ~28/07) + domaines référents ≈ 0 → pages saines mais ran. pos 55–95, jamais affichées. Aucun gain on-page à portée. Seul levier : l'autorité. Brief complet : `reporting/handoff-outreach-2026-09-08.md`. À surveiller : bleap.finance top 5 / 6 marchés (SERP 03/09) ; mention IA FR « cashback sans staking » perdue._
 
-> Vrai levier plafond = **autorité / backlinks** (domaines référents ≈ 0). L'étude « cartes crypto Europe 2026 » (chat Website SEO report) est l'aimant à liens n°1 → publier FR + version EN. Quick win on-page en parallèle : title/meta de `/en/cards/okx-card` (seul prisonnier page 2, pos 12, 0 clic — variantes dans le weekly report).
+<details><summary>Focus précédent (2026-09-07)</summary>
+
+**Recharger un export GSC frais — dernier = 18/08, 20 j > seuil 7 j, BLOQUANT (3ᵉ sem.). < 15 min.** _Reçu le 08/09 → débloqué. Voir focus courant._
+
+</details>
+
+<details><summary>Focus précédent (2026-08-31)</summary>
+
+**Recharger un export GSC frais — dernier = 18/08, 13 j > seuil 7 j, BLOQUANT. < 15 min.** _Data = verrou ; decay/striking gelés, sonde tech alors HS. Fallback prêt : title/meta `/en/cards/okx-card`. Surveiller bleap.finance (5 marchés) + 1 mention IA FR cashback sans staking._
+
+</details>
+
+<details><summary>Focus précédent (2026-08-24)</summary>
+
+**Réécrire le title + meta de `/en/cards/okx-card` (seul prisonnier page 2, pos 12, 137 imp, 0 clic, figé 4 sem.) — < 30 min.** _Reconduit S+1 : aucun CRITIQUE tech (sonde ⚪ HS), files decay + striking-distance vides → cette page reste le seul gain on-page à portée. Prérequis données : recharger un export GSC frais (dernier = 18/08)._ C'est la seule page proche de la page 1 : ~28 % des clics sont sur le top 10, cette page frôle le seuil sans le franchir, et son snippet ne convertit pas (0 clic sur 137 imp). Un title/meta orienté « review + frais + cashback » est le seul gain on-page à portée cette semaine. Variantes fournies dans le weekly report. (Trailing-slash : **rien à faire** — 308 déjà en place sur Cloudflare Pages, vérifié 18/08 ; les ~57 paires sont un résidu Netlify qui se purge au recrawl.)
+
+</details>
+
+> Vrai levier plafond = **autorité / backlinks** (domaines référents ≈ 0) — hors périmètre « < 4 h » mais c'est LE chantier. L'étude « cartes crypto Europe 2026 » est en ligne (vérifié 23/08 dans le chat Website SEO report) : lancer l'outreach (Journal du Coin, The Big Whale) est la priorité stratégique parallèle. **Aussi : recharger un export GSC frais** (dernier = 08-18) pour que le prochain run ait de la vraie donnée W/W.

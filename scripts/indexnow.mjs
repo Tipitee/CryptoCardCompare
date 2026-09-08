@@ -27,6 +27,15 @@ const URLS = [
   `${BASE}/es`,
   `${BASE}/it`,
   `${BASE}/en`,
+  `${BASE}/pt`,
+
+  // ── Étude cartes crypto 2026 (asset outreach, 6 marchés) ─────────────────────
+  `${BASE}/etudes/cartes-crypto-2026`,
+  `${BASE}/etudes/crypto-cards-2026`,
+  `${BASE}/etudes/krypto-karten-2026`,
+  `${BASE}/etudes/tarjetas-cripto-2026`,
+  `${BASE}/etudes/carte-crypto-2026`,
+  `${BASE}/etudes/cartoes-crypto-2026`,
 
   // ── Fee Index ───────────────────────────────────────────────────────────────
   `${BASE}/fr/frais-cartes-crypto`,

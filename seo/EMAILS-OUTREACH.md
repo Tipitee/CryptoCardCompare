@@ -1,8 +1,14 @@
 # Emails d'outreach, prêts à envoyer
 
-Chaque email ci-dessous est complet. Tu remplaces le prénom et ta signature, tu vérifies l'adresse via la page contact du média ou son profil X/LinkedIn, tu envoies. Rien d'autre à rédiger.
+Chaque email ci-dessous est complet. Tu vérifies l'adresse via la page contact du média ou son profil X/LinkedIn, tu envoies. La signature est déjà mise à ton prénom (Thomas), remplace-la si tu préfères un format différent. Rien d'autre à rédiger.
 
 Règles : un seul média par envoi, jamais de copie groupée. Relance courte à J+4 si pas de réponse. Cadence détaillée dans `PITCH-PRESSE.md`, section 5.
+
+**Suivi (à tenir à chaque envoi) :** logge dans `seo/backlinks-outreach.xlsx` la date, le média, le contact, le canal, le statut (envoyé / relancé / répondu / lien obtenu) et l'URL du lien décroché. C'est ce fichier qui pilote les relances et mesure le vrai résultat (nouveaux domaines référents), pas les clics immédiats.
+
+**Canaux à froid, en parallèle des envois nominatifs :** inscris-toi à Source of Sources, Qwoted et Featured, et surveille `#journorequest` sur X et LinkedIn. Tu réponds quand un journaliste cherche un expert « cartes crypto / cashback / paiements » : là, c'est lui qui te tend le lien. Rituel de 15 min/jour.
+
+**La page-étude a un bloc « reprise presse » (section « Reprendre cette étude » / `#presse`)** : les 3 stats titres sont en copier-coller, et le détail carte par carte reste offert sur demande. Garder cette offre dans l'email est volontaire, elle provoque une réponse.
 
 Liens des études par marché :
 - FR : https://topcryptocards.eu/etudes/cartes-crypto-2026
@@ -10,6 +16,11 @@ Liens des études par marché :
 - DE : https://topcryptocards.eu/etudes/krypto-karten-2026
 - ES : https://topcryptocards.eu/etudes/tarjetas-cripto-2026
 - IT : https://topcryptocards.eu/etudes/carte-crypto-2026
+- PT : https://topcryptocards.eu/etudes/cartoes-crypto-2026
+
+Variantes d'objet (si le 1er envoi ne décroche pas de réponse, teste l'autre à la relance) :
+- FR : « Les cartes crypto versent 31 % du cashback promis (données sur 93 cartes) » · « 20 % de cashback annoncé, 1 % versé : l'étude sur 93 cartes »
+- EN : « Crypto cards pay just 31% of advertised cashback (93-card study) » · « Advertised 20%, paid 1%: the gap across 93 crypto cards »
 
 ---
 
@@ -31,7 +42,7 @@ L'étude : https://topcryptocards.eu/etudes/cartes-crypto-2026
 
 Je peux fournir le détail par carte, les chiffres par marché, ou un commentaire à citer.
 
-[Ton nom], TopCryptoCards, comparateur indépendant de cartes crypto en Europe
+Thomas, TopCryptoCards, comparateur indépendant de cartes crypto en Europe
 
 ---
 
@@ -49,7 +60,7 @@ Données vérifiées à la main, par pays, méthodologie transparente : https://
 
 Je peux vous préparer le détail carte par carte ou un jeu de chiffres exclusif pour un papier.
 
-[Ton nom], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -67,7 +78,7 @@ La méthodologie est publiée sur la page, chaque chiffre est traçable : https:
 
 Je fournis volontiers les données brutes par carte et par marché si vous voulez creuser un angle.
 
-[Ton nom], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -85,7 +96,7 @@ Les chiffres et la méthode sont ici : https://topcryptocards.eu/etudes/cartes-c
 
 Je peux passer en plateau ou fournir un commentaire chiffré quand vous voulez.
 
-[Ton nom], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -107,7 +118,7 @@ Hand-checked, broken down by country, open methodology: https://topcryptocards.e
 
 Happy to share the full per-card data or a quote on how the advertised-versus-real gap looks across issuers.
 
-[Your name], TopCryptoCards, independent crypto card comparison in Europe
+Thomas, TopCryptoCards, independent crypto card comparison in Europe
 
 **Canal :** coindesk.com/author/francisco-rodrigues, page contact/tips de CoinDesk, ou LinkedIn/X. Relais possible via son éditeur Aoyon Ashraf.
 
@@ -129,7 +140,7 @@ Data and methodology: https://topcryptocards.eu/etudes/crypto-cards-2026
 
 Glad to share the raw numbers for a payments-economics angle.
 
-[Your name], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -147,7 +158,7 @@ Every figure is hand-checked, broken down by country, with an open methodology: 
 
 Happy to share the full per-card dataset, market-level numbers, or a quote.
 
-[Your name], TopCryptoCards, independent crypto card comparison in Europe
+Thomas, TopCryptoCards, independent crypto card comparison in Europe
 
 ---
 
@@ -167,7 +178,7 @@ Alle Zahlen sind handgeprüft, nach Land aufgeschlüsselt, mit offener Methodik:
 
 Gern liefere ich die vollständigen Daten pro Karte, Zahlen für den DACH-Raum oder ein Zitat.
 
-[Dein Name], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -187,7 +198,7 @@ Cada cifra está verificada a mano, desglosada por país y con metodología abie
 
 Puedo facilitar los datos completos por tarjeta, cifras del mercado español o una cita.
 
-[Tu nombre], TopCryptoCards
+Thomas, TopCryptoCards
 
 ---
 
@@ -207,7 +218,31 @@ Ogni dato è verificato a mano, suddiviso per paese, con metodologia aperta: htt
 
 Posso fornire i dati completi per carta, i numeri del mercato italiano o una dichiarazione.
 
-[Il tuo nome], TopCryptoCards
+Thomas, TopCryptoCards
+
+---
+
+## PT
+
+### 9. ECO / Observador / redações cripto PT
+
+**Assunto:** Estudo com dados: os cartões crypto pagam só 31 % do cashback que prometem
+
+Olá,
+
+Um ângulo de consumo com dados próprios, e um lado fiscal que interessa em Portugal.
+
+Analisámos 93 cartões crypto disponíveis na Europa. O cashback anunciado é em média de 2,37 %. O real, sem staking, cai para 0,53 %, ou seja 31 % da promessa. Um em cada dois cartões não dá cashback de base. A maior diferença é da Bleap, 20 % anunciado contra 1 % real.
+
+Detalhe importante para o leitor português: pagar diretamente com cripto conta como alienação e pode gerar mais-valia tributável (28 % se detida há menos de um ano). Recebê-lo em token adiciona ainda risco de volatilidade.
+
+Cada número está verificado à mão, por país, com metodologia aberta: https://topcryptocards.eu/etudes/cartoes-crypto-2026
+
+Posso fornecer os dados completos por cartão, números do mercado português ou uma citação.
+
+Thomas, TopCryptoCards
+
+**Cibles PT (à identifier le byline via la page contact) :** ECO (eco.sapo.pt, secção economia/dinheiro), Observador (rubrica economia), Dinheiro Vivo, ECO/Advocatus pour l'angle fiscal, et les redações cripto lusophones. Ouvre un article récent « cartão cripto » ou « fiscalidade cripto », relève la signature, retrouve la personne sur LinkedIn.
 
 ---
 
@@ -230,3 +265,5 @@ FR : « Bonjour [Prénom], je remonte mon message. L'angle cashback affiché con
 EN : « Hi [First name], following up on this. The advertised-vs-real cashback angle could make a solid consumer story, data ready whenever. »
 
 DE : « Hallo [Name], ich hake kurz nach. Das Thema beworbener gegen realer Cashback eignet sich gut für einen Verbraucherbeitrag, Daten liegen bereit. »
+
+PT : « Olá [Nome], só a recuperar a minha mensagem. O ângulo cashback anunciado vs. real dá um bom tema de consumo, com um lado fiscal para Portugal. Dados disponíveis. »
