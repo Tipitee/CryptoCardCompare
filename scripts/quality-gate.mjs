@@ -29,9 +29,9 @@ const checks = [
   { hard: true,  name: 'Longueur ≥ ' + MIN_WORDS + ' mots', pass: words.length >= MIN_WORDS, detail: words.length + ' mots' },
   { hard: true,  name: 'Un seul H1', pass: h1s.length <= 1, detail: h1s.length + ' H1' },
   { hard: true,  name: 'Réponse dans les 100 premiers mots (chiffre/donnée)', pass: /\d/.test(first100) && !/^(dans le monde|à l['’]ère|de nos jours|aujourd)/i.test(first100.trim()), detail: /\d/.test(first100) ? 'contient une donnée' : 'pas de donnée factuelle en tête' },
-  { hard: true,  name: 'Section FAQ présente', pass: /faq|questions fré|foire aux questions|häufige fragen|preguntas frecuentes|domande frequenti/i.test(md), detail: /faq/i.test(md) ? 'FAQ trouvée' : 'aucune FAQ' },
+  { hard: true,  name: 'Section FAQ présente', pass: /faq|questions fré|foire aux questions|häufige fragen|preguntas frecuentes|domande frequenti|perguntas frequentes/i.test(md), detail: /faq/i.test(md) ? 'FAQ trouvée' : 'aucune FAQ' },
   { hard: false, name: 'Au moins un H2 formulé en question', pass: h2s.some(h => h.includes('?')), detail: h2s.filter(h => h.includes('?')).length + ' H2 en question' },
-  { hard: true,  name: 'Au moins un lien interne (money page)', pass: /\]\(\/(fr|be|de|at|es|it|en)\//.test(md), detail: (md.match(/\]\(\/(fr|be|de|at|es|it|en)\//g) || []).length + ' liens internes' },
+  { hard: true,  name: 'Au moins un lien interne (money page)', pass: /\]\(\/(fr|be|de|at|es|it|en|pt)\//.test(md), detail: (md.match(/\]\(\/(fr|be|de|at|es|it|en|pt)\//g) || []).length + ' liens internes' },
   { hard: false, name: 'Donnée datée (vérifié/mis à jour/2026)', pass: /vérifié|mis à jour|aktualisiert|actualizado|aggiornato|updated|202\d/i.test(md), detail: /vérifié|mis à jour|aktualisiert|actualizado|aggiornato|updated|202\d/i.test(md) ? 'fraîcheur signalée' : 'aucune date' },
   { hard: false, name: 'Pas de remplissage IA générique', pass: !/(dans le monde en constante évolution|à l['’]ère du numérique|in today['’]s digital|paysage numérique)/i.test(md), detail: 'aucun cliché détecté' },
 ];

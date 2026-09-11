@@ -147,6 +147,9 @@ const URLS = [
   `${BASE}/fr/comparer/nexo-card-vs-plutus-card`,     `${BASE}/be/comparer/nexo-card-vs-plutus-card`,     `${BASE}/de/vergleichen/nexo-card-vs-plutus-card`,     `${BASE}/at/vergleichen/nexo-card-vs-plutus-card`,     `${BASE}/en/compare/nexo-card-vs-plutus-card`,
   `${BASE}/fr/comparer/plutus-card-vs-revolut-metal`, `${BASE}/be/comparer/plutus-card-vs-revolut-metal`, `${BASE}/de/vergleichen/plutus-card-vs-revolut-metal`, `${BASE}/at/vergleichen/plutus-card-vs-revolut-metal`, `${BASE}/en/compare/plutus-card-vs-revolut-metal`,
 
+  // ── Article PT fiscalité cashback (maillage vers l'étude) ────────────────────
+  `${BASE}/pt/blog/fiscalidade-cashback-cartao-crypto-portugal`,
+
   // ── Blog posts refreshed (FAQ blocks added July 2026) ───────────────────────
   `${BASE}/en/blog/gnosis-pay-review-2026`,
   `${BASE}/en/blog/gnosis-pay-review-2026-self-custody-crypto-card-2-percent-cashback-eure`,
