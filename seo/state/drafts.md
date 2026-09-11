@@ -11,3 +11,4 @@ Aucun draft. Un maker écrit ici : slug | langue | statut (rédigé / gate PASS 
 | blog-auto-nexo-alternatives-cartes-crypto-cashback-2026 | fr+de+es+it+en | gate PASS | prêt review (2026-08-07) |
 | blog-auto-carte-crypto-remboursement-abonnements-netflix-spo | fr+de+es+it+en | gate PASS | prêt review (2026-08-10) |
 | blog-auto-declarer-cashback-crypto-impots-france-guide-compl | fr+de+es+it+en+be+at | gate PASS | prêt review (2026-09-09) |
+| blog-auto-carte-crypto-plafonds-limites-guide-complet | fr+de+es+it+en+be+at | gate PASS | prêt review (2026-09-11) |
