@@ -129,7 +129,7 @@ const DATE_LOCALES: Record<string, string> = {
   de: 'de-DE', at: 'de-AT',
   es: 'es-ES',
   it: 'it-IT',
-  en: 'en-GB',
+  en: 'en-GB', pt: 'pt-PT',
 };
 
 // Propagate be→fr and at→de aliases for BlogPost maps

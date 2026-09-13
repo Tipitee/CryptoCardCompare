@@ -84,7 +84,7 @@ const DATE_LOCALES: Record<string, string> = {
   de: 'de-DE',
   es: 'es-ES',
   it: 'it-IT',
-  en: 'en-GB',
+  en: 'en-GB', be: 'fr-BE', at: 'de-AT', pt: 'pt-PT',
 };
 
 function formatDate(iso: string, lang: string): string {

@@ -308,7 +308,7 @@ export default function ReviewList() {
                 <div className="px-5 py-4 border-t border-bg-border flex items-center justify-between">
                   <span className="text-xs text-slate-400">
                     {l.updatedAt} {new Date(review.updatedAt).toLocaleDateString(
-                      lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB',
+                      lang === 'fr' || lang === 'be' ? 'fr-FR' : lang === 'de' || lang === 'at' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : lang === 'pt' ? 'pt-PT' : 'en-GB',
                       { month: 'long', year: 'numeric' }
                     )}
                   </span>

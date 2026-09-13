@@ -113,7 +113,7 @@ const ALL_CRYPTOS = [
 type ViewMode = 'columns' | 'table';
 
 const DATE_LOCALES: Record<string, string> = {
-  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT',
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', be: 'fr-BE', at: 'de-AT', pt: 'pt-PT',
 };
 
 const COMPARE_PREFIX: Record<string, string> = {

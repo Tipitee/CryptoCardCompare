@@ -1199,7 +1199,7 @@ function ReviewMiniCard({
   primaryCard?: CryptoCard;
 }) {
   const rating = seo.rating ?? review.globalRating;
-  const dateLocale = lang === 'fr' ? 'fr-FR' : lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : 'en-GB';
+  const dateLocale = lang === 'fr' || lang === 'be' ? 'fr-FR' : lang === 'de' || lang === 'at' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'it' ? 'it-IT' : lang === 'pt' ? 'pt-PT' : 'en-GB';
   const updatedLabel = new Date(review.updatedAt).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' });
 
   // Use numeric card data for keyStats when available (avoids FR-only strings)

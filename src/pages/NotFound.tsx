@@ -11,6 +11,7 @@ const MESSAGES: Record<string, { title: string; subtitle: string; cta: string }>
   de: { title: 'Seite nicht gefunden', subtitle: 'Diese Seite existiert nicht oder wurde verschoben.', cta: 'Was möchten Sie tun?' },
   es: { title: 'Página no encontrada', subtitle: 'Esta página no existe o fue movida.', cta: '¿Qué desea hacer?' },
   it: { title: 'Pagina non trovata', subtitle: 'Questa pagina non esiste o è stata spostata.', cta: 'Cosa vuoi fare?' },
+  pt: { title: 'Página não encontrada', subtitle: 'Esta página não existe ou foi movida.', cta: 'O que queres fazer?' },
   en: { title: 'Page not found', subtitle: 'This page doesn\'t exist or has been moved.', cta: 'What would you like to do?' },
 };
 
@@ -19,6 +20,7 @@ const LINKS: Record<string, { home: string; compare: string; blog: string; guide
   de: { home: 'Startseite', compare: 'Karten vergleichen', blog: 'Blog', guides: 'Beste Karten' },
   es: { home: 'Inicio', compare: 'Comparar tarjetas', blog: 'Blog', guides: 'Mejores tarjetas' },
   it: { home: 'Home', compare: 'Confronta carte', blog: 'Blog', guides: 'Migliori carte' },
+  pt: { home: 'Início', compare: 'Comparar cartões', blog: 'Blog', guides: 'Melhores cartões' },
   en: { home: 'Home', compare: 'Compare cards', blog: 'Blog', guides: 'Best cards' },
 };
 
