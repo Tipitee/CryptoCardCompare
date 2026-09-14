@@ -73,6 +73,16 @@
 /de/karten/ledger-card  /de/marken/ledger  301
 /en/cards/bleap-card    /en/brands/bleap   301
 
+# ── Marque Binance discontinuée (hub vide noindex) → review indexable, 8 marchés ──
+/fr/marques/binance  /fr/avis/binance-card         301
+/be/marques/binance  /be/avis/binance-card         301
+/de/marken/binance   /de/bewertungen/binance-card  301
+/at/marken/binance   /at/bewertungen/binance-card  301
+/es/marcas/binance   /es/opiniones/binance-card    301
+/it/marche/binance   /it/recensioni/binance-card   301
+/en/brands/binance   /en/reviews/binance-card      301
+/pt/marcas/binance   /pt/analises/binance-card     301
+
 # ── Slugs voyage relocalisés (étaient en FR sur des pages IT/DE/EN/ES) ────
 /it/blog/meilleure-carte-crypto-voyage-europe-comparatif        /it/blog/migliore-carta-crypto-viaggi-europa   301
 /de/blog/meilleure-carte-crypto-voyage-europe-sans-frais        /de/blog/beste-krypto-karte-reisen-europa      301

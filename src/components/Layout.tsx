@@ -382,7 +382,7 @@ export default function Layout() {
                 {[
                   { id: 'crypto-com', name: 'Crypto.com' },
                   { id: 'nexo',       name: 'Nexo' },
-                  { id: 'binance',    name: 'Binance' },
+                  { id: 'kraken',     name: 'Kraken' },
                   { id: 'bybit',      name: 'Bybit' },
                   { id: 'bitpanda',   name: 'Bitpanda' },
                   { id: 'coinbase',   name: 'Coinbase' },

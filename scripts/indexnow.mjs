@@ -199,7 +199,6 @@ const URLS = [
   // marques (top)
   `${BASE}/pt/marcas/crypto-com`,
   `${BASE}/pt/marcas/nexo`,
-  `${BASE}/pt/marcas/binance`,
   `${BASE}/pt/marcas/bybit`,
   `${BASE}/pt/marcas/bitpanda`,
   // blog pt (10 articles)
