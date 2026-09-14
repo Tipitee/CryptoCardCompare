@@ -83,6 +83,26 @@
 /en/brands/binance   /en/reviews/binance-card      301
 /pt/marcas/binance   /pt/analises/binance-card     301
 
+# ── Marque Wirex discontinuée (hub vide noindex) → review indexable, 8 marchés ──
+/fr/marques/wirex  /fr/avis/wirex-card         301
+/be/marques/wirex  /be/avis/wirex-card         301
+/de/marken/wirex   /de/bewertungen/wirex-card  301
+/at/marken/wirex   /at/bewertungen/wirex-card  301
+/es/marcas/wirex   /es/opiniones/wirex-card    301
+/it/marche/wirex   /it/recensioni/wirex-card   301
+/en/brands/wirex   /en/reviews/wirex-card      301
+/pt/marcas/wirex   /pt/analises/wirex-card     301
+
+# ── Marque Brighty discontinuée (hub vide noindex) → review indexable, 8 marchés ──
+/fr/marques/brighty  /fr/avis/brighty-card         301
+/be/marques/brighty  /be/avis/brighty-card         301
+/de/marken/brighty   /de/bewertungen/brighty-card  301
+/at/marken/brighty   /at/bewertungen/brighty-card  301
+/es/marcas/brighty   /es/opiniones/brighty-card    301
+/it/marche/brighty   /it/recensioni/brighty-card   301
+/en/brands/brighty   /en/reviews/brighty-card      301
+/pt/marcas/brighty   /pt/analises/brighty-card     301
+
 # ── Slugs voyage relocalisés (étaient en FR sur des pages IT/DE/EN/ES) ────
 /it/blog/meilleure-carte-crypto-voyage-europe-comparatif        /it/blog/migliore-carta-crypto-viaggi-europa   301
 /de/blog/meilleure-carte-crypto-voyage-europe-sans-frais        /de/blog/beste-krypto-karte-reisen-europa      301
