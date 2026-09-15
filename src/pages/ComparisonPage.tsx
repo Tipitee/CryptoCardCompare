@@ -433,31 +433,7 @@ export default function ComparisonPage() {
     return () => { document.getElementById('schema-comparison-faq')?.remove(); };
   }, [card1?.id, card2?.id, localFaq]);
 
-  // ── Schema.org BreadcrumbList ─────────────────────────────────────────────
-  useEffect(() => {
-    if (!card1 || !card2) return;
-    const BASE = 'https://topcryptocards.eu';
-    const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
-    const compSlug = rt.comparisons ?? 'compare';
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
-    const compareL: Record<string, string> = { fr: 'Comparatif', de: 'Vergleich', es: 'Comparativa', it: 'Confronto', en: 'Comparison', pt: 'Comparativo' };
-    const breadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: homeL[cl] ?? 'Home', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: compareL[cl] ?? 'Comparison', item: `${BASE}/${lang}/${compSlug}` },
-        { '@type': 'ListItem', position: 3, name: `${card1.name} vs ${card2.name}`, item: `${BASE}/${lang}/${compSlug}/${slug}` },
-      ],
-    };
-    document.getElementById('schema-comparison-breadcrumb')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-comparison-breadcrumb';
-    el.type = 'application/ld+json';
-    el.textContent = JSON.stringify(breadcrumb);
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-comparison-breadcrumb')?.remove(); };
-  }, [card1, card2, lang, slug]);
+  // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
 
   // Not found state
   if (notFound) {

@@ -202,14 +202,7 @@ export default function ReviewList() {
   return (
     <div className="container-app py-12 animate-fade-in">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: l.home, item: `https://topcryptocards.eu/${lang}` },
-          { '@type': 'ListItem', position: 2, name: l.breadcrumb, item: `https://topcryptocards.eu/${lang}/${reviewSlug}` },
-        ],
-      }) }} />
+      {/* BreadcrumbList schema is emitted by the <Breadcrumb> component (single source). */}
 
       <Breadcrumb items={[
         { label: l.home, href: `/${lang}` },

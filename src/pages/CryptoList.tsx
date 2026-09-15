@@ -176,24 +176,7 @@ export default function CryptoList() {
     return () => { document.getElementById('schema-cryptolist')?.remove(); };
   }, [lang, seo]);
 
-  // ── BreadcrumbList schema ────────────────────────────────────────────────────
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: HOME_LABEL[lang] ?? 'Home', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: seo.h1, item: `${BASE}/${lang}/cryptos` },
-      ],
-    };
-    document.getElementById('schema-cryptolist-breadcrumb')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-cryptolist-breadcrumb'; el.type = 'application/ld+json';
-    el.textContent = JSON.stringify(schema);
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-cryptolist-breadcrumb')?.remove(); };
-  }, [lang, seo]);
+  // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
 
   return (
     <div className="container-app py-10">

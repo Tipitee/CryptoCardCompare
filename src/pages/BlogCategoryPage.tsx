@@ -219,7 +219,6 @@ export default function BlogCategoryPage() {
   const metaTitle = (CAT_META_TITLE[cat] ?? CAT_META_TITLE.card)[lang] ?? (CAT_META_TITLE[cat] ?? CAT_META_TITLE.card).en;
   const metaDesc = (CAT_META_DESC[cat] ?? CAT_META_DESC.card)[lang] ?? (CAT_META_DESC[cat] ?? CAT_META_DESC.card).en;
 
-  const catSlug = BLOG_CAT_SLUG[lang] ?? 'category';
   const blogRoute = getRoute('blog');
 
   useSeoMeta({ title: metaTitle, description: metaDesc, lang });
@@ -230,25 +229,7 @@ export default function BlogCategoryPage() {
     [cat],
   );
 
-  // BreadcrumbList schema
-  useEffect(() => {
-    const BASE = 'https://topcryptocards.eu';
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: l.home, item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/${lang}/blog` },
-        { '@type': 'ListItem', position: 3, name: catTitle, item: `${BASE}/${lang}/blog/${catSlug}/${cat}` },
-      ],
-    };
-    document.getElementById('schema-blogcat-bc')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-blogcat-bc'; el.type = 'application/ld+json';
-    el.textContent = JSON.stringify(schema);
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-blogcat-bc')?.remove(); };
-  }, [lang, cat, catTitle, catSlug, l.home]);
+  // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
 
   useEffect(() => {
     setLoading(true);

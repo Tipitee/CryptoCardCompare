@@ -258,27 +258,7 @@ export default function BlogPost() {
     return () => { document.getElementById('schema-article')?.remove(); };
   }, [post]);
 
-  // ── BreadcrumbList schema ────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!post) return;
-    const BASE = 'https://topcryptocards.eu';
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home' };
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: homeL[lang] ?? 'Home', item: `${BASE}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/${lang}/blog` },
-        { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE}/${lang}/blog/${post.slug}` },
-      ],
-    };
-    document.getElementById('schema-blogpost-breadcrumb')?.remove();
-    const el = document.createElement('script');
-    el.id = 'schema-blogpost-breadcrumb'; el.type = 'application/ld+json';
-    el.textContent = JSON.stringify(schema);
-    document.head.appendChild(el);
-    return () => { document.getElementById('schema-blogpost-breadcrumb')?.remove(); };
-  }, [post, lang]);
+  // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
 
   // ── Hreflang, uses topic_key variants for accurate cross-lang URLs ──────────
   useHreflang(

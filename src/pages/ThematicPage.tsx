@@ -1764,25 +1764,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       document.head.appendChild(el);
     }
 
-    // BreadcrumbList
-    const homeL: Record<string, string> = { fr: 'Accueil', de: 'Startseite', es: 'Inicio', it: 'Home', en: 'Home', pt: 'Início' };
-    const breadcrumbEl = document.createElement('script');
-    breadcrumbEl.id = 'schema-thematic-breadcrumb'; breadcrumbEl.type = 'application/ld+json';
-    breadcrumbEl.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: homeL[cl] ?? 'Home', item: `${window.location.origin}/${lang}` },
-        { '@type': 'ListItem', position: 2, name: config?.h1 ?? segment, item: `${window.location.origin}/${lang}/${segment}` },
-      ],
-    });
-    document.getElementById('schema-thematic-breadcrumb')?.remove();
-    document.head.appendChild(breadcrumbEl);
+    // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
 
     return () => {
       document.getElementById('schema-itemlist')?.remove();
       document.getElementById('schema-faqpage')?.remove();
-      document.getElementById('schema-thematic-breadcrumb')?.remove();
     };
   }, [config, filteredCards, faqs, lang, segment]);
 
