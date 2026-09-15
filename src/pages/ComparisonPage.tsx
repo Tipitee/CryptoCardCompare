@@ -578,7 +578,7 @@ export default function ComparisonPage() {
       </div>
 
       {/* ── Comparison table ────────────────────────────────────── */}
-      <div className="card-surface overflow-x-auto -mx-4 sm:mx-0 mb-8">
+      <div className="card-surface overflow-x-auto mb-8">
         <div className="min-w-[480px]">
         <table className="w-full text-sm">
           <thead>

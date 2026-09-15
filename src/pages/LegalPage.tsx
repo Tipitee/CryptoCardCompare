@@ -3,35 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import { Coins } from 'lucide-react';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
+import { SUPPORTED_LEGAL_LANGS, LEGAL_SLUGS, type LegalLang } from '../config/legalRoutes';
 
-const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'] as const;
-type Lang = typeof SUPPORTED_LANGS[number];
+const SUPPORTED_LANGS = SUPPORTED_LEGAL_LANGS;
+type Lang = LegalLang;
 type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en' | 'pt';
 
 const CONTENT_LANG: Record<Lang, ContentLang> = {
   fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en', pt: 'pt',
-};
-
-export const LEGAL_SLUGS: Record<Lang, string> = {
-  fr: 'mentions-legales',
-  be: 'mentions-legales',
-  de: 'rechtliches',
-  at: 'rechtliches',
-  es: 'aviso-legal',
-  it: 'avviso-legale',
-  en: 'legal-notice',
-  pt: 'legal-notice',
-};
-
-export const LEGAL_NAV_LABELS: Record<Lang, string> = {
-  fr: 'Mentions légales',
-  be: 'Mentions légales',
-  de: 'Rechtliches',
-  at: 'Rechtliches',
-  es: 'Aviso legal',
-  it: 'Avviso legale',
-  en: 'Legal Notice',
-  pt: 'Aviso legal',
 };
 
 function useLegalLang(): Lang {
