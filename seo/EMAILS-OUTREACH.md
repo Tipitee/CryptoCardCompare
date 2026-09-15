@@ -246,15 +246,43 @@ Thomas, TopCryptoCards
 
 ---
 
-## Trouver le bon nom (DE, ES, IT)
+## Cibles DE, ES, IT (vérifiées sept. 2026)
 
-Je ne te donne que des noms vérifiés. Pour ces trois marchés, voici la méthode rapide, cinq minutes par média, plus fiable qu'un nom inventé.
+Noms et médias vérifiés via sources publiques. Les rôles bougent : revérifie la signature d'un article récent avant d'envoyer. Le bon interlocuteur est celui qui a déjà écrit sur les cartes, pas le contact générique.
 
-- DE : BTC-ECHO est déjà nominatif (Sven Wagenknecht, rédacteur en chef). Pour un envoi rédaction, ouvre un article récent « Krypto-Karte » sur btc-echo.de et note la signature en haut de page.
-- ES : sur Cointelegraph en Español et Observatorio Blockchain, ouvre un article récent « tarjeta cripto » ou « pagos », relève la signature, puis retrouve la personne sur LinkedIn.
-- IT : The Cryptonomist (page cryptonomist.ch/chi-siamo) et Cointelegraph Italia. Même méthode, byline d'un article « carta crypto » récent.
+### DE — BTC-ECHO (le média crypto n°1 en DACH)
+Équipe nominative : **Sven Wagenknecht** (rédacteur en chef), **Paol Hergert** (managing editor), **Daniel Hoppmann** et **Giacomo Maihofer** (reporters). Pour un sujet conso « beworbener vs realer Cashback », vise Hergert ou un des deux reporters ; Wagenknecht pour un angle éditorial/marché.
+- Canal : btc-echo.de (page Über uns / contact), profils X/LinkedIn. Ouvre un article récent « Krypto-Karte » et confirme la signature.
+- Secondaire DE/AT : Cointelegraph auf Deutsch, BeInCrypto DE, Blocktrainer (angle conso/pédago), et pour l'Autriche la presse Bitpanda-friendly (Trending Topics, Brutkasten).
 
-Le principe : le bon interlocuteur est celui qui a déjà écrit sur les cartes, pas le contact générique. Un envoi nominatif avec une référence à son dernier papier double le taux de réponse.
+### ES — CriptoNoticias (cible n°1, couvre déjà les cartes)
+**CriptoNoticias** (criptonoticias.com) a publié en 2026 plusieurs papiers sur l'explosion des cartes crypto Visa en Espagne : c'est exactement le beat de ton étude, accroche parfaite (« vous avez couvert l'adoption des cartes, voici la face cachée du cashback »).
+- Autres cibles : Observatorio Blockchain (observatorioblockchain.com), BeInCrypto en Español, Cointelegraph en Español. Bit2Me est espagnol : un angle « la carte espagnole vs les promesses du marché » peut intéresser la presse tech locale (Xataka, El Confidencial rubrique cripto).
+- Méthode : ouvre un article récent « tarjeta cripto » ou « pagos », relève la signature, retrouve la personne sur LinkedIn.
+
+### IT — The Cryptonomist + Cointelegraph Italia
+**The Cryptonomist** (cryptonomist.ch/chi-siamo, bilingue IT/EN) et **Cointelegraph Italia** sont les deux références. Ajoute **cryptonews.it** (page /redazione) et Young Platform (plateforme italienne, angle « la carte italienne face au marché »).
+- Méthode : byline d'un article « carta crypto » récent, puis contact via la page redazione ou LinkedIn.
+
+Un envoi nominatif avec une référence au dernier papier de la personne double le taux de réponse.
+
+---
+
+## Checklist d'envoi finale
+
+Avant chaque envoi :
+- [ ] Un seul média par email, jamais en copie groupée.
+- [ ] Objet choisi (voir variantes en haut), 1re phrase personnalisée avec une référence à un papier récent de la personne.
+- [ ] Bon lien d'étude par marché (voir la liste en haut) et bon angle (cashback réel, ou actualité MiCA si régulation).
+- [ ] Signature à jour (Thomas, TopCryptoCards).
+- [ ] Adresse vérifiée via page contact du média ou profil X/LinkedIn.
+
+Séquence recommandée :
+- **J0** — exclu 48 h à la cible n°1 du marché (FR : The Big Whale + Journal du Coin ; EN : CoinDesk ; DE : BTC-ECHO ; ES : CriptoNoticias).
+- **J2** — les cibles secondaires du marché.
+- **J4** — relance courte (voir ci-dessous) en testant la 2e variante d'objet.
+
+Suivi : logge chaque envoi dans `seo/backlinks-outreach.xlsx` (date, média, contact, canal, statut, URL du lien obtenu). Le vrai indicateur de succès, ce sont les nouveaux domaines référents, pas les clics immédiats. Relances et cadence détaillées dans `PITCH-PRESSE.md`.
 
 ---
 
