@@ -4,12 +4,12 @@ import { Coins } from 'lucide-react';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 
-const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en'] as const;
+const SUPPORTED_LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
-type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en';
+type ContentLang = 'fr' | 'de' | 'es' | 'it' | 'en' | 'pt';
 
 const CONTENT_LANG: Record<Lang, ContentLang> = {
-  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en',
+  fr: 'fr', be: 'fr', de: 'de', at: 'de', es: 'es', it: 'it', en: 'en', pt: 'pt',
 };
 
 export const LEGAL_SLUGS: Record<Lang, string> = {
@@ -20,6 +20,7 @@ export const LEGAL_SLUGS: Record<Lang, string> = {
   es: 'aviso-legal',
   it: 'avviso-legale',
   en: 'legal-notice',
+  pt: 'legal-notice',
 };
 
 export const LEGAL_NAV_LABELS: Record<Lang, string> = {
@@ -30,6 +31,7 @@ export const LEGAL_NAV_LABELS: Record<Lang, string> = {
   es: 'Aviso legal',
   it: 'Avviso legale',
   en: 'Legal Notice',
+  pt: 'Aviso legal',
 };
 
 function useLegalLang(): Lang {
@@ -124,6 +126,72 @@ const CONTENT: Record<ContentLang, LegalContent> = {
       body: 'Pour toute question relative au traitement de vos données personnelles, contactez-nous à l\'adresse e-mail indiquée ci-dessus.',
     },
     contact: 'Contact',
+  },
+
+  pt: {
+    legalTitle: 'Aviso Legal',
+    privacyTitle: 'Política de Privacidade',
+    lastUpdated: 'Última atualização: julho de 2026',
+    controller: { label: 'Editor do site' },
+    legalSections: [
+      {
+        title: 'Identificação do editor',
+        body: `Nos termos da legislação aplicável e do RGPD, seguem as informações relativas ao editor deste site:<br/><br/>
+<strong>Nome:</strong> Thomas Petit<br/>
+<strong>Morada:</strong> c/o flexdienst – #21201, Kurt-Schumacher-Straße 76, 67663 Kaiserslautern, Alemanha<br/>
+<strong>E-mail:</strong> ${EMAIL}`,
+      },
+      {
+        title: 'Natureza do site',
+        body: 'A TopCryptoCards é um comparador independente de cartões crypto. As informações publicadas têm caráter meramente informativo e não constituem aconselhamento financeiro, jurídico ou de investimento. Os dados são verificados regularmente mas podem mudar sem aviso prévio.',
+      },
+      {
+        title: 'Ligações externas e responsabilidade',
+        body: 'Este site contém ligações para sites de terceiros. Não exercemos qualquer controlo sobre esses sites e declinamos qualquer responsabilidade pelo seu conteúdo ou pela sua política de privacidade.',
+      },
+      {
+        title: 'Propriedade intelectual',
+        body: 'Todo o conteúdo editorial deste site (textos, comparativos, análises) está protegido por direitos de autor. É proibida qualquer reprodução ou difusão sem autorização.',
+      },
+      {
+        title: 'Ligações de afiliação',
+        body: 'Este site participa em programas de afiliação. Algumas ligações são remuneradas; essa remuneração não influencia os nossos comparativos nem a ordem de apresentação dos cartões.',
+      },
+    ],
+    privacySections: [
+      {
+        title: '1. Responsável pelo tratamento',
+        body: `Thomas Petit, ${ADDRESS_EN}<br/>E-mail: ${EMAIL}`,
+      },
+      {
+        title: '2. Dados recolhidos',
+        body: `<strong>Registos de acesso:</strong> endereço IP (anonimizado), data/hora, URL consultado, navegador e ISP. Prazo de conservação: 7 dias no máximo. Base legal: Art. 6(1)(f) do RGPD (interesse legítimo).<br/><br/>
+<strong>Cookies estritamente necessários:</strong> preferências de filtros e seleções de comparação (sessão). Escolha de consentimento de cookies (12 meses). Não requerem consentimento.<br/><br/>
+<strong>Cookies analíticos (opcionais):</strong> Google Analytics via Google Tag Manager, apenas após o teu consentimento no banner de cookies. Base legal: Art. 6(1)(a) do RGPD.`,
+      },
+      {
+        title: '3. Serviços de terceiros',
+        body: `<strong>Cloudflare</strong> (CDN e segurança), certificado EU-US Data Privacy Framework.<br/>
+<strong>Supabase</strong> (base de dados), servidores na UE (eu-west-1, Irlanda).<br/>
+<strong>Google Tag Manager / Analytics</strong>, apenas após consentimento.<br/>
+<strong>Redes de afiliação</strong> (Impact Radius, Awin), apenas após consentimento.`,
+      },
+      {
+        title: '4. Os teus direitos (RGPD)',
+        body: 'Dispões dos seguintes direitos: acesso, retificação, apagamento, portabilidade, limitação do tratamento e oposição. Para exercer estes direitos, contacta-nos através da morada indicada acima. Podes também apresentar reclamação junto da CNPD (www.cnpd.pt).',
+      },
+      {
+        title: '5. Transferências fora da UE',
+        body: 'A Cloudflare e a Google estão certificadas ao abrigo do EU-US Data Privacy Framework. Não é efetuada qualquer transferência sem garantias adequadas na aceção do RGPD.',
+      },
+    ],
+    affiliateNote: 'Para saber mais sobre as nossas relações comerciais, consulta a nossa',
+    affiliateLink: 'política de afiliação',
+    rights: {
+      title: 'Os teus direitos',
+      body: 'Para qualquer questão relativa ao tratamento dos teus dados pessoais, contacta-nos através do e-mail indicado acima.',
+    },
+    contact: 'Contacto',
   },
 
   de: {
@@ -399,6 +467,7 @@ const SEO: Record<ContentLang, { title: string; desc: string }> = {
   es: { title: 'Aviso Legal & Política de Privacidad, TopCryptoCards', desc: 'Aviso legal, política de privacidad e información sobre protección de datos de TopCryptoCards.' },
   it: { title: 'Avviso Legale & Privacy, TopCryptoCards', desc: 'Avviso legale, informativa sulla privacy e GDPR di TopCryptoCards.' },
   en: { title: 'Legal Notice & Privacy Policy, TopCryptoCards', desc: 'Legal notice, privacy policy and GDPR information for TopCryptoCards.' },
+  pt: { title: 'Aviso Legal & Política de Privacidade, TopCryptoCards', desc: 'Aviso legal, política de privacidade e informações RGPD da TopCryptoCards.' },
 };
 
 // ── Affiliate disclosure slug per lang (for footer link) ──────────────────
@@ -410,6 +479,7 @@ const AFFILIATE_SLUGS: Record<Lang, string> = {
   es: 'divulgacion-afiliados',
   it: 'divulgazione-affiliati',
   en: 'affiliate-disclosure',
+  pt: 'divulgacao-de-afiliados',
 };
 
 // ── Component ──────────────────────────────────────────────────────────────

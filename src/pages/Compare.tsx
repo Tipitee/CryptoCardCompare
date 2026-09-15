@@ -46,6 +46,18 @@ const COMPARE_EDITORIAL: Record<string, { h2: string; body: string; related: str
       { key: 'travel',     emoji: '✈️', label: 'Cartes voyage' },
     ],
   },
+  pt: {
+    h2: 'Como usar o nosso comparador de cartões crypto?',
+    body: `O nosso comparador permite-te filtrar e ordenar mais de 15 cartões crypto segundo os teus critérios: taxa de cashback, taxas anuais, staking obrigatório, criptomoedas suportadas e disponibilidade por país. Seleciona até dois cartões para uma comparação detalhada lado a lado, ou usa os filtros para identificar rapidamente os cartões que correspondem ao teu perfil. Cada cartão é avaliado com base em dados verificados e atualizados regularmente. A ordenação por índice de confiança ajuda-te a distinguir os emissores regulados e estabelecidos dos novos operadores. Para ires mais longe, consulta as nossas análises individuais e o nosso simulador de ganhos, que calcula o teu cashback real em função dos teus gastos mensais.`,
+    related: 'Guias por tipo de cartão',
+    links: [
+      { key: 'best',       emoji: '⭐', label: 'Melhores cartões' },
+      { key: 'cashback',   emoji: '💰', label: 'Cashback elevado' },
+      { key: 'no-fees',    emoji: '🆓', label: 'Sem taxas anuais' },
+      { key: 'no-staking', emoji: '🔓', label: 'Sem staking' },
+      { key: 'travel',     emoji: '✈️', label: 'Cartões de viagem' },
+    ],
+  },
   de: {
     h2: 'Wie nutzt man unseren Krypto-Karten-Vergleich?',
     body: `Unser Vergleichstool ermöglicht es Ihnen, über 15 Krypto-Karten nach Ihren Kriterien zu filtern und zu sortieren: Cashback-Rate, Jahresgebühren, erforderliches Staking, unterstützte Kryptowährungen und Länderverfügbarkeit. Wählen Sie bis zu zwei Karten für einen detaillierten Seite-an-Seite-Vergleich, oder nutzen Sie die Filter, um schnell Karten zu finden, die zu Ihrem Profil passen. Jede Karte wird anhand verifizierter und regelmäßig aktualisierter Daten bewertet. Die Sortierung nach Vertrauensscore hilft Ihnen, regulierte und etablierte Emittenten von Neueinsteigern zu unterscheiden. Für einen tieferen Einblick konsultieren Sie unsere individuellen Bewertungen und unseren Gewinn-Simulator.`,
@@ -104,6 +116,7 @@ const COMPARE_SEO: Record<string, { title: string; desc: string }> = {
   es: { title: `Comparador Crypto ${YEAR}, Cashback | TopCryptoCards`, desc: `Compara 90+ tarjetas crypto: cashback, comisiones, staking. Crypto.com, Nexo, Bybit, Revolut y más, filtra en segundos. Gratis ✓` },
   it: { title: `Comparatore Carte Crypto ${YEAR}, Cashback | TopCryptoCards`, desc: `Confronta 90+ carte crypto: cashback, commissioni, staking. Crypto.com, Nexo, Bybit, Revolut e altri, filtra in secondi. Gratuito ✓` },
   en: { title: `Crypto Card Comparison ${YEAR}, Cashback | TopCryptoCards`, desc: `Compare 90+ crypto cards: cashback rates, annual fees, staking. Crypto.com, Nexo, Bybit, Revolut, filter in seconds. Free ✓` },
+  pt: { title: `Comparador Crypto ${YEAR}, Cashback e Taxas | TopCryptoCards`, desc: `Compara mais de 90 cartões crypto: cashback, taxas anuais, staking. Crypto.com, Nexo, Bybit, Revolut, filtra em segundos. Grátis ✓` },
 };
 
 const ALL_CRYPTOS = [
@@ -126,6 +139,7 @@ const QUICK_COMPARE_LABELS: Record<string, { title: string; hint: string; cardA:
   es: { title: 'Comparar dos tarjetas en detalle', hint: 'Haga clic en una tarjeta de la lista para seleccionarla', cardA: 'Tarjeta A', cardB: 'Tarjeta B', btn: 'Comparar', selectHint: 'o haga clic en una tarjeta abajo' },
   it: { title: 'Confronta due carte in dettaglio', hint: 'Fai clic su una carta nell\'elenco per selezionarla', cardA: 'Carta A', cardB: 'Carta B', btn: 'Confronta', selectHint: 'o fai clic su una carta qui sotto' },
   en: { title: 'Compare two cards in detail', hint: 'Click any card in the list to select it', cardA: 'Card A', cardB: 'Card B', btn: 'Compare', selectHint: 'or click a card below' },
+  pt: { title: 'Comparar dois cartões em detalhe', hint: 'Clica num cartão da lista para o selecionar', cardA: 'Cartão A', cardB: 'Cartão B', btn: 'Comparar', selectHint: 'ou clica num cartão abaixo' },
 };
 
 const COMPARE_ROUTE: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare', pt: 'comparar' };
@@ -187,7 +201,7 @@ export default function Compare() {
     const BASE = 'https://topcryptocards.eu';
     const RT: Record<string, string> = { fr: 'comparer', de: 'vergleich', es: 'comparar', it: 'confronto', en: 'compare', pt: 'comparar' };
     const labels: Record<string, [string, string]> = {
-      fr: ['Accueil', 'Comparer'], de: ['Startseite', 'Vergleich'], es: ['Inicio', 'Comparar'], it: ['Home', 'Confronto'], en: ['Home', 'Compare'],
+      fr: ['Accueil', 'Comparer'], de: ['Startseite', 'Vergleich'], es: ['Inicio', 'Comparar'], it: ['Home', 'Confronto'], en: ['Home', 'Compare'], pt: ['Início', 'Comparar'],
     };
     const [homeL, pageL] = labels[dl] ?? labels.en;
     const seg = RT[lang] ?? 'compare';

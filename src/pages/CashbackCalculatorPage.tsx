@@ -9,7 +9,7 @@ import { Calculator, TrendingUp } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES } from '../config/routes';
 
@@ -51,6 +51,34 @@ const COPY: Record<string, {
       { q: 'Faut-il faire du staking pour obtenir le cashback ?', a: `Non, plusieurs cartes offrent un cashback sans staking : Gnosis Pay (2 % en GNO), Nexo Card (2 % en BTC), Brighty (1,75 % en USDC), MetaMask Card (1 % en ETH). Les cartes Crypto.com nécessitent du staking pour les meilleurs taux.` },
       { q: 'En quelle crypto est versé le cashback ?', a: `Cela dépend de la carte : Nexo Card en BTC ou NEXO, Gnosis Pay en GNO, Brighty en USDC (stablecoin), MetaMask Card en ETH, Crypto.com en CRO. Le cashback en BTC est le plus stable long terme.` },
       { q: 'Ce calculateur est-il exact ?', a: `Les taux affichés sont basés sur les conditions officielles de chaque émetteur en ${YEAR}. Les plafonds mensuels de cashback, les promotions temporaires et la dépréciation possible du token ne sont pas pris en compte. Utilisez notre simulateur avancé pour une estimation par catégories de dépenses.` },
+    ],
+  },
+  pt: {
+    title:        `Calculadora de Cashback de Cartão Crypto ${YEAR}, Quanto Ganhas? | TopCryptoCards`,
+    h1:           `Calculadora de Cashback de Cartão Crypto ${YEAR}`,
+    desc:         `Calcula o teu cashback anual com cada cartão crypto em ${YEAR}. Introduz os teus gastos mensais e compara os ganhos ao instante. Grátis ✓`,
+    intro:        `Introduz o teu gasto mensal total e descobre quanto cada cartão crypto te rende por ano em cashback. Os resultados são ordenados do melhor ao pior. Sem registo.`,
+    labelSpend:   'Os meus gastos mensais',
+    labelSpendUnit: '€/mês',
+    colCard:      'Cartão',
+    colRate:      'Taxa de cashback',
+    colAnnual:    'Ganho anual estimado',
+    colToken:     'Token recebido',
+    noStaking:    'Sem staking',
+    withStaking:  'Com staking',
+    bestValue:    '⭐ Melhor relação',
+    ctaSimulator: 'Simulador avançado por categorias →',
+    ctaBest:      'Ver a classificação completa dos cartões →',
+    note:         `Os ganhos são calculados com base na taxa de cashback × gastos mensais × 12. O valor em euros do cashback depende da cotação do token na data de conversão. As taxas apresentadas correspondem às condições padrão de cada emissor em ${YEAR}.`,
+    embedTitle:   'Integrar esta calculadora',
+    embedCopy:    'Copiar o código',
+    embedCopied:  'Copiado!',
+    faqTitle:     'Perguntas frequentes',
+    faqs: [
+      { q: 'Como é calculado o cashback anual?', a: `O cashback anual = taxa de cashback × gastos mensais × 12. Por exemplo, com 1 000 €/mês e uma taxa de 2 %, ganhas 240 € de cashback em cripto por ano.` },
+      { q: 'É preciso fazer staking para obter o cashback?', a: `Não, vários cartões oferecem cashback sem staking: Gnosis Pay (2 % em GNO), Nexo Card (2 % em BTC), Brighty (1,75 % em USDC), MetaMask Card (1 % em ETH). Os cartões Crypto.com exigem staking para as melhores taxas.` },
+      { q: 'Em que cripto é pago o cashback?', a: `Depende do cartão: Nexo Card em BTC ou NEXO, Gnosis Pay em GNO, Brighty em USDC (stablecoin), MetaMask Card em ETH, Crypto.com em CRO. O cashback em BTC é o mais estável a longo prazo.` },
+      { q: 'Esta calculadora é exata?', a: `As taxas apresentadas baseiam-se nas condições oficiais de cada emissor em ${YEAR}. Os limites mensais de cashback, as promoções temporárias e a possível desvalorização do token não são considerados. Usa o nosso simulador avançado para uma estimativa por categorias de gastos.` },
     ],
   },
   de: {
@@ -203,7 +231,7 @@ const CARDS: CardRow[] = [
 /* ── Component ────────────────────────────────────────────────────────────── */
 export default function CashbackCalculatorPage() {
   const lang = useLanguage();
-  const copy = COPY[lang] ?? COPY.fr;
+  const copy = COPY[displayLang(lang)] ?? COPY.fr;
 
   const [spend, setSpend] = useState(1000);
   const [mode, setMode] = useState<'base' | 'staking'>('base');

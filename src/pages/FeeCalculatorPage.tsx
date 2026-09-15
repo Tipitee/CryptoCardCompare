@@ -9,7 +9,7 @@ import { TrendingUp, AlertTriangle, CheckCircle, Calculator } from 'lucide-react
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { ROUTE_TRANSLATIONS } from '../i18n/types';
+import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import Breadcrumb from '../components/Breadcrumb';
 import { THEMATIC_ROUTES } from '../config/routes';
 
@@ -65,6 +65,43 @@ const COPY: Record<string, {
       { q: 'Faut-il inclure la valeur du token staké dans le calcul ?', a: `Non, ce calculateur est volontairement conservateur : il ne prend pas en compte la plus-value potentielle (ni la moins-value) du token de staking. Si le token s'apprécie, la rentabilité réelle est meilleure. Si le token se déprécie, le coût effectif du staking augmente.` },
       { q: 'Quelle est la carte gratuite de référence ?', a: `La référence est une carte avec 0 € de frais et 1 % de cashback (ex. MetaMask Card, Crypto.com Midnight Blue, Revolut Standard). Ce choix représente ce que vous obtenez sans aucun engagement financier.` },
       { q: 'Revolut Metal vaut-il le coup ?', a: `À 15 €/mois (180 €/an) et 1 % de cashback, Revolut Metal n'offre pas plus de cashback qu'une carte gratuite à 1 %, l'avantage différenciant est l'assurance voyage, le lounge, la concierge, pas le cashback. Pour le cashback pur, une carte gratuite à 2 % (Gnosis Pay, Nexo) est meilleure.` },
+    ],
+  },
+  pt: {
+    title:         `Calculadora de Taxas de Cartão Crypto ${YEAR}, Vale a Pena? | TopCryptoCards`,
+    h1:            `Calculadora de Taxas de Cartão Crypto ${YEAR}`,
+    desc:          `Calcula se as taxas ou o staking de um cartão crypto valem a pena consoante os teus gastos em ${YEAR}. Ponto de equilíbrio em segundos. Grátis ✓`,
+    intro:         `Estás a pensar num cartão com taxas ou staking? Introduz os teus gastos mensais e vê logo a partir de que limiar cada cartão fica rentável face a um cartão grátis com 1 % de cashback.`,
+    labelSpend:    'Os meus gastos mensais',
+    labelSpendUnit: '€/mês',
+    labelFreeRef:  'Referência: cartão grátis com 1 % de cashback',
+    colCard:       'Cartão',
+    colAnnualCost: 'Custo anual',
+    colExtraCashback: 'Cashback adicional/mês',
+    colBreakEven:  'Ponto de equilíbrio',
+    colVerdict:    'Ao teu nível',
+    worth:         '✅ Rentável',
+    notWorth:      '❌ Não rentável',
+    neutral:       '⚖️ No limite',
+    months:        'meses',
+    breakEvenAt:   'Rentável a partir de',
+    never:         'Nunca rentável',
+    freeBaseline:  'Cartão grátis (referência 1%)',
+    paidTier:      'Cartão com subscrição',
+    stakingTier:   'Nível de staking',
+    ctaBest:       'Ver a classificação completa →',
+    ctaSimulator:  'Simulador avançado por categorias →',
+    ctaCashback:   'Calculadora de cashback anual →',
+    note:          `O ponto de equilíbrio calcula-se assim: custo anual ÷ (cashback adicional mensal × 12). O cashback adicional = (taxa premium − 1 %) × gastos mensais. A desvalorização do token de staking não é considerada.`,
+    embedTitle:    'Integrar esta calculadora',
+    embedCopy:     'Copiar o código',
+    embedCopied:   'Copiado!',
+    faqTitle:      'Perguntas frequentes',
+    faqs: [
+      { q: 'Como calculam o ponto de equilíbrio?', a: `Ponto de equilíbrio (meses) = custo anual ÷ (cashback adicional mensal). O cashback adicional é a diferença entre a taxa do cartão premium e um cartão grátis a 1 %, multiplicada pelos teus gastos mensais. Por exemplo, se um cartão premium oferece 3 % em vez de 1 %, com 1 000 €/mês de gastos: ganho extra = 20 €/mês, e se custar 180 €/ano, o ponto de equilíbrio é de 9 meses.` },
+      { q: 'É preciso incluir o valor do token em staking no cálculo?', a: `Não, esta calculadora é propositadamente conservadora: não considera a mais-valia potencial (nem a menos-valia) do token de staking. Se o token valorizar, a rentabilidade real é melhor. Se desvalorizar, o custo efetivo do staking aumenta.` },
+      { q: 'Qual é o cartão grátis de referência?', a: `A referência é um cartão com 0 € de taxas e 1 % de cashback (ex. MetaMask Card, Crypto.com Midnight Blue, Revolut Standard). Representa o que obténs sem qualquer compromisso financeiro.` },
+      { q: 'O Revolut Metal vale a pena?', a: `A 15 €/mês (180 €/ano) e 1 % de cashback, o Revolut Metal não dá mais cashback do que um cartão grátis a 1 %. A vantagem diferenciadora é o seguro de viagem, o lounge e o concierge, não o cashback. Para cashback puro, um cartão grátis a 2 % (Gnosis Pay, Nexo) é melhor.` },
     ],
   },
   de: {
@@ -249,7 +286,7 @@ const CARDS: CardEntry[] = [
 /* ── Component ────────────────────────────────────────────────────────────── */
 export default function FeeCalculatorPage() {
   const lang = useLanguage();
-  const copy = COPY[lang] ?? COPY.fr;
+  const copy = COPY[displayLang(lang)] ?? COPY.fr;
 
   const [spend, setSpend] = useState(1000);
   const [copied, setCopied] = useState(false);

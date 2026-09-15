@@ -397,7 +397,9 @@ export default function ComparisonPage() {
     image: card1?.realCardImage || undefined,
     canonical: canonicalUrl,
     lang,
-    noindex: !isIndexable,
+    // noindex si non-allowlistée OU si une carte est absente/discontinuée
+    // (évite d'indexer une page « introuvable » fine, sans titre ni H1).
+    noindex: !isIndexable || notFound || !card1 || !card2,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
