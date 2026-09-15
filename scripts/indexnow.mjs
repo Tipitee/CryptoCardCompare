@@ -150,6 +150,14 @@ const URLS = [
   // ── Article PT fiscalité cashback (maillage vers l'étude) ────────────────────
   `${BASE}/pt/blog/fiscalidade-cashback-cartao-crypto-portugal`,
 
+  // ── Article MiCA / régulation (6 marchés de contenu) ─────────────────────────
+  `${BASE}/fr/blog/carte-crypto-regulation-mica-2026`,
+  `${BASE}/de/blog/krypto-karte-regulierung-mica-2026`,
+  `${BASE}/es/blog/tarjeta-cripto-regulacion-mica-2026`,
+  `${BASE}/it/blog/carta-cripto-regolamento-mica-2026`,
+  `${BASE}/en/blog/crypto-card-regulation-mica-fca-2026`,
+  `${BASE}/pt/blog/cartao-crypto-regulacao-mica-2026`,
+
   // ── Blog posts refreshed (FAQ blocks added July 2026) ───────────────────────
   `${BASE}/en/blog/gnosis-pay-review-2026`,
   `${BASE}/en/blog/gnosis-pay-review-2026-self-custody-crypto-card-2-percent-cashback-eure`,
