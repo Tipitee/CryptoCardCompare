@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import Layout from './components/Layout';
 // Home chargé en eager (page d'atterrissage principale)
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
 
 // Toutes les autres pages en lazy, réduit le bundle initial significativement
 const Compare              = lazy(() => import('./pages/Compare'));
