@@ -142,9 +142,16 @@ Deno.serve(async (req) => {
           console.error(`Together error (attempt ${attempt}):`, errorText);
           lastError = new Error(`Together API ${togetherResponse.status}: ${errorText}`);
 
-          if (togetherResponse.status >= 500 && attempt < 3) {
-            const delay = Math.pow(2, attempt) * 1000;
-            console.log(`Retrying in ${delay}ms...`);
+          // Retry on rate-limit (429) and server errors (5xx).
+          if ((togetherResponse.status === 429 || togetherResponse.status >= 500) && attempt < 3) {
+            const backoff = Math.pow(2, attempt) * 1000;
+            let delay = backoff;
+            if (togetherResponse.status === 429) {
+              // X-RateLimit-Reset: seconds to wait (treat small values as such); else exp backoff, min 2s.
+              const reset = Number(togetherResponse.headers.get("X-RateLimit-Reset")) || 0;
+              delay = Math.max(2000, reset > 0 && reset < 120 ? reset * 1000 : backoff);
+            }
+            console.log(`Retrying in ${delay}ms (status ${togetherResponse.status})...`);
             await new Promise(resolve => setTimeout(resolve, delay));
             continue;
           }
