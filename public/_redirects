@@ -103,6 +103,16 @@
 /en/brands/brighty   /en/reviews/brighty-card      301
 /pt/marcas/brighty   /pt/analises/brighty-card     301
 
+# ── Marque Coinbase discontinuée (hub vide noindex) → review indexable, 8 marchés ──
+/fr/marques/coinbase  /fr/avis/coinbase-card         301
+/be/marques/coinbase  /be/avis/coinbase-card         301
+/de/marken/coinbase   /de/bewertungen/coinbase-card  301
+/at/marken/coinbase   /at/bewertungen/coinbase-card  301
+/es/marcas/coinbase   /es/opiniones/coinbase-card    301
+/it/marche/coinbase   /it/recensioni/coinbase-card   301
+/en/brands/coinbase   /en/reviews/coinbase-card      301
+/pt/marcas/coinbase   /pt/analises/coinbase-card     301
+
 # ── Slugs voyage relocalisés (étaient en FR sur des pages IT/DE/EN/ES) ────
 /it/blog/meilleure-carte-crypto-voyage-europe-comparatif        /it/blog/migliore-carta-crypto-viaggi-europa   301
 /de/blog/meilleure-carte-crypto-voyage-europe-sans-frais        /de/blog/beste-krypto-karte-reisen-europa      301

@@ -385,7 +385,7 @@ export default function Layout() {
                   { id: 'kraken',     name: 'Kraken' },
                   { id: 'bybit',      name: 'Bybit' },
                   { id: 'bitpanda',   name: 'Bitpanda' },
-                  { id: 'coinbase',   name: 'Coinbase' },
+                  { id: 'revolut',    name: 'Revolut' },
                 ].map(({ id, name }) => (
                   <li key={id}>
                     <Link to={`/${lang}/${brandsSlug}/${id}`} className="hover:text-cyan-accent transition-colors">
