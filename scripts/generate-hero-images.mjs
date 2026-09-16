@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * generate-hero-images.mjs
- * Génère des images hero pour les articles blog via Together AI (FLUX.1-schnell).
+ * Génère des images hero pour les articles blog via Together AI (Juggernaut-Lightning-Flux, serverless).
  * Bypasse Anthropic — le prompt est construit localement.
  *
  * Usage :
@@ -91,7 +91,7 @@ async function generateImage(prompt) {
       method: 'POST',
       headers: { Authorization: `Bearer ${TOGETHER_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'black-forest-labs/FLUX.1-schnell',
+        model: 'Rundiffusion/Juggernaut-Lightning-Flux',
         prompt,
         width: 1360,
         height: 768,

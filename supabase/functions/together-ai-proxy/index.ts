@@ -30,7 +30,7 @@ Deno.serve(async (req: Request) => {
     }
 
     console.log("Proxying Together AI request:", {
-      model: model || "black-forest-labs/FLUX.1-schnell",
+      model: model || "Rundiffusion/Juggernaut-Lightning-Flux",
       promptLength: prompt.length,
     });
 
@@ -48,7 +48,7 @@ Deno.serve(async (req: Request) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: model || "black-forest-labs/FLUX.1-schnell",
+            model: model || "Rundiffusion/Juggernaut-Lightning-Flux",
             prompt,
             width: width || 1360,
             height: height || 768,

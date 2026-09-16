@@ -125,7 +125,7 @@ Deno.serve(async (req) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "black-forest-labs/FLUX.1-schnell",
+            model: "Rundiffusion/Juggernaut-Lightning-Flux",
             prompt: imagePrompt,
             width: 1360,
             height: 768,
