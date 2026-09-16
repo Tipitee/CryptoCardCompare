@@ -127,7 +127,7 @@ Deno.serve(async (req) => {
           body: JSON.stringify({
             model: "Rundiffusion/Juggernaut-Lightning-Flux",
             prompt: imagePrompt,
-            width: 1360,
+            width: 1344,
             height: 768,
             steps: 4,
             n: 1,

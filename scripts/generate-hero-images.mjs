@@ -93,7 +93,7 @@ async function generateImage(prompt) {
       body: JSON.stringify({
         model: 'Rundiffusion/Juggernaut-Lightning-Flux',
         prompt,
-        width: 1360,
+        width: 1344,
         height: 768,
         steps: 4,
         n: 1,

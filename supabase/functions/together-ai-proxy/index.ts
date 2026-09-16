@@ -50,7 +50,7 @@ Deno.serve(async (req: Request) => {
           body: JSON.stringify({
             model: model || "Rundiffusion/Juggernaut-Lightning-Flux",
             prompt,
-            width: width || 1360,
+            width: width || 1344,
             height: height || 768,
             steps: steps || 4,
             n: n || 1,
