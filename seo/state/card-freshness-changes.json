@@ -1,12 +1,37 @@
 {
-  "generated": "2026-09-05",
+  "generated": "2026-09-12",
+  "_note": "Fiches live inaccessibles ce run (pane refuse + web_fetch provenance). Ecarts mesures vs llms-full.txt, reconfirmes par WebSearch emetteur. Relecteur: verifier la fiche live / base avant --confirm.",
   "changes": [
     {
-      "card": "OKX Card",
-      "match": { "name": "OKX Card" },
-      "set": { "cashback_premium": 10 },
-      "reason": "Barème cashback EEE OKX révisé (depuis 01–03/2026) : jusqu'à 10% en USDG pour VIP4+ (plafond 1000 €/mois), contre 5% affiché. Cashback en USDG uniquement, non-VIP = 2% plafonné 10 €/mois.",
-      "source": "okx.com/en-eu/help (OKX Card EEA ongoing cashback FAQ, 2026)",
+      "card": "Binance Card",
+      "match": { "name": "Binance Card" },
+      "set": { "status": "discontinued" },
+      "reason": "Carte Binance EEE arretee le 20/12/2023, jamais relancee; produit mort a ne plus lister comme actif.",
+      "source": "financemagnates + Binance Support (EEA Card Program Closure FAQ)",
+      "confidence": "high"
+    },
+    {
+      "card": "Bybit Card",
+      "match": { "name": "Bybit Card" },
+      "set": { "cashback_base": 1 },
+      "reason": "Depuis le 04/08/2026, base UE non-VIP ramenee a 1% fixe (sans plafond mensuel); l'echelle 2-10% est desormais reservee aux paliers VIP. Le site annonce encore 2% de base.",
+      "source": "prnewswire (Bybit Card & Pay, 08/2026)",
+      "confidence": "medium"
+    },
+    {
+      "card": "Revolut Metal",
+      "match": { "name": "Revolut Metal" },
+      "set": { "annual_fees": 167.88 },
+      "reason": "Frais de base plan Metal UE = 13,99 EUR/mois (167,88 EUR/an); le site affiche 203,88 EUR (et se contredit lui-meme: FAQ = 13,99/mois). Variable par marche (DE releve a 15,99/mois = 191,88/an ddepuis 05/2026) - a confirmer sur la fiche live par marche.",
+      "source": "revolut.com (pages pricing/metal-fees)",
+      "confidence": "medium"
+    },
+    {
+      "card": "Nexo Card",
+      "match": { "name": "Nexo Card" },
+      "set": { "market_restrictions": { "en": "Pas de cashback au Royaume-Uni (phase-out reglementaire); carte toujours utilisable pour payer." } },
+      "reason": "Le cashback Nexo n'est plus credite aux titulaires UK (retrait reglementaire), alors que le site liste UK comme marche plein.",
+      "source": "cryptoslate + bleap.finance (Nexo Card Review 2026)",
       "confidence": "medium"
     }
   ]

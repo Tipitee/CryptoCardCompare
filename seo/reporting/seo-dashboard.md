@@ -3,9 +3,9 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 
 ---
 
-## Cette semaine — 2026-09-08
+## Cette semaine — 2026-09-14
 
-> ✅ **Export GSC frais reçu (08/09, « Last 3 months »)** — blocage data levé après 3 sem.
+> ♻️ **Run 14/09 sur le MÊME export que le 08/09** (gsc-data non rechargé depuis, 6 j < seuil 7 j mais figé) → aucun mouvement W/W nouveau à lire. Sync chat : depuis le dernier run, ajout du **marché Portugal (pt)** — `llms.txt` + `llms-full.txt` + top-up `cards.markets` Supabase (79/80 cartes déjà taguées), dates localisées + page 404 PT. Rien de neuf côté outreach (toujours à lancer).
 > 🔴 **CRASH confirmé, non résorbé.** Trend quotidien (Chart.csv) : pic W30 (26/07–01/08) = 2 892 imp/sem → chute W31 (387) → 147 → 122 → 94 → 72 → **95** (W36). **−94 % imp / −100 % clics sur 28 j vs 28 j précédents**, 0 clic depuis 4 sem. Cassure = migration Cloudflare (~28/07) + déploiements août. **L'hypothèse « reprise 3–6 sem. » du 24/08 est INFIRMÉE** (6 sem., aucune remontée) → cause structurelle, pas un lag de recrawl. Détail : `reporting/weekly-2026-09-08.md`.
 
 | Métrique | Cette semaine (09-08) | Réf. (08-18) | Tendance | Source |
@@ -25,7 +25,9 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine (maj 2026-09-08)
+## Focus de la semaine (maj 2026-09-14 — confirmé par A12 Weekly Digest)
+> A12 14/09 : tech 🟢 6/6, files decay/striking/gap sans candidat urgent, export GSC figé (= 08/09) → priorité inchangée = **autorité/outreach**. Digest : `reporting/digest-2026-09-14.md`.
+
 **Action (< 4 h) : lancer l'outreach. J0 = envoyer l'exclu à The Big Whale (Grégory Raymond) + Journal du Coin, puis s'inscrire à Source of Sources et Qwoted, et logger chaque envoi dans `seo/backlinks-outreach.xlsx`.** Emails prêts dans `seo/EMAILS-OUTREACH.md`, cibles et accroches dans `seo/PITCH-PRESSE.md`, stratégie dans `seo/PLAN-BACKLINKS.md`. La page-étude (asset) a été renforcée le 08/09 : schema FAQPage + bloc « reprise presse » sur les 5 langues. _Verdict établi le 08/09 : test sur 4 money pages (pas de `noindex`, HTTP 200, 73 454 car. prérendus, indexées OK dans GSC) → cause technique écartée. Le crash = fin de l'échantillonnage « honeymoon » (site neuf, interrompu par la migration ~28/07) + domaines référents ≈ 0 → pages saines mais ran. pos 55–95, jamais affichées. Aucun gain on-page à portée. Seul levier : l'autorité. Brief complet : `reporting/handoff-outreach-2026-09-08.md`. À surveiller : bleap.finance top 5 / 6 marchés (SERP 03/09) ; mention IA FR « cashback sans staking » perdue._
 
 <details><summary>Focus précédent (2026-09-07)</summary>

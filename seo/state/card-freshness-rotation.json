@@ -1,10 +1,10 @@
 {
   "_comment": "Rotation A13. lastChecked=null => priorite. L'agent prend les 8 plus anciens/nulls chaque semaine et met a jour la date.",
   "cards": [
-    { "card": "Bybit Card", "issuer": "Bybit", "lastChecked": "2026-08-22" },
-    { "card": "Crypto.com Visa", "issuer": "Crypto.com", "lastChecked": "2026-08-22" },
-    { "card": "Binance Card", "issuer": "Binance", "lastChecked": "2026-08-22" },
-    { "card": "Nexo Card", "issuer": "Nexo", "lastChecked": "2026-08-22" },
+    { "card": "Bybit Card", "issuer": "Bybit", "lastChecked": "2026-09-12" },
+    { "card": "Crypto.com Visa", "issuer": "Crypto.com", "lastChecked": "2026-09-12" },
+    { "card": "Binance Card", "issuer": "Binance", "lastChecked": "2026-09-12" },
+    { "card": "Nexo Card", "issuer": "Nexo", "lastChecked": "2026-09-12" },
     { "card": "Bit2Me Card", "issuer": "Bit2Me", "lastChecked": "2026-08-22" },
     { "card": "Coinbase Card", "issuer": "Coinbase", "lastChecked": "2026-08-22" },
     { "card": "Gnosis Pay", "issuer": "Gnosis", "lastChecked": "2026-08-22" },
@@ -17,9 +17,9 @@
     { "card": "Bleap Card", "issuer": "Bleap", "lastChecked": "2026-09-05" },
     { "card": "KuCoin Card", "issuer": "KuCoin", "lastChecked": "2026-09-05" },
     { "card": "Plutus Card", "issuer": "Plutus", "lastChecked": "2026-09-05" },
-    { "card": "Ether.Fi Cash", "issuer": "Ether.Fi", "lastChecked": "2026-08-18" },
-    { "card": "Revolut Metal", "issuer": "Revolut", "lastChecked": "2026-08-18" },
-    { "card": "Young Platform Card", "issuer": "Young Platform", "lastChecked": "2026-08-18" },
-    { "card": "Trade Republic Card", "issuer": "Trade Republic", "lastChecked": "2026-08-18" }
+    { "card": "Ether.Fi Cash", "issuer": "Ether.Fi", "lastChecked": "2026-09-12" },
+    { "card": "Revolut Metal", "issuer": "Revolut", "lastChecked": "2026-09-12" },
+    { "card": "Young Platform Card", "issuer": "Young Platform", "lastChecked": "2026-09-12" },
+    { "card": "Trade Republic Card", "issuer": "Trade Republic", "lastChecked": "2026-09-12" }
   ]
 }

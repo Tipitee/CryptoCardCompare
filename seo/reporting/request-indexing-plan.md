@@ -41,6 +41,39 @@ Priorité forte, position 12 à 16, grosse réserve d'impressions :
 - https://topcryptocards.eu/fr/cartes/binance-standard    (pos 32,7 · 61)
 - https://topcryptocards.eu/en/cards/binance-standard     (pos 43,2 · 164)
 
+
+
+https://topcryptocards.eu/fr/carte-crypto-credit
+https://topcryptocards.eu/en/crypto-credit-card
+https://topcryptocards.eu/en/bitcoin-card
+https://topcryptocards.eu/es/tarjeta-bitcoin
+https://topcryptocards.eu/it/carta-bitcoin
+https://topcryptocards.eu/de/bitcoin-karte
+https://topcryptocards.eu/be/carte-bitcoin
+https://topcryptocards.eu/at/bitcoin-karte
+https://topcryptocards.eu/fr/carte-crypto-credit
+https://topcryptocards.eu/en/crypto-credit-card
+https://topcryptocards.eu/es/tarjeta-crypto-credito
+https://topcryptocards.eu/it/carta-crypto-credito
+https://topcryptocards.eu/de/krypto-kreditkarte
+
+
+
+https://topcryptocards.eu/be/carte-crypto-credit
+https://topcryptocards.eu/at/krypto-kreditkarte
+
+https://topcryptocards.eu/fr/cryptos/btc
+https://topcryptocards.eu/en/cryptos/btc
+https://topcryptocards.eu/es/cryptos/btc
+https://topcryptocards.eu/it/cryptos/btc
+https://topcryptocards.eu/de/cryptos/btc
+
+
+
+
+
+
+
 ## Suivi Search Console, chaque semaine
 
 1. Performance → filtrer sur ces URLs, surveiller la position moyenne et les clics.

@@ -477,3 +477,66 @@ Sources: buyer-queries.csv (25 q), sitemaps thematic/pages/blog/reviews (581 pos
 - **Localisation** : EN/UK uniquement (HMRC, £, CGT, annual exempt amount). Ne PAS traduire ; les équivalents DE/AT/ES/IT/BE sont couverts par le gabarit du brief 2.
 
 **→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/en/crypto-cards-uk`.** Intention revenu la plus forte du run (page-pays adjacente aux money pages EN, le marché UK n'a AUCUNE page-pays contrairement à FR/DE/ES/IT), gap confirmé contre les sitemaps, et 2× meilleur immédiat via filtre disponibilité réelle UK + statut FCA + frais GBP/FX que les listes « Europe » génériques n'offrent pas.
+
+---
+
+## Run 2026-09-11 (A8 content-gap) — 3 nouveaux briefs
+
+> Sitemaps : `sitemap-thematic.xml` OK (65 URLs, 10 thèmes indexés). `sitemap-blog.xml` et `sitemap-reviews.xml` BLOQUÉS par provenance web_fetch ce run — couverture reviews/comparaisons reconstruite depuis le code (`cardReviews.ts` = 26 cartes, `comparisonContent.ts`, `THEMATIC_ROUTES` = 18 thèmes routés).
+> **Découverte indexation** : 8 thèmes routés mais ABSENTS du sitemap-thematic (credit, business, bitcoin, travel, rewards, belgium, austria, iban) + variantes no-kyc en/at/es/it. Pages existantes non indexées → à router vers A-indexation, PAS de nouvelle page (anti-doublon).
+> **Déjà briefé run précédent (ne pas répéter)** : /en/crypto-cards-uk, /de/krypto-karte-cashback-steuern (+gabarit at/es/it/be), /en/crypto-card-tax-uk. FR-fiscalité = déjà couverte par blog (/fr|en|de/blog taxation-cartes-crypto-france).
+
+### Table (triée par intention revenu)
+| Sujet | Query cible | Marché | Format | Effort | Intention |
+|---|---|---|---|---|---|
+| Meilleur cashback SANS staking | best crypto card cashback and no staking / meilleur cashback sans staking | en, fr | page-classement (money) | M | commercial ★ brief 3 (risque doublon) |
+| Cashback sur abonnements streaming | which crypto card gives cashback on Netflix and Spotify | en, fr | page + tableau | M | commercial ★ brief 1 (n°1) |
+| Carte crypto voyage | best crypto card for travel in Europe | en, all | thème routé, hors sitemap | S–M | commercial ★ brief 2 |
+| Carte crypto sans KYC (EN/ES/IT/AT) | crypto card without KYC | en, es, it, at | routé, hors sitemap | S | commercial — indexation |
+| Page-pays Belgique | carte crypto disponible en Belgique ? | be | routé, hors sitemap | S | commercial — indexation |
+| Page-pays Autriche | Krypto-Karte in Österreich ? | at | routé, hors sitemap | S | commercial — indexation |
+| Page-pays UK | which crypto cards work in the UK ? | en | nouvelle page | M | commercial — déjà briefé |
+| Fiscalité cashback DE/AT/ES/IT/BE | muss ich Krypto-Cashback versteuern ? | de,at,es,it,be | guide | L | info — déjà briefé |
+| Fiscalité UK dépense/cashback | do I pay tax spending crypto in the UK ? | en | guide | M | info — déjà briefé |
+| Fiscalité cashback France | cashbacks crypto imposables en France ? | fr | blog | — | info — COUVERT (blog) |
+| Combos cashback×sans-staking par marque | — | — | — | — | ingagnable (contenu mince) |
+
+---
+
+### BRIEF 1 — `/en/crypto-card-streaming-cashback` (+ `/fr/carte-crypto-cashback-abonnements`) — NOUVELLE
+- **Query cible / buyer query** : "Which crypto card gives cashback on Netflix and Spotify?" (en, commercial) ; fr : "carte crypto cashback Netflix Spotify / abonnements".
+- **Anti-doublon** : le thème `rewards` (crypto-card-rewards) et `cashback` existent mais sont génériques (et rewards est hors sitemap). AUCUNE page ne cible le remboursement d'abonnements (streaming) par service. Intention SERP distincte (rebate par abonnement ≠ cashback plat). Gap réel.
+- **Intention** : commerciale/transactionnelle — l'utilisateur cherche une carte précise à souscrire → clics affiliés directs.
+- **2× meilleur que le gagnant actuel** : aucun concurrent (ni CryptoCardIndex, ni Koinly) ne mappe carte × service (Netflix, Spotify, Amazon Prime, Disney+) × taux de rebate × palier/staking requis × marché. Nous : tableau filtrable et daté depuis Supabase. Winnable.
+- **Outline (H2 = questions)** : Which crypto cards refund Netflix? · Which give a Spotify rebate? · Do you need to stake (or hit a tier) to unlock streaming rebates? · Any cards covering Amazon Prime / Disney+? · Streaming rebate vs flat cashback — which saves more per year? · Which of these cards are available in your country?
+- **Réponse clé (~100 mots)** : A handful of crypto cards reimburse popular subscriptions instead of paying flat cashback — historically Crypto.com refunded Netflix, Spotify and Amazon Prime for users on staked tiers, while most no-stake cards pay ordinary cashback you can spend on anything. Whether a streaming rebate beats flat cashback depends on how much you subscribe to and whether you're willing to lock tokens for a tier. Rebate programmes change often and vary by country, so always confirm the current 2026 terms and your market's eligibility before choosing. Below we map each card to the services it refunds, the rebate rate, and any staking or tier requirement.
+- **FAQ (3–5)** : Does the Crypto.com card still refund Netflix in 2026? · Do I have to stake to get a Spotify rebate? · Is a streaming rebate better than flat cashback? · Are streaming rebates taxable? (→ lien fiscalité) · Which no-stake cards give the best everyday cashback instead?
+- **Liens internes (≥1 money page)** : → `/en/crypto-card-cashback` (money), `/en/best-crypto-card` (money), `/en/crypto-card-no-staking`, `/en/cards/crypto-com-card` (review/affilié).
+- **Données Supabase (à insérer, 2026-09-11, à vérifier dans `cards`/extras)** : par carte → rebate streaming O/N, services couverts, taux %, palier/staking requis O/N, dispo par marché. Ne publier aucun taux/service non vérifié — les programmes de rebate ont beaucoup changé ; confirmer le statut 2026.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : l'éligibilité au rebate est propre au marché (offres coupées/modifiées selon région et palier — vérifier fr/be, de/at, es, it, en=UK séparément) ; contexte de prix des abonnements local. Ne pas recopier la liste EN sur les autres marchés.
+
+### BRIEF 2 — `/en/crypto-card-travel` (thème routé, à indexer + étoffer) — gabarit fr/be/de/at/es/it
+- **Query cible / buyer query** : "Which crypto card is best for travel in Europe?" (en, commercial).
+- **Anti-doublon** : le thème `travel` EXISTE dans le routing (THEMATIC_ROUTES.travel → crypto-card-travel / carte-crypto-voyage / krypto-karte-reise …) mais est ABSENT de sitemap-thematic.xml → non prérendu/indexé. Donc PAS une nouvelle URL : brief = (a) faire entrer la page dans prerender + sitemap, (b) étoffer le contenu pour battre le guide voyage de CryptoCardIndex.
+- **Intention** : commerciale — comparaison avant souscription pour voyages → clics affiliés.
+- **2× meilleur que le gagnant (CryptoCardIndex, guide voyage 2026 : allocations DAB, markups FX, cartes utilisables à l'étranger)** : eux = prose statique. Nous = tableau live Supabase, trié/filtrable, daté : par carte → frais FX, franchise de retrait DAB gratuite, frais DAB au-delà, markup week-end, frais de transaction étrangère, dispo hors UE. Méthodo transparente.
+- **Outline (H2 = questions)** : Which crypto cards have the lowest FX fees abroad? · How much ATM withdrawal is free each month per card? · Do crypto cards add a weekend/FX markup? · Which cards work outside Europe? · Virtual or physical card for travel? · Best travel crypto card by market?
+- **Réponse clé (~100 mots)** : The best travel crypto card is the one that minimises the three costs that bite abroad: foreign-exchange markup, ATM withdrawal fees once your free monthly allowance runs out, and weekend FX surcharges. Cards differ widely — some waive FX fees but cap free ATM withdrawals low, others do the reverse — so the right pick depends on whether you mostly tap-to-pay or withdraw cash. Availability outside Europe also varies by issuer. The table below ranks cards available in your market by FX fee, free ATM allowance, out-of-allowance ATM fee and weekend markup, with figures dated and sourced, so you can match a card to how you actually travel.
+- **FAQ (3–5)** : Which crypto card has no foreign transaction fees? · How much can I withdraw at an ATM for free? · Do crypto cards work outside Europe? · Is a virtual card enough for travel? · Are there weekend surcharges on card spending?
+- **Liens internes (≥1 money page)** : → `/en/best-crypto-card` (money), `/en/crypto-card-cashback` (money), `/en/virtual-crypto-card`, reviews des cartes citées.
+- **Données Supabase (2026-09-11, à vérifier)** : par carte → frais FX %, franchise DAB gratuite, frais DAB, markup week-end, dispo hors UE, dispo par marché. Aucun chiffre non vérifié.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : slug voyage existe déjà dans les 7 langues ; franchises DAB/FX souvent globales mais dispo par pays et contexte de frais locaux diffèrent — vérifier par marché (fr/be, de/at, es, it, en=UK). Étoffer chaque variante, ne pas dupliquer la version EN.
+
+### BRIEF 3 — `/en/best-cashback-crypto-card-no-staking` (+ `/fr/meilleure-carte-crypto-cashback-sans-staking`) — NOUVELLE (risque doublon, avec garde-fou)
+- **Query cible / buyer query** : "What's the best crypto debit card with cashback and no staking?" (en) + "Quelle carte crypto a le meilleur cashback sans staking ?" (fr) — les DEUX explicites dans buyer-queries.csv, commercial.
+- **Anti-doublon — RISQUE À GÉRER** : `/en/crypto-card-cashback` ET `/en/crypto-card-no-staking` existent déjà. Cette page = l'INTERSECTION. Elle n'est winnable QUE sous forme de CLASSEMENT trié (top cartes par taux de cashback PARMI les cartes sans staking), intention SERP distincte des deux pages parentes. Si elle devient une redite en prose → contenu mince → NE PAS PUBLIER. Garde-fou explicite.
+- **Intention** : commerciale forte (cœur money « meilleure carte cashback ») → clics affiliés.
+- **2× meilleur que le gagnant** : ni la page cashback ni la page no-staking ne classent le meilleur cashback spécifiquement chez les cartes sans staking ; un leaderboard trié « cashback % (aucun staking requis) » avec colonne staking explicite répond exactement à la query.
+- **Outline (H2 = questions)** : What is the best cashback crypto card with no staking? · How much cashback can you earn without staking? · Nexo vs Bybit vs others — no-staking cashback compared · Why do some cards require staking to unlock cashback? · Is no-staking cashback paid in stablecoin or a volatile token? · Best no-staking cashback card by market?
+- **Réponse clé (~100 mots)** : If you don't want to lock up capital, the best crypto cards pay cashback with no staking requirement at all. The Nexo Card, for example, pays up to 2% in BTC with nothing to stake, while some rivals reach higher headline rates only through spending-volume tiers rather than staking. The trade-off is usually predictability: no-stake cashback tends to be flat and reliable, whereas staked or tiered programmes advertise bigger numbers with conditions. It also matters whether the reward lands in a stablecoin or a volatile token you'd later have to sell. The ranked table below lists no-staking cards by verified cashback rate, reward token and market availability.
+- **FAQ (3–5)** : Which crypto card has the best cashback without staking? · Does the Nexo Card require staking? · Is tiered cashback the same as staking? · Is no-staking cashback paid in stablecoin? · Which no-staking card is available in my country?
+- **Liens internes (≥1 money page)** : → `/en/crypto-card-cashback` (money), `/en/best-crypto-card` (money), `/en/crypto-card-no-staking`, `/en/cards/nexo-card` (review/affilié), comparaison `bybit-card-vs-nexo-card`.
+- **Données Supabase (2026-09-11, à vérifier)** : `SELECT` cartes WHERE staking_required = false ORDER BY cashback_rate DESC → colonnes carte | cashback % | token de récompense | staking N | frais annuels | dispo marché. Uniquement des taux vérifiés et datés.
+- **Localisation — ADAPTER, jamais traduire (5 langues)** : taux de cashback et disponibilité diffèrent par marché (fr/be, de/at, es, it, en=UK) ; vérifier quelles cartes sans staking sont dispo dans chaque pays. Pas une traduction.
+
+**→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/en/crypto-card-streaming-cashback`.** C'est le gap le plus propre du run : zéro risque de cannibalisation (contrairement au brief 3), non couvert par les concurrents (CryptoCardIndex/Koinly), intention commerciale/transactionnelle directe, et 2× meilleur immédiat via un tableau carte × abonnement × rebate × staking × marché que personne n'offre. La page-pays UK (brief n°1 du run précédent) reste en file — celui-ci ne la remplace pas.
