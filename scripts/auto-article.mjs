@@ -107,14 +107,20 @@ RÈGLES OBLIGATOIRES (elles seront vérifiées automatiquement, un échec = reje
 Rends UNIQUEMENT le corps markdown de l'article (commence par un # H1). Pas de préambule.`;
 }
 
-async function meta(frBody, topic) {
-  const raw = await claude(`À partir de cet article FR, renvoie UNIQUEMENT un JSON (sans wrapper) :
-{"slug":"slug-url-fr-40-70-car-avec-mot-cle","meta_title":"55-65 car avec mot-clé","meta_description":"145-160 car, accrocheur","excerpt":"résumé 2-3 phrases","tags":["3-5 tags"]}
+async function meta(body, topic, lang = 'fr') {
+  const m = MARKETS[lang] || MARKETS.fr;
+  const raw = await claude(`À partir de cet article, renvoie UNIQUEMENT un JSON (sans wrapper).
+IMPORTANT : meta_title, meta_description, excerpt ET tags doivent être rédigés EN ${m.name} (langue du marché ${m.note}). Les tags aussi doivent être localisés en ${m.name}. Garde les noms de marques/produits/monnaies inchangés (Nexo, Binance, Bitcoin, MiCA, SEPA, Visa…). Le slug reste en minuscules ASCII.
+{"slug":"slug-url-40-70-car-avec-mot-cle","meta_title":"55-65 car avec mot-clé","meta_description":"145-160 car, accrocheur","excerpt":"résumé 2-3 phrases","tags":["3-5 tags localisés"]}
 Mot-clé : ${topic.keyword}
 Article :
-${frBody.slice(0, 1500)}`, 1024);
+${body.slice(0, 1500)}`, 1024);
   return JSON.parse(stripJson(raw));
 }
+
+// Le titre de l'article = le premier # H1 du corps (le markdown retire ce H1 du
+// contenu rendu, donc pas de doublon). Fallbacks : meta_title sans suffixe, sujet.
+const firstH1 = (md) => ((md || '').match(/^\s*#\s+(.+?)\s*$/m)?.[1] || '').trim();
 
 function locPrompt(frBody, lang) {
   const m = MARKETS[lang];
@@ -150,7 +156,7 @@ async function runNew() {
   const g = gate(frBody);
   if (!g.pass) { console.log('❌ FR rejeté par le quality gate :\n' + g.report); return; }
   console.log('✅ FR passe le gate');
-  const md = await meta(frBody, topic);
+  const md = await meta(frBody, topic, 'fr');
   const topicKey = `blog-auto-${md.slug}`.slice(0, 60);
 
   const variants = [{ lang: 'fr', body: frBody, ...md }];
@@ -162,7 +168,7 @@ async function runNew() {
     const lg = gate(body);
     if (!lg.pass) { console.log(`⚠️ ${lang} rejeté, ignoré`); continue; }
     await sleep(600);
-    const lmeta = await meta(body, topic);
+    const lmeta = await meta(body, topic, lang);
     variants.push({ lang, body, ...lmeta });
     bodies[lang] = body;
     console.log(`✅ ${lang} adapté + gate OK`);
@@ -175,7 +181,7 @@ async function runNew() {
     const lg = gate(body);
     if (!lg.pass) { console.log(`⚠️ ${lang} rejeté, ignoré`); continue; }
     await sleep(600);
-    const lmeta = await meta(body, topic);
+    const lmeta = await meta(body, topic, lang);
     variants.push({ lang, body, ...lmeta });
     console.log(`✅ ${lang} adapté + gate OK`);
   }
@@ -188,7 +194,9 @@ async function runNew() {
 
   for (const v of variants) {
     const row = {
-      lang: v.lang, slug: v.slug, title: v.title, excerpt: v.excerpt,
+      lang: v.lang, slug: v.slug,
+      title: v.title || firstH1(v.body) || (v.meta_title || '').replace(/\s*\|.*$/, '').trim() || topic.title,
+      excerpt: v.excerpt,
       content: v.body, meta_title: v.meta_title, meta_description: v.meta_description,
       topic_key: topicKey, category: topic.category, tags: v.tags || [],
       published: false, // NEUF = brouillon (mode hybride)
