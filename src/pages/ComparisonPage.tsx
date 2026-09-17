@@ -19,6 +19,7 @@ import type { CryptoCard } from '../types/card';
 import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
+import MarketInsight from '../components/MarketInsight';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
@@ -773,6 +774,11 @@ export default function ComparisonPage() {
           </div>
         </section>
       )}
+
+      {/* Market-specific info (regulator, currency, local crypto tax) */}
+      <div className="mt-10">
+        <MarketInsight lang={lang} />
+      </div>
 
       {/* CTA strip */}
       <div className="mt-12 card-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">

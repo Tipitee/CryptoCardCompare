@@ -7,6 +7,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
+import MarketInsight from '../components/MarketInsight';
 import { getAffiliateLink } from '../utils/affiliateLink';
 import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
@@ -730,6 +731,9 @@ export default function ReviewPage() {
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>
+
+            {/* Market-specific info (regulator, currency, local crypto tax) */}
+            <MarketInsight lang={lang} subject={review.cardName} />
 
             {/* ── Thematic pills ─────────────────────────────────────────── */}
             {(() => {

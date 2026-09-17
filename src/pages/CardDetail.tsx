@@ -19,6 +19,7 @@ import { useAppStore } from '../store/useAppStore';
 import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import MarketInsight from '../components/MarketInsight';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
@@ -672,6 +673,9 @@ export default function CardDetail() {
                 <Pill ok={card.stakingRequired === 0} label={t('common:filter_no_staking')} />
               </div>
             </section>
+
+            {/* Market-specific info (regulator, currency, local crypto tax) */}
+            <MarketInsight lang={lang} subject={card.name} />
 
             {/* Extras */}
             {card.extras.filter((e) => e !== 'virtual_only').length > 0 && (
