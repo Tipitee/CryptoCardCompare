@@ -32,3 +32,6 @@ scripts/gsc-service-account.json
 # (auto-article, decay-tracker, etc.) → ils DOIVENT rester versionnés.
 seo/reporting/weekly-*
 vite.config.ts.timestamp-*.mjs
+
+.fuse_hidden*
+scripts/out/
