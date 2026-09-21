@@ -145,7 +145,14 @@ async function renderPath(page, path) {
   const load = async (waitMs) => {
     await page.goto(`http://localhost:${PORT}${path}`, { waitUntil: 'networkidle0', timeout: 45000 });
     await page.waitForFunction(
-      () => document.querySelector('meta[property="og:title"]') && document.querySelector('h1'),
+      // React a rendu quand un <h1> est présent ET, soit useSeoMeta a injecté
+      // og:title (pages indexables), soit la page est explicitement noindex
+      // (mentions légales : pas de useSeoMeta, donc pas d'og:title). Sans ce 2e
+      // cas, les pages noindex timeout à chaque build et ne sont jamais écrites.
+      () => document.querySelector('h1') && (
+        document.querySelector('meta[property="og:title"]') ||
+        document.querySelector('meta[data-legal-noindex]')
+      ),
       { timeout: waitMs }
     ).catch(() => {});
   };
