@@ -20,6 +20,11 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import MarketInsight from '../components/MarketInsight';
+import comparisonAllowlist from '../../scripts/comparison-allowlist.json';
+
+// Ne lier que des comparatifs prérendus (allowlist) : lier une paire hors allowlist
+// pointe vers une page non prérendue = 404 (Google les recrawle en boucle).
+const ALLOWED_PAIRS = new Set(comparisonAllowlist as string[]);
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
 import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
@@ -909,7 +914,7 @@ export default function CardDetail() {
               const cardId = card.id;
               const pairs = EDITORIAL_PAIRS.filter(pair => {
                 const [a, b] = pair.split('-vs-');
-                return a === cardId || b === cardId;
+                return (a === cardId || b === cardId) && ALLOWED_PAIRS.has(pair);
               }).slice(0, 4);
               if (pairs.length === 0) return null;
               const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;

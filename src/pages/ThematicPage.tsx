@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import comparisonAllowlist from '../../scripts/comparison-allowlist.json';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
@@ -2174,7 +2175,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
       )}
 
       {/* Popular comparisons */}
-      {(THEME_COMPARISONS[theme] || []).length > 0 && (() => {
+      {(THEME_COMPARISONS[theme] || []).filter((s) => (comparisonAllowlist as string[]).includes(s)).length > 0 && (() => {
         const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
         const compSeg = rt.comparisons ?? 'compare';
         return (
@@ -2183,7 +2184,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
               {POPULAR_COMPARISONS_TITLE[cl] || POPULAR_COMPARISONS_TITLE['en']}
             </h2>
             <div className="flex flex-wrap gap-2">
-              {(THEME_COMPARISONS[theme] || []).map((slug) => (
+              {(THEME_COMPARISONS[theme] || []).filter((slug) => (comparisonAllowlist as string[]).includes(slug)).map((slug) => (
                 <Link
                   key={slug}
                   to={`/${lang}/${compSeg}/${slug}`}

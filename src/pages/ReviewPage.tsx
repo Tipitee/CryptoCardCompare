@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, ChevronRight, XCircle, Star, ExternalLink, Shield, Zap, CreditCard, HeadphonesIcon, DollarSign } from 'lucide-react';
+import comparisonAllowlist from '../../scripts/comparison-allowlist.json';
 import { getReviewBySlug, getRelatedReviews } from '../data/cardReviews';
 import { getReviewI18n } from '../data/cardReviewsI18n';
 import { useLanguage } from '../hooks/useLanguage';
@@ -851,7 +852,7 @@ export default function ReviewPage() {
                 const cardId = slug ?? '';
                 const pairs = EDITORIAL_PAIRS_R.filter(pair => {
                   const [a, b] = pair.split('-vs-');
-                  return a === cardId || b === cardId;
+                  return (a === cardId || b === cardId) && (comparisonAllowlist as string[]).includes(pair);
                 }).slice(0, 4);
                 if (pairs.length === 0) return null;
                 const rt = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS] ?? ROUTE_TRANSLATIONS.en;
