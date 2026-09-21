@@ -15,20 +15,12 @@
 /it/blog-admin  /index.html  200
 /en/blog-admin  /index.html  200
 
-# ── Legal / utility pages (not prerendered, SPA-rendered) ─────────────────
-/impressum              /index.html  200
-/datenschutz            /index.html  200
-/privacy                /index.html  200
-/affiliate-disclosure   /index.html  200
-/risk-summary           /index.html  200
-# Lang-prefixed legal pages (LegalPage.tsx — mentions légales + privacy × 7 langs)
-/fr/mentions-legales    /index.html  200
-/be/mentions-legales    /index.html  200
-/de/rechtliches         /index.html  200
-/at/rechtliches         /index.html  200
-/es/aviso-legal         /index.html  200
-/it/avviso-legale       /index.html  200
-/en/legal-notice        /index.html  200
+# ── Legal / utility pages ─────────────────────────────────────────────────
+# PAS de règle passthrough ici : ces pages sont prérendues en fichiers physiques
+# (voir EXTRA_ROUTES dans prerender.mjs). Sur Cloudflare Pages, une règle
+# `/xxx /index.html 200` est évaluée AVANT le fichier statique et l'écraserait
+# (le service de /index.html est normalisé en "/" → règle `/ -> /fr`). On laisse
+# donc Cloudflare servir directement /impressum.html, /fr/mentions-legales.html, etc.
 
 # ── Favorites (user-specific, not indexed/prerendered) ────────────────────
 /fr/favoris     /index.html  200
