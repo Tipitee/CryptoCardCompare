@@ -1,8 +1,8 @@
-import React from 'react';
 import { displayLang } from '../i18n/types';
 import { Link } from 'react-router-dom';
 import { Coins, AlertTriangle } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
+import { useSeoMeta } from '../hooks/useSeoMeta';
 
 /* ── Translations ─────────────────────────────────────────────────────────── */
 const CONTENT: Record<string, {
@@ -201,14 +201,7 @@ export default function RiskSummary() {
   const dl = displayLang(lang); // be→fr, at→de for UI text
   const c = CONTENT[dl] ?? CONTENT.en;
 
-  React.useEffect(() => {
-    const el = document.createElement('meta');
-    el.name = 'robots';
-    el.content = 'noindex, nofollow';
-    el.setAttribute('data-legal-noindex', 'true');
-    document.head.appendChild(el);
-    return () => { document.querySelector('meta[data-legal-noindex]')?.remove(); };
-  }, []);
+  useSeoMeta({ title: c.title, description: c.warningText, noindex: true });
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">

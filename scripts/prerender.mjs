@@ -259,17 +259,6 @@ try {
 await browser.close();
 server.close();
 
-// ── app.html : copie du shell SPA pour les réécritures _redirects ──────────
-// Les règles passthrough (/impressum, /favoris, compare non-allowlistés…)
-// réécrivent vers /app.html (200), PAS /index.html. Servir /index.html est
-// traité comme la racine "/" par la Pages Function (functions/index.js) qui
-// redirige alors vers /{lang}. /app.html n'est pas la racine → aucune
-// redirection : le shell SPA est servi et la page se rend côté client.
-try {
-  copyFileSync(join(DIST, 'index.html'), join(DIST, 'app.html'));
-  console.log('✓ dist/app.html written (SPA shell for _redirects rewrites)');
-} catch (e) { console.error('app.html copy failed:', e.message); }
-
 // public/_redirects already ships with the real-404 catch-all and all
 // required SPA rules — vite build copies it to dist/_redirects automatically.
 // No dynamic overwrite needed here.
