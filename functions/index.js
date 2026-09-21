@@ -1,33 +1,20 @@
 /**
- * Cloudflare Pages Function — redirection serveur de la racine "/".
- * Sur Cloudflare Pages, le fichier statique /index.html est servi AVANT les
- * règles de _redirects. Une Function, elle, s'exécute avant les assets : elle
- * garantit un vrai 302 côté serveur (crawler-safe, sans exécution de JS),
- * avec détection de langue via l'en-tête Accept-Language.
+ * Cloudflare Pages Function — pass-through (désactivée).
  *
- * x-default reste /fr : tout ce qui n'est pas de/es/it/en part sur /fr.
+ * Historique : cette Function redirigeait "/" vers /{lang} selon Accept-Language.
+ * Problème : avec `_routes.json` incluant "/", CHAQUE service du shell SPA
+ * (réécritures `_redirects` /xxx -> /index.html 200 pour les pages non
+ * prérendues : mentions légales, favoris, comparatifs non-allowlistés…) était
+ * routé par cette Function, qui les redirigeait alors toutes vers /{lang}.
+ * Résultat : toutes les pages servies en SPA renvoyaient vers /en au lieu de
+ * s'afficher. Impossible de distinguer un vrai hit racine d'un service de shell.
  *
- * IMPORTANT — ne rediriger QUE la racine exacte "/".
- * Les pages non prérendues (mentions légales, favoris, blog-admin…) sont servies
- * via une réécriture `_redirects` vers /index.html (statut 200). Cette réécriture
- * fait servir le document racine, ce qui redéclenche cette Function : sans le
- * garde ci-dessous, toutes ces pages étaient redirigées à tort vers /{lang}.
- * On passe donc la main (context.next) pour tout chemin autre que "/".
+ * Solution : la Function ne fait plus AUCUNE redirection (context.next()).
+ * La redirection de la racine "/" est assurée par `_redirects` (/ -> /fr 302,
+ * crawler-safe) et, en repli, par le composant RootRedirect du SPA
+ * (redirection vers la langue détectée). Le shell SPA est donc servi tel quel
+ * pour toutes les routes non prérendues, qui s'affichent enfin correctement.
  */
-export function onRequest(context) {
-  const url = new URL(context.request.url);
-
-  if (url.pathname !== '/') {
-    return context.next();
-  }
-
-  const al = (context.request.headers.get('accept-language') || '').toLowerCase();
-  const lang =
-    al.startsWith('de') ? 'de' :
-    al.startsWith('es') ? 'es' :
-    al.startsWith('it') ? 'it' :
-    al.startsWith('en') ? 'en' :
-    'fr';
-
-  return Response.redirect(`${url.origin}/${lang}`, 302);
+export async function onRequest(context) {
+  return context.next();
 }

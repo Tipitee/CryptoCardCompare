@@ -8,66 +8,66 @@
 /  /fr  302
 
 # ── Admin/SPA-only routes (not prerendered, not in sitemaps) ──────────────
-/admin/*        /app.html  200
-/fr/blog-admin  /app.html  200
-/de/blog-admin  /app.html  200
-/es/blog-admin  /app.html  200
-/it/blog-admin  /app.html  200
-/en/blog-admin  /app.html  200
+/admin/*        /index.html  200
+/fr/blog-admin  /index.html  200
+/de/blog-admin  /index.html  200
+/es/blog-admin  /index.html  200
+/it/blog-admin  /index.html  200
+/en/blog-admin  /index.html  200
 
 # ── Legal / utility pages (not prerendered, SPA-rendered) ─────────────────
-/impressum              /app.html  200
-/datenschutz            /app.html  200
-/privacy                /app.html  200
-/affiliate-disclosure   /app.html  200
-/risk-summary           /app.html  200
+/impressum              /index.html  200
+/datenschutz            /index.html  200
+/privacy                /index.html  200
+/affiliate-disclosure   /index.html  200
+/risk-summary           /index.html  200
 # Lang-prefixed legal pages (LegalPage.tsx — mentions légales + privacy × 7 langs)
-/fr/mentions-legales    /app.html  200
-/be/mentions-legales    /app.html  200
-/de/rechtliches         /app.html  200
-/at/rechtliches         /app.html  200
-/es/aviso-legal         /app.html  200
-/it/avviso-legale       /app.html  200
-/en/legal-notice        /app.html  200
+/fr/mentions-legales    /index.html  200
+/be/mentions-legales    /index.html  200
+/de/rechtliches         /index.html  200
+/at/rechtliches         /index.html  200
+/es/aviso-legal         /index.html  200
+/it/avviso-legale       /index.html  200
+/en/legal-notice        /index.html  200
 
 # ── Favorites (user-specific, not indexed/prerendered) ────────────────────
-/fr/favoris     /app.html  200
-/be/favoris     /app.html  200
-/de/favoriten   /app.html  200
-/at/favoriten   /app.html  200
-/es/favoritos   /app.html  200
-/it/preferiti   /app.html  200
-/en/favorites   /app.html  200
-/pt/favoritos   /app.html  200
+/fr/favoris     /index.html  200
+/be/favoris     /index.html  200
+/de/favoriten   /index.html  200
+/at/favoriten   /index.html  200
+/es/favoritos   /index.html  200
+/it/preferiti   /index.html  200
+/en/favorites   /index.html  200
+/pt/favoritos   /index.html  200
 
 # ── Non-allowlisted A-vs-B compare pages ──────────────────────────────────
 # Valid SPA routes for users, noindex for bots, NOT prerendered at scale.
 # Allowlisted pairs have physical files and are served before these rules.
-/fr/comparer/*     /app.html  200
-/be/comparer/*     /app.html  200
-/de/vergleichen/*  /app.html  200
-/at/vergleichen/*  /app.html  200
-/es/comparar/*     /app.html  200
-/it/confrontare/*  /app.html  200
-/en/compare/*      /app.html  200
-/pt/comparar/*     /app.html  200
+/fr/comparer/*     /index.html  200
+/be/comparer/*     /index.html  200
+/de/vergleichen/*  /index.html  200
+/at/vergleichen/*  /index.html  200
+/es/comparar/*     /index.html  200
+/it/confrontare/*  /index.html  200
+/en/compare/*      /index.html  200
+/pt/comparar/*     /index.html  200
 
 # ── BE/AT blog — no prerendered files, serve SPA (FR/DE content via dbLang) ──
-/be/blog          /app.html  200
-/be/blog/*        /app.html  200
-/at/blog          /app.html  200
-/at/blog/*        /app.html  200
+/be/blog          /index.html  200
+/be/blog/*        /index.html  200
+/at/blog          /index.html  200
+/at/blog/*        /index.html  200
 
 # ── BE/AT routes — SPA safety net for pages not yet prerendered ──────────────
 # Reviews (sitemap-reviews-be/at.xml added → will be prerendered next deploy)
-/be/avis/*           /app.html  200
-/at/bewertungen/*    /app.html  200
+/be/avis/*           /index.html  200
+/at/bewertungen/*    /index.html  200
 # Brands
-/be/marques/*        /app.html  200
-/at/marken/*         /app.html  200
+/be/marques/*        /index.html  200
+/at/marken/*         /index.html  200
 # Cryptos
-/be/cryptos/*        /app.html  200
-/at/cryptos/*        /app.html  200
+/be/cryptos/*        /index.html  200
+/at/cryptos/*        /index.html  200
 
 # ── Dead card URLs (card not in that market after audit) ──────────────────
 /de/karten/ledger-card  /de/marken/ledger  301
