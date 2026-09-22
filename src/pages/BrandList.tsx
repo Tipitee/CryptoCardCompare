@@ -126,7 +126,7 @@ const L: Record<string, {
 };
 
 const MARKET_FLAG: Record<string, string> = {
-  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
+  fr: '🇫🇷', be: '🇧🇪', de: '🇩🇪', at: '🇦🇹', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
 };
 
 export default function BrandList() {

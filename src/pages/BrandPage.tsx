@@ -338,7 +338,7 @@ const BRAND_ARTICLES_READ: Record<string, string> = {
 
 // ── Market flags ──────────────────────────────────────────────────────────────
 const MARKET_FLAG: Record<string, string> = {
-  fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
+  fr: '🇫🇷', be: '🇧🇪', de: '🇩🇪', at: '🇦🇹', es: '🇪🇸', it: '🇮🇹', en: '🇬🇧', pt: '🇵🇹',
 };
 
 // ── Review slugs by brand (FR review slug; ReviewPage handles multi-lang) ─────
