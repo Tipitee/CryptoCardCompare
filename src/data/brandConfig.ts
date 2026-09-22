@@ -37,6 +37,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     brandId: 'bingx',
     displayName: 'BingX',
     website: 'https://bingx.com/en/card/',
+    affiliateLink: 'https://bingxdao.com/partner/TopCryptoCards/',
     twitter: 'https://twitter.com/BingXOfficial',
     founded: 2018,
     hq: 'Singapour',
@@ -865,6 +866,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     brandId: 'okx',
     displayName: 'OKX',
     website: 'https://okx.com',
+    affiliateLink: 'https://my.okx.com/en-eu/join/38568052',
     founded: 2017,
     hq: 'Seychelles',
     seo: {
@@ -2853,6 +2855,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     brandId: 'ether-fi',
     displayName: 'Ether.fi',
     website: 'https://www.ether.fi/cash',
+    affiliateLink: 'https://www.ether.fi/@b1d879e2',
     twitter: 'https://twitter.com/ether_fi',
     founded: 2022,
     hq: 'États-Unis',

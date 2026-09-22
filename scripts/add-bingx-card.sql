@@ -53,8 +53,8 @@ VALUES (
   true,
   -- extras
   ARRAY['apple_pay', 'google_pay', 'virtual_card'],
-  -- affiliate_link (⚠️ remplace par ton lien d'affiliation)
-  'https://bingx.com/en/card/',
+  -- affiliate_link (lien de parrainage TopCryptoCards)
+  'https://bingxdao.com/partner/TopCryptoCards/',
   -- badge
   'Cashback jusqu''à 5 %',
   -- color_primary (bleu BingX)
