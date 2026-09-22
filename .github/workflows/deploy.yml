@@ -60,6 +60,15 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Regenerate brand + review sitemaps (market-aware, from Supabase)
+        run: node scripts/gen-brand-review-sitemaps.mjs
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+      - name: Regenerate compare sitemap (from allowlist)
+        run: node scripts/regen-sitemap-compare.mjs
+
       - name: Refresh sitemap-index lastmod (signal freshness for recrawl)
         run: node scripts/gen-sitemap-index.mjs
 
