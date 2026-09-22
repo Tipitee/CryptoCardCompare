@@ -92,9 +92,9 @@ const COMPARISON_LABEL: Record<string, string> = {
 
 // Editorial comparison pairs per card, used to build sidebar "Compare with..." links
 const EDITORIAL_PAIRS = [
-  'bingx-card-vs-bybit-card',
-  'bingx-card-vs-okx-card',
-  'bingx-card-vs-nexo-card',
+  'bingx-metal-card-vs-bybit-card',
+  'bingx-metal-card-vs-okx-card',
+  'bingx-metal-card-vs-nexo-card',
   'bybit-card-vs-nexo-card',
   'crypto-com-midnight-blue-vs-nexo-card',
   'crypto-com-ruby-steel-vs-nexo-card',
@@ -141,6 +141,7 @@ function pairToLabel(slug: string): string {
 const VALID_MARKET_KEYS = new Set(['fr', 'de', 'es', 'it', 'en', 'uk', 'us']);
 // Map card id prefix → review slug (for "Full review" link)
 const CARD_REVIEW_SLUG: Record<string, string> = {
+  'bingx': 'bingx-metal-card',
   'crypto-com': 'crypto-com-visa-card',
   'nexo': 'nexo-card',
   'binance': 'binance-card',

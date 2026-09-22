@@ -46,7 +46,7 @@ export interface CardReview {
 export const CARD_REVIEWS: CardReview[] = [
   // ─────────────────────────────────────────────── BINGX ───
   {
-    slug: 'bingx-card',
+    slug: 'bingx-metal-card',
     cardName: 'BingX Card',
     issuer: 'BingX',
     network: 'Visa',

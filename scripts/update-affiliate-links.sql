@@ -5,9 +5,9 @@
 -- (Le lien affiliate_link alimente le bouton "Obtenir la carte" sur les fiches.)
 -- ─────────────────────────────────────────────────────────────────────────────
 
--- BingX
+-- BingX (les 2 cartes)
 UPDATE cards SET affiliate_link = 'https://bingxdao.com/partner/TopCryptoCards/'
-WHERE id = 'bingx-card';
+WHERE id IN ('bingx-virtual-card', 'bingx-metal-card');
 
 -- OKX
 UPDATE cards SET affiliate_link = 'https://my.okx.com/en-eu/join/38568052'
@@ -28,6 +28,6 @@ WHERE id LIKE 'crypto-com%';
 -- Vérification
 SELECT id, name, affiliate_link
 FROM cards
-WHERE id = 'bingx-card' OR id = 'okx-card' OR id = 'ether-fi-cash'
+WHERE id LIKE 'bingx%' OR id = 'okx-card' OR id = 'ether-fi-cash'
    OR id = 'cex-io-card' OR id LIKE 'crypto-com%'
 ORDER BY id;

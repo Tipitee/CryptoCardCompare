@@ -343,6 +343,7 @@ const MARKET_FLAG: Record<string, string> = {
 
 // ── Review slugs by brand (FR review slug; ReviewPage handles multi-lang) ─────
 const BRAND_REVIEW_SLUG: Record<string, string> = {
+  'bingx': 'bingx-metal-card',
   'crypto-com': 'crypto-com-card',
   'nexo': 'nexo-card',
   'binance': 'binance-card',
@@ -414,6 +415,7 @@ function FeeBadge({ card, lang }: { card: CryptoCard; lang: string }) {
 
 /** Maps brand IDs to relevant comparison pair slugs (alphabetically normalized). */
 const BRAND_COMPARISONS: Record<string, string[]> = {
+  bingx:      ['bingx-metal-card-vs-bybit-card', 'bingx-metal-card-vs-okx-card', 'bingx-metal-card-vs-nexo-card'],
   nexo:       ['nexo-card-vs-revolut-metal', 'bybit-card-vs-nexo-card', 'coinbase-card-vs-nexo-card', 'kraken-krak-card-vs-nexo-card'],
   bybit:      ['bybit-card-vs-nexo-card', 'bybit-card-vs-revolut-metal', 'bybit-card-vs-coinbase-card', 'bybit-card-vs-okx-card'],
   revolut:    ['nexo-card-vs-revolut-metal', 'bybit-card-vs-revolut-metal', 'binance-standard-vs-revolut-metal', 'crypto-com-midnight-blue-vs-revolut-metal'],
