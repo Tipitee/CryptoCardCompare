@@ -249,6 +249,9 @@ const L: Record<string, {
 
 // Editorial comparison pairs, used to surface specific pair links in sidebar
 const EDITORIAL_PAIRS_R = [
+  'bingx-card-vs-bybit-card',
+  'bingx-card-vs-okx-card',
+  'bingx-card-vs-nexo-card',
   'bybit-card-vs-nexo-card',
   'crypto-com-midnight-blue-vs-nexo-card',
   'crypto-com-ruby-steel-vs-nexo-card',

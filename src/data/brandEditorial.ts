@@ -4,6 +4,10 @@
  * brandId → lang → text
  */
 export const BRAND_WHY_CHOOSE: Record<string, Partial<Record<string, string>>> = {
+  'bingx': {
+    fr: `La BingX Card cible les utilisateurs actifs de l'exchange BingX qui veulent dépenser leurs crypto-actifs au quotidien. Son vrai atout : le cashback est versé en USDT, un stablecoin, là où la plupart des cartes d'exchange paient en token maison volatil — vous gardez une valeur prévisible. Propulsée par Wirex et acceptée partout où Visa est présent, elle est pertinente si vous atteignez les paliers VIP de BingX et résidez dans l'EEE.`,
+    en: `The BingX Card targets active BingX exchange users who want to spend their crypto in daily life. Its real edge: cashback is paid in USDT, a stablecoin, whereas most exchange cards pay in a volatile in-house token — you keep a predictable value. Powered by Wirex and accepted wherever Visa is present, it makes sense if you reach BingX's VIP tiers and live in the EEA.`,
+  },
   'crypto-com': {
     fr: `La carte Crypto.com est idéale pour les investisseurs qui souhaitent maximiser leurs récompenses en s'engageant dans l'écosystème CRO. Avec cinq niveaux allant de la Midnight Blue gratuite à l'Obsidian exclusive, elle s'adapte à tous les profils, du casual user au holder confirmé. Son principal atout est la profondeur de ses avantages (Spotify, Netflix, lounges aéroports) qui croissent à mesure que le staking augmente, faisant de chaque palier un vrai saut qualitatif.`,
     de: `Die Crypto.com Karte ist ideal für Investoren, die ihre Belohnungen im CRO-Ökosystem maximieren möchten. Mit fünf Stufen, von der kostenlosen Midnight Blue bis zur exklusiven Obsidian, passt sie zu jedem Profil. Hauptvorteil ist die Tiefe der Vorteile (Spotify, Netflix, Airport-Lounges), die mit dem Staking exponentiell zunehmen und jeden Tier-Sprung zum echten qualitativen Sprung machen.`,

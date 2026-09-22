@@ -43,6 +43,22 @@ export function normalizePairKey(id1: string, id2: string): string {
 }
 
 const COMPARISONS: Record<string, ComparisonSpecific> = {
+  'bingx-card-vs-bybit-card': {
+    fr_intro: `BingX Card et Bybit Card sont deux cartes Visa d'exchanges crypto mondiaux, toutes deux accessibles selon un statut VIP lié à votre volume de trading. La différence tient à la monnaie du cashback : la BingX Card verse en **USDT** (un stablecoin, valeur stable), tandis que la Bybit Card verse en **BIT/tokens** selon le programme. Aucune des deux n'est licenciée MiCA.`,
+    fr_verdict: `Choisissez la **BingX Card** si vous privilégiez un cashback prévisible en USDT et êtes déjà actif sur BingX. Préférez la **Bybit Card** si vous êtes dans l'écosystème Bybit et visez ses taux promotionnels. Dans les deux cas, gardez en tête les plafonds mensuels et l'absence de régulation MiCA — pour une carte régulée en UE, regardez Bitpanda ou Nexo.`,
+    faq: [
+      { q: 'BingX Card ou Bybit Card : laquelle a le meilleur cashback ?', a: `La BingX Card monte à 5% (carte Metal, VIP 3) versés en USDT ; la Bybit Card affiche jusqu'à 10% mais en token et sous conditions. En cashback "réel" stable, la BingX Card en USDT est plus lisible.` },
+      { q: 'Ces cartes sont-elles disponibles en France ?', a: `Oui, les deux sont disponibles dans l'EEE dont la France. La BingX Card est en revanche indisponible au Royaume-Uni, aux États-Unis et aux Pays-Bas.` },
+    ],
+  },
+  'bingx-card-vs-nexo-card': {
+    fr_intro: `BingX Card et Nexo Card opposent deux philosophies. La **BingX Card** est une carte d'exchange (Visa/Wirex) avec cashback en USDT jusqu'à 5%, conditionnée à un statut VIP. La **Nexo Card** est adossée à une ligne de crédit garantie par vos cryptos, avec un cashback jusqu'à 2% sans staking et un émetteur mieux établi en Europe.`,
+    fr_verdict: `La **Nexo Card** l'emporte sur la lisibilité et la disponibilité (cashback sans condition de volume, acteur plus établi). La **BingX Card** devient intéressante si vous êtes déjà un utilisateur VIP de BingX et voulez un cashback en USDT. Pour la tranquillité réglementaire, Nexo garde l'avantage.`,
+  },
+  'bingx-card-vs-okx-card': {
+    fr_intro: `BingX Card et OKX Card sont deux cartes Visa d'exchanges majeurs, disponibles dans l'EEE et soumises à des paliers liés à l'activité sur la plateforme. La **BingX Card** se distingue par son cashback en **USDT** (stablecoin), là où l'OKX Card s'inscrit dans l'écosystème OKX. Ni l'une ni l'autre n'est licenciée MiCA.`,
+    fr_verdict: `Départage sur l'écosystème : prenez la carte de l'exchange que vous utilisez déjà. La **BingX Card** a l'avantage d'un cashback en USDT prévisible ; l'**OKX Card** conviendra aux utilisateurs actifs d'OKX. Comparez les plafonds mensuels et vos volumes réels avant de choisir.`,
+  },
 
   // ─── Nexo Card vs Bybit Card ─────────────────────────────────────────────────
   'bybit-card-vs-nexo-card': {

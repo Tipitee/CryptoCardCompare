@@ -33,6 +33,73 @@ export interface BrandMeta {
 }
 
 export const BRAND_CONFIG: Record<string, BrandMeta> = {
+  'bingx': {
+    brandId: 'bingx',
+    displayName: 'BingX',
+    website: 'https://bingx.com/en/card/',
+    twitter: 'https://twitter.com/BingXOfficial',
+    founded: 2018,
+    hq: 'Singapour',
+    regulation: 'Réglementation offshore (non MiCA)',
+    seo: {
+      fr: {
+        title: `BingX Card ${YEAR}, Carte Visa Crypto Cashback jusqu'à 5% en USDT | TopCryptoCards`,
+        description: `BingX Card ${YEAR} : carte Visa propulsée par Wirex, jusqu'à 5% de cashback en USDT (carte Metal). Frais de 1€/mois, retraits ATM gratuits. Disponible dans l'EEE (France, Allemagne, Espagne, Italie…).`,
+        intro: `BingX est un exchange crypto mondial fondé en 2018, revendiquant plus de 10 millions d'utilisateurs. Sa BingX Card est une carte Visa propulsée par l'infrastructure Wirex, déclinée en deux versions : une carte virtuelle (dès le palier VIP 1) avec 2% de cashback, et une carte Metal physique (VIP 3) montant à 5%. Le cashback est versé en USDT, un stablecoin, ce qui le rend nettement plus prévisible qu'un cashback en token maison volatil.`,
+        outro: `La BingX Card se distingue par un cashback en USDT (stablecoin) plutôt qu'en token volatil, un vrai avantage de lisibilité. Réserves : l'accès aux meilleurs taux dépend du statut VIP (volume de trading), des frais de 1€/mois s'appliquent, et BingX n'est pas licencié MiCA — la carte n'est pas disponible au Royaume-Uni, aux États-Unis ni aux Pays-Bas. Un choix pertinent pour les utilisateurs actifs de BingX résidant dans l'EEE.`,
+        rating: 3.8,
+        pros: [
+          'Cashback versé en USDT (stablecoin), plus prévisible qu\'un token volatil',
+          'Jusqu\'à 5% de cashback avec la carte Metal (VIP 3)',
+          'Propulsée par Wirex (infrastructure de paiement éprouvée)',
+          'Retraits ATM gratuits jusqu\'à 200$/mois',
+          'Compatible Apple Pay et Google Pay',
+          'Version virtuelle disponible instantanément',
+        ],
+        cons: [
+          'Meilleurs taux réservés aux paliers VIP (volume de trading requis)',
+          'Frais de tenue de 1€/mois',
+          'Plafonds de cashback : 50$/mois (virtuelle), 120$/mois (Metal)',
+          'BingX non licencié MiCA (réglementation offshore)',
+          'Indisponible au Royaume-Uni, aux États-Unis et aux Pays-Bas',
+        ],
+        faq: [
+          { q: 'La BingX Card est-elle disponible en France ?', a: `Oui, la BingX Card est disponible dans l'Espace économique européen (EEE), dont la France, l'Allemagne, l'Espagne et l'Italie. Elle est en revanche indisponible au Royaume-Uni, aux États-Unis et aux Pays-Bas. Une vérification KYC est obligatoire.` },
+          { q: 'Quel cashback offre la BingX Card ?', a: `La carte virtuelle (palier VIP 1) offre 2% de cashback en USDT, plafonné à 50$/mois. La carte Metal (VIP 3) monte à 5%, plafonné à 120$/mois. Un bonus temporaire de +1% peut s'appliquer pendant les périodes de réservation.` },
+          { q: 'En quelle monnaie est versé le cashback BingX ?', a: `Le cashback est versé en USDT, un stablecoin adossé au dollar. C'est un avantage : sa valeur est stable, contrairement aux cashbacks versés en tokens maison volatils (CRO, GT, etc.).` },
+          { q: 'BingX est-il réglementé en Europe ?', a: `BingX n'a pas de licence MiCA/UE en ${YEAR} et opère sous une réglementation offshore. Pour un exchange réglementé en UE, regardez plutôt Bitpanda (Autriche), Bybit ou Coinbase.` },
+          { q: 'Faut-il staker pour obtenir le cashback BingX ?', a: `Non, aucun token à bloquer. En revanche, l'accès à la carte et aux taux les plus élevés dépend de votre statut VIP sur BingX, déterminé par votre volume d'activité sur la plateforme.` },
+        ],
+      },
+      en: {
+        title: `BingX Card ${YEAR}, Visa Crypto Card, Up to 5% Cashback in USDT | TopCryptoCards`,
+        description: `BingX Card ${YEAR}: a Visa card powered by Wirex, up to 5% cashback in USDT (Metal card). €1/month fee, free ATM withdrawals. Available across the EEA (not the UK).`,
+        intro: `BingX is a global crypto exchange founded in 2018 with over 10 million users. The BingX Card is a Visa card powered by Wirex infrastructure, offered in two tiers: a virtual card (from VIP 1) with 2% cashback, and a physical Metal card (VIP 3) reaching 5%. Cashback is paid in USDT, a stablecoin, making it far more predictable than a volatile in-house token.`,
+        outro: `The BingX Card stands out for paying cashback in USDT (a stablecoin) rather than a volatile token. Caveats: the best rates depend on VIP status (trading volume), a €1/month fee applies, and BingX is not MiCA-licensed — the card is unavailable in the UK, US and Netherlands. A solid pick for active BingX users living in the EEA.`,
+        rating: 3.8,
+        pros: [
+          'Cashback paid in USDT (stablecoin), more predictable than a volatile token',
+          'Up to 5% cashback with the Metal card (VIP 3)',
+          'Powered by Wirex (proven payment infrastructure)',
+          'Free ATM withdrawals up to $200/month',
+          'Apple Pay and Google Pay compatible',
+          'Virtual version available instantly',
+        ],
+        cons: [
+          'Best rates reserved for VIP tiers (trading volume required)',
+          '€1/month maintenance fee',
+          'Cashback caps: $50/mo (virtual), $120/mo (Metal)',
+          'BingX not MiCA-licensed (offshore regulation)',
+          'Unavailable in the UK, US and Netherlands',
+        ],
+        faq: [
+          { q: 'Is the BingX Card available in Europe?', a: `Yes, the BingX Card is available across the European Economic Area (EEA), including France, Germany, Spain and Italy. It is not available in the UK, US or Netherlands. KYC verification is mandatory.` },
+          { q: 'What cashback does the BingX Card offer?', a: `The virtual card (VIP 1) offers 2% cashback in USDT, capped at $50/month. The Metal card (VIP 3) reaches 5%, capped at $120/month. A temporary +1% bonus may apply during reservation periods.` },
+          { q: 'Is BingX regulated in Europe?', a: `BingX does not hold a MiCA/EU licence in ${YEAR} and operates under offshore regulation. For an EU-regulated exchange, consider Bitpanda (Austria), Bybit or Coinbase.` },
+        ],
+      },
+    },
+  },
   'crypto-com': {
     brandId: 'crypto-com',
     displayName: 'Crypto.com',

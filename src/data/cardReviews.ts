@@ -44,6 +44,57 @@ export interface CardReview {
 }
 
 export const CARD_REVIEWS: CardReview[] = [
+  // ─────────────────────────────────────────────── BINGX ───
+  {
+    slug: 'bingx-card',
+    cardName: 'BingX Card',
+    issuer: 'BingX',
+    network: 'Visa',
+    updatedAt: '2026-09-21',
+    globalRating: 3.8,
+    badge: 'Cashback en USDT',
+    ratingBreakdown: {
+      cashback: 4.0,
+      frais: 3.5,
+      facilite: 3.8,
+      securite: 3.5,
+      support: 3.6,
+    },
+    keyStats: {
+      cashbackMax: 'Jusqu\'à 5 % en USDT (carte Metal)',
+      stakingRequis: 'Aucun token à bloquer (statut VIP requis)',
+      fraisAnnuels: '≈ 12 € / an (1 €/mois)',
+      disponibilite: 'EEE — hors UK, US et Pays-Bas',
+    },
+    pros: [
+      'Cashback versé en USDT, un stablecoin (valeur stable, contrairement aux tokens maison)',
+      'Jusqu\'à 5 % de cashback avec la carte Metal (palier VIP 3)',
+      'Propulsée par Wirex, une infrastructure de paiement éprouvée',
+      'Retraits DAB gratuits jusqu\'à 200 $/mois',
+      'Carte virtuelle disponible instantanément, compatible Apple Pay et Google Pay',
+      'Limites de dépense élevées',
+    ],
+    cons: [
+      'Meilleurs taux réservés aux paliers VIP (volume de trading sur BingX)',
+      'Frais de tenue de 1 €/mois (≈ 12 €/an)',
+      'Cashback plafonné : 50 $/mois (virtuelle), 120 $/mois (Metal)',
+      'BingX non licencié MiCA, réglementation offshore',
+      'Indisponible au Royaume-Uni, aux États-Unis et aux Pays-Bas',
+      'Fonds conservés sur l\'exchange (pas de self-custody)',
+    ],
+    verdict: 'La BingX Card coche une case rare : elle verse son cashback en USDT, un stablecoin, là où la plupart des cartes d\'exchange paient en token volatil. Jusqu\'à 5 % avec la carte Metal, c\'est compétitif — à condition d\'atteindre les paliers VIP et d\'accepter des plafonds mensuels et un frais de 1 €/mois. Un bon choix pour les utilisateurs déjà actifs sur BingX et résidant dans l\'EEE, moins pertinent pour ceux qui cherchent une carte régulée MiCA.',
+    sections: {
+      presentation: `La **BingX Card** est la carte de paiement de BingX, un exchange crypto mondial fondé en 2018 revendiquant plus de 10 millions d'utilisateurs. C'est une carte **Visa propulsée par Wirex**, déclinée en deux versions : une **carte virtuelle** accessible dès le palier VIP 1, et une **carte Metal physique** réservée au palier VIP 3. Elle permet de dépenser ses crypto-actifs BingX au quotidien, partout où Visa est accepté, avec compatibilité Apple Pay et Google Pay. Une vérification KYC est obligatoire.`,
+      cashback: `Le cashback va de **2 % (carte virtuelle, VIP 1)** à **5 % (carte Metal, VIP 3)**, avec un bonus temporaire de +1 % possible pendant les périodes de réservation. Point fort décisif : il est **versé en USDT**, un stablecoin adossé au dollar, ce qui rend sa valeur bien plus prévisible qu'un cashback en token maison (CRO, GT, BNB…). Attention aux plafonds : **50 $/mois** sur la virtuelle, **120 $/mois** sur la Metal. Au-delà, les dépenses ne génèrent plus de récompense — le taux « réel » baisse donc à mesure que vos dépenses montent.`,
+      frais: `Pas de frais d'émission ni de frais annuel classique, mais un **frais de tenue de 1 €/mois** (≈ 12 €/an), prélevé automatiquement sur le solde de la carte. Les **retraits aux distributeurs sont gratuits jusqu'à 200 $/mois**. Les limites de dépense sont élevées grâce à l'infrastructure Wirex. Vérifiez les frais de change appliqués aux paiements en devises étrangères, variables selon le profil.`,
+      securite: `BingX applique la **2FA**, le blocage de carte via l'application et les standards habituels d'un grand exchange. Point de vigilance majeur : **BingX n'est pas licencié MiCA** et opère sous une réglementation offshore, sans la protection réglementaire d'un émetteur européen agréé. Les fonds sont conservés sur l'exchange (pas de self-custody). Pour une carte adossée à un émetteur régulé en UE, regardez plutôt Bitpanda (Autriche) ou Nexo.`,
+      experience: `La carte se gère depuis l'application BingX : suivi du cashback en USDT (crédité en quasi temps réel), activation/désactivation, historique. La **carte virtuelle est disponible immédiatement** après validation, la Metal est expédiée pour les comptes VIP 3. Compatibilité **Apple Pay et Google Pay** pour le sans-contact. L'accès à la carte et aux meilleurs taux dépendant du statut VIP, l'expérience est optimale pour les utilisateurs déjà actifs sur la plateforme.`,
+    },
+    affiliateLink: 'https://bingx.com/en/card/',
+    metaTitle: 'BingX Card Avis 2026, Cashback USDT jusqu\'à 5 % & Notre Verdict',
+    metaDescription: 'Avis complet sur la BingX Card : carte Visa (Wirex), cashback jusqu\'à 5 % en USDT, frais de 1 €/mois, paliers VIP, disponibilité EEE. Avantages, inconvénients et verdict.',
+  },
+
   // ─────────────────────────────────────────────── CRYPTO.COM ───
   {
     slug: 'crypto-com-card',

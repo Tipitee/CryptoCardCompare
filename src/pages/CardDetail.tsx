@@ -92,6 +92,9 @@ const COMPARISON_LABEL: Record<string, string> = {
 
 // Editorial comparison pairs per card, used to build sidebar "Compare with..." links
 const EDITORIAL_PAIRS = [
+  'bingx-card-vs-bybit-card',
+  'bingx-card-vs-okx-card',
+  'bingx-card-vs-nexo-card',
   'bybit-card-vs-nexo-card',
   'crypto-com-midnight-blue-vs-nexo-card',
   'crypto-com-ruby-steel-vs-nexo-card',

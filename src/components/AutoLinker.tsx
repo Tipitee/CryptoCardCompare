@@ -42,6 +42,7 @@ const BRAND_ENTITIES: [string, string][] = [
   ['Nexo',                'nexo'],
   ['Bleap',               'bleap'],
   ['OKX',                 'okx'],
+  ['BingX',               'bingx'],
 ];
 
 // ── Crypto entities ─────────────────────────────────────────────────────────
