@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft,
@@ -435,6 +435,19 @@ export default function ComparisonPage() {
   }, [card1?.id, card2?.id, localFaq]);
 
   // BreadcrumbList schema is emitted by the <Breadcrumb> component (single source).
+
+  // ── Consolidation SEO : l'ordre inversé (b-vs-a) redirige en dur vers l'ordre
+  // canonique alphabétique (a-vs-b). Plus fort qu'un simple <link canonical> :
+  // évite le duplicate rendering et accélère la consolidation par Google
+  // (qui exécute le JS). Idempotent (sort d'un slug déjà trié = identique) → pas de boucle.
+  if (slug && canonicalSlug && slug !== canonicalSlug) {
+    return (
+      <Navigate
+        replace
+        to={`/${lang}/${comparisonRt.comparisons ?? 'compare'}/${canonicalSlug}`}
+      />
+    );
+  }
 
   // Not found state
   if (notFound) {

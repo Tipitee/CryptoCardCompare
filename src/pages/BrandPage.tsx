@@ -397,6 +397,22 @@ function translateHq(hq: string, lang: string): string {
   return HQ_TRANSLATIONS[hq]?.[lang] ?? hq;
 }
 
+// Regulation values are stored in FR in brandConfig. Translate the known ones by
+// content language (cl: be→fr, at→de). Unmapped values fall back to the FR string.
+const REGULATION_TRANSLATIONS: Record<string, Record<string, string>> = {
+  'Réglementation offshore (non MiCA)': {
+    de: 'Offshore-Regulierung (nicht MiCA)',
+    es: 'Regulación offshore (no MiCA)',
+    it: 'Regolamentazione offshore (non MiCA)',
+    en: 'Offshore regulation (non-MiCA)',
+    pt: 'Regulação offshore (não MiCA)',
+  },
+};
+function translateRegulation(reg: string, cl: string): string {
+  if (cl === 'fr') return reg;
+  return REGULATION_TRANSLATIONS[reg]?.[cl] ?? reg;
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function ratingColor(r: number) {
@@ -803,7 +819,7 @@ export default function BrandPage() {
               <AboutChip
                 icon={<Shield className="w-4 h-4 text-brand-accent" />}
                 label={l.regulationLabel}
-                value={brand.regulation}
+                value={translateRegulation(brand.regulation, cl)}
               />
             )}
           </div>

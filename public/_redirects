@@ -132,8 +132,45 @@
 /fr/blog/carte-crypto-sans-frais-annuels     /fr/blog/carte-crypto-sans-frais-annuels-selection-2026    301
 /fr/blog/guide-choisir-carte-crypto          /fr/blog/comment-choisir-carte-crypto                      301
 
-# ── PT : segment de fiche corrigé (Google a indexé /pt/cards/*, le bon = /pt/cartoes/*) ──
-/pt/cards/*  /pt/cartoes/:splat  301
+# ── Segments de fiche corrigés (Google a indexé /{lang}/cards/*, mauvais segment) ──
+# Le bon segment "carte" dépend de la langue. On 301 vers le bon segment pour
+# récupérer l'équité de lien et éviter les 404. (en = "cards" est déjà correct.)
+/fr/cards/*  /fr/cartes/:splat     301
+/be/cards/*  /be/cartes/:splat     301
+/de/cards/*  /de/karten/:splat     301
+/at/cards/*  /at/karten/:splat     301
+/es/cards/*  /es/tarjetas/:splat   301
+/it/cards/*  /it/carte/:splat      301
+/pt/cards/*  /pt/cartoes/:splat    301
+
+# ── Pages thématiques mal liées en /en/cards/* (ce sont des pages, pas des fiches) ──
+/en/cards/no-staking  /en/crypto-card-no-staking  301
+/en/cards/no-fees     /en/crypto-card-no-fees     301
+
+# ── Segments d'avis corrigés (Google a indexé le segment FR "avis" sur marchés non-FR) ──
+# fr/be utilisent bien "avis" ; de/at/es/it/en/pt ont leur propre segment.
+# Règles nues d'abord (un seul saut), puis wildcards pour les sous-chemins.
+/de/avis    /de/bewertungen         301
+/at/avis    /at/bewertungen         301
+/es/avis    /es/opiniones           301
+/it/avis    /it/recensioni          301
+/en/avis    /en/reviews             301
+/pt/avis    /pt/analises            301
+/de/avis/*  /de/bewertungen/:splat  301
+/at/avis/*  /at/bewertungen/:splat  301
+/es/avis/*  /es/opiniones/:splat    301
+/it/avis/*  /it/recensioni/:splat   301
+/en/avis/*  /en/reviews/:splat      301
+/pt/avis/*  /pt/analises/:splat     301
+
+# ── Liens data cassés historiques /{lang}/undefined → hub de langue ──────────
+/be/undefined  /be  301
+/at/undefined  /at  301
+
+# ── Chemins nus sans préfixe de langue (crawlés par Google) → marché par défaut ──
+/simulateur  /fr/simulateur  301
+/simulator   /en/simulator   301
+/compare     /en/compare     301
 
 # ── Everything else: real 404 ──────────────────────────────────────────────
 # Physical prerendered files (dist/fr/index.html etc.) take priority over
