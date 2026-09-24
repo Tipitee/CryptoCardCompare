@@ -19,8 +19,8 @@ Liens des études par marché :
 - PT : https://topcryptocards.eu/etudes/cartoes-crypto-2026
 
 Variantes d'objet (si le 1er envoi ne décroche pas de réponse, teste l'autre à la relance) :
-- FR : « Les cartes crypto versent 31 % du cashback promis (données sur 93 cartes) » · « 20 % de cashback annoncé, 1 % versé : l'étude sur 93 cartes »
-- EN : « Crypto cards pay just 31% of advertised cashback (93-card study) » · « Advertised 20%, paid 1%: the gap across 93 crypto cards »
+- FR : « Les cartes crypto versent 34 % du cashback promis (données sur 95 cartes) » · « 20 % de cashback annoncé, 1 % versé : l'étude sur 95 cartes »
+- EN : « Crypto cards pay just 34% of advertised cashback (95-card study) » · « Advertised 20%, paid 1%: the gap across 95 crypto cards »
 
 ---
 
@@ -28,13 +28,13 @@ Variantes d'objet (si le 1er envoi ne décroche pas de réponse, teste l'autre �
 
 ### 1. Grégory Raymond, The Big Whale (ta cible n°1, propose l'exclu)
 
-**Objet :** Exclu pour The Big Whale : les cartes crypto versent 31 % du cashback promis
+**Objet :** Exclu pour The Big Whale : les cartes crypto versent 34 % du cashback promis
 
 Bonjour Grégory,
 
 Vous avez bâti The Big Whale sur l'indépendance vis-à-vis des promesses du secteur. J'ai des données qui en démontent une, le cashback des cartes crypto.
 
-On a analysé 93 cartes disponibles en Europe. Cashback affiché moyen : 2,37 %. Cashback réel sans staking : 0,53 %, soit 31 % de la promesse. Une carte sur deux affiche 0 % de cashback de base. Championne de l'écart, Bleap, 20 % annoncés pour 1 % réel.
+On a analysé 95 cartes disponibles en Europe. Cashback affiché moyen : 4,29 %. Cashback réel sans staking : 1,07 %. Carte par carte, seuls 34 % du cashback affiché sont réellement versés. Une carte sur deux affiche 0 % de cashback de base. Championne de l'écart, Bleap, 20 % annoncés pour 1 % réel.
 
 Tout est vérifié à la main, disponible par pays, méthodologie ouverte. Je vous propose l'exclu 48 h avant les autres rédactions.
 
@@ -54,7 +54,7 @@ Bonjour,
 
 Le Journal du Coin alerte souvent sur les pièges du secteur. En voici un, chiffré.
 
-On a passé au crible 93 cartes crypto en Europe. Le cashback réellement versé sans staking n'atteint que 31 % de ce qui est affiché : 2,37 % promis en moyenne, 0,53 % réel. La moitié des cartes affichent 0 % de base. Le pire écart revient à Bleap, 20 % annoncés pour 1 % réel.
+On a passé au crible 95 cartes crypto en Europe. Le cashback réellement versé sans staking n'atteint que 34 % de ce qui est affiché : 4,29 % promis en moyenne, 1,07 % réel. La moitié des cartes affichent 0 % de base. Le pire écart revient à Bleap, 20 % annoncés pour 1 % réel.
 
 Données vérifiées à la main, par pays, méthodologie transparente : https://topcryptocards.eu/etudes/cartes-crypto-2026
 
@@ -66,13 +66,13 @@ Thomas, TopCryptoCards
 
 ### 3. Maximilien Prué, Cryptoast
 
-**Objet :** Analyse chiffrée sur 93 cartes crypto, méthodologie ouverte
+**Objet :** Analyse chiffrée sur 95 cartes crypto, méthodologie ouverte
 
 Bonjour Maximilien,
 
 Cryptoast publie des analyses documentées et vérifiables. J'ai une étude taillée pour ce format.
 
-93 cartes crypto analysées en Europe, une seule question : combien de cashback est réellement versé par rapport à l'affiche. Réponse, 31 %. Le détail : 2,37 % promis en moyenne, 0,53 % touché sans staking, une carte sur deux à 0 % de base.
+95 cartes crypto analysées en Europe, une seule question : combien de cashback est réellement versé par rapport à l'affiche. Réponse, 34 %. Le détail : 4,29 % promis en moyenne, 1,07 % touché sans staking, une carte sur deux à 0 % de base.
 
 La méthodologie est publiée sur la page, chaque chiffre est traçable : https://topcryptocards.eu/etudes/cartes-crypto-2026
 
@@ -90,7 +90,7 @@ Bonjour Antoine,
 
 Un sujet taillé pour une chronique conso de deux minutes.
 
-Les cartes crypto affichent des cashbacks à deux chiffres. Sur 93 cartes analysées en Europe, le taux réellement versé sans staking tombe à 31 % de la promesse. Exemple parlant, Bleap annonce 20 % et en verse 1 %. Une carte sur deux ne donne aucun cashback de base.
+Les cartes crypto affichent des cashbacks à deux chiffres. Sur 95 cartes analysées en Europe, le taux réellement versé sans staking tombe à 34 % de la promesse. Exemple parlant, Bleap annonce 20 % et en verse 1 %. Une carte sur deux ne donne aucun cashback de base.
 
 Les chiffres et la méthode sont ici : https://topcryptocards.eu/etudes/cartes-crypto-2026
 
@@ -112,7 +112,7 @@ Hello Francisco,
 
 Your piece on crypto card spending passing $1 billion caught my eye, the Kraken Krak Card numbers in particular. I have a dataset that fits the same beat from the consumer side.
 
-We analysed 93 crypto cards in Europe. Advertised cashback averages 2.37%. The real rate without staking is 0.53%, so 31% of the promise. One card in two pays zero base cashback. Bleap advertises 20% and pays 1%.
+We analysed 95 crypto cards in Europe. Advertised cashback averages 4.29%. The real rate without staking is 1.07%. Per card, only 34% of the advertised cashback actually lands. One card in two pays zero base cashback. Bleap advertises 20% and pays 1%.
 
 Hand-checked, broken down by country, open methodology: https://topcryptocards.eu/etudes/crypto-cards-2026
 
@@ -134,7 +134,7 @@ Hello JP,
 
 You cover the mechanics of stablecoins and payments more closely than most. One under-reported piece of card economics: the cashback that sells the card rarely lands.
 
-Across 93 European crypto cards, advertised cashback averages 2.37% but the real rate without staking is 0.53%. Half pay zero base cashback. The gap looks structural, not incidental.
+Across 95 European crypto cards, advertised cashback averages 4.29% but the real rate without staking is 1.07%. Half pay zero base cashback. The gap looks structural, not incidental.
 
 Data and methodology: https://topcryptocards.eu/etudes/crypto-cards-2026
 
@@ -146,13 +146,13 @@ Thomas, TopCryptoCards
 
 ### 5. Cointelegraph / CoinDesk / Decrypt (tips, byline à identifier)
 
-**Subject:** Data study: crypto cards pay just 31% of the cashback they advertise
+**Subject:** Data study: crypto cards pay just 34% of the cashback they advertise
 
 Hello,
 
 A consumer angle backed by original data.
 
-We analysed 93 crypto cards available across Europe. Average advertised cashback is 2.37%. The real rate without staking is 0.53%, so 31% of the promise. One card in two pays zero base cashback. The widest gap is Bleap, 20% advertised against 1% real.
+We analysed 95 crypto cards available across Europe. Average advertised cashback is 4.29%. The real rate without staking is 1.07%. Per card, only 34% of the advertised cashback actually lands. One card in two pays zero base cashback. The widest gap is Bleap, 20% advertised against 1% real.
 
 Every figure is hand-checked, broken down by country, with an open methodology: https://topcryptocards.eu/etudes/crypto-cards-2026
 
@@ -166,13 +166,13 @@ Thomas, TopCryptoCards, independent crypto card comparison in Europe
 
 ### 6. Sven Wagenknecht, BTC-ECHO
 
-**Betreff:** Datenstudie: Krypto-Karten zahlen nur 31 % des versprochenen Cashbacks
+**Betreff:** Datenstudie: Krypto-Karten zahlen nur 34 % des versprochenen Cashbacks
 
 Hallo Herr Wagenknecht,
 
 ein Verbraucherthema mit eigenen Daten.
 
-Wir haben 93 in Europa verfügbare Krypto-Karten ausgewertet. Der beworbene Cashback liegt im Schnitt bei 2,37 %. Real, ohne Staking, sind es 0,53 %, also 31 % des Versprechens. Jede zweite Karte zahlt gar keinen Basis-Cashback. Der größte Abstand: Bleap, 20 % beworben, 1 % real.
+Wir haben 93 in Europa verfügbare Krypto-Karten ausgewertet. Der beworbene Cashback liegt im Schnitt bei 4,29 %. Real, ohne Staking, sind es 1,07 %. Pro Karte werden im Schnitt nur 34 % des beworbenen Cashbacks gezahlt. Jede zweite Karte zahlt gar keinen Basis-Cashback. Der größte Abstand: Bleap, 20 % beworben, 1 % real.
 
 Alle Zahlen sind handgeprüft, nach Land aufgeschlüsselt, mit offener Methodik: https://topcryptocards.eu/etudes/krypto-karten-2026
 
@@ -186,13 +186,13 @@ Thomas, TopCryptoCards
 
 ### 7. Observatorio Blockchain / Cointelegraph en Español
 
-**Asunto:** Estudio con datos: las tarjetas cripto pagan solo el 31 % del cashback que prometen
+**Asunto:** Estudio con datos: las tarjetas cripto pagan solo el 34 % del cashback que prometen
 
 Hola,
 
 Un ángulo de consumo con datos propios.
 
-Hemos analizado 93 tarjetas cripto disponibles en Europa. El cashback anunciado es del 2,37 % de media. El real, sin staking, baja al 0,53 %, es decir el 31 % de lo prometido. Una de cada dos tarjetas no da cashback base. La mayor diferencia es Bleap, 20 % anunciado frente a 1 % real.
+Hemos analizado 95 tarjetas cripto disponibles en Europa. El cashback anunciado es del 4,29 % de media. El real, sin staking, baja al 1,07 %. Por tarjeta, de media solo se paga el 34 % del cashback anunciado. Una de cada dos tarjetas no da cashback base. La mayor diferencia es Bleap, 20 % anunciado frente a 1 % real.
 
 Cada cifra está verificada a mano, desglosada por país y con metodología abierta: https://topcryptocards.eu/etudes/tarjetas-cripto-2026
 
@@ -206,13 +206,13 @@ Thomas, TopCryptoCards
 
 ### 8. Cointelegraph Italia / redazioni cripto
 
-**Oggetto:** Studio con dati: le carte crypto pagano solo il 31 % del cashback promesso
+**Oggetto:** Studio con dati: le carte crypto pagano solo il 34 % del cashback promesso
 
 Salve,
 
 Un taglio consumer con dati originali.
 
-Abbiamo analizzato 93 carte crypto disponibili in Europa. Il cashback pubblicizzato è in media del 2,37 %. Quello reale, senza staking, scende allo 0,53 %, cioè il 31 % della promessa. Una carta su due non dà alcun cashback base. Il divario più ampio è Bleap, 20 % pubblicizzato contro 1 % reale.
+Abbiamo analizzato 95 carte crypto disponibili in Europa. Il cashback pubblicizzato è in media del 4,29 %. Quello reale, senza staking, scende allo 1,07 %. Per carta, in media viene versato solo il 34 % del cashback pubblicizzato. Una carta su due non dà alcun cashback base. Il divario più ampio è Bleap, 20 % pubblicizzato contro 1 % reale.
 
 Ogni dato è verificato a mano, suddiviso per paese, con metodologia aperta: https://topcryptocards.eu/etudes/carte-crypto-2026
 
@@ -226,13 +226,13 @@ Thomas, TopCryptoCards
 
 ### 9. ECO / Observador / redações cripto PT
 
-**Assunto:** Estudo com dados: os cartões crypto pagam só 31 % do cashback que prometem
+**Assunto:** Estudo com dados: os cartões crypto pagam só 34 % do cashback que prometem
 
 Olá,
 
 Um ângulo de consumo com dados próprios, e um lado fiscal que interessa em Portugal.
 
-Analisámos 93 cartões crypto disponíveis na Europa. O cashback anunciado é em média de 2,37 %. O real, sem staking, cai para 0,53 %, ou seja 31 % da promessa. Um em cada dois cartões não dá cashback de base. A maior diferença é da Bleap, 20 % anunciado contra 1 % real.
+Analisámos 95 cartões crypto disponíveis na Europa. O cashback anunciado é em média de 4,29 %. O real, sem staking, cai para 1,07 %. Por cartão, em média só é pago 34 % do cashback anunciado. Um em cada dois cartões não dá cashback de base. A maior diferença é da Bleap, 20 % anunciado contra 1 % real.
 
 Detalhe importante para o leitor português: pagar diretamente com cripto conta como alienação e pode gerar mais-valia tributável (28 % se detida há menos de um ano). Recebê-lo em token adiciona ainda risco de volatilidade.
 
