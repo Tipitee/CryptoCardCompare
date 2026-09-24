@@ -21,7 +21,7 @@ import { useLocalizedRoute } from '../hooks/useLocalizedRoute';
 import { useLanguage } from '../hooks/useLanguage';
 import { useSeoMeta } from '../hooks/useSeoMeta';
 import { useHreflang } from '../hooks/useHreflang';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import { BRAND_CONFIG } from '../data/brandConfig';
 const YEAR = new Date().getFullYear();
 const COMPARE_PREFIX: Record<string, string> = {
@@ -705,7 +705,7 @@ export default function Home() {
                   <div className="flex items-start justify-between gap-2 mb-3">
                     <div className="font-display font-semibold text-white leading-snug">{displayName}</div>
                     {card.badge && (
-                      <span className="badge-accent shrink-0">{t('badge_' + card.badge, { defaultValue: card.badge })}</span>
+                      <span className="badge-accent shrink-0">{translateBadge(card.badge, lang)}</span>
                     )}
                   </div>
 

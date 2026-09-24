@@ -21,7 +21,7 @@ import SmartCardImage from '../components/SmartCardImage';
 import CardDetailDrawer from '../components/CardDetailDrawer';
 import MarketInsight from '../components/MarketInsight';
 import Breadcrumb from '../components/Breadcrumb';
-import { fmtEUR, fmtPct } from '../utils/format';
+import { fmtEUR, fmtPct, translateBadge } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
 import { getSpecificComparison } from '../data/comparisonContent';
 import { fetchCardById, fetchRelatedPosts } from '../lib/supabase';
@@ -545,7 +545,7 @@ export default function ComparisonPage() {
               </button>
               <div className="text-sm text-slate-400">{card.issuer}</div>
               {card.badge && (
-                <span className="badge-accent mt-1 inline-block">{card.badge}</span>
+                <span className="badge-accent mt-1 inline-block">{translateBadge(card.badge, lang)}</span>
               )}
             </div>
 

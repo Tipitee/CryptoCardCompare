@@ -400,12 +400,52 @@ function translateHq(hq: string, lang: string): string {
 // Regulation values are stored in FR in brandConfig. Translate the known ones by
 // content language (cl: be→fr, at→de). Unmapped values fall back to the FR string.
 const REGULATION_TRANSLATIONS: Record<string, Record<string, string>> = {
+  // Valeurs 100% acronymes + UK/US (FCA (UK), FCA (UK) SEC/FinCEN (US)) : identiques
+  // dans toutes les langues → pas besoin d'entrée (fallback = valeur FR telle quelle).
   'Réglementation offshore (non MiCA)': {
-    de: 'Offshore-Regulierung (nicht MiCA)',
-    es: 'Regulación offshore (no MiCA)',
-    it: 'Regolamentazione offshore (non MiCA)',
-    en: 'Offshore regulation (non-MiCA)',
-    pt: 'Regulação offshore (não MiCA)',
+    de: 'Offshore-Regulierung (nicht MiCA)', es: 'Regulación offshore (no MiCA)', it: 'Regolamentazione offshore (non MiCA)', en: 'Offshore regulation (non-MiCA)', pt: 'Regulação offshore (não MiCA)',
+  },
+  'Réglementation offshore (Seychelles)': {
+    de: 'Offshore-Regulierung (Seychellen)', es: 'Regulación offshore (Seychelles)', it: 'Regolamentazione offshore (Seychelles)', en: 'Offshore regulation (Seychelles)', pt: 'Regulação offshore (Seicheles)',
+  },
+  'Réglementation offshore': {
+    de: 'Offshore-Regulierung', es: 'Regulación offshore', it: 'Regolamentazione offshore', en: 'Offshore regulation', pt: 'Regulação offshore',
+  },
+  'ACPR, AMF (France)': {
+    de: 'ACPR, AMF (Frankreich)', es: 'ACPR, AMF (Francia)', it: 'ACPR, AMF (Francia)', en: 'ACPR, AMF (France)', pt: 'ACPR, AMF (França)',
+  },
+  'BaFin (Allemagne)': {
+    de: 'BaFin (Deutschland)', es: 'BaFin (Alemania)', it: 'BaFin (Germania)', en: 'BaFin (Germany)', pt: 'BaFin (Alemanha)',
+  },
+  'Banque d\'Estonie (UE)': {
+    de: 'Bank von Estland (EU)', es: 'Banco de Estonia (UE)', it: 'Banca d\'Estonia (UE)', en: 'Bank of Estonia (EU)', pt: 'Banco da Estónia (UE)',
+  },
+  'CNMV (Espagne), Banco de España': {
+    de: 'CNMV (Spanien), Banco de España', es: 'CNMV (España), Banco de España', it: 'CNMV (Spagna), Banco de España', en: 'CNMV (Spain), Banco de España', pt: 'CNMV (Espanha), Banco de España',
+  },
+  'FCA (UK), licences EMI UE': {
+    de: 'FCA (UK), EMI-Lizenzen EU', es: 'FCA (UK), licencias EMI UE', it: 'FCA (UK), licenze EMI UE', en: 'FCA (UK), EU EMI licences', pt: 'FCA (UK), licenças EMI UE',
+  },
+  'FCA (UK), partenaire Consensys': {
+    de: 'FCA (UK), Consensys-Partner', es: 'FCA (UK), socio Consensys', it: 'FCA (UK), partner Consensys', en: 'FCA (UK), Consensys partner', pt: 'FCA (UK), parceiro Consensys',
+  },
+  'FINMA (Suisse)': {
+    de: 'FINMA (Schweiz)', es: 'FINMA (Suiza)', it: 'FINMA (Svizzera)', en: 'FINMA (Switzerland)', pt: 'FINMA (Suíça)',
+  },
+  'FMA (Autriche), BaFin (Allemagne)': {
+    de: 'FMA (Österreich), BaFin (Deutschland)', es: 'FMA (Austria), BaFin (Alemania)', it: 'FMA (Austria), BaFin (Germania)', en: 'FMA (Austria), BaFin (Germany)', pt: 'FMA (Áustria), BaFin (Alemanha)',
+  },
+  'MAS (Singapour), FCA (UK)': {
+    de: 'MAS (Singapur), FCA (UK)', es: 'MAS (Singapur), FCA (UK)', it: 'MAS (Singapore), FCA (UK)', en: 'MAS (Singapore), FCA (UK)', pt: 'MAS (Singapura), FCA (UK)',
+  },
+  'MiCA (EEA), FCA (UK)': {
+    de: 'MiCA (EWR), FCA (UK)', es: 'MiCA (EEE), FCA (UK)', it: 'MiCA (SEE), FCA (UK)', en: 'MiCA (EEA), FCA (UK)', pt: 'MiCA (EEE), FCA (UK)',
+  },
+  'MiCA (EEA), VARA (Dubaï)': {
+    de: 'MiCA (EWR), VARA (Dubai)', es: 'MiCA (EEE), VARA (Dubái)', it: 'MiCA (SEE), VARA (Dubai)', en: 'MiCA (EEA), VARA (Dubai)', pt: 'MiCA (EEE), VARA (Dubai)',
+  },
+  'OAM (Italie), agrément MiCA': {
+    de: 'OAM (Italien), MiCA-Zulassung', es: 'OAM (Italia), autorización MiCA', it: 'OAM (Italia), autorizzazione MiCA', en: 'OAM (Italy), MiCA authorisation', pt: 'OAM (Itália), autorização MiCA',
   },
 };
 function translateRegulation(reg: string, cl: string): string {
@@ -730,7 +770,7 @@ export default function BrandPage() {
               ))}
             </div>
             {review && (
-              <div className="mt-6 max-w-sm">
+              <div className="mt-6 max-w-sm mx-auto">
                 <ReviewMiniCard
                   review={review}
                   seo={seo}
@@ -812,7 +852,7 @@ export default function BrandPage() {
               <AboutChip
                 icon={<Building2 className="w-4 h-4 text-brand-accent" />}
                 label={l.hqLabel}
-                value={translateHq(brand.hq, lang)}
+                value={translateHq(brand.hq, cl)}
               />
             )}
             {brand.regulation && (

@@ -27,7 +27,7 @@ import comparisonAllowlist from '../../scripts/comparison-allowlist.json';
 const ALLOWED_PAIRS = new Set(comparisonAllowlist as string[]);
 import { useHreflang } from '../hooks/useHreflang';
 import Breadcrumb from '../components/Breadcrumb';
-import { fmtEUR, fmtPct, translateRestriction } from '../utils/format';
+import { fmtEUR, fmtPct, translateRestriction, translateBadge } from '../utils/format';
 import AffiliateButton from '../components/AffiliateButton';
 import { getExtraLabel } from '../i18n/extrasLabels';
 import { ROUTE_TRANSLATIONS } from '../i18n/types';
@@ -426,7 +426,7 @@ export default function CardDetail() {
                     background: `${card.colorPrimary}12`,
                   }}
                 >
-                  {card.badge}
+                  {translateBadge(card.badge, lang)}
                 </span>
               )}
               <h1 className="text-4xl font-display font-bold text-white mb-1">
