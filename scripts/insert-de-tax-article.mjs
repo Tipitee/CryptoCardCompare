@@ -34,14 +34,14 @@ const content = fs.readFileSync(
   path.join(ROOT, 'seo', 'content-drafts', 'krypto-cashback-steuern-deutschland-2026-de.md'), 'utf-8').trim();
 
 const row = {
-  slug: 'krypto-cashback-steuern-deutschland-2026',
+  slug: 'krypto-cashback-steuern-deutschland-oesterreich-2026',
   lang: 'de',
-  title: 'Krypto-Cashback versteuern in Deutschland 2026: Was gilt?',
-  meta_title: 'Krypto-Cashback Steuer Deutschland 2026 | TopCryptoCards',
-  meta_description: 'Muss man Krypto-Cashback in Deutschland versteuern? § 23 EStG, 1-Jahres-Haltefrist und 1.000-€-Freigrenze einfach erklärt – mit Übersichtstabelle und FAQ.',
-  excerpt: 'Das Cashback selbst ist meist steuerfrei – erst Verkauf, Tausch oder Bezahlen kann Steuer auslösen. § 23 EStG, Haltefrist und Freigrenze klar erklärt.',
+  title: 'Krypto-Cashback versteuern: Deutschland & Österreich 2026',
+  meta_title: 'Krypto-Cashback Steuer DE & Österreich 2026 | TopCryptoCards',
+  meta_description: 'Muss man Krypto-Cashback versteuern? Deutschland (§ 23, 1-Jahr, 1.000 €) und Österreich (27,5 % KESt, ohne Haltefrist) klar erklärt – mit Tabelle und FAQ.',
+  excerpt: 'Das Cashback selbst ist meist steuerfrei – erst Verkauf oder Bezahlen kann Steuer auslösen. Deutschland und Österreich im Vergleich, mit Tabelle und FAQ.',
   content,
-  topic_key: 'krypto-steuer-cashback-de-2026',
+  topic_key: 'krypto-steuer-cashback-dach-2026',
   category: 'guide',
   image_hero: null,
   published: PUBLISH,

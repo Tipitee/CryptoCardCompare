@@ -1,59 +1,65 @@
-Kurz gesagt: Das **Cashback selbst** löst in der Regel im Moment der Gutschrift keine Steuer aus. Steuerpflichtig wird erst, was du **danach mit den erhaltenen Krypto-Token machst** – sie verkaufen, tauschen oder damit bezahlen. Ob dabei Steuer anfällt, hängt an zwei Zahlen: der **Ein-Jahres-Haltefrist** und der **Freigrenze von 1.000 €** pro Jahr (§ 23 EStG).
-
-Dieser Leitfaden erklärt die Regeln in einfachem Deutsch, mit einer Übersichtstabelle und den häufigsten Fragen. Er ersetzt keine individuelle Steuerberatung – die Details am Ende.
+Kurz gesagt: Das **Cashback selbst** löst in der Regel im Moment der Gutschrift keine Steuer aus. Steuerpflichtig wird erst, was du **danach mit den erhaltenen Krypto-Token machst** – sie verkaufen, tauschen oder damit bezahlen. **Wichtig:** Deutschland und Österreich behandeln das **sehr unterschiedlich**. Dieser Leitfaden erklärt beide Regime getrennt, mit Übersichtstabelle und FAQ. Er ersetzt keine individuelle Steuerberatung – die Details am Ende.
 
 ## Warum Krypto-Cashback überhaupt steuerlich relevant ist
 
-Die meisten Krypto-Karten zahlen das Cashback **in Krypto** aus – oft in einem Stablecoin wie USDT, teils in einem hauseigenen Token. Steuerlich gilt: Du erhältst einen Krypto-Vermögenswert. Solange er in deiner Wallet liegt, passiert nichts.
+Die meisten Krypto-Karten zahlen das Cashback **in Krypto** aus – oft in einem Stablecoin wie USDT, teils in einem hauseigenen Token. Solange die Token in deiner Wallet liegen, passiert nichts. Ein **steuerbares Ereignis** entsteht erst bei der **Veräußerung**: Verkauf gegen Euro, Tausch – oder **Bezahlen mit Krypto**. Ja: Wer mit einer Krypto-Karte zahlt, veräußert steuerlich die eingesetzte Kryptowährung.
 
-Ein **steuerbares Ereignis** entsteht erst bei der **Veräußerung**: Verkauf gegen Euro, Tausch in eine andere Kryptowährung – oder eben **Bezahlen mit Krypto**. Ja: Wenn du mit einer Krypto-Karte bezahlst und dafür Krypto verkauft wird, ist das aus Sicht des Finanzamts eine Veräußerung. Kryptowährungen fallen unter die **privaten Veräußerungsgeschäfte nach § 23 EStG**.
+## 🇩🇪 Deutschland: § 23 EStG, Haltefrist und Freigrenze
 
-## Die zwei Zahlen, die alles entscheiden
+In Deutschland fallen Kryptowährungen unter die **privaten Veräußerungsgeschäfte (§ 23 EStG)**. Zwei Zahlen entscheiden:
 
-**1. Die Haltefrist: ein Jahr.** Hältst du die erhaltenen Token **länger als ein Jahr**, ist der Gewinn beim Verkauf **komplett steuerfrei** – egal wie hoch. Die Frist beginnt am Tag nach dem Erhalt.
+- **Haltefrist ein Jahr.** Hältst du die erhaltenen Token **länger als ein Jahr**, ist der Gewinn beim Verkauf **komplett steuerfrei** – egal wie hoch.
+- **Freigrenze 1.000 € pro Jahr.** Verkaufst (oder verausgabst) du **innerhalb eines Jahres**, ist der Gewinn steuerpflichtig, aber nur wenn deine **gesamten** privaten Veräußerungsgewinne im Jahr **über 1.000 €** liegen. Es ist eine **Freigrenze, kein Freibetrag**: Ab 1.000,01 € ist der **gesamte** Gewinn steuerpflichtig, versteuert mit deinem **persönlichen Einkommensteuersatz**.
 
-**2. Die Freigrenze: 1.000 € pro Jahr.** Verkaufst (oder verausgabst) du **innerhalb eines Jahres**, sind Gewinne steuerpflichtig – aber nur, wenn deine **gesamten** privaten Veräußerungsgewinne im Kalenderjahr **über 1.000 €** liegen. Wichtig: Das ist eine **Freigrenze, kein Freibetrag**. Ab 1.000,01 € ist der **gesamte** Gewinn steuerpflichtig, nicht nur der Teil darüber. Der steuerpflichtige Gewinn wird dann mit deinem **persönlichen Einkommensteuersatz** versteuert.
+## 🇦🇹 Österreich: 27,5 % KESt, ohne Haltefrist
 
-## Übersicht: Wann fällt Steuer an?
+Österreich behandelt Krypto seit der Steuerreform (ab 1. März 2022) als **Einkünfte aus Kapitalvermögen**. Die Regeln sind strenger:
 
-| Situation | Steuerpflichtig? | Grund |
+- **Fester Satz von 27,5 % (KESt)** auf den Gewinn – **unabhängig von der Haltedauer**. Es gibt **keine Ein-Jahres-Frist** wie in Deutschland.
+- **Steuerpflicht ab dem ersten Euro** – **keine 1.000-€-Freigrenze**.
+- **Neuvermögen vs. Altvermögen:** Krypto, das **ab dem 1. März 2021** angeschafft wurde (Neuvermögen), unterliegt der 27,5 %-KESt. **Altvermögen** (vor dem 28. Februar 2021 gekauft) bleibt steuerfrei.
+- **Krypto-gegen-Krypto-Tausch ist steuerneutral** – die Steuer entsteht erst beim Verkauf gegen Euro oder beim Bezahlen.
+- **Cashback-Token** werden bei der Veräußerung mit **Anschaffungskosten von 0 €** angesetzt: Beim Ausgeben oder Verkaufen ist praktisch der **volle Wert** mit 27,5 % steuerpflichtig.
+- **DAC8 ab 2026:** Auch ausländische Börsen melden deine Daten an das österreichische Finanzamt.
+
+## Übersicht: Deutschland vs. Österreich
+
+| | 🇩🇪 Deutschland | 🇦🇹 Österreich |
 |---|---|---|
-| Cashback erhalten, Token liegt in der Wallet | Nein | Kein Verkauf, keine Veräußerung |
-| Token **> 1 Jahr** gehalten, dann verkauft/ausgegeben | **Nein** | Haltefrist überschritten (§ 23 EStG) |
-| Token **< 1 Jahr**, Gesamtgewinn im Jahr **≤ 1.000 €** | Nein | Unter der Freigrenze |
-| Token **< 1 Jahr**, Gesamtgewinn im Jahr **> 1.000 €** | **Ja** | Freigrenze überschritten → ganzer Gewinn steuerpflichtig |
-| Mit Krypto-Karte bezahlt (Krypto < 1 Jahr, > Freigrenze) | **Ja** | Bezahlen = Veräußerung |
+| Steuersatz | persönlicher Einkommensteuersatz | fix **27,5 % KESt** |
+| Haltefrist (steuerfrei danach) | **1 Jahr** | **keine** |
+| Freigrenze / Freibetrag | 1.000 €/Jahr (Freigrenze) | **keine** (ab 1. Euro) |
+| Krypto-gegen-Krypto-Tausch | steuerbar (< 1 Jahr) | **steuerneutral** |
+| Cashback-Token (Anschaffung) | Wert bei Erhalt | **0 €** (voller Wert bei Veräußerung) |
+| Bezahlen mit Krypto | Veräußerung | Veräußerung |
 
-## Der Stablecoin-Vorteil – und seine Grenze
+## Der Stablecoin-Aspekt
 
-Cashback in einem **Stablecoin** (z. B. USDT) hat einen praktischen Vorteil: Der Wert schwankt kaum, der „Gewinn" zwischen Erhalt und Verkauf bleibt also klein oder nahe null. Steuerlich verschwindet die Veräußerung dadurch **nicht** – aber ein Gewinn von quasi 0 € führt auch zu quasi 0 € Steuer. Bei Cashback in einem **volatilen hauseigenen Token** kann dagegen ein echter Kursgewinn (oder -verlust) entstehen, der bei Verkauf innerhalb eines Jahres zählt.
+In **Deutschland** hat Cashback in einem **Stablecoin** einen Vorteil: Der Wert schwankt kaum, der steuerliche Gewinn zwischen Erhalt und Ausgabe bleibt nahe null. In **Österreich** hilft das weniger, weil die Anschaffungskosten mit 0 € angesetzt werden – dort zählt beim Ausgeben eher der volle Wert. In beiden Fällen achten wir in unserem [Karten-Vergleich](/de/vergleich) und in der [Studie zu Krypto-Karten 2026](/etudes/krypto-karten-2026) darauf, **in welcher Währung** das Cashback ausgezahlt wird – nicht nur auf den beworbenen Prozentsatz.
 
-Das ist einer der Gründe, warum wir in unserem [Karten-Vergleich](/de/vergleich) und in der [Studie zu Krypto-Karten 2026](/etudes/krypto-karten-2026) darauf achten, **in welcher Währung** das Cashback ausgezahlt wird – nicht nur, wie hoch der beworbene Prozentsatz ist.
+## Praktische Tipps (beide Länder)
 
-## Praktische Tipps
-
-- **Dokumentiere jede Cashback-Gutschrift**: Datum, Menge, Euro-Wert bei Erhalt. Ohne Anschaffungsdatum lässt sich die Haltefrist nicht nachweisen.
-- **FIFO als Standard**: Bei mehreren Zu- und Abgängen derselben Kryptowährung geht das Finanzamt üblicherweise von „First in, first out" aus.
-- **Behalte die 1.000-€-Grenze im Blick** – sie gilt für **alle** privaten Veräußerungsgeschäfte zusammen (auch dein sonstiger Krypto-Handel), nicht nur fürs Cashback.
-- **Anlage SO**: Steuerpflichtige private Veräußerungsgeschäfte gehören in die Anlage SO der Einkommensteuererklärung.
+- **Dokumentiere jede Cashback-Gutschrift**: Datum, Menge, Euro-Wert bei Erhalt. Ohne Anschaffungsdatum lässt sich in Deutschland die Haltefrist nicht nachweisen.
+- **FIFO** gilt üblicherweise, wenn mehrere Zu- und Abgänge derselben Kryptowährung vorliegen.
+- **DE:** Steuerpflichtige private Veräußerungsgeschäfte gehören in die **Anlage SO**. **AT:** Krypto-Einkünfte in die **Steuererklärung (E1kv)**.
 
 ## Häufige Fragen
 
 **Muss ich Krypto-Cashback in Deutschland versteuern?**
-Nicht im Moment der Gutschrift. Steuer kann erst anfallen, wenn du die erhaltenen Token innerhalb eines Jahres verkaufst, tauschst oder ausgibst – und deine gesamten privaten Veräußerungsgewinne im Jahr über 1.000 € liegen.
+Nicht bei der Gutschrift. Steuer kann anfallen, wenn du die Token innerhalb eines Jahres verkaufst, tauschst oder ausgibst – und deine gesamten privaten Veräußerungsgewinne im Jahr über 1.000 € liegen. Nach einem Jahr Haltedauer ist der Gewinn steuerfrei.
+
+**Wie wird Krypto-Cashback in Österreich besteuert?**
+Mit **27,5 % KESt** auf den Gewinn bei der Veräußerung, **ab dem ersten Euro** und **ohne Haltefrist**. Cashback-Token werden mit Anschaffungskosten von 0 € angesetzt.
 
 **Was passiert, wenn ich mit meiner Krypto-Karte bezahle?**
-Das gilt als Veräußerung der eingesetzten Kryptowährung. Liegt der Kauf der Coins weniger als ein Jahr zurück und überschreitest du die Freigrenze, ist der Gewinn steuerpflichtig.
+Das gilt in beiden Ländern als Veräußerung. In Deutschland nur steuerpflichtig bei Haltedauer unter einem Jahr und über der Freigrenze; in Österreich grundsätzlich mit 27,5 % (bei Neuvermögen).
 
-**Wie hoch ist die Freigrenze?**
-1.000 € pro Kalenderjahr für alle privaten Veräußerungsgeschäfte zusammen. Es ist eine Freigrenze: Ab 1.000,01 € wird der gesamte Gewinn steuerpflichtig.
+**Gibt es in Österreich auch eine Ein-Jahres-Regel?**
+Nein. Die frühere Spekulationsfrist wurde 2022 abgeschafft. Für Neuvermögen gilt 27,5 % unabhängig von der Haltedauer.
 
 **Ist Cashback in Stablecoins steuerfrei?**
-Nicht automatisch. Die Veräußerung bleibt steuerbar – aber weil ein Stablecoin kaum schwankt, ist der steuerliche Gewinn meist sehr klein.
-
-**Ab wann ist alles steuerfrei?**
-Sobald du die erhaltenen Token länger als ein Jahr hältst, ist der Gewinn beim späteren Verkauf vollständig steuerfrei.
+Nicht automatisch. In Deutschland ist der Gewinn wegen der Wertstabilität meist sehr klein; in Österreich zählt beim Ausgeben eher der volle Wert (Anschaffung 0 €).
 
 ---
 
-*Dieser Artikel dient der allgemeinen Information und stellt keine Steuer- oder Rechtsberatung dar. Steuerregeln ändern sich und hängen von deiner persönlichen Situation ab. Für eine verbindliche Einschätzung wende dich an einen Steuerberater oder an das zuständige Finanzamt.*
+*Dieser Artikel dient der allgemeinen Information und stellt keine Steuer- oder Rechtsberatung dar. Steuerregeln ändern sich und hängen von deiner persönlichen Situation ab. Für eine verbindliche Einschätzung wende dich an einen Steuerberater oder das zuständige Finanzamt.*
