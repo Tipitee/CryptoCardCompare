@@ -8,7 +8,19 @@ export interface SeoMetaOptions {
   canonical?: string; // override, defaults to current URL without query/hash
   lang?: string; // for og:locale
   noindex?: boolean; // sets robots to "noindex, follow" when true
+  /**
+   * Quality gate (SEO prune, 2026-09): the be (Belgium) and at (Austria) markets
+   * reuse the fr / de content verbatim on most page types (cards, reviews, blog,
+   * compare, alternatives, brands) — Google already dedupes these against fr/de.
+   * So be/at pages are noindex,follow BY DEFAULT. A page whose be/at variant is
+   * genuinely market-specific (localized regulation/tax, e.g. thematic pages, and
+   * the market homepage) must opt back in with indexInMarket. This inversion is
+   * leak-proof: any new be/at page type is noindexed unless it explicitly opts in.
+   */
+  indexInMarket?: boolean;
 }
+
+const DUPLICATE_MARKETS = new Set(['be', 'at']);
 
 /**
  * Sets <title>, meta description, OG tags, Twitter Cards, and canonical link.
@@ -17,7 +29,10 @@ export interface SeoMetaOptions {
 const OG_LOCALE: Record<string, string> = { fr: 'fr_FR', de: 'de_DE', es: 'es_ES', it: 'it_IT', en: 'en_GB', be: 'fr_BE', at: 'de_AT', pt: 'pt_PT' };
 const ALL_OG_LOCALES = ['fr_FR', 'fr_BE', 'de_DE', 'de_AT', 'es_ES', 'it_IT', 'en_GB', 'pt_PT'];
 
-export function useSeoMeta({ title, description, image, type = 'website', canonical, lang, noindex }: SeoMetaOptions) {
+export function useSeoMeta({ title, description, image, type = 'website', canonical, lang, noindex, indexInMarket }: SeoMetaOptions) {
+  // be/at reuse fr/de content on most page types → noindex,follow by default
+  // unless the page opts back in (genuinely market-specific content).
+  const effectiveNoindex = noindex || (!!lang && DUPLICATE_MARKETS.has(lang) && !indexInMarket) || undefined;
   useEffect(() => {
     const defaultImage = 'https://topcryptocards.eu/og-default.jpg';
     const ogImage = image || defaultImage;
@@ -69,7 +84,7 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
       upsertMeta('name',     'twitter:image',     ogImage),
       upsertMeta('name',     'twitter:site',      '@cryptocards_eu'),
       ...(lang ? [upsertMeta('property', 'og:locale', OG_LOCALE[lang] ?? 'en_US')] : []),
-      ...(noindex !== undefined ? [upsertMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow')] : []),
+      ...(effectiveNoindex !== undefined ? [upsertMeta('name', 'robots', effectiveNoindex ? 'noindex, follow' : 'index, follow')] : []),
     ];
 
     // ── og:locale:alternate (multiple tags, managed separately) ──────────────
@@ -107,5 +122,5 @@ export function useSeoMeta({ title, description, image, type = 'website', canoni
 
       alternateEls.forEach(el => el.parentNode?.removeChild(el));
     };
-  }, [title, description, image, type, canonical, lang, noindex]);
+  }, [title, description, image, type, canonical, lang, effectiveNoindex]);
 }

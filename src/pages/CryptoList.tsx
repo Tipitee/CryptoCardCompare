@@ -142,7 +142,7 @@ export default function CryptoList() {
   const slugs = THEMATIC_SLUGS[cl] || THEMATIC_SLUGS.en;
   const guideLinks = GUIDES_LINKS[cl] || GUIDES_LINKS.en;
 
-  useSeoMeta({ title: seo.title, description: seo.desc, lang });
+  useSeoMeta({ title: seo.title, description: seo.desc, lang, noindex: true });
 
   useHreflang(l => `https://topcryptocards.eu/${l}/cryptos`, []);
 

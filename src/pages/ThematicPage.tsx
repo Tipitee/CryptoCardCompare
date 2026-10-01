@@ -1717,11 +1717,15 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
     ? `https://topcryptocards.eu/${lang}/${THEMATIC_ROUTES.best[lang as keyof typeof THEMATIC_ROUTES.best]}`
     : undefined;
 
+  // be/at thematic pages are indexed ONLY when this theme has genuinely
+  // market-specific content (its own be/at entry, not a fr/de fallback).
+  const hasMarketSpecificContent = !!THEME_CONFIG[theme]?.[lang];
   useSeoMeta({
     title: config?.title || 'TopCryptoCards',
     description: config?.description || '',
     lang,
     canonical: canonicalOverride,
+    indexInMarket: hasMarketSpecificContent,
   });
 
   /* Hreflang */

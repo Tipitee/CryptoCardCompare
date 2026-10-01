@@ -120,6 +120,7 @@ export default function CryptoPage() {
     title:       copy?.meta_title       ?? fallbackTitle,
     description: copy?.meta_description ?? fallbackDesc,
     lang,
+    noindex: true, // guides token hors-sujet/minces : désindexés pour la qualité du domaine
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

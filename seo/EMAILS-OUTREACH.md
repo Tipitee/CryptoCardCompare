@@ -46,7 +46,7 @@ Thomas, TopCryptoCards, comparateur indépendant de cartes crypto en Europe
 
 ---
 
-### 2. Journal du Coin (Rémy Rosciano et les frères Ermisse)
+### 2. Journal du Coin (Magali Bourdou, rédactrice en chef)
 
 **Objet :** Données maison : le cashback surgonflé des cartes crypto
 
@@ -64,11 +64,11 @@ Thomas, TopCryptoCards
 
 ---
 
-### 3. Maximilien Prué, Cryptoast
+### 3. Cryptoast (Clément Wardzala, directeur de la publication)
 
 **Objet :** Analyse chiffrée sur 95 cartes crypto, méthodologie ouverte
 
-Bonjour Maximilien,
+Bonjour Clément,
 
 Cryptoast publie des analyses documentées et vérifiables. J'ai une étude taillée pour ce format.
 

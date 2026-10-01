@@ -25,10 +25,18 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine (maj 2026-09-14 — confirmé par A12 Weekly Digest)
+## Focus de la semaine (maj 2026-09-28 — confirmé par A12 Weekly Digest)
+> A12 28/09 : tech 🟢 6/6 (dernier check réel = 09-15, aucun nouveau run depuis 13 j — à relancer) ; decay et striking-distance toujours vides (0 candidat, bloqués faute d'export GSC frais, dernier chargé le 08/09) ; content-gap a un nouveau run (25/09) avec une page neuve prête → priorité = **exécuter le content-gap avant l'outreach cette semaine**. Digest : `reporting/digest-2026-09-28.md`.
+
+**Action de la semaine : rédiger et publier le BRIEF 1 du run content-gap du 25/09 — page thématique-décision « paliers carte Bitpanda » (`/de/bitpanda-karte-stufen` + en/fr/es/it), seul gap de page neuve confirmé ce run, fit money via la review Bitpanda, marché DE/AT à forte intention transactionnelle.** Détail complet : `seo/state/content-gap-queue.md` (Run 2026-09-25, BRIEF 1). En parallèle, les BRIEFs 2 et 3 du même run corrigent 2 doublons en formation détectés dans la file (REFORMAT de blogs 2026 déjà publiés, pas de nouvelle page) — à traiter avant toute exécution des anciennes versions « nouvelle page » (briefs 08-07/09-11). _L'outreach (J0 = The Big Whale + Journal du Coin, cf. `EMAILS-OUTREACH.md`) reste le vrai levier plafond (domaines référents ≈ 0) mais n'a toujours pas été lancé depuis le 08/09 — à reprendre dès le content-gap expédié._
+
+<details><summary>Focus précédent (2026-09-14)</summary>
+
 > A12 14/09 : tech 🟢 6/6, files decay/striking/gap sans candidat urgent, export GSC figé (= 08/09) → priorité inchangée = **autorité/outreach**. Digest : `reporting/digest-2026-09-14.md`.
 
 **Action (< 4 h) : lancer l'outreach. J0 = envoyer l'exclu à The Big Whale (Grégory Raymond) + Journal du Coin, puis s'inscrire à Source of Sources et Qwoted, et logger chaque envoi dans `seo/backlinks-outreach.xlsx`.** Emails prêts dans `seo/EMAILS-OUTREACH.md`, cibles et accroches dans `seo/PITCH-PRESSE.md`, stratégie dans `seo/PLAN-BACKLINKS.md`. La page-étude (asset) a été renforcée le 08/09 : schema FAQPage + bloc « reprise presse » sur les 5 langues. _Verdict établi le 08/09 : test sur 4 money pages (pas de `noindex`, HTTP 200, 73 454 car. prérendus, indexées OK dans GSC) → cause technique écartée. Le crash = fin de l'échantillonnage « honeymoon » (site neuf, interrompu par la migration ~28/07) + domaines référents ≈ 0 → pages saines mais ran. pos 55–95, jamais affichées. Aucun gain on-page à portée. Seul levier : l'autorité. Brief complet : `reporting/handoff-outreach-2026-09-08.md`. À surveiller : bleap.finance top 5 / 6 marchés (SERP 03/09) ; mention IA FR « cashback sans staking » perdue._
+
+</details>
 
 <details><summary>Focus précédent (2026-09-07)</summary>
 

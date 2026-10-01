@@ -204,7 +204,8 @@ export default function Home() {
   const dl = displayLang(lang); // be→fr, at→de for UI text/content
   const homeSeo = HOME_SEO[dl] || HOME_SEO.en;
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
-  useSeoMeta({ title: homeSeo.title, description: homeSeo.desc, lang });
+  // be/at homepage is the market front door (market filter + MarketInsight) → keep indexed.
+  useSeoMeta({ title: homeSeo.title, description: homeSeo.desc, lang, indexInMarket: true });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────
   useHreflang(l => `https://topcryptocards.eu/${l}`, []);
