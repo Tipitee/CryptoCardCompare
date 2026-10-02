@@ -613,3 +613,13 @@ Sources: buyer-queries.csv (25 q), sitemaps thematic/pages/blog/reviews (581 pos
 - **Localisation — ADAPTER, jamais traduire (5 langues)** : taux de cashback et disponibilité diffèrent par marché ; vérifier quelles cartes sans staking sont dispo dans chaque pays avant de publier le classement localisé. Les 5 variantes existent déjà : mettre à jour, ne pas recopier entre marchés.
 
 **→ Le brief n°1 à écrire cette semaine : BRIEF 1 — `/de/bitpanda-karte-stufen` (paliers Bitpanda).** C'est le seul gap de PAGE NEUVE confirmé ce run (aucun slug thématique ni blog n'existe sur les paliers BEST), il suit le format qui a déjà fonctionné deux fois (Crypto.com/Nexo, run 08-28), fit money clair via la review Bitpanda, et marché DE/AT à forte intention transactionnelle. Les briefs 2 et 3 sont prioritaires en parallèle car ils CORRIGENT un doublon en formation dans la file (08-07 et 09-11 proposaient de créer des pages qui entreraient en collision avec des blogs 2026 déjà publiés) — à traiter avant toute exécution des versions "nouvelle page" de ces deux anciens briefs.
+
+---
+
+## Run 2026-10-02 (A8 content-gap) — AUCUN NOUVEAU BRIEF (saturation, 4e run consécutif)
+- **Pass 1** : sitemaps re-fetchés (thematic = 80 URLs, 10 thèmes × 8 marchés incl. pt ; reviews = 14 cartes en/fr listées ; blog = 26 sujets × 5 langues). Les 25 buyer queries restent couvertes ou déjà en file. Aucune query sans slug.
+- **Pass 2** : cryptocardindex.com → WebSearch ne remonte aucun guide dédié (index de filtrage, déjà jugé thin). Koinly → « crypto debit cards tax » (versions de/da) = déjà couvert par notre cluster fiscal briefé (DE/UK/BE/FR). Aucun gap neuf.
+- **Pass 3** : rien de nouveau ; reformats BTC-cashback et cashback-sans-staking déjà briefés (09-25 BRIEF 2/3).
+- **Gate** : créer une page maintenant = volume/doublon → refusé. 
+- **Note** : le fetch de sitemap-blog (/en/) a listé 2 slugs en français (`carte-crypto-plafonds-limites-guide-complet`, `declarer-cashback-crypto-impots-guide-complet`) sous /en/blog/ → à vérifier (mauvaise locale/hreflang ?).
+- **Action n°1 cette semaine** : écrire 09-25 BRIEF 1 `/de/bitpanda-karte-stufen` (gap neuf confirmé, jamais exécuté), puis exécuter les reformats BRIEF 2/3.
