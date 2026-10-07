@@ -12,6 +12,7 @@ import AffiliateButton from '../components/AffiliateButton';
 import { getBrandMeta } from '../data/brandConfig';
 import { ALT_BRAND_MAP } from '../data/alternativesContent';
 import { BRAND_WHY_CHOOSE } from '../data/brandEditorial';
+import comparisonAllowlist from '../../scripts/comparison-allowlist.json';
 import { getReviewBySlug } from '../data/cardReviews';
 import { REVIEW_I18N } from '../data/cardReviewsI18n';
 import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
@@ -490,6 +491,14 @@ function brandCompSlugToLabel(slug: string): string {
   return slug.split('-vs-').map((part) =>
     part.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
   ).join(' vs ');
+}
+
+// Only link to comparison pages that actually exist (prerendered = allowlisted pairs).
+// Non-allowlisted pairs render a client-side not-found (soft 404) → never link them.
+const ALLOWED_COMPARE_PAIRS = new Set(comparisonAllowlist as string[]);
+const normComparePair = (slug: string) => slug.split('-vs-').sort().join('-vs-');
+function brandComparePairs(brandId: string): string[] {
+  return (BRAND_COMPARISONS[brandId] || []).filter((s) => ALLOWED_COMPARE_PAIRS.has(normComparePair(s)));
 }
 
 const BRAND_COMP_TITLE: Record<string, string> = {
@@ -1014,7 +1023,7 @@ export default function BrandPage() {
       )}
 
       {/* ── Comparison links ────────────────────────────────────────────────── */}
-      {(BRAND_COMPARISONS[brandId ?? ''] || []).length > 0 && (() => {
+      {brandComparePairs(brandId ?? '').length > 0 && (() => {
         const compSeg = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.comparisons ?? 'compare';
         return (
           <section>
@@ -1022,7 +1031,7 @@ export default function BrandPage() {
               {BRAND_COMP_TITLE[cl] || BRAND_COMP_TITLE.en}
             </h2>
             <div className="flex flex-wrap gap-2">
-              {(BRAND_COMPARISONS[brandId ?? ''] || []).map((slug) => (
+              {brandComparePairs(brandId ?? '').map((slug) => (
                 <Link
                   key={slug}
                   to={`/${lang}/${compSeg}/${slug}`}

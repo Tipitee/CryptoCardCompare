@@ -25,7 +25,8 @@ const arg = (k, d) => { const i = process.argv.indexOf(k); return i >= 0 ? proce
 const has = (k) => process.argv.includes(k);
 const BASE = (arg('--base', 'https://topcryptocards.eu')).replace(/\/$/, '');
 const MAX = parseInt(arg('--max', '5000'), 10);
-const CONC = parseInt(arg('--conc', '10'), 10);
+const CONC = parseInt(arg('--conc', '4'), 10);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const CRAWL_LINKS = has('--crawl-links');
 const HOST = new URL(BASE).host;
 
@@ -59,6 +60,18 @@ async function fetchChain(url, maxHops = 6) {
     return { chain, final: cur, status: res.status, html };
   }
   return { chain, final: cur, status: 'LOOP', html: '' };
+}
+
+// Cloudflare throttles aggressive bots and can return transient 404/403/429/5xx.
+// Retry such statuses (and 404) a couple of times with backoff before concluding.
+const TRANSIENT = new Set([0, 403, 408, 429, 500, 502, 503, 504]);
+async function fetchChainRetry(url, tries = 3) {
+  let r = await fetchChain(url);
+  for (let i = 1; i < tries && (TRANSIENT.has(r.status) || r.status === 404); i++) {
+    await sleep(600 * i + Math.random() * 400);
+    r = await fetchChain(url);
+  }
+  return r;
 }
 
 function classify(url, r) {
@@ -124,7 +137,7 @@ async function pool(items, worker) {
   const checkedExtra = new Set();
 
   await pool(urls, async (u) => {
-    const r = await fetchChain(u);
+    const r = await fetchChainRetry(u);
     const [type, status, detail] = classify(u, r);
     if (type !== 'ok') problems.push({ url: u, type, status, detail });
     if (CRAWL_LINKS && r.html) {
@@ -139,7 +152,7 @@ async function pool(items, worker) {
     const extra = [...checkedExtra].slice(0, MAX);
     console.log(`\nVérification de ${extra.length} liens internes hors-sitemap...`);
     await pool(extra, async (u) => {
-      const r = await fetchChain(u);
+      const r = await fetchChainRetry(u);
       const [type, status, detail] = classify(u, r);
       if (type !== 'ok' && type !== 'noindex-in-sitemap') problems.push({ url: u, type: 'link:' + type, status, detail });
     });
