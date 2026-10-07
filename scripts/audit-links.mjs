@@ -88,7 +88,12 @@ function classify(url, r) {
   }
   const html = r.html || '';
   if (/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html)) return ['noindex-in-sitemap', 200, 'robots noindex sur une URL de sitemap'];
-  for (const m of SOFT404) if (html.includes(m)) return ['soft-404', 200, `marqueur: "${m}"`];
+  // Soft-404 only when the PAGE TITLE itself is a not-found title (reliable),
+  // not when the body merely contains a phrase like "existiert nicht" (false positives).
+  const title = (html.match(/<title>([^<]*)<\/title>/i)?.[1] || '').trim();
+  if (/^(404|page introuvable|not found|seite nicht gefunden|página no encontrada|pagina non trovata|página não encontrada|avis introuvable|review not found|bewertung nicht gefunden|opinión no encontrada|recensione non trovata|análise não encontrada)/i.test(title)
+      || /\b404,? (page introuvable|not found|seite nicht|página|pagina|análise)/i.test(title))
+    return ['soft-404', 200, `title: "${title}"`];
   return ['ok', 200, hops ? `${hops} redirect hop(s)` : ''];
 }
 
