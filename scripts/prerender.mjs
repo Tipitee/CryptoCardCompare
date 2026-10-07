@@ -246,15 +246,14 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
   await page.close();
 }));
 
-// ── 404 page (served by Netlify with real 404 status via _redirects) ──────
-try {
-  const page = await browser.newPage();
-  await page.goto(`http://localhost:${PORT}/fr/page-inexistante-xyz-404`, { waitUntil: 'networkidle0' });
-  const html = await page.evaluate(() => '<!DOCTYPE html>' + document.documentElement.outerHTML);
-  writeFileSync(join(DIST, '404.html'), html.replaceAll(`http://localhost:${PORT}`, ORIGIN));
-  console.log('✓ dist/404.html written');
-  await page.close();
-} catch (e) { console.error('404 page failed:', e.message); }
+// ── No 404.html on purpose ────────────────────────────────────────────────
+// On Cloudflare Pages a 404.html in the output is served (HTTP 404) for every
+// unmatched route and SILENTLY OVERRIDES the `/* /index.html 200` SPA rewrite
+// in _redirects — which made valid-but-not-prerendered routes (non-allowlisted
+// comparisons, be/at blog, blog category hubs, cards unavailable in a market)
+// return a hard 404 while the SPA still rendered real content. We ship NO
+// 404.html so the catch-all SPA rewrite serves index.html (200); every
+// not-found UI state is noindex, so dead URLs resolve to 200 + noindex.
 
 await browser.close();
 server.close();
