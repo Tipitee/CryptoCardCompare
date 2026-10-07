@@ -433,6 +433,9 @@ export default function ReviewPage() {
     image: review?.realCardImage || undefined,
     type: 'article',
     lang,
+    // A review slug that doesn't exist renders the "not found" state at HTTP 200 —
+    // a soft 404 to Google. Mark it noindex so it's dropped cleanly, not flagged.
+    noindex: !review || undefined,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

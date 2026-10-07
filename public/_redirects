@@ -172,6 +172,58 @@
 /simulator   /en/simulator   301
 /compare     /en/compare     301
 
+
+# ── Alias d'ids de carte (slug d'avis / legacy utilisé comme id de fiche) → vraie fiche ──
+# Récupère l'équité et élimine les 404 historiques /{lang}/{seg}/{alias}.
+/fr/cartes/crypto-com-card  /fr/cartes/crypto-com-ruby-steel  301
+/be/cartes/crypto-com-card  /be/cartes/crypto-com-ruby-steel  301
+/de/karten/crypto-com-card  /de/karten/crypto-com-ruby-steel  301
+/at/karten/crypto-com-card  /at/karten/crypto-com-ruby-steel  301
+/es/tarjetas/crypto-com-card  /es/tarjetas/crypto-com-ruby-steel  301
+/it/carte/crypto-com-card  /it/carte/crypto-com-ruby-steel  301
+/en/cards/crypto-com-card  /en/cards/crypto-com-ruby-steel  301
+/pt/cartoes/crypto-com-card  /pt/cartoes/crypto-com-ruby-steel  301
+/fr/cartes/crypto-com-visa-card  /fr/cartes/crypto-com-ruby-steel  301
+/be/cartes/crypto-com-visa-card  /be/cartes/crypto-com-ruby-steel  301
+/de/karten/crypto-com-visa-card  /de/karten/crypto-com-ruby-steel  301
+/at/karten/crypto-com-visa-card  /at/karten/crypto-com-ruby-steel  301
+/es/tarjetas/crypto-com-visa-card  /es/tarjetas/crypto-com-ruby-steel  301
+/it/carte/crypto-com-visa-card  /it/carte/crypto-com-ruby-steel  301
+/en/cards/crypto-com-visa-card  /en/cards/crypto-com-ruby-steel  301
+/pt/cartoes/crypto-com-visa-card  /pt/cartoes/crypto-com-ruby-steel  301
+/fr/cartes/whitebit-card  /fr/cartes/whitebit-nova  301
+/be/cartes/whitebit-card  /be/cartes/whitebit-nova  301
+/de/karten/whitebit-card  /de/karten/whitebit-nova  301
+/at/karten/whitebit-card  /at/karten/whitebit-nova  301
+/es/tarjetas/whitebit-card  /es/tarjetas/whitebit-nova  301
+/it/carte/whitebit-card  /it/carte/whitebit-nova  301
+/en/cards/whitebit-card  /en/cards/whitebit-nova  301
+/pt/cartoes/whitebit-card  /pt/cartoes/whitebit-nova  301
+/fr/cartes/kraken-card  /fr/cartes/kraken-krak-card  301
+/be/cartes/kraken-card  /be/cartes/kraken-krak-card  301
+/de/karten/kraken-card  /de/karten/kraken-krak-card  301
+/at/karten/kraken-card  /at/karten/kraken-krak-card  301
+/es/tarjetas/kraken-card  /es/tarjetas/kraken-krak-card  301
+/it/carte/kraken-card  /it/carte/kraken-krak-card  301
+/en/cards/kraken-card  /en/cards/kraken-krak-card  301
+/pt/cartoes/kraken-card  /pt/cartoes/kraken-krak-card  301
+/fr/cartes/ether-fi-card  /fr/cartes/ether-fi-cash  301
+/be/cartes/ether-fi-card  /be/cartes/ether-fi-cash  301
+/de/karten/ether-fi-card  /de/karten/ether-fi-cash  301
+/at/karten/ether-fi-card  /at/karten/ether-fi-cash  301
+/es/tarjetas/ether-fi-card  /es/tarjetas/ether-fi-cash  301
+/it/carte/ether-fi-card  /it/carte/ether-fi-cash  301
+/en/cards/ether-fi-card  /en/cards/ether-fi-cash  301
+/pt/cartoes/ether-fi-card  /pt/cartoes/ether-fi-cash  301
+
+# ── Slugs thématiques typo / alias → page canonique ──
+/es/tarjeta-crypto-sin-staking   /es/tarjeta-cripto-sin-staking  301
+/fr/meilleures-cartes-crypto-cashback  /fr/carte-crypto-cashback  301
+
+# ── Racines de section nues (crawlées sans slug) → hub de marché ──
+/be/comparer  /be  301
+/at/vergleich  /at  301
+
 # ── Everything else: real 404 ──────────────────────────────────────────────
 # Physical prerendered files (dist/fr/index.html etc.) take priority over
 # redirect rules without "!" — so prerendered pages are served directly.

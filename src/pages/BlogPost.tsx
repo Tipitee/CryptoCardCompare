@@ -228,13 +228,17 @@ export default function BlogPost() {
   // real content at render/prerender time, so it self-adjusts as articles are grown.
   const bodyWordCount = post?.content ? post.content.trim().split(/\s+/).filter(Boolean).length : 0;
   const thinContent = !!post && bodyWordCount < 500;
+  // A post that doesn't exist (or failed to load) renders the "not found" state at
+  // HTTP 200 — that is a soft 404 to Google. Mark it noindex so it's dropped cleanly
+  // instead of being flagged. (Checked after loading, so prerender captures the real state.)
+  const missingPost = !loading && (notFound || !post);
   useSeoMeta({
     title: post?.meta_title || (post ? `${post.title} | TopCryptoCards` : 'TopCryptoCards'),
     description: buildBlogMetaDesc(post, lang),
     image: post?.image_hero || undefined,
     type: 'article',
     lang,
-    noindex: thinContent || undefined,
+    noindex: thinContent || missingPost || undefined,
   });
 
   useEffect(() => {

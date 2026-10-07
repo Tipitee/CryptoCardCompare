@@ -1,4 +1,4 @@
-# Tech Health — 2026-09-29
+# Tech Health — 2026-10-06
 
 Statut global : 🟢 (6/6 OK, hreflang vérifié partiellement)
 
@@ -13,7 +13,7 @@ Sonde via `web_fetch` (réseau OK cette fois).
 | — | Crawlers IA autorisés | ✅ | GPTBot/Perplexity/ClaudeBot/Google-Extended = Allow / |
 | — | Sitemaps enfants | ✅ | sitemap-index 200, 18 enfants listés (enfants non re-fetchés) |
 
-Aucune régression vs 2026-09-15.
+Aucune régression vs 2026-09-29. (/ : redirection suivie par web_fetch jusqu'au contenu /fr, statut 301/302 non observable ; sitemaps enfants: 18, lastmod 2026-09-18, non re-fetchés.)
 
 ## Historique
 ### 2026-07-28 — 🔴 (probe échec réseau, non concluant : 7 checks "fetch failed")
@@ -25,4 +25,5 @@ Aucune régression vs 2026-09-15.
 ### 2026-09-08 — 🟢 6/6 checks OK (via Chrome, fetch same-origin). Aucune régression.
 ### 2026-09-15 — 🟢 6/6 checks OK (via navigateur intégré, fetch same-origin). Aucune régression.
 ### 2026-09-29 — 🟢 6/6 OK (web_fetch). Aucune régression.
+### 2026-10-06 — 🟢 6/6 OK (web_fetch). Aucune régression.
 (les runs précédents restent ici — ne pas écraser cette section à la main)

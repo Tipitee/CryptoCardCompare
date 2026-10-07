@@ -25,10 +25,19 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine (maj 2026-09-28 — confirmé par A12 Weekly Digest)
+## Focus de la semaine (maj 2026-10-05 — confirmé par A12 Weekly Digest)
+> A12 05/10 : tech 🟢 6/6 (check 29/09) ; SERP 01/10 absent top 10 sur 12/12 ; IA 0/25 présents (30/09) ; decay et striking-distance vides (export GSC figé depuis 08/09, 27 j) ; content-gap saturé (run 02/10 sans nouveau brief) → priorité = **content-gap**. Digest : `reporting/digest-2026-10-05.md`.
+
+**Action de la semaine : rédiger et publier BRIEF 1 du run content-gap du 25/09 — `/de/bitpanda-karte-stufen` (+ en/fr/es/it), seul gap de page neuve confirmé ; vérifier paliers/seuils BEST/taux dans `cards` avant publication.** Détail : `seo/state/content-gap-queue.md` (Run 2026-09-25). _Baselines manquantes : recharger un export GSC frais (débloque decay/striking) ; lancer `internal-link-finder`. Outreach (domaines référents ≈ 0) toujours non lancé._
+
+<details><summary>Focus précédent (2026-09-28)</summary>
+
 > A12 28/09 : tech 🟢 6/6 (dernier check réel = 09-15, aucun nouveau run depuis 13 j — à relancer) ; decay et striking-distance toujours vides (0 candidat, bloqués faute d'export GSC frais, dernier chargé le 08/09) ; content-gap a un nouveau run (25/09) avec une page neuve prête → priorité = **exécuter le content-gap avant l'outreach cette semaine**. Digest : `reporting/digest-2026-09-28.md`.
 
 **Action de la semaine : rédiger et publier le BRIEF 1 du run content-gap du 25/09 — page thématique-décision « paliers carte Bitpanda » (`/de/bitpanda-karte-stufen` + en/fr/es/it), seul gap de page neuve confirmé ce run, fit money via la review Bitpanda, marché DE/AT à forte intention transactionnelle.** Détail complet : `seo/state/content-gap-queue.md` (Run 2026-09-25, BRIEF 1). En parallèle, les BRIEFs 2 et 3 du même run corrigent 2 doublons en formation détectés dans la file (REFORMAT de blogs 2026 déjà publiés, pas de nouvelle page) — à traiter avant toute exécution des anciennes versions « nouvelle page » (briefs 08-07/09-11). _L'outreach (J0 = The Big Whale + Journal du Coin, cf. `EMAILS-OUTREACH.md`) reste le vrai levier plafond (domaines référents ≈ 0) mais n'a toujours pas été lancé depuis le 08/09 — à reprendre dès le content-gap expédié._
+
+
+</details>
 
 <details><summary>Focus précédent (2026-09-14)</summary>
 
