@@ -224,8 +224,18 @@
 /be/comparer  /be  301
 /at/vergleich  /at  301
 
-# ── Everything else: real 404 ──────────────────────────────────────────────
-# Physical prerendered files (dist/fr/index.html etc.) take priority over
-# redirect rules without "!" — so prerendered pages are served directly.
-# Unknown paths that have no physical file return a real HTTP 404.
-/*  /404.html  404
+# ── SPA fallback (catch-all) ────────────────────────────────────────────────
+# Physical prerendered files (dist/fr/index.html etc.) are served FIRST by
+# Cloudflare Pages, before any _redirects rule — so every indexable page is a
+# real static 200. For routes that are valid but NOT prerendered at scale
+# (non-allowlisted A-vs-B comparisons, be/at blog that reuses fr/de, blog
+# category hubs, cards unavailable in a market…), serve the SPA shell at 200 so
+# the client renders the right page. Previously this was `/404.html 404`, but on
+# Cloudflare Pages the per-path `… /index.html 200` rewrites above were NOT
+# honored, so every non-prerendered route returned a hard 404 while the SPA
+# still booted from 404.html — i.e. real content served with a 404 status.
+# The not-found state of every page type is noindex (BlogPost, ReviewPage,
+# CardDetail, ComparisonPage non-allowlisted, BrandPage empty, NotFound), so a
+# genuinely dead URL resolves to 200 + noindex (dropped cleanly) instead of a
+# soft 404 on content Googlebot can see.
+/*  /index.html  200

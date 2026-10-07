@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { displayLang } from '../i18n/types';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
@@ -40,15 +39,9 @@ export default function NotFound() {
   const msg = MESSAGES[dl] || MESSAGES.en;
   const links = LINKS[dl] || LINKS.en;
 
-  useSeoMeta({ title: `404, ${msg.title} | TopCryptoCards`, description: msg.subtitle });
-
-  // Inject noindex so soft-404s don't pollute the index
-  useEffect(() => {
-    const el = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-    const prev = el?.getAttribute('content') ?? '';
-    if (el) el.setAttribute('content', 'noindex, nofollow');
-    return () => { if (el) el.setAttribute('content', prev); };
-  }, []);
+  // noindex via useSeoMeta (reliably creates the robots meta; the old manual
+  // injection only worked if a robots tag already existed, so 404s could leak).
+  useSeoMeta({ title: `404, ${msg.title} | TopCryptoCards`, description: msg.subtitle, noindex: true });
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">
