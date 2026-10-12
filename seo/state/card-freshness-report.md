@@ -1,30 +1,27 @@
-# A13 — Rapport fraîcheur cartes · 2026-09-26
+# A13 — Fraîcheur cartes — 2026-10-10
+Lot : Brighty, Bleap, KuCoin, Plutus, Bybit, Crypto.com Visa, Binance, Nexo. Écarts : 1 CHANGÉ (2 champs), 4 INCERTAIN, 3 fiches live illisibles. Lecture seule.
+Limite : WebFetch de la fiche EN a renvoyé des données pour Bleap/Plutus/Bybit/Nexo seulement ; Brighty/Crypto.com = métadonnées uniquement, Binance = erreur, KuCoin = pas de fiche (absent du sitemap-reviews).
 
-**Lot vérifié (8) :** Bit2Me Card, Coinbase Card, Gnosis Pay, Wirex Card, Bitpanda Card, MetaMask Card, OKX Card, Ledger/Baanx Card.
-**Écarts :** 3 CHANGÉ · 1 INCERTAIN · 4 OK.
-
-| Carte | Champ | Fiche live dit | Réalité (source) | Statut | Marché |
+| carte | champ | fiche live dit | réalité (source) | statut | marché |
 |---|---|---|---|---|---|
-| OKX Card | cashback | 1-3 % en OKB, staking OKB optionnel | Depuis 01/09/2026 : 2 % (non-VIP) à 10 % (VIP4+), payé en **USDG**, paliers basés sur activité/solde OKX (pas OKB) ; carte virtuelle uniquement (okx.com/en-eu) | CHANGÉ | EU + Norvège (hors Islande/Liechtenstein) |
-| MetaMask Card | cashback + frais | 1-3 % en ETH, 199 $/an | Carte virtuelle par défaut : 1 % en **mUSD**, 0 $/an ; carte Metal (optionnelle) : 3 % puis 1 %, 199 $/an (support.metamask.io) | CHANGÉ | FR/EU (US/UK : nouvelles inscriptions en pause) |
-| Ledger/Baanx Card | cashback premium | 1 % BTC base + palier premium 2 % en « LDG » | 1 % cashback flat en BTC/USDC/USDT ; aucun palier premium ni token LDG trouvé (shop.ledger.com, blog Ledger) | CHANGÉ | EU (FR) |
-| Coinbase Card | cashback | 4 % XLM / 1 % BTC | Structure non confirmée sur les sources officielles actuelles ; reviews tierces évoquent une restructuration (dont un produit US séparé jusqu'à 4 % BTC) | INCERTAIN | EU/UK |
-| Wirex Card | statut/dispo | Crypto arrêté EEE/Australie depuis 30/06/2026 (déjà affiché) | Confirmé (cryptoslate, bleap.finance) — fiche déjà à jour | OK | EEE |
-| Bit2Me Card | cashback | 2 % (jusqu'à 7 %) en B2M | Cohérent (support.bit2me.com, bit2me.com/suite/card) | OK | ES (surtout) |
-| Gnosis Pay | cashback | 1-5 % en GNO selon palier GNO détenu | Cohérent (bleap.finance, cardpilled) | OK | EU + UK |
-| Bitpanda Card | cashback | jusqu'à 1 % en BEST | Cohérent (spendnode) ; `llms-full.txt` dit « jusqu'à 2 % » (dérive) | OK | AT/DE/ES/FR/EU |
+| Bybit | réseau | Visa | Mastercard (communiqué Bybit EU 19/01/2026) | CHANGÉ | EEE |
+| Bybit | dispo | « pas en France » | EEE sauf Malte, France incluse (idem) | CHANGÉ | FR |
+| Bybit | staking | 1 € requis | communiqué ne mentionne aucun staking | INCERTAIN | tous |
+| Bybit | cashback | 2% base / 10% max | 2-10% selon palier, en BTC/USDC (idem) | OK | - |
+| Plutus | frais | 98 €/an (et « gratuit ») | abonnement mensuel £6.99/9.99/19.99 (spendnode, tiers) | INCERTAIN | tous |
+| Plutus | staking | 500 € | solde PLU on-chain par palier, 1 PLU=3%, 40k PLU=9% (spendnode) | INCERTAIN | tous |
+| Plutus | dispo UK | UK+EU | sources contradictoires sur le UK (spendnode, 28/09/2026) | INCERTAIN | UK |
+| Bleap | cashback | 2% base, jusqu'à 20% | « jusqu'à 20% » USDC (site Bleap) ; base 2% non confirmé | INCERTAIN | - |
+| Bleap | dispo | FR/DE/ES/IT/UK/BE/AT/PT | EEE + Amérique latine ; UK non cité (site Bleap) | INCERTAIN | UK |
+| Nexo | cashback | 0.5% base (« jusqu'à 2% » en texte) | rien de vérifiable obtenu | INCERTAIN | - |
+| Brighty, Crypto.com, Binance, KuCoin | tous | fiche illisible | voir ci-dessous | INCERTAIN | - |
 
-## À corriger cette semaine (par priorité)
-1. **OKX Card (HAUTE, fort trafic).** Cashback totalement restructuré il y a 3 semaines : OKB→USDG, staking OKB→activité VIP, 1-3 %→2-10 %. Fiche live ET `llms-full.txt` obsolètes.
-2. **MetaMask Card.** Clarifier : la carte virtuelle par défaut est gratuite (0 $/an, 1 % mUSD) ; 199 $/an ne concerne que la carte Metal optionnelle.
-3. **Ledger/Baanx Card.** Vérifier/retirer le palier « 2 % LDG » : aucune source officielle ne confirme ce token ; structure réelle = 1 % flat.
+## À corriger cette semaine
+1. Bybit : réseau Visa → Mastercard ; France « non dispo » → dispo (JSON, confiance medium, à relire avant apply).
+2. À vérifier à la main dans l'admin (fiche illisible côté fetch) : Binance Card doit être status=discontinued (EEE arrêtée 20/12/2023, Blockworks) — confirmer qu'elle l'est et n'est plus promue ; Crypto.com : réalité = Basic 0%, Plus 2%, Pro 3%, Private 4-5%, Prime 8%, CRO verrouillé 12 mois (spendnode 07/10/2026), vs llms « 3% jusqu'à 5% » ; Brighty : réalité 0.5% base (plan One), jusqu'à 1.75% ; promo x2 terminée le 18/01/2026.
 
-## Dérive `llms-full.txt` (GEO)
-- Coinbase Card et Wirex Card sont **absentes** du tableau principal de `llms-full.txt` (aucune ligne) → angle mort pour les IA.
-- OKX Card : `llms-full.txt` dit « 2 % (jusqu'à 5 %) en OKB » — également périmé (voir ci-dessus).
-- Bitpanda Card : `llms-full.txt` dit « jusqu'à 2 % », la fiche live dit « jusqu'à 1 % » — à harmoniser.
+## Dérive llms-full.txt (GEO)
+Périmé : Brighty (1% BTC = promo doublée terminée), Bybit (Mastercard, dispo DE/ES/IT/UK/AT/PT sans FR/BE alors que EEE sauf Malte), Crypto.com (« Frosted Rose Gold » 3%→5%), Bleap (1% en tableau vs 2% en FAQ), Nexo (0.5% vs 2% en FAQ). KuCoin et Binance absents de llms-full.txt. KuCoin : carte active en EEE (0.5-3% en KCS selon stake, spendnode 06/10/2026) mais sans fiche sur le site — lacune de contenu.
 
-## UNE action prioritaire (< 4 h)
-Corriger le cashback **OKX Card** en base (2 %→10 % selon VIP, payé en USDG, non lié à l'OKB) : carte à plus fort trafic du lot, écart le plus important et le plus récent (effectif depuis le 01/09/2026).
-
-*Lecture seule. Mise à jour Supabase + régénération `llms-full.txt` = étapes humaines. Ledger/Baanx : pas de suppression de champ possible en JSON, à vérifier manuellement en base.*
+## Action prioritaire (< 4 h)
+Vérifier dans l'admin que Binance Card est bien status=discontinued, puis appliquer le JSON Bybit (réseau + France).

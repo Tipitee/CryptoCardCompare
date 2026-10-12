@@ -25,10 +25,16 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine (maj 2026-10-05 — confirmé par A12 Weekly Digest)
-> A12 05/10 : tech 🟢 6/6 (check 29/09) ; SERP 01/10 absent top 10 sur 12/12 ; IA 0/25 présents (30/09) ; decay et striking-distance vides (export GSC figé depuis 08/09, 27 j) ; content-gap saturé (run 02/10 sans nouveau brief) → priorité = **content-gap**. Digest : `reporting/digest-2026-10-05.md`.
+## Focus de la semaine (maj 2026-10-12 — confirmé par A12 Weekly Digest)
+> A12 12/10 : tech 🟢 6/6 (check 06/10) ; SERP 08/10 absent top 10 sur 12/12 ; IA 0/25 (07/10) ; decay et striking-distance vides (export GSC figé depuis 14/09, 28 j) ; content-gap saturé (5e run, 09/10) → priorité = **content-gap**. Digest : `reporting/digest-2026-10-12.md`.
 
-**Action de la semaine : rédiger et publier BRIEF 1 du run content-gap du 25/09 — `/de/bitpanda-karte-stufen` (+ en/fr/es/it), seul gap de page neuve confirmé ; vérifier paliers/seuils BEST/taux dans `cards` avant publication.** Détail : `seo/state/content-gap-queue.md` (Run 2026-09-25). _Baselines manquantes : recharger un export GSC frais (débloque decay/striking) ; lancer `internal-link-finder`. Outreach (domaines référents ≈ 0) toujours non lancé._
+**Action de la semaine : rédiger et publier BRIEF 1 du run content-gap du 25/09 — `/de/bitpanda-karte-stufen` (+ en/fr/es/it), non exécuté depuis 3 sem. ; vérifier paliers/seuils/taux dans `cards` avant publication.** Détail : `seo/state/content-gap-queue.md` (Run 2026-09-25). _Baselines manquantes : export GSC frais ; `internal-link-finder` ; outreach (domaines référents ≈ 0) non lancé._
+
+<details><summary>Focus précédent (2026-10-05)</summary>
+
+> A12 05/10 : priorité = **content-gap** (Bitpanda DE/AT). Digest : `reporting/digest-2026-10-05.md`.
+
+</details>
 
 <details><summary>Focus précédent (2026-09-28)</summary>
 
@@ -66,3 +72,6 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 </details>
 
 > Vrai levier plafond = **autorité / backlinks** (domaines référents ≈ 0) — hors périmètre « < 4 h » mais c'est LE chantier. L'étude « cartes crypto Europe 2026 » est en ligne (vérifié 23/08 dans le chat Website SEO report) : lancer l'outreach (Journal du Coin, The Big Whale) est la priorité stratégique parallèle. **Aussi : recharger un export GSC frais** (dernier = 08-18) pour que le prochain run ait de la vraie donnée W/W.
+
+## Focus de la semaine (2026-10-12)
+Exports GSC périmés (14/09). Aucune ligne mise à jour cette semaine : exporter Queries+Pages (90 j) puis relancer /report. Voir report-2026-10-12.md.

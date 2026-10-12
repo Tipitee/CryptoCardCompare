@@ -1,41 +1,17 @@
 {
-  "generated": "2026-09-26",
+  "generated": "2026-10-10",
   "changes": [
     {
-      "card": "OKX Card",
+      "card": "Bybit Card",
       "match": {
-        "name": "OKX Card"
+        "name": "Bybit Card"
       },
       "set": {
-        "cashback_base": 2,
-        "cashback_premium": 10
+        "card_network": "Mastercard",
+        "available_france": true
       },
-      "reason": "Depuis le 01/09/2026, le cashback OKX Card EEA est restructure : 2% pour les non-VIP jusqu'a 10% pour VIP4+, paye en USDG (plus en OKB), paliers bases sur l'activite/solde OKX (plus sur la detention d'OKB). Carte desormais virtuelle uniquement.",
-      "source": "okx.com/en-eu/help/okx-card-eea-ongoing-cashback-faq + okx.com/en-eu/learn/okx-card-eea-fees-rewards-eligibility",
-      "confidence": "high"
-    },
-    {
-      "card": "MetaMask Card",
-      "match": {
-        "name": "MetaMask Card"
-      },
-      "set": {
-        "annual_fees": 0
-      },
-      "reason": "La carte MetaMask par defaut (virtuelle) est gratuite (0$/an) avec 1% de cashback en mUSD (pas ETH) ; les 199$/an et le palier 3% ne s'appliquent qu'a la carte Metal optionnelle. Le site affiche 199$/an comme frais unique et cite ETH au lieu de mUSD.",
-      "source": "support.metamask.io/trade/metamask-card/card-faq",
-      "confidence": "high"
-    },
-    {
-      "card": "Ledger/Baanx Card",
-      "match": {
-        "name": "Ledger Card"
-      },
-      "set": {
-        "cashback_premium": 1
-      },
-      "reason": "Aucune source officielle Ledger ne mentionne de palier premium a 2% en token 'LDG' ; la carte offre un cashback plat de 1% (BTC/USDC/USDT), sans palier ni token de fidelite distinct. Valeur proposee = alignee sur la base (pas de premium reel).",
-      "source": "shop.ledger.com/pages/cl-card-crypto-card + ledger.com/blog-the-cl-card-comes-to-the-us",
+      "reason": "Bybit EU (communiqué 19/01/2026) : carte Mastercard, dispo EEE sauf Malte (donc France incluse), cashback 2-10% en BTC/USDC, 0 frais annuels. La fiche live dit Visa et « pas en France ».",
+      "source": "https://www.prnewswire.com/de/pressemitteilungen/bybit-eu-introduces-bitcoin-cashback-on-the-bybit-card-turning-everyday-spending-into-btc-302664446.html",
       "confidence": "medium"
     }
   ]

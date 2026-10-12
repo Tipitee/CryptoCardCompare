@@ -623,3 +623,13 @@ Sources: buyer-queries.csv (25 q), sitemaps thematic/pages/blog/reviews (581 pos
 - **Gate** : créer une page maintenant = volume/doublon → refusé. 
 - **Note** : le fetch de sitemap-blog (/en/) a listé 2 slugs en français (`carte-crypto-plafonds-limites-guide-complet`, `declarer-cashback-crypto-impots-guide-complet`) sous /en/blog/ → à vérifier (mauvaise locale/hreflang ?).
 - **Action n°1 cette semaine** : écrire 09-25 BRIEF 1 `/de/bitpanda-karte-stufen` (gap neuf confirmé, jamais exécuté), puis exécuter les reformats BRIEF 2/3.
+
+---
+
+## Run 2026-10-09 (A8 content-gap) — AUCUN NOUVEAU BRIEF (saturation, 5e run consécutif)
+- **Pass 1** : sitemaps re-fetchés (thematic tronqué après `de/krypto-karte-ohne-kyc` ; blog ~26 sujets ; reviews 14 cartes × 5 langues). Les 25 buyer queries restent couvertes ou déjà en file (sans-KYC = thématique existant `*/carte-crypto-sans-kyc`, `crypto-card-no-kyc`). Aucune query sans slug.
+- **Pass 2** : cryptocardindex.com → aucun guide dédié remonté (annuaires tiers/Product Hunt seulement). Koinly → `/blog/crypto-debit-cards-tax/` (+ da/de) = fiscalité des cartes, déjà couverte par notre cluster fiscal briefé (DE/UK/BE/FR, 09-04). Aucun gap neuf.
+- **Pass 3** : rien de nouveau (reformats BTC-cashback et cashback-sans-staking déjà briefés 09-25 BRIEF 2/3).
+- **Gate** : nouvelle page = volume/doublon → refusé, aucun brief ajouté.
+- **Anomalie persistante** : slugs FR (`carte-crypto-plafonds-limites-guide-complet`, `declarer-cashback-crypto-impots-*`) sous /de /es /it /en/blog/ → à vérifier (slug non localisé / hreflang).
+- **Action n°1 cette semaine** : écrire 09-25 BRIEF 1 `/de/bitpanda-karte-stufen` (jamais exécuté), puis reformats BRIEF 2/3.
