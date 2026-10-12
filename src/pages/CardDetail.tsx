@@ -238,7 +238,6 @@ export default function CardDetail() {
 
   // ── SEO: centralized via useSeoMeta ──────────────────────────────────────────
   const year = new Date().getFullYear();
-  const REVIEW_WORD: Record<string, string> = { fr: 'Avis', de: 'Bewertung', es: 'Opinión', it: 'Recensione', en: 'Review', pt: 'Análise' };
   const FREE_LABEL: Record<string, string> = { fr: 'gratuit', de: 'kostenlos', es: 'gratis', it: 'gratuito', en: 'free', pt: 'grátis' };
   const DESC_TPL: Record<string, (name: string, issuer: string, cb: number, fees: number) => string> = {
     fr: (name, _issuer, cb, fees) => `${name} ${year} : ${cb > 0 ? `${cb}% de cashback` : 'sans cashback'}, ${fees === 0 ? '0€/an' : fees + ' €/an'}. Avis complet, test indépendant, avantages et limites. Comparateur gratuit ✓`,
@@ -248,8 +247,17 @@ export default function CardDetail() {
     en: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'no cashback'}, ${fees === 0 ? 'no annual fee' : fees + ' €/year'}. Full review, pros, cons, our verdict. Independent comparison ✓`,
     pt: (name, _issuer, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'sem cashback'}, ${fees === 0 ? FREE_LABEL.pt : fees + ' €/ano'}. Análise completa, prós, contras e veredicto independente ✓`,
   };
+  // Benefit-led title (CTR): lead with cashback % or "free" + year, not a flat "Name, Review 2026".
+  const TITLE_TPL: Record<string, (name: string, cb: number, fees: number) => string> = {
+    fr: (name, cb, fees) => `${name} ${year} : ${cb > 0 ? `${cb}% cashback` : 'avis & frais'}, ${fees === 0 ? 'sans frais' : fees + '€/an'} | TopCryptoCards`,
+    de: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% Cashback` : 'Test & Gebühren'}, ${fees === 0 ? 'kostenlos' : fees + '€/Jahr'} | TopCryptoCards`,
+    es: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'opinión y comisiones'}, ${fees === 0 ? 'sin comisiones' : fees + '€/año'} | TopCryptoCards`,
+    it: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'recensione e costi'}, ${fees === 0 ? 'senza costi' : fees + '€/anno'} | TopCryptoCards`,
+    en: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'review & fees'}, ${fees === 0 ? 'no annual fee' : fees + '€/year'} | TopCryptoCards`,
+    pt: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'análise e taxas'}, ${fees === 0 ? 'sem taxas' : fees + '€/ano'} | TopCryptoCards`,
+  };
   const seoTitle = card
-    ? (article?.meta_title || `${card.name}, ${REVIEW_WORD[contentLang] ?? REVIEW_WORD.en} ${year} | TopCryptoCards`)
+    ? (article?.meta_title || (TITLE_TPL[contentLang] ?? TITLE_TPL.en)(card.name, card.cashbackPremium || card.cashbackBase || 0, card.annualFees))
     : 'TopCryptoCards';
   const seoDesc = card
     ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
