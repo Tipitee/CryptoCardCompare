@@ -52,7 +52,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Nos relations commerciales',
         p1: `TopCryptoCards perçoit des commissions d'affiliation sur certaines cartes référencées sur ce site. Lorsque vous souscrivez à une carte via l'un de nos liens affiliés, nous pouvons recevoir un paiement de l'émetteur de la carte ou de son réseau d'affiliation. Le montant varie selon le prestataire et correspond généralement à un forfait fixe par inscription validée.`,
         p2: `Les cartes pour lesquelles nous avons une relation d'affiliation sont accessibles via <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Les cartes sans relation d'affiliation renvoient directement vers le site de l'émetteur. Il s'agit notamment (au juillet 2026) de : Coinbase, Binance, Gemini, MetaMask, EtherFi, et d'autres. Elles apparaissent sur ce site parce qu'elles sont pertinentes pour les utilisateurs, pas parce que nous en tirons un revenu.`,
+        p3: `Les cartes sans relation d'affiliation renvoient directement vers le site de l'émetteur. Il s'agit notamment de : Coinbase, Binance, Gemini, MetaMask, EtherFi, et d'autres. Elles apparaissent sur ce site parce qu'elles sont pertinentes pour les utilisateurs, pas parce que nous en tirons un revenu.`,
       },
       notAffected: {
         title: "Ce que les relations d'affiliation n'influencent PAS",
@@ -84,7 +84,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Unsere Geschäftsbeziehungen',
         p1: `TopCryptoCards verdient Affiliate-Provisionen von einigen der auf dieser Website gelisteten Karten. Wenn Sie sich über einen unserer Affiliate-Links für eine Karte anmelden, erhalten wir möglicherweise eine Zahlung vom Kartenemittenten oder dessen Affiliate-Netzwerk. Der Betrag variiert je nach Anbieter und ist in der Regel eine feste Gebühr pro verifizierter Anmeldung.`,
         p2: `Karten, mit denen wir eine Affiliate-Beziehung haben, sind über <code>/go/&lt;card-slug&gt;/</code> verlinkt.`,
-        p3: `Karten ohne Affiliate-Beziehung verlinken direkt auf die Website des Emittenten. Dazu gehören (Stand Juli 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi und andere. Sie erscheinen auf dieser Website, weil sie für Nutzer relevant sind, nicht weil wir davon profitieren.`,
+        p3: `Karten ohne Affiliate-Beziehung verlinken direkt auf die Website des Emittenten. Dazu gehören: Coinbase, Binance, Gemini, MetaMask, EtherFi und andere. Sie erscheinen auf dieser Website, weil sie für Nutzer relevant sind, nicht weil wir davon profitieren.`,
       },
       notAffected: {
         title: 'Was Affiliate-Beziehungen NICHT beeinflussen',
@@ -116,7 +116,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Nuestras relaciones comerciales',
         p1: `TopCryptoCards gana comisiones de afiliación de algunas de las tarjetas listadas en este sitio. Cuando te registras para una tarjeta a través de uno de nuestros enlaces de afiliado, podemos recibir un pago del emisor de la tarjeta o su red de afiliados. El importe varía según el proveedor y suele ser una tarifa fija por registro verificado.`,
         p2: `Las tarjetas con las que tenemos una relación de afiliación están enlazadas a través de <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Las tarjetas sin relación de afiliación enlazan directamente al sitio web del emisor. Estas incluyen (a julio de 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi y otras. Aparecen en este sitio porque son relevantes para los usuarios, no porque obtengamos ingresos de ellas.`,
+        p3: `Las tarjetas sin relación de afiliación enlazan directamente al sitio web del emisor. Estas incluyen: Coinbase, Binance, Gemini, MetaMask, EtherFi y otras. Aparecen en este sitio porque son relevantes para los usuarios, no porque obtengamos ingresos de ellas.`,
       },
       notAffected: {
         title: 'Lo que las relaciones de afiliación NO afectan',
@@ -148,7 +148,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Le nostre relazioni commerciali',
         p1: `TopCryptoCards guadagna commissioni di affiliazione da alcune delle carte elencate su questo sito. Quando ti iscrivi a una carta tramite uno dei nostri link di affiliazione, potremmo ricevere un pagamento dall'emittente della carta o dalla sua rete di affiliazione. L'importo varia in base al fornitore ed è solitamente una tariffa fissa per registrazione verificata.`,
         p2: `Le carte con cui abbiamo una relazione di affiliazione sono collegate tramite <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Le carte senza relazione di affiliazione rimandano direttamente al sito web dell'emittente. Queste includono (a luglio 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi e altri. Appaiono su questo sito perché sono rilevanti per gli utenti, non perché ne ricaviamo entrate.`,
+        p3: `Le carte senza relazione di affiliazione rimandano direttamente al sito web dell'emittente. Queste includono: Coinbase, Binance, Gemini, MetaMask, EtherFi e altri. Appaiono su questo sito perché sono rilevanti per gli utenti, non perché ne ricaviamo entrate.`,
       },
       notAffected: {
         title: 'Cosa le relazioni di affiliazione NON influenzano',
@@ -180,7 +180,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'Our commercial relationships',
         p1: `TopCryptoCards earns affiliate commission from some of the cards listed on this site. When you sign up for a card via one of our affiliate links, we may receive a payment from the card issuer or its affiliate network. The amount varies by provider and is typically a fixed fee per verified sign-up.`,
         p2: `Cards we currently have an affiliate relationship with are linked via <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Cards we do not have an affiliate relationship with are linked directly to the issuer's website. These include (as of July 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, and several others. They appear on this site because they are relevant to users, not because we earn from them.`,
+        p3: `Cards we do not have an affiliate relationship with are linked directly to the issuer's website. These include: Coinbase, Binance, Gemini, MetaMask, EtherFi, and several others. They appear on this site because they are relevant to users, not because we earn from them.`,
       },
       notAffected: {
         title: 'What affiliate relationships do NOT affect',
@@ -212,7 +212,7 @@ const CONTENT: Record<ContentLang, Content> = {
         title: 'As nossas relações comerciais',
         p1: `A TopCryptoCards recebe comissões de afiliação de alguns dos cartões listados neste site. Quando subscreves um cartão através de um dos nossos links de afiliação, podemos receber um pagamento do emissor do cartão ou da sua rede de afiliação. O montante varia consoante o prestador e corresponde, regra geral, a um valor fixo por inscrição validada.`,
         p2: `Os cartões com os quais temos uma relação de afiliação estão ligados através de <code>/go/&lt;card-slug&gt;/</code>.`,
-        p3: `Os cartões sem relação de afiliação ligam diretamente para o site do emissor. Incluem (em julho de 2026): Coinbase, Binance, Gemini, MetaMask, EtherFi, entre outros. Aparecem neste site por serem relevantes para os utilizadores, não porque tiramos daí um rendimento.`,
+        p3: `Os cartões sem relação de afiliação ligam diretamente para o site do emissor. Incluem: Coinbase, Binance, Gemini, MetaMask, EtherFi, entre outros. Aparecem neste site por serem relevantes para os utilizadores, não porque tiramos daí um rendimento.`,
       },
       notAffected: {
         title: 'O que as relações de afiliação NÃO influenciam',
@@ -276,6 +276,21 @@ const FOOTER_LABELS: Record<Lang, { copyright: string; impressum: string; privac
   pt: { copyright: 'Sem aconselhamento financeiro.', impressum: 'Aviso legal', privacy: 'Privacidade', affiliate: 'Afiliados', risk: 'Resumo de riscos' },
 };
 
+/* Dynamic "last updated" — the site is re-rendered nightly, so this reflects
+   the build month instead of a hardcoded value that goes stale and erodes
+   trust (both for readers and for LLMs citing the page). */
+const LU_PREFIX: Record<ContentLang, string> = {
+  fr: 'Dernière mise à jour', de: 'Zuletzt aktualisiert', es: 'Última actualización',
+  it: 'Ultimo aggiornamento', en: 'Last updated', pt: 'Última atualização',
+};
+const LU_LOCALE: Record<ContentLang, string> = {
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT',
+};
+function disclosureLastUpdated(cl: ContentLang): string {
+  const my = new Date().toLocaleDateString(LU_LOCALE[cl], { month: 'long', year: 'numeric' });
+  return `${LU_PREFIX[cl]} : ${my}`;
+}
+
 export default function AffiliateDisclosurePage() {
   const lang = useDisclosureLang();
   const cl = CONTENT_LANG[lang];
@@ -310,7 +325,7 @@ export default function AffiliateDisclosurePage() {
 
       <main className="flex-1 container-app py-16 max-w-3xl">
         <h1 className="text-3xl font-bold text-white mb-2">{c.h1}</h1>
-        <p className="text-slate-400 text-sm mb-10">{c.lastUpdated}</p>
+        <p className="text-slate-400 text-sm mb-10">{disclosureLastUpdated(cl)}</p>
 
         <div className="space-y-10 text-slate-400 text-sm leading-relaxed">
 

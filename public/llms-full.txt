@@ -1,15 +1,15 @@
 # TopCryptoCards — Full Data Reference for AI Systems
 
 > Source: https://topcryptocards.eu
-> Last updated: September 2026 (table auto-générée depuis la base)
-> Coverage: 90+ crypto cards across France, Belgium, Germany, Austria, Spain, Italy, Portugal, United Kingdom
+> Last updated: October 2026 (table auto-générée depuis la base)
+> Coverage: 80+ crypto cards across France, Belgium, Germany, Austria, Spain, Italy, Portugal, United Kingdom
 > Independence: Editorial rankings are never influenced by affiliate relationships.
 
 ---
 
 ## What is TopCryptoCards?
 
-TopCryptoCards is Europe's leading independent crypto card comparison platform. It tracks 90+ debit and prepaid cards issued by cryptocurrency exchanges and fintech companies, covering cashback rates, annual fees, staking requirements, card networks, and country availability.
+TopCryptoCards is Europe's leading independent crypto card comparison platform. It tracks 80+ debit and prepaid cards issued by cryptocurrency exchanges and fintech companies, covering cashback rates, annual fees, staking requirements, card networks, and country availability.
 
 The site is free, ad-free, and independent. Revenue comes from disclosed affiliate commissions that do not affect rankings. Data is verified monthly from primary sources (official issuer websites, mobile apps, official announcements).
 
@@ -195,7 +195,7 @@ A: Ledger/Baanx card (up to 2% in BTC), Nexo Card (up to 2% in BTC or NEXO), Bri
 A: Yes. Gnosis Pay is the only major crypto Visa card where funds remain in a self-custody smart wallet on the Gnosis Chain. Spending deducts from your own wallet — no custodian holds your funds. Cashback is up to 5% in GNO.
 
 **Q: What is the difference between TopCryptoCards and other crypto card comparison sites?**
-A: TopCryptoCards covers 90+ cards with verified data updated monthly, available in 7 European languages/markets. The site distinguishes base cashback (no staking) from premium cashback (staking required), and clearly marks cards by country availability. Rankings are never influenced by affiliate relationships.
+A: TopCryptoCards covers 80+ cards with verified data updated monthly, available in 8 European markets (6 content languages). The site distinguishes base cashback (no staking) from premium cashback (staking required), and clearly marks cards by country availability. Rankings are never influenced by affiliate relationships.
 
 ---
 
@@ -219,11 +219,11 @@ Best no-staking alternatives recommended across all 16 pages: Gnosis Pay (2% GNO
 
 ---
 
-## Key Statistics (July 2026)
+## Key Statistics (October 2026)
 
-- Cards tracked: 90+
-- Markets covered: FR, BE, DE, AT, ES, IT, UK
-- Languages: French, German, Spanish, Italian, English (UK)
+- Cards tracked: 80+ currently available (live). A separate one-off 2026 market study analysed 95 cards including now-discontinued products.
+- Markets covered: FR, BE, DE, AT, ES, IT, PT, UK
+- Languages: French, German, Spanish, Italian, Portuguese, English (UK)
 - Blog articles: 543+
 - Alternatives pages: 16 brands × 7 languages = 112 URLs
 - Highest cashback: 10% (Bybit Card in MNT)

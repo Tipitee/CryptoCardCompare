@@ -131,27 +131,37 @@ async function generateReview(card, lang) {
   console.log(`  Generating "${card.id}" [${lang}]…`);
   const prompt = buildPrompt(card, lang);
 
-  const msg = await anthropic.messages.create({
-    model: lang === 'fr' ? 'claude-opus-4-6' : 'claude-sonnet-4-6',
-    max_tokens: 8192,
-    messages: [{ role: 'user', content: prompt }],
-  });
+  // 2 tentatives : certaines langues verbeuses (de) tronquaient à 8192 tokens.
+  let lastErr;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const msg = await anthropic.messages.create({
+      model: lang === 'fr' ? 'claude-opus-4-6' : 'claude-sonnet-4-6',
+      max_tokens: 16000,
+      messages: [{ role: 'user', content: prompt }],
+    });
 
-  const raw = msg.content[0].text.trim();
-  const jsonStr = raw
-    .replace(/^```json\s*/i, '')
-    .replace(/^```\s*/i, '')
-    .replace(/\s*```$/i, '');
+    if (msg.stop_reason === 'max_tokens') {
+      lastErr = new Error('réponse tronquée (max_tokens)');
+      console.error(`    ⚠️ "${card.id}" [${lang}] tronqué (tentative ${attempt}/2), on relance…`);
+      continue;
+    }
 
-  let parsed;
-  try {
-    parsed = JSON.parse(jsonStr);
-  } catch {
-    console.error(`    ❌ JSON parse error for "${card.id}" [${lang}]. Raw:\n${raw.slice(0, 300)}`);
-    throw new Error('JSON parse failed');
+    // Concatène tous les blocs texte, puis extrait du premier { au dernier }.
+    const raw = msg.content.filter(b => b.type === 'text').map(b => b.text).join('').trim();
+    const start = raw.indexOf('{');
+    const end = raw.lastIndexOf('}');
+    const jsonStr = start >= 0 && end > start ? raw.slice(start, end + 1) : raw;
+
+    try {
+      return JSON.parse(jsonStr);
+    } catch (e) {
+      lastErr = e;
+      console.error(`    ⚠️ JSON invalide pour "${card.id}" [${lang}] (tentative ${attempt}/2). Début:\n${raw.slice(0, 200)}`);
+    }
   }
 
-  return parsed;
+  console.error(`    ❌ Échec définitif "${card.id}" [${lang}]: ${lastErr?.message}`);
+  throw new Error('JSON parse failed');
 }
 
 /* ── Upsert to card_articles ─────────────────────────────────────────────── */

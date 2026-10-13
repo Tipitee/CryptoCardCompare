@@ -83,6 +83,8 @@ const re = /(<!-- CARDS_TABLE_START[^\n]*-->\n)[\s\S]*?(\n<!-- CARDS_TABLE_END -
 if (!re.test(raw)) { console.error(`✗ Repères CARDS_TABLE_START/END introuvables dans ${FILE}.`); process.exit(1); }
 let out = raw.replace(re, `$1${table}$2`);
 out = out.replace(/> Last updated: .*/, `> Last updated: ${stamp} (table auto-générée depuis la base)`);
+out = out.replace(/## Key Statistics \([^)]*\)/, `## Key Statistics (${stamp})`);
+out = out.replace(/- Cards tracked: .*/, `- Cards tracked: ${active.length} currently available (live). A separate one-off 2026 market study analysed 95 cards including now-discontinued products.`);
 
 if (WRITE) {
   writeFileSync(FILE, out);

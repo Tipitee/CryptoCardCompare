@@ -1,6 +1,6 @@
 # TopCryptoCards
 
-> Independent comparison platform for cryptocurrency cards in Europe. Compare 90+ crypto cards: cashback rates, annual fees, staking requirements, and availability by country.
+> Independent comparison platform for cryptocurrency cards in Europe. Compare 80+ crypto cards: cashback rates, annual fees, staking requirements, and availability by country.
 
 ## About
 

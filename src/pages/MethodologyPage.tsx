@@ -136,7 +136,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       updates: {
         title: 'Fréquence de mise à jour',
-        body: "Les données des cartes sont vérifiées mensuellement. Le site est entièrement rerenderisé toutes les nuits via notre pipeline GitHub Actions → Netlify, ce qui garantit que les articles de blog, les fiches cartes et les comparatifs reflètent l'état actuel de notre base de données. Les mises à jour majeures (nouveau produit, changement de cashback significatif) sont intégrées sous 48 h.",
+        body: "Les données des cartes sont vérifiées mensuellement. Le site est entièrement rerenderisé toutes les nuits via notre pipeline GitHub Actions → Cloudflare, ce qui garantit que les articles de blog, les fiches cartes et les comparatifs reflètent l'état actuel de notre base de données. Les mises à jour majeures (nouveau produit, changement de cashback significatif) sont intégrées sous 48 h.",
       },
     },
   },
@@ -183,7 +183,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       updates: {
         title: 'Aktualisierungsfrequenz',
-        body: "Kartendaten werden monatlich geprüft. Die gesamte Website wird jede Nacht über unsere GitHub Actions → Netlify-Pipeline neu gerendert, was sicherstellt, dass Blogartikel, Kartenseiten und Vergleiche den aktuellen Stand unserer Datenbank widerspiegeln. Wichtige Aktualisierungen (neues Produkt, erhebliche Cashback-Änderung) werden innerhalb von 48 Stunden integriert.",
+        body: "Kartendaten werden monatlich geprüft. Die gesamte Website wird jede Nacht über unsere GitHub Actions → Cloudflare-Pipeline neu gerendert, was sicherstellt, dass Blogartikel, Kartenseiten und Vergleiche den aktuellen Stand unserer Datenbank widerspiegeln. Wichtige Aktualisierungen (neues Produkt, erhebliche Cashback-Änderung) werden innerhalb von 48 Stunden integriert.",
       },
     },
   },
@@ -230,7 +230,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       updates: {
         title: 'Frecuencia de actualización',
-        body: "Los datos de las tarjetas se verifican mensualmente. El sitio se vuelve a renderizar completamente cada noche mediante nuestro pipeline GitHub Actions → Netlify, lo que garantiza que los artículos de blog, las fichas de tarjetas y los comparativos reflejen el estado actual de nuestra base de datos. Las actualizaciones importantes (nuevo producto, cambio significativo de cashback) se integran en menos de 48 horas.",
+        body: "Los datos de las tarjetas se verifican mensualmente. El sitio se vuelve a renderizar completamente cada noche mediante nuestro pipeline GitHub Actions → Cloudflare, lo que garantiza que los artículos de blog, las fichas de tarjetas y los comparativos reflejen el estado actual de nuestra base de datos. Las actualizaciones importantes (nuevo producto, cambio significativo de cashback) se integran en menos de 48 horas.",
       },
     },
   },
@@ -277,7 +277,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       updates: {
         title: 'Frequenza di aggiornamento',
-        body: "I dati delle carte vengono verificati mensilmente. Il sito viene completamente ri-renderizzato ogni notte tramite il nostro pipeline GitHub Actions → Netlify, il che garantisce che gli articoli del blog, le schede carte e i comparativi riflettano lo stato attuale del nostro database. Gli aggiornamenti importanti (nuovo prodotto, cambiamento significativo del cashback) vengono integrati entro 48 ore.",
+        body: "I dati delle carte vengono verificati mensilmente. Il sito viene completamente ri-renderizzato ogni notte tramite il nostro pipeline GitHub Actions → Cloudflare, il che garantisce che gli articoli del blog, le schede carte e i comparativi riflettano lo stato attuale del nostro database. Gli aggiornamenti importanti (nuovo prodotto, cambiamento significativo del cashback) vengono integrati entro 48 ore.",
       },
     },
   },
@@ -324,7 +324,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       updates: {
         title: 'Update Frequency',
-        body: "Card data is verified monthly. The entire site is re-rendered nightly via our GitHub Actions → Netlify pipeline, ensuring blog articles, card pages and comparisons reflect the current state of our database. Major updates (new product, significant cashback change) are integrated within 48 hours.",
+        body: "Card data is verified monthly. The entire site is re-rendered nightly via our GitHub Actions → Cloudflare pipeline, ensuring blog articles, card pages and comparisons reflect the current state of our database. Major updates (new product, significant cashback change) are integrated within 48 hours.",
       },
     },
   },
@@ -362,6 +362,26 @@ const DISCLOSURE_LABEL: Record<Lang, string> = {
   pt: "a nossa página de divulgação de afiliados",
 };
 
+/* ── Dynamic "last updated" ──────────────────────────────────────────────────
+   The whole site is re-rendered nightly, so the methodology date must reflect
+   the build month rather than a hardcoded value that silently goes stale and
+   makes LLMs/readers distrust the data. */
+const LAST_UPDATED_PREFIX: Record<ContentLang, string> = {
+  fr: 'Dernière mise à jour',
+  de: 'Zuletzt aktualisiert',
+  es: 'Última actualización',
+  it: 'Ultimo aggiornamento',
+  en: 'Last updated',
+  pt: 'Última atualização',
+};
+const LAST_UPDATED_LOCALE: Record<ContentLang, string> = {
+  fr: 'fr-FR', de: 'de-DE', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT',
+};
+function currentMonthLabel(cl: ContentLang): string {
+  const my = new Date().toLocaleDateString(LAST_UPDATED_LOCALE[cl], { month: 'long', year: 'numeric' });
+  return `${LAST_UPDATED_PREFIX[cl]} : ${my}`;
+}
+
 /* ── Component ───────────────────────────────────────────────────────────── */
 const MethodologyPage: React.FC = () => {
   const lang = useMethodologyLang();
@@ -388,7 +408,7 @@ const MethodologyPage: React.FC = () => {
       {/* Content */}
       <main className="max-w-3xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-white mb-3">{c.h1}</h1>
-        <p className="text-slate-400 text-sm mb-2">{c.lastUpdated}</p>
+        <p className="text-slate-400 text-sm mb-2">{currentMonthLabel(cl)}</p>
         <p className="text-text-secondary leading-relaxed mb-10">{c.intro}</p>
 
         {/* Overview */}
