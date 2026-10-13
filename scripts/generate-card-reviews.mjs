@@ -192,6 +192,9 @@ async function main() {
   const langArg = args.find((a) => a.startsWith('--lang='));
   const targetLang = langArg ? langArg.replace('--lang=', '') : 'fr';
   const forceRegen = args.includes('--force');
+  // --needs-fix : ne régénère QUE les articles contenant des tournures trompeuses
+  // (survente du cashback max, recommandation systématique) — ciblage coût.
+  const needsFixMode = args.includes('--needs-fix');
   const filterId = args.find((a) => !a.startsWith('--'));
 
   const allLangs = Object.keys(LANG_NAMES);
@@ -204,7 +207,7 @@ async function main() {
   console.log('\n📥 Fetching cards from Supabase…');
   let query = supabase
     .from('cards')
-    .select('id, name, issuer, card_network, cashback_base, cashback_premium, annual_fees, staking_required, available_france, available_eu, extras, trust_score')
+    .select('id, name, issuer, card_network, cashback_base, cashback_no_staking, cashback_premium, annual_fees, staking_required, available_france, available_eu, extras, trust_score')
     .eq('status', 'active')
     .order('name');
 
@@ -243,9 +246,24 @@ async function main() {
       .map((r) => `${r.card_id}::${r.lang}`)
   );
 
+  // --needs-fix : repère les articles à tournures trompeuses (à régénérer en priorité).
+  const HYPE_RE = /first euro|premier euro|primer euro|primo euro|primeiro euro|ersten euro|highly recommend|hautement recommand|altamente recomendad|vivamente consigliat|sehr empfehlenswert|excellent choice|excellent choix/i;
+  const needsFixSet = new Set(
+    (existing || [])
+      .filter((r) => r.content && HYPE_RE.test(r.content))
+      .map((r) => `${r.card_id}::${r.lang}`)
+  );
+  if (needsFixMode) {
+    console.log(`\n🔎 --needs-fix : ${needsFixSet.size} article(s) à tournures trompeuses détecté(s) et à régénérer.\n`);
+    if (needsFixSet.size === 0) { console.log('Rien à corriger. ✅'); return; }
+  }
+
   for (const card of cards) {
     for (const lang of selectedLangs) {
-      if (existingSet.has(`${card.id}::${lang}`)) {
+      const key = `${card.id}::${lang}`;
+      if (needsFixMode && !needsFixSet.has(key)) { continue; } // hors périmètre --needs-fix
+      if (needsFixMode) { /* force regen des articles ciblés */ }
+      else if (existingSet.has(key) && !forceRegen) {
         console.log(`  ⏭ Skip "${card.id}" [${lang}] (already exists)`);
         success++;
         continue;
