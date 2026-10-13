@@ -126,42 +126,53 @@ Instructions de rédaction :
 }`;
 }
 
-/* ── Generator ───────────────────────────────────────────────────────────── */
+/* ── Generator ───────────────────────────────────────────────────────────────
+   On force une sortie structurée via « tool use » : l'API renvoie directement
+   un objet déjà parsé (tool_use.input), ce qui élimine toute la classe d'erreurs
+   d'échappement JSON (guillemets / sauts de ligne non échappés dans le HTML,
+   fréquents en allemand) qui faisaient échouer le JSON.parse manuel. */
+const REVIEW_TOOL = {
+  name: 'submit_review',
+  description: "Enregistre l'avis rédigé sur la carte crypto.",
+  input_schema: {
+    type: 'object',
+    properties: {
+      meta_title:       { type: 'string', description: 'Titre SEO 55–65 caractères, incluant le nom de la carte et l\'année.' },
+      meta_description: { type: 'string', description: 'Meta description 145–160 caractères, avec chiffres clés.' },
+      excerpt:          { type: 'string', description: 'Résumé 1-2 phrases, max 200 caractères.' },
+      content:          { type: 'string', description: 'Article complet en HTML (h2/h3/p/ul/li/strong), 1000–1400 mots, se terminant par le bloc FAQ.' },
+    },
+    required: ['meta_title', 'meta_description', 'excerpt', 'content'],
+  },
+};
+
 async function generateReview(card, lang) {
   console.log(`  Generating "${card.id}" [${lang}]…`);
   const prompt = buildPrompt(card, lang);
 
-  // 2 tentatives : certaines langues verbeuses (de) tronquaient à 8192 tokens.
   let lastErr;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const msg = await anthropic.messages.create({
       model: lang === 'fr' ? 'claude-opus-4-6' : 'claude-sonnet-4-6',
       max_tokens: 16000,
+      tools: [REVIEW_TOOL],
+      tool_choice: { type: 'tool', name: 'submit_review' },
       messages: [{ role: 'user', content: prompt }],
     });
 
-    if (msg.stop_reason === 'max_tokens') {
-      lastErr = new Error('réponse tronquée (max_tokens)');
-      console.error(`    ⚠️ "${card.id}" [${lang}] tronqué (tentative ${attempt}/2), on relance…`);
-      continue;
+    const block = msg.content.find(b => b.type === 'tool_use' && b.name === 'submit_review');
+    if (block && block.input && block.input.content) {
+      return block.input;
     }
 
-    // Concatène tous les blocs texte, puis extrait du premier { au dernier }.
-    const raw = msg.content.filter(b => b.type === 'text').map(b => b.text).join('').trim();
-    const start = raw.indexOf('{');
-    const end = raw.lastIndexOf('}');
-    const jsonStr = start >= 0 && end > start ? raw.slice(start, end + 1) : raw;
-
-    try {
-      return JSON.parse(jsonStr);
-    } catch (e) {
-      lastErr = e;
-      console.error(`    ⚠️ JSON invalide pour "${card.id}" [${lang}] (tentative ${attempt}/2). Début:\n${raw.slice(0, 200)}`);
-    }
+    lastErr = new Error(msg.stop_reason === 'max_tokens'
+      ? 'réponse tronquée (max_tokens)'
+      : 'pas de tool_use submit_review exploitable');
+    console.error(`    ⚠️ "${card.id}" [${lang}] échec (tentative ${attempt}/2) : ${lastErr.message}`);
   }
 
   console.error(`    ❌ Échec définitif "${card.id}" [${lang}]: ${lastErr?.message}`);
-  throw new Error('JSON parse failed');
+  throw new Error('generation failed');
 }
 
 /* ── Upsert to card_articles ─────────────────────────────────────────────── */
