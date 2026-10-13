@@ -58,8 +58,15 @@ function buildPrompt(card, lang) {
   const freeText = card.annual_fees === 0
     ? (lang === 'fr' ? 'gratuite (0 €/an)' : lang === 'de' ? 'kostenlos (0 €/Jahr)' : lang === 'es' ? 'gratuita (0 €/año)' : lang === 'it' ? 'gratuita (0 €/anno)' : 'free (€0/year)')
     : `${card.annual_fees} €/${lang === 'fr' ? 'an' : lang === 'de' ? 'Jahr' : lang === 'es' ? 'año' : lang === 'it' ? 'anno' : 'year'}`;
-  const cashback = card.cashback_premium || card.cashback_base || 0;
-  const cashbackPct = (cashback * 100).toFixed(1);
+  const pct = (v) => (((v || 0) * 100)).toFixed(1).replace(/\.0$/, '');
+  const base = card.cashback_base || 0;
+  const noStk = card.cashback_no_staking || 0;
+  const premium = card.cashback_premium || 0;
+  const cashbackFacts = `base ${pct(base)}%` +
+    (noStk ? `, sans staking ${pct(noStk)}%` : '') +
+    (premium ? `, maximum ${pct(premium)}% (conditionnel)` : '') +
+    (base === 0 && noStk === 0 && premium > 0 ? ` — ATTENTION : 0% sans staking, le ${pct(premium)}% exige un blocage` : '') +
+    (base === 0 && noStk === 0 && premium === 0 ? ' — cette carte N\'OFFRE AUCUN cashback' : '');
   const networkStr = card.card_network || 'Visa/Mastercard';
   const stakingStr = card.staking_required > 0
     ? `${card.staking_required} € minimum`
@@ -74,18 +81,27 @@ Carte à analyser :
 - Émetteur : ${card.issuer}
 - Réseau : ${networkStr}
 - Frais annuels : ${freeText}
-- Cashback maximum : ${cashbackPct}% en crypto
+- Cashback (crypto) : ${cashbackFacts}
 - Staking : ${stakingStr}
+- Juridiction / régulateur de l'émetteur : ${card.issuer_jurisdiction || card.regulation || 'NON FOURNI — ne pas inventer'}
 - Disponible en France : ${availFR ? 'Oui' : 'Non'}
 - Disponible en UE : ${availEU ? 'Oui' : 'Non'}
 ${card.extras?.length ? `- Fonctionnalités extras : ${card.extras.join(', ')}` : ''}
 ${card.trust_score ? `- Score de confiance : ${card.trust_score}/100` : ''}
 
+RÈGLES D'HONNÊTETÉ (ABSOLUES — priment sur tout le reste) :
+- JAMAIS présenter le cashback maximum comme le taux « réel » : toujours formuler « jusqu'à X% (base Y%, le maximum exige un staking/palier) ».
+- Si la base est 0% : le dire clairement et NE JAMAIS écrire « rentable dès le premier euro » ni équivalent (c'est faux).
+- Si la carte n'offre aucun cashback : l'indiquer franchement, ne pas inventer d'avantage cashback.
+- Le verdict doit être NUANCÉ et conditionnel (« pour tel profil… ; à éviter si… »). INTERDIT : « hautement recommandée », « excellent choix » de façon systématique, superlatifs gratuits.
+- Régulation/sécurité : n'affirmer QUE ce qui est fourni ci-dessus. Ne JAMAIS inventer un régulateur (ex. FCA) ni une « longue expérience » pour une société récente. Si la juridiction n'est pas fournie, rester prudent (« vérifiez le statut réglementaire de l'émetteur »).
+- Pas de promesses de gains, pas de ton publicitaire. Nuance = citabilité IA + confiance.
+
 Instructions de rédaction :
 - Langue : ${langName} UNIQUEMENT
 - Longueur : 1000–1400 mots
 - Format : HTML (balises <h2>, <h3>, <p>, <ul>, <li>, <strong>)
-- Ton : Expert, objectif, orienté aide à la décision
+- Ton : Expert, objectif, orienté aide à la décision — honnête avant d'être positif
 - Angle : Avis de rédaction indépendante, pas de langue de bois
 - Obligatoire : inclure les sections suivantes dans cet ordre :
   1. Introduction (2-3 phrases d'accroche, résumé rapide)
@@ -95,7 +111,7 @@ Instructions de rédaction :
   5. <h2>Pour qui est cette carte ?</h2> (profils idéaux, cas d'usage)
   6. <h2>Avantages</h2> (liste <ul>)
   7. <h2>Inconvénients</h2> (liste <ul>, soyez honnêtes)
-  8. <h2>Notre verdict</h2> (recommandation finale, note implicite)
+  8. <h2>Notre verdict</h2> (verdict NUANCÉ par profil : pour qui oui, pour qui non — jamais une recommandation systématique)
 - Terminer OBLIGATOIREMENT par une section FAQ avec exactement ce wrapper HTML :
   <div data-faq="v1"><h2>FAQ</h2><ul><li><strong>Question ?</strong> Réponse.</li>...</ul></div>
   Inclure 4 questions-réponses pertinentes sur la carte (frais, cashback, staking, disponibilité, sécurité…)
