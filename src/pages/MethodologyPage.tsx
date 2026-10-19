@@ -69,7 +69,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Pontuação de confiança (Trust Score)',
-        body: 'A pontuação de confiança é a nossa nota global sobre 10, calculada automaticamente a partir dos dados de cada cartão:',
+        body: 'A pontuação de confiança é a nossa nota global sobre 100, calculada automaticamente a partir dos dados de cada cartão:',
         items: [
           { label: 'Cashback realista (30 %)', body: 'Taxa do nível base, sem condição de staking, limitada a 5 % para o cálculo.' },
           { label: 'Taxas (20 %)', body: 'Cartão gratuito = 10 pts. Taxas elevadas = penalização.' },
@@ -116,7 +116,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Score de confiance (Trust Score)',
-        body: 'Le Trust Score est notre note globale sur 10, calculée automatiquement à partir des données de chaque carte :',
+        body: 'Le Trust Score est notre note globale sur 100, calculée automatiquement à partir des données de chaque carte :',
         items: [
           { label: 'Cashback réaliste (30 %)', body: 'Taux du tier de base, sans condition de staking, plafonné à 5 % pour le calcul.' },
           { label: 'Frais (20 %)', body: 'Carte gratuite = 10 pts. Frais élevés = pénalité.' },
@@ -163,7 +163,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Vertrauensscore (Trust Score)',
-        body: 'Der Trust Score ist unsere Gesamtbewertung von 10, die automatisch aus den Daten jeder Karte berechnet wird:',
+        body: 'Der Trust Score ist unsere Gesamtbewertung von 100, die automatisch aus den Daten jeder Karte berechnet wird:',
         items: [
           { label: 'Realistischer Cashback (30 %)', body: 'Cashback-Satz des Basis-Tiers ohne Staking-Bedingung, begrenzt auf 5 % für die Berechnung.' },
           { label: 'Gebühren (20 %)', body: 'Kostenlose Karte = 10 Punkte. Hohe Gebühren = Abzug.' },
@@ -210,7 +210,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Puntuación de confianza (Trust Score)',
-        body: 'El Trust Score es nuestra puntuación global sobre 10, calculada automáticamente a partir de los datos de cada tarjeta:',
+        body: 'El Trust Score es nuestra puntuación global sobre 100, calculada automáticamente a partir de los datos de cada tarjeta:',
         items: [
           { label: 'Cashback realista (30 %)', body: 'Tasa del nivel base, sin condición de staking, limitada al 5 % para el cálculo.' },
           { label: 'Comisiones (20 %)', body: 'Tarjeta gratuita = 10 pts. Comisiones altas = penalización.' },
@@ -257,7 +257,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Punteggio di fiducia (Trust Score)',
-        body: 'Il Trust Score è il nostro punteggio globale su 10, calcolato automaticamente dai dati di ogni carta:',
+        body: 'Il Trust Score è il nostro punteggio globale su 100, calcolato automaticamente dai dati di ogni carta:',
         items: [
           { label: 'Cashback realistico (30 %)', body: "Tasso del livello base, senza condizione di staking, limitato al 5 % per il calcolo." },
           { label: 'Commissioni (20 %)', body: 'Carta gratuita = 10 pt. Commissioni elevate = penalità.' },
@@ -304,7 +304,7 @@ const CONTENT: Record<ContentLang, Content> = {
       },
       trustScore: {
         title: 'Trust Score',
-        body: 'The Trust Score is our overall rating out of 10, automatically calculated from each card\'s data:',
+        body: 'The Trust Score is our overall rating out of 100, automatically calculated from each card\'s data:',
         items: [
           { label: 'Realistic Cashback (30 %)', body: 'Base tier cashback rate without staking requirement, capped at 5 % for the calculation.' },
           { label: 'Fees (20 %)', body: 'Free card = 10 pts. High fees = penalty.' },

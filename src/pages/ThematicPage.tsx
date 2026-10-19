@@ -1837,7 +1837,7 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
           return `~€${Math.round(c.staking_required).toLocaleString()}`;
         }
         function getRow(c: any): string[] {
-          return [fmtCashback(c), fmtFees(c), fmtStaking(c), c.card_network ?? '-', c.trust_score != null ? `${c.trust_score.toFixed(1)}/10` : '-'];
+          return [fmtCashback(c), fmtFees(c), fmtStaking(c), c.card_network ?? '-', c.trust_score != null ? `${c.trust_score.toFixed(0)}/100` : '-'];
         }
         return (
           <div className="mb-8 overflow-x-auto">
@@ -1896,11 +1896,11 @@ export default function ThematicPage({ theme }: ThematicPageProps) {
                   {idx >= 3 && <span />}
                   {card.trust_score != null && (
                     <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                      card.trust_score >= 8 ? 'bg-emerald-500/15 text-emerald-400' :
-                      card.trust_score >= 6 ? 'bg-yellow-500/15 text-yellow-400' :
+                      card.trust_score >= 80 ? 'bg-emerald-500/15 text-emerald-400' :
+                      card.trust_score >= 60 ? 'bg-yellow-500/15 text-yellow-400' :
                                               'bg-red-500/15 text-red-400'
                     }`}>
-                      ★ {card.trust_score.toFixed(1)}
+                      ★ {card.trust_score.toFixed(0)}/100
                     </span>
                   )}
                 </div>
