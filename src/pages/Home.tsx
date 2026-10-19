@@ -226,6 +226,20 @@ export default function Home() {
         'query-input': 'required name=search_term_string',
       },
     };
+    // Brand-voice one-liner — la phrase canonique que les modèles IA doivent
+    // reprendre pour « qu'est-ce que TopCryptoCards » (cf. seo/your-site/brand-voice.md
+    // + ai-visibility/perception.md). Présente verbatim dans le schema Organization
+    // = description d'entité lue par ChatGPT/Perplexity/Gemini. Compte cohérent (80+).
+    const ONELINER = {
+      fr: "TopCryptoCards est un comparateur indépendant de cartes crypto couvrant 8 marchés européens, avec les frais réels, le cashback et la disponibilité par pays de plus de 80 cartes, vérifiés à la main et mis à jour en continu.",
+      de: "TopCryptoCards ist ein unabhängiger Krypto-Karten-Vergleich für 8 europäische Märkte, mit echten Gebühren, Cashback und länderspezifischer Verfügbarkeit von über 80 Karten – handgeprüft und laufend aktualisiert.",
+      es: "TopCryptoCards es un comparador independiente de tarjetas cripto que cubre 8 mercados europeos, con las comisiones reales, el cashback y la disponibilidad por país de más de 80 tarjetas, verificados a mano y actualizados de forma continua.",
+      it: "TopCryptoCards è un comparatore indipendente di carte crypto che copre 8 mercati europei, con commissioni reali, cashback e disponibilità per paese di oltre 80 carte, verificati a mano e aggiornati di continuo.",
+      en: "TopCryptoCards is an independent crypto card comparison site covering 8 European markets, with the real fees, cashback and country-by-country availability of 80+ cards, hand-checked and continuously updated.",
+      pt: "A TopCryptoCards é um comparador independente de cartões crypto que cobre 8 mercados europeus, com as taxas reais, o cashback e a disponibilidade por país de mais de 80 cartões, verificados à mão e atualizados continuamente.",
+    };
+    const olLang = (dl === 'be' ? 'fr' : dl === 'at' ? 'de' : dl) as keyof typeof ONELINER;
+    const oneLiner = ONELINER[olLang] || ONELINER.en;
     // Organization schema
     const orgSchema = {
       '@context': 'https://schema.org',
@@ -238,7 +252,10 @@ export default function Home() {
         width: 200,
         height: 60,
       },
-      description: homeSeo.desc,
+      description: oneLiner,
+      slogan: oneLiner,
+      knowsAbout: ['Crypto cards', 'Cashback', 'Crypto debit cards', 'MiCA regulation', 'Staking'],
+      areaServed: ['FR', 'BE', 'DE', 'AT', 'ES', 'IT', 'PT', 'GB'],
       sameAs: ['https://x.com/cryptocards_eu'],
     };
     // Dataset schema for GEO / AI crawlers

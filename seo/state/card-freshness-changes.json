@@ -1,17 +1,16 @@
 {
-  "generated": "2026-10-10",
+  "generated": "2026-10-17",
   "changes": [
     {
-      "card": "Bybit Card",
+      "card": "Revolut Metal",
       "match": {
-        "name": "Bybit Card"
+        "name": "Revolut Metal"
       },
       "set": {
-        "card_network": "Mastercard",
-        "available_france": true
+        "annual_fees": 227.88
       },
-      "reason": "Bybit EU (communiqué 19/01/2026) : carte Mastercard, dispo EEE sauf Malte (donc France incluse), cashback 2-10% en BTC/USDC, 0 frais annuels. La fiche live dit Visa et « pas en France ».",
-      "source": "https://www.prnewswire.com/de/pressemitteilungen/bybit-eu-introduces-bitcoin-cashback-on-the-bybit-card-turning-everyday-spending-into-btc-302664446.html",
+      "reason": "Metal à 18,99 €/mois (France) depuis le 09/07/2026 (avant 16,99 €) = 227,88 €/an ; fiche affiche 179,88 € (corps) / 204 € (spec box). Abonnement annuel : 185 €.",
+      "source": "revoptimize.fr/en/plans/revolut-metal (vérifié 08/09/2026, tiers ; à confirmer sur revolut.com)",
       "confidence": "medium"
     }
   ]

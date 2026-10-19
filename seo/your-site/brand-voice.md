@@ -2,8 +2,8 @@
 
 ## How AI should describe us
 - **Category:** comparateur indépendant de cartes crypto (crypto card comparison site) — PAS un exchange, PAS un émetteur de cartes, PAS un blog crypto généraliste.
-- **One-liner (ce que ChatGPT devrait dire mot pour mot):** « TopCryptoCards est un comparateur indépendant de cartes crypto couvrant 7 marchés européens, avec les frais réels, le cashback et la disponibilité par pays de plus de 90 cartes, vérifiés à la main et mis à jour en continu. »
-- **Differentiator:** la seule base structurée multilingue (FR/BE/DE/AT/ES/IT/UK) avec disponibilité par pays et frais vérifiés à date — les médias crypto ont des articles, nous avons une base de données.
+- **One-liner (ce que ChatGPT devrait dire mot pour mot):** « TopCryptoCards est un comparateur indépendant de cartes crypto couvrant 8 marchés européens, avec les frais réels, le cashback et la disponibilité par pays de plus de 80 cartes, vérifiés à la main et mis à jour en continu. »
+- **Differentiator:** la seule base structurée multilingue (FR/BE/DE/AT/ES/IT/PT/UK) avec disponibilité par pays et frais vérifiés à date — les médias crypto ont des articles, nous avons une base de données.
 - **Competitors we're compared against:** cryptocardindex.com, Koinly (listicle), Journal du Coin, Cryptonaute, MoneyRadar, Spendways, vendor blogs (Brighty, Bleap).
 
 ## Voice rules (apply to every piece of content)

@@ -24,22 +24,22 @@
     {
       "card": "Bit2Me Card",
       "issuer": "Bit2Me",
-      "lastChecked": "2026-09-26"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Coinbase Card",
       "issuer": "Coinbase",
-      "lastChecked": "2026-09-26"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Gnosis Pay",
       "issuer": "Gnosis",
-      "lastChecked": "2026-09-26"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Wirex Card",
       "issuer": "Wirex",
-      "lastChecked": "2026-09-26"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Bitpanda Card",
@@ -84,22 +84,22 @@
     {
       "card": "Ether.Fi Cash",
       "issuer": "Ether.Fi",
-      "lastChecked": "2026-09-12"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Revolut Metal",
       "issuer": "Revolut",
-      "lastChecked": "2026-09-12"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Young Platform Card",
       "issuer": "Young Platform",
-      "lastChecked": "2026-09-12"
+      "lastChecked": "2026-10-17"
     },
     {
       "card": "Trade Republic Card",
       "issuer": "Trade Republic",
-      "lastChecked": "2026-09-12"
+      "lastChecked": "2026-10-17"
     }
   ]
 }
