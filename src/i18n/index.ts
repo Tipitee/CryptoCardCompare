@@ -66,15 +66,30 @@ i18next
         cards: ptCards,
         blog: ptBlog,
       },
-      // Belgium: French display content, Belgian market
+      // Belgium: French display content, Belgian market.
+      // Reuses the FR bundle but overrides the market-named strings so pages say
+      // "Belgique" instead of "France" (meta scope + market-based filters).
       be: {
-        common: frCommon,
+        common: {
+          ...frCommon,
+          site_description: 'Comparez les meilleures cartes crypto : cashback, frais, staking et disponibilité en Belgique et en Europe.',
+          footer_desc: 'Comparez les meilleures cartes crypto : cashback, frais, staking et disponibilité en Belgique et en Europe.',
+          home_seo_intro: 'Comparez 80+ cartes crypto disponibles en Belgique en 2026, cashback Visa/Mastercard, frais annuels, staking requis et disponibilité en Europe. Données vérifiées et mises à jour régulièrement.',
+          filter_france: 'Disponible Belgique',
+          compare_filter_france: 'Disponible en Belgique uniquement',
+        },
         cards: frCards,
         blog: frBlog,
       },
-      // Austria: German display content, Austrian market
+      // Austria: German display content, Austrian market (same pattern, Österreich).
       at: {
-        common: deCommon,
+        common: {
+          ...deCommon,
+          site_description: 'Vergleichen Sie die besten Kryptokarten: Cashback, Gebühren, Staking und Verfügbarkeit in Österreich und Europa.',
+          home_seo_intro: 'Vergleichen Sie die besten Krypto-Karten und Bitcoin Karten für Österreich 2026: Kryptowährung Karte ohne Jahresgebühr, ohne Staking. Unabhängiger Vergleich, regelmäßig aktualisiert. Kostenlos ✓',
+          filter_france: 'In Österreich verfügbar',
+          compare_filter_france: 'Nur in Österreich verfügbar',
+        },
         cards: deCards,
         blog: deBlog,
       },

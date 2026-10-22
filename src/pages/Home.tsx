@@ -202,7 +202,9 @@ export default function Home() {
   const { getRoute } = useLocalizedRoute();
   const lang = useLanguage();
   const dl = displayLang(lang); // be→fr, at→de for UI text/content
-  const homeSeo = HOME_SEO[dl] || HOME_SEO.en;
+  // SEO meta is per-MARKET (lang), not per content-language: /be must say Belgique
+  // (not France) and /at Österreich (not Deutschland), even though they reuse fr/de UI.
+  const homeSeo = HOME_SEO[lang] || HOME_SEO[dl] || HOME_SEO.en;
   const brandsSlug = ROUTE_TRANSLATIONS[lang as keyof typeof ROUTE_TRANSLATIONS]?.brands ?? 'brands';
   // be/at homepage is the market front door (market filter + MarketInsight) → keep indexed.
   useSeoMeta({ title: homeSeo.title, description: homeSeo.desc, lang, indexInMarket: true });

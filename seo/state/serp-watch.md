@@ -137,3 +137,15 @@ Concurrents suivis : cryptocardindex.com, koinly.io, journalducoin.com, cryptona
 | 2026-10-15 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) — stable ; bleap #2-3, sostariffe #4, waltio #5, datawallet #6 |
 | 2026-10-15 | carte crypto belgique | be | absent top 10 | rtbf.be (actu) | non détecté (à confirmer) — stable ; lalibre #2, nrmagazine #3, bitget wiki #5, bleap #7 |
 | 2026-10-15 | krypto karte österreich | at | absent top 10 | trendingtopics.eu (tenx) | non détecté (à confirmer) — stable ; t3n #2, capitalo #3, vol.at #4, bleap #7 (bruit) |
+| 2026-10-22 | meilleure carte crypto | fr | absent top 10 | kucoin.com/fr | non détecté (géo-US, à confirmer) — stable vs 10-15 ; presse-citron #2, datawallet #3, bleap #4-6, cryptoactu #7, cryptoast #9 ; journalducoin hors top visible |
+| 2026-10-22 | carte crypto cashback | fr | absent top 10 | bourseinside.fr | non détecté (à confirmer) — leader kucoin → bourseinside (oscillation récurrente, à confirmer) ; cryptoast #2-3, kucoin #4, journalducoin #5-6, connectbanque #8, bleap #9 |
+| 2026-10-22 | crypto.com carte avis | fr | absent top 10 | journalducoin.com | non détecté (à confirmer) — stable, journalducoin #1 confirmé 4 runs de suite ; cryptoast #3-5, hellosafe #6 |
+| 2026-10-22 | beste krypto karte | de | absent top 10 | bleap.finance | non détecté (à confirmer) — leader hellosafe.ch → bleap.finance (variance, à confirmer) ; hellosafe #2, blockspot #3 (↓ vs #2), cryptocards.so #4-5, cryptomus, bitcoin.com |
+| 2026-10-22 | bitcoin karte | de | absent top 10 | rechtslupe.de (info) | non détecté — SERP navigationnelle/bruit (ar-pay, btc-echo, cryptocards.so), non cible ; stable |
+| 2026-10-22 | krypto karte cashback | de | absent top 10 | mydealz.de (deal Kraken) | non détecté (à confirmer) — stable ; quicknode #2, bleap #3, finanzwissen #5, diefinanzarena #9 |
+| 2026-10-22 | best crypto card europe | en | absent top 10 | jeangalea.com | non détecté (à confirmer) — stable ; bleap x7 locales #2-9, cryptonomist #7 ; koinly.io toujours absent |
+| 2026-10-22 | best crypto card uk | en | absent top 10 | defillama.com/crypto-cards | non détecté (à confirmer) — leader coingecko → defillama (coingecko #2, à confirmer variance) ; cryptocards.so #6 ; spam ubiwhere/munimariquina #3-9 |
+| 2026-10-22 | mejor tarjeta cripto | es | absent top 10 | bleap.finance | non détecté (à confirmer) — leader criptonoticias → bleap (oscillation, à confirmer) ; criptonoticias #2, cryptomus #3, bleap #4, bybit wiki #5, cryptocards.so #6-7 |
+| 2026-10-22 | miglior carta crypto | it | absent top 10 | aranzulla.it | non détecté (à confirmer) — stable ; bleap #2-3, sostariffe #4, waltio #5, datawallet #6 |
+| 2026-10-22 | carte crypto belgique | be | absent top 10 | rtbf.be (actu) | non détecté (à confirmer) — stable ; lalibre #2, nrmagazine #3-4, bitget wiki #5, bleap #7, defillama #8 |
+| 2026-10-22 | krypto karte österreich | at | absent top 10 | trendingtopics.eu (tenx) | non détecté (à confirmer) — stable ; t3n #2, capitalo #3, vol.at #4, mydealz #6, bleap #7 |

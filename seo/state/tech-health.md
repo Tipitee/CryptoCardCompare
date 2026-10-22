@@ -1,4 +1,4 @@
-# Tech Health — 2026-10-13
+# Tech Health — 2026-10-20
 
 Statut global : 🟢 (6/6 OK, vérifs partielles via web_fetch)
 
@@ -11,7 +11,7 @@ Statut global : 🟢 (6/6 OK, vérifs partielles via web_fetch)
 | — | Crawlers IA autorisés | ✅ | GPTBot/Perplexity/ClaudeBot/Google-Extended = Allow / |
 | — | Sitemaps enfants | ✅ | sitemap-index OK, 18 enfants (lastmod 2026-09-18, non re-fetchés) |
 
-Aucune régression vs 2026-10-06.
+Aucune régression vs 2026-10-13.
 
 ## Historique
 ### 2026-07-28 — 🔴 (probe échec réseau, non concluant : 7 checks "fetch failed")
@@ -25,4 +25,5 @@ Aucune régression vs 2026-10-06.
 ### 2026-09-29 — 🟢 6/6 OK (web_fetch). Aucune régression.
 ### 2026-10-06 — 🟢 6/6 OK (web_fetch). Aucune régression.
 ### 2026-10-13 — 🟢 6/6 OK (web_fetch). Aucune régression.
+### 2026-10-20 — 🟢 6/6 OK (web_fetch). Aucune régression.
 (les runs précédents restent ici — ne pas écraser cette section à la main)
