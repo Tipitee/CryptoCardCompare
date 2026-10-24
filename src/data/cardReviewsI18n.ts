@@ -1652,13 +1652,13 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   "bleap-card__de": {
     "badge": "Self-custody USDC",
     "keyStats": {
-      "cashbackMax": "Bis zu 20 % in ausgewählten Kategorien (2 % Standard)",
+      "cashbackMax": "Bis zu 20 % in ausgewählten Kategorien (1% Standard)",
       "stakingRequis": "Keine",
       "fraisAnnuels": "0 € (kostenlos)",
       "disponibilite": "Frankreich, EU, Schweiz"
     },
     "pros": [
-      "2 % Standard-Cashback in USDC auf alle Käufe",
+      "1% Standard-Cashback in USDC auf alle Käufe",
       "Bis zu 20 % Cashback auf Gaming, Streaming und ausgewählte Händler",
       "Self-custody Wallet, Ihre Geldmittel bleiben in Ihrem Wallet bis zur Zahlung",
       "Keine Wechselgebühren (0 % FX Markup)",
@@ -1674,27 +1674,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Relativ neu (2023), begrenzte Historie",
       "Technische Einrichtung aufwendiger als bei einer klassischen Karte (Self-custody)"
     ],
-    "verdict": "Bleap ist eine der besten Karten für reinen Cashback ohne Staking: 2 % in USDC garantiert, 0 Gebühren, Self-custody. Der einzige Nachteil ist die Reife der Plattform, noch jung und wenig bekannt. Wenn Sie den besten Cashback ohne Bedingungen suchen und bereit sind, eine aufstrebende Marke zu nutzen, ist Bleap eine ausgezeichnete Wahl.",
+    "verdict": "Bleap ist eine der besten Karten für reinen Cashback ohne Staking: 1% in USDC garantiert, 0 Gebühren, Self-custody. Der einzige Nachteil ist die Reife der Plattform, noch jung und wenig bekannt. Wenn Sie den besten Cashback ohne Bedingungen suchen und bereit sind, eine aufstrebende Marke zu nutzen, ist Bleap eine ausgezeichnete Wahl.",
     "sections": {
       "presentation": "**Bleap** ist ein 2023 gegründetes Fintech-Unternehmen, das eine Self-custody Mastercard mit bis zu 20 % Cashback in USDC anbietet. Das Konzept ist innovativ: Ihre Kryptowährungen bleiben in Ihrem Non-custodial Wallet bis zum Zahlungszeitpunkt. Die Karte ist im EWR erhältlich (einschließlich Frankreich).",
-      "cashback": "Der Standard-Cashback beträgt **2 % in USDC** auf alle Käufe, ohne Staking-Anforderung oder Abonnement. In **speziellen Kategorien** (Gaming, Streaming, ausgewählte Partner-Händler) kann der Cashback bis zu **20 %** erreichen. Der Cashback wird direkt in Ihr Non-custodial Wallet in USDC überwiesen.",
+      "cashback": "Der Standard-Cashback beträgt **1% in USDC** auf alle Käufe, ohne Staking-Anforderung oder Abonnement. In **speziellen Kategorien** (Gaming, Streaming, ausgewählte Partner-Händler) kann der Cashback bis zu **20 %** erreichen. Der Cashback wird direkt in Ihr Non-custodial Wallet in USDC überwiesen.",
       "frais": "**Keine Jahresgebühren, keine Wechselgebühren (0 % FX Markup), keine Transaktionsgebühren**. Dies ist eine der leichtesten Gebührenstrukturen auf dem Markt.",
       "securite": "Bleap nutzt die **MPC (Multi-Party Computation)**-Technologie, um Self-custody Transaktionen zu sichern, ohne private Schlüssel freizulegen. Ihre Geldmittel bleiben in Ihrem Wallet bis zur Zahlung, kein Dritter hält Ihre Vermögenswerte.",
       "experience": "Die Bleap-App ist auf iOS und Android verfügbar. Die Konfiguration des Self-custody Wallets ist benutzerfreundlich, erfordert aber ein grundlegendes Verständnis von Krypto-Wallets. Die virtuelle Karte ist nach der Registrierung sofort verfügbar. Kompatibel mit Apple Pay und Google Pay."
     },
-    "metaTitle": "Bleap Card Test 2026, 2% Cashback USDC, Self-Custody, 0 Gebühren",
-    "metaDescription": "Bleap Card Test 2026: Self-custody Mastercard mit 2% Cashback in USDC, bis zu 20% auf Kategorien, keine Gebühren. In Frankreich und der EU verfügbar."
+    "metaTitle": "Bleap Card Test 2026, 1% Cashback USDC, Self-Custody, 0 Gebühren",
+    "metaDescription": "Bleap Card Test 2026: Self-custody Mastercard mit 1% Cashback in USDC, bis zu 20% auf Kategorien, keine Gebühren. In Frankreich und der EU verfügbar."
   },
   "bleap-card__es": {
     "badge": "Auto-custodia USDC",
     "keyStats": {
-      "cashbackMax": "Hasta 20% en categorías seleccionadas (2% estándar)",
+      "cashbackMax": "Hasta 20% en categorías seleccionadas (1% estándar)",
       "stakingRequis": "Ninguno",
       "fraisAnnuels": "0 € (gratuito)",
       "disponibilite": "Francia, UE, Suiza"
     },
     "pros": [
-      "2% de cashback estándar en USDC en todas las compras",
+      "1% de cashback estándar en USDC en todas las compras",
       "Hasta 20% de cashback en gaming, streaming y ciertos comercios",
       "Wallet de auto-custodia, tus fondos permanecen en tu wallet hasta el pago",
       "Sin comisiones de cambio (0% FX markup)",
@@ -1710,27 +1710,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Relativamente nueva (2023), historial limitado",
       "Configuración más técnica que una tarjeta clásica (auto-custodia)"
     ],
-    "verdict": "Bleap es una de las mejores tarjetas para cashback puro sin staking: 2% en USDC garantizado, 0 comisiones, auto-custodia. El único inconveniente es la madurez de la plataforma, aún joven y poco conocida. Si buscas el mejor cashback sin restricciones y aceptas una marca emergente, Bleap es una excelente opción.",
+    "verdict": "Bleap es una de las mejores tarjetas para cashback puro sin staking: 1% en USDC garantizado, 0 comisiones, auto-custodia. El único inconveniente es la madurez de la plataforma, aún joven y poco conocida. Si buscas el mejor cashback sin restricciones y aceptas una marca emergente, Bleap es una excelente opción.",
     "sections": {
       "presentation": "**Bleap** es una fintech lanzada en 2023 que ofrece una Mastercard de auto-custodia con hasta 20% de cashback en USDC. El concepto es innovador: tus criptos permanecen en tu wallet no-custodial hasta el momento exacto del pago. La tarjeta está disponible en el EEA (incluida Francia).",
-      "cashback": "El cashback estándar es de **2% en USDC** en todas las compras, sin condiciones de staking ni suscripción. En **categorías especiales** (gaming, streaming, ciertos comercios asociados), el cashback puede alcanzar **20%**. El cashback se paga directamente en tu wallet no-custodial en USDC.",
+      "cashback": "El cashback estándar es de **1% en USDC** en todas las compras, sin condiciones de staking ni suscripción. En **categorías especiales** (gaming, streaming, ciertos comercios asociados), el cashback puede alcanzar **20%**. El cashback se paga directamente en tu wallet no-custodial en USDC.",
       "frais": "**Sin comisiones anuales, sin comisiones de cambio (0% FX markup), sin comisiones de transacción**. Es una de las estructuras de comisiones más ligeras del mercado.",
       "securite": "Bleap utiliza la tecnología **MPC (Multi-Party Computation)** para asegurar las transacciones de auto-custodia sin exponer las claves privadas. Tus fondos permanecen en tu wallet hasta el pago, ningún tercero tiene acceso a tus activos.",
       "experience": "La aplicación Bleap está disponible en iOS y Android. La configuración del wallet de auto-custodia es guiada pero requiere una comprensión básica de wallets cripto. La tarjeta virtual está disponible al instante después del registro. Compatible con Apple Pay y Google Pay."
     },
-    "metaTitle": "Bleap Card Opinión 2026, 2% Cashback USDC, Auto-Custodia, 0 Comisiones",
-    "metaDescription": "Opinión Bleap Card 2026: Mastercard auto-custodia con 2% cashback en USDC, hasta 20% en categorías. Sin comisiones. Disponible en Francia y UE."
+    "metaTitle": "Bleap Card Opinión 2026, 1% Cashback USDC, Auto-Custodia, 0 Comisiones",
+    "metaDescription": "Opinión Bleap Card 2026: Mastercard auto-custodia con 1% cashback en USDC, hasta 20% en categorías. Sin comisiones. Disponible en Francia y UE."
   },
   "bleap-card__it": {
     "badge": "Self-custody USDC",
     "keyStats": {
-      "cashbackMax": "Fino al 20% su categorie selezionate (2% standard)",
+      "cashbackMax": "Fino al 20% su categorie selezionate (1% standard)",
       "stakingRequis": "Nessuno",
       "fraisAnnuels": "0 € (gratuito)",
       "disponibilite": "Francia, UE, Svizzera"
     },
     "pros": [
-      "2% di cashback standard in USDC su tutti gli acquisti",
+      "1% di cashback standard in USDC su tutti gli acquisti",
       "Fino al 20% di cashback su gaming, streaming e alcuni merchant",
       "Wallet self-custody, i tuoi fondi rimangono nel tuo wallet fino al pagamento",
       "Nessuna commissione di cambio (0% FX markup)",
@@ -1746,27 +1746,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Relativamente nuovo (2023), storico limitato",
       "Configurazione più tecnica rispetto a una carta classica (self-custody)"
     ],
-    "verdict": "Bleap è una delle migliori carte per cashback puro senza staking: 2% in USDC garantiti, 0 commissioni, self-custody. L'unico neo è la maturità della piattaforma, ancora giovane e poco conosciuta. Se cerchi il miglior cashback senza vincoli e accetti un brand emergente, Bleap è un'ottima scelta.",
+    "verdict": "Bleap è una delle migliori carte per cashback puro senza staking: 1% in USDC garantiti, 0 commissioni, self-custody. L'unico neo è la maturità della piattaforma, ancora giovane e poco conosciuta. Se cerchi il miglior cashback senza vincoli e accetti un brand emergente, Bleap è un'ottima scelta.",
     "sections": {
       "presentation": "**Bleap** è una fintech lanciata nel 2023 che offre una Mastercard self-custody con fino al 20% di cashback in USDC. Il principio è innovativo: le tue crypto rimangono nel tuo wallet non-custodiale fino al momento esatto del pagamento. La carta è disponibile nell'EEA (inclusa la Francia).",
-      "cashback": "Il cashback standard è di **2% in USDC** su tutti gli acquisti, senza condizioni di staking né abbonamento. Su **categorie speciali** (gaming, streaming, alcuni merchant partner), il cashback può raggiungere **20%**. Il cashback viene versato direttamente nel tuo wallet non-custodiale in USDC.",
+      "cashback": "Il cashback standard è di **1% in USDC** su tutti gli acquisti, senza condizioni di staking né abbonamento. Su **categorie speciali** (gaming, streaming, alcuni merchant partner), il cashback può raggiungere **20%**. Il cashback viene versato direttamente nel tuo wallet non-custodiale in USDC.",
       "frais": "**Nessuna commissione annuale, nessuna commissione di cambio (0% FX markup), nessuna commissione di transazione**. È una delle strutture di commissioni più leggere del mercato.",
       "securite": "Bleap utilizza la tecnologia **MPC (Multi-Party Computation)** per proteggere le transazioni self-custody senza esporre le chiavi private. I tuoi fondi rimangono nel tuo wallet fino al pagamento, nessun terzo detiene i tuoi asset.",
       "experience": "L'app Bleap è disponibile su iOS e Android. La configurazione del wallet self-custody è guidata ma richiede una comprensione di base dei wallet crypto. La carta virtuale è disponibile istantaneamente dopo la registrazione. Compatibile con Apple Pay e Google Pay."
     },
-    "metaTitle": "Bleap Card Recensione 2026, 2% Cashback USDC, Self-Custody, 0 Commissioni",
-    "metaDescription": "Recensione Bleap Card 2026: Mastercard self-custody con 2% cashback in USDC, fino al 20% su alcune categorie, zero commissioni. Disponibile in Francia e nell'UE."
+    "metaTitle": "Bleap Card Recensione 2026, 1% Cashback USDC, Self-Custody, 0 Commissioni",
+    "metaDescription": "Recensione Bleap Card 2026: Mastercard self-custody con 1% cashback in USDC, fino al 20% su alcune categorie, zero commissioni. Disponibile in Francia e nell'UE."
   },
   "bleap-card__en": {
     "badge": "Self-custody USDC",
     "keyStats": {
-      "cashbackMax": "Up to 20% on selected categories (2% standard)",
+      "cashbackMax": "Up to 20% on selected categories (1% standard)",
       "stakingRequis": "None",
       "fraisAnnuels": "€0 (free)",
       "disponibilite": "France, EU, Switzerland"
     },
     "pros": [
-      "2% standard cashback in USDC on all purchases",
+      "1% standard cashback in USDC on all purchases",
       "Up to 20% cashback on gaming, streaming, and select merchants",
       "Self-custody wallet, your funds stay in your wallet until payment",
       "No FX fees (0% FX markup)",
@@ -1782,16 +1782,16 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Relatively new (2023), limited track record",
       "More technical setup than a standard card (self-custody)"
     ],
-    "verdict": "Bleap is one of the best cards for pure cashback with no staking: 2% in USDC guaranteed, 0 fees, self-custody. The only drawback is platform maturity, still young and not widely known. If you want the best cashback without constraints and are comfortable with an emerging brand, Bleap is an excellent choice.",
+    "verdict": "Bleap is one of the best cards for pure cashback with no staking: 1% in USDC guaranteed, 0 fees, self-custody. The only drawback is platform maturity, still young and not widely known. If you want the best cashback without constraints and are comfortable with an emerging brand, Bleap is an excellent choice.",
     "sections": {
       "presentation": "**Bleap** is a fintech launched in 2023 offering a self-custody Mastercard with up to 20% cashback in USDC. The concept is innovative: your crypto remains in your non-custodial wallet until the exact moment of payment. The card is available in the EEA (including France).",
-      "cashback": "Standard cashback is **2% in USDC** on all purchases, with no staking requirement or subscription. On **special categories** (gaming, streaming, select partner merchants), cashback can reach **20%**. Cashback is paid directly to your non-custodial wallet in USDC.",
+      "cashback": "Standard cashback is **1% in USDC** on all purchases, with no staking requirement or subscription. On **special categories** (gaming, streaming, select partner merchants), cashback can reach **20%**. Cashback is paid directly to your non-custodial wallet in USDC.",
       "frais": "**No annual fees, no FX fees (0% FX markup), no transaction fees**. This is one of the lightest fee structures on the market.",
       "securite": "Bleap uses **MPC (Multi-Party Computation)** technology to secure self-custody transactions without exposing private keys. Your funds remain in your wallet until payment, no third party holds your assets.",
       "experience": "The Bleap app is available on iOS and Android. Self-custody wallet setup is guided but requires basic understanding of crypto wallets. Virtual card is available instantly after signup. Compatible with Apple Pay and Google Pay."
     },
-    "metaTitle": "Bleap Card Review 2026, 2% USDC Cashback, Self-Custody, 0 Fees",
-    "metaDescription": "Bleap Card review 2026: Self-custody Mastercard with 2% USDC cashback, up to 20% on select categories, no fees. Available in France and EU."
+    "metaTitle": "Bleap Card Review 2026, 1% USDC Cashback, Self-Custody, 0 Fees",
+    "metaDescription": "Bleap Card review 2026: Self-custody Mastercard with 1% USDC cashback, up to 20% on select categories, no fees. Available in France and EU."
   },
   "plutus-card__de": {
     "badge": "3-9% Cashback PLU",
@@ -3715,13 +3715,13 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   "bleap-card__pt": {
     "badge": "Auto-custódia USDC",
     "keyStats": {
-      "cashbackMax": "Até 20% em categorias selecionadas (2% padrão)",
+      "cashbackMax": "Até 20% em categorias selecionadas (1% padrão)",
       "stakingRequis": "Nenhum",
       "fraisAnnuels": "0 € (grátis)",
       "disponibilite": "França, UE, Suíça"
     },
     "pros": [
-      "2% de cashback padrão em USDC em todas as compras",
+      "1% de cashback padrão em USDC em todas as compras",
       "Até 20% de cashback em gaming, streaming e certos comerciantes",
       "Wallet em auto-custódia — os teus fundos permanecem na tua carteira até ao pagamento",
       "Sem taxas de câmbio (0% FX markup)",
@@ -3737,16 +3737,16 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Relativamente recente (2023) — histórico limitado",
       "Configuração mais técnica do que um cartão tradicional (auto-custódia)"
     ],
-    "verdict": "Bleap é um dos melhores cartões para cashback puro sem staking obrigatório: 2% em USDC garantidos, 0 taxas, auto-custódia. O único senão é a maturidade da plataforma — ainda jovem e pouco conhecida. Se procuras o melhor cashback sem constrangimentos e aceitas uma marca emergente, Bleap é uma excelente opção.",
+    "verdict": "Bleap é um dos melhores cartões para cashback puro sem staking obrigatório: 1% em USDC garantidos, 0 taxas, auto-custódia. O único senão é a maturidade da plataforma — ainda jovem e pouco conhecida. Se procuras o melhor cashback sem constrangimentos e aceitas uma marca emergente, Bleap é uma excelente opção.",
     "sections": {
       "presentation": "**Bleap** é uma fintech lançada em 2023 que oferece um Mastercard em auto-custódia com até 20% de cashback em USDC. O princípio é inovador: as tuas criptomoedas permanecem na tua carteira não-custodial até ao momento exato do pagamento. O cartão está disponível no EEE (incluindo França).",
-      "cashback": "O cashback padrão é de **2% em USDC** em todas as compras, sem condições de staking nem subscrição. Nas **categorias especiais** (gaming, streaming, certos comerciantes parceiros), o cashback pode atingir **20%**. O cashback é recebido diretamente na tua carteira não-custodial em USDC.",
+      "cashback": "O cashback padrão é de **1% em USDC** em todas as compras, sem condições de staking nem subscrição. Nas **categorias especiais** (gaming, streaming, certos comerciantes parceiros), o cashback pode atingir **20%**. O cashback é recebido diretamente na tua carteira não-custodial em USDC.",
       "frais": "**Sem taxas anuais, sem taxas de câmbio (0% FX markup), sem taxas de transação**. É uma das estruturas de taxas mais leves do mercado.",
       "securite": "Bleap utiliza a tecnologia **MPC (Multi-Party Computation)** para proteger as transações em auto-custódia sem expor as chaves privadas. Os teus fundos permanecem na tua carteira até ao pagamento — nenhum terceiro detém os teus ativos.",
       "experience": "A aplicação Bleap está disponível em iOS e Android. A configuração da carteira em auto-custódia é orientada, mas requer uma compreensão básica de carteiras cripto. O cartão virtual está disponível instantaneamente após o registo. Compatível com Apple Pay e Google Pay."
     },
-    "metaTitle": "Bleap Card Análise 2026 — 2% Cashback USDC, Auto-custódia, 0 Taxas",
-    "metaDescription": "Análise Bleap Card 2026: Mastercard auto-custódia com 2% cashback em USDC, até 20% em categorias. Sem taxas, disponível em França e UE."
+    "metaTitle": "Bleap Card Análise 2026 — 1% Cashback USDC, Auto-custódia, 0 Taxas",
+    "metaDescription": "Análise Bleap Card 2026: Mastercard auto-custódia com 1% cashback em USDC, até 20% em categorias. Sem taxas, disponível em França e UE."
   },
   "plutus-card__pt": {
     "badge": "3-9% cashback PLU",

@@ -1,16 +1,29 @@
 {
-  "generated": "2026-10-17",
+  "generated": "2026-10-24",
   "changes": [
     {
-      "card": "Revolut Metal",
+      "card": "Binance Card",
       "match": {
-        "name": "Revolut Metal"
+        "name": "Binance Card"
       },
       "set": {
-        "annual_fees": 227.88
+        "status": "discontinued"
       },
-      "reason": "Metal à 18,99 €/mois (France) depuis le 09/07/2026 (avant 16,99 €) = 227,88 €/an ; fiche affiche 179,88 € (corps) / 204 € (spec box). Abonnement annuel : 185 €.",
-      "source": "revoptimize.fr/en/plans/revolut-metal (vérifié 08/09/2026, tiers ; à confirmer sur revolut.com)",
+      "reason": "Carte Visa Binance arrêtée dans l'EEE le 20/12/2023 ; fiche live la présente comme disponible EEE (jusqu'à 8% BNB). Binance bloque en plus les nouvelles inscriptions EEE depuis 01/07/2026.",
+      "source": "https://blockworks.com/news/binance-europe-visa-services ; https://tech-insider.org/binance-eu-exit/",
+      "confidence": "high"
+    },
+    {
+      "card": "Bybit Card",
+      "match": {
+        "name": "Bybit Card"
+      },
+      "set": {
+        "available_france": true,
+        "card_network": "Mastercard"
+      },
+      "reason": "Bybit EU sert l'EEE sauf Malte (France incluse) ; réseau Mastercard (fiche live incohérente : tableau Mastercard / texte Visa). Cashback 2-10% en BTC confirmé.",
+      "source": "https://www.gettex.de/en/news-overview/newsdetail/eqs-news-bybit-eu-introduces-bitcoin-cashback-on-the-bybit-card-turning-everyday-spending-into-btc",
       "confidence": "medium"
     }
   ]

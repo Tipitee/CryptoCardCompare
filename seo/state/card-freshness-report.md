@@ -1,25 +1,28 @@
-# A13 — Fraîcheur cartes — 2026-10-17
-Lot (8) : Ether.Fi Cash, Revolut Metal, Young Platform, Trade Republic, Bit2Me, Coinbase, Gnosis Pay, Wirex. Écarts : 1 CHANGÉ, 3 INCERTAIN prioritaires (+3 non vérifiables).
+# A13 — Fraîcheur cartes — 2026-10-24
+Lot : Bitpanda, MetaMask, OKX, Ledger/Baanx, Bybit, Crypto.com, Binance, Nexo. Écarts : 2 CHANGÉ/ARRÊTÉ (JSON), 3 INCERTAIN.
+Note : slugs /en/cards/ de OKX, Ledger, Crypto.com, Binance renvoient la home -> lus via /en/reviews/<slug>.
 
 | carte | champ | fiche live dit | réalité (source) | statut | marché |
 |---|---|---|---|---|---|
-| Revolut Metal | frais annuels | 179,88 € (corps) / 204 € (spec) | 18,99 €/mois = 227,88 €/an (185 € annuel) depuis 09/07/26 (revoptimize, tiers, 08/09) | CHANGÉ | FR (autres marchés non confirmés) |
-| Revolut Metal | cashback | base 0,1 % / premium 1 % (FAQ contradictoire) | pas de cashback crypto perso, RevPoints seulement (revoptimize) | INCERTAIN | tous |
-| Coinbase Card | disponibilité | fiche live non lisible (rendu vide) ; llms-full la liste FCA/UK | « US uniquement », AT/FR/DE/IT/ES/PT/UK restreints (spendnode, 12/10/26, tiers) | INCERTAIN (possible ARRÊTÉ) | FR/DE/AT/ES/IT/UK |
-| Ether.Fi Cash | cashback | 2 % base / 3 % premium | 3 % sur 1ers 2 000 $/mois, payé en ETHFI ; EUR : 0,1 % au-delà de 1 500 $ (cryptocardhub, 05/10, tiers) | INCERTAIN | EU |
-| Ether.Fi Cash | marchés | FR+EU+UK | NL, EE, FI, HU restreints (tiers, août 26) | INCERTAIN | NL/EE/FI/HU |
-| Gnosis Pay | cashback/staking | 1 % base, 5 % premium ; staking min 1 € GNO | paliers 1–4 % selon 0,1/1/10/100 GNO, +1 % NFT OG = max 5 % ; plafonds hebdo (help.gnosispay.com) | OK (staking min 0,1 GNO vs « 1 € » : INCERTAIN) | tous |
-| Trade Republic | cashback/frais | 1 %, 0 €, Visa | 1 % plafonné 15 €/mois, plan d'épargne ≥50 €/mois requis (bankdaten, tiers) ; conditions absentes de la fiche | OK (nuance) | UK : fiche dit dispo, llms-full dit non, non vérifié |
-| Young Platform | tout | fiche EN introuvable (pas dans sitemap-reviews) | carte MiCA lancée (The Block) ; détails 2026 non confirmés | INCERTAIN | IT |
-| Bit2Me | tout | fiche non lue (fetch KO) | recherche non concluante | INCERTAIN | ES/EU |
-| Wirex | tout | fiche non lue (rendu vide) | recherche non concluante | INCERTAIN | UK/EU |
+| Binance | status | dispo EEE, jusqu'à 8% BNB, Visa | arrêtée EEE 20/12/2023 (Blockworks) ; EEE sans MiCA, inscriptions bloquées 01/07/2026 | ARRÊTÉ (haute) | EEE/FR |
+| Bybit | dispo | EU sauf France | EEE sauf Malte, France incluse (Bybit EU, 19/01/2026) | CHANGÉ (medium) | FR |
+| Bybit | réseau | Mastercard (tableau) / Visa (texte) | Mastercard | CHANGÉ (incohérence interne) | tous |
+| Bybit | cashback | base 2% / prem. 10% | 2-10% en BTC (promo nouveaux jusqu'à 10%, plafonné 150 €) | OK | - |
+| MetaMask | frais annuels | fiche "Free" vs texte 199 € | virtuelle 0 $, Metal 199 $/an (SpendNode) | INCERTAIN (par variante) | tous |
+| Bitpanda | marchés | UE + UK | commande réservée résidents zone euro (bitpanda.com) | INCERTAIN | UK |
+| Ledger | cashback max | 1% BTC, max 2% LDG | 1% BTC/USDT confirmé ; 2% LDG non vérifié ; frais 2% crypto / FX 1,75% non affichés | INCERTAIN | - |
+| OKX | cashback | 2% base, jusqu'à 5% USDG | idem (OKX Learn) ; EU + Norvège | OK | - |
+| Crypto.com | tiers/réseau/frais | 0-5%, Visa, 0 € | idem | OK | - |
+| Nexo | cashback/frais | 0,5-2% NEXO, 0 €, Mastercard | idem ; Bulgarie/Estonie restreintes (non vérifié) | OK | - |
 
 ## À corriger cette semaine
-1. Revolut Metal — annual_fees → 227,88 € (medium, voir JSON) ; harmoniser corps/spec box ; reformuler cashback (RevPoints).
-Aucun ARRÊTÉ confirmé.
+1. Binance Card -> status=discontinued (HAUTE : produit arrêté encore listé, risque désinformation/SEO).
+2. Bybit Card -> available_france=true, card_network=Mastercard.
 
 ## Dérive llms-full.txt (GEO)
-Revolut Metal 203,88 € / « 13,99 €/mois » (réel 18,99) ; Gnosis « 2 % GNO », staking « Optional » ; Trade Republic « pas au UK » vs fiche live « UK » ; Coinbase cité comme option UK/FCA.
-Limites : fetch des fiches live échoué (Young, Bit2Me, Coinbase, Wirex) ; sources émetteur directes souvent indisponibles, tiers utilisés (confiance medium max).
+- Binance : absente du fichier (cohérent avec l'arrêt) alors que la fiche live la présente active.
+- Bybit : marchés sans FR/BE, alors que la page recommande Bybit pour FR/BE. OKX : "OKB" -> réalité USDG. Ledger : max "BTC ou LDG" vs fiche "LDG".
+- Fiche live fait foi ; fichier statique à régénérer.
 
-**Action prioritaire (<4 h)** : vérifier à la main la fiche Coinbase Card (dispo FR/DE/AT/ES/IT/UK) ; si arrêtée, passer en discontinued par marché ; puis corriger Revolut Metal annual_fees.
+**Action prioritaire (< 4 h) :** passer Binance Card en discontinued via apply-card-updates.mjs.
+Lecture seule : aucune écriture en base.
