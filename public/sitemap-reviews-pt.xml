@@ -2,21 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://topcryptocards.eu/pt/analises/binance-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/binance-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/binance-card"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/pt/analises/bit2me-card</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -30,21 +15,6 @@
     <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/bit2me-card"/>
     <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/bit2me-card"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/bit2me-card"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/pt/analises/bitget-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/bitget-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/bitget-card"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/pt/analises/bitpanda-card</loc>
@@ -105,21 +75,6 @@
     <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/bybit-card"/>
     <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/bybit-card"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/bybit-card"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/pt/analises/coinbase-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/coinbase-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/coinbase-card"/>
   </url>
   <url>
     <loc>https://topcryptocards.eu/pt/analises/crypto-com-card</loc>
@@ -197,21 +152,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/kraken-card"/>
   </url>
   <url>
-    <loc>https://topcryptocards.eu/pt/analises/kucard</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/kucard"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/kucard"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/kucard"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/kucard"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/kucard"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/kucard"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/kucard"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/kucard"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/kucard"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/pt/analises/ledger-card</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -287,21 +227,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/plutus-card"/>
   </url>
   <url>
-    <loc>https://topcryptocards.eu/pt/analises/revolut-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/revolut-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/revolut-card"/>
-  </url>
-  <url>
     <loc>https://topcryptocards.eu/pt/analises/trade-republic-card</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -330,35 +255,5 @@
     <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/whitebit-card"/>
     <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/whitebit-card"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/whitebit-card"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/pt/analises/wirex-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/wirex-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/wirex-card"/>
-  </url>
-  <url>
-    <loc>https://topcryptocards.eu/pt/analises/young-platform-card</loc>
-    <lastmod>2026-08-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://topcryptocards.eu/fr/avis/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="fr-BE"   href="https://topcryptocards.eu/be/avis/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="de"      href="https://topcryptocards.eu/de/bewertungen/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="de-AT"   href="https://topcryptocards.eu/at/bewertungen/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="es"      href="https://topcryptocards.eu/es/opiniones/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="it"      href="https://topcryptocards.eu/it/recensioni/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="en-GB"   href="https://topcryptocards.eu/en/reviews/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT"   href="https://topcryptocards.eu/pt/analises/young-platform-card"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://topcryptocards.eu/fr/avis/young-platform-card"/>
   </url>
 </urlset>

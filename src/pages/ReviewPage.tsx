@@ -14,6 +14,14 @@ import { trackAffiliateClick } from '../utils/analytics';
 import { ROUTE_TRANSLATIONS, displayLang } from '../i18n/types';
 import { ALT_BRAND_MAP, type AltBrandId } from '../data/alternativesContent';
 
+// Reviews of cards that are discontinued or absent from the live database.
+// Kept for information but noindexed + removed from sitemap-reviews (see BrandPage
+// BRAND_REVIEW_SLUG). Users searching these land on the "alternatives to X" pages.
+const DISCONTINUED_REVIEWS = new Set<string>([
+  'binance-card', 'coinbase-card', 'wirex-card', 'revolut-card',
+  'bitget-card', 'kucard', 'young-platform-card',
+]);
+
 const CARD_SEGMENT: Record<string, string> = {
   fr: 'cartes', de: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes',
 };
@@ -435,7 +443,11 @@ export default function ReviewPage() {
     lang,
     // A review slug that doesn't exist renders the "not found" state at HTTP 200 —
     // a soft 404 to Google. Mark it noindex so it's dropped cleanly, not flagged.
-    noindex: !review || undefined,
+    // DISCONTINUED_REVIEWS: cards no longer available / not in the live DB (Binance,
+    // Coinbase, Wirex, Revolut-card, Bitget, KuCard, Young Platform). The review still
+    // renders (informational), but is noindexed and removed from the sitemap so we
+    // don't rank reviews of cards users cannot get. "Alternatives to X" pages remain.
+    noindex: !review || (slug ? DISCONTINUED_REVIEWS.has(slug) : false) || undefined,
   });
 
   // ── Hreflang ─────────────────────────────────────────────────────────────────

@@ -347,16 +347,12 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'bingx': 'bingx-metal-card',
   'crypto-com': 'crypto-com-card',
   'nexo': 'nexo-card',
-  'binance': 'binance-card',
   'kraken': 'kraken-card',
   'brighty': 'brighty-card',
   'gnosis': 'gnosis-pay-card',
   'bybit': 'bybit-card',
-  'wirex': 'wirex-card',
   'bitpanda': 'bitpanda-card',
   'okx': 'okx-card',
-  'coinbase': 'coinbase-card',
-  'revolut': 'revolut-card',
   'deblock': 'deblock-card',
   'bleap': 'bleap-card',
   'plutus': 'plutus-card',
@@ -364,10 +360,11 @@ const BRAND_REVIEW_SLUG: Record<string, string> = {
   'ledger': 'ledger-card',
   'metamask': 'metamask-card',
   'ether-fi': 'ether-fi-card',
-  'bitget': 'bitget-card',
-  'kucoin': 'kucard',
-  'young-platform': 'young-platform-card',
   'bit2me': 'bit2me-card',
+  // Removed: binance, coinbase, wirex, revolut(-card), bitget, kucoin, young-platform
+  // → cards discontinued or not in the live DB; their review pages are ghosts
+  // (noindex not-found) and were being submitted in sitemap-reviews. The brands'
+  // "alternatives" pages still serve the "alternatives to X" intent.
   'whitebit': 'whitebit-card',
   'gate': 'gate-card',
 };
