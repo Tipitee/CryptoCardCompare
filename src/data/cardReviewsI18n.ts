@@ -2372,7 +2372,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   "kraken-card__de": {
     "badge": "Sicherer US-Exchange",
     "keyStats": {
-      "cashbackMax": "1-2 % in Krypto (je nach gewähltem Asset)",
+      "cashbackMax": "1% in Krypto (je nach gewähltem Asset)",
       "stakingRequis": "Keine",
       "fraisAnnuels": "0 €",
       "disponibilite": "EU (Frankreich, Deutschland, Spanien, Italien…)"
@@ -2388,27 +2388,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Kundensupport gilt als einer der besten der Branche"
     ],
     "cons": [
-      "Cashback moderat (1-2%) im Vergleich zu Karten asiatischer Exchanges",
+      "Cashback moderat (1%) im Vergleich zu Karten asiatischer Exchanges",
       "Gelder auf dem Kraken-Exchange verwahrt (keine Self-Custody)",
       "Kraken mit Sitz in den USA – unterliegt US-Vorschriften",
       "Weniger Token unterstützt als einige Konkurrenten",
       "Vollständiges KYC erforderlich"
     ],
-    "verdict": "Die Kraken-Karte ist die beste Wahl für Nutzer, die Sicherheit und Zuverlässigkeit eines bewährten Exchanges bevorzugen. Kraken hat seit seiner Gründung 2011 keinen großen Hack erlitten und ist damit der sicherste Akteur der Branche. Das Cashback von 1-2% ist moderat, aber ohne Staking-Anforderung.",
+    "verdict": "Die Kraken-Karte ist die beste Wahl für Nutzer, die Sicherheit und Zuverlässigkeit eines bewährten Exchanges bevorzugen. Kraken hat seit seiner Gründung 2011 keinen großen Hack erlitten und ist damit der sicherste Akteur der Branche. Das Cashback von 1% ist moderat, aber ohne Staking-Anforderung.",
     "sections": {
       "presentation": "**Kraken** ist einer der ältesten Krypto-Exchanges (gegründet 2011 in San Francisco) und bleibt eine der wenigen großen Plattformen, die noch nie einen großen Hack erlitten hat. Die **Krak Card** ist die offizielle Visa-Karte von Kraken und in Europa verfügbar. **Krak Card vs Kraken-Karte — der Unterschied? Keiner: Es ist dasselbe Produkt.** « Krak » ist lediglich der Markenname von Kraken für seine Karte. Wer « Krak Card vs Kraken Karte » vergleicht, sieht also ein und dieselbe Visa.",
-      "cashback": "Das Cashback beträgt **1% bis 2%** auf alle Zahlungen, gutgeschrieben in der **Krypto Ihrer Wahl** aus den auf Kraken verfügbaren Assets (BTC, ETH, SOL, XRP, USDC, etc.). Kein Staking oder Mindesthaltung von Token erforderlich. Das ist der Hauptvorteil: Jeder Einkauf bringt automatisch Krypto.",
+      "cashback": "Das Cashback beträgt **1%** auf alle Zahlungen, gutgeschrieben in der **Krypto Ihrer Wahl** aus den auf Kraken verfügbaren Assets (BTC, ETH, SOL, XRP, USDC, etc.). Kein Staking oder Mindesthaltung von Token erforderlich. Das ist der Hauptvorteil: Jeder Einkauf bringt automatisch Krypto.",
       "frais": "**Ist die Krak Karte kostenlos? Ja — sie ist völlig kostenlos:** keine Jahresgebühr, keine Kartengebühr und **keine Fremdwährungsgebühren**. Die **Krak Card funktioniert international**, weltweit überall dort akzeptiert, wo Visa gilt. Kraken erhebt lediglich die üblichen Trading-Gebühren auf dem Exchange selbst.",
       "securite": "Kraken ist **der sicherste Exchange der Branche**: gegründet 2011, hat es nie einen großen Hack erlitten. Die Plattform ist in den USA (FinCEN), im Vereinigten Königreich (FCA) und in Europa (BaFin, AMF) reguliert.",
       "experience": "Die Kraken Pro-App gehört zu den am besten bewerteten der Branche für fortgeschrittene Trader. Die Kartenverwaltung ist direkt in die Kraken-App integriert. Kompatibel mit **Apple Pay** und **Google Pay**. Der Kraken-Kundensupport ist 24/7 verfügbar."
     },
-    "metaTitle": "Kraken Krak Card Test 2026 – 1-2% Cashback ohne Staking",
-    "metaDescription": "Kraken Krak Card Test 2026: Kostenlose Visa-Karte mit 1-2% Krypto-Cashback ohne Staking. Sicherster Exchange seit 2011. Verfügbar in Frankreich und EU."
+    "metaTitle": "Kraken Krak Card Test 2026: Ehrliches Fazit, 1% Cashback & Gebühren",
+    "metaDescription": "Kraken Krak Card Test 2026: Kostenlose Visa-Karte mit 1% Krypto-Cashback ohne Staking. Sicherster Exchange seit 2011. Verfügbar in Frankreich und EU."
   },
   "kraken-card__es": {
     "badge": "Exchange US seguro",
     "keyStats": {
-      "cashbackMax": "1-2% en cripto (según activo elegido)",
+      "cashbackMax": "1% en cripto (según activo elegido)",
       "stakingRequis": "Ninguno",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia, Alemania, España, Italia…)"
@@ -2424,27 +2424,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Atención al cliente reconocida como una de las mejores del sector"
     ],
     "cons": [
-      "Cashback modesto (1-2%) comparado con tarjetas de exchanges asiáticos",
+      "Cashback modesto (1%) comparado con tarjetas de exchanges asiáticos",
       "Fondos alojados en el exchange Kraken (sin auto custodia)",
       "Kraken con sede en Estados Unidos, sujeto a regulaciones US",
       "Menos tokens soportados que algunos competidores",
       "KYC completo requerido"
     ],
-    "verdict": "La tarjeta Kraken es la mejor opción para usuarios que priorizan la seguridad y confiabilidad de un exchange probado. Kraken nunca ha sufrido un hack importante desde su creación en 2011, lo que la convierte en el actor más seguro del sector. El cashback de 1-2% es modesto pero sin staking.",
+    "verdict": "La tarjeta Kraken es la mejor opción para usuarios que priorizan la seguridad y confiabilidad de un exchange probado. Kraken nunca ha sufrido un hack importante desde su creación en 2011, lo que la convierte en el actor más seguro del sector. El cashback de 1% es modesto pero sin staking.",
     "sections": {
       "presentation": "**Kraken** es uno de los exchanges cripto más antiguos (fundado en 2011 en San Francisco) y sigue siendo una de las pocas grandes plataformas que nunca ha sufrido un hack importante. La tarjeta **Krak Card** es la tarjeta Visa oficial de Kraken, disponible en Europa.",
-      "cashback": "El cashback es de **1% a 2%** en todos los pagos, acreditado en la **cripto de tu elección** entre los activos disponibles en Kraken (BTC, ETH, SOL, XRP, USDC, etc.). No se requiere staking ni tenencia mínima de tokens.",
+      "cashback": "El cashback es de **1%** en todos los pagos, acreditado en la **cripto de tu elección** entre los activos disponibles en Kraken (BTC, ETH, SOL, XRP, USDC, etc.). No se requiere staking ni tenencia mínima de tokens.",
       "frais": "La tarjeta Krak es **completamente gratuita**: sin comisiones anuales, sin comisiones de tarjeta. Las comisiones de cambio en monedas extranjeras son nulas. Kraken aplica comisiones de trading estándar en el exchange.",
       "securite": "Kraken es **el exchange más seguro del sector**: fundado en 2011, nunca ha sufrido un hack importante. La plataforma está regulada en Estados Unidos (FinCEN), Reino Unido (FCA) y Europa (BaFin, AMF).",
       "experience": "La aplicación Kraken Pro es una de las mejor valoradas del sector para traders avanzados. La gestión de la tarjeta está integrada directamente en la app Kraken. Compatible con **Apple Pay** y **Google Pay**. El soporte al cliente de Kraken está disponible 24/7."
     },
-    "metaTitle": "Opinión Kraken Krak Card 2026, Cashback 1-2% Sin Staking",
-    "metaDescription": "Opinión completa Kraken Krak Card 2026: tarjeta Visa gratuita con cashback 1-2% en cripto a elegir, sin staking. El exchange más seguro desde 2011. Disponible en Francia y UE."
+    "metaTitle": "Opinión Kraken Krak Card 2026: Veredicto Honesto, 1% Cashback y Comisiones",
+    "metaDescription": "Opinión completa Kraken Krak Card 2026: tarjeta Visa gratuita con cashback 1% en cripto a elegir, sin staking. El exchange más seguro desde 2011. Disponible en Francia y UE."
   },
   "kraken-card__it": {
     "badge": "Exchange US sicuro",
     "keyStats": {
-      "cashbackMax": "1-2% in crypto (a seconda dell'asset scelto)",
+      "cashbackMax": "1% in crypto (a seconda dell'asset scelto)",
       "stakingRequis": "Nessuno",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (Francia, Germania, Spagna, Italia…)"
@@ -2460,27 +2460,27 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Supporto clienti riconosciuto tra i migliori del settore"
     ],
     "cons": [
-      "Cashback modesto (1-2%) rispetto alle carte degli exchange asiatici",
+      "Cashback modesto (1%) rispetto alle carte degli exchange asiatici",
       "Fondi ospitati sull'exchange Kraken (non self-custody)",
       "Kraken con sede negli Stati Uniti, soggetto alle normative US",
       "Meno token supportati rispetto ad alcuni competitor",
       "KYC completo richiesto"
     ],
-    "verdict": "La carta Kraken è la scelta migliore per gli utenti che privilegiano la sicurezza e l'affidabilità di un exchange collaudato. Kraken non ha mai subito un hack maggiore dalla sua creazione nel 2011, rendendola l'attore più sicuro del settore. Il cashback dell'1-2% è modesto ma senza staking.",
+    "verdict": "La carta Kraken è la scelta migliore per gli utenti che privilegiano la sicurezza e l'affidabilità di un exchange collaudato. Kraken non ha mai subito un hack maggiore dalla sua creazione nel 2011, rendendola l'attore più sicuro del settore. Il cashback dell'1% è modesto ma senza staking.",
     "sections": {
       "presentation": "**Kraken** è uno dei più antichi exchange crypto (fondato nel 2011 a San Francisco), e rimane una delle sole grandi piattaforme a non aver mai subito un hack maggiore. La carta **Krak Card** è la carta Visa ufficiale di Kraken, disponibile in Europa.",
-      "cashback": "Il cashback è dell'**1-2%** su tutti i pagamenti, accreditato nella **crypto di tua scelta** tra gli asset disponibili su Kraken (BTC, ETH, SOL, XRP, USDC, ecc.). Non è richiesto nessuno staking né detenzione minima di token.",
+      "cashback": "Il cashback è dell'**1%** su tutti i pagamenti, accreditato nella **crypto di tua scelta** tra gli asset disponibili su Kraken (BTC, ETH, SOL, XRP, USDC, ecc.). Non è richiesto nessuno staking né detenzione minima di token.",
       "frais": "La Krak Card è **completamente gratuita**: nessuna commissione annuale, nessuna commissione sulla carta. Le commissioni di cambio in valute estere sono zero. Kraken applica le consuete commissioni di trading sull'exchange.",
       "securite": "Kraken è **l'exchange più sicuro del settore**: fondato nel 2011, non ha mai subito un hack maggiore. La piattaforma è regolamentata negli Stati Uniti (FinCEN), nel Regno Unito (FCA), e in Europa (BaFin, AMF).",
       "experience": "L'app Kraken Pro è tra le meglio valutate del settore per i trader avanzati. La gestione della carta è integrata direttamente nell'app Kraken. Compatibile con **Apple Pay** e **Google Pay**. Il supporto clienti Kraken è disponibile 24/7."
     },
-    "metaTitle": "Kraken Krak Card Opinioni 2026, Cashback 1-2% Senza Staking",
-    "metaDescription": "Opinioni Kraken Krak Card 2026: carta Visa gratuita con cashback 1-2% in crypto, senza staking. L'exchange più sicuro dal 2011. Disponibile in Francia e UE."
+    "metaTitle": "Kraken Krak Card Opinioni 2026: Verdetto Onesto, 1% Cashback e Costi",
+    "metaDescription": "Opinioni Kraken Krak Card 2026: carta Visa gratuita con cashback 1% in crypto, senza staking. L'exchange più sicuro dal 2011. Disponibile in Francia e UE."
   },
   "kraken-card__en": {
     "badge": "Secure US Exchange",
     "keyStats": {
-      "cashbackMax": "1-2% in crypto (depending on chosen asset)",
+      "cashbackMax": "1% in crypto (depending on chosen asset)",
       "stakingRequis": "None",
       "fraisAnnuels": "$0",
       "disponibilite": "EU (France, Germany, Spain, Italy…)"
@@ -2496,22 +2496,22 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Customer support recognized as among the best in the industry"
     ],
     "cons": [
-      "Modest cashback (1-2%) compared to Asian exchange cards",
+      "Modest cashback (1%) compared to Asian exchange cards",
       "Funds held on Kraken exchange (no self-custody)",
       "Kraken based in the United States, subject to US regulations",
       "Fewer tokens supported than some competitors",
       "Full KYC required"
     ],
-    "verdict": "Kraken Card is the best choice for users who prioritize security and reliability from a proven exchange. Kraken has never suffered a major hack since its founding in 2011, making it the safest player in the sector. The 1-2% cashback is modest but requires no staking.",
+    "verdict": "Kraken Card is the best choice for users who prioritize security and reliability from a proven exchange. Kraken has never suffered a major hack since its founding in 2011, making it the safest player in the sector. The 1% cashback is modest but requires no staking.",
     "sections": {
       "presentation": "**Kraken** is one of the oldest crypto exchanges (founded in 2011 in San Francisco) and remains one of the only major platforms to have never suffered a major hack. The **Krak Card** is Kraken's official Visa card, available in Europe. **Krak Card vs Kraken card — what's the difference? There is none: they are the same product.** « Krak » is simply Kraken's brand name for its card, so if you're comparing « Krak card vs Kraken card » you're looking at one and the same Visa. Compared with a bank card like N26, the Krak card adds crypto cashback and lets you spend directly from your Kraken balance.",
-      "cashback": "Cashback is **1% to 2%** on all payments, credited in the **crypto of your choice** from the assets available on Kraken (BTC, ETH, SOL, XRP, USDC, etc.). No staking or minimum token holding is required. This is the main benefit of the card: every purchase earns crypto automatically.",
+      "cashback": "Cashback is **1%** on all payments, credited in the **crypto of your choice** from the assets available on Kraken (BTC, ETH, SOL, XRP, USDC, etc.). No staking or minimum token holding is required. This is the main benefit of the card: every purchase earns crypto automatically.",
       "frais": "**Is the Krak card free? Yes — it is completely free:** no annual fee, no card fee, and **no foreign transaction fees**. The **Krak card works internationally**, accepted worldwide anywhere Visa is. Kraken applies only its standard trading fees on the exchange itself.",
       "securite": "Kraken is **the most secure exchange in the sector**: founded in 2011, it has never suffered a major hack. The platform is regulated in the United States (FinCEN), United Kingdom (FCA), and Europe (BaFin, AMF).",
       "experience": "Kraken Pro app is among the highest-rated in the sector for advanced traders. Card management is integrated directly into the Kraken app. Compatible with **Apple Pay** and **Google Pay**. Kraken customer support is available 24/7."
     },
-    "metaTitle": "Kraken Krak Card Review 2026, 1-2% Cashback No Staking",
-    "metaDescription": "Complete Kraken Krak Card 2026 review: free Visa card with 1-2% cashback in crypto, no staking required. Safest crypto exchange since 2011."
+    "metaTitle": "Kraken Krak Card Review 2026: Honest Verdict, 1% Cashback & Fees",
+    "metaDescription": "Complete Kraken Krak Card 2026 review: free Visa card with 1% cashback in crypto, no staking required. Safest crypto exchange since 2011."
   },
   "metamask-card__de": {
     "badge": "Web3 nativ",
@@ -3895,7 +3895,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
   "kraken-card__pt": {
     "badge": "Exchange EUA seguro",
     "keyStats": {
-      "cashbackMax": "1-2% em cripto (conforme ativo escolhido)",
+      "cashbackMax": "1% em cripto (conforme ativo escolhido)",
       "stakingRequis": "Nenhum",
       "fraisAnnuels": "0 €",
       "disponibilite": "UE (França, Alemanha, Espanha, Itália…)"
@@ -3911,22 +3911,22 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Suporte ao cliente reconhecido como um dos melhores do sector"
     ],
     "cons": [
-      "Cashback modesto (1-2%) comparado com cartões de exchanges asiáticos",
+      "Cashback modesto (1%) comparado com cartões de exchanges asiáticos",
       "Fundos alojados no exchange Kraken (sem auto-custódia)",
       "Kraken sediado nos Estados Unidos — sujeito a regulamentações EUA",
       "Menos tokens suportados que alguns concorrentes",
       "KYC completo obrigatório"
     ],
-    "verdict": "O cartão Kraken é a melhor escolha para utilizadores que priorizam segurança e fiabilidade de um exchange comprovado. Kraken nunca sofreu nenhum hack importante desde a sua criação em 2011, tornando-o o actor mais seguro do sector. O cashback de 1-2% é modesto mas sem staking.",
+    "verdict": "O cartão Kraken é a melhor escolha para utilizadores que priorizam segurança e fiabilidade de um exchange comprovado. Kraken nunca sofreu nenhum hack importante desde a sua criação em 2011, tornando-o o actor mais seguro do sector. O cashback de 1% é modesto mas sem staking.",
     "sections": {
       "presentation": "**Kraken** é um dos exchanges cripto mais antigos (fundado em 2011 em San Francisco) e permanece uma das poucas grandes plataformas que nunca sofreu um hack importante. O cartão **Krak Card** é o cartão Visa oficial da Kraken, disponível na Europa.",
-      "cashback": "O cashback é de **1% a 2%** em todos os pagamentos, creditado na **cripto da tua escolha** entre os activos disponíveis no Kraken (BTC, ETH, SOL, XRP, USDC, etc.). Nenhum staking nem detenção mínima de token é necessária.",
+      "cashback": "O cashback é de **1%** em todos os pagamentos, creditado na **cripto da tua escolha** entre os activos disponíveis no Kraken (BTC, ETH, SOL, XRP, USDC, etc.). Nenhum staking nem detenção mínima de token é necessária.",
       "frais": "O cartão Krak é **completamente grátis**: nenhuma taxa anual, nenhuma taxa de cartão. As taxas de câmbio em moedas estrangeiras são nulas. Kraken aplica taxas de negociação habituais no exchange.",
       "securite": "Kraken é **o exchange mais seguro do sector**: fundado em 2011, nunca sofreu um hack importante. A plataforma é regulada nos Estados Unidos (FinCEN), no Reino Unido (FCA) e na Europa (BaFin, AMF).",
       "experience": "A aplicação Kraken Pro é uma das mais bem avaliadas do sector para traders avançados. A gestão do cartão está integrada directamente na app Kraken. Compatível com **Apple Pay** e **Google Pay**. O suporte ao cliente Kraken está disponível 24h/24."
     },
-    "metaTitle": "Kraken Krak Card Análise 2026 — Cashback 1-2% Sem Staking",
-    "metaDescription": "Análise Kraken Krak Card 2026: cartão Visa grátis com cashback 1-2% em cripto à escolha, sem staking. Exchange mais seguro desde 2011."
+    "metaTitle": "Kraken Krak Card Análise 2026: Veredicto Honesto, 1% Cashback e Taxas",
+    "metaDescription": "Análise Kraken Krak Card 2026: cartão Visa grátis com cashback 1% em cripto à escolha, sem staking. Exchange mais seguro desde 2011."
   },
   "metamask-card__pt": {
     "badge": "Nativa Web3",

@@ -1439,7 +1439,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
     hq: 'États-Unis',
     seo: {
       fr: {
-        title: `Carte Krak (Kraken) ${YEAR}, 1% cashback cash | TopCryptoCards`,
+        title: `Cartes Kraken ${YEAR} : Krak Card, frais, cashback & comparatif | TopCryptoCards`,
         description: `Avis Krak Card (Kraken) ${YEAR} : 1% cashback en cash (EUR/GBP), sans token propriétaire, sans frais annuels. Disponible en EU et UK. Verdict indépendant ✓`,
         intro: `Krak est la carte Visa de Kraken, l'une des plus anciennes exchanges crypto fondées en 2011. Elle offre 1% de cashback en cash (EUR ou GBP), sans token propriétaire.`,
         outro: `La Krak Card est idéale pour ceux qui préfèrent un cashback simple en cash plutôt qu'en token propriétaire. Disponible en UE et UK.`,
@@ -1467,7 +1467,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
         ],
       },
       de: {
-        title: `Krak Karte (Kraken) ${YEAR}, 1% Cash Cashback | TopCryptoCards`,
+        title: `Kraken Karten ${YEAR}: Krak Card, Gebühren, Cashback & Vergleich | TopCryptoCards`,
         description: `Alles über die Krak Card von Kraken ${YEAR}: 1% Cash Cashback, verfügbar in EU und UK.`,
         intro: `Krak ist die Visa-Karte von Kraken, einer der ältesten Krypto-Börsen, gegründet 2011. Sie bietet 1% Cashback in Cash (EUR oder GBP) ohne proprietäres Token.`,
         outro: `Die Krak Card ist ideal für diejenigen, die ein einfaches Cash-Cashback statt eines proprietären Tokens bevorzugen. In der EU und UK verfügbar.`,
@@ -1495,7 +1495,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
         ],
       },
       es: {
-        title: `Tarjeta Krak (Kraken) ${YEAR}, 1% cashback en efectivo | TopCryptoCards`,
+        title: `Tarjetas Kraken ${YEAR}: Krak Card, comisiones, cashback y comparativa | TopCryptoCards`,
         description: `Todo sobre la Krak Card de Kraken en ${YEAR}: 1% cashback en efectivo, disponible en EU y UK.`,
         intro: `Krak es la tarjeta Visa de Kraken, uno de los exchanges crypto más antiguos fundado en 2011. Ofrece 1% de cashback en efectivo (EUR o GBP) sin token propietario.`,
         outro: `La Krak Card es ideal para quienes prefieren un cashback simple en efectivo en lugar de un token propio. Disponible en la UE y UK.`,
@@ -1523,7 +1523,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
         ],
       },
       it: {
-        title: `Carta Krak (Kraken) ${YEAR}, 1% cashback in contanti | TopCryptoCards`,
+        title: `Carte Kraken ${YEAR}: Krak Card, costi, cashback e confronto | TopCryptoCards`,
         description: `Tutto sulla Krak Card di Kraken nel ${YEAR}: 1% cashback in contanti, disponibile in EU e UK.`,
         intro: `Krak è la carta Visa di Kraken, uno degli exchange crypto più antichi, fondato nel 2011. Offre l'1% di cashback in contanti (EUR o GBP) senza token proprietario.`,
         outro: `La Krak Card è ideale per chi preferisce un cashback semplice in contanti piuttosto che un token proprietario. Disponibile in UE e UK.`,
@@ -1551,7 +1551,7 @@ export const BRAND_CONFIG: Record<string, BrandMeta> = {
         ],
       },
       en: {
-        title: `Krak Card (Kraken) ${YEAR}, 1% Cash Cashback | TopCryptoCards`,
+        title: `Kraken Cards ${YEAR}: Krak Card review, fees & cashback | TopCryptoCards`,
         description: `Krak Card review ${YEAR}: 1% cash cashback in EUR/GBP, no proprietary token, no annual fee. Available in EU & UK. Pros, cons & independent verdict ✓`,
         intro: `Krak is Kraken's Visa card, from one of the oldest crypto exchanges founded in 2011. It offers 1% cashback in cash (EUR or GBP), with no proprietary token required.`,
         outro: `The Krak Card is ideal for those who prefer simple cash cashback over proprietary tokens. Available across the EU and UK.`,
