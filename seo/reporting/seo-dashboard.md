@@ -25,10 +25,16 @@ Mis à jour chaque semaine par les automations. C'est LE fichier à ouvrir.
 - Clics plats + visibilité ↑ = l'AI SEO compose de façon invisible au rank tracker → tenir le cap.
 - Un marché ↑ et un autre ↓ = aller voir le weekly report segmenté avant de conclure.
 
-## Focus de la semaine (maj 2026-10-19 — A12 Weekly Digest)
-> A12 19/10 : tech 🟢 6/6 (13/10) ; SERP 15/10 absent top 10 sur 12/12 ; IA 0/25 (14/10) ; decay et striking-distance vides (export GSC figé depuis 14/09, 35 j) ; content-gap saturé → priorité = **content-gap**. Digest : `reporting/digest-2026-10-19.md`.
+## Focus de la semaine (maj 2026-10-26 — A12 Weekly Digest)
+> A12 26/10 : tech 🟢 6/6 (20/10) ; SERP 22/10 absent top 10 sur 12/12 (Bleap en hausse) ; IA 0/25 (21/10) ; decay et striking-distance vides (export GSC figé depuis 14/09, 42 j) ; content-gap saturé → priorité = **content-gap**. Digest : `reporting/digest-2026-10-26.md`.
 
-**Action de la semaine : rédiger et publier BRIEF 1 du run content-gap du 25/09 — `/de/bitpanda-karte-stufen` (+ en/fr/es/it), non exécuté depuis 4 sem. ; vérifier paliers/seuils/taux dans `cards` avant publication.** Détail : `seo/state/content-gap-queue.md` (Run 2026-09-25). _Baselines manquantes : export GSC frais ; `internal-link-finder` ; outreach (domaines référents ≈ 0) non lancé._
+**Action de la semaine : rédiger et publier BRIEF 1 du run content-gap du 25/09 — `/de/bitpanda-karte-stufen` (+ en/fr/es/it), non exécuté depuis 4+ sem. ; vérifier paliers/seuils/taux dans `cards` avant publication.** Détail : `seo/state/content-gap-queue.md` (Run 2026-09-25). _Baselines manquantes : export GSC frais ; `internal-link-finder` ; outreach (domaines référents ≈ 0) non lancé._
+
+<details><summary>Focus précédent (2026-10-19)</summary>
+
+> A12 19/10 : priorité = **content-gap** (Bitpanda DE/AT). Digest : `reporting/digest-2026-10-19.md`.
+
+</details>
 
 <details><summary>Focus précédent (2026-10-12)</summary>
 
