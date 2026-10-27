@@ -256,11 +256,16 @@ export default function CardDetail() {
     en: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'review & fees'}, ${fees === 0 ? 'no annual fee' : fees + '€/year'} | TopCryptoCards`,
     pt: (name, cb, fees) => `${name} ${year}: ${cb > 0 ? `${cb}% cashback` : 'análise e taxas'}, ${fees === 0 ? 'sem taxas' : fees + '€/ano'} | TopCryptoCards`,
   };
+  // Headline cashback = the honest rate a user actually gets WITHOUT staking
+  // (never the conditional premium tier) → consistent, no hype in the SERP snippet.
+  const headlineCb = card ? (card.cashbackNoStaking || card.cashbackBase || 0) : 0;
+  // Title: prefer the data-driven, benefit-led template over the (more generic,
+  // sometimes stale) Supabase meta_title → consistent CTR snippet across all cards.
   const seoTitle = card
-    ? (article?.meta_title || (TITLE_TPL[contentLang] ?? TITLE_TPL.en)(card.name, card.cashbackPremium || card.cashbackBase || 0, card.annualFees))
+    ? (TITLE_TPL[contentLang] ?? TITLE_TPL.en)(card.name, headlineCb, card.annualFees)
     : 'TopCryptoCards';
   const seoDesc = card
-    ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, card.cashbackPremium, card.annualFees))
+    ? (article?.meta_description || (DESC_TPL[contentLang] ?? DESC_TPL.en)(card.name, card.issuer, headlineCb, card.annualFees))
     : '';
   // Index every available card (page only renders for cards available in this market).
   // be/at auto-noindex via useSeoMeta (fr/de duplicates); notFound → noindex.
