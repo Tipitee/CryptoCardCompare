@@ -1903,7 +1903,7 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
     "keyStats": {
       "cashbackMax": "Up to 9% in PLU (with max staking + perks)",
       "stakingRequis": "0 (Starter), up to 8,000 PLU (Legend)",
-      "fraisAnnuels": "$6.99/month Starter ($83.88/year)",
+      "fraisAnnuels": "£6.99/month Starter (£83.88/year)",
       "disponibilite": "France, EU, United Kingdom"
     },
     "pros": [
@@ -1915,18 +1915,18 @@ export const REVIEW_I18N: Record<string, CardReviewI18n> = {
       "Over 50 perks available in the catalog"
     ],
     "cons": [
-      "Mandatory monthly subscription from Starter plan ($6.99/month)",
+      "Mandatory monthly subscription from Starter plan (£6.99/month)",
       "Free plan being discontinued in 2026",
       "Cashback-eligible spending cap (£250/month on Starter)",
       "Cashback paid in PLU, volatile and illiquid token",
       "2.5% FX fees on foreign currencies",
       "High PLU staking required for best rates (8,000 PLU ≈ several thousand dollars)"
     ],
-    "verdict": "Plutus offers the highest cashback without immediate staking (3% from Starter), but the mandatory $6.99/month subscription reduces real profitability. Perks (free Netflix, Spotify) can offset this if you use them all.",
+    "verdict": "Plutus offers the highest cashback without immediate staking (3% from Starter), but the mandatory £6.99/month subscription reduces real profitability. Perks (free Netflix, Spotify) can offset this if you use them all.",
     "sections": {
       "presentation": "**Plutus** is one of Europe's crypto card pioneers, founded in 2015. It's a non-custodial Visa available in the UK and EEA. The card operates on a tier system based on PLU staking (Plutus' native token) and monthly subscription.",
       "cashback": "Cashback is paid in **PLU (Plutus token)** and varies by plan: 3% Starter, 4% Everyday, 5% Premium, 6% Hero, 7% Veteran, 8% Legend. **Perks** allow you to add up to 1% extra. Combined rate can reach **9%** at Legend tier.",
-      "frais": "Mandatory subscription: **$6.99/month** (Starter) to **$49.99/month** (Legend). Foreign currency fees: **2.5%**. Physical card: **£9.99** issuance fee.",
+      "frais": "Mandatory subscription: **£6.99/month** (Starter) to **£49.99/month** (Legend). Foreign currency fees: **2.5%**. Physical card: **£9.99** issuance fee.",
       "securite": "Plutus is regulated in the EU and UK under EMI license. Card is issued by an FCA-approved partner. PLU tokens are non-custodial, you manage your wallet. Plutus has a 10-year history with no major security incidents.",
       "experience": "Plutus app available on iOS and Android. Perks management, PLU staking and cashback handled via app. Card compatible with Apple Pay. Customer support available via chat."
     },

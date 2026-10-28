@@ -33,7 +33,7 @@ const sb = createClient(SURL, SKEY);
 
 // Segment URL des fiches par marché + code hreflang BCP 47.
 const SEG = { fr: 'cartes', be: 'cartes', de: 'karten', at: 'karten', es: 'tarjetas', it: 'carte', en: 'cards', pt: 'cartoes' };
-const BCP47 = { fr: 'fr-FR', be: 'fr-BE', de: 'de-DE', at: 'de-AT', es: 'es-ES', it: 'it-IT', en: 'en-GB', pt: 'pt-PT' };
+const BCP47 = { fr: 'fr', be: 'fr-BE', de: 'de', at: 'de-AT', es: 'es', it: 'it', en: 'en-GB', pt: 'pt-PT' }; // aligne sur useHreflang.ts (hook on-page)
 const LANGS = ['fr', 'be', 'de', 'at', 'es', 'it', 'en', 'pt'];
 
 async function main() {
